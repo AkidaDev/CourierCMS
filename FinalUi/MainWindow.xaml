@@ -1,0 +1,139 @@
+﻿<Window x:Class="FinalUi.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" WindowState="Maximized" ResizeMode="CanResize"
+		>
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Open"
+                        Executed="Open_Executed"
+                        CanExecute="CommandBinding_CanExecute"/>
+    </Window.CommandBindings>
+    <Window.Resources>
+        <ImageBrush ImageSource="App_Images/Memu bar.png" x:Key="GridBackground"></ImageBrush>
+        <ImageBrush ImageSource="Untitled-1_Images/navigation bar.png" x:Key="NavigationBackground"></ImageBrush>
+		<ImageBrush ImageSource="Untitled-2_Images/navigation bar.png" x:Key="QuickbuttonBackground"></ImageBrush>
+		<ImageBrush ImageSource="App_Images/side menu.png" x:Key="SideMenuBackground"></ImageBrush>
+		<ImageBrush ImageSource="App_Images/New Folder1/searchend.png" x:Key="Searchbarcontent"></ImageBrush>
+    </Window.Resources>
+
+    <StackPanel>
+        <Grid Background="{DynamicResource GridBackground}">
+        
+        
+            <Menu Margin="3" Background="Transparent" FontSize="14">
+				<Image Height="24" Source="App_Images/vortex pin logo.png" Stretch="Fill"/>
+                <MenuItem Header="File" Margin="10 0 0 0"/>
+                <MenuItem Header="View" Margin="10 0 0 0"/>
+                <MenuItem Header="Tools" Margin="10 0 0 0"/>
+                <MenuItem Header="Help" Margin="10 0 0 0"/>
+                <Image Source="App_Images/New Folder1/minimize.png" Width="{DynamicResource {x:Static SystemParameters.MenuButtonWidthKey}}"/>
+                <Image Source="App_Images/New Folder1/full screen.png" Width="{DynamicResource {x:Static SystemParameters.MenuButtonWidthKey}}"/>
+                <Image Source="App_Images/New Folder1/close.png" Width="{DynamicResource {x:Static SystemParameters.MenuButtonWidthKey}}"/>
+            </Menu>
+        </Grid>
+        <WrapPanel Background="{DynamicResource NavigationBackground}">
+         	
+                <Button Name="LoadDataButton" BorderThickness="0" Foreground="White" Margin="5 5 5 5" Background="Transparent" Command="ApplicationCommands.Open" FontSize="16">
+					<Button.Content>
+						<WrapPanel>
+							<Image Source="open file_Images/open file shape.png" Stretch="None"></Image>
+							<TextBlock Text="Open File" Margin="10 -4 1 1" FontSize="16" Padding="1 3 1 0.5" />
+						</WrapPanel>
+					</Button.Content>
+				</Button>
+                <TextBox Margin="20 5 5 5" Width="1000" Padding="0 2.5 0 0"></TextBox>
+         </WrapPanel>
+
+        <Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="200"></ColumnDefinition>
+				<ColumnDefinition Width="*"></ColumnDefinition>
+			</Grid.ColumnDefinitions>
+            <StackPanel Background="{DynamicResource SideMenuBackground}" Grid.Column="0" Margin="0,0,0,-169.5">
+				<WrapPanel>
+				<Image Source="App_Images/New Folder1/dropbutton.png" Width="6" Height="10" Margin="5,-12,-22,-1"/>
+				<TextBlock  x:Name="textBlock" Text="My Assignemnts" Margin="0" Padding="22,11,0,25" FontSize="16" FontWeight="Bold"/>
+				</WrapPanel>
+
+				<WrapPanel>
+				<Image Source="App_Images/New Folder1/dropbutton.png"  Width="6" Height="10" Margin="5,-12,-22,0"></Image>
+                <TextBlock Text="Reports" Margin="0" Padding="22,11,0,25" FontSize="16" FontWeight="Bold"></TextBlock>
+				</WrapPanel>
+				
+				<WrapPanel>
+				<Image Source="App_Images/New Folder1/dropbutton.png"  Width="6" Height="10" Margin="5,-12,-22,0"></Image>
+                <TextBlock Text="Bills" Margin="0" Padding="22,11,0,25" FontSize="16" FontWeight="Bold"></TextBlock>
+				</WrapPanel>
+
+            </StackPanel>
+            <StackPanel Grid.Column="1" Margin="-1">
+                <WrapPanel Background="{DynamicResource QuickbuttonBackground}" Height="34">
+					<Grid Margin="60 0 0 0" >
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto"></ColumnDefinition>
+							<ColumnDefinition Width="Auto"></ColumnDefinition>
+							<ColumnDefinition Width="Auto"></ColumnDefinition>
+							<ColumnDefinition Width="Auto"></ColumnDefinition>
+							<ColumnDefinition Width="Auto"></ColumnDefinition>
+							<ColumnDefinition Width="Auto"></ColumnDefinition>
+							<ColumnDefinition Width="Auto"></ColumnDefinition>
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto"></RowDefinition>
+						</Grid.RowDefinitions>
+						
+						<Image Source="App_Images/left doc.png" Grid.Row="0" Width="48" Height="30" Grid.Column="0"/>
+						<Image Source="App_Images/New Folder1/import file.png" Grid.Row="0" Width="45" Height="30" Grid.Column="0"/>
+
+						<Image Source="App_Images/middock.png" Grid.Row="0" Width="45" Height="30" Grid.Column="1" />
+						<Image Source="App_Images/New Folder1/reload.png" Grid.Row="0" Width="45" Height="30" Grid.Column="1"/>
+
+						<Image Source="App_Images/middock.png" Grid.Row="0" Width="45" Height="30" Grid.Column="2" />
+						<Image Source="App_Images/New Folder1/save.png" Grid.Row="0" Width="45" Height="30" Grid.Column="2"/>
+
+						<Image  Source="App_Images/middock.png" Grid.Row="0" Width="45" Height="30" Grid.Column="3" />
+						<Image Source="App_Images/New Folder1/back.png" Grid.Row="0" Width="45" Height="30" Grid.Column="3"/>
+
+						<Image  Source="App_Images/middock.png" Grid.Row="0" Width="45" Height="30" Grid.Column="4" />
+						<Image Source="App_Images/New Folder1/forth.png" Grid.Row="0" Width="45" Height="30" Grid.Column="4"/>
+						
+						<Image  Source="App_Images/middock.png" Grid.Row="0" Width="45" Height="30" Grid.Column="5" />
+						<Image Source="App_Images/New Folder1/filter.png" Grid.Row="0" Width="45" Height="30" Grid.Column="5"/>
+
+						<Image Source="App_Images/rightdoc.png" Grid.Row="0" Width="51" Height="30" Grid.Column="6" />
+						<Image Source="App_Images/New Folder1/export.png" Grid.Row="0" Width="45" Height="30" Grid.Column="6"/>
+
+						<Rectangle VerticalAlignment="Stretch" Grid.Row="0" Width="1" Height="22" Margin="1" Stroke="#FF666666" Grid.Column="0" HorizontalAlignment="Right"/>
+						<Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="1" Stroke="#FF666666" Grid.Column="1" HorizontalAlignment="Right"/>
+						<Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="1" Stroke="#FF666666" Grid.Column="2"  HorizontalAlignment="Right"/>
+						<Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="1" Stroke="#FF666666" Grid.Column="3" HorizontalAlignment="Right"/>
+						<Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="1" Stroke="#FF666666" Grid.Column="4" HorizontalAlignment="Right"/>
+						<Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="1" Stroke="#FF666666" Grid.Column="5" HorizontalAlignment="Right"/>
+					
+						
+				
+						</Grid>
+						<WrapPanel Margin="200 3 3 0">
+							<Image Height="27" Source="App_Images/New Folder1/searchfront.png" Width="28"></Image>
+						<WrapPanel  Height="27" Width="171" Background="{DynamicResource Searchbarcontent}">
+							
+					<TextBox MinWidth="150" Background="transparent" BorderThickness="0" Height="25" Width="197" Padding="28,3,0,0" HorizontalAlignment="Right" Margin="0,0,0,5" FontSize="14.667"/>
+					
+					
+					</WrapPanel>
+					</WrapPanel>
+						
+						</WrapPanel>
+                <StackPanel x:Name="DataGridStackPanel" Height="200">
+                    <DataGrid Visibility="Collapsed" x:Name="dataGrid"/>
+                    
+                </StackPanel>
+            </StackPanel>
+
+        </Grid>
+        <StackPanel VerticalAlignment="Bottom">
+            <TextBlock Text="Bottom Content"></TextBlock>
+        </StackPanel>
+        
+    </StackPanel>
+</Window>
