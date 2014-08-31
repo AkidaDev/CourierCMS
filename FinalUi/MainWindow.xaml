@@ -128,23 +128,47 @@
 
 
                     </Grid>
-					<Grid HorizontalAlignment="Right">
+					<Grid HorizontalAlignment="Right" Margin="0,0,30,5">
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="Auto"></ColumnDefinition>
 							<ColumnDefinition Width="Auto"></ColumnDefinition>
 						</Grid.ColumnDefinitions>
                         <Image Height="27" Source="App_Images/New Folder1/searchfront.png" Grid.Column="0" Width="28"></Image>
-                        <WrapPanel  Height="27" Width="171" Background="{DynamicResource Searchbarcontent}" Grid.Column="1">
+                        <WrapPanel  Height="27" Width="171" Background="{DynamicResource Searchbarcontent}" Grid.Column="1" >
 
-                            <TextBox MinWidth="150" Background="transparent" BorderThickness="0" Height="25" Width="197" Padding="28,3,0,0" HorizontalAlignment="Right" Margin="0,0,0,5" FontSize="14.667"/>
+                            <TextBox MinWidth="150" Background="transparent" BorderThickness="0" Height="25" Width="197" Padding="28,3,0,0" HorizontalAlignment="Right"  FontSize="14.667"/>
 
 
                         </WrapPanel>
                   </Grid>
                 </DockPanel>
                 <StackPanel x:Name="DataGridStackPanel" Height="200">
-                    <DataGrid x:Name="dataGrid"/>
-
+                    <DataGrid x:Name="dataGrid">
+						   <DataGrid.Columns>
+                            <DataGridTextColumn Header="ConnsignmentNo" />
+                            <DataGridTextColumn Header="Destination" />
+                            <DataGridTextColumn Header="DestinationPin"/>
+                            <DataGridTextColumn Header="Weight" />
+                            <DataGridTextColumn Header="Obs. Weight" />
+                            <DataGridTextColumn Header="Cost" />
+                            <DataGridTextColumn Header="Billed Amount"/>
+                            <DataGridComboBoxColumn Header="Client"/>
+                        </DataGrid.Columns>
+                    
+					</DataGrid>
+					<WrapPanel Name="DataGridOptionpanel">
+                        <Button Name="DataGridPreviousPage" Content="Previous"></Button>
+                        <Button Name="DataGridNextPage" Content="Next"></Button>
+                        <TextBox Name="DataGridPageNum" MinWidth="100"></TextBox>
+                        <TextBox Name="DataGridNumOfRows" MinWidth="100"></TextBox>
+                    </WrapPanel>
+                    <WrapPanel Name="DataGridSheetPanel">
+                        <TextBlock Text="Sheet1"></TextBlock>
+                        <TextBlock Text="Sheet2"></TextBlock>
+                        <TextBlock Text="Sheet2"></TextBlock>
+                        <TextBlock Text="Sheet2"></TextBlock>
+                        <TextBlock Text="Sheet2"></TextBlock>
+                    </WrapPanel>
                 </StackPanel>
             </StackPanel>
 
