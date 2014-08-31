@@ -24,6 +24,11 @@ namespace FinalUi
         DataGridHelper dataGridHelper;
         public MainWindow()
         {
+            this.Width = System.Windows.SystemParameters.WorkArea.Width;
+            this.Height = System.Windows.SystemParameters.WorkArea.Height;
+            this.Left = 0;
+            this.Top = 0;
+            this.WindowState = WindowState.Normal;
             InitializeComponent();
             dataGridHelper = new DataGridHelper();
         }
@@ -50,6 +55,16 @@ namespace FinalUi
         private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
+        }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
     }
 }
