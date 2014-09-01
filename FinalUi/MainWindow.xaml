@@ -1,7 +1,7 @@
 ﻿<Window x:Class="FinalUi.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" WindowState="Normal" WindowStyle="None" ResizeMode="CanResize">
+        Title="MainWindow" WindowState="Normal" WindowStyle="None" ResizeMode="CanResizeWithGrip" >
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Open"
                         Executed="Open_Executed"
@@ -55,7 +55,7 @@
                           Property="Background" Value="#28000000" />
                   <Setter TargetName="Border" 
                           Property="BorderBrush" Value="#AAAAAA" />
-                  <Setter Property="Foreground" Value="#888888"/>
+                  <Setter Property="Foreground" Value="#FFFFFF"/>
                </Trigger>
             </ControlTemplate.Triggers>
          </ControlTemplate>
@@ -78,12 +78,16 @@
 
             </Menu>
             <WrapPanel HorizontalAlignment="Right" Margin="3,6,7,3">
-                <Button Name="MinimizeButton" Click="MinimizeButton_Click" Margin="0,0,6,0" Width="30">
+                <Button Name="MinimizeButton" Click="MinimizeButton_Click" Margin="0,0,3,0" Width="20">
                     <Button.Content   >
                         <Image Source="App_Images/New Folder1/minimize.png"  Width="{DynamicResource {x:Static SystemParameters.MenuButtonWidthKey}}"/>
                     </Button.Content>
                 </Button>
-                <Image Source="App_Images/New Folder1/full screen.png" Width="{DynamicResource {x:Static SystemParameters.MenuButtonWidthKey}}" Margin="0,0,6,0"  />
+                <Button Name="Maximize" Width="27">
+					<Button.Content>
+                <Image Source="App_Images/New Folder1/full screen.png" Width="{DynamicResource {x:Static SystemParameters.MenuButtonWidthKey}}"/>
+				</Button.Content>
+                </Button>
                 <Button Name="CloseButton" Command="ApplicationCommands.Close" Width="60">
                     <Button.Content>
                         <Image Source="App_Images/New Folder1/close.png" Width="{DynamicResource {x:Static SystemParameters.MenuButtonWidthKey}}"/>
@@ -91,9 +95,8 @@
                 </Button>
             </WrapPanel>
         </Grid>
-        <DockPanel Background="{DynamicResource NavigationBackground}" >
-
-            <Button Name="LoadDataButton" BorderThickness="0" Foreground="White" Margin="5 5 5 5" Background="Transparent" Command="ApplicationCommands.Open" FontSize="16">
+        <DockPanel Background="{DynamicResource NavigationBackground}"  >
+            <Button Name="LoadDataButton" Foreground="White" Margin="5,5,5,5" Command="ApplicationCommands.Open" FontSize="16">
                 <Button.Content>
                     <WrapPanel>
                         <Image Source="open file_Images/open file shape.png" Stretch="None"></Image>
@@ -101,7 +104,7 @@
                     </WrapPanel>
                 </Button.Content>
             </Button>
-            <TextBox Margin="20 5 115 5"  Padding="0 2.5 0 0" Width="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}"></TextBox>
+            <TextBox Margin="20 3 115 3"  Padding="0 2 0 0" FontSize="14" Width="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}"></TextBox>
         </DockPanel>
 
         <Grid>
@@ -109,12 +112,12 @@
                 <ColumnDefinition Width="200"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <StackPanel Background="{DynamicResource SideMenuBackground}" Grid.Column="0" Margin="0,0,0,-169.5">
-                <WrapPanel>
+            <StackPanel Background="{DynamicResource SideMenuBackground}" Grid.Column="0" Height="{DynamicResource {x:Static SystemParameters.MaximumWindowTrackHeightKey}}">
+               <WrapPanel>
                     <Image Source="App_Images/New Folder1/dropbutton.png" Width="6" Height="10" Margin="5,-12,-22,-1"/>
-					<Button  ><Button.Content>
-                    <TextBlock  x:Name="textBlock" Text="My Assignemnts" Margin="0" Padding="22,11,0,25" FontSize="16" FontWeight="Bold"/>
-					</Button.Content></Button>
+					<Button><Button.Content>
+                    <TextBlock  x:Name="textBlock" Text="My Assignemnts" Margin="0" Padding="22,11,0,25" FontSize="16" FontWeight="Bold" />
+				</Button.Content></Button>	
                 </WrapPanel>
 
                 <WrapPanel>
@@ -132,8 +135,8 @@
                 </WrapPanel>
 
             </StackPanel>
-            <StackPanel Grid.Column="1" Margin="-1">
-                <DockPanel Background="{DynamicResource QuickbuttonBackground}" Height="34">
+            <StackPanel Grid.Column="1" Margin="-1,-1,0,0">
+                <DockPanel Background="{DynamicResource QuickbuttonBackground}" Height="34" >
                     <Grid Margin="60 0 0 0" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -149,7 +152,7 @@
                         </Grid.RowDefinitions>
 
                         <Image Source="App_Images/left doc.png" Grid.Row="0" Width="48" Height="30" Grid.Column="0"/>
-						<Button  Grid.Row="0" Width="45" Height="30" Grid.Column="0"> <Button.Content>
+						<Button  Grid.Row="0" Width="48" Height="30" Grid.Column="0"> <Button.Content>
                         <Image Source="App_Images/New Folder1/import file.png"/>
 						</Button.Content></Button>
 
@@ -178,8 +181,8 @@
 						<Image Source="App_Images/New Folder1/filter.png"/>
 						</Button.Content></Button>
                         
-						<Image Source="App_Images/rightdoc.png" Grid.Row="0" Width="51" Height="30" Grid.Column="6" />
-                        <Button  Grid.Row="0" Width="51" Height="30" Grid.Column="6"> <Button.Content>
+						<Image Source="App_Images/rightdoc.png" Grid.Row="0" Width="48" Height="30" Grid.Column="6" />
+                        <Button  Grid.Row="0" Width="48" Height="30" Grid.Column="6"> <Button.Content>
 						<Image Source="App_Images/New Folder1/export.png" />
 						</Button.Content></Button>
                         <Rectangle VerticalAlignment="Stretch" Grid.Row="0" Width="1" Height="22" Margin="0" Stroke="#FF666666" Grid.Column="0" HorizontalAlignment="Right"/>
@@ -206,8 +209,8 @@
                         </WrapPanel>
                   </Grid>
                 </DockPanel>
-                <StackPanel x:Name="DataGridStackPanel" Height="200">
-                    <DataGrid x:Name="dataGrid">
+                <StackPanel x:Name="DataGridStackPanel" Height="200" >
+                    <DataGrid x:Name="dataGrid" >
 						   <DataGrid.Columns>
                             <DataGridTextColumn Header="ConnsignmentNo" />
                             <DataGridTextColumn Header="Destination" />
@@ -220,13 +223,27 @@
                         </DataGrid.Columns>
                     
 					</DataGrid>
-					<WrapPanel Name="DataGridOptionpanel">
-                        <Button Name="DataGridPreviousPage" Content="Previous"></Button>
-                        <Button Name="DataGridNextPage" Content="Next"></Button>
-                        <TextBox Name="DataGridPageNum" MinWidth="100"></TextBox>
+					<WrapPanel Name="DataGridOptionpanel" Background="{DynamicResource GridBackground}">
+                        <Button Name="DataGridFirstPage" Margin="38,5,5,5">
+                        <Image Height="20" Source="App_Images/New Folder1/wayback.png" Stretch="Fill" Width="20"/>
+						</Button>
+                        <Button Name="DataGridPreviousPage" Margin="5">
+                        <Image Height="20" Source="App_Images/New Folder1/previous.png" Stretch="Fill" Width="20"/>
+						</Button>
+                        <Button Name="DataGridCurrentPage" Margin="5">
+                        <Image Height="20" Source="App_Images/New Folder1/current.png" Stretch="Fill" Width="20"/>
+						</Button>
+                        <Button Name="DataGridNextPage" Margin="5">
+                        <Image Height="20" Source="App_Images/New Folder1/next.png" Stretch="Fill" Width="20"/>
+						</Button>
+                        <Button Name="DataGridLastPage" Margin="5">
+                        <Image Height="20" Source="App_Images/New Folder1/wayforth.png" Stretch="Fill" Width="20"/>
+						</Button>
+                        <TextBox Name="DataGridPageNum" MinWidth="100" Margin="38,0,0,0"></TextBox>
                         <TextBox Name="DataGridNumOfRows" MinWidth="100"></TextBox>
                     </WrapPanel>
-                    <WrapPanel Name="DataGridSheetPanel">
+					
+					<WrapPanel Name="DataGridSheetPanel">
                         <TextBlock Text="Sheet1"></TextBlock>
                         <TextBlock Text="Sheet2"></TextBlock>
                         <TextBlock Text="Sheet2"></TextBlock>
