@@ -17,7 +17,51 @@
         <ImageBrush ImageSource="Untitled-2_Images/navigation bar.png" x:Key="QuickbuttonBackground"></ImageBrush>
         <ImageBrush ImageSource="App_Images/side menu.png" x:Key="SideMenuBackground"></ImageBrush>
         <ImageBrush ImageSource="App_Images/New Folder1/searchend.png" x:Key="Searchbarcontent"></ImageBrush>
-		
+		<Style TargetType="{x:Type Button}">
+   <Setter Property="SnapsToDevicePixels" Value="true"/>
+   <Setter Property="OverridesDefaultStyle" Value="true"/>
+   <Setter Property="Template">
+      <Setter.Value>
+         <ControlTemplate TargetType="{x:Type Button}">
+            <Border Name="Border" CornerRadius="5" BorderThickness="0"
+                    Background="Transparent"
+                    BorderBrush="Transparent">
+               <ContentPresenter Margin="0" 
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center" 
+                                 RecognizesAccessKey="True"/>
+            </Border>
+            <ControlTemplate.Triggers>
+               <Trigger Property="IsKeyboardFocused" Value="true">
+                  <Setter TargetName="Border" 
+                          Property="BorderBrush" Value="#202020" />
+               </Trigger>
+               <Trigger Property="IsDefaulted" Value="true">
+                  <Setter TargetName="Border" 
+                          Property="BorderBrush" Value="#202020" />
+               </Trigger>
+               <Trigger Property="IsMouseOver" Value="true">
+                  <Setter TargetName="Border" 
+                          Property="Background" Value="#28000000" />
+               </Trigger>
+               <Trigger Property="IsPressed" Value="true">
+                  <Setter TargetName="Border" 
+                          Property="Background" Value="#53808080" />
+                  <Setter TargetName="Border" 
+                          Property="BorderBrush" Value="#606060" />
+               </Trigger>
+               <Trigger Property="IsEnabled" Value="false">
+                  <Setter TargetName="Border" 
+                          Property="Background" Value="#28000000" />
+                  <Setter TargetName="Border" 
+                          Property="BorderBrush" Value="#AAAAAA" />
+                  <Setter Property="Foreground" Value="#888888"/>
+               </Trigger>
+            </ControlTemplate.Triggers>
+         </ControlTemplate>
+      </Setter.Value>
+   </Setter>
+</Style>
     </Window.Resources>
 
     <StackPanel>
@@ -33,14 +77,14 @@
                 <MenuItem Header="Help" Margin="10 0 0 0"/>
 
             </Menu>
-            <WrapPanel HorizontalAlignment="Right" Margin="3">
-                <Button Name="MinimizeButton" Click="MinimizeButton_Click">
-                    <Button.Content>
+            <WrapPanel HorizontalAlignment="Right" Margin="3,6,7,3">
+                <Button Name="MinimizeButton" Click="MinimizeButton_Click" Margin="0,0,6,0" Width="30">
+                    <Button.Content   >
                         <Image Source="App_Images/New Folder1/minimize.png"  Width="{DynamicResource {x:Static SystemParameters.MenuButtonWidthKey}}"/>
                     </Button.Content>
                 </Button>
-                <Image Source="App_Images/New Folder1/full screen.png" Width="{DynamicResource {x:Static SystemParameters.MenuButtonWidthKey}}"/>
-                <Button Name="CloseButton" Command="ApplicationCommands.Close">
+                <Image Source="App_Images/New Folder1/full screen.png" Width="{DynamicResource {x:Static SystemParameters.MenuButtonWidthKey}}" Margin="0,0,6,0"  />
+                <Button Name="CloseButton" Command="ApplicationCommands.Close" Width="60">
                     <Button.Content>
                         <Image Source="App_Images/New Folder1/close.png" Width="{DynamicResource {x:Static SystemParameters.MenuButtonWidthKey}}"/>
                     </Button.Content>
@@ -68,21 +112,21 @@
             <StackPanel Background="{DynamicResource SideMenuBackground}" Grid.Column="0" Margin="0,0,0,-169.5">
                 <WrapPanel>
                     <Image Source="App_Images/New Folder1/dropbutton.png" Width="6" Height="10" Margin="5,-12,-22,-1"/>
-					<Button BorderBrush="Transparent" Background="Transparent" ><Button.Content>
+					<Button  ><Button.Content>
                     <TextBlock  x:Name="textBlock" Text="My Assignemnts" Margin="0" Padding="22,11,0,25" FontSize="16" FontWeight="Bold"/>
 					</Button.Content></Button>
                 </WrapPanel>
 
                 <WrapPanel>
                     <Image Source="App_Images/New Folder1/dropbutton.png"  Width="6" Height="10" Margin="5,-12,-22,0"></Image>
-					<Button BorderBrush="Transparent" Background="Transparent" ><Button.Content>
+					<Button  ><Button.Content>
                     <TextBlock Text="Reports" Margin="0" Padding="22,11,0,25" FontSize="16" FontWeight="Bold"></TextBlock>
 					</Button.Content></Button>
                 </WrapPanel>
 
                 <WrapPanel>
                     <Image Source="App_Images/New Folder1/dropbutton.png"  Width="6" Height="10" Margin="5,-12,-22,0"></Image>
-					<Button BorderBrush="Transparent" Background="Transparent" ><Button.Content>
+					<Button  ><Button.Content>
                     <TextBlock Text="Bills" Margin="0" Padding="22,11,0,25" FontSize="16" FontWeight="Bold"></TextBlock>
 					</Button.Content></Button>
                 </WrapPanel>
@@ -105,45 +149,45 @@
                         </Grid.RowDefinitions>
 
                         <Image Source="App_Images/left doc.png" Grid.Row="0" Width="48" Height="30" Grid.Column="0"/>
-						<Button BorderBrush="Transparent" Background="Transparent" Grid.Row="0" Width="45" Height="30" Grid.Column="0"> <Button.Content>
+						<Button  Grid.Row="0" Width="45" Height="30" Grid.Column="0"> <Button.Content>
                         <Image Source="App_Images/New Folder1/import file.png"/>
 						</Button.Content></Button>
 
                         <Image Source="App_Images/middock.png" Grid.Row="0" Width="45" Height="30" Grid.Column="1" />
-						<Button BorderBrush="Transparent" Background="Transparent" Grid.Row="0" Width="45" Height="30" Grid.Column="1"> <Button.Content>
+						<Button  Grid.Row="0" Width="45" Height="30" Grid.Column="1"> <Button.Content>
                         <Image Source="App_Images/New Folder1/reload.png"/>
 						</Button.Content></Button>
 
                         <Image Source="App_Images/middock.png" Grid.Row="0" Width="45" Height="30" Grid.Column="2" />
-                        <Button BorderBrush="Transparent" Background="Transparent" Grid.Row="0" Width="45" Height="30" Grid.Column="2"> <Button.Content>
+                        <Button  Grid.Row="0" Width="45" Height="30" Grid.Column="2"> <Button.Content>
 						<Image Source="App_Images/New Folder1/save.png"/>
 						</Button.Content></Button>
                         
 						<Image  Source="App_Images/middock.png" Grid.Row="0" Width="45" Height="30" Grid.Column="3" />
-                        <Button BorderBrush="Transparent" Background="Transparent" Grid.Row="0" Width="45" Height="30" Grid.Column="3"> <Button.Content>
+                        <Button  Grid.Row="0" Width="45" Height="30" Grid.Column="3"> <Button.Content>
 						<Image Source="App_Images/New Folder1/back.png"/>
 						</Button.Content></Button>
                         
 						<Image  Source="App_Images/middock.png" Grid.Row="0" Width="45" Height="30" Grid.Column="4" />
-                        <Button BorderBrush="Transparent" Background="Transparent" Grid.Row="0" Width="45" Height="30" Grid.Column="4"> <Button.Content>
+                        <Button  Grid.Row="0" Width="45" Height="30" Grid.Column="4"> <Button.Content>
 						<Image Source="App_Images/New Folder1/forth.png"/>
 						</Button.Content></Button>
                         
 						<Image  Source="App_Images/middock.png" Grid.Row="0" Width="45" Height="30" Grid.Column="5" />
-                        <Button  BorderBrush="Transparent" Background="Transparent" Grid.Row="0" Width="45" Height="30" Grid.Column="5"> <Button.Content>
+                        <Button Grid.Row="0" Width="45" Height="30" Grid.Column="5"> <Button.Content>
 						<Image Source="App_Images/New Folder1/filter.png"/>
 						</Button.Content></Button>
                         
 						<Image Source="App_Images/rightdoc.png" Grid.Row="0" Width="51" Height="30" Grid.Column="6" />
-                        <Button BorderBrush="Transparent" Background="Transparent" Grid.Row="0" Width="45" Height="30" Grid.Column="6"> <Button.Content>
+                        <Button  Grid.Row="0" Width="51" Height="30" Grid.Column="6"> <Button.Content>
 						<Image Source="App_Images/New Folder1/export.png" />
 						</Button.Content></Button>
-                        <Rectangle VerticalAlignment="Stretch" Grid.Row="0" Width="1" Height="22" Margin="1" Stroke="#FF666666" Grid.Column="0" HorizontalAlignment="Right"/>
-                        <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="1" Stroke="#FF666666" Grid.Column="1" HorizontalAlignment="Right"/>
-                        <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="1" Stroke="#FF666666" Grid.Column="2"  HorizontalAlignment="Right"/>
-                        <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="1" Stroke="#FF666666" Grid.Column="3" HorizontalAlignment="Right"/>
-                        <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="1" Stroke="#FF666666" Grid.Column="4" HorizontalAlignment="Right"/>
-                        <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="1" Stroke="#FF666666" Grid.Column="5" HorizontalAlignment="Right"/>
+                        <Rectangle VerticalAlignment="Stretch" Grid.Row="0" Width="1" Height="22" Margin="0" Stroke="#FF666666" Grid.Column="0" HorizontalAlignment="Right"/>
+                        <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="#FF666666" Grid.Column="1" HorizontalAlignment="Right"/>
+                        <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="#FF666666" Grid.Column="2"  HorizontalAlignment="Right"/>
+                        <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="#FF666666" Grid.Column="3" HorizontalAlignment="Right"/>
+                        <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="#FF666666" Grid.Column="4" HorizontalAlignment="Right"/>
+                        <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="#FF666666" Grid.Column="5" HorizontalAlignment="Right"/>
 
 
 
