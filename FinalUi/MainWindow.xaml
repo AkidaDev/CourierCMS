@@ -1,6 +1,7 @@
 ﻿<Window x:Class="FinalUi.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		Icon="App_Images/New Folder1/Icon-40.png"
         Title="MainWindow" WindowState="Normal" WindowStyle="None" ResizeMode="CanResizeWithGrip" >
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Open"
@@ -23,7 +24,7 @@
    <Setter Property="Template">
       <Setter.Value>
          <ControlTemplate TargetType="{x:Type Button}">
-            <Border Name="Border" CornerRadius="5" BorderThickness="0"
+            <Border Name="Border" CornerRadius="7" BorderThickness="0"
                     Background="Transparent"
                     BorderBrush="Transparent">
                <ContentPresenter Margin="0" 
@@ -66,31 +67,32 @@
 
     <StackPanel>
         <Grid Background="{DynamicResource GridBackground}">
-
-
+		<Image Height="24" Source="App_Images/New Folder1/Icon-40.png" HorizontalAlignment="Left" Margin="5,0,0,0" />
             <Menu Margin="3" Background="Transparent" FontSize="14">
 
-                <Image Height="24" Source="App_Images/vortex pin logo.png" Stretch="Fill"/>
-                <MenuItem Header="File" Margin="10 0 0 0"/>
-                <MenuItem Header="View" Margin="10 0 0 0"/>
+                
+                <MenuItem Header="File" Margin="35 0 0 0"/>
+                <MenuItem Header="View" Margin="10 0 0 0">
+                </MenuItem>
                 <MenuItem Header="Tools" Margin="10 0 0 0"/>
                 <MenuItem Header="Help" Margin="10 0 0 0"/>
 
             </Menu>
-            <WrapPanel HorizontalAlignment="Right" Margin="3,6,7,3">
-                <Button Name="MinimizeButton" Click="MinimizeButton_Click" Margin="0,0,3,0" Width="20">
+            <WrapPanel HorizontalAlignment="Right" Margin="3,2,5,3">
+                <Button Name="MinimizeButton" Click="MinimizeButton_Click" Width="25">
                     <Button.Content   >
-                        <Image Source="App_Images/New Folder1/minimize.png"  Width="{DynamicResource {x:Static SystemParameters.MenuButtonWidthKey}}"/>
+                        <Image Source="App_Images/New Folder1/minimize.png" Width="15"/>
                     </Button.Content>
                 </Button>
-                <Button Name="Maximize" Width="27">
+                <Button Name="Maximize"  Width="35">
 					<Button.Content>
-                <Image Source="App_Images/New Folder1/full screen.png" Width="{DynamicResource {x:Static SystemParameters.MenuButtonWidthKey}}"/>
+                <Image Source="App_Images/New Folder1/full screen.png" Width="15"/>
 				</Button.Content>
-                </Button>
-                <Button Name="CloseButton" Command="ApplicationCommands.Close" Width="60">
+                </Button> 
+				<Rectangle Height="20" Stroke="Transparent" Width="50" Fill="#FFB64343" Margin="0,0,-50,0"/>
+                <Button Name="CloseButton" Command="ApplicationCommands.Close" Width="50" >
                     <Button.Content>
-                        <Image Source="App_Images/New Folder1/close.png" Width="{DynamicResource {x:Static SystemParameters.MenuButtonWidthKey}}"/>
+                <Image Height="15" Source="App_Images/New Folder1/close.png" Stretch="Fill" Width="15" Margin="2,0,0,0" />  
                     </Button.Content>
                 </Button>
             </WrapPanel>
@@ -98,8 +100,8 @@
         <DockPanel Background="{DynamicResource NavigationBackground}"  >
             <Button Name="LoadDataButton" Foreground="White" Margin="5,5,5,5" Command="ApplicationCommands.Open" FontSize="16">
                 <Button.Content>
-                    <WrapPanel>
-                        <Image Source="open file_Images/open file shape.png" Stretch="None"></Image>
+                    <WrapPanel Margin="10,0,0,0">
+                        <Image Height="17" Source="open file_Images/open file shape.png" Stretch="Fill" Width="18"/>
                         <TextBlock Text="Open File" Margin="10 -4 1 1" FontSize="16" Padding="1 3 1 0.5" />
                     </WrapPanel>
                 </Button.Content>
@@ -109,28 +111,28 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition Width="225"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Background="{DynamicResource SideMenuBackground}" Grid.Column="0" Height="{DynamicResource {x:Static SystemParameters.MaximumWindowTrackHeightKey}}">
                <WrapPanel>
-                    <Image Source="App_Images/New Folder1/dropbutton.png" Width="6" Height="10" Margin="5,-12,-22,-1"/>
-					<Button><Button.Content>
-                    <TextBlock  x:Name="textBlock" Text="My Assignemnts" Margin="0" Padding="22,11,0,25" FontSize="16" FontWeight="Bold" />
-				</Button.Content></Button>	
+					<Image Height="18" Source="App_Images/New Folder1/dropbutton.png" Stretch="Fill" Width="225" Margin="0,20,0,-21" />
+				<Button ><Button.Content>
+					<TextBlock  x:Name="textBlock" Text="My Assignemnts" FontSize="16" FontWeight="Bold" Width="225" Margin="30,0,0,0"/>
+                     </Button.Content></Button>
                 </WrapPanel>
 
                 <WrapPanel>
-                    <Image Source="App_Images/New Folder1/dropbutton.png"  Width="6" Height="10" Margin="5,-12,-22,0"></Image>
-					<Button  ><Button.Content>
-                    <TextBlock Text="Reports" Margin="0" Padding="22,11,0,25" FontSize="16" FontWeight="Bold"></TextBlock>
+                    <Image Height="18" Source="App_Images/New Folder1/dropbutton.png" Stretch="Fill" Width="225" Margin="0,10,0,-21" />
+					<Button><Button.Content>
+					<TextBlock Text="Reports" FontSize="16" FontWeight="Bold" Width="225" Margin="30,0,0,0"></TextBlock>
 					</Button.Content></Button>
                 </WrapPanel>
 
                 <WrapPanel>
-                    <Image Source="App_Images/New Folder1/dropbutton.png"  Width="6" Height="10" Margin="5,-12,-22,0"></Image>
-					<Button  ><Button.Content>
-                    <TextBlock Text="Bills" Margin="0" Padding="22,11,0,25" FontSize="16" FontWeight="Bold"></TextBlock>
+                     <Image Height="18" Source="App_Images/New Folder1/dropbutton.png" Stretch="Fill" Width="225" Margin="0,10,0,-21"/>
+					<Button><Button.Content>
+					<TextBlock Text="Bills" Margin="30,0,0,0" FontSize="16" Width="225" FontWeight="Bold"></TextBlock>
 					</Button.Content></Button>
                 </WrapPanel>
 
@@ -153,7 +155,7 @@
 
                         <Image Source="App_Images/left doc.png" Grid.Row="0" Width="48" Height="30" Grid.Column="0"/>
 						<Button  Grid.Row="0" Width="48" Height="30" Grid.Column="0"> <Button.Content>
-                        <Image Source="App_Images/New Folder1/import file.png"/>
+                        <Image Height="30" Source="App_Images/New Folder1/import file.png" Stretch="Fill" Width="45"/>
 						</Button.Content></Button>
 
                         <Image Source="App_Images/middock.png" Grid.Row="0" Width="45" Height="30" Grid.Column="1" />
@@ -183,7 +185,7 @@
                         
 						<Image Source="App_Images/rightdoc.png" Grid.Row="0" Width="48" Height="30" Grid.Column="6" />
                         <Button  Grid.Row="0" Width="48" Height="30" Grid.Column="6"> <Button.Content>
-						<Image Source="App_Images/New Folder1/export.png" />
+						<Image Source="App_Images/New Folder1/export.png" Stretch="Fill"/>
 						</Button.Content></Button>
                         <Rectangle VerticalAlignment="Stretch" Grid.Row="0" Width="1" Height="22" Margin="0" Stroke="#FF666666" Grid.Column="0" HorizontalAlignment="Right"/>
                         <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="#FF666666" Grid.Column="1" HorizontalAlignment="Right"/>
@@ -191,6 +193,7 @@
                         <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="#FF666666" Grid.Column="3" HorizontalAlignment="Right"/>
                         <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="#FF666666" Grid.Column="4" HorizontalAlignment="Right"/>
                         <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="#FF666666" Grid.Column="5" HorizontalAlignment="Right"/>
+                        
 
 
 
@@ -202,28 +205,26 @@
 						</Grid.ColumnDefinitions>
                         <Image Height="27" Source="App_Images/New Folder1/searchfront.png" Grid.Column="0" Width="28"></Image>
                         <WrapPanel  Height="27" Width="171" Background="{DynamicResource Searchbarcontent}" Grid.Column="1" >
-
                             <TextBox MinWidth="150" Background="transparent" BorderThickness="0" Height="25" Width="197" Padding="28,3,0,0" HorizontalAlignment="Right"  FontSize="14.667"/>
-
-
                         </WrapPanel>
                   </Grid>
                 </DockPanel>
+
                 <StackPanel x:Name="DataGridStackPanel" Height="200" >
-                    <DataGrid x:Name="dataGrid" >
+                    <DataGrid x:Name="dataGrid" Margin="1,0,0,0" >
 						   <DataGrid.Columns>
-                            <DataGridTextColumn Header="ConnsignmentNo" />
-                            <DataGridTextColumn Header="Destination" />
+                            <DataGridTextColumn Header="ConnsignmentNo"/>
+                            <DataGridTextColumn Header="Destination"/>
                             <DataGridTextColumn Header="DestinationPin"/>
-                            <DataGridTextColumn Header="Weight" />
+                            <DataGridTextColumn Header="Weight"/>
                             <DataGridTextColumn Header="Obs. Weight" />
-                            <DataGridTextColumn Header="Cost" />
+                            <DataGridTextColumn Header="Cost"/>
                             <DataGridTextColumn Header="Billed Amount"/>
                             <DataGridComboBoxColumn Header="Client"/>
-                        </DataGrid.Columns>
-                    
+							</DataGrid.Columns>
 					</DataGrid>
-					<WrapPanel Name="DataGridOptionpanel" Background="{DynamicResource GridBackground}">
+
+				<WrapPanel Name="DataGridOptionpanel" Background="{DynamicResource GridBackground}" Margin="1,0,0,0">
                         <Button Name="DataGridFirstPage" Margin="38,5,5,5">
                         <Image Height="20" Source="App_Images/New Folder1/wayback.png" Stretch="Fill" Width="20"/>
 						</Button>
@@ -241,7 +242,7 @@
 						</Button>
                         <TextBox Name="DataGridPageNum" MinWidth="100" Margin="38,0,0,0"></TextBox>
                         <TextBox Name="DataGridNumOfRows" MinWidth="100"></TextBox>
-                    </WrapPanel>
+                 </WrapPanel>
 					
 					<WrapPanel Name="DataGridSheetPanel">
                         <TextBlock Text="Sheet1"></TextBlock>
@@ -252,7 +253,6 @@
                     </WrapPanel>
                 </StackPanel>
             </StackPanel>
-
         </Grid>
         <StackPanel VerticalAlignment="Bottom">
             <TextBlock Text="Bottom Content"></TextBlock>
