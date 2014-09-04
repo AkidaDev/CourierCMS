@@ -28,16 +28,16 @@ namespace FinalUi
     {
         void initDb()
         {
-            string dataSource = "MSSQL";
+            string dataSource = "SQLExpress";
             System.Data.Common.DbConnectionStringBuilder stringBuilder = new System.Data.Common.DbConnectionStringBuilder();
             string insName = @"\" + dataSource;
-            if (insName != "")
+            if (insName != @"\")
             {
                 stringBuilder.Add("Data Source", Environment.MachineName + insName);
             }
             else
                 stringBuilder.Add("Data Source", Environment.MachineName);
-            string passWord = "";
+            string passWord = "Alver!22";
             stringBuilder.Add("User ID", "sa");
             stringBuilder.Add("Password", passWord);
             Configs.Default.ConnString = stringBuilder.ConnectionString;
