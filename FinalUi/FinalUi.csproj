@@ -72,6 +72,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BillingData.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Configs.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Configs.settings</DependentUpon>
+    </Compile>
     <Compile Include="CSVDataLoader.cs" />
     <Compile Include="DataGridHelper.cs" />
     <Compile Include="DBHelper.cs" />
@@ -115,6 +120,10 @@
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>BillingData.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Configs.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Configs.Designer.cs</LastGenOutput>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
