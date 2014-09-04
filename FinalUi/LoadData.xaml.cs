@@ -19,20 +19,27 @@ namespace FinalUi
     /// </summary>
     public partial class LoadData : Window
     {
+
         public LoadData()
         {
+            isNewSheet = true;
             InitializeComponent();
         }
         public bool dataLoaded { get; set; }
         public string filename1 { get; set; }
-        List<RuntimeData> data
+        public bool isNewSheet { get; set; }
+        public List<RuntimeData> data
         {
             get
             {
                 return _data;
             }
+            set
+            {
+                _data = value;
+            }
         }
-        public List<RuntimeData> _data;
+       List<RuntimeData> _data;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog file = new Microsoft.Win32.OpenFileDialog();
@@ -52,7 +59,7 @@ namespace FinalUi
                 CSVDataLoader load = new CSVDataLoader();
                 _data = load.getRuntimeDataFromCSV(filename1, '"', '\'');
                 dataLoaded = true;
-                
+
                 this.Close();
             }
             else
@@ -61,6 +68,13 @@ namespace FinalUi
                 MessageBoxImage icon = MessageBoxImage.Warning;
                 MessageBox.Show("file not selected", "warning", button, icon);
             }
+        }
+
+        private void addData_Checked(object sender, RoutedEventArgs e)
+        {
+            CheckBox obj = (CheckBox)sender;
+            isNewSheet = (bool)obj.IsChecked;
+            isNewSheet = !isNewSheet;
         }
 
     }

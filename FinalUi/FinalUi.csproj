@@ -74,6 +74,7 @@
     </Compile>
     <Compile Include="CSVDataLoader.cs" />
     <Compile Include="DataGridHelper.cs" />
+    <Compile Include="DBHelper.cs" />
     <Compile Include="LoadData.xaml.cs">
       <DependentUpon>LoadData.xaml</DependentUpon>
     </Compile>
@@ -81,8 +82,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PowerEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PowerEntry.xaml.cs">
+      <DependentUpon>PowerEntry.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
