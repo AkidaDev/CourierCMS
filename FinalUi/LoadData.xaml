@@ -1,0 +1,15 @@
+﻿<Window x:Class="FinalUi.LoadData"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="LoadData" Height="335.821" Width="300">
+    <StackPanel>
+        <WrapPanel>
+            <TextBox TextWrapping="Wrap"  Name="filename" MinWidth="150" />
+            <Button Content="Browser" Click="Button_Click"/>
+        </WrapPanel>
+        <WrapPanel>
+            <CheckBox Name="addData" Content="Add data in currecnt sheet" IsChecked="False" Checked="addData_Checked"></CheckBox>
+        </WrapPanel>
+        <Button Content="Start Load" HorizontalAlignment="Left" Height="53" Margin="62,50,0,0" VerticalAlignment="Top" Width="143" Click="Button_Click_1"/>
+    </StackPanel>
+</Window>
