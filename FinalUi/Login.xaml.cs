@@ -27,12 +27,13 @@ namespace FinalUi
             InitializeComponent();
             /*  Testing Code  */
             /********************* Must Delete Afterwards **********************/
-            
+            /* 
            // window = new MainWindow("dharmendra");
             window = new MainWindow();
             window.Show();
             this.Close();
             loginFlag = false;
+           */
         }
         MainWindow window;
         private void LoginButton_Click(object sender, RoutedEventArgs e)
@@ -65,6 +66,27 @@ namespace FinalUi
             }
             else
                 MessageBox.Show("Successfull");
+        }
+
+        private void Grid_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void CloseButton_MouseEnter_1(object sender, MouseEventArgs e)
+        {
+            this.CloseButton.Foreground = new SolidColorBrush(Colors.Red);
+            this.CloseButton.Background = new SolidColorBrush(Colors.Black);
+        }
+
+        private void CloseButton_MouseLeftButtonUp_1(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void CloseButton_MouseLeave_1(object sender, MouseEventArgs e)
+        {
+            this.CloseButton.Foreground = new SolidColorBrush(Colors.White);
         }
     }
 }
