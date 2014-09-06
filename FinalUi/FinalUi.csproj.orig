@@ -55,8 +55,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="FilterSelectWindow.xaml.cs">
+      <DependentUpon>FilterSelectWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="InitializeScript.cs" />
     <Compile Include="SecurityModule.cs" />
+    <Page Include="FilterSelectWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoadData.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -134,10 +141,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Configs.Designer.cs</LastGenOutput>
     </None>
-<<<<<<< local
     <None Include="Images\Thumbs.db" />
-=======
->>>>>>> other
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -164,6 +168,9 @@
   <ItemGroup>
     <Resource Include="Data\NF037_DSR_TABLE.TXT" />
     <Resource Include="Data\NF037_DSR_TABLE_ITL.TXT" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\vortex.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
