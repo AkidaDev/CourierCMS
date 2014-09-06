@@ -13,7 +13,7 @@
         </Grid.Background>
         <StackPanel>
             <WrapPanel HorizontalAlignment="Right">
-                <Button x:Name="CloseButton"  Width="30" MouseEnter="CloseButton_MouseEnter_1" MouseLeave="CloseButton_MouseLeave_1" MouseLeftButtonUp="CloseButton_MouseLeftButtonUp_1" Content="X" FontSize="15"  FontStyle="Italic" Foreground="White" BorderBrush="Transparent">
+                <Button x:Name="CloseButton"  Width="30" MouseEnter="CloseButton_MouseEnter_1" MouseLeave="CloseButton_MouseLeave_1" Click="CloseButton_Click" Content="X" FontSize="15"  FontStyle="Italic" Foreground="White" BorderBrush="Transparent">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background" Value="Black"/>

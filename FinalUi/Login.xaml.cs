@@ -79,14 +79,16 @@ namespace FinalUi
             this.CloseButton.Background = new SolidColorBrush(Colors.Black);
         }
 
-        private void CloseButton_MouseLeftButtonUp_1(object sender, MouseButtonEventArgs e)
-        {
-            this.Close();
-        }
+        
 
         private void CloseButton_MouseLeave_1(object sender, MouseEventArgs e)
         {
             this.CloseButton.Foreground = new SolidColorBrush(Colors.White);
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
