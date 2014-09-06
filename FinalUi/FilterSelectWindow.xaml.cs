@@ -21,11 +21,18 @@ namespace FinalUi
     {
         CollectionViewSource clientList;
         List<String> SelectedClientList;
-        CollectionViewSource ConnNoList;
+        CollectionViewSource StartConnNoList;
+        CollectionViewSource EndConnoList;
+        List<String> Columns;
+
+        public List<Func<RuntimeData, int,bool>> filters;
         public FilterSelectWindow(IEnumerable<string> ConnNo):this()
         {
-            ConnNoList = new CollectionViewSource();
-            ConnNoList.Source = ConnNo;
+            filters = new List<Func<RuntimeData,int, bool>>();
+            StartConnNoList = (CollectionViewSource)FindResource("StartConnNoList");
+            StartConnNoList.Source = ConnNo;
+            EndConnoList = (CollectionViewSource)FindResource("EndConnoList");
+            EndConnoList.Source = ConnNo;
         }
          FilterSelectWindow()
         {
@@ -39,6 +46,11 @@ namespace FinalUi
 
         private void GetFilter_Click(object sender, RoutedEventArgs e)
         {
+            if(EndConnNo.SelectedIndex > StartConnNo.SelectedIndex)
+            {
+                Func<RuntimeData, int, bool> filter = (o, i) => i < EndConnNo.SelectedIndex && i > StartConnNo.SelectedIndex;
+                filters.Add(filter);
+            }
         } 
 
         private void CheckBox_SelectClient_Checked(object sender, RoutedEventArgs e)

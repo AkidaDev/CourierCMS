@@ -276,9 +276,75 @@ namespace FinalUi
 
         void window_Closed(object sender, EventArgs e)
         {
-
+            FilterSelectWindow filterWindow = (FilterSelectWindow)sender;
+            foreach(var filter in filterWindow.filters)
+            {
+                dataGridHelper.currentDataSheet.addFilter(filter);
+            }
         }
         #endregion
+
+        private void SanitizingButton_Click(object sender, RoutedEventArgs e)
+        {
+            SanitizingWindow window = new SanitizingWindow(dataGridHelper.getCurrentDataStack);
+            window.Show();
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+              MessageBox.Show("Started");
+            BillingDataDataContext db = new BillingDataDataContext();
+            IEnumerable<RuntimeData> newData = dataGridHelper.getCurrentDataStack.Where(x => x.TransactionId == null);
+            List<RuntimeData> oldData = dataGridHelper.getCurrentDataStack.Where(x => x.TransactionId != null).ToList();
+          
+            foreach (var data in newData)
+            {
+                var transactionData = new Transaction();
+                transactionData.AmountCharged = data.FrAmount;
+                transactionData.AmountPayed = data.Amount;
+                transactionData.ConnsignmentNo = data.ConsignmentNo;
+                transactionData.Destination = data.Destiniation;
+                transactionData.DestinationPin = data.DestinationPin;
+                Guid id = Guid.NewGuid();
+                transactionData.ID = id;
+                data.TransactionId = id;
+                transactionData.Weight = (decimal)(data.Weight);
+                transactionData.Date = data.BookingDate;
+                if (data.FrWeight != null)
+                    transactionData.WeightByFranchize = (decimal)data.FrWeight;
+                if (data.CustCode != null)
+                {
+                    ClientTransaction cdata = new ClientTransaction();
+                    cdata.ID = Guid.NewGuid();
+                    cdata.TransactionID = id;
+                    cdata.ClientID = db.Clients.Single(x => x.Code == data.CustCode).Id;
+                    db.ClientTransactions.InsertOnSubmit(cdata);
+                }
+                db.Transactions.InsertOnSubmit(transactionData);
+
+            }
+            foreach (var data in oldData)
+            {
+                var transactionData = db.Transactions.Single(x => x.ID == data.TransactionId);
+                transactionData.AmountCharged = data.FrAmount;
+                transactionData.AmountPayed = data.Amount;
+                transactionData.ConnsignmentNo = data.ConsignmentNo;
+                transactionData.Destination = data.Destiniation;
+                transactionData.DestinationPin = data.DestinationPin;
+                transactionData.Weight = (decimal)(data.Weight);
+                transactionData.Date = data.BookingDate;
+                if (data.FrWeight != null)
+                    transactionData.WeightByFranchize = (decimal)data.FrWeight;
+                if (data.CustCode != null)
+                {
+                    ClientTransaction cdata = db.ClientTransactions.Single(x => x.TransactionID == transactionData.ID);
+                    cdata.ClientID = db.Clients.Single(x => x.Code == data.CustCode).Id;
+                }
+            }
+            db.SubmitChanges();
+            MessageBox.Show("Done");
+        
+        }
 
 
     }

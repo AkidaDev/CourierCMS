@@ -55,11 +55,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Filter.cs" />
     <Compile Include="FilterSelectWindow.xaml.cs">
       <DependentUpon>FilterSelectWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="InitializeScript.cs" />
+    <Compile Include="SanitizingWindow.xaml.cs">
+      <DependentUpon>SanitizingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SecurityModule.cs" />
+    <Compile Include="UtilityClass.cs" />
     <Page Include="FilterSelectWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -104,6 +109,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PowerEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SanitizingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="FilterSelectWindow" Height="300" Width="300">
     <Window.Resources>
-        <CollectionViewSource x:Key="ConnNoList" CollectionViewType="ListCollectionView"></CollectionViewSource>
+        <CollectionViewSource x:Key="StartConnNoList" CollectionViewType="ListCollectionView"></CollectionViewSource>
+        <CollectionViewSource x:Key="EndConnoList" CollectionViewType="ListCollectionView"></CollectionViewSource>
     </Window.Resources>
     <Grid Name="MainGrid">
         <Grid.RowDefinitions>
@@ -33,15 +34,14 @@
             </WrapPanel>
             <WrapPanel>
                 <TextBlock Text="Starting ConnNo: "></TextBlock>
-                <ComboBox Width="100" IsEditable="True" DataContext="{StaticResource ConnNoList}" Name="StartConnNo"></ComboBox>
+                <ComboBox Width="100" IsEditable="True" ItemsSource="{Binding}" DataContext="{StaticResource StartConnNoList}" Name="StartConnNo"></ComboBox>
             </WrapPanel>
 
             <WrapPanel>
                 <TextBlock Text="Ending ConnNo: "></TextBlock>
-                <ComboBox Width="100" IsEditable="True" ItemsSource="{Binding}" DataContext="{StaticResource ConnNoList}" Name="EndConnNo"></ComboBox>
+                <ComboBox Width="100" IsEditable="True" ItemsSource="{Binding}" DataContext="{StaticResource EndConnoList}" Name="EndConnNo"></ComboBox>
             </WrapPanel>
-            <Button Content="Test" Name="GetFilter" Click="GetFilter_Click"></Button>
-
+            <Button Content="Add Filter" Name="GetFilter" Click="GetFilter_Click"></Button>
         </StackPanel>
     </Grid>
 </Window>

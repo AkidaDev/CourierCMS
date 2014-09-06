@@ -1,0 +1,51 @@
+﻿<Window x:Class="FinalUi.SanitizingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SanitizingWindow" Height="500" Width="600">
+    <Window.Resources>
+        <CollectionViewSource x:Key="CustomerNameList" CollectionViewType="ListCollectionView"></CollectionViewSource>
+        <CollectionViewSource x:Key="ConsignmentNumbers" CollectionViewType="ListCollectionView"></CollectionViewSource>
+    </Window.Resources>
+    <Grid>
+        <StackPanel>
+            <WrapPanel>
+                <Label Content="Enter Details: " Grid.Row="0" Grid.Column="0"></Label>
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="Connsignment Number: " Grid.Row="1"></Label>
+                <ComboBox IsEditable="True" Name="ConnsignmentNumber" MinWidth="250" ItemsSource="{Binding}" DataContext="{StaticResource ConsignmentNumbers}"  IsTextSearchEnabled="True" KeyUp="ConnsignmentNumber_KeyUp"></ComboBox>
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="Weight (DTDC)"></Label>
+                <TextBox Name="WeightAccToDTDC" MinWidth="150"></TextBox>
+                <Label Content="Weight (Fran.) "></Label>
+                <TextBox Name="WeightAccToFranchize" MinWidth="150"></TextBox>
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="Customer Name: "></Label>
+                <ComboBox Name="CustomerSelected" IsEditable="True" ItemsSource="{Binding}" DataContext="{StaticResource CustomerNameList}" MinWidth="100">
+                </ComboBox>
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="Billed Amount: "></Label>
+                <TextBox Name="BilledAmount" MinWidth="150"/>
+                <Label Content="Cost(DTDC): "></Label>
+                <TextBox Name="Cost" MinWidth="150"></TextBox>
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="Destination: "></Label>
+                <TextBox Name="Destination" MinWidth="150"></TextBox>
+                <Label Content="Destination Pin: "></Label>
+                <TextBox Name="DestinationPin" MinWidth="150"></TextBox>
+            </WrapPanel>
+            <WrapPanel>
+                <DatePicker Name="InsertionDate"></DatePicker>
+            </WrapPanel>
+            <WrapPanel>
+                <Button Name="SubmitSanitizingDetails" Click="SubmitSanitizingDetails_Click" Content="Next Button" />
+                <Label Content="     "></Label>
+                <Button Name="DoneButton" Click="DoneButton_Click" Content="Done" />
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</Window>
