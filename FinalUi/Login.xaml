@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
           xmlns:gif="http://wpfanimatedgif.codeplex.com"
 		Icon="Images/logo.png"
-        Title="Login" Height="319" Width="640" Background="Transparent"
+        Title="Login" Height="336" Width="640" Background="Transparent"
         WindowStyle="None" WindowStartupLocation="CenterScreen" BorderBrush="Transparent" AllowsTransparency="True" Padding="20">
 
     <Grid Name="MainGrid" Height="319" Width="623" MouseLeftButtonDown="Grid_MouseLeftButtonDown_1"  KeyDown="MainGrid_KeyUp">
@@ -39,7 +39,8 @@
 
                 
                 <WrapPanel HorizontalAlignment="Center" Margin="-145,0,0,0">
-                    <TextBox Text="SQLEXPRESS" x:Name="InstanceName" MinWidth="150" Padding="5 5 5 5" HorizontalAlignment="Center"/>
+                    <TextBox  Text="SQLEXPRESS" x:Name="InstanceName" MinWidth="150" Padding="5 5 5 5" HorizontalAlignment="Center" FontSize="14"  >
+                    </TextBox>
                 </WrapPanel>
                 <Separator Visibility="Hidden"></Separator>
                 <WrapPanel HorizontalAlignment="Center" Margin="-145,0,0,0">
