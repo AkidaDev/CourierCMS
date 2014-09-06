@@ -9,21 +9,69 @@ using System.Windows.Data;
 
 namespace FinalUi
 {
+    class FilterManager<T>
+    {
+        List<Func<T, bool>> _filters;
+        List<Func<T,bool>> filters
+        {
+            get
+            {
+                return _filters;
+            }
+        }
+        public FilterManager()
+        {
+            _filters = new List<Func<T,bool>>();
+        }
+        public void addFilter(Func<T,bool> filter)
+        {
+            _filters.Add(filter);
+        }
+        public List<T> applyFilter(List<T> dataStack)
+        {
+            IEnumerable<T> dataSource = dataStack;
+            foreach(var filter in filters)
+            {
+                dataSource = dataSource.Where(filter);
+            }
+            return dataSource.ToList();
+        }
+        public void removeFilter(Func<T,bool> filter)
+        {
+            _filters.Remove(filter);
+        }
+    }
 
     class DataSheet<T>
     {
-
-        public List<T> dataStack { get; set; }
+        public List<T> dataStack
+        {
+            get
+            {
+                return filterManager.applyFilter(_dataStack);
+            }
+            set
+            {
+                _dataStack = value;
+            }
+        }
+        public List<T> _dataStack { get; set; }
         public string name { get; set; }
         public int currentPageNo;
         public int rowsPerPage;
+        public FilterManager<T> filterManager;
 
         public DataSheet(List<T> value, string name)
         {
             currentPageNo = 1;
             rowsPerPage = 100;
             dataStack = value;
+            filterManager = new FilterManager<T>();
             this.name = name;
+        }
+        public void addFilter(Func<T,bool> filter)
+        {
+            filterManager.addFilter(filter);
         }
         public void addData(List<T> value)
         {
@@ -122,6 +170,13 @@ namespace FinalUi
         DataSheetmanager<RuntimeData> dataSheetManager;
         CollectionViewSource dataGrid;
         public event PropertyChangedEventHandler PropertyChanged;
+        public List<RuntimeData> getCurrentDataStack
+        {
+            get
+            {
+                return dataSheetManager.currentDataSheet.dataStack;
+            }
+        }
         private void notifyPropertyChanged(string name)
         {
             if (PropertyChanged != null)

@@ -21,17 +21,25 @@ namespace FinalUi
     {
         CollectionViewSource clientList;
         List<String> SelectedClientList;
-        public FilterSelectWindow()
+        CollectionViewSource ConnNoList;
+        public FilterSelectWindow(IEnumerable<string> ConnNo):this()
+        {
+            ConnNoList = new CollectionViewSource();
+            ConnNoList.Source = ConnNo;
+        }
+         FilterSelectWindow()
         {
             SelectedClientList = new List<string>();
             InitializeComponent();
+            
             BillingDataDataContext db = new BillingDataDataContext();
             clientList = (CollectionViewSource)MainGrid.FindResource("ClientList");
             clientList.Source = db.Clients.ToList();
         }
 
         private void GetFilter_Click(object sender, RoutedEventArgs e)
-        {} 
+        {
+        } 
 
         private void CheckBox_SelectClient_Checked(object sender, RoutedEventArgs e)
         {

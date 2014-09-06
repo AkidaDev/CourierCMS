@@ -269,7 +269,7 @@ namespace FinalUi
         #region filter functions
         private void FilterButton_Click(object sender, RoutedEventArgs e)
         {
-            FilterSelectWindow window = new FilterSelectWindow();
+            FilterSelectWindow window = new FilterSelectWindow(dataGridHelper.currentConnNos);
             window.Closed += window_Closed;
             window.Show();
         }

@@ -2,6 +2,9 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="FilterSelectWindow" Height="300" Width="300">
+    <Window.Resources>
+        <CollectionViewSource x:Key="ConnNoList" CollectionViewType="ListCollectionView"></CollectionViewSource>
+    </Window.Resources>
     <Grid Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto">
@@ -14,18 +17,31 @@
             <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"></CollectionViewSource>
         </Grid.Resources>
         <StackPanel>
-            <ComboBox ItemsSource="{Binding}" Name="SelectClient" DataContext="{StaticResource ClientList}">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <WrapPanel Name="ItemPanel_SelectClient">
-                            <CheckBox Name="CheckBox_SelectClient" Tag="{Binding Path=Code}" Checked="CheckBox_SelectClient_Checked"></CheckBox>
-                            <TextBlock Name="Name_SelectClient" Text="{Binding Path=Code}"></TextBlock>
-                        </WrapPanel>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
+            <WrapPanel>
+                <TextBlock Text="Select Clients:  "></TextBlock>
+                <ComboBox ItemsSource="{Binding}" Name="SelectClient" DataContext="{StaticResource ClientList}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <WrapPanel Name="ItemPanel_SelectClient">
+                                <CheckBox Name="CheckBox_SelectClient" Tag="{Binding Path=Code}" Checked="CheckBox_SelectClient_Checked"></CheckBox>
+                                <TextBlock Name="Name_SelectClient" Text="{Binding Path=Code}"></TextBlock>
+                            </WrapPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
 
-            </ComboBox>
+                </ComboBox>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Starting ConnNo: "></TextBlock>
+                <ComboBox Width="100" IsEditable="True" DataContext="{StaticResource ConnNoList}" Name="StartConnNo"></ComboBox>
+            </WrapPanel>
+
+            <WrapPanel>
+                <TextBlock Text="Ending ConnNo: "></TextBlock>
+                <ComboBox Width="100" IsEditable="True" ItemsSource="{Binding}" DataContext="{StaticResource ConnNoList}" Name="EndConnNo"></ComboBox>
+            </WrapPanel>
             <Button Content="Test" Name="GetFilter" Click="GetFilter_Click"></Button>
+
         </StackPanel>
     </Grid>
 </Window>
