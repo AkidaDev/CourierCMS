@@ -174,6 +174,10 @@ namespace FinalUi
         {
             get
             {
+                if (dataSheetManager.currentDataSheet == null)
+                {
+                    return null;
+                }
                 return dataSheetManager.currentDataSheet.dataStack;
             }
         }
