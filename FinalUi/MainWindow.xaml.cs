@@ -190,6 +190,7 @@ namespace FinalUi
                     dataGridHelper.getFirstPage();
                     Button button = new Button();
                     button.Content = "Sheet " + key.ToString();
+                    button.Style = (Style)Application.Current.FindResource("ButtonStyle");
                     button.Click += SheetSelectButton_Click;
                     DataGridSheetPanel.Children.Add(button);
                     buttonList.Add(button, key);
