@@ -4,7 +4,7 @@
         Title="Login" Height="340" Width="640" Background="Transparent"
         WindowStyle="None"  BorderBrush="Transparent" AllowsTransparency="True" Padding="20">
 
-    <Grid  Height="300" Width="600" MouseLeftButtonDown="Grid_MouseLeftButtonDown_1" >
+    <Grid  Height="319" Width="623" MouseLeftButtonDown="Grid_MouseLeftButtonDown_1" >
         <Grid.Effect>
             <DropShadowEffect Color="#FFF5621E" RenderingBias="Quality" Direction="0" ShadowDepth="0" BlurRadius="10"/>
         </Grid.Effect>
@@ -38,26 +38,45 @@
             <!--<Label Content="Enter username and pass for the sql server" Foreground="White"/>-->
             
         </StackPanel>
-        <DockPanel LastChildFill="False">
+        <DockPanel LastChildFill="False" Background="Black"><StackPanel DockPanel.Dock="Left" HorizontalAlignment="Left">
+	<!--<Image Height="273" Source="Images/vortex0.png" Stretch="Fill" Width="279" Margin="20,20,0,0"/>
+		-->	
+		</StackPanel>
+		<StackPanel HorizontalAlignment="Right" DockPanel.Dock="Top">
+                <Button Name="Button" Command="ApplicationCommands.Close" Width="50" Background="Red" >
+                    <Button.Content>
+                        <Path x:Name="close1" Data="F1M14.987,13.789C14.987,13.789 13.622,15.154 13.622,15.154 13.622,15.154 8.16,9.692 8.16,9.692 8.16,
+				9.692 2.699,15.154 2.699,15.154 2.699,15.154 1.333,13.789 1.333,13.789 1.333,13.789 6.795,8.327 6.795,8.327 6.795,8.327 1.333,2.865 1.333,2.865 1.333,
+				2.865 2.699,1.5 2.699,1.5 2.699,1.5 8.16,6.962 8.16,6.962 8.16,6.962 13.622,1.5 13.622,1.5 13.622,1.5 14.987,2.865 14.987,2.865 14.987,2.865 9.526,
+				8.327 9.526,8.327 9.526,8.327 14.987,13.789 14.987,13.789z" Fill="Black"  Height="17"  Width="16"/>
+                    </Button.Content>
+                </Button>
+			</StackPanel>
+		<StackPanel HorizontalAlignment="Right" DockPanel.Dock="Top">
+			
+					<Image Height="56" Source="Images/vortex3.png" Stretch="Fill" Width="181" Margin="0,76,68,0"/>
+					</StackPanel>
             <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Margin=" 5 5 5 5">
+			
                 <Separator Visibility="Hidden"></Separator>
+				
                 <WrapPanel>
                     <Label Content="Instance Name" Foreground="White" MinWidth="150"/>
                     <TextBox Text="SQLEXPRESS" x:Name="InstanceName" MinWidth="150" Padding="5 5 5 5" />
                 </WrapPanel>
                 <Separator Visibility="Hidden"></Separator>
                 <WrapPanel HorizontalAlignment="Right" >
-                    <Label Content="Enter User Name:  " MinWidth="150" Foreground="White"></Label>
+                    <!--<Label Content="Enter User Name:  " MinWidth="150" Foreground="White"></Label> -->
                     <TextBox MinWidth="150" Padding="5 5 5 5" Name="UserName"></TextBox>
                 </WrapPanel>
                 <Separator Visibility="Hidden"></Separator>
-                <WrapPanel HorizontalAlignment="Right" >
-                    <Label Content="Enter Password: " MinWidth="150" HorizontalAlignment="Center" Foreground="White"></Label>
+                <WrapPanel HorizontalAlignment="Center" >
+                   <!-- <Label Content="Enter Password: " MinWidth="150" HorizontalAlignment="Center" Foreground="White"></Label> -->
                     <PasswordBox MinWidth="150" Name="Password" Padding="5 5 5 5"></PasswordBox>
                 </WrapPanel>
                 <Separator Visibility="Hidden"></Separator>
                 <WrapPanel  HorizontalAlignment="Right" Margin="5 0 0 10">
-                    <Button Content="Login" Width="100" Name="LoginButton" Click="LoginButton_Click"></Button>
+                    <Button Content="Login" Width="116" Name="LoginButton" Click="LoginButton_Click" Height="27.96" Background="White" Foreground="Black" BorderBrush="White"></Button>
                     <Button Content="Setup Data" x:Name="SetupButton" Click="SetupButton_Click_1" Margin="10 0 0 0" Width="107"/>
                 </WrapPanel>
                 <Separator Visibility="Hidden"></Separator>

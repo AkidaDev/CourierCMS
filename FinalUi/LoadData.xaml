@@ -10,6 +10,6 @@
         <WrapPanel>
             <CheckBox Name="addData" Content="Add data in currecnt sheet" IsChecked="False" Checked="addData_Checked"></CheckBox>
         </WrapPanel>
-        <Button Content="Start Load" HorizontalAlignment="Left" Height="53" Margin="62,50,0,0" VerticalAlignment="Top" Width="143" Click="Button_Click_1"/>
+        <Button Content="Start Load" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Height="53" Margin="62,50,0,0" VerticalAlignment="Top" Width="143" Click="Button_Click_1"/>
     </StackPanel>
 </Window>

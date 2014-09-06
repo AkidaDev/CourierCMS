@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <ExpressionBlendVersion>12.0.41002.1</ExpressionBlendVersion>
+    <ExpressionBlendVersion>12.0.50429.0</ExpressionBlendVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -164,9 +164,6 @@
     <Resource Include="Images\searchbox.png" />
     <Resource Include="Images\side menu.png" />
     <Resource Include="Images\topnavigation bar.png" />
-    <Resource Include="Images\vortex0.png" />
-    <Resource Include="Images\vortex1.png" />
-    <Resource Include="Images\vortex3.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Data\NF037_DSR_TABLE.TXT" />
@@ -174,6 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\vortex.png" />
+
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
