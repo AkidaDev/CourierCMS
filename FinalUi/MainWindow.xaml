@@ -150,7 +150,7 @@
                         </Button>
 
                         <Image Source="Images/middock.png" Grid.Row="0" Width="45" Height="30" Grid.Column="1"/>
-                         <Button Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="1">
+                        <Button Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="1" Name="SanitizingButton" Click="SanitizingButton_Click">
                             <Button.Content>
                                 <Path x:Name="reload" Data="F1M2,12.942C2,12.942 10.226,15.241 10.226,15.241 10.226,15.241 8.275,17.071 8.275,
 						17.071 9.288,17.922 10.917,18.786 12.32,18.786 15.074,18.786 17.386,16.824 18.039,14.171 18.039,14.171 21.987,15.222 21.987,15.222 20.891,
@@ -162,7 +162,7 @@
                         </Button>
 
                         <Image Source="Images/middock.png" Grid.Row="0" Width="45" Height="30" Grid.Column="2"/>
-                         <Button Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="2">
+                        <Button Style="{StaticResource side}" Name="SaveButton" Click="SaveButton_Click" Grid.Row="0" Width="45" Height="30" Grid.Column="2">
                             <Button.Content>
                                 <Path x:Name="save" Data="F1M5.707,16.89C5.707,16.89 16.879,16.89 16.879,16.89 16.879,16.89 16.879,18.13 16.879,18.13 16.879,18.13 5.707,18.13 5.707,
 						18.13 5.707,18.13 5.707,16.89 5.707,16.89z M5.707,13.414C5.707,13.414 16.879,13.414 16.879,13.414 16.879,13.414 16.879,14.653 16.879,14.653 16.879,

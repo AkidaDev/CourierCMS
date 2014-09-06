@@ -11,8 +11,8 @@ namespace FinalUi
 {
     class FilterManager<T>
     {
-        List<Func<T, bool>> _filters;
-        List<Func<T,bool>> filters
+        List<Func<T,int,bool>> _filters;
+        List<Func<T,int,bool>> filters
         {
             get
             {
@@ -21,9 +21,9 @@ namespace FinalUi
         }
         public FilterManager()
         {
-            _filters = new List<Func<T,bool>>();
+            _filters = new List<Func<T,int,bool>>();
         }
-        public void addFilter(Func<T,bool> filter)
+        public void addFilter(Func<T,int,bool> filter)
         {
             _filters.Add(filter);
         }
@@ -36,7 +36,7 @@ namespace FinalUi
             }
             return dataSource.ToList();
         }
-        public void removeFilter(Func<T,bool> filter)
+        public void removeFilter(Func<T,int,bool> filter)
         {
             _filters.Remove(filter);
         }
@@ -69,8 +69,9 @@ namespace FinalUi
             filterManager = new FilterManager<T>();
             this.name = name;
         }
-        public void addFilter(Func<T,bool> filter)
+        public void addFilter(Func<T,int,bool> filter)
         {
+            
             filterManager.addFilter(filter);
         }
         public void addData(List<T> value)
@@ -179,6 +180,13 @@ namespace FinalUi
                     return null;
                 }
                 return dataSheetManager.currentDataSheet.dataStack;
+            }
+        }
+        public DataSheet<RuntimeData> currentDataSheet
+        {
+            get
+            {
+                return dataSheetManager.currentDataSheet;
             }
         }
         private void notifyPropertyChanged(string name)
