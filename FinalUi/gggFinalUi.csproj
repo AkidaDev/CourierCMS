@@ -49,28 +49,17 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WpfAnimatedGif">
-      <HintPath>..\packages\WpfAnimatedGif.1.4.4\lib\net\WpfAnimatedGif.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Filter.cs" />
     <Compile Include="FilterSelectWindow.xaml.cs">
       <DependentUpon>FilterSelectWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="InitializeScript.cs" />
-    <Compile Include="SanitizingWindow.xaml.cs">
-      <DependentUpon>SanitizingWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="SecurityModule.cs" />
-    <Compile Include="UtilityClass.cs" />
-    <Compile Include="UserControlGallery.xaml.cs">
-      <DependentUpon>UserControlGallery.xaml</DependentUpon>
-    </Compile>
     <Page Include="FilterSelectWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -118,14 +107,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SanitizingWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControlGallery.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PowerEntry.xaml.cs">
@@ -161,7 +142,6 @@
       <LastGenOutput>Configs.Designer.cs</LastGenOutput>
     </None>
     <None Include="Images\Thumbs.db" />
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -184,9 +164,6 @@
     <Resource Include="Images\searchbox.png" />
     <Resource Include="Images\side menu.png" />
     <Resource Include="Images\topnavigation bar.png" />
-    <Resource Include="Images\vortex0.png" />
-    <Resource Include="Images\vortex1.png" />
-    <Resource Include="Images\vortex3.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Data\NF037_DSR_TABLE.TXT" />
@@ -194,9 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\vortex.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="gifs\loading-GIF.gif" />
+
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
