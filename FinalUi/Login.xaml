@@ -6,7 +6,7 @@
 
     <Grid  Height="300" Width="600" MouseLeftButtonDown="Grid_MouseLeftButtonDown_1" >
         <Grid.Effect>
-            <DropShadowEffect Color="#FFF5621E" RenderingBias="Quality" Direction="0" ShadowDepth="0"/>
+            <DropShadowEffect Color="#FFF5621E" RenderingBias="Quality" Direction="0" ShadowDepth="0" BlurRadius="10"/>
         </Grid.Effect>
         <Grid.Background>
             <ImageBrush ImageSource="Images/vortex.png"/>
