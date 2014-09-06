@@ -27,44 +27,7 @@
         <ImageBrush ImageSource="Images/bottomnavigation bar.png" x:Key="QuickbuttonBackground" Opacity=".9"/>
         <ImageBrush ImageSource="Images/side menu.png" x:Key="SideMenuBackground" Opacity=".9"/>
         <ImageBrush ImageSource="Images/searchbox.png" x:Key="Searchbarcontent"/>
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="SnapsToDevicePixels" Value="true"/>
-            <Setter Property="OverridesDefaultStyle" Value="true"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Name="Border" CornerRadius="0" BorderThickness="0"
-						Background="Transparent"
-						BorderBrush="Transparent">
-                            <ContentPresenter Margin="0" 
-                                 HorizontalAlignment="Center"
-                                 VerticalAlignment="Center" 
-                                 RecognizesAccessKey="True"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsKeyboardFocused" Value="true">
-                                <Setter TargetName="Border" Property="BorderBrush" Value="#202020"/>
-                            </Trigger>
-                            <Trigger Property="IsDefaulted" Value="true">
-                                <Setter TargetName="Border" Property="BorderBrush" Value="#202020"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="Border" Property="Background" Value="#28000000"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter TargetName="Border" Property="Background" Value="#53808080"/>
-                                <Setter TargetName="Border" Property="BorderBrush" Value="#606060"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter TargetName="Border" Property="Background" Value="#28000000"/>
-                                <Setter TargetName="Border" Property="BorderBrush" Value="#AAAAAA"/>
-                                <Setter Property="Foreground" Value="#FFFFFF"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        
     </Window.Resources>
 
     <StackPanel>
@@ -76,13 +39,13 @@
                 <MenuItem Header="Help" Margin="10 0 0 0"/>
             </Menu>
             <WrapPanel HorizontalAlignment="Right" Margin="3,2,5,3">
-                <Button Name="MinimizeButton" Click="MinimizeButton_Click" Width="25">
+                 <Button Style="{StaticResource all}" Name="MinimizeButton" Click="MinimizeButton_Click" Width="25">
                     <Button.Content>
                         <Path x:Name="minimize" Data="F1M2,4C2,4 2,2 2,2 2,2 14,2 14,2 14,2 14,4 14,4 14,4 2,4 2,4z" Fill="Black" Height="5" Width="12" Margin="-1,0,0,0"/>
                     </Button.Content>
                 </Button>
 
-                <Button Name="Maximize"  Width="30" Margin="1,0">
+                 <Button Style="{StaticResource all}" Name="Maximize"  Width="30" Margin="1,0">
                     <Button.Content>
                         <Path x:Name="resize" Data="F1M2.111,7.667C2.111,7.667 2.111,14.958 2.111,14.958 2.111,14.958 9.889,14.958 9.889,14.958 9.889,14.958 9.889,7.667 9.889,
 				7.667 9.889,7.667 2.111,7.667 2.111,7.667z M6.222,2.25C6.222,2.25,6.222,4.438,6.222,6.625L8.674,6.625C9.403,6.625 9.889,6.625 9.889,6.625 10.5,6.625 11,
@@ -94,7 +57,7 @@
                 </Button>
 
                 <Rectangle Height="20" Stroke="#00832A2A" Width="50" Fill="#FFB65F5F" Margin="0,0,-50,0"/>
-                <Button Name="CloseButton" Command="ApplicationCommands.Close" Width="50" >
+                 <Button Style="{StaticResource all}" Name="CloseButton" Command="ApplicationCommands.Close" Width="50" >
                     <Button.Content>
                         <Path x:Name="close1" Data="F1M14.987,13.789C14.987,13.789 13.622,15.154 13.622,15.154 13.622,15.154 8.16,9.692 8.16,9.692 8.16,
 				9.692 2.699,15.154 2.699,15.154 2.699,15.154 1.333,13.789 1.333,13.789 1.333,13.789 6.795,8.327 6.795,8.327 6.795,8.327 1.333,2.865 1.333,2.865 1.333,
@@ -105,7 +68,7 @@
             </WrapPanel>
         </Grid>
         <DockPanel Background="{DynamicResource NavigationBackground}">
-            <Button Name="LoadDataButton" Foreground="White" Margin="5,5,5,5" Command="ApplicationCommands.Open" FontSize="16">
+             <Button Style="{StaticResource all}" Name="LoadDataButton" Foreground="White" Margin="5,5,5,5" Command="ApplicationCommands.Open" FontSize="16">
                 <Button.Content>
                     <WrapPanel Margin="7,0,5,0">
                         <Path x:Name="folder1" Data="F1M2,5.562C2,5.562 3.199,5.562 3.199,5.562 3.199,5.562 19.979,5.562 19.979,5.562 19.979,5.562 21.178,5.562 21.178,
@@ -129,7 +92,7 @@
 
                 <WrapPanel>
                     <Path x:Name="drop_downarrow_1" Data="F1M1.5,1.2C1.5,1.2 1.5,10.8 1.5,10.8 1.5,10.8 7.5,5.981 7.5,5.981 7.5,5.981 1.5,1.2 1.5,1.2z" Fill="#FF5B5B5B" Height="12" Width="9" Margin="15,20,0,-19"/>
-                    <Button>
+                    <Button Style="{StaticResource all}">
                         <Button.Content>
                             <TextBlock  x:Name="textBlock" Text="My Assignments" FontSize="16" FontWeight="Bold" Width="225" Margin="35,1,0,0" Padding="0 1 0 4" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
                         </Button.Content>
@@ -138,7 +101,7 @@
 
                 <WrapPanel>
                     <Path x:Name="drop_downarrow_2" Data="F1M1.5,1.2C1.5,1.2 1.5,10.8 1.5,10.8 1.5,10.8 7.5,5.981 7.5,5.981 7.5,5.981 1.5,1.2 1.5,1.2z" Fill="#FF5B5B5B" Height="12" Width="9" Margin="15,20,0,-19"/>
-                    <Button>
+                    <Button Style="{StaticResource all}">
                         <Button.Content>
                             <TextBlock Text="Reports" FontSize="16" FontWeight="Bold" Width="225" Margin="35,1,0,0" Padding="0 1 0 4" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
                         </Button.Content>
@@ -147,7 +110,7 @@
 
                 <WrapPanel>
                     <Path x:Name="drop_downarrow_3" Data="F1M1.5,1.2C1.5,1.2 1.5,10.8 1.5,10.8 1.5,10.8 7.5,5.981 7.5,5.981 7.5,5.981 1.5,1.2 1.5,1.2z" Fill="#FF5B5B5B" Height="12" Width="9" Margin="15,20,0,-19"/>
-                    <Button>
+                    <Button Style="{StaticResource all}">
                         <Button.Content>
                             <TextBlock Text="Bills" Margin="35,1,0,0" Padding="0 1 0 4" FontSize="16" Width="225" FontWeight="Bold"  Foreground="#FF5B5B5B" FontFamily="Calibri"/>
                         </Button.Content>
@@ -172,7 +135,7 @@
                         </Grid.RowDefinitions>
 
                         <Image Source="Images/left doc.png" Grid.Row="0" Width="48" Height="30" Grid.Column="0"/>
-                        <Button  Grid.Row="0" Width="48" Height="30" Grid.Column="0">
+                         <Button Style="{StaticResource side}"  Grid.Row="0" Width="48" Height="30" Grid.Column="0">
                             <Button.Content>
                                 <Path x:Name="import_files" Data="F1M11.187,19.719C11.187,19.719 11.187,20.375 11.187,20.375 11.187,20.375 13.812,20.375 13.812,20.375 13.812,
 						20.375 13.812,19.719 13.812,19.719 13.812,19.719 11.187,19.719 11.187,19.719z M9.875,17.094C9.875,17.094 9.875,17.75 9.875,17.75 9.875,17.75 15.125,
@@ -189,7 +152,7 @@
                         </Button>
 
                         <Image Source="Images/middock.png" Grid.Row="0" Width="45" Height="30" Grid.Column="1"/>
-                        <Button  Grid.Row="0" Width="45" Height="30" Grid.Column="1">
+                         <Button Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="1">
                             <Button.Content>
                                 <Path x:Name="reload" Data="F1M2,12.942C2,12.942 10.226,15.241 10.226,15.241 10.226,15.241 8.275,17.071 8.275,
 						17.071 9.288,17.922 10.917,18.786 12.32,18.786 15.074,18.786 17.386,16.824 18.039,14.171 18.039,14.171 21.987,15.222 21.987,15.222 20.891,
@@ -201,7 +164,7 @@
                         </Button>
 
                         <Image Source="Images/middock.png" Grid.Row="0" Width="45" Height="30" Grid.Column="2"/>
-                        <Button  Grid.Row="0" Width="45" Height="30" Grid.Column="2">
+                         <Button Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="2">
                             <Button.Content>
                                 <Path x:Name="save" Data="F1M5.707,16.89C5.707,16.89 16.879,16.89 16.879,16.89 16.879,16.89 16.879,18.13 16.879,18.13 16.879,18.13 5.707,18.13 5.707,
 						18.13 5.707,18.13 5.707,16.89 5.707,16.89z M5.707,13.414C5.707,13.414 16.879,13.414 16.879,13.414 16.879,13.414 16.879,14.653 16.879,14.653 16.879,
@@ -215,7 +178,7 @@
                         </Button>
 
                         <Image  Source="Images/middock.png" Grid.Row="0" Width="45" Height="30" Grid.Column="3"/>
-                        <Button  Grid.Row="0" Width="45" Height="30" Grid.Column="3">
+                         <Button Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="3">
                             <Button.Content>
                                 <Path x:Name="back" Data="F1M10.4,12.687C10.4,12.687 10.4,18 10.4,18 10.4,18 2,9.5 2,9.5 2,9.5 10.4,1 10.4,1 10.4,1 10.4,6.312 10.4,6.312 10.4,
 						6.312 23,6.312 23,6.312 23,6.312 23,12.687 23,12.687 23,12.687 10.4,12.687 10.4,12.687z" Fill="Black" Height="19" Width="24"/>
@@ -223,7 +186,7 @@
                         </Button>
 
                         <Image  Source="Images/middock.png" Grid.Row="0" Width="45" Height="30" Grid.Column="4"/>
-                        <Button  Grid.Row="0" Width="45" Height="30" Grid.Column="4">
+                         <Button Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="4">
                             <Button.Content>
                                 <Path x:Name="forth" Data="F1M23,9.5C23,9.5 14.6,18 14.6,18 14.6,18 14.6,12.687 14.6,12.687 14.6,12.687 2,12.687 2,12.687 2,12.687 2,6.312 2,6.312 2,
 						6.312 14.6,6.312 14.6,6.312 14.6,6.312 14.6,1 14.6,1 14.6,1 23,9.5 23,9.5z" Fill="Black" Height="19"  Width="24"/>
@@ -231,7 +194,7 @@
                         </Button>
 
                         <Image  Source="Images/middock.png" Grid.Row="0" Width="45" Height="30" Grid.Column="5"/>
-                        <Button Name="FilterButton" Click="FilterButton_Click" Grid.Row="0" Width="45" Height="30" Grid.Column="5">
+                         <Button Style="{StaticResource side}" Name="FilterButton" Click="FilterButton_Click" Grid.Row="0" Width="45" Height="30" Grid.Column="5">
                             <Button.Content>
                                 <Path x:Name="filter" Data="F1M18.443,12.146C17.483,12.146 16.674,12.947 16.674,13.898 16.674,14.848 17.483,15.649 18.443,15.649 19.403,15.649 20.212,
 						14.848 20.212,13.898 20.212,12.947 19.403,12.146 18.443,12.146z M17.432,8.894C17.432,8.894 19.454,8.894 19.454,8.894 19.555,8.894 19.707,8.994 19.656,
@@ -252,7 +215,7 @@
                         </Button>
 
                         <Image Source="Images/rightdoc.png" Grid.Row="0" Width="48" Height="30" Grid.Column="6"/>
-                        <Button  Grid.Row="0" Width="48" Height="30" Grid.Column="6">
+                         <Button Style="{StaticResource side}"  Grid.Row="0" Width="48" Height="30" Grid.Column="6">
                             <Button.Content>
                                 <Path x:Name="export" Data="F1M5.667,15C5.667,15 5.667,17.333 5.667,17.333 5.667,17.333 13.833,17.333 13.833,17.333 13.833,17.333 13.833,15 13.833,15 13.833,
 						15 5.667,15 5.667,15z M5.667,10.333C5.667,10.333 5.667,12.667 5.667,12.667 5.667,12.667 17.333,12.667 17.333,12.667 17.333,12.667 17.333,10.333 17.333,
@@ -311,23 +274,23 @@
                         </DataGrid>
                     </ContentControl>
                     <WrapPanel Name="DataGridOptionpanel" Background="{DynamicResource GridBackground}" Margin="1,0,0,0">
-                        <Button Name="DataGridFirstPage" Margin="38,2,5,2" Click="DataGridFirstPage_Click">
+                         <Button Style="{StaticResource smallbutton}" Name="DataGridFirstPage" Margin="38,2,5,2" Click="DataGridFirstPage_Click">
                             <Path x:Name="way_back" Data="F1M10.721,7C10.721,7 10.721,10.625 10.721,10.625 10.721,10.625 15,7 15,7 15,7 15,15 15,15 15,15 10.721,11.375 10.721,
 						11.375 10.721,11.375 10.721,15 10.721,15 10.721,15 6,11 6,11 6,11 10.721,7 10.721,7z M11,3C6.6,3 3,6.6 3,11 3,15.4 6.6,19 11,19 15.4,19 19,15.4 19,
 						11 19,6.6 15.4,3 11,3z M11,1C16.5,1 21,5.5 21,11 21,16.5 16.5,21 11,21 5.5,21 1,16.5 1,11 1,5.5 5.5,1 11,1z" Fill="Black" Height="22" Width="22"/>
                         </Button>
-                        <Button Click="DataGridPreviousPage_Click" Name="DataGridPreviousPage" Margin="5,2,5,2">
+                         <Button Style="{StaticResource smallbutton}" Click="DataGridPreviousPage_Click" Name="DataGridPreviousPage" Margin="5,2,5,2">
                             <Path x:Name="back1" Data="F1M13,6.5C13,6.5 13,15.5 13,15.5 13,15.5 7,11 7,11 7,11 13,6.5 13,6.5z M11,3C6.6,3 3,6.6 3,11 3,15.4 6.6,19 11,19 15.4,
 						19 19,15.4 19,11 19,6.6 15.4,3 11,3z M11,1C16.5,1 21,5.5 21,11 21,16.5 16.5,21 11,21 5.5,21 1,16.5 1,11 1,5.5 5.5,1 11,1z" Fill="Black" Height="22" Width="22"/>
                         </Button>
-                        <Button Name="DataGridCurrentPage" Click="DataGridCurrentPage_Click" Margin="5,2,5,2">
+                         <Button Style="{StaticResource smallbutton}" Name="DataGridCurrentPage" Click="DataGridCurrentPage_Click" Margin="5,2,5,2">
                             <Path x:Name="Current" Data="F1M1,1C1,1 17,1 17,1 17,1 17,17 17,17 17,17 1,17 1,17 1,17 1,1 1,1z" Fill="Black" Height="18" Width="18"/>
                         </Button>
-                        <Button x:Name="DataGridNextPage" Click="DataGridNextPage_Click" Margin="5,2,5,2" >
+                         <Button Style="{StaticResource smallbutton}" x:Name="DataGridNextPage" Click="DataGridNextPage_Click" Margin="5,2,5,2" >
                             <Path x:Name="forth12" Data="F1M9,6.5C9,6.5 15,11 15,11 15,11 9,15.5 9,15.5 9,15.5 9,6.5 9,6.5z M11,3C6.6,3 3,6.6 3,11 3,15.4 6.6,19 11,19 15.4,
 						19 19,15.4 19,11 19,6.6 15.4,3 11,3z M11,1C16.5,1 21,5.5 21,11 21,16.5 16.5,21 11,21 5.5,21 1,16.5 1,11 1,5.5 5.5,1 11,1z" Fill="Black" Height="22" Width="22"/>
                         </Button>
-                        <Button Name="DataGridLastPage" Margin="5,2,5,2" Click="DataGridLastPage_Click">
+                         <Button Style="{StaticResource smallbutton}" Name="DataGridLastPage" Margin="5,2,5,2" Click="DataGridLastPage_Click">
                             <Path x:Name="wayforth" Data="F1M7,7C7,7 11.279,10.625 11.279,10.625 11.279,10.625 11.279,7 11.279,7 11.279,7 16,11 16,11 16,11 11.279,15 11.279,
 						15 11.279,15 11.279,11.375 11.279,11.375 11.279,11.375 7,15 7,15 7,15 7,7 7,7z M11,3C6.6,3 3,6.6 3,11 3,15.4 6.6,19 11,19 15.4,19 19,15.4 19,
 						11 19,6.6 15.4,3 11,3z M11,1C16.5,1 21,5.5 21,11 21,16.5 16.5,21 11,21 5.5,21 1,16.5 1,11 1,5.5 5.5,1 11,1z" Fill="Black" Height="22" Width="22"/>

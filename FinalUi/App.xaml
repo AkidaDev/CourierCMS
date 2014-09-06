@@ -8,7 +8,7 @@
             <Setter Property="Foreground" Value="White"></Setter>
 
         </Style>
-<Style TargetType="{x:Type Button}" x:Key="all">
+<Style TargetType="Button" x:Key="all">
             <Setter Property="SnapsToDevicePixels" Value="true"/>
             <Setter Property="OverridesDefaultStyle" Value="true"/>
             <Setter Property="Template">
