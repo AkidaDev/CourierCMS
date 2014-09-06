@@ -86,6 +86,18 @@ namespace FinalUi
 
 
         }
+        void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            initDb();
+        }
+        void RunCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error != null)
+                MessageBox.Show(e.Error.Message);
+            else
+                MessageBox.Show("Done");
+        }
+
         #endregion
 
         DataGridHelper dataGridHelper;
@@ -124,23 +136,9 @@ namespace FinalUi
 
         }
 
-        void worker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            initDb();
-        }
-        void RunCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (e.Error != null)
-                MessageBox.Show(e.Error.Message);
-            else
-                MessageBox.Show("Done");
-        }
 
-        public MainWindow(string userName)
-        {
 
-        }
-
+        #region CommandFunctions
         private void Open_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             LoadData loadData = new LoadData();
@@ -172,8 +170,9 @@ namespace FinalUi
                 powerWin.Show();
             }
         }
+        #endregion
         BackgroundWorker worker;
-        #region DataGrid Methods Starts:
+        #region DataGrid Methods 
         void loadData_Closed(object sender, EventArgs e)
         {
             LoadData dataWind = (LoadData)sender;
@@ -260,13 +259,25 @@ namespace FinalUi
         }
         #endregion DataGrid Navigation ends
 
-
-
-
+      
         #region Datagrid Sheet Methods Start
 
         #endregion DataGrid Sheet Methods Ends
         #endregion DataGrid Methods Ends
+
+        #region filter functions
+        private void FilterButton_Click(object sender, RoutedEventArgs e)
+        {
+            FilterSelectWindow window = new FilterSelectWindow();
+            window.Closed += window_Closed;
+            window.Show();
+        }
+
+        void window_Closed(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
 
 
     }
