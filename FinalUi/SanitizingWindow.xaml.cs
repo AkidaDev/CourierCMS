@@ -51,9 +51,8 @@ namespace FinalUi
             data.FrWeight = Double.Parse(WeightAccToFranchize.Text);
             data.Amount = Decimal.Parse(Cost.Text);
             data.FrAmount = Decimal.Parse(BilledAmount.Text);
-            data.Destiniation = Destination.Text;
+            data.Destination = Destination.Text;
             data.DestinationPin = Decimal.Parse(DestinationPin.Text);
-            data.Date = InsertionDate.SelectedDate;
             data.CustCode = CustomerSelected.Text;
             setNextData();
         }
@@ -84,7 +83,7 @@ namespace FinalUi
                 data = dataContext.Single(x => x.ConsignmentNo == connsignmentNo);
                 WeightAccToDTDC.Text = data.Weight.ToString();
                 Cost.Text = data.Amount.ToString();
-                Destination.Text = data.Destiniation;
+                Destination.Text = data.Destination;
                 DestinationPin.Text = data.DestinationPin.ToString();
                 WeightAccToFranchize.Text = data.Weight.ToString();
                 BilledAmount.Text = "";

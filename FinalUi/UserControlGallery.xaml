@@ -9,9 +9,7 @@
 	<Grid x:Name="LayoutRoot">
         <Grid.Resources>
             <Style x:Key="sheetButton" TargetType="Button">
-                <Setter Property="BorderBrush">
-                    <
-                </Setter>
+                <Setter Property="Background" Value="AliceBlue"></Setter>
             </Style>
         </Grid.Resources>
         <Button Content="Button" HorizontalAlignment="Left" Margin="75,42,0,0" VerticalAlignment="Top" Width="75" Style="{StaticResource sheetButton}"></Button>

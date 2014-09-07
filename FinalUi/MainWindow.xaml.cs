@@ -292,33 +292,22 @@ namespace FinalUi
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-              MessageBox.Show("Started");
+            MessageBox.Show("Started");
             BillingDataDataContext db = new BillingDataDataContext();
             IEnumerable<RuntimeData> newData = dataGridHelper.getCurrentDataStack.Where(x => x.TransactionId == null);
             List<RuntimeData> oldData = dataGridHelper.getCurrentDataStack.Where(x => x.TransactionId != null).ToList();
           
             foreach (var data in newData)
             {
-                var transactionData = new Transaction();
-                transactionData.AmountCharged = data.FrAmount;
-                transactionData.AmountPayed = data.Amount;
-                transactionData.ConnsignmentNo = data.ConsignmentNo;
-                transactionData.Destination = data.Destiniation;
-                transactionData.DestinationPin = data.DestinationPin;
-                Guid id = Guid.NewGuid();
-                transactionData.ID = id;
-                data.TransactionId = id;
-                transactionData.Weight = (decimal)(data.Weight);
-                transactionData.Date = data.BookingDate;
-                if (data.FrWeight != null)
-                    transactionData.WeightByFranchize = (decimal)data.FrWeight;
+               
+                var transactionData = UtilityClass.convertRuntimeObjToTransObj(data);
                 if (data.CustCode != null)
                 {
-                    ClientTransaction cdata = new ClientTransaction();
-                    cdata.ID = Guid.NewGuid();
-                    cdata.TransactionID = id;
-                    cdata.ClientID = db.Clients.Single(x => x.Code == data.CustCode).Id;
-                    db.ClientTransactions.InsertOnSubmit(cdata);
+                    ClientTransaction clientData = new ClientTransaction();
+                    clientData.TransactionID = transactionData.ID;
+                    clientData.ClientID = db.Clients.Where(x => x.Code == data.CustCode).Single().Id;
+                    clientData.ID = Guid.NewGuid();
+                    db.ClientTransactions.InsertOnSubmit(clientData);
                 }
                 db.Transactions.InsertOnSubmit(transactionData);
 
@@ -329,10 +318,11 @@ namespace FinalUi
                 transactionData.AmountCharged = data.FrAmount;
                 transactionData.AmountPayed = data.Amount;
                 transactionData.ConnsignmentNo = data.ConsignmentNo;
-                transactionData.Destination = data.Destiniation;
+                transactionData.Destination = data.Destination;
                 transactionData.DestinationPin = data.DestinationPin;
                 transactionData.Weight = (decimal)(data.Weight);
-                transactionData.Date = data.BookingDate;
+                transactionData.BookingDate = data.BookingDate;
+                transactionData.LastModified = System.DateTime.Today;
                 if (data.FrWeight != null)
                     transactionData.WeightByFranchize = (decimal)data.FrWeight;
                 if (data.CustCode != null)

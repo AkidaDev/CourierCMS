@@ -30,7 +30,7 @@ namespace FinalUi
                 rowData.CustomerCode = lineData[3].Trim('\'');
                 rowData.Weight = Double.Parse(lineData[4]);
                 rowData.Type = lineData[5].Trim('\'');
-                rowData.Destiniation = lineData[6].Trim('\'');
+                rowData.Destination = lineData[6].Trim('\'');
                 rowData.Mode = lineData[7].Trim('\'');
                 rowData.Pieces = int.Parse(lineData[8]);
                 rowData.DestinationPin = Decimal.Parse(lineData[9]);

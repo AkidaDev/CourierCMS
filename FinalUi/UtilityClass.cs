@@ -8,6 +8,7 @@ namespace FinalUi
 {
     class UtilityClass
     {
+        #region converting transaction to runtime data
         static public List<RuntimeData> convertTransListToRuntimeList(List<Transaction> transList)
         {
             List<RuntimeData> runList = new List<RuntimeData>();
@@ -26,8 +27,8 @@ namespace FinalUi
             if (trans.AmountCharged != null)
                 runtimeDataObj.Amount = (decimal)trans.AmountCharged;
             runtimeDataObj.FrAmount = trans.AmountPayed;
-            runtimeDataObj.BookingDate = trans.Date;
-            runtimeDataObj.Destiniation = trans.Destination;
+            runtimeDataObj.BookingDate = trans.BookingDate;
+            runtimeDataObj.Destination = trans.Destination;
             if (trans.DestinationPin != null)
                 runtimeDataObj.DestinationPin = (decimal)trans.DestinationPin;
             runtimeDataObj.Weight = Double.Parse(trans.Weight.ToString());
@@ -41,5 +42,37 @@ namespace FinalUi
 
 
         }
+        #endregion
+        #region converting runtime data to transaction data
+        static public List<Transaction> convertRuntimeListToTransList(List<RuntimeData> transList)
+        {
+            List<Transaction> data = new List<Transaction>();
+            foreach(var transObj in transList)
+            {
+                Transaction dat = convertRuntimeObjToTransObj(transObj);
+                data.Add(dat);
+            }
+            return data;
+        }
+        static public Transaction convertRuntimeObjToTransObj(RuntimeData data)
+        {
+            var transactionData = new Transaction();
+            transactionData.AmountCharged = data.FrAmount;
+            transactionData.AmountPayed = data.Amount;
+            transactionData.ConnsignmentNo = data.ConsignmentNo;
+            transactionData.Destination = data.Destination;
+            transactionData.DestinationPin = data.DestinationPin;
+            Guid id = Guid.NewGuid();
+            transactionData.ID = id;
+            data.TransactionId = id;
+            transactionData.AddDate = System.DateTime.Today;
+            transactionData.Weight = (decimal)(data.Weight);
+            transactionData.BookingDate = data.BookingDate;
+            if (data.FrWeight != null)
+                transactionData.WeightByFranchize = (decimal)data.FrWeight;
+            return transactionData;
+
+        }
+        #endregion
     }
 }
