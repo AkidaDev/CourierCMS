@@ -7,10 +7,16 @@
 	Width="640" Height="480">
 
 	<Grid x:Name="LayoutRoot">
+<<<<<<< local
+        <Grid.Resources>
+            <Style x:Key="sheetButton" TargetType="Button">
+                <Setter Property="Background" Value="AliceBlue"></Setter>
+=======
 		<Grid.Resources>
             <Style x:Key="SimpleComboBoxStyle" TargetType="ComboBox">
 
 
+>>>>>>> other
             </Style>
 		</Grid.Resources>
         <Button Style="{StaticResource all}" HorizontalAlignment="Left" Margin="75,42,0,0" VerticalAlignment="Top" Background="Transparent" BorderThickness="0">
