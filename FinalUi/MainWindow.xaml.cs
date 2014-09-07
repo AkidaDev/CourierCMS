@@ -207,11 +207,12 @@ namespace FinalUi
                     text.FontSize = 12;
                     text.Background = Brushes.Transparent;
                     text.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
-                    panel.Children.Add(text); 
+                    panel.Children.Add(text);
                     button.Content = panel;
                     button.Click += SheetSelectButton_Click;
                     DataGridSheetPanel.Children.Add(button);
                     buttonList.Add(button, key);
+                    activeButton = button;
                 }
                 else
                 {
@@ -241,7 +242,7 @@ namespace FinalUi
             List<RuntimeData> data = (List<RuntimeData>)e.Argument;
 
             DBHelper help = new DBHelper();
-            help.insertRuntimeData(data);
+            help.insertRuntimeData(data, dataGridHelper.currentSheetNumber); ;
             ((BackgroundWorker)sender).ReportProgress(100);
         }
 
@@ -250,6 +251,7 @@ namespace FinalUi
             Button button = (Button)sender;
             dataGridHelper.setActiveSheet(buttonList[button]);
             dataGridHelper.refreshCurrentPage();
+            activeButton = button;
         }
         #region DataGrid Navigation Method
         private void DataGridPreviousPage_Click(object sender, RoutedEventArgs e)
@@ -301,6 +303,7 @@ namespace FinalUi
             }
         }
         #endregion
+        Button activeButton;
 
         private void SanitizingButton_Click(object sender, RoutedEventArgs e)
         {
@@ -314,10 +317,8 @@ namespace FinalUi
             BillingDataDataContext db = new BillingDataDataContext();
             IEnumerable<RuntimeData> newData = dataGridHelper.getCurrentDataStack.Where(x => x.TransactionId == null);
             List<RuntimeData> oldData = dataGridHelper.getCurrentDataStack.Where(x => x.TransactionId != null).ToList();
-
             foreach (var data in newData)
             {
-
                 var transactionData = UtilityClass.convertRuntimeObjToTransObj(data);
                 if (data.CustCode != null)
                 {
@@ -352,6 +353,20 @@ namespace FinalUi
             db.SubmitChanges();
             MessageBox.Show("Done");
 
+        }
+
+        private void CloseCurrentClick_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (buttonList.Count > 0)
+            {
+                DBHelper help = new DBHelper();
+                help.deleteRuntimeData(dataGridHelper.currentSheetNumber);
+                dataGridHelper.removeSheet(dataGridHelper.currentSheetNumber);
+                DataGridSheetPanel.Children.Remove(activeButton); 
+                buttonList.Remove(activeButton);
+                
+            }
         }
 
 

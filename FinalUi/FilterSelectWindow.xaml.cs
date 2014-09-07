@@ -23,7 +23,7 @@ namespace FinalUi
         List<String> SelectedClientList;
         CollectionViewSource StartConnNoList;
         CollectionViewSource EndConnoList;
-        List<String> Columns;
+     
 
         public List<Func<RuntimeData, int,bool>> filters;
         public FilterSelectWindow(IEnumerable<string> ConnNo):this()

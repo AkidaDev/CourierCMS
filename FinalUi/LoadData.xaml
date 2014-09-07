@@ -8,7 +8,7 @@
             <Button Content="Browser" Click="Button_Click"/>
         </WrapPanel>
         <WrapPanel>
-            <CheckBox Name="addData" Content="Add data in currecnt sheet" IsChecked="False" Checked="addData_Checked"></CheckBox>
+            <CheckBox Name="addData" Content="Add data in currecnt sheet" IsChecked="False" Click="addData_Checked"></CheckBox>
         </WrapPanel>
         <Button Content="Start Load" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="Button_Click_1"/>
        <TextBlock Text="Load From Database"></TextBlock>

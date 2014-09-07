@@ -9,6 +9,7 @@ namespace FinalUi
 {
     class SecurityModule
     {
+        
         public enum Permissions 
         {
             DataGroupAccess,
@@ -81,17 +82,25 @@ namespace FinalUi
             }
             return permissions;
         }
-
+        static string _currentUser;
         public static bool authenticate(string userName, string Password)
         {
             BillingDataDataContext db = new BillingDataDataContext();
             
             if (db.Employees.Where(x=> x.UserName == userName && x.Password == Password).Count() == 1)
             {
+                _currentUser = userName;
                 return true;
             }
             else
                 return false;
+        }
+        public static string currentUserName
+        {
+            get
+            {
+                return _currentUser;
+            }
         }
 //Database Interactin Method Ends
     }

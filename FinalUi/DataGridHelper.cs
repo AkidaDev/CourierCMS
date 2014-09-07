@@ -11,8 +11,8 @@ namespace FinalUi
 {
     class FilterManager<T>
     {
-        List<Func<T,int,bool>> _filters;
-        List<Func<T,int,bool>> filters
+        List<Func<T, int, bool>> _filters;
+        List<Func<T, int, bool>> filters
         {
             get
             {
@@ -21,22 +21,22 @@ namespace FinalUi
         }
         public FilterManager()
         {
-            _filters = new List<Func<T,int,bool>>();
+            _filters = new List<Func<T, int, bool>>();
         }
-        public void addFilter(Func<T,int,bool> filter)
+        public void addFilter(Func<T, int, bool> filter)
         {
             _filters.Add(filter);
         }
         public List<T> applyFilter(List<T> dataStack)
         {
             IEnumerable<T> dataSource = dataStack;
-            foreach(var filter in filters)
+            foreach (var filter in filters)
             {
                 dataSource = dataSource.Where(filter);
             }
             return dataSource.ToList();
         }
-        public void removeFilter(Func<T,int,bool> filter)
+        public void removeFilter(Func<T, int, bool> filter)
         {
             _filters.Remove(filter);
         }
@@ -69,9 +69,9 @@ namespace FinalUi
             filterManager = new FilterManager<T>();
             this.name = name;
         }
-        public void addFilter(Func<T,int,bool> filter)
+        public void addFilter(Func<T, int, bool> filter)
         {
-            
+
             filterManager.addFilter(filter);
         }
         public void addData(List<T> value)
@@ -107,7 +107,14 @@ namespace FinalUi
         {
             get
             {
-                return sheets.Keys.Max();
+                if (sheets != null && sheets.Count > 0)
+                {
+                    return sheets.Keys.Max();
+                }
+                else
+                {
+                    return -1;
+                }
             }
         }
         int _currentSheet;
@@ -131,21 +138,35 @@ namespace FinalUi
             sheets = new Dictionary<int, DataSheet<T>>();
             this.dataGridSource = dataGridSource;
         }
+        public void removeSheet(int sheetKey)
+        {
+            if (sheets.ContainsKey(sheetKey))
+            {
+                sheets.Remove(sheetKey);
+                if (sheets.Count > 0)
+                {
+                    int newActiveSheet = sheets.Keys.Min();
+                    setActiveSheet(newActiveSheet);
+                }
+                else
+                {
+                    _currentSheet = -1;
+                    _currentDataSheet = null;
+                }
+            }
+        }
         public int addNewSheet(List<T> data, string name)
         {
+            int key = maxIndex + 1;
             if (name == "")
             {
-                name = "Sheet " + totalSheets.ToString();
+                name = "Sheet " + (key).ToString();
             }
 
+
             DataSheet<T> sheet = new DataSheet<T>(data, name);
-            if (sheets.ContainsKey(totalSheets))
-            {
-                sheets[totalSheets] = sheet;
-            }
-            else
-                sheets.Add(totalSheets, sheet);
-            setActiveSheet(totalSheets - 1);
+            sheets.Add(key, sheet);
+            setActiveSheet(key);
             return totalSheets - 1;
         }
         public void addDataToCurrentSheet(List<T> data)
@@ -180,6 +201,13 @@ namespace FinalUi
                     return null;
                 }
                 return dataSheetManager.currentDataSheet.dataStack;
+            }
+        }
+        public int currentSheetNumber
+        {
+            get
+            {
+                return dataSheetManager.currentSheet;
             }
         }
         public DataSheet<RuntimeData> currentDataSheet
@@ -332,6 +360,16 @@ namespace FinalUi
             dataSheetManager.setActiveSheet(key);
             this.notifyPropertyChanged("currentPageNo");
             this.notifyPropertyChanged("rowsPerPage");
+        }
+        public void removeSheet(int sheetKey)
+        {
+            dataSheetManager.removeSheet(sheetKey);
+            if (dataSheetManager.totalSheets == 0)
+                dataGrid.Source = null;
+            this.notifyPropertyChanged("currentPageNo");
+            this.notifyPropertyChanged("rowsPerPage");
+            if (dataSheetManager.totalSheets != 0)
+                refreshCurrentPage();
         }
         #endregion sheetManagmentMethodsEnds
     }

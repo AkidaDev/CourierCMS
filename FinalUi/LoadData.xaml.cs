@@ -73,8 +73,8 @@ namespace FinalUi
         private void addData_Checked(object sender, RoutedEventArgs e)
         {
             CheckBox obj = (CheckBox)sender;
-            isNewSheet = (bool)obj.IsChecked;
-            isNewSheet = !isNewSheet;
+            isNewSheet = !(bool)obj.IsChecked;
+      
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)

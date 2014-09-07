@@ -177,7 +177,7 @@
                         </Button>
 
                         <Image  Source="Images/middock.png" Grid.Row="0" Width="45" Height="30" Grid.Column="3"/>
-                         <Button Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="3">
+                         <Button Style="{StaticResource side}" Name="CloseCurrentClick" Click="CloseCurrentClick_Click" Grid.Row="0" Width="45" Height="30" Grid.Column="3">
                             <Button.Content>
                                 <Path x:Name="back" Data="F1M10.4,12.687C10.4,12.687 10.4,18 10.4,18 10.4,18 2,9.5 2,9.5 2,9.5 10.4,1 10.4,1 10.4,1 10.4,6.312 10.4,6.312 10.4,
 						6.312 23,6.312 23,6.312 23,6.312 23,12.687 23,12.687 23,12.687 10.4,12.687 10.4,12.687z" Fill="Black" Height="19" Width="24"/>
