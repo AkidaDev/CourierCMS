@@ -19,11 +19,13 @@ namespace FinalUi
     /// </summary>
     public partial class PowerEntry : Window
     {
-        public PowerEntry(List<String> connNos, List<String> ClientCodes) : this()
+        List<RuntimeData> DataStack;
+        public PowerEntry(List<RuntimeData> DataStack, List<String> ClientCodes) : this()
         {
-            startConnNo.DataContext = connNos;
-            endConnNo.DataContext = connNos;
+            startConnNo.DataContext = DataStack.Select(c=>c.ConsignmentNo).ToList();
+            endConnNo.DataContext = DataStack.Select(c=>c.ConsignmentNo).ToList();
             clientCode.DataContext = ClientCodes;
+            this.DataStack = DataStack;
         }
         PowerEntry()
         {
@@ -32,7 +34,18 @@ namespace FinalUi
 
         private void SubmitRecords_Click(object sender, RoutedEventArgs e)
         {
-
+            int startCOnnNoIndex = startConnNo.SelectedIndex;
+            int endConnNoIndex = endConnNo.SelectedIndex;
+            if(startCOnnNoIndex < endConnNoIndex)
+            {
+                for (int i = startCOnnNoIndex; i <= endConnNoIndex; i++ )
+                {
+                    RuntimeData data = DataStack.ElementAt(i);
+                    data.CustCode = clientCode.SelectedValue.ToString();
+                    data.FrAmount =(decimal) UtilityClass.getCost(data.CustCode, data.Destination, data.DestinationPin, data.Weight);
+                    data.FrWeight = data.Weight;
+                }
+            }
         }
     }
 }

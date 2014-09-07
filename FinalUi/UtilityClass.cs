@@ -74,5 +74,11 @@ namespace FinalUi
 
         }
         #endregion
+        #region Cost calculating 
+        public static double getCost(string clientCode, string destinationCode, decimal destinationPin, double wieght)
+        {
+            return 100;
+        }
+        #endregion
     }
 }

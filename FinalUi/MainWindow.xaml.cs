@@ -166,13 +166,13 @@ namespace FinalUi
             if (dataGridSource != null)
             {
                 BillingDataDataContext db = new BillingDataDataContext();
-                PowerEntry powerWin = new PowerEntry(dataGridHelper.currentConnNos, db.Clients.Select(c => c.Code).ToList());
+                PowerEntry powerWin = new PowerEntry(dataGridHelper.getCurrentDataStack, db.Clients.Select(c => c.Code).ToList());
                 powerWin.Show();
             }
         }
         #endregion
         BackgroundWorker worker;
-        #region DataGrid Methods 
+        #region DataGrid Methods
         void loadData_Closed(object sender, EventArgs e)
         {
             LoadData dataWind = (LoadData)sender;
@@ -189,8 +189,26 @@ namespace FinalUi
 
                     dataGridHelper.getFirstPage();
                     Button button = new Button();
-                    button.Content = "Sheet " + key.ToString();
-                    button.Style = (Style)Application.Current.FindResource("ButtonStyle");
+                    button.Style = (Style)FindResource("all");
+                    button.Background = Brushes.Transparent;
+                    StackPanel panel = new StackPanel();
+                    Path path = new Path();
+                    path.Data = Geometry.Parse(@"F1M3.905,27.953C3.905,27.953 2,2.147 16.096,2.074 30.193,2 55.109,2.074 55.109,2.074 55.109,2.074 61.586,2.221 77.054,
+			27.953 77.054,27.953 3.905,27.953 3.905,27.953z");
+                    path.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A000000"));
+                    path.Height = 29;
+                    path.Width = 79;
+                    path.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF5B5B5B"));
+                    panel.Children.Add(path);
+                    TextBlock text = new TextBlock();
+                    text.Text = "Sheet " + key.ToString();
+                    text.Margin = new Thickness(0, -21, 12, 0);
+                    text.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFffffff"));
+                    text.FontSize = 12;
+                    text.Background = Brushes.Transparent;
+                    text.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
+                    panel.Children.Add(text); 
+                    button.Content = panel;
                     button.Click += SheetSelectButton_Click;
                     DataGridSheetPanel.Children.Add(button);
                     buttonList.Add(button, key);
@@ -260,7 +278,7 @@ namespace FinalUi
         }
         #endregion DataGrid Navigation ends
 
-      
+
         #region Datagrid Sheet Methods Start
 
         #endregion DataGrid Sheet Methods Ends
@@ -277,7 +295,7 @@ namespace FinalUi
         void window_Closed(object sender, EventArgs e)
         {
             FilterSelectWindow filterWindow = (FilterSelectWindow)sender;
-            foreach(var filter in filterWindow.filters)
+            foreach (var filter in filterWindow.filters)
             {
                 dataGridHelper.currentDataSheet.addFilter(filter);
             }
@@ -296,10 +314,10 @@ namespace FinalUi
             BillingDataDataContext db = new BillingDataDataContext();
             IEnumerable<RuntimeData> newData = dataGridHelper.getCurrentDataStack.Where(x => x.TransactionId == null);
             List<RuntimeData> oldData = dataGridHelper.getCurrentDataStack.Where(x => x.TransactionId != null).ToList();
-          
+
             foreach (var data in newData)
             {
-               
+
                 var transactionData = UtilityClass.convertRuntimeObjToTransObj(data);
                 if (data.CustCode != null)
                 {
@@ -333,7 +351,7 @@ namespace FinalUi
             }
             db.SubmitChanges();
             MessageBox.Show("Done");
-        
+
         }
 
 
