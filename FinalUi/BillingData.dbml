@@ -57,75 +57,6 @@
       <Association Name="Transaction_ClientTransaction" Member="Transaction" ThisKey="TransactionID" OtherKey="ID" Type="Transaction" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.[Transaction]" Member="Transactions">
-    <Type Name="Transaction">
-      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="AmountPayed" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
-      <Column Name="AmountCharged" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="ConnsignmentNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Weight" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
-      <Column Name="WeightByFranchize" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="true" />
-      <Column Name="Destination" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="DestinationPin" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="BookingDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="AddDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="LastModified" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Association Name="Transaction_ClientTransaction" Member="ClientTransactions" ThisKey="ID" OtherKey="TransactionID" Type="ClientTransaction" />
-      <Association Name="Employee_Transaction" Member="Employee" ThisKey="UserId" OtherKey="Id" Type="Employee" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.RuntimeData" Member="RuntimeDatas">
-    <Type Name="RuntimeData">
-      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="BranchCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ConsignmentNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="BookedBy" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
-      <Column Name="CustomerCode" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
-      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Type" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
-      <Column Name="Destination" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Mode" Type="System.String" DbType="NChar(25) NOT NULL" CanBeNull="false" />
-      <Column Name="Pieces" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DestinationPin" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
-      <Column Name="BookingDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
-      <Column Name="Status" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
-      <Column Name="Pod_RecD" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
-      <Column Name="TransMF_No" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="BookingTime" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
-      <Column Name="DOX" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-      <Column Name="ServiceTax" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="SplDisc" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Contents" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Remarks" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Value" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="InvoiceNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="InvoiceDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="Mod_Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="Office_Type" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
-      <Column Name="Office_Code" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
-      <Column Name="RefNo" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="Mod_Time" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
-      <Column Name="NodeId" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
-      <Column Name="UserId" Type="System.String" DbType="NChar(18)" CanBeNull="true" />
-      <Column Name="Trans_Status" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
-      <Column Name="Act_Cust_Code" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
-      <Column Name="Mobile" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="NDX_Paper" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="PickupTime" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
-      <Column Name="VolumeWieght" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
-      <Column Name="CapturedWieght" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
-      <Column Name="CustId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="EmpId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="FrAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="FrWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="TransactionId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="CustCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Association Name="RuntimeData_RuntimeMeta" Member="RuntimeMetas" ThisKey="Id" OtherKey="RuntimeDataID" Type="RuntimeMeta" />
-    </Type>
-  </Table>
   <Table Name="dbo.RuntimeMeta" Member="RuntimeMetas">
     <Type Name="RuntimeMeta">
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -133,6 +64,55 @@
       <Column Name="UserName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="SheetNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="RuntimeData_RuntimeMeta" Member="RuntimeData" ThisKey="RuntimeDataID" OtherKey="Id" Type="RuntimeData" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RuntimeData" Member="RuntimeDatas">
+    <Type Name="RuntimeData">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ConsignmentNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="Destination" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Mode" Type="System.String" DbType="NChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="DestinationPin" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="BookingDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="DOX" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="ServiceTax" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="SplDisc" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="EmpId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="FrAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="FrWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TransactionId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CustCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Association Name="RuntimeData_RuntimeMeta" Member="RuntimeMetas" ThisKey="Id" OtherKey="RuntimeDataID" Type="RuntimeMeta" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Transaction]" Member="Transactions">
+    <Type Name="Transaction">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AmountPayed" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="AmountCharged" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="ConnsignmentNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="WeightByFranchize" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Destination" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DestinationPin" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="BookingDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="AddDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LastModified" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="Mode" Type="System.String" DbType="NChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="DOX" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="ServiceTax" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="SplDisc" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="Transaction_ClientTransaction" Member="ClientTransactions" ThisKey="ID" OtherKey="TransactionID" Type="ClientTransaction" />
+      <Association Name="Employee_Transaction" Member="Employee" ThisKey="UserId" OtherKey="Id" Type="Employee" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

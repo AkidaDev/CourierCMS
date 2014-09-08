@@ -313,45 +313,6 @@ namespace FinalUi
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Started");
-            BillingDataDataContext db = new BillingDataDataContext();
-            IEnumerable<RuntimeData> newData = dataGridHelper.getCurrentDataStack.Where(x => x.TransactionId == null);
-            List<RuntimeData> oldData = dataGridHelper.getCurrentDataStack.Where(x => x.TransactionId != null).ToList();
-            foreach (var data in newData)
-            {
-                var transactionData = UtilityClass.convertRuntimeObjToTransObj(data);
-                if (data.CustCode != null)
-                {
-                    ClientTransaction clientData = new ClientTransaction();
-                    clientData.TransactionID = transactionData.ID;
-                    clientData.ClientID = db.Clients.Where(x => x.Code == data.CustCode).Single().Id;
-                    clientData.ID = Guid.NewGuid();
-                    db.ClientTransactions.InsertOnSubmit(clientData);
-                }
-                db.Transactions.InsertOnSubmit(transactionData);
-
-            }
-            foreach (var data in oldData)
-            {
-                var transactionData = db.Transactions.Single(x => x.ID == data.TransactionId);
-                transactionData.AmountCharged = data.FrAmount;
-                transactionData.AmountPayed = data.Amount;
-                transactionData.ConnsignmentNo = data.ConsignmentNo;
-                transactionData.Destination = data.Destination;
-                transactionData.DestinationPin = data.DestinationPin;
-                transactionData.Weight = (decimal)(data.Weight);
-                transactionData.BookingDate = data.BookingDate;
-                transactionData.LastModified = System.DateTime.Today;
-                if (data.FrWeight != null)
-                    transactionData.WeightByFranchize = (decimal)data.FrWeight;
-                if (data.CustCode != null)
-                {
-                    ClientTransaction cdata = db.ClientTransactions.Single(x => x.TransactionID == transactionData.ID);
-                    cdata.ClientID = db.Clients.Single(x => x.Code == data.CustCode).Id;
-                }
-            }
-            db.SubmitChanges();
-            MessageBox.Show("Done");
 
         }
 
@@ -363,9 +324,9 @@ namespace FinalUi
                 DBHelper help = new DBHelper();
                 help.deleteRuntimeData(dataGridHelper.currentSheetNumber);
                 dataGridHelper.removeSheet(dataGridHelper.currentSheetNumber);
-                DataGridSheetPanel.Children.Remove(activeButton); 
+                DataGridSheetPanel.Children.Remove(activeButton);
                 buttonList.Remove(activeButton);
-                
+
             }
         }
 

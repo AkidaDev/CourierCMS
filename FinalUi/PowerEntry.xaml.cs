@@ -44,6 +44,7 @@ namespace FinalUi
                     data.CustCode = clientCode.SelectedValue.ToString();
                     data.FrAmount =(decimal) UtilityClass.getCost(data.CustCode, data.Destination, data.DestinationPin, data.Weight);
                     data.FrWeight = data.Weight;
+                    
                 }
             }
         }
