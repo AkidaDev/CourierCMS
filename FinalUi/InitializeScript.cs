@@ -53,12 +53,10 @@ namespace FinalUi
                 for (int i = 0; i < 5; i++)
                 {
                     Client client = new Client();
-                    client.Name = "Client" + i.ToString();
-                    client.Address = "Address" + i.ToString();
-                    client.EmailAddress = "Email" + i.ToString();
-                    client.Code = "CLT" + i.ToString();
-                    client.PhoneNo = i;
-                    client.Id = Guid.NewGuid();
+                    client.CLNAME = "Client" + i.ToString();
+                    client.ADDRESS = "Address" + i.ToString();
+                    client.EMAILID = "Email" + i.ToString();
+                    client.CLCODE = "CLT" + i.ToString();
                     db.Clients.InsertOnSubmit(client);
                 }
                     db.SubmitChanges();

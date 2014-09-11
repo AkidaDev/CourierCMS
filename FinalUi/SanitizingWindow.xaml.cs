@@ -35,7 +35,7 @@ namespace FinalUi
             InitializeComponent();
             viewSource = (CollectionViewSource)FindResource("CustomerNameList");
             viewSource.Source = from client in db.Clients
-                                select client.Code;
+                                select client.CLCODE;
             conssNumbers = (CollectionViewSource)FindResource("ConsignmentNumbers");
             conssNumbers.Source = (from id in dataContext
                                    orderby id.ConsignmentNo

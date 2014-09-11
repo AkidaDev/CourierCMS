@@ -12,7 +12,8 @@
         </WrapPanel>
         <Button Content="Start Load" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="Button_Click_1"/>
        <TextBlock Text="Load From Database"></TextBlock>
-        <DatePicker Name="DataToLoadDate"></DatePicker>
+        <DatePicker Name="StartLoadDate"></DatePicker>
+        <DatePicker Name="EndLoadDate"></DatePicker>
         <Button Content="Start Load" Click="Button_Click_2"></Button>
     </StackPanel>
 </Window>

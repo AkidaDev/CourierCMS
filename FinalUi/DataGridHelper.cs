@@ -76,13 +76,13 @@ namespace FinalUi
         }
         public void addData(List<T> value)
         {
-            if (dataStack == null)
+            if (_dataStack == null)
             {
-                dataStack = value;
+                _dataStack = value;
             }
             else
             {
-                dataStack.AddRange(value);
+                _dataStack.AddRange(value);
             }
         }
     }
@@ -167,7 +167,7 @@ namespace FinalUi
             DataSheet<T> sheet = new DataSheet<T>(data, name);
             sheets.Add(key, sheet);
             setActiveSheet(key);
-            return totalSheets - 1;
+            return key;
         }
         public void addDataToCurrentSheet(List<T> data)
         {

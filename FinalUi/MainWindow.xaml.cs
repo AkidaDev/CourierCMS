@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace FinalUi
     public partial class MainWindow : Window
     {
         #region initScripts
-        void initDb()
+        public void initDb()
         {
             string dataSource = "";
             System.Data.Common.DbConnectionStringBuilder stringBuilder = new System.Data.Common.DbConnectionStringBuilder();
@@ -71,14 +72,10 @@ namespace FinalUi
             for (int i = 0; i < 5; i++)
             {
                 Client client = new Client();
-                client.Name = "Client" + i.ToString();
-                client.Address = "Address" + i.ToString();
-                client.EmailAddress = "Email" + i.ToString();
-                client.Code = "CLT" + i.ToString();
-                client.PhoneNo = i;
-                client.Id = Guid.NewGuid();
+                client.CLCODE = "CLT" + i.ToString();
                 db.Clients.InsertOnSubmit(client);
             }
+
             db.SubmitChanges();
             stringBuilder.Add("Initial Catalog", "BillingDatabase");
             Configs.Default.ConnString = stringBuilder.ConnectionString;
@@ -99,10 +96,14 @@ namespace FinalUi
         }
 
         #endregion
-
+        #region Global Objects
         DataGridHelper dataGridHelper;
         CollectionViewSource dataGridSource;
         Dictionary<Button, int> buttonList;
+        Button activeButton;
+        BackgroundWorker LoadWorker;
+        BackgroundWorker SaveWorker;
+        #endregion
         public MainWindow()
         {
             #region setupCode
@@ -121,7 +122,7 @@ namespace FinalUi
             ResourceDictionary dict = this.Resources;
             InitializeComponent();
             CollectionViewSource clientCodeList = (CollectionViewSource)FindResource("ClientCodeList");
-            clientCodeList.Source = (new BillingDataDataContext()).Clients.Select(c => c.Code);
+            clientCodeList.Source = (new BillingDataDataContext()).Clients.Select(c => c.CLCODE);
 
             #region DataGrid Code Lines
             dataGridSource = (CollectionViewSource)FindResource("DataGridDataContext");
@@ -129,14 +130,167 @@ namespace FinalUi
             buttonList = new Dictionary<Button, int>();
             DataGridPageNum.DataContext = dataGridHelper;
             DataGridNumOfRows.DataContext = dataGridHelper;
-            worker = new BackgroundWorker();
-            worker.RunWorkerCompleted += worker_RunWorkerCompleted;
-            worker.DoWork += insertData_DoWork;
             #endregion
 
+            #region Command Bindings
+            CommandBinding SanitizingCommandBinding = new CommandBinding(SanitizingCommand, ExecuteSanitizingCommand, CanExecuteIsDataGridNotNull);
+            this.CommandBindings.Add(SanitizingCommandBinding);
+            SanitizingButton.Command = SanitizingCommand;
+
+            CommandBinding PowerEntryCommandBinding = new CommandBinding(PowerEntryCommand, PowerEntryCommandExecuted, CanExecuteIsDataGridNotNull);
+            this.CommandBindings.Add(PowerEntryCommandBinding);
+            PowerEntryButton.Command = PowerEntryCommand;
+
+            CommandBinding SaveCommandBinding = new CommandBinding(ApplicationCommands.Save, ExecuteSaveCommand, CanExecuteSaveCommand);
+            this.CommandBindings.Add(SaveCommandBinding);
+            SaveButton.Command = ApplicationCommands.Save;
+            #endregion
+
+
+            #region loading initial pages
+            BillingDataDataContext db = new BillingDataDataContext();
+            List<int> sheets = db.RuntimeMetas.Where(y => y.UserName == SecurityModule.currentUserName).Select(x => x.SheetNo).Distinct().ToList();
+            foreach (int sheet in sheets)
+            {
+                List<RuntimeData> runtimeData = db.RuntimeMetas.Where(x => x.SheetNo == sheet && x.UserName == SecurityModule.currentUserName).Select(y => y.RuntimeData).ToList();
+                dataGridHelper.addNewSheet(runtimeData, "sheet " + sheet.ToString());
+                addingNewPage(sheet);
+            }
+            #endregion
+
+            SaveWorker = new BackgroundWorker();
+            SaveWorker.DoWork += SaveWorker_DoWork;
+            SaveWorker.ProgressChanged += SaveWorker_ProgressChanged;
+            SaveWorker.RunWorkerCompleted += SaveWorker_RunWorkerCompleted;
+            LoadWorker = new BackgroundWorker();
+            LoadWorker.DoWork += LoadWorker_DoWork;
+            LoadWorker.ProgressChanged += LoadWorker_ProgressChanged;
+            LoadWorker.RunWorkerCompleted += LoadWorker_RunWorkerCompleted;
+        }
+        #region backGround Worker Functions
+
+        void LoadWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MessageBlock.Text = MessageBlock.Text + "\n" + e.Result;
+        }
+
+        void LoadWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void LoadWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            DBHelper help = new DBHelper();
+            string response;
+            try
+            {
+                help.insertRuntimeData((List<RuntimeData>)e.Argument, dataGridHelper.currentSheetNumber);
+                response = "Data Loading Successful";
+            }
+            catch (Exception ex)
+            {
+                response = ex.Message;
+            }
+            e.Result = response;
+        }
+
+        #region Save Worker
+        void SaveWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MessageBlock.Text = MessageBlock.Text + "\n " + e.Result;
+        }
+
+        void SaveWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
 
+        void SaveWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            string response;
+            try
+            {
+                response = UtilityClass.saveRuntimeAsTransaction(dataGridHelper.getCurrentDataStack);
+            }
+            catch (Exception ex)
+            {
+                response = ex.Message;
+            }
+            e.Result = response;
+        }
+
+        #endregion
+        #endregion
+        #region CustomCommands
+        private void CanExecuteIsDataGridNotNull(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (dataGridHelper.getCurrentDataStack != null)
+                e.CanExecute = true;
+            else
+                e.CanExecute = false;
+        }
+        #region SanitizingCommand
+        public RoutedCommand SanitizingCommand = new RoutedCommand();
+
+        private void ExecuteSanitizingCommand(object sender, ExecutedRoutedEventArgs e)
+        {
+            SanitizingWindow window = new SanitizingWindow(dataGridHelper.getCurrentDataStack);
+            window.Show();
+        }
+        #endregion
+        #region PowerEntryCommand
+        RoutedCommand PowerEntryCommand = new RoutedCommand();
+        private void PowerEntryCommandExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+
+            BillingDataDataContext db = new BillingDataDataContext();
+            PowerEntry powerWin = new PowerEntry(dataGridHelper.getCurrentDataStack, db.Clients.Select(c => c.CLCODE.ToString()).ToList());
+            powerWin.Show();
+
+        }
+        #endregion
+        #region SaveCommand
+        private void CanExecuteSaveCommand(object sender, CanExecuteRoutedEventArgs e)
+        {
+            Debug.WriteLine("Here In");
+            if (dataGridHelper != null)
+            {
+                if (dataGridHelper.getCurrentDataStack == null || SaveWorker.IsBusy == true)
+                {
+                    e.CanExecute = false;
+                }
+                else
+                    e.CanExecute = true;
+            }
+            else
+                e.CanExecute = false;
+            Debug.WriteLine("Here Out");
+        }
+        private void ExecuteSaveCommand(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBlock.Text = MessageBlock.Text + "\n Saving operation started...";
+            SaveWorker.RunWorkerAsync();
+        }
+        #endregion
+        #region LoadCommand
+        private void OpenCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            Debug.WriteLine("Here in open..");
+            if (LoadWorker != null)
+            {
+                if (LoadWorker.IsBusy == true)
+                    e.CanExecute = false;
+                else
+                    e.CanExecute = true;
+            }
+            else
+                e.CanExecute = false;
+            Debug.WriteLine("Here in open out");
+        }
+        #endregion
+        #endregion
 
         #region CommandFunctions
         private void Open_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -161,18 +315,54 @@ namespace FinalUi
             this.WindowState = WindowState.Minimized;
         }
 
-        private void PowerEntry_Click(object sender, RoutedEventArgs e)
+
+
+        private void CloseCurrentClick_Click(object sender, RoutedEventArgs e)
         {
-            if (dataGridSource != null)
+
+            if (buttonList.Count > 0)
             {
-                BillingDataDataContext db = new BillingDataDataContext();
-                PowerEntry powerWin = new PowerEntry(dataGridHelper.getCurrentDataStack, db.Clients.Select(c => c.Code).ToList());
-                powerWin.Show();
+                DBHelper help = new DBHelper();
+                help.deleteRuntimeData(dataGridHelper.currentSheetNumber);
+                dataGridHelper.removeSheet(dataGridHelper.currentSheetNumber);
+                DataGridSheetPanel.Children.Remove(activeButton);
+                buttonList.Remove(activeButton);
+                activeButton = buttonList.Single(x => x.Value == buttonList.Values.Min()).Key;
+
             }
         }
         #endregion
-        BackgroundWorker worker;
         #region DataGrid Methods
+        void addingNewPage(int key)
+        {
+            dataGridHelper.getFirstPage();
+            Button button = new Button();
+            button.Style = (Style)FindResource("all");
+            button.Background = Brushes.Transparent;
+            StackPanel panel = new StackPanel();
+            Path path = new Path();
+            path.Data = Geometry.Parse(@"F1M3.905,27.953C3.905,27.953 2,2.147 16.096,2.074 30.193,2 55.109,2.074 55.109,2.074 55.109,2.074 61.586,2.221 77.054,
+			27.953 77.054,27.953 3.905,27.953 3.905,27.953z");
+            path.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A000000"));
+            path.Height = 29;
+            path.Width = 79;
+            path.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF5B5B5B"));
+            panel.Children.Add(path);
+            TextBlock text = new TextBlock();
+            text.Text = "Sheet " + key.ToString();
+            text.Margin = new Thickness(0, -21, 12, 0);
+            text.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFffffff"));
+            text.FontSize = 12;
+            text.Background = Brushes.Transparent;
+            text.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
+            panel.Children.Add(text);
+            button.Content = panel;
+            button.Click += SheetSelectButton_Click;
+            DataGridSheetPanel.Children.Add(button);
+            buttonList.Add(button, key);
+            activeButton = button;
+
+        }
         void loadData_Closed(object sender, EventArgs e)
         {
             LoadData dataWind = (LoadData)sender;
@@ -182,68 +372,18 @@ namespace FinalUi
             {
                 if (dataWind.isNewSheet)
                 {
-                    worker.WorkerReportsProgress = true;
-                    worker.ProgressChanged += worker_ProgressChanged;
                     int key = dataGridHelper.addNewSheet(dataWind.data, name);
-                    worker.RunWorkerAsync(dataWind.data);
-
-                    dataGridHelper.getFirstPage();
-                    Button button = new Button();
-                    button.Style = (Style)FindResource("all");
-                    button.Background = Brushes.Transparent;
-                    StackPanel panel = new StackPanel();
-                    Path path = new Path();
-                    path.Data = Geometry.Parse(@"F1M3.905,27.953C3.905,27.953 2,2.147 16.096,2.074 30.193,2 55.109,2.074 55.109,2.074 55.109,2.074 61.586,2.221 77.054,
-			27.953 77.054,27.953 3.905,27.953 3.905,27.953z");
-                    path.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A000000"));
-                    path.Height = 29;
-                    path.Width = 79;
-                    path.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF5B5B5B"));
-                    panel.Children.Add(path);
-                    TextBlock text = new TextBlock();
-                    text.Text = "Sheet " + key.ToString();
-                    text.Margin = new Thickness(0, -21, 12, 0);
-                    text.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFffffff"));
-                    text.FontSize = 12;
-                    text.Background = Brushes.Transparent;
-                    text.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
-                    panel.Children.Add(text);
-                    button.Content = panel;
-                    button.Click += SheetSelectButton_Click;
-                    DataGridSheetPanel.Children.Add(button);
-                    buttonList.Add(button, key);
-                    activeButton = button;
+                    addingNewPage(key);
                 }
                 else
                 {
                     dataGridHelper.addDataToCurrentSheet(dataWind.data);
+                    dataGridHelper.refreshCurrentPage();
                 }
+                LoadWorker.RunWorkerAsync(dataWind.data);
+
+
             }
-        }
-
-        void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (e.Error != null)
-                MessageBox.Show("Done... " + e.Error.Message);
-            else
-                MessageBox.Show("Done");
-
-        }
-
-        void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            MessageTextBox.Text = "in progress... " + e.ProgressPercentage.ToString();
-        }
-
-        void insertData_DoWork(object sender, DoWorkEventArgs e)
-        {
-
-            ((BackgroundWorker)sender).ReportProgress(10);
-            List<RuntimeData> data = (List<RuntimeData>)e.Argument;
-
-            DBHelper help = new DBHelper();
-            help.insertRuntimeData(data, dataGridHelper.currentSheetNumber); ;
-            ((BackgroundWorker)sender).ReportProgress(100);
         }
 
         private void SheetSelectButton_Click(object sender, RoutedEventArgs e)
@@ -303,32 +443,11 @@ namespace FinalUi
             }
         }
         #endregion
-        Button activeButton;
 
-        private void SanitizingButton_Click(object sender, RoutedEventArgs e)
-        {
-            SanitizingWindow window = new SanitizingWindow(dataGridHelper.getCurrentDataStack);
-            window.Show();
-        }
+        
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
 
-        private void CloseCurrentClick_Click(object sender, RoutedEventArgs e)
-        {
-
-            if (buttonList.Count > 0)
-            {
-                DBHelper help = new DBHelper();
-                help.deleteRuntimeData(dataGridHelper.currentSheetNumber);
-                dataGridHelper.removeSheet(dataGridHelper.currentSheetNumber);
-                DataGridSheetPanel.Children.Remove(activeButton);
-                buttonList.Remove(activeButton);
-
-            }
-        }
 
 
     }

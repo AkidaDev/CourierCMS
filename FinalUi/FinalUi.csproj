@@ -58,11 +58,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CityWindow.xaml.cs">
+      <DependentUpon>CityWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClientWindow.xaml.cs">
+      <DependentUpon>ClientWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Filter.cs" />
     <Compile Include="FilterSelectWindow.xaml.cs">
       <DependentUpon>FilterSelectWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="InitializeScript.cs" />
+    <Compile Include="RateWindow.xaml.cs">
+      <DependentUpon>RateWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SanitizingWindow.xaml.cs">
       <DependentUpon>SanitizingWindow.xaml</DependentUpon>
     </Compile>
@@ -71,6 +80,14 @@
     <Compile Include="UserControlGallery.xaml.cs">
       <DependentUpon>UserControlGallery.xaml</DependentUpon>
     </Compile>
+    <Page Include="CityWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FilterSelectWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -115,6 +132,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PowerEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

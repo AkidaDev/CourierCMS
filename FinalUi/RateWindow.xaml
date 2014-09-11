@@ -1,0 +1,35 @@
+﻿<Window x:Class="FinalUi.RateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="RateWindow" Height="300" Width="300">
+    <Window.Resources>
+        <CollectionViewSource x:Key="ServiceCodes" CollectionViewType="ListCollectionView"></CollectionViewSource>
+        <CollectionViewSource x:Key="ZoneCodes" CollectionViewType="ListCollectionView"></CollectionViewSource>
+        <CollectionViewSource x:Key="RateCodes" CollectionViewType="ListCollectionView"></CollectionViewSource>
+    </Window.Resources>
+    <StackPanel>
+        <WrapPanel>
+            <TextBlock Text="Select Rate Code: "></TextBlock>
+            <ComboBox IsEditable="True" KeyUp="ComboBoxRate_KeyUp" Name="ComboBoxRate"></ComboBox>
+        </WrapPanel>
+        <WrapPanel>
+            <TextBlock Text="Select Service Code: "></TextBlock>
+            <ComboBox IsEditable="True" Name="ComboBoxService"></ComboBox>
+        </WrapPanel>
+        <WrapPanel>
+            <TextBlock Text="Select Zone Code: "></TextBlock>
+            <ComboBox Name="ComboBoxZone" IsEditable="True"></ComboBox>
+        </WrapPanel>
+        <WrapPanel>
+            <TextBlock Text="DOX: "></TextBlock>
+            <ComboBox Name="ComboBoxDox" IsEditable="True">
+                <ComboBoxItem Content="N"/>
+                <ComboBoxItem Content="D"/>
+                
+            </ComboBox>
+        </WrapPanel>
+        <StackPanel Name="RatePanel">
+            
+        </StackPanel>
+    </StackPanel>
+</Window>

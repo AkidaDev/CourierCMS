@@ -7,10 +7,11 @@
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Open"
                         Executed="Open_Executed"
-                        CanExecute="CommandBinding_CanExecute"/>
+                        CanExecute="OpenCommand_CanExecute"/>
         <CommandBinding Command="ApplicationCommands.Close" 
                         Executed="CommandBinding_Executed"
                         CanExecute="CommandBinding_CanExecute"/>
+        
     </Window.CommandBindings>
     <Window.Resources>
         <LinearGradientBrush x:Key="ContentBack">
@@ -36,7 +37,13 @@
             <Menu Margin="3" Background="Transparent" FontSize="14">
                 <MenuItem Header="File" Margin="10 0 0 0"/>
                 <MenuItem Header="View" Margin="10 0 0 0"/>
-                <MenuItem Header="Tools" Margin="10 0 0 0"/>
+                <MenuItem Header="Tools" Margin="10 0 0 0">
+                    <MenuItem Header="Managment">
+                        <MenuItem Header="Clients"></MenuItem>
+                        <MenuItem Header="Employees"></MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="Edit Rates"></MenuItem>
+                </MenuItem>
                 <MenuItem Header="Help" Margin="10 0 0 0"/>
             </Menu>
             <WrapPanel HorizontalAlignment="Right" Margin="3,2,5,3">
@@ -134,7 +141,7 @@
                         </Grid.RowDefinitions>
 
                         <Image Source="Images/left doc.png" Grid.Row="0" Width="48" Height="30" Grid.Column="0"/>
-                         <Button Style="{StaticResource side}"  Grid.Row="0" Width="48" Height="30" Grid.Column="0">
+                         <Button Style="{StaticResource side}" Command="ApplicationCommands.Open"  Grid.Row="0" Width="48" Height="30" Grid.Column="0">
                             <Button.Content>
                                 <Path x:Name="import_files" Data="F1M11.187,19.719C11.187,19.719 11.187,20.375 11.187,20.375 11.187,20.375 13.812,20.375 13.812,20.375 13.812,
 						20.375 13.812,19.719 13.812,19.719 13.812,19.719 11.187,19.719 11.187,19.719z M9.875,17.094C9.875,17.094 9.875,17.75 9.875,17.75 9.875,17.75 15.125,
@@ -151,7 +158,7 @@
                         </Button>
 
                         <Image Source="Images/middock.png" Grid.Row="0" Width="45" Height="30" Grid.Column="1"/>
-                        <Button Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="1" Name="SanitizingButton" Click="SanitizingButton_Click">
+                        <Button Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="1" Name="SanitizingButton">
                             <Button.Content>
                                 <Path x:Name="reload" Data="F1M2,12.942C2,12.942 10.226,15.241 10.226,15.241 10.226,15.241 8.275,17.071 8.275,
 						17.071 9.288,17.922 10.917,18.786 12.32,18.786 15.074,18.786 17.386,16.824 18.039,14.171 18.039,14.171 21.987,15.222 21.987,15.222 20.891,
@@ -163,7 +170,7 @@
                         </Button>
 
                         <Image Source="Images/middock.png" Grid.Row="0" Width="45" Height="30" Grid.Column="2"/>
-                        <Button Style="{StaticResource side}" Name="SaveButton" Click="SaveButton_Click" Grid.Row="0" Width="45" Height="30" Grid.Column="2">
+                        <Button Style="{StaticResource side}"  Name="SaveButton" Grid.Row="0" Width="45" Height="30" Grid.Column="2">
                             <Button.Content>
                                 <Path x:Name="save" Data="F1M5.707,16.89C5.707,16.89 16.879,16.89 16.879,16.89 16.879,16.89 16.879,18.13 16.879,18.13 16.879,18.13 5.707,18.13 5.707,
 						18.13 5.707,18.13 5.707,16.89 5.707,16.89z M5.707,13.414C5.707,13.414 16.879,13.414 16.879,13.414 16.879,13.414 16.879,14.653 16.879,14.653 16.879,
@@ -185,10 +192,17 @@
                         </Button>
 
                         <Image  Source="Images/middock.png" Grid.Row="0" Width="45" Height="30" Grid.Column="4"/>
-                         <Button Style="{StaticResource side}" Click="PowerEntry_Click"  Grid.Row="0" Width="45" Height="30" Grid.Column="4">
+                         <Button Style="{StaticResource side}" Name="PowerEntryButton" Grid.Row="0" Width="45" Height="30" Grid.Column="4">
                             <Button.Content>
-                                <Path x:Name="forth" Data="F1M23,9.5C23,9.5 14.6,18 14.6,18 14.6,18 14.6,12.687 14.6,12.687 14.6,12.687 2,12.687 2,12.687 2,12.687 2,6.312 2,6.312 2,
-						6.312 14.6,6.312 14.6,6.312 14.6,6.312 14.6,1 14.6,1 14.6,1 23,9.5 23,9.5z" Fill="Black" Height="19"  Width="24"/>
+                                <Path x:Name="forth" Data="F1M6.589,15.076C6.602,15.17 6.625,15.286 6.656,15.42 6.688,15.553 6.723,15.684 6.757,15.818 6.792,15.951 6.826,
+			16.071 6.859,16.181 6.889,16.29 6.913,16.419 6.93,16.468 6.93,16.468 7.302,17.752 7.302,17.752 7.302,17.752 5.887,17.752 5.887,17.752 5.887,17.752 6.256,
+			16.468 6.256,16.468 6.265,16.439 6.276,16.343 6.293,16.281 6.293,16.281 6.351,16.067 6.351,16.067 6.351,16.067 6.42,15.811 6.42,15.811 6.42,15.811 6.487,
+			15.54 6.487,15.54 6.511,15.45 6.53,15.367 6.548,15.286 6.565,15.205 6.578,15.136 6.589,15.076z M5.833,14.251C5.833,14.251 3.952,20.158 3.952,20.158 3.952,
+			20.158 5.192,20.158 5.192,20.158 5.192,20.158 5.591,18.846 5.591,18.846 5.591,18.846 7.586,18.846 7.586,18.846 7.586,18.846 7.982,20.158 7.982,20.158 7.982,
+			20.158 9.223,20.158 9.223,20.158 9.223,20.158 7.334,14.251 7.334,14.251 7.334,14.251 5.833,14.251 5.833,14.251z M6.515,12.853C9.005,12.853 11.028,
+			14.901 11.028,17.426 11.028,19.952 9.005,22 6.515,22 4.021,22 2,19.952 2,17.426 2,14.901 4.021,12.853 6.515,12.853z M14.226,2C14.226,2 21.607,2 21.607,
+			2 21.607,2 18.982,9.22 18.982,9.22 18.982,9.22 23,9.22 23,9.22 23,9.22 15.214,21.252 15.214,21.252 15.214,21.252 13.987,21.252 13.987,21.252 13.987,
+			21.252 15.922,12.501 15.922,12.501 15.922,12.501 12.231,12.501 12.231,12.501 12.231,12.501 14.226,2 14.226,2z" Fill="Black" Height="19"  Width="24"/>
                             </Button.Content>
                         </Button>
 
@@ -257,7 +271,7 @@
                         </Style>
                     </DockPanel.Resources>
                     <WrapPanel Name="NotificationBar" DockPanel.Dock="Bottom">
-                        <TextBlock Text="Here Comes the message.." Name="MessageTextBox"></TextBlock>
+                        <TextBlock Text="Log..." Name="MessageBlock"></TextBlock>
                     </WrapPanel>
                     <WrapPanel DockPanel.Dock="Bottom" Name="DataGridOptionpanel" Background="{DynamicResource GridBackground}" Margin="1,0,0,0" Height="26">
                          <Button Style="{StaticResource smallbutton}" Name="DataGridFirstPage" Margin="38,2,5,2" Click="DataGridFirstPage_Click">
@@ -305,11 +319,15 @@
                                 <DataGridTextColumn Header="Billed Amount" Binding="{Binding Path=FrAmount}"/>
                                 <DataGridTextColumn Header="Client" Binding="{Binding Path=CustCode}">
                                 </DataGridTextColumn>
-                                <DataGridTextColumn Header="Date" Binding="{Binding Path=Date}"/>
-
+                                <DataGridTextColumn Header="BookingDate" Binding="{Binding Path=BookingDate}"/>
+                                <DataGridTextColumn Header="Destination" Binding="{Binding Path=Destination}"/>
+                                <DataGridTextColumn Header="PinCode" Binding="{Binding Path=DestinationPin}"/>
+                                <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}"/>
+                                <DataGridTextColumn Header="Mode" Binding="{Binding Path=Mode}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </ContentControl> 
+                   
                 </DockPanel>
         
 		    </StackPanel>

@@ -79,12 +79,15 @@ namespace FinalUi
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            if(DataToLoadDate.SelectedDate != null)
+            if (StartLoadDate.SelectedDate != null && EndLoadDate.SelectedDate != null)
             {
-                BillingDataDataContext db = new BillingDataDataContext();
-                _data = UtilityClass.convertTransListToRuntimeList(db.Transactions.Where(x => x.BookingDate == DataToLoadDate.SelectedDate)).ToList();
-                dataLoaded = true;
-                this.Close();
+                if (StartLoadDate.SelectedDate <= EndLoadDate.SelectedDate)
+                {
+                    BillingDataDataContext db = new BillingDataDataContext();
+                    _data = UtilityClass.loadDataFromDatabase((DateTime)StartLoadDate.SelectedDate, (DateTime)EndLoadDate.SelectedDate);
+                    dataLoaded = true;
+                    this.Close();
+                }
             }
         }
 
