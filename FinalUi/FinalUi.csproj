@@ -35,9 +35,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Printing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -74,6 +76,9 @@
       <DependentUpon>FilterSelectWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="InitializeScript.cs" />
+    <Compile Include="PrintWindow.xaml.cs">
+      <DependentUpon>PrintWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RateWindow.xaml.cs">
       <DependentUpon>RateWindow.xaml</DependentUpon>
     </Compile>
@@ -132,6 +137,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PowerEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrintWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

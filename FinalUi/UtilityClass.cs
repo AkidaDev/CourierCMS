@@ -37,6 +37,8 @@ namespace FinalUi
             runtimeDataObj.Mode = trans.Mode;
             runtimeDataObj.ServiceTax = trans.ServiceTax;
             runtimeDataObj.SplDisc = trans.SplDisc;
+            runtimeDataObj.CustCode = trans.CustCode;
+           
             return runtimeDataObj;
         }
         static public List<RuntimeData> loadDataFromDatabase(DateTime startDate, DateTime endDate)

@@ -44,7 +44,6 @@ namespace FinalUi
             stringBuilder.Add("Password", passWord);
             Configs.Default.ConnString = stringBuilder.ConnectionString;
             Configs.Default.Save();
-            BillingDataDataContext db = new BillingDataDataContext();
             if (db.DatabaseExists())
             {
                 db.DeleteDatabase();
@@ -103,14 +102,12 @@ namespace FinalUi
         Button activeButton;
         BackgroundWorker LoadWorker;
         BackgroundWorker SaveWorker;
+        BackgroundWorker DeleteSheetWorker;
+        BillingDataDataContext db;
         #endregion
         public MainWindow()
         {
             #region setupCode
-            BackgroundWorker worker2 = new BackgroundWorker();
-            worker2.DoWork += worker_DoWork;
-            worker2.RunWorkerCompleted += RunCompleted;
-            //   worker2.RunWorkerAsync();
             #endregion
             #region WindowDimensionsCode
             this.Width = System.Windows.SystemParameters.WorkArea.Width;
@@ -119,10 +116,11 @@ namespace FinalUi
             this.Top = 0;
             this.WindowState = WindowState.Normal;
             #endregion
+            db = new BillingDataDataContext();
             ResourceDictionary dict = this.Resources;
             InitializeComponent();
             CollectionViewSource clientCodeList = (CollectionViewSource)FindResource("ClientCodeList");
-            clientCodeList.Source = (new BillingDataDataContext()).Clients.Select(c => c.CLCODE);
+            clientCodeList.Source = db.Clients.Select(c => c.CLCODE);
 
             #region DataGrid Code Lines
             dataGridSource = (CollectionViewSource)FindResource("DataGridDataContext");
@@ -144,15 +142,18 @@ namespace FinalUi
             CommandBinding SaveCommandBinding = new CommandBinding(ApplicationCommands.Save, ExecuteSaveCommand, CanExecuteSaveCommand);
             this.CommandBindings.Add(SaveCommandBinding);
             SaveButton.Command = ApplicationCommands.Save;
+
+            CommandBinding DeleteCommandBinding = new CommandBinding(DeleteCommand, DeleteCommandExecuted, DeleteCommand_CanExecute);
+            this.CommandBindings.Add(DeleteCommandBinding);
+            CloseCurrentClick.Command = DeleteCommand;
             #endregion
 
 
             #region loading initial pages
-            BillingDataDataContext db = new BillingDataDataContext();
-            List<int> sheets = db.RuntimeMetas.Where(y => y.UserName == SecurityModule.currentUserName).Select(x => x.SheetNo).Distinct().ToList();
+List<int> sheets = db.RuntimeMetas.Where(y => y.UserName == SecurityModule.currentUserName).Select(x => x.SheetNo).Distinct().ToList();
             foreach (int sheet in sheets)
             {
-                List<RuntimeData> runtimeData = db.RuntimeMetas.Where(x => x.SheetNo == sheet && x.UserName == SecurityModule.currentUserName).Select(y => y.RuntimeData).ToList();
+                List<RuntimeData> runtimeData = db.RuntimeMetas.Where(x => x.SheetNo == sheet && x.UserName == SecurityModule.currentUserName).Select(y => y.RuntimeData).OrderBy(x => x.ConsignmentNo).ToList(); ;
                 dataGridHelper.addNewSheet(runtimeData, "sheet " + sheet.ToString());
                 addingNewPage(sheet);
             }
@@ -166,9 +167,12 @@ namespace FinalUi
             LoadWorker.DoWork += LoadWorker_DoWork;
             LoadWorker.ProgressChanged += LoadWorker_ProgressChanged;
             LoadWorker.RunWorkerCompleted += LoadWorker_RunWorkerCompleted;
+            DeleteSheetWorker = new BackgroundWorker();
+            DeleteSheetWorker.DoWork += DeleteWorker_DoWork;
+            DeleteSheetWorker.RunWorkerCompleted += DeleteWorker_RunWorkerCompleted;
         }
         #region backGround Worker Functions
-
+        #region LoadWorker
         void LoadWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             MessageBlock.Text = MessageBlock.Text + "\n" + e.Result;
@@ -194,7 +198,7 @@ namespace FinalUi
             }
             e.Result = response;
         }
-
+#endregion
         #region Save Worker
         void SaveWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -222,6 +226,18 @@ namespace FinalUi
         }
 
         #endregion
+        #region Delete Sheet Worker
+        void DeleteWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MessageBlock.Text = MessageBlock.Text + "\n" + "Delete Opoeration Completed. " + e.Error;
+        }
+        void DeleteWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            DBHelper help = new DBHelper();
+            help.deleteRuntimeData((int)e.Argument);
+                
+        }
+        #endregion
         #endregion
         #region CustomCommands
         private void CanExecuteIsDataGridNotNull(object sender, CanExecuteRoutedEventArgs e)
@@ -236,7 +252,7 @@ namespace FinalUi
 
         private void ExecuteSanitizingCommand(object sender, ExecutedRoutedEventArgs e)
         {
-            SanitizingWindow window = new SanitizingWindow(dataGridHelper.getCurrentDataStack);
+            SanitizingWindow window = new SanitizingWindow(dataGridHelper.getCurrentDataStack,db);
             window.Show();
         }
         #endregion
@@ -245,8 +261,7 @@ namespace FinalUi
         private void PowerEntryCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
 
-            BillingDataDataContext db = new BillingDataDataContext();
-            PowerEntry powerWin = new PowerEntry(dataGridHelper.getCurrentDataStack, db.Clients.Select(c => c.CLCODE.ToString()).ToList());
+            PowerEntry powerWin = new PowerEntry(dataGridHelper.getCurrentDataStack, db.Clients.Select(c => c.CLCODE.ToString()).ToList(),db);
             powerWin.Show();
 
         }
@@ -274,6 +289,28 @@ namespace FinalUi
             SaveWorker.RunWorkerAsync();
         }
         #endregion
+        #region printCommand
+
+        private void ExecutePrint(object sender, ExecutedRoutedEventArgs e)
+        {
+            PrintWindow win = new PrintWindow(dataGridHelper.getCurrentDataStack);
+            win.Show();
+        }
+        private void CanExecutePrintCommand(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (dataGridHelper != null)
+            {
+                if (dataGridHelper.getCurrentDataStack != null)
+                {
+                    e.CanExecute = true;
+                }
+                else
+                    e.CanExecute = false;
+            }
+            else
+                e.CanExecute = false;
+        }
+        #endregion
         #region LoadCommand
         private void OpenCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -288,6 +325,38 @@ namespace FinalUi
             else
                 e.CanExecute = false;
             Debug.WriteLine("Here in open out");
+        }
+        #endregion
+        #region deleteCommand
+        public RoutedCommand DeleteCommand = new RoutedCommand();
+        private void DeleteCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (DeleteSheetWorker != null && dataGridHelper != null)
+            {
+                if (DeleteSheetWorker.IsBusy == true || buttonList.Count == 0)
+                {
+                    e.CanExecute = false;
+                }
+                else
+                    e.CanExecute = true;
+            }
+            else
+                e.CanExecute = false;
+        }
+        private void DeleteCommandExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (buttonList.Count > 0)
+            {
+                DeleteSheetWorker.RunWorkerAsync(dataGridHelper.currentSheetNumber);
+                dataGridHelper.removeSheet(dataGridHelper.currentSheetNumber);
+                DataGridSheetPanel.Children.Remove(activeButton);
+                buttonList.Remove(activeButton);
+                if (buttonList.Count > 0)
+                    activeButton = buttonList.Single(x => x.Value == buttonList.Values.Min()).Key;
+                else
+                    activeButton = null;
+
+            }
         }
         #endregion
         #endregion
@@ -317,20 +386,7 @@ namespace FinalUi
 
 
 
-        private void CloseCurrentClick_Click(object sender, RoutedEventArgs e)
-        {
-
-            if (buttonList.Count > 0)
-            {
-                DBHelper help = new DBHelper();
-                help.deleteRuntimeData(dataGridHelper.currentSheetNumber);
-                dataGridHelper.removeSheet(dataGridHelper.currentSheetNumber);
-                DataGridSheetPanel.Children.Remove(activeButton);
-                buttonList.Remove(activeButton);
-                activeButton = buttonList.Single(x => x.Value == buttonList.Values.Min()).Key;
-
-            }
-        }
+        
         #endregion
         #region DataGrid Methods
         void addingNewPage(int key)
@@ -444,7 +500,7 @@ namespace FinalUi
         }
         #endregion
 
-        
+
 
 
 

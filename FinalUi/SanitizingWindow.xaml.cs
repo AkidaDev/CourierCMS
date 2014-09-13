@@ -28,9 +28,9 @@ namespace FinalUi
         CollectionViewSource conssNumbers;
         List<RuntimeData> dataContext;
         BillingDataDataContext db;
-        public SanitizingWindow(List<RuntimeData> helperObj)
+        public SanitizingWindow(List<RuntimeData> helperObj, BillingDataDataContext db)
         {
-            db = new BillingDataDataContext();
+            this.db = db;
             dataContext = helperObj.ToList();
             InitializeComponent();
             viewSource = (CollectionViewSource)FindResource("CustomerNameList");
@@ -54,6 +54,15 @@ namespace FinalUi
             data.Destination = Destination.Text;
             data.DestinationPin = Decimal.Parse(DestinationPin.Text);
             data.CustCode = CustomerSelected.Text;
+            data = db.RuntimeDatas.Single(x => x.Id == data.Id);
+            data.Weight = Double.Parse(WeightAccToDTDC.Text);
+            data.FrWeight = Double.Parse(WeightAccToFranchize.Text);
+            data.Amount = Decimal.Parse(Cost.Text);
+            data.FrAmount = Decimal.Parse(BilledAmount.Text);
+            data.Destination = Destination.Text;
+            data.DestinationPin = Decimal.Parse(DestinationPin.Text);
+            data.CustCode = CustomerSelected.Text;
+            db.SubmitChanges();
             setNextData();
         }
         public void setNextData()
@@ -98,15 +107,7 @@ namespace FinalUi
 
         private void DoneButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Do you want to save this data into database? ", "Save Box", MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.Yes)
-            {
-                MessageBox.Show("Yay");
-            }
-            else
-            {
-                MessageBox.Show("Nay");
-            }
+            this.Close();
         }
     }
 }

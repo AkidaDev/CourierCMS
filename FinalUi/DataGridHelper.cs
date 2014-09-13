@@ -160,7 +160,12 @@ namespace FinalUi
             int key = maxIndex + 1;
             if (name == "")
             {
+                key = maxIndex + 1;
                 name = "Sheet " + (key).ToString();
+            }
+            else
+            {
+                key = int.Parse(name.Split(' ').Last());
             }
 
 
@@ -200,7 +205,7 @@ namespace FinalUi
                 {
                     return null;
                 }
-                return dataSheetManager.currentDataSheet.dataStack;
+                return dataSheetManager.currentDataSheet.dataStack.OrderBy(x=>x.ConsignmentNo).ToList();
             }
         }
         public int currentSheetNumber

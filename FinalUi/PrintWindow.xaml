@@ -1,0 +1,39 @@
+﻿<Window x:Class="FinalUi.PrintWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PrintWindow" Height="300" Width="700">
+    <Window.Resources>
+        <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"></CollectionViewSource>
+        <CollectionViewSource x:Key="DataGridDataSource" CollectionViewType="ListCollectionView"></CollectionViewSource>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
+        <WrapPanel Grid.Row="0">
+            <TextBlock Text="Client: "></TextBlock>
+            <ComboBox Name="ClientList" MinWidth="50" SelectionChanged="ClientList_SelectionChanged" ItemsSource="{Binding}" DataContext="{StaticResource ClientList}"></ComboBox>
+            <TextBlock Text="FromDate: "></TextBlock>
+            <DatePicker Name="FromDate" CalendarClosed="ToDate_CalendarClosed"></DatePicker>
+            <TextBlock Text="ToDate: "></TextBlock>
+            <DatePicker Name="ToDate" CalendarClosed="ToDate_CalendarClosed"></DatePicker>
+            <Button HorizontalAlignment="Right" Content="Print" Click="Button_Click"></Button>
+        </WrapPanel>
+        <ContentControl Grid.Row="1">
+            <DataGrid Name="DataGridPrint" ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataSource}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ConnsignmentNo" Binding="{Binding Path=ConsignmentNo}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Weight" Binding="{Binding Path=Weight}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Cost" Binding="{Binding Path=Amount}"/>
+                    <DataGridTextColumn Header="BookingDate" Binding="{Binding Path=BookingDate}"/>
+                    <DataGridTextColumn Header="Destination" Binding="{Binding Path=Destination}"/>
+                    <DataGridTextColumn Header="PinCode" Binding="{Binding Path=DestinationPin}"/>
+                    <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}"/>
+                    <DataGridTextColumn Header="Mode" Binding="{Binding Path=Mode}"/>
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </ContentControl>
+    </Grid>
+</Window>

@@ -14,18 +14,23 @@ using System.Windows.Shapes;
 
 namespace FinalUi
 {
+
+    
     /// <summary>
     /// Interaction logic for PowerEntry.xaml
     /// </summary>
     public partial class PowerEntry : Window
     {
+        BillingDataDataContext db;
         List<RuntimeData> DataStack;
-        public PowerEntry(List<RuntimeData> DataStack, List<String> ClientCodes) : this()
+        public PowerEntry(List<RuntimeData> DataStack, List<String> ClientCodes, BillingDataDataContext db)
+            : this()
         {
-            startConnNo.DataContext = DataStack.Select(c=>c.ConsignmentNo).ToList();
-            endConnNo.DataContext = DataStack.Select(c=>c.ConsignmentNo).ToList();
+            startConnNo.DataContext = DataStack.Select(c => c.ConsignmentNo).ToList();
+            endConnNo.DataContext = DataStack.Select(c => c.ConsignmentNo).ToList();
             clientCode.DataContext = ClientCodes;
             this.DataStack = DataStack;
+            this.db = db;
         }
         PowerEntry()
         {
@@ -36,17 +41,22 @@ namespace FinalUi
         {
             int startCOnnNoIndex = startConnNo.SelectedIndex;
             int endConnNoIndex = endConnNo.SelectedIndex;
-            if(startCOnnNoIndex < endConnNoIndex)
+            if (startCOnnNoIndex < endConnNoIndex && startCOnnNoIndex != -1 && endConnNoIndex != -1)
             {
-                for (int i = startCOnnNoIndex; i <= endConnNoIndex; i++ )
+                for (int i = startCOnnNoIndex; i <= endConnNoIndex; i++)
                 {
                     RuntimeData data = DataStack.ElementAt(i);
                     data.CustCode = clientCode.SelectedValue.ToString();
-                    data.FrAmount =(decimal) UtilityClass.getCost(data.CustCode, data.Destination, data.DestinationPin, data.Weight);
+                    data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination, data.DestinationPin, data.Weight);
                     data.FrWeight = data.Weight;
-                    
+                    data = db.RuntimeDatas.Single(x => x.Id == data.Id);
+                    data.CustCode = clientCode.SelectedValue.ToString();
+                    data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination, data.DestinationPin, data.Weight);
+                    data.FrWeight = data.Weight;
+                    db.SubmitChanges();
                 }
             }
         }
+
     }
 }

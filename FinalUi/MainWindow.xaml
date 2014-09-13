@@ -11,7 +11,9 @@
         <CommandBinding Command="ApplicationCommands.Close" 
                         Executed="CommandBinding_Executed"
                         CanExecute="CommandBinding_CanExecute"/>
-        
+        <CommandBinding Command="ApplicationCommands.Print"
+                        Executed="ExecutePrint"
+                        CanExecute="CanExecutePrintCommand"/>
     </Window.CommandBindings>
     <Window.Resources>
         <LinearGradientBrush x:Key="ContentBack">
@@ -184,7 +186,7 @@
                         </Button>
 
                         <Image  Source="Images/middock.png" Grid.Row="0" Width="45" Height="30" Grid.Column="3"/>
-                         <Button Style="{StaticResource side}" Name="CloseCurrentClick" Click="CloseCurrentClick_Click" Grid.Row="0" Width="45" Height="30" Grid.Column="3">
+                         <Button Style="{StaticResource side}" Name="CloseCurrentClick"  Grid.Row="0" Width="45" Height="30" Grid.Column="3">
                             <Button.Content>
                                 <Path x:Name="back" Data="F1M10.4,12.687C10.4,12.687 10.4,18 10.4,18 10.4,18 2,9.5 2,9.5 2,9.5 10.4,1 10.4,1 10.4,1 10.4,6.312 10.4,6.312 10.4,
 						6.312 23,6.312 23,6.312 23,6.312 23,12.687 23,12.687 23,12.687 10.4,12.687 10.4,12.687z" Fill="Black" Height="19" Width="24"/>
@@ -228,7 +230,7 @@
                         </Button>
 
                         <Image Source="Images/rightdoc.png" Grid.Row="0" Width="48" Height="30" Grid.Column="6"/>
-                         <Button Style="{StaticResource side}"  Grid.Row="0" Width="48" Height="30" Grid.Column="6">
+                         <Button Style="{StaticResource side}"  Grid.Row="0" Width="48" Height="30" Grid.Column="6" Command="ApplicationCommands.Print">
                             <Button.Content>
                                 <Path x:Name="export" Data="F1M5.667,15C5.667,15 5.667,17.333 5.667,17.333 5.667,17.333 13.833,17.333 13.833,17.333 13.833,17.333 13.833,15 13.833,15 13.833,
 						15 5.667,15 5.667,15z M5.667,10.333C5.667,10.333 5.667,12.667 5.667,12.667 5.667,12.667 17.333,12.667 17.333,12.667 17.333,12.667 17.333,10.333 17.333,
