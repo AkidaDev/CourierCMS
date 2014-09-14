@@ -33,7 +33,7 @@ namespace FinalUi
 
             ImageBehavior.SetRepeatBehavior(LoadingGif, RepeatBehavior.Forever);
             CommandBinding command = new CommandBinding();
-            
+
             /*  Testing Code  */
             /********************* Must Delete Afterwards **********************/
             /* 
@@ -45,7 +45,7 @@ namespace FinalUi
            */
         }
         MainWindow window;
-        
+
         private void SetupButton_Click_1(object sender, RoutedEventArgs e)
         {
             InitializeScript scripts = new InitializeScript();
@@ -54,8 +54,6 @@ namespace FinalUi
             {
                 MessageBox.Show("Error : " + error);
             }
-            else
-                MessageBox.Show("Successfull");
         }
 
         private void Grid_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
@@ -63,29 +61,29 @@ namespace FinalUi
             DragMove();
         }
 
-        private void CloseButton_MouseEnter_1(object sender, MouseEventArgs e)
-        {
-            this.CloseButton.Foreground = new SolidColorBrush(Colors.Red);
-            this.CloseButton.Background = new SolidColorBrush(Colors.Black);
-        }
-
-        
-
         private void CloseButton_MouseLeave_1(object sender, MouseEventArgs e)
         {
-            this.CloseButton.Foreground = new SolidColorBrush(Colors.White);
+            //    this.CloseButton.Foreground = new SolidColorBrush(Colors.White);
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
+        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
         private void loginfail()
-        {   DropShadowEffect shadow = new DropShadowEffect();
-            this.vort.Source = (ImageSource)new BitmapImage(new Uri("Images/vortex1.png", UriKind.Relative));
+        {
+            DropShadowEffect shadow = new DropShadowEffect();
+            this.Blue.Visibility = Visibility.Hidden;
+            this.Red.Visibility = Visibility.Visible;
+            this.IncorectBox.Visibility = Visibility.Visible;
+            this.Exclamatory.Visibility = Visibility.Visible;
             shadow.Color = Colors.Red;
             shadow.ShadowDepth = 0;
-            this.MainGrid.Effect = shadow;  
+            this.MainGrid.Effect = shadow;
         }
 
         private void MainGrid_KeyUp(object sender, KeyEventArgs e)
@@ -94,13 +92,13 @@ namespace FinalUi
             {
                 if (!loginFlag)
                 {
-                   LoadingGifPanel.Visibility = Visibility.Visible;
+                    LoadingGifPanel.Visibility = Visibility.Visible;
                     string userName = UserName.Text;
                     string passWord = Password.Password;
                     if (SecurityModule.authenticate(userName, passWord))
                     {
                         LoadingGifPanel.Visibility = Visibility.Visible;
-                        
+
                         window = new MainWindow();
                         window.Show();
                         this.Close();
@@ -109,12 +107,11 @@ namespace FinalUi
                     else
                     {
                         loginfail();
-                        MessageBox.Show("Invalid Credentials");
                     }
                 }
             }
         }
 
-     
+
     }
 }
