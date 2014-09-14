@@ -70,10 +70,19 @@ namespace FinalUi
             }
         }
 
-        private void addData_Checked(object sender, RoutedEventArgs e)
+        private void addData_CheckedUnChecked(object sender, RoutedEventArgs e)
         {
-            CheckBox obj = (CheckBox)sender;
-            isNewSheet = !(bool)obj.IsChecked;
+            if (this.checkbox_selected.Visibility == Visibility.Hidden)
+            {
+                this.checkbox_selected.Visibility = Visibility.Visible;
+                this.checkbox_unselected.Visibility = Visibility.Hidden;
+                isNewSheet = false;
+            }
+            else {
+                this.checkbox_selected.Visibility = Visibility.Hidden;
+                this.checkbox_unselected.Visibility = Visibility.Visible;
+                isNewSheet = true;
+            }
       
         }
 
