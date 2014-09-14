@@ -3,7 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		Icon="Images/logo.png"
         Title="Vortex" 
-        ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Normal" Width="1024" Height="700">
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Normal" Width="1024" Height="700" WindowStyle="None">
+
+
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Open"
                         Executed="Open_Executed"
@@ -302,7 +304,7 @@
                         <DataGrid x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False" 
 						ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True"
 						BorderThickness="0">
-
+                           
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ConnsignmentNo" Binding="{Binding Path=ConsignmentNo}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Weight" Binding="{Binding Path=Weight}"></DataGridTextColumn>

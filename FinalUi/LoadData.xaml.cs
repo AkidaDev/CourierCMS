@@ -19,7 +19,6 @@ namespace FinalUi
     /// </summary>
     public partial class LoadData : Window
     {
-
         public LoadData()
         {
             isNewSheet = true;
@@ -86,6 +85,16 @@ namespace FinalUi
       
         }
 
+        public void loaddata(object sender, RoutedEventArgs e)
+        { 
+            if(this.selected_Circle.Visibility  == Visibility.Visible)
+            {
+                Button_Click_1(sender,e);
+            }else{
+                if(this.selected1_Circle.Visibility == Visibility.Visible)
+                Button_Click_2(sender,e);
+            }
+        }
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             if (StartLoadDate.SelectedDate != null && EndLoadDate.SelectedDate != null)
@@ -98,6 +107,33 @@ namespace FinalUi
                     this.Close();
                 }
             }
+        }
+        private void DataBrowserRadio_Click(object sender, RoutedEventArgs e)
+        { 
+            Button button = (Button)sender;
+            if (button.Name == this.BrowserRadio.Name)
+            {
+                this.selected_Circle.Visibility = Visibility.Visible;
+                this.selected1_Circle.Visibility = Visibility.Hidden;
+
+                
+            }
+            else
+            {
+                this.selected_Circle.Visibility = Visibility.Hidden;
+                this.selected1_Circle.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void Button_Click_Close(object sender, RoutedEventArgs e)
+        {
+          //  this.Owner.Effect = null;
+            this.Close();
+        }
+
+        private void DragthisWindow(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
 
     }

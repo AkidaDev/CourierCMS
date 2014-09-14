@@ -11,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -366,6 +367,10 @@ namespace FinalUi
         {
             LoadData loadData = new LoadData();
             loadData.Closed += loadData_Closed;
+            var blur = new BlurEffect();
+            var current = this.Background;
+            blur.Radius = 5;
+            //this.Effect = blur;
             loadData.Show();
         }
 
