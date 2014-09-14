@@ -150,7 +150,7 @@ namespace FinalUi
 
 
             #region loading initial pages
-List<int> sheets = db.RuntimeMetas.Where(y => y.UserName == SecurityModule.currentUserName).Select(x => x.SheetNo).Distinct().ToList();
+            List<int> sheets = db.RuntimeMetas.Where(y => y.UserName == SecurityModule.currentUserName).Select(x => x.SheetNo).Distinct().ToList();
             foreach (int sheet in sheets)
             {
                 List<RuntimeData> runtimeData = db.RuntimeMetas.Where(x => x.SheetNo == sheet && x.UserName == SecurityModule.currentUserName).Select(y => y.RuntimeData).OrderBy(x => x.ConsignmentNo).ToList(); ;
@@ -198,7 +198,7 @@ List<int> sheets = db.RuntimeMetas.Where(y => y.UserName == SecurityModule.curre
             }
             e.Result = response;
         }
-#endregion
+        #endregion
         #region Save Worker
         void SaveWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -235,7 +235,7 @@ List<int> sheets = db.RuntimeMetas.Where(y => y.UserName == SecurityModule.curre
         {
             DBHelper help = new DBHelper();
             help.deleteRuntimeData((int)e.Argument);
-                
+
         }
         #endregion
         #endregion
@@ -252,7 +252,7 @@ List<int> sheets = db.RuntimeMetas.Where(y => y.UserName == SecurityModule.curre
 
         private void ExecuteSanitizingCommand(object sender, ExecutedRoutedEventArgs e)
         {
-            SanitizingWindow window = new SanitizingWindow(dataGridHelper.getCurrentDataStack,db);
+            SanitizingWindow window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db);
             window.Show();
         }
         #endregion
@@ -261,7 +261,7 @@ List<int> sheets = db.RuntimeMetas.Where(y => y.UserName == SecurityModule.curre
         private void PowerEntryCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
 
-            PowerEntry powerWin = new PowerEntry(dataGridHelper.getCurrentDataStack, db.Clients.Select(c => c.CLCODE.ToString()).ToList(),db);
+            PowerEntry powerWin = new PowerEntry(dataGridHelper.getCurrentDataStack, db.Clients.Select(c => c.CLCODE.ToString()).ToList(), db);
             powerWin.Show();
 
         }
@@ -386,7 +386,7 @@ List<int> sheets = db.RuntimeMetas.Where(y => y.UserName == SecurityModule.curre
 
 
 
-        
+
         #endregion
         #region DataGrid Methods
         void addingNewPage(int key)
@@ -500,12 +500,39 @@ List<int> sheets = db.RuntimeMetas.Where(y => y.UserName == SecurityModule.curre
         }
         #endregion
 
+        private void NormalMaximize_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Normal)
+            {
+                this.WindowState = WindowState.Maximized;
+                Path path = new Path();
+                path.Data = Geometry.Parse(@"F1M2.111,7.667C2.111,7.667 2.111,14.958 2.111,14.958 2.111,14.958 9.889,14.958 9.889,14.958 9.889,14.958 9.889,7.667 9.889,
+				7.667 9.889,7.667 2.111,7.667 2.111,7.667z M6.222,2.25C6.222,2.25,6.222,4.438,6.222,6.625L8.674,6.625C9.403,6.625 9.889,6.625 9.889,6.625 10.5,6.625 11,
+				7.094 11,7.667 11,7.667 11,8.123 11,8.806L11,11 12.071,11C13.575,11 14.778,11 14.778,11 14.778,11 14.778,2.25 14.778,2.25 14.778,2.25 6.222,2.25 6.222,
+				2.25z M6.222,1C6.222,1 14.778,1 14.778,1 15.45,1 16,1.562 16,2.25 16,2.25 16,11 16,11 16,11.687 15.45,12.25 14.778,12.25 14.778,12.25 13.575,12.25 12.071,
+				12.25L11,12.25 11,13.819C11,14.502 11,14.958 11,14.958 11,15.531 10.5,16 9.889,16 9.889,16 2.111,16 2.111,16 1.5,16 1,15.531 1,14.958 1,14.958 1,7.667 1,
+				7.667 1,7.094 1.5,6.625 2.111,6.625 2.111,6.625 2.597,6.625 3.326,6.625L5,6.625C5,4.438 5,2.25 5,2.25 5,1.562 5.55,1 6.222,1z");
+                path.Fill = Brushes.Black;
+                StackPanel panel = new StackPanel();
+                panel.Children.Add(path);
+                this.NormalMaximize.Content = panel;
+            }
+            else
+            {
+                this.WindowState = WindowState.Normal;
+                Path path = new Path();
+                path.Data = Geometry.Parse(@"F1M3.222,5L3.222,6.702C3.222,9.071 3.222,11.778 3.222,11.778 3.222,11.778 11.778,11.778 11.778,11.778 11.778,11.778 11.778,9.071 11.778,
+						6.702L11.778,5 11.281,5C9.219,5,5.781,5,3.719,5z M3.222,2C3.222,2 11.778,2 11.778,2 12.114,2 12.42,2.138 12.641,2.359L12.908,3 13,3C13,3,13,3.25,13,3.222L13,
+						3.5 13,3.59 13,3.844C13,3.938 13,4 13,4 13,4 13,4.25 13,4.5L13,4.559 13,5 13,6.702C13,9.071 13,11.778 13,11.778 13,12.45 12.45,13 11.778,13 11.778,13 3.222,
+						13 3.222,13 2.55,13 2,12.45 2,11.778 2,11.778 2,8.436 2,5.929L2,5 2,4.559C2,5,2,4.75,2,4.5L2,4C2,3.757 2,3.222 2,3.222 2,2.55 2.55,2 3.222,2z");
+                path.Fill = Brushes.Black;
+                StackPanel panel = new StackPanel();
+                panel.Children.Add(path);
 
+                this.NormalMaximize.Content = panel;
+            }
 
-
-
-
-
+        }
     }
 
 }

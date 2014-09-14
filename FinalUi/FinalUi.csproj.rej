@@ -1,0 +1,12 @@
+--- FinalUi/FinalUi.csproj	
++++ FinalUi/FinalUi.csproj	
+@@ -65,9 +62,6 @@
+     </Compile>
+     <Compile Include="SecurityModule.cs" />
+     <Compile Include="UtilityClass.cs" />
+-    <Compile Include="UserControlGallery.xaml.cs">
+-      <DependentUpon>UserControlGallery.xaml</DependentUpon>
+-    </Compile>
+     <Page Include="FilterSelectWindow.xaml">
+       <SubType>Designer</SubType>
+       <Generator>MSBuild:Compile</Generator>

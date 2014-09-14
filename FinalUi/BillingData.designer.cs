@@ -75,7 +75,7 @@ namespace FinalUi
     #endregion
 		
 		public BillingDataDataContext() : 
-				base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString, mappingSource)
+				base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}

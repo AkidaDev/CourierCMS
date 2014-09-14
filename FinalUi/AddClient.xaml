@@ -1,0 +1,39 @@
+﻿<Window x:Class="FinalUi.AddClient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AddClient" Height="300" Width="300">
+    <Grid>
+        <StackPanel>
+            <WrapPanel>
+                <Label Content="Enter Detials: "></Label>
+            </WrapPanel>
+            <WrapPanel >
+                <Label Content="Enter Name: "></Label>
+                <TextBox Name="ClientName" MinWidth="150"></TextBox>
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="Code: "></Label>
+                <TextBox Name="ClientCode" MinWidth="150"></TextBox>
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="Phone Number: "></Label>
+                <TextBox Name="ClientPhoneNo" MinWidth="150"></TextBox>
+                
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="Email Address: "></Label>
+                <TextBox Name="CLientEmailAddress" MinWidth="150">
+                </TextBox>
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="Address">
+                    
+                </Label>
+                <TextBox Name="ClientAddress" MinWidth="150"></TextBox>
+            </WrapPanel>
+            <WrapPanel>
+                <Button Name="ClientDetailSubmit" Content="Submit" Click="ClientDetailSubmit_Click"></Button>
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</Window>

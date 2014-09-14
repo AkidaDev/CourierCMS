@@ -1,0 +1,25 @@
+﻿<Window x:Class="FinalUi.ManageEmployee"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ManageEmployee" Height="300" Width="300">
+    <Window.Resources>
+        <CollectionViewSource x:Key="EmployeeTable" CollectionViewType="ListCollectionView"></CollectionViewSource>
+    </Window.Resources>
+    <Grid>
+        <StackPanel>
+            <WrapPanel>
+                <Button Name="Update"  Content="Update" Margin="4 4 4 4" Width="60" Click="Update_Click"></Button>
+                <Button Name="Add"  Content="Add" Margin="4 4 4 4" Width="60" Click="Add_Click"></Button>
+                <Button Name="Delete"  Content="Delete" Margin="4 4 4 4" Width="60"></Button>
+            </WrapPanel>
+        <DataGrid x:Name="mangaEmployeegrid" ItemsSource="{Binding}" DataContext="{StaticResource EmployeeTable }"   RowEditEnding="mangaEmployeegrid_RowEditEnding" CellEditEnding="mangaEmployeegrid_CellEditEnding"  AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Gender" Binding="{Binding Gender , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="User Name" Binding="{Binding UserName, Mode=OneWay,  UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="EmpCode" Binding="{Binding EMPCode,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        </StackPanel>
+    </Grid>
+</Window>

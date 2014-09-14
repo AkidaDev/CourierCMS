@@ -1,0 +1,45 @@
+﻿<Window x:Class="FinalUi.AddEmployee"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AddEmployee" Height="300" Width="300">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center">
+            <WrapPanel>
+                <Label Content="Enter Name:  " MinWidth="85"></Label>
+                <TextBox Padding="5 5 5 5" Name="FullName" MinWidth="150"></TextBox>
+            </WrapPanel>
+            <Separator Visibility="Hidden"></Separator>
+            <WrapPanel>
+                <Label Content="Gender" MinWidth="85"></Label>
+                <ComboBox Name="Gender" SelectedIndex="0">
+                    <ComboBoxItem Content="Male"></ComboBoxItem>
+                    <ComboBoxItem Content="Female"></ComboBoxItem>
+                </ComboBox>
+            </WrapPanel>
+            <Separator Visibility="Hidden">
+            </Separator>
+            <WrapPanel>
+                <Label MinWidth="85" Content="Empl Code"></Label>
+                <TextBox Padding="5 5 5 5" Name="EmployeeCode" MinWidth="150"></TextBox>
+            </WrapPanel>
+            <Separator Visibility="Hidden"></Separator>
+            <WrapPanel>
+                <Label MinWidth="85" Content="UserName">
+                </Label>
+                <TextBox Name="UserName" Padding="5 5 5 5" MinWidth="150"/>
+            </WrapPanel>
+            <Separator Visibility="Hidden"/>
+            <WrapPanel>
+                <Label MinWidth="85" Content="Password"></Label>
+                <PasswordBox Name="Password" MinWidth="150" Padding="5 5 5 5"></PasswordBox>
+            </WrapPanel>
+            <Separator Visibility="Hidden"></Separator>
+            <WrapPanel>
+                <Label MinWidth="85" Content="Confirm Pass:"></Label>
+                <PasswordBox Name="ConfirmPass" MinWidth="150" Padding="5 5 5 5"></PasswordBox>
+            </WrapPanel>
+            <Separator Visibility="Hidden"/>
+            <Button Content="Create" Name="CreateEmployee" Click="CreateEmployee_Click" MaxWidth="150"></Button>
+        </StackPanel>
+    </Grid>
+</Window>
