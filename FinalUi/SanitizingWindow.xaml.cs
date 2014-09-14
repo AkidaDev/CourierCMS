@@ -104,7 +104,16 @@ namespace FinalUi
             }
 
         }
+        private void Button_Click_Close(object sender, RoutedEventArgs e)
+        {
+            //  this.Owner.Effect = null;
+            this.Close();
+        }
 
+        private void DragthisWindow(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
         private void DoneButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

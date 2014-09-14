@@ -370,7 +370,7 @@ namespace FinalUi
             var blur = new BlurEffect();
             var current = this.Background;
             blur.Radius = 5;
-            //this.Effect = blur;
+            this.Effect = blur;
             loadData.Show();
         }
 
@@ -426,6 +426,7 @@ namespace FinalUi
         }
         void loadData_Closed(object sender, EventArgs e)
         {
+            this.Effect = null;
             LoadData dataWind = (LoadData)sender;
             //TODO: Get Name 
             string name = "";

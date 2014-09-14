@@ -127,7 +127,6 @@ namespace FinalUi
 
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
-          //  this.Owner.Effect = null;
             this.Close();
         }
 
