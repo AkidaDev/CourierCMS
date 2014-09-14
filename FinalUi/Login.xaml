@@ -11,8 +11,7 @@
             <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
         </Grid.Effect>
 
-        <Canvas x:Name="vortex_pag" ClipToBounds="True" HorizontalAlignment="Left" Height="300" UseLayoutRounding="False" VerticalAlignment="Top" Width="600">
-        	<Image x:Name="Layer_0" Height="700" Canvas.Left="-383" Source="vortex_pag_Images\Layer 0.png" Canvas.Top="-200" Width="1366"/>
+        <Canvas x:Name="vortex_pag" ClipToBounds="True" HorizontalAlignment="Left" Height="300" UseLayoutRounding="False" VerticalAlignment="Top" Width="600" Background="White">
         	<Image x:Name="Blue" Height="272" Canvas.Left="16" Source="vortex_pag_Images\Shape 21.png" Canvas.Top="13" Width="278" />
         	<Image x:Name="Red" Height="272" Canvas.Left="16" Source="vortex_pag_Images\Shape 21 copy.png" Canvas.Top="13" Width="278" Visibility="Hidden"/>
         	<Path x:Name="IncorectBox"  Visibility="Hidden" Data="F1M7.897,41.514C7.897,41.514 135.848,41.514 135.848,41.514 139.104,41.514 141.744,39.337 141.744,36.652 141.744,36.652 141.744,18.178 141.744,18.178 141.744,15.492 139.104,13.316 135.848,13.316 135.848,13.316 23.281,13.316 23.281,13.316 24.525,6.763 32.072,2 32.072,2 22.277,4.433 16.873,9.086 13.89,13.316 13.89,13.316 7.897,13.316 7.897,13.316 4.64,13.316 2,15.492 2,18.178 2,18.178 2,36.652 2,36.652 2,39.337 4.64,41.514 7.897,41.514z" Fill="Black" Height="43" Canvas.Left="36" Canvas.Top="247" Width="143" Stroke="Red" StrokeThickness="1"/>
@@ -26,35 +25,33 @@
         	<Button Style="{StaticResource all}" Click="CloseButton_Click" Name="CloseButton" Height="20" Canvas.Left="560" Canvas.Top="6" Width="35">
 			<Path Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,
 			14 3.2,14 2,12.8 2,12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,
-			6.8 12.8,2 12.8,2 12.8,2 14,3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" />
+			6.8 12.8,2 12.8,2 12.8,2 14,3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" Margin="0,0,3,0" />
         	</Button>
 			<Button Style="{StaticResource all}"  Click="MinimizeButton_Click" Height="20" Canvas.Left="538" Canvas.Top="6" Width="20">
-			<Path x:Name="minimize" Data="F1M2,3C2,3 2,2 2,2 2,2 9,2 9,2 9,2 9,3 9,3 9,3 2,3 2,3z" Fill="Black" />
+			<Path x:Name="minimize" Data="F1M2,3C2,3 2,2 2,2 2,2 9,2 9,2 9,2 9,3 9,3 9,3 2,3 2,3z" Fill="Black" Margin="0,3,2,0" />
 			</Button>
 		</Canvas>
 
-                <StackPanel Margin="283,139,0,1">
+                <StackPanel Margin="283,139,0,0">
                 <WrapPanel HorizontalAlignment="Center" >
                     <TextBox  Text="SQLEXPRESS" x:Name="InstanceName" MinWidth="150" Padding="5 5 5 5" HorizontalAlignment="Center" FontSize="14"  >
                     </TextBox>
                 </WrapPanel>
-                <Separator Visibility="Hidden"></Separator>
+                <Separator Visibility="Hidden"/>
                 <WrapPanel HorizontalAlignment="Center" >
-                    <TextBox MinWidth="150" Padding="5 5 5 5" Name="UserName" ></TextBox>
+                    <TextBox MinWidth="150" Padding="5 5 5 5" Name="UserName" />
                 </WrapPanel>
-                <Separator Visibility="Hidden"></Separator>
+                <Separator Visibility="Hidden"/>
                 <WrapPanel HorizontalAlignment="Center" >
-                    <PasswordBox MinWidth="150" Name="Password" Padding="5 5 5 5"></PasswordBox>
+                    <PasswordBox MinWidth="150" Name="Password" Padding="5 5 5 5"/>
                 </WrapPanel>
-                <Separator Visibility="Hidden"></Separator>
-                <!--<WrapPanel  HorizontalAlignment="Right" Margin="5 0 0 10">
-                   <Button Content="Setup Data" x:Name="SetupButton" Click="SetupButton_Click_1" Margin="10 0 0 0" Width="107"/>
-                </WrapPanel>-->
+                <!--
+                   <Button Content="Setup Data" x:Name="SetupButton" Click="SetupButton_Click_1" Width="107" HorizontalAlignment="Right"/>
+            -->
                 <WrapPanel Name="LoadingGifPanel" Visibility="Hidden">
-                    <Image gif:ImageBehavior.AnimatedSource="gifs/loading-GIF.gif" Stretch="None" Name="LoadingGif" Margin="262,13,9,4"  ></Image>
-                </WrapPanel>
-
-                <Separator Visibility="Hidden"></Separator>
+                    <Image gif:ImageBehavior.AnimatedSource="gifs/loading-GIF.gif" Stretch="None" Name="LoadingGif" Margin="262,13,9,4"/>
+                </WrapPanel> 
+				
             </StackPanel>
     </Grid>
 </Window>
