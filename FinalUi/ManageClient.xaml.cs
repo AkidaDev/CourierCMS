@@ -56,12 +56,12 @@ namespace FinalUi
             
             foreach (var client in clientToEdit)
             {
-               var data = db.Clients.Single(x => x.Id == client.Id);
-               data.Name = client.Name;
-               data.PhoneNo = client.PhoneNo;
-               data.EmailAddress = client.EmailAddress;
-               data.Address = data.Address;
-               db.SubmitChanges();     
+            //   var data = db.Clients.Single(x => x.Id == client.Id);
+           //    data.Name = client.Name;
+            //   data.PhoneNo = client.PhoneNo;
+            //   data.EmailAddress = client.EmailAddress;
+             //  data.Address = data.Address;
+              // db.SubmitChanges();     
             }
          }
 

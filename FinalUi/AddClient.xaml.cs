@@ -27,12 +27,12 @@ namespace FinalUi
         private void ClientDetailSubmit_Click(object sender, RoutedEventArgs e)
         {
             Client client = new Client();
-            client.Name = ClientName.Text;
-            client.Id = Guid.NewGuid();
-            client.Address = ClientAddress.Text;
-            client.PhoneNo = decimal.Parse(ClientPhoneNo.Text);
-            client.EmailAddress = CLientEmailAddress.Text;
-            client.Code = ClientCode.Text;
+           // client.Name = ClientName.Text;
+           // client.Id = Guid.NewGuid();
+            //client.Address = ClientAddress.Text;
+            //client.PhoneNo = decimal.Parse(ClientPhoneNo.Text);
+           // client.EmailAddress = CLientEmailAddress.Text;
+           // client.Code = ClientCode.Text;
             BillingDataDataContext db = new BillingDataDataContext();
             db.Clients.InsertOnSubmit(client);
             db.SubmitChanges();
