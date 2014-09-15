@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -10,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
@@ -109,6 +111,7 @@ namespace FinalUi
         public MainWindow()
         {
             #region setupCode
+            this.SourceInitialized += Window_SourceInitialized;
             #endregion
             #region WindowDimensionsCode
             this.Width = System.Windows.SystemParameters.WorkArea.Width;
@@ -505,40 +508,211 @@ namespace FinalUi
             }
         }
         #endregion
+        #region Handling Resizing
+        private bool mRestoreIfMove = false;
 
-        private void NormalMaximize_Click(object sender, RoutedEventArgs e)
+
+        void Window_SourceInitialized(object sender, EventArgs e)
         {
-            if (this.WindowState == WindowState.Normal)
+            IntPtr mWindowHandle = (new WindowInteropHelper(this)).Handle;
+            HwndSource.FromHwnd(mWindowHandle).AddHook(new HwndSourceHook(WindowProc));
+        }
+
+
+        private static System.IntPtr WindowProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            switch (msg)
             {
-                this.WindowState = WindowState.Maximized;
-                Path path = new Path();
-                path.Data = Geometry.Parse(@"F1M2.111,7.667C2.111,7.667 2.111,14.958 2.111,14.958 2.111,14.958 9.889,14.958 9.889,14.958 9.889,14.958 9.889,7.667 9.889,
+                case 0x0024:
+                    WmGetMinMaxInfo(hwnd, lParam);
+                    break;
+            }
+
+            return IntPtr.Zero;
+        }
+
+
+        private static void WmGetMinMaxInfo(System.IntPtr hwnd, System.IntPtr lParam)
+        {
+            POINT lMousePosition;
+            GetCursorPos(out lMousePosition);
+
+            IntPtr lPrimaryScreen = MonitorFromPoint(new POINT(0, 0), MonitorOptions.MONITOR_DEFAULTTOPRIMARY);
+            MONITORINFO lPrimaryScreenInfo = new MONITORINFO();
+            if (GetMonitorInfo(lPrimaryScreen, lPrimaryScreenInfo) == false)
+            {
+                return;
+            }
+
+            IntPtr lCurrentScreen = MonitorFromPoint(lMousePosition, MonitorOptions.MONITOR_DEFAULTTONEAREST);
+
+            MINMAXINFO lMmi = (MINMAXINFO)Marshal.PtrToStructure(lParam, typeof(MINMAXINFO));
+
+            if (lPrimaryScreen.Equals(lCurrentScreen) == true)
+            {
+                lMmi.ptMaxPosition.X = lPrimaryScreenInfo.rcWork.Left;
+                lMmi.ptMaxPosition.Y = lPrimaryScreenInfo.rcWork.Top;
+                lMmi.ptMaxSize.X = lPrimaryScreenInfo.rcWork.Right - lPrimaryScreenInfo.rcWork.Left;
+                lMmi.ptMaxSize.Y = lPrimaryScreenInfo.rcWork.Bottom - lPrimaryScreenInfo.rcWork.Top;
+            }
+            else
+            {
+                lMmi.ptMaxPosition.X = lPrimaryScreenInfo.rcMonitor.Left;
+                lMmi.ptMaxPosition.Y = lPrimaryScreenInfo.rcMonitor.Top;
+                lMmi.ptMaxSize.X = lPrimaryScreenInfo.rcMonitor.Right - lPrimaryScreenInfo.rcMonitor.Left;
+                lMmi.ptMaxSize.Y = lPrimaryScreenInfo.rcMonitor.Bottom - lPrimaryScreenInfo.rcMonitor.Top;
+            }
+
+            Marshal.StructureToPtr(lMmi, lParam, true);
+        }
+
+
+        private void SwitchWindowState()
+        {
+            switch (WindowState)
+            {
+                case WindowState.Normal:
+                    {
+                        WindowState = WindowState.Maximized;
+                        Path path = new Path();
+                        path.Data = Geometry.Parse(@"F1M2.111,7.667C2.111,7.667 2.111,14.958 2.111,14.958 2.111,14.958 9.889,14.958 9.889,14.958 9.889,14.958 9.889,7.667 9.889,
 				7.667 9.889,7.667 2.111,7.667 2.111,7.667z M6.222,2.25C6.222,2.25,6.222,4.438,6.222,6.625L8.674,6.625C9.403,6.625 9.889,6.625 9.889,6.625 10.5,6.625 11,
 				7.094 11,7.667 11,7.667 11,8.123 11,8.806L11,11 12.071,11C13.575,11 14.778,11 14.778,11 14.778,11 14.778,2.25 14.778,2.25 14.778,2.25 6.222,2.25 6.222,
 				2.25z M6.222,1C6.222,1 14.778,1 14.778,1 15.45,1 16,1.562 16,2.25 16,2.25 16,11 16,11 16,11.687 15.45,12.25 14.778,12.25 14.778,12.25 13.575,12.25 12.071,
 				12.25L11,12.25 11,13.819C11,14.502 11,14.958 11,14.958 11,15.531 10.5,16 9.889,16 9.889,16 2.111,16 2.111,16 1.5,16 1,15.531 1,14.958 1,14.958 1,7.667 1,
 				7.667 1,7.094 1.5,6.625 2.111,6.625 2.111,6.625 2.597,6.625 3.326,6.625L5,6.625C5,4.438 5,2.25 5,2.25 5,1.562 5.55,1 6.222,1z");
-                path.Fill = Brushes.Black;
-                StackPanel panel = new StackPanel();
-                panel.Children.Add(path);
-                this.NormalMaximize.Content = panel;
-            }
-            else
-            {
-                this.WindowState = WindowState.Normal;
-                Path path = new Path();
-                path.Data = Geometry.Parse(@"F1M3.222,5L3.222,6.702C3.222,9.071 3.222,11.778 3.222,11.778 3.222,11.778 11.778,11.778 11.778,11.778 11.778,11.778 11.778,9.071 11.778,
+                        path.Fill = Brushes.Black;
+                        StackPanel panel = new StackPanel();
+                        panel.Children.Add(path);
+                        this.NormalMaximize.Content = panel;
+                        break;
+                    }
+                case WindowState.Maximized:
+                    {
+                        WindowState = WindowState.Normal;
+                        this.WindowState = WindowState.Normal;
+                        Path path = new Path();
+                        path.Data = Geometry.Parse(@"F1M3.222,5L3.222,6.702C3.222,9.071 3.222,11.778 3.222,11.778 3.222,11.778 11.778,11.778 11.778,11.778 11.778,11.778 11.778,9.071 11.778,
 						6.702L11.778,5 11.281,5C9.219,5,5.781,5,3.719,5z M3.222,2C3.222,2 11.778,2 11.778,2 12.114,2 12.42,2.138 12.641,2.359L12.908,3 13,3C13,3,13,3.25,13,3.222L13,
 						3.5 13,3.59 13,3.844C13,3.938 13,4 13,4 13,4 13,4.25 13,4.5L13,4.559 13,5 13,6.702C13,9.071 13,11.778 13,11.778 13,12.45 12.45,13 11.778,13 11.778,13 3.222,
 						13 3.222,13 2.55,13 2,12.45 2,11.778 2,11.778 2,8.436 2,5.929L2,5 2,4.559C2,5,2,4.75,2,4.5L2,4C2,3.757 2,3.222 2,3.222 2,2.55 2.55,2 3.222,2z");
-                path.Fill = Brushes.Black;
-                StackPanel panel = new StackPanel();
-                panel.Children.Add(path);
+                        path.Fill = Brushes.Black;
+                        StackPanel panel = new StackPanel();
+                        panel.Children.Add(path);
 
-                this.NormalMaximize.Content = panel;
+                        this.NormalMaximize.Content = panel;
+        
+                        break;
+                    }
             }
-
         }
+
+
+        
+        private void rctHeader_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            mRestoreIfMove = false;
+        }
+
+
+        private void rctHeader_PreviewMouseMove(object sender, MouseEventArgs e)
+        {
+            if (mRestoreIfMove)
+            {
+                mRestoreIfMove = false;
+
+                double percentHorizontal = e.GetPosition(this).X / ActualWidth;
+                double targetHorizontal = RestoreBounds.Width * percentHorizontal;
+
+                double percentVertical = e.GetPosition(this).Y / ActualHeight;
+                double targetVertical = RestoreBounds.Height * percentVertical;
+
+                WindowState = WindowState.Normal;
+
+                POINT lMousePosition;
+                GetCursorPos(out lMousePosition);
+
+                Left = lMousePosition.X - targetHorizontal;
+                Top = lMousePosition.Y - targetVertical;
+
+                DragMove();
+            }
+        }
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool GetCursorPos(out POINT lpPoint);
+
+
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern IntPtr MonitorFromPoint(POINT pt, MonitorOptions dwFlags);
+
+        enum MonitorOptions : uint
+        {
+            MONITOR_DEFAULTTONULL = 0x00000000,
+            MONITOR_DEFAULTTOPRIMARY = 0x00000001,
+            MONITOR_DEFAULTTONEAREST = 0x00000002
+        }
+
+
+        [DllImport("user32.dll")]
+        static extern bool GetMonitorInfo(IntPtr hMonitor, MONITORINFO lpmi);
+
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct POINT
+        {
+            public int X;
+            public int Y;
+
+            public POINT(int x, int y)
+            {
+                this.X = x;
+                this.Y = y;
+            }
+        }
+
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct MINMAXINFO
+        {
+            public POINT ptReserved;
+            public POINT ptMaxSize;
+            public POINT ptMaxPosition;
+            public POINT ptMinTrackSize;
+            public POINT ptMaxTrackSize;
+        };
+
+
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+        public class MONITORINFO
+        {
+            public int cbSize = Marshal.SizeOf(typeof(MONITORINFO));
+            public RECT rcMonitor = new RECT();
+            public RECT rcWork = new RECT();
+            public int dwFlags = 0;
+        }
+
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct RECT
+        {
+            public int Left, Top, Right, Bottom;
+
+            public RECT(int left, int top, int right, int bottom)
+            {
+                this.Left = left;
+                this.Top = top;
+                this.Right = right;
+                this.Bottom = bottom;
+            }
+        }
+        private void NormalMaximize_Click(object sender, RoutedEventArgs e)
+        {
+            SwitchWindowState();
+        }
+        #endregion
+        
     }
 
 }
