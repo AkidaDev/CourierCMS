@@ -136,7 +136,7 @@
                 </WrapPanel>
 
             </StackPanel>
-			<StackPanel Grid.Column="1" Background="#FFBDC5E8"/>
+			<StackPanel Grid.Column="1" Background="#FFBBCADC"/>
             <StackPanel Grid.Column="2" Margin="-1,-.25,0,0" >
                 <DockPanel Background="#FFBBCADC" Height="34"  >
                     <Grid Margin="60 0 0 0" >
@@ -327,7 +327,7 @@
                         <TextBlock Text="Log..." Name="MessageBlock"></TextBlock>
                     </WrapPanel>
                    
-				   <DockPanel DockPanel.Dock="Bottom" Name="DataGridOptionpanel" Background="#FFEEF6FF" Margin="1,0,0,0" Height="26">
+				   <DockPanel DockPanel.Dock="Bottom" Name="DataGridOptionpanel" Background="#FFBBCADC" Margin="1,0,0,0" Height="26">
                     
 					<WrapPanel Name="DataGridSheetPanel"/>
                  
@@ -359,7 +359,7 @@
 						</WrapPanel>
                        
 				</DockPanel>
-					<ContentControl DockPanel.Dock="Top" Height="500" ScrollViewer.CanContentScroll="True">
+					<ContentControl DockPanel.Dock="Top" Height="550" ScrollViewer.CanContentScroll="True">
                         <DataGrid x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False" 
 						ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True"
 						BorderThickness="0">
@@ -370,8 +370,7 @@
                                 <DataGridTextColumn Header="ObservedWeight" Binding="{Binding Path=FrWeight}"/>
                                 <DataGridTextColumn Header="Cost" Binding="{Binding Path=Amount}"/>
                                 <DataGridTextColumn Header="Billed Amount" Binding="{Binding Path=FrAmount}"/>
-                                <DataGridTextColumn Header="Client" Binding="{Binding Path=CustCode}">
-                                </DataGridTextColumn>
+                                <DataGridTextColumn Header="Client" Binding="{Binding Path=CustCode}"/>
                                 <DataGridTextColumn Header="BookingDate" Binding="{Binding Path=BookingDate}"/>
                                 <DataGridTextColumn Header="Destination" Binding="{Binding Path=Destination}"/>
                                 <DataGridTextColumn Header="PinCode" Binding="{Binding Path=DestinationPin}"/>
@@ -380,9 +379,7 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </ContentControl> 
-                   
                 </DockPanel>
-        
 		    </StackPanel>
 		</Grid>
     </StackPanel>

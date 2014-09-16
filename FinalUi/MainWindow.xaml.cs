@@ -415,12 +415,11 @@ namespace FinalUi
             panel.Children.Add(path);
             TextBlock text = new TextBlock();
             text.Text = "Sheet- " + key.ToString();
-            text.Margin = new Thickness(0, -21, 12, 0);
+            text.Margin = new Thickness(0, -22, 20, 0);
             text.FontFamily = new FontFamily("Segoe UI");
             text.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("RoyalBlue"));
-            text.FontSize = 18;
+            text.FontSize = 16;
             text.Background = Brushes.Transparent;
-			text.Padding = new Thickness(0, 1, 1, 0);
             text.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
 
            
