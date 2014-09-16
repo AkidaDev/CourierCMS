@@ -401,13 +401,12 @@ namespace FinalUi
         {
             dataGridHelper.getFirstPage();
             Button button = new Button();
-            button.Style = (Style)FindResource("all");
+            button.Style = (Style)FindResource("Sheet_button");
             button.Background = Brushes.Transparent;
             StackPanel panel = new StackPanel();
             Path path = new Path();
-            path.Data = Geometry.Parse(@"F1M3.905,27.953C3.905,27.953 2,2.147 16.096,2.074 30.193,2 55.109,2.074 55.109,2.074 55.109,2.074 61.586,2.221 77.054,
-			27.953 77.054,27.953 3.905,27.953 3.905,27.953z");
-            path.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7A000000"));
+            path.Data = Geometry.Parse(@"F1M2,20.356C2,20.356 2,2 2,2 2,2 77.831,2 77.831,2 77.831,2 91.619,20.356 91.619,20.356 91.619,20.356 2,20.356 2,20.356z");
+            path.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("RoyalBlue"));
             path.Height = 29;
             path.Width = 79;
             path.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF5B5B5B"));

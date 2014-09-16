@@ -62,5 +62,14 @@ namespace FinalUi
                 SelectedClientList.Add((string)thisCheckBox.Tag);
             }
         }
+        private void Button_Click_Close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void DragthisWindow(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }
