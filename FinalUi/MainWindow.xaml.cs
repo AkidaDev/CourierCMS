@@ -110,6 +110,12 @@ namespace FinalUi
         #endregion
         public MainWindow()
         {
+            #region Test Code.. To Delete
+            if (SecurityModule.currentUserName == null)
+            {
+                SecurityModule.authenticate("dharmendra", "pass");
+            }
+            #endregion
             #region setupCode
             this.SourceInitialized += Window_SourceInitialized;
             #endregion
