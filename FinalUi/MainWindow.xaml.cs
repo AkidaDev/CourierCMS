@@ -110,12 +110,7 @@ namespace FinalUi
         #endregion
         public MainWindow()
         {
-            #region Test Code.. To Delete
-            if (SecurityModule.currentUserName == null)
-            {
-                SecurityModule.authenticate("dharmendra", "pass");
-            }
-            #endregion
+            SecurityModule.authenticate("dharmendra", "pass");
             #region setupCode
             this.SourceInitialized += Window_SourceInitialized;
             #endregion
@@ -410,23 +405,37 @@ namespace FinalUi
             button.Style = (Style)FindResource("Sheet_button");
             button.Background = Brushes.Transparent;
             StackPanel panel = new StackPanel();
+
+            WrapPanel panel1 = new WrapPanel();
+        //    panel.Children.Add(panel1);
             Path path = new Path();
-            path.Data = Geometry.Parse(@"F1M2,20.356C2,20.356 2,2 2,2 2,2 77.831,2 77.831,2 77.831,2 91.619,20.356 91.619,20.356 91.619,20.356 2,20.356 2,20.356z");
-            path.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("RoyalBlue"));
-            path.Height = 29;
-            path.Width = 79;
-            path.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF5B5B5B"));
+            path.Data = Geometry.Parse(@"F1M2,1.644C2,1.644 2,20 2,20 2,20 77.831,20 77.831,20 77.831,20 91.619,1.644 91.619,1.644 91.619,1.644 2,1.644 2,1.644z");
+            path.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("White"));
+            path.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("RoyalBlue"));
             panel.Children.Add(path);
             TextBlock text = new TextBlock();
-            text.Text = "Sheet " + key.ToString();
+            text.Text = "Sheet- " + key.ToString();
             text.Margin = new Thickness(0, -21, 12, 0);
-            text.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFffffff"));
-            text.FontSize = 12;
+            text.FontFamily = new FontFamily("Segoe UI");
+            text.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("RoyalBlue"));
+            text.FontSize = 18;
             text.Background = Brushes.Transparent;
+			text.Padding = new Thickness(0, 1, 1, 0);
             text.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
+
+           
+           // panel.Children.Add(path1);
+
             panel.Children.Add(text);
             button.Content = panel;
             button.Click += SheetSelectButton_Click;
+            Path path1 = new Path();
+           // image of the katta 
+            path1.Data = Geometry.Parse(@"F1M14.987,13.789C14.987,13.789 13.622,15.154 13.622,15.154 13.622,15.154 8.16,9.692 8.16,9.692 8.16,
+				9.692 2.699,15.154 2.699,15.154 2.699,15.154 1.333,13.789 1.333,13.789 1.333,13.789 6.795,8.327 6.795,8.327 6.795,8.327 1.333,2.865 1.333,2.865 1.333,
+				2.865 2.699,1.5 2.699,1.5 2.699,1.5 8.16,6.962 8.16,6.962 8.16,6.962 13.622,1.5 13.622,1.5 13.622,1.5 14.987,2.865 14.987,2.865 14.987,2.865 9.526,
+				8.327 9.526,8.327 9.526,8.327 14.987,13.789 14.987,13.789z");
+            path1.Fill = Brushes.Black;
             DataGridSheetPanel.Children.Add(button);
             buttonList.Add(button, key);
             activeButton = button;

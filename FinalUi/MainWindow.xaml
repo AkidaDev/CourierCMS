@@ -245,7 +245,7 @@
 							<Path x:Name="sanitize" Data="F1M15.824,9.615C15.824,9.615 22,9.615 22,9.615 22,9.615 22,17 22,17 22,17 15.824,17 15.824,17 15.824,17 15.824,
 							9.615 15.824,9.615z M8.412,9.615C8.412,9.615 14.588,9.615 14.588,9.615 14.588,9.615 14.588,17 14.588,17 14.588,17 8.412,17 8.412,17 8.412,17 8.412,
 							9.615 8.412,9.615z M8.412,1C8.412,1 22,1 22,1 22,1 22,8.385 22,8.385 22,8.385 8.412,8.385 8.412,8.385 8.412,8.385 8.412,1 8.412,1z M1,1C1,1 7.176,
-							1 7.176,1 7.176,1 7.176,17 7.176,17 7.176,17 1,17 1,17 1,17 1,1 1,1z" Fill="#FFDBFB11" Height="19.833" Width="25" Stretch="Fill"/>
+							1 7.176,1 7.176,1 7.176,17 7.176,17 7.176,17 1,17 1,17 1,17 1,1 1,1z" Fill="#AE3399FF" Height="19.833" Width="25" Stretch="Fill"/>
         					</Button.Content>
                         </Button>
 						
@@ -329,11 +329,8 @@
                    
 				   <DockPanel DockPanel.Dock="Bottom" Name="DataGridOptionpanel" Background="#FFEEF6FF" Margin="1,0,0,0" Height="26">
                     
-					<WrapPanel Name="DataGridSheetPanel" Margin="0 3 0 0">
-                    	<WrapPanel.Effect>
-                    		<DropShadowEffect ShadowDepth="0" BlurRadius="10" RenderingBias="Quality"/>
-                    	</WrapPanel.Effect>
-                    </WrapPanel>
+					<WrapPanel Name="DataGridSheetPanel"/>
+                 
 						
 						<WrapPanel HorizontalAlignment="Right">
                          <Button Style="{StaticResource smallbutton}" Name="DataGridFirstPage" Margin="38,2,5,2" Click="DataGridFirstPage_Click" >
