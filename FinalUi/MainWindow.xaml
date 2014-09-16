@@ -96,14 +96,13 @@
             <StackPanel Background="White" Grid.Column="0" Height="{DynamicResource {x:Static SystemParameters.MaximumWindowTrackHeightKey}}">
 
                 <WrapPanel>
-                    <TreeView >
-                        <TreeViewItem>
+                    <TreeView BorderBrush="Transparent" BorderThickness="0" >
+                        <TreeViewItem Height="50" Width="220.75" BorderBrush="Transparent" BorderThickness="0">
                             <TreeViewItem.Header>
                                 <WrapPanel>
-                                <Path x:Name="drop_downarrow_1" Data="F1M1.5,1.2C1.5,1.2 1.5,10.8 1.5,10.8 1.5,10.8 7.5,5.981 7.5,5.981 7.5,5.981 1.5,1.2 1.5,1.2z" Fill="#FF5B5B5B" Height="12" Width="9" Margin="15,20,0,-19"/>
                                 <Button Style="{StaticResource all}">
                                     <Button.Content>
-                                        <TextBlock  x:Name="textBlock" Text="My Assignments" FontSize="16" FontWeight="Bold" Width="225" Margin="35,1,0,0" Padding="0 1 0 4" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                        <TextBlock  x:Name="textBlock" Text="My Assignments" FontSize="16" FontWeight="Bold" Width="225" Margin="10,1,0,0" Padding="0 1 0 4" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
                                     </Button.Content>
                                 </Button>
                                 </WrapPanel>
@@ -114,7 +113,7 @@
                                         <Path x:Name="drop_downarrow_2" Data="F1M1.5,1.2C1.5,1.2 1.5,10.8 1.5,10.8 1.5,10.8 7.5,5.981 7.5,5.981 7.5,5.981 1.5,1.2 1.5,1.2z" Fill="#FF5B5B5B" Height="12" Width="9" Margin="15,20,0,-19"/>
                                         <Button Style="{StaticResource all}">
                                             <Button.Content>
-                                                <TextBlock Text="Reports" FontSize="16" FontWeight="Bold" Width="225" Margin="35,1,0,0" Padding="0 1 0 4" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                                <TextBlock Text="Reports" FontSize="16" FontWeight="Bold" Width="225"   Foreground="#FF5B5B5B" FontFamily="Calibri"/>
                                             </Button.Content>
                                         </Button>
                                     </WrapPanel>
