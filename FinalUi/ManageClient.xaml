@@ -9,16 +9,16 @@
         <StackPanel Name="Container">
             <WrapPanel>
                 <Button x:Name="update" Content="Update" Height="27" Margin="1 1 20 1" Width="60" Click="update_Click"/>
-                <Button x:Name="AddClient" Content="Add Client" Click="AddClient_Click" Margin="1 1 20 1" Width="60" Height="27" />
+                <Button x:Name="AddClientButton" Content="Add Client" Click="AddClient_Click" Margin="1 1 20 1" Width="60" Height="27" />
                 <Button x:Name="Delete" Content="Delete" Click="AddClient_Click" Margin="1 1 20 1" Height="27" Width="60"/>
             </WrapPanel>
-            <DataGrid x:Name="mangaclientgrid" ItemsSource="{Binding}" DataContext="{StaticResource ClienTable }"  CellEditEnding="DataGrid_CellEditEnding"  AutoGenerateColumns="False" >
+            <DataGrid x:Name="mangaclientgrid" ItemsSource="{Binding}" DataContext="{StaticResource ClienTable }"  SelectionMode="Single" AutoGenerateColumns="False" >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Name" Binding="{Binding Name , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <DataGridTextColumn Header="Code" Binding="{Binding Code , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNo,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <DataGridTextColumn Header="Email" Binding="{Binding EmailAddress,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <DataGridTextColumn Header="Address" Binding="{Binding Address,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding CLNAME , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Code" Binding="{Binding CLCODE , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Contact Number" Binding="{Binding CONTACTNO,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Email" Binding="{Binding EMAILID,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Address" Binding="{Binding ADDRESS,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>

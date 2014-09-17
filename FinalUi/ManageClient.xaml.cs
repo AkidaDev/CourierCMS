@@ -23,47 +23,42 @@ namespace FinalUi
         List<Client> clients;
         CollectionViewSource viewsource;
         List<Client> clientToEdit;
+        Client client;
+        BillingDataDataContext db;
+        
         public ManageClient()
         {
             InitializeComponent();
+            db = new BillingDataDataContext();
             clientToEdit = new List<Client>();
-            BillingDataDataContext db = new BillingDataDataContext();
             clients = (from client in db.Clients
                        select client).ToList();
             viewsource = (CollectionViewSource)FindResource("ClienTable");
             viewsource.Source = clients;
-
         }
 
         private void AddClient_Click(object sender, RoutedEventArgs e)
         {
             AddClient window = new AddClient();
+            window.Closed += AddClient_close;
             window.Show();
-        }
-
-        private void DataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
-        {
-            if (e.EditAction == DataGridEditAction.Commit)
-            {
-                clientToEdit.Add((Client)e.Row.Item);
-            }
         }
 
 
         private void update_Click(object sender, RoutedEventArgs e)
         {
-            BillingDataDataContext db = new BillingDataDataContext();
-            
-            foreach (var client in clientToEdit)
-            {
-            //   var data = db.Clients.Single(x => x.Id == client.Id);
-           //    data.Name = client.Name;
-            //   data.PhoneNo = client.PhoneNo;
-            //   data.EmailAddress = client.EmailAddress;
-             //  data.Address = data.Address;
-              // db.SubmitChanges();     
-            }
+           client = (Client)this.mangaclientgrid.SelectedItem;
+            AddClient add = new AddClient(client);
+            add.Closed += AddClient_close;
+            add.Show();
          }
-
+        private void AddClient_close(object sender, EventArgs e)
+        {
+            BillingDataDataContext db = new BillingDataDataContext();
+            var clients = (from client in db.Clients
+                       select client).ToList();
+            viewsource = (CollectionViewSource)FindResource("ClienTable");
+            viewsource.Source = clients;
+        }
     }
 }

@@ -65,5 +65,16 @@ namespace FinalUi.Properties {
                 return ((string)(this["BillingDatabaseConnectionString3"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=RIZWANKHAN;Initial Catalog=BillingDatabase;Persist Security Info=True" +
+            ";User ID=sa")]
+        public string BillingDatabaseConnectionString4 {
+            get {
+                return ((string)(this["BillingDatabaseConnectionString4"]));
+            }
+        }
     }
 }
