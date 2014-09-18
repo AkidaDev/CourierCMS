@@ -300,6 +300,12 @@
   <ItemGroup>
     <Folder Include="test\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UtilityProject\UtilityProject.csproj">
+      <Project>{3993d14b-ca77-45d6-9f3a-c8dcc6b34697}</Project>
+      <Name>UtilityProject</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

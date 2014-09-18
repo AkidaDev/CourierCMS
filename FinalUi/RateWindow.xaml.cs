@@ -43,32 +43,10 @@ namespace FinalUi
             {
                 ComboBoxRate.SelectedValue = assign.RateCode;
                 ComboBoxService.SelectedValue = assign.ServiceCode;
-                ComboBoxDox.SelectedValue = assign.Dox;
             }
         }
         private void executeFillNewRatePanel()
         {
-            BillingDataDataContext db = new BillingDataDataContext();
-            bool isNew = false;
-            Assignment assign;
-            IQueryable<Assignment> IAssign;
-            if ((IAssign = db.Assignments.Where(x => x.Dox == (char)ComboBoxDox.SelectedValue
-                && x.RateCode == (string)ComboBoxRate.SelectedValue
-                && x.ServiceCode == (string)ComboBoxService.SelectedValue)).Count() > 0)
-            {
-                assign = IAssign.Single();
-            }
-            else
-            {
-                assign = new Assignment();
-                isNew = true;
-            }
-            XElement rate;
-            if (assign.Rate == null)
-                rate = XElement.Parse("<root></root>");
-            else
-                rate = XElement.Parse(assign.Rate.RateXML);
-            fillPanel(rate);
         }
         private void fillPanel(XElement rate)
         {

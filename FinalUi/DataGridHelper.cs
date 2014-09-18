@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Forms;
 
 namespace FinalUi
 {
@@ -176,7 +177,14 @@ namespace FinalUi
         }
         public void addDataToCurrentSheet(List<T> data)
         {
-            _currentDataSheet.addData(data);
+            try
+            {
+                _currentDataSheet.addData(data);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("booga booga");
+            }
         }
         public void setActiveSheet(int index)
         {

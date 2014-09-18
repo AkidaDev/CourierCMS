@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BillingDatabase" Class="BillingDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=VJAIN;Initial Catalog=BillingDatabase;Integrated Security=True" SettingsObjectName="UtilityProject.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=RIZWANKHAN;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa" SettingsObjectName="UtilityProject.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Assignment" Member="Assignments">
     <Type Name="Assignment">
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -87,6 +87,18 @@
       <Column Name="RateCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Association Name="Rate_Assignment" Member="Assignments" ThisKey="RateCode" OtherKey="RateCode" Type="Assignment" />
       <Association Name="Rate_RateDetail" Member="RateDetails" ThisKey="RateCode" OtherKey="RateCode" Type="RateDetail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RateDetails" Member="RateDetails">
+    <Type Name="RateDetail">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RateCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="DoxRate" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="NonDoxRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StepWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="Rate_RateDetail" Member="Rate" ThisKey="RateCode" OtherKey="RateCode" Type="Rate" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Roles" Member="Roles">
@@ -212,18 +224,6 @@
       <Column Name="RoleId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Association Name="Employee_User_Role" Member="Employee" ThisKey="EmployeeId" OtherKey="Id" Type="Employee" IsForeignKey="true" />
       <Association Name="Role_User_Role" Member="Role" ThisKey="RoleId" OtherKey="Id" Type="Role" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.RateDetails" Member="RateDetails">
-    <Type Name="RateDetail">
-      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="RateCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="DoxRate" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="NonDoxRate" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="StepWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Association Name="Rate_RateDetail" Member="Rate" ThisKey="RateCode" OtherKey="RateCode" Type="Rate" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
