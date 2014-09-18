@@ -28,10 +28,13 @@ namespace FinalUi
         CollectionViewSource conssNumbers;
         List<RuntimeData> dataContext;
         BillingDataDataContext db;
-        public SanitizingWindow(List<RuntimeData> helperObj, BillingDataDataContext db)
+        int sheetNo;
+        public SanitizingWindow(List<RuntimeData> helperObj, BillingDataDataContext db, int sheetNo)
         {
+            this.sheetNo = sheetNo;
             this.db = db;
-            dataContext = helperObj.ToList();
+            if (helperObj != null)
+                dataContext = helperObj.ToList();
             InitializeComponent();
             viewSource = (CollectionViewSource)FindResource("CustomerNameList");
             viewSource.Source = from client in db.Clients
@@ -46,7 +49,25 @@ namespace FinalUi
 
         private void SubmitSanitizingDetails_Click(object sender, RoutedEventArgs e)
         {
-            var data = dataContext.Single(x => x.ConsignmentNo == ConnsignmentNumber.Text);
+            bool isDataInContext = true;
+          
+            RuntimeData data;
+            data = dataContext.SingleOrDefault(x => x.ConsignmentNo == ConnsignmentNumber.Text);
+            if (data == null)
+            {
+                isDataInContext = false;
+                var TData = db.Transactions.SingleOrDefault(x => x.ConnsignmentNo == ConnsignmentNumber.Text);
+                if (TData == null)
+                {
+                    data = new RuntimeData();
+                    data.Id = Guid.NewGuid();
+                    data.ConsignmentNo = ConnsignmentNumber.Text;
+                }
+                else
+                {
+                    data = UtilityClass.convertTransObjToRunObj(TData);
+                }
+            }
             data.Weight = Double.Parse(WeightAccToDTDC.Text);
             data.FrWeight = Double.Parse(WeightAccToFranchize.Text);
             data.Amount = Decimal.Parse(Cost.Text);
@@ -54,14 +75,28 @@ namespace FinalUi
             data.Destination = Destination.Text;
             data.DestinationPin = Decimal.Parse(DestinationPin.Text);
             data.CustCode = CustomerSelected.Text;
-            data = db.RuntimeDatas.Single(x => x.Id == data.Id);
-            data.Weight = Double.Parse(WeightAccToDTDC.Text);
-            data.FrWeight = Double.Parse(WeightAccToFranchize.Text);
-            data.Amount = Decimal.Parse(Cost.Text);
-            data.FrAmount = Decimal.Parse(BilledAmount.Text);
-            data.Destination = Destination.Text;
-            data.DestinationPin = Decimal.Parse(DestinationPin.Text);
-            data.CustCode = CustomerSelected.Text;
+            if (isDataInContext)
+            {
+                data = db.RuntimeDatas.Single(x => x.Id == data.Id);
+                data.Weight = Double.Parse(WeightAccToDTDC.Text);
+                data.FrWeight = Double.Parse(WeightAccToFranchize.Text);
+                data.Amount = Decimal.Parse(Cost.Text);
+                data.FrAmount = Decimal.Parse(BilledAmount.Text);
+                data.Destination = Destination.Text;
+                data.DestinationPin = Decimal.Parse(DestinationPin.Text);
+                data.CustCode = CustomerSelected.Text;
+            }
+            else
+            {
+                db.RuntimeDatas.InsertOnSubmit(data);
+                RuntimeMeta metaData = new RuntimeMeta();
+                metaData.Id = Guid.NewGuid();
+                metaData.RuntimeDataID = data.Id;
+                metaData.SheetNo = sheetNo;
+                metaData.UserName  = SecurityModule.currentUserName;
+                db.RuntimeMetas.InsertOnSubmit(metaData);
+                dataContext.Add(data);
+            }
             db.SubmitChanges();
             setNextData();
         }
@@ -86,22 +121,53 @@ namespace FinalUi
         }
         void fillAllElements(string connsignmentNo)
         {
+            StatusTextBox.Text = "";
             RuntimeData data;
-            try
+            data = dataContext.SingleOrDefault(x => x.ConsignmentNo == connsignmentNo);
+            if (data != null)
             {
-                data = dataContext.Single(x => x.ConsignmentNo == connsignmentNo);
-                WeightAccToDTDC.Text = data.Weight.ToString();
-                Cost.Text = data.Amount.ToString();
-                Destination.Text = data.Destination;
-                DestinationPin.Text = data.DestinationPin.ToString();
+                fillDetails(data);
+            }
+            else
+            {
+                var TData = db.Transactions.SingleOrDefault(x => x.ConnsignmentNo == connsignmentNo);
+                if (TData != null)
+                {
+                    fillDetails(UtilityClass.convertTransObjToRunObj(TData));
+
+                    StatusTextBox.Text = "This record will be added to current sheet";
+                }
+                else
+                {
+                    StatusTextBox.Text = "New Record. This will be added in current sheet and database.";
+                    clearDetails();
+                }
+
+            }
+        }
+        void clearDetails()
+        {
+            WeightAccToDTDC.Text = "";
+            Cost.Text = "";
+            Destination.Text = "";
+            DestinationPin.Text = "";
+            WeightAccToFranchize.Text = "";
+            BilledAmount.Text = "";
+        }
+        public void fillDetails(RuntimeData data)
+        {
+            WeightAccToDTDC.Text = data.Weight.ToString();
+            Cost.Text = data.Amount.ToString();
+            Destination.Text = data.Destination;
+            DestinationPin.Text = data.DestinationPin.ToString();
+            if (data.FrWeight != null)
+                WeightAccToFranchize.Text = data.FrWeight.ToString();
+            else
                 WeightAccToFranchize.Text = data.Weight.ToString();
+            if (data.FrAmount != null)
+                BilledAmount.Text = data.FrAmount.ToString();
+            else
                 BilledAmount.Text = "";
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine("No data for connsignment: " + connsignmentNo);
-                Debug.WriteLine(e.Message);
-            }
 
         }
         private void Button_Click_Close(object sender, RoutedEventArgs e)

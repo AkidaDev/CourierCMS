@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12, 8.5" name="MicroDeep">
+  <DataContextMoniker Name="/MicroDeepDataContext" />
+  <nestedChildShapes>
+    <classShape Id="14e95c9d-89e4-4b0e-98b5-bc4396ba303d" absoluteBounds="9.75, 2.875, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/MicroDeepDataContext/clienttariff" />
+      <nestedChildShapes>
+        <elementListCompartment Id="96f20a4c-7766-49ba-80ef-c013c35f2ae8" absoluteBounds="9.765, 3.335, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4a639001-df44-41d6-8fa8-672d66f2e783" absoluteBounds="4.5, 3.25, 2, 1.9631982421875">
+      <DataClassMoniker Name="/MicroDeepDataContext/FWDTARIFF" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c9b1c4c8-6b83-45b3-b74f-2a164e722a60" absoluteBounds="4.515, 3.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
