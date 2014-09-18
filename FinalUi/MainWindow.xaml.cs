@@ -20,10 +20,6 @@ using System.Windows.Shapes;
 
 namespace FinalUi
 {
-
-
-
-
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -725,7 +721,5 @@ namespace FinalUi
             SwitchWindowState();
         }
         #endregion
-        
     }
-
 }

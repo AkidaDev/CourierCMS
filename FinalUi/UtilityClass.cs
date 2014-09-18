@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace FinalUi
 {
     class UtilityClass
@@ -50,10 +49,6 @@ namespace FinalUi
            
         }
         #endregion
-
-
-
-
         #region converting runtime data to transaction data
         static public List<Transaction> convertRuntimeListToTransList(List<RuntimeData> transList, BillingDataDataContext db)
         {
@@ -155,7 +150,6 @@ namespace FinalUi
             }
         }
         #endregion
-
         #region Cost calculating
         public static double getCost(string clientCode, string destinationCode, decimal destinationPin, double wieght)
         {
