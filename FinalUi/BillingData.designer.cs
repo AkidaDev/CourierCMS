@@ -75,7 +75,7 @@ namespace FinalUi
     #endregion
 		
 		public BillingDataDataContext() : 
-				base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString2, mappingSource)
+				base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -2385,15 +2385,15 @@ namespace FinalUi
 		
 		private decimal _Amount;
 		
-		private char _DOX;
+		private System.Nullable<char> _DOX;
 		
-		private double _ServiceTax;
+		private System.Nullable<double> _ServiceTax;
 		
-		private double _SplDisc;
+		private System.Nullable<double> _SplDisc;
 		
 		private string _InvoiceNo;
 		
-		private System.DateTime _InvoiceDate;
+		private System.Nullable<System.DateTime> _InvoiceDate;
 		
 		private System.Nullable<System.Guid> _EmpId;
 		
@@ -2401,7 +2401,7 @@ namespace FinalUi
 		
 		private System.Nullable<double> _FrWeight;
 		
-		private System.Guid _TransactionId;
+		private System.Nullable<System.Guid> _TransactionId;
 		
 		private string _CustCode;
 		
@@ -2431,15 +2431,15 @@ namespace FinalUi
     partial void OnBookingDateChanged();
     partial void OnAmountChanging(decimal value);
     partial void OnAmountChanged();
-    partial void OnDOXChanging(char value);
+    partial void OnDOXChanging(System.Nullable<char> value);
     partial void OnDOXChanged();
-    partial void OnServiceTaxChanging(double value);
+    partial void OnServiceTaxChanging(System.Nullable<double> value);
     partial void OnServiceTaxChanged();
-    partial void OnSplDiscChanging(double value);
+    partial void OnSplDiscChanging(System.Nullable<double> value);
     partial void OnSplDiscChanged();
     partial void OnInvoiceNoChanging(string value);
     partial void OnInvoiceNoChanged();
-    partial void OnInvoiceDateChanging(System.DateTime value);
+    partial void OnInvoiceDateChanging(System.Nullable<System.DateTime> value);
     partial void OnInvoiceDateChanged();
     partial void OnEmpIdChanging(System.Nullable<System.Guid> value);
     partial void OnEmpIdChanged();
@@ -2447,7 +2447,7 @@ namespace FinalUi
     partial void OnFrAmountChanged();
     partial void OnFrWeightChanging(System.Nullable<double> value);
     partial void OnFrWeightChanged();
-    partial void OnTransactionIdChanging(System.Guid value);
+    partial void OnTransactionIdChanging(System.Nullable<System.Guid> value);
     partial void OnTransactionIdChanged();
     partial void OnCustCodeChanging(string value);
     partial void OnCustCodeChanged();
@@ -2561,7 +2561,7 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mode", DbType="NChar(25) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mode", DbType="NChar(25)")]
 		public string Mode
 		{
 			get
@@ -2641,8 +2641,8 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DOX", DbType="Char(1) NOT NULL")]
-		public char DOX
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DOX", DbType="Char(1)")]
+		public System.Nullable<char> DOX
 		{
 			get
 			{
@@ -2661,8 +2661,8 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceTax", DbType="Float NOT NULL")]
-		public double ServiceTax
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceTax", DbType="Float")]
+		public System.Nullable<double> ServiceTax
 		{
 			get
 			{
@@ -2681,8 +2681,8 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SplDisc", DbType="Float NOT NULL")]
-		public double SplDisc
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SplDisc", DbType="Float")]
+		public System.Nullable<double> SplDisc
 		{
 			get
 			{
@@ -2701,7 +2701,7 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceNo", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceNo", DbType="VarChar(50)")]
 		public string InvoiceNo
 		{
 			get
@@ -2721,8 +2721,8 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceDate", DbType="Date NOT NULL")]
-		public System.DateTime InvoiceDate
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceDate", DbType="Date")]
+		public System.Nullable<System.DateTime> InvoiceDate
 		{
 			get
 			{
@@ -2801,8 +2801,8 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionId", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid TransactionId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionId", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> TransactionId
 		{
 			get
 			{

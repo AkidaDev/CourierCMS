@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BillingDatabase" Class="BillingDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=VJAIN;Initial Catalog=BillingDatabase;Integrated Security=True" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=VJAIN;Initial Catalog=BillingDatabase;Integrated Security=True" SettingsObjectName="UtilityProject.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Assignment" Member="Assignments">
     <Type Name="Assignment">
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="ServiceCode" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="Dox" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ClientCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
       <Column Name="ZoneCode" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="RateCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Association Name="ZONE_Assignment" Member="ZONE" ThisKey="ZoneCode" OtherKey="zcode" Type="ZONE" IsForeignKey="true" />
+      <Association Name="Client_Assignment" Member="Client" ThisKey="ClientCode" OtherKey="CLCODE" Type="Client" IsForeignKey="true" />
       <Association Name="Rate_Assignment" Member="Rate" ThisKey="RateCode" OtherKey="RateCode" Type="Rate" IsForeignKey="true" />
       <Association Name="Service_Assignment" Member="Service" ThisKey="ServiceCode" OtherKey="SER_CODE" Type="Service" IsForeignKey="true" />
     </Type>
@@ -64,6 +65,7 @@
       <Column Name="BOYCD" Type="System.String" DbType="Char(10)" CanBeNull="true" />
       <Column Name="BOYNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="APPTRF" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Association Name="Client_Assignment" Member="Assignments" ThisKey="CLCODE" OtherKey="ClientCode" Type="Assignment" />
       <Association Name="Client_Transaction" Member="Transactions" ThisKey="CLCODE" OtherKey="CustCode" Type="Transaction" />
     </Type>
   </Table>
@@ -81,9 +83,10 @@
   </Table>
   <Table Name="dbo.Rate" Member="Rates">
     <Type Name="Rate">
-      <Column Name="RateXML" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="RateCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Association Name="Rate_Assignment" Member="Assignments" ThisKey="RateCode" OtherKey="RateCode" Type="Assignment" />
+      <Association Name="Rate_RateDetail" Member="RateDetails" ThisKey="RateCode" OtherKey="RateCode" Type="RateDetail" />
     </Type>
   </Table>
   <Table Name="dbo.Roles" Member="Roles">
@@ -109,19 +112,19 @@
       <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="Type" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
       <Column Name="Destination" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Mode" Type="System.String" DbType="NChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="Mode" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
       <Column Name="DestinationPin" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
       <Column Name="BookingDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
-      <Column Name="DOX" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-      <Column Name="ServiceTax" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="SplDisc" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="InvoiceNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="InvoiceDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="DOX" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ServiceTax" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SplDisc" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="InvoiceNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="EmpId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
       <Column Name="FrAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
       <Column Name="FrWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="TransactionId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="TransactionId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
       <Column Name="CustCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="TransMF_No" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Association Name="RuntimeData_RuntimeMeta" Member="RuntimeMetas" ThisKey="Id" OtherKey="RuntimeDataID" Type="RuntimeMeta" />
@@ -209,6 +212,18 @@
       <Column Name="RoleId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Association Name="Employee_User_Role" Member="Employee" ThisKey="EmployeeId" OtherKey="Id" Type="Employee" IsForeignKey="true" />
       <Association Name="Role_User_Role" Member="Role" ThisKey="RoleId" OtherKey="Id" Type="Role" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RateDetails" Member="RateDetails">
+    <Type Name="RateDetail">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RateCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="DoxRate" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="NonDoxRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StepWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="Rate_RateDetail" Member="Rate" ThisKey="RateCode" OtherKey="RateCode" Type="Rate" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

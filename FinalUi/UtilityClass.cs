@@ -38,7 +38,7 @@ namespace FinalUi
             runtimeDataObj.ServiceTax = trans.ServiceTax;
             runtimeDataObj.SplDisc = trans.SplDisc;
             runtimeDataObj.CustCode = trans.CustCode;
-           
+            runtimeDataObj.TransactionId = trans.ID;
             return runtimeDataObj;
         }
         static public List<RuntimeData> loadDataFromDatabase(DateTime startDate, DateTime endDate)
@@ -88,14 +88,14 @@ namespace FinalUi
                 transactionData.CustCode = db.Clients.Single(x => x.CLCODE == data.CustCode).CLCODE;
             transactionData.Destination = data.Destination;
             transactionData.DestinationPin = data.DestinationPin;
-            transactionData.DOX = data.DOX;
+            transactionData.DOX = (char)data.DOX;
             if (data.EmpId != null)
                 transactionData.Employee = db.Employees.Single(x => x.Id == data.EmpId);
             transactionData.InvoiceDate = data.InvoiceDate;
             transactionData.InvoiceNo = data.InvoiceNo;
             transactionData.Mode = data.Mode;
-            transactionData.ServiceTax = data.ServiceTax;
-            transactionData.SplDisc = data.SplDisc;
+            transactionData.ServiceTax = (Double)data.ServiceTax;
+            transactionData.SplDisc = (double)data.SplDisc;
             transactionData.Type = data.Type;
             transactionData.UserId = data.EmpId;
             transactionData.Weight = data.Weight;

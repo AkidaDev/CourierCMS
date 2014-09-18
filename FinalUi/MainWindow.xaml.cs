@@ -136,7 +136,7 @@ namespace FinalUi
             #endregion
 
             #region Command Bindings
-            CommandBinding SanitizingCommandBinding = new CommandBinding(SanitizingCommand, ExecuteSanitizingCommand, CanExecuteIsDataGridNotNull);
+            CommandBinding SanitizingCommandBinding = new CommandBinding(SanitizingCommand, ExecuteSanitizingCommand, CanExecuteSanitizingCommand);
             this.CommandBindings.Add(SanitizingCommandBinding);
             SanitizingButton.Command = SanitizingCommand;
 
@@ -254,10 +254,18 @@ namespace FinalUi
         }
         #region SanitizingCommand
         public RoutedCommand SanitizingCommand = new RoutedCommand();
-
+        private void CanExecuteSanitizingCommand(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
         private void ExecuteSanitizingCommand(object sender, ExecutedRoutedEventArgs e)
         {
-            SanitizingWindow window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db);
+            if(dataGridHelper.currentDataSheet == null)
+            {
+                int key = dataGridHelper.addNewSheet(new List<RuntimeData>(), "");
+                addingNewPage(key);
+            }
+            SanitizingWindow window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db,dataGridHelper.currentSheetNumber);
             window.Show();
         }
         #endregion

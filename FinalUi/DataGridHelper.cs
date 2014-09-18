@@ -207,6 +207,10 @@ namespace FinalUi
                 }
                 return dataSheetManager.currentDataSheet.dataStack.OrderBy(x=>x.ConsignmentNo).ToList();
             }
+            set
+            {
+                dataSheetManager.currentDataSheet.dataStack = value;
+            }
         }
         public int currentSheetNumber
         {
