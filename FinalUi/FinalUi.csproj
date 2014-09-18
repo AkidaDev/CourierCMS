@@ -118,6 +118,9 @@
       <DependentUpon>SanitizingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SecurityModule.cs" />
+    <Compile Include="TestingMainWindow.xaml.cs">
+      <DependentUpon>TestingMainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UtilityClass.cs" />
     <Compile Include="UserControlGallery.xaml.cs">
       <DependentUpon>UserControlGallery.xaml</DependentUpon>
@@ -204,6 +207,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="TestingMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControlGallery.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -245,7 +252,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Configs.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Images\Thumbs.db" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\BillingDataDataContext.datasource" />
     <None Include="Properties\Settings.settings">
