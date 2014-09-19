@@ -1,35 +1,25 @@
 ﻿<Window x:Class="FinalUi.RateWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="RateWindow" Height="300" Width="300">
+        Title="RateWindow" Height="300" Width="500">
     <Window.Resources>
         <CollectionViewSource x:Key="ServiceCodes" CollectionViewType="ListCollectionView"></CollectionViewSource>
         <CollectionViewSource x:Key="ZoneCodes" CollectionViewType="ListCollectionView"></CollectionViewSource>
         <CollectionViewSource x:Key="RateCodes" CollectionViewType="ListCollectionView"></CollectionViewSource>
     </Window.Resources>
-    <StackPanel>
-        <WrapPanel>
-            <TextBlock Text="Select Rate Code: "></TextBlock>
-            <ComboBox IsEditable="True" KeyUp="ComboBoxRate_KeyUp" Name="ComboBoxRate"></ComboBox>
-        </WrapPanel>
-        <WrapPanel>
-            <TextBlock Text="Select Service Code: "></TextBlock>
-            <ComboBox IsEditable="True" Name="ComboBoxService"></ComboBox>
-        </WrapPanel>
-        <WrapPanel>
-            <TextBlock Text="Select Zone Code: "></TextBlock>
-            <ComboBox Name="ComboBoxZone" IsEditable="True"></ComboBox>
-        </WrapPanel>
-        <WrapPanel>
-            <TextBlock Text="DOX: "></TextBlock>
-            <ComboBox Name="ComboBoxDox" IsEditable="True">
-                <ComboBoxItem Content="N"/>
-                <ComboBoxItem Content="D"/>
-                
-            </ComboBox>
-        </WrapPanel>
-        <StackPanel Name="RatePanel">
-            
-        </StackPanel>
-    </StackPanel>
+    <Grid>
+        <TextBlock Text="Select Rate Code: " Margin="10,10,386,237" ></TextBlock>
+        <ComboBox IsEditable="True" KeyUp="ComboBoxRate_KeyUp" Name="ComboBoxRate" Margin="111,6,296,237"/>
+        <TextBlock Text="Select Service Code: " Margin="218,10,167,237"/>
+        <ComboBox IsEditable="True" x:Name="ComboBoxService" Margin="343,10,73,246"/>
+        <TextBlock Text="Description" Margin="10,79,415,173" ></TextBlock>
+        <TextBox TextWrapping="Wrap" AcceptsReturn="True" Margin="97,79,73,140"/>
+        <TextBlock Text="Select Zone Code: " Margin="10,46,380,208"></TextBlock>
+        <ComboBox Name="ComboBoxZone" IsEditable="True" Margin="121,46,296,203"></ComboBox>
+        <TextBlock Text="DOX: " Margin="218,46,227,201"></TextBlock>
+        <ComboBox Name="ComboBoxDox" IsEditable="True" Margin="347,43,73,201">
+            <ComboBoxItem Content="N"/>
+            <ComboBoxItem Content="D"/>
+        </ComboBox>
+    </Grid>
 </Window>

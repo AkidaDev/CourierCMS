@@ -28,9 +28,9 @@ namespace FinalUi
         {
             InitializeComponent();
             BillingDataDataContext db = new BillingDataDataContext();
-            ZoneList.Source = db.ZONEs.Select(x => x.zcode);
-            ServiceList.Source = db.Services.Select(x => x.SER_CODE);
-            RateList.Source = db.ZONEs.Select(x => x.zcode);
+            // ZoneList.Source = db.ZONEs.Select(x => x.zcode);
+            //ServiceList.Source = db.Services.Select(x => x.SER_CODE);
+            //RateList.Source = db.ZONEs.Select(x => x.zcode);
             isEdited = false;
         }
 
@@ -80,13 +80,12 @@ namespace FinalUi
                     TextBlock stepTextBlock = new TextBlock();
                     stepTextBlock.Text = "Enter StepWeight: ";
                     rateNodeTypePanel.Children.Add(stepTextBlock);
-                    TextBox stepTextBox = new TextBox(); 
+                    TextBox stepTextBox = new TextBox();
                     stepTextBox.Tag = "StepWeight";
                     rateNodeTypePanel.Children.Add(stepTextBox);
                 }
             }
         }
-
         void ComboBoxSelectType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             throw new NotImplementedException();

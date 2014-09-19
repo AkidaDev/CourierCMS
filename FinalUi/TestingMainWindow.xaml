@@ -10,5 +10,6 @@
             <Button Name="manageclient" Content="manageclient" Click="manageclient_Click" Margin="45,166,18,-121"></Button>
             <Button Name="manageemployee" Content="ManageEmployee" Click="manageemployee_Click" Margin="45,106,28,-53"></Button>
             <Button x:Name="mainwindow" Content="MainWindow" Click="mainwindow_Click" Margin="167,104,-84,-53"/>
+        <Button Name="ratewindow" Content="RateWindow" Click="ratewindow_Click" Margin="167,163,-105,-121" ></Button>
     </Grid>
 </Window>

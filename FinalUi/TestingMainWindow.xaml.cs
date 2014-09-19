@@ -47,5 +47,11 @@ namespace FinalUi
             ManageEmployee window = new ManageEmployee();
             window.Show();
         }
+
+        private void ratewindow_Click(object sender, RoutedEventArgs e)
+        {
+            RateWindow winodw = new RateWindow();
+            winodw.Show();
+        }
     }
 }
