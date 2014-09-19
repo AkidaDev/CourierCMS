@@ -111,6 +111,9 @@
     <Compile Include="PrintWindow.xaml.cs">
       <DependentUpon>PrintWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RateAssignment.xaml.cs">
+      <DependentUpon>RateAssignment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RateWindow.xaml.cs">
       <DependentUpon>RateWindow.xaml</DependentUpon>
     </Compile>
@@ -118,6 +121,9 @@
       <DependentUpon>SanitizingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SecurityModule.cs" />
+    <Compile Include="StockWindow.xaml.cs">
+      <DependentUpon>StockWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TestingMainWindow.xaml.cs">
       <DependentUpon>TestingMainWindow.xaml</DependentUpon>
     </Compile>
@@ -199,11 +205,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="RateAssignment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="RateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SanitizingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StockWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

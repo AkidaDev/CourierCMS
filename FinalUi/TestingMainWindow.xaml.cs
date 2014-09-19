@@ -53,5 +53,17 @@ namespace FinalUi
             RateWindow winodw = new RateWindow();
             winodw.Show();
         }
+
+        private void stockwindow_Click(object sender, RoutedEventArgs e)
+        {
+            StockWindow window = new StockWindow();
+            window.Show();
+        }
+
+        private void rateassignment_Click(object sender, RoutedEventArgs e)
+        {
+            RateAssignment window = new RateAssignment();
+            window.Show();
+        }
     }
 }

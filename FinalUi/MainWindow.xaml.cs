@@ -583,7 +583,6 @@ namespace FinalUi
             Marshal.StructureToPtr(lMmi, lParam, true);
         }
 
-
         private void SwitchWindowState()
         {
             switch (WindowState)
@@ -616,9 +615,7 @@ namespace FinalUi
                         path.Fill = Brushes.Black;
                         StackPanel panel = new StackPanel();
                         panel.Children.Add(path);
-
                         this.NormalMaximize.Content = panel;
-        
                         break;
                     }
             }
@@ -670,7 +667,6 @@ namespace FinalUi
             MONITOR_DEFAULTTOPRIMARY = 0x00000001,
             MONITOR_DEFAULTTONEAREST = 0x00000002
         }
-
 
         [DllImport("user32.dll")]
         static extern bool GetMonitorInfo(IntPtr hMonitor, MONITORINFO lpmi);

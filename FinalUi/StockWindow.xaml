@@ -1,0 +1,19 @@
+﻿<Window x:Class="FinalUi.StockWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="StockWindow" Height="300" Width="400" ResizeMode="NoResize">
+    <Grid Margin="0,0,4,-4">
+        <TextBlock Text="StockEntry" Margin="20,10,141,227" FontSize="22"></TextBlock>
+        <TextBlock Name="FromLabel"  Text="From" Margin="0,53,350,196"></TextBlock>
+        <TextBox Name="FromText" Margin="40,52,268,197"></TextBox>
+        <TextBlock Name="ToLabel" Text="To" Margin="147,52,208,197"></TextBlock>
+        <TextBox Name="Totext" Margin="206,52,10,196" RenderTransformOrigin="0.555,0.713"></TextBox>
+        <TextBlock Name="CostLabel" Text="Cost"  Margin="0,80,355,161"></TextBlock>
+        <TextBox Name="Costtext" Margin="40,80,268,173"></TextBox>
+        <TextBlock Name="AssignLabel" Text="Assign" Margin="147,83,195,161"></TextBlock>
+        <ComboBox Name="AssignCombo" Margin="206,84,10,161"></ComboBox>
+        <TextBlock Name="DescriptionLabel" Text="Description" Margin="117,135,195,103"></TextBlock>
+        <TextBox Name="Descriptiontext" Margin="200,135,16,119"></TextBox>
+        <Button Name="AddstockLabel" Content="AddStock" Margin="40,177,208,66"></Button>
+    </Grid>
+</Window>

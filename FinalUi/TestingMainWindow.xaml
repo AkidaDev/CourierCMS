@@ -11,5 +11,7 @@
             <Button Name="manageemployee" Content="ManageEmployee" Click="manageemployee_Click" Margin="45,106,28,-53"></Button>
             <Button x:Name="mainwindow" Content="MainWindow" Click="mainwindow_Click" Margin="167,104,-84,-53"/>
         <Button Name="ratewindow" Content="RateWindow" Click="ratewindow_Click" Margin="167,163,-105,-121" ></Button>
+        <Button Name="stockwindow" Content="Stock Window" Click="stockwindow_Click" Margin="167,41,-117,20"></Button>
+        <Button Name="rateassignment" Content="Rate Assignment" Click="rateassignment_Click" Margin="18,228,45,-164"></Button>
     </Grid>
 </Window>
