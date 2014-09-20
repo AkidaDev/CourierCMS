@@ -8,15 +8,15 @@
         <CollectionViewSource x:Key="RateCodes" CollectionViewType="ListCollectionView"></CollectionViewSource>
     </Window.Resources>
     <Grid>
-        <TextBlock Text="Select Rate Code: " Margin="10,10,386,237" ></TextBlock>
+        <TextBlock Text="Select Rate Code: " Margin="10,10,381,237" ></TextBlock>
         <ComboBox IsEditable="True" KeyUp="ComboBoxRate_KeyUp" Name="ComboBoxRate" Margin="111,6,296,237"/>
-        <TextBlock Text="Select Service Code: " Margin="218,10,167,237"/>
-        <ComboBox IsEditable="True" x:Name="ComboBoxService" Margin="343,10,73,246"/>
-        <TextBlock Text="Description" Margin="10,79,415,173" ></TextBlock>
+        <TextBlock Text="Select Service Code: " Margin="218,10,154,237"/>
+        <ComboBox IsEditable="True" x:Name="ComboBoxService" Margin="343,10,73,237"/>
+        <TextBlock Text="Description" Margin="10,79,400,164" ></TextBlock>
         <TextBox TextWrapping="Wrap" AcceptsReturn="True" Margin="97,79,73,140"/>
-        <TextBlock Text="Select Zone Code: " Margin="10,46,380,208"></TextBlock>
+        <TextBlock Text="Select Zone Code: " Margin="10,46,376,195"></TextBlock>
         <ComboBox Name="ComboBoxZone" IsEditable="True" Margin="121,46,296,203"></ComboBox>
-        <TextBlock Text="DOX: " Margin="218,46,227,201"></TextBlock>
+        <TextBlock Text="DOX: " Margin="218,46,226,195"></TextBlock>
         <ComboBox Name="ComboBoxDox" IsEditable="True" Margin="347,43,73,201">
             <ComboBoxItem Content="N"/>
             <ComboBoxItem Content="D"/>

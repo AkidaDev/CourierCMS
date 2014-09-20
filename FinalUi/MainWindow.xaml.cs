@@ -146,7 +146,6 @@ namespace FinalUi
 
             CommandBinding DeleteCommandBinding = new CommandBinding(DeleteCommand, DeleteCommandExecuted, DeleteCommand_CanExecute);
             this.CommandBindings.Add(DeleteCommandBinding);
-            CloseCurrentClick.Command = DeleteCommand;
             #endregion
 
 
@@ -256,12 +255,12 @@ namespace FinalUi
         }
         private void ExecuteSanitizingCommand(object sender, ExecutedRoutedEventArgs e)
         {
-            if(dataGridHelper.currentDataSheet == null)
+            if (dataGridHelper.currentDataSheet == null)
             {
                 int key = dataGridHelper.addNewSheet(new List<RuntimeData>(), "");
                 addingNewPage(key);
             }
-            SanitizingWindow window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db,dataGridHelper.currentSheetNumber);
+            SanitizingWindow window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber);
             window.Show();
         }
         #endregion
@@ -358,7 +357,8 @@ namespace FinalUi
             {
                 DeleteSheetWorker.RunWorkerAsync(dataGridHelper.currentSheetNumber);
                 dataGridHelper.removeSheet(dataGridHelper.currentSheetNumber);
-                DataGridSheetPanel.Children.Remove(activeButton);
+                buttontabcanvaswrap.Children.Remove(activeButton);
+
                 buttonList.Remove(activeButton);
                 if (buttonList.Count > 0)
                     activeButton = buttonList.Single(x => x.Value == buttonList.Values.Min()).Key;
@@ -404,46 +404,74 @@ namespace FinalUi
         #region DataGrid Methods
         void addingNewPage(int key)
         {
-            dataGridHelper.getFirstPage();
-            Button button = new Button();
-            button.Style = (Style)FindResource("Sheet_button");
-            button.Background = Brushes.Transparent;
-            StackPanel panel = new StackPanel();
 
-            WrapPanel panel1 = new WrapPanel();
-        //    panel.Children.Add(panel1);
-            Path path = new Path();
-            path.Data = Geometry.Parse(@"F1M2,1.644C2,1.644 2,20 2,20 2,20 77.831,20 77.831,20 77.831,20 91.619,1.644 91.619,1.644 91.619,1.644 2,1.644 2,1.644z");
-            path.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("White"));
-            path.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("RoyalBlue"));
-            panel.Children.Add(path);
+            dataGridHelper.getFirstPage();
+
+            Button canvasButton = new Button();
+            canvasButton.Style = (Style)FindResource("Sheet_button");
+            canvasButton.Background = Brushes.Transparent;
+            canvasButton.VerticalAlignment = VerticalAlignment.Top;
+            if (key == 0)
+                canvasButton.Margin = new Thickness(0, 0, 0, 0);
+            else
+                canvasButton.Margin = new Thickness(-13, 1, 0, 0);
+            canvasButton.Height = 22;
+            canvasButton.Width = 90;
+
+            Canvas canvastab = new Canvas();
+            canvastab.Width = 90;
+            canvastab.Height = 22;
+            
+            Path pathsquare = new Path();
+            pathsquare.Data = Geometry.Parse(@"F1M2,1.644C2,1.644 2,20 2,20 2,20 77.831,20 77.831,20 77.831,20 91.619,1.644 91.619,1.644 91.619,1.644 2,1.644 2,1.644z");
+            pathsquare.Fill = Brushes.White;
+            pathsquare.Height = 21;
+            pathsquare.Width = 88.5;
+            pathsquare.Stroke = Brushes.RoyalBlue;
+            pathsquare.Stretch = Stretch.Fill;
+            Button buttonsquare = new Button();
+            buttonsquare.Style = (Style)FindResource("Sheet_button");
+            buttonsquare.Content = pathsquare;
+
+
+            Path pathkatta = new Path();
+            pathkatta.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF706565"));
+            pathkatta.Stretch = Stretch.Fill;
+            pathkatta.Height = 8;
+            pathkatta.Width = 8;
+            pathkatta.Data = Geometry.Parse(@"F1M14.987,13.789C14.987,13.789 13.622,15.154 13.622,15.154 13.622,15.154 8.16,9.692 8.16,9.692 8.16,
+                      9.692 2.699,15.154 2.699,15.154 2.699,15.154 1.333,13.789 1.333,13.789 1.333,13.789 6.795,8.327 6.795,8.327 6.795,8.327 1.333,2.865 1.333,2.865 1.333,
+                     2.865 2.699,1.5 2.699,1.5 2.699,1.5 8.16,6.962 8.16,6.962 8.16,6.962 13.622,1.5 13.622,1.5 13.622,1.5 14.987,2.865 14.987,2.865 14.987,2.865 9.526,
+                    8.327 9.526,8.327 9.526,8.327 14.987,13.789 14.987,13.789z");
+
             TextBlock text = new TextBlock();
             text.Text = "Sheet- " + key.ToString();
-            text.Margin = new Thickness(0, -22, 20, 0);
-            text.FontFamily = new FontFamily("Segoe UI");
-            text.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("RoyalBlue"));
+            text.Foreground = Brushes.RoyalBlue;
             text.FontSize = 16;
             text.Background = Brushes.Transparent;
-            text.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
+            text.TextAlignment = TextAlignment.Left;
+            Canvas.SetTop(text, 2);
+            Canvas.SetLeft(text, 4);
+            Button buttonkatta = new Button();
+            buttonkatta.Style = (Style)FindResource("smallbutton");
+            buttonkatta.Content = pathkatta;
+            buttonkatta.Name = "CloseCurrentClick";
+            buttonkatta.Command = DeleteCommand;
 
-           
-           // panel.Children.Add(path1);
+            Canvas.SetLeft(buttonkatta, 67);
+            Canvas.SetTop(buttonkatta, 7.5);
 
-            panel.Children.Add(text);
-            button.Content = panel;
-            button.Click += SheetSelectButton_Click;
-            Path path1 = new Path();
-           // image of the katta 
-            path1.Data = Geometry.Parse(@"F1M14.987,13.789C14.987,13.789 13.622,15.154 13.622,15.154 13.622,15.154 8.16,9.692 8.16,9.692 8.16,
-				9.692 2.699,15.154 2.699,15.154 2.699,15.154 1.333,13.789 1.333,13.789 1.333,13.789 6.795,8.327 6.795,8.327 6.795,8.327 1.333,2.865 1.333,2.865 1.333,
-				2.865 2.699,1.5 2.699,1.5 2.699,1.5 8.16,6.962 8.16,6.962 8.16,6.962 13.622,1.5 13.622,1.5 13.622,1.5 14.987,2.865 14.987,2.865 14.987,2.865 9.526,
-				8.327 9.526,8.327 9.526,8.327 14.987,13.789 14.987,13.789z");
-            path1.Fill = Brushes.Black;
-            DataGridSheetPanel.Children.Add(button);
-            buttonList.Add(button, key);
-            activeButton = button;
-
+            canvastab.Children.Add(buttonsquare);
+            canvastab.Children.Add(buttonkatta);
+            canvastab.Children.Add(text);
+            canvasButton.Content = canvastab;
+            canvasButton.Click += SheetSelectButton_Click; 
+            buttontabcanvaswrap.Children.Add(canvasButton);
+            buttonList.Add(canvasButton, key);
+            activeButton = canvasButton;
+          
         }
+       
         void loadData_Closed(object sender, EventArgs e)
         {
             this.Effect = null;
@@ -622,7 +650,7 @@ namespace FinalUi
         }
 
 
-        
+
         private void rctHeader_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             mRestoreIfMove = false;
@@ -725,5 +753,11 @@ namespace FinalUi
             SwitchWindowState();
         }
         #endregion
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+          //  Application.Current.Shutdown();
+            this.Close();
+        }
     }
 }

@@ -5,7 +5,6 @@
         Title="Vortex" 
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Normal" Width="1024" Height="700" WindowStyle="None">
 
-
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Open"
                         Executed="Open_Executed"
@@ -67,7 +66,7 @@
                 </Button>
 
                 <Rectangle Height="20" Stroke="#00832A2A" Width="50" Fill="#FFB65F5F" Margin="0,0,-50,0"/>
-                 <Button Style="{StaticResource all}" Name="CloseButton" Command="ApplicationCommands.Close" Width="50" Height="18" >
+                 <Button Style="{StaticResource all}" Name="CloseButton" Click="CloseButton_Click" Width="50" Height="18" >
                     <Button.Content>
                         <Path x:Name="close1" Data="F1M14.987,13.789C14.987,13.789 13.622,15.154 13.622,15.154 13.622,15.154 8.16,9.692 8.16,9.692 8.16,
 				9.692 2.699,15.154 2.699,15.154 2.699,15.154 1.333,13.789 1.333,13.789 1.333,13.789 6.795,8.327 6.795,8.327 6.795,8.327 1.333,2.865 1.333,2.865 1.333,
@@ -424,31 +423,10 @@
                         </DataGrid>
                     </ContentControl> 
 					<DockPanel DockPanel.Dock="Bottom" Name="DataGridOptionpanel" Background="#FFBBCADC" Margin="1,0,0,0" Grid.Row="1">
-                    
-					<!--Bhaiyo Isey Defalut Krdo -->
+                            <WrapPanel Name="buttontabcanvaswrap">
 					
-					<Canvas ClipToBounds="True" HorizontalAlignment="Left" Height="22" UseLayoutRounding="False" VerticalAlignment="Top" Width="90" Margin="-2,0,0,0">
-						<Path Data="F1M2,1.644C2,1.644 2,20 2,20 2,20 77.831,20 77.831,20 77.831,20 91.619,1.644 91.619,1.644 91.619,1.644 2,1.644 2,1.644z" Fill="white" Height="21" Canvas.Left="1" Canvas.Top="1" Width="88.5" Stroke="RoyalBlue" Stretch="Fill"/>
-						<TextBlock FontSize="16" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="4" LineHeight="18" TextAlignment="Left" Foreground="RoyalBlue" TextWrapping="Wrap" Text="Sheet- 9" Canvas.Top="2"/>
-						<Button Canvas.Left="67" Canvas.Top="7.5" Style="{StaticResource smallbutton}" Name="CloseCurrentClick"> <Button.Content>
-						<Path  Data="F1M14.987,13.789C14.987,13.789 13.622,15.154 13.622,15.154 13.622,15.154 8.16,9.692 8.16,9.692 8.16,
-				9.692 2.699,15.154 2.699,15.154 2.699,15.154 1.333,13.789 1.333,13.789 1.333,13.789 6.795,8.327 6.795,8.327 6.795,8.327 1.333,2.865 1.333,2.865 1.333,
-				2.865 2.699,1.5 2.699,1.5 2.699,1.5 8.16,6.962 8.16,6.962 8.16,6.962 13.622,1.5 13.622,1.5 13.622,1.5 14.987,2.865 14.987,2.865 14.987,2.865 9.526,
-				8.327 9.526,8.327 9.526,8.327 14.987,13.789 14.987,13.789z" Height="8" Width="8" Stretch="Fill" Fill="#FF706565" />
-						</Button.Content></Button>
-					</Canvas>
-					<Canvas ClipToBounds="True" HorizontalAlignment="Left" Height="22" UseLayoutRounding="False" VerticalAlignment="Top" Width="90" Margin="-9,0,0,0">
-						<Path Data="F1M2,1.644C2,1.644 2,20 2,20 2,20 77.831,20 77.831,20 77.831,20 91.619,1.644 91.619,1.644 91.619,1.644 2,1.644 2,1.644z" Fill="white" Height="21" Canvas.Left="1" Canvas.Top="1" Width="88.5" Stroke="RoyalBlue" Stretch="Fill"/>
-						<TextBlock FontSize="16" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="4" LineHeight="18" TextAlignment="Left" Foreground="RoyalBlue" TextWrapping="Wrap" Text="Sheet- 9" Canvas.Top="2"/>
-						<Button Canvas.Left="67" Canvas.Top="7.5" Style="{StaticResource smallbutton}"> <Button.Content>
-						<Path  Data="F1M14.987,13.789C14.987,13.789 13.622,15.154 13.622,15.154 13.622,15.154 8.16,9.692 8.16,9.692 8.16,
-				9.692 2.699,15.154 2.699,15.154 2.699,15.154 1.333,13.789 1.333,13.789 1.333,13.789 6.795,8.327 6.795,8.327 6.795,8.327 1.333,2.865 1.333,2.865 1.333,
-				2.865 2.699,1.5 2.699,1.5 2.699,1.5 8.16,6.962 8.16,6.962 8.16,6.962 13.622,1.5 13.622,1.5 13.622,1.5 14.987,2.865 14.987,2.865 14.987,2.865 9.526,
-				8.327 9.526,8.327 9.526,8.327 14.987,13.789 14.987,13.789z" Height="8" Width="8" Stretch="Fill" Fill="#FF706565" />
-						</Button.Content></Button>
-					</Canvas>
-
-					<WrapPanel Name="DataGridSheetPanel"/>
+                            </WrapPanel>
+                            <WrapPanel Name="DataGridSheetPanel"/>
 
 						<WrapPanel HorizontalAlignment="Right">
                          <Button Style="{StaticResource smallbutton}" Name="DataGridFirstPage" Margin="2,2,5,2" Click="DataGridFirstPage_Click" >
