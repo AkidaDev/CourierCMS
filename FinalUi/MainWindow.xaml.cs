@@ -409,29 +409,29 @@ namespace FinalUi
 
             Button canvasButton = new Button();
             canvasButton.Style = (Style)FindResource("Sheet_button");
-            canvasButton.Background = Brushes.Transparent;
-            canvasButton.VerticalAlignment = VerticalAlignment.Top;
+			canvasButton.Width = 90;
+            canvasButton.Height = 20;
             if (key == 0)
-                canvasButton.Margin = new Thickness(0, 0, 0, 0);
+                canvasButton.Margin = new Thickness(0, 1, 0, 0);
             else
-                canvasButton.Margin = new Thickness(-13, 1, 0, 0);
-            canvasButton.Height = 22;
+                canvasButton.Margin = new Thickness(-11, 1, 0, 0);
+            canvasButton.Height = 20;
             canvasButton.Width = 90;
 
             Canvas canvastab = new Canvas();
-            canvastab.Width = 90;
-            canvastab.Height = 22;
+           	canvastab.Width = 90;
+            canvastab.Height = 20;
             
             Path pathsquare = new Path();
             pathsquare.Data = Geometry.Parse(@"F1M2,1.644C2,1.644 2,20 2,20 2,20 77.831,20 77.831,20 77.831,20 91.619,1.644 91.619,1.644 91.619,1.644 2,1.644 2,1.644z");
             pathsquare.Fill = Brushes.White;
-            pathsquare.Height = 21;
+            pathsquare.Height = 20;
             pathsquare.Width = 88.5;
             pathsquare.Stroke = Brushes.RoyalBlue;
             pathsquare.Stretch = Stretch.Fill;
             Button buttonsquare = new Button();
             buttonsquare.Style = (Style)FindResource("Sheet_button");
-            buttonsquare.Content = pathsquare;
+           	buttonsquare.Content = pathsquare;
 
 
             Path pathkatta = new Path();
@@ -448,10 +448,8 @@ namespace FinalUi
             text.Text = "Sheet- " + key.ToString();
             text.Foreground = Brushes.RoyalBlue;
             text.FontSize = 16;
-            text.Background = Brushes.Transparent;
-            text.TextAlignment = TextAlignment.Left;
-            Canvas.SetTop(text, 2);
             Canvas.SetLeft(text, 4);
+			
             Button buttonkatta = new Button();
             buttonkatta.Style = (Style)FindResource("smallbutton");
             buttonkatta.Content = pathkatta;

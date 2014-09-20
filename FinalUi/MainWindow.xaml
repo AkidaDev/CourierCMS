@@ -83,19 +83,11 @@
 					5.562 21.178,5.562 21.178,6.749 21.178,6.749 21.178,6.749 21.178,18.621 21.178,18.621 21.178,19.277 20.641,19.808 19.979,19.808 19.979,19.808 3.199,
 					19.808 3.199,19.808 2.537,19.808 2,19.277 2,18.621 2,18.621 2,6.749 2,6.749 2,6.749 2,5.562 2,5.562z M4.397,2C4.397,2 9.192,2 9.192,2 9.854,2 10.39,
 					2.532 10.39,3.187 10.39,3.187 10.39,4.374 10.39,4.374 10.39,4.374 9.192,4.374 9.192,4.374 9.192,4.374 4.397,4.374 4.397,4.374 4.397,4.374 3.199,
-					4.374 3.199,4.374 3.199,4.374 3.199,3.187 3.199,3.187 3.199,2.532 3.735,2 4.397,2z" Fill="White" Height="21" Width="23" Margin="0,-2,0,0">
-        				<Path.Effect>
-        					<DropShadowEffect BlurRadius="20" RenderingBias="Quality" ShadowDepth="0" Color="White"/>
-        				</Path.Effect>
-        			</Path>
-        			<TextBlock Text="Open File" Margin="10 -4 1 1" FontSize="16" Padding="1 3 1 0.5">
-        				<TextBlock.Effect>
-        					<DropShadowEffect BlurRadius="20" Color="White" ShadowDepth="0" RenderingBias="Quality"/>
-        				</TextBlock.Effect>
-        			</TextBlock>
+					4.374 3.199,4.374 3.199,4.374 3.199,3.187 3.199,3.187 3.199,2.532 3.735,2 4.397,2z" Fill="White" Height="21" Width="23" Margin="0,-2,0,0"/>
+        			<TextBlock Text="Open File" Margin="10 -4 1 1" FontSize="16" Padding="1 3 1 0.5"/>
         		</WrapPanel>
         	</Button>
-        	<TextBox Margin="20 3 105 3" BorderBrush="Transparent" Padding="0 2 0 0" FontSize="14" Width="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}" Background="White"/>
+        	<TextBox Margin="20 3 105 3" BorderBrush="Transparent" Padding="0 2 0 0" FontSize="14" Background="White"/>
         </DockPanel>
 
         <Grid>
@@ -117,11 +109,7 @@
                                 <WrapPanel>
                                 <Button Style="{StaticResource all}">
                                     <Button.Content>
-                                        <TextBlock  x:Name="textBlock" Text="My Assignments" FontSize="16" FontWeight="Bold" Width="225" Margin="10,1,0,0" Padding="0 1 0 4" Foreground="#FF5B5B5B" FontFamily="Calibri">
-        				<TextBlock.Effect>
-        					<DropShadowEffect BlurRadius="20" Color="White" ShadowDepth="0" RenderingBias="Quality"/>
-        				</TextBlock.Effect>
-        			</TextBlock>
+                                        <TextBlock  x:Name="textBlock" Text="My Assignments" FontSize="16" FontWeight="Bold" Width="225" Margin="10,1,0,0" Padding="0 1 0 4" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
                                     </Button.Content>
                                 </Button>
                                 </WrapPanel>
@@ -132,11 +120,7 @@
                                         <Path x:Name="drop_downarrow_2" Data="F1M1.5,1.2C1.5,1.2 1.5,10.8 1.5,10.8 1.5,10.8 7.5,5.981 7.5,5.981 7.5,5.981 1.5,1.2 1.5,1.2z" Fill="#FF5B5B5B" Height="12" Width="9" Margin="15,20,0,-19"/>
                                         <Button Style="{StaticResource all}">
                                             <Button.Content>
-                                                <TextBlock Text="Reports" FontSize="16" FontWeight="Bold" Width="225"   Foreground="#FF5B5B5B" FontFamily="Calibri">
-        				<TextBlock.Effect>
-        					<DropShadowEffect BlurRadius="20" Color="White" ShadowDepth="0" RenderingBias="Quality"/>
-        				</TextBlock.Effect>
-        			</TextBlock>
+                                                <TextBlock Text="Reports" FontSize="16" FontWeight="Bold" Width="225"   Foreground="#FF5B5B5B" FontFamily="Calibri"/>
                                             </Button.Content>
                                         </Button>
                                     </WrapPanel>
@@ -153,11 +137,7 @@
                     <Path x:Name="drop_downarrow_3" Data="F1M1.5,1.2C1.5,1.2 1.5,10.8 1.5,10.8 1.5,10.8 7.5,5.981 7.5,5.981 7.5,5.981 1.5,1.2 1.5,1.2z" Fill="#FF5B5B5B" Height="12" Width="9" Margin="15,20,0,-19"/>
                     <Button Style="{StaticResource all}">
                         <Button.Content>
-                            <TextBlock Text="Bills" Margin="35,1,0,0" Padding="0 1 0 4" FontSize="16" Width="225" FontWeight="Bold"  Foreground="#FF5B5B5B" FontFamily="Calibri">
-                        <TextBlock.Effect>
-        					<DropShadowEffect BlurRadius="20" Color="White" ShadowDepth="0" RenderingBias="Quality"/>
-        				</TextBlock.Effect>
-        			</TextBlock>
+                            <TextBlock Text="Bills" Margin="35,1,0,0" Padding="0 1 0 4" FontSize="16" Width="225" FontWeight="Bold"  Foreground="#FF5B5B5B" FontFamily="Calibri"/>
 					</Button.Content>
                     </Button>
                 </WrapPanel>
@@ -197,11 +177,7 @@
 						11.187 9.875,12.5 9.875,12.5 9.875,13.225 10.463,13.812 11.187,13.812 11.187,13.812 13.812,13.812 13.812,13.812 14.537,13.812 15.125,
 						13.225 15.125,12.5 15.125,12.5 15.125,11.187 15.125,11.187 15.125,11.187 21.031,11.187 21.031,11.187 21.031,11.187 17.094,3.312 17.094,
 						3.312 17.094,3.312 7.906,3.312 7.906,3.312z M7.25,2C7.25,2 17.709,2 17.709,2 17.709,2 23,11.187 23,11.187 23,11.187 23,23 23,23 23,23 2,23 2,23 2,
-						23 2,11.187 2,11.187 2,11.187 7.25,2 7.25,2z" Fill="Black" Height="24" Width="24">
-                                	<Path.Effect>
-                                		<DropShadowEffect BlurRadius="20" ShadowDepth="0" RenderingBias="Quality" Color="White"/>
-                                	</Path.Effect>
-                                </Path>
+						23 2,11.187 2,11.187 2,11.187 7.25,2 7.25,2z" Fill="Black" Height="24" Width="24"/>
                             </Button.Content>
                         </Button>
 
@@ -212,11 +188,7 @@
 						19.693 16.996,23 12.357,23 9.771,23 7.076,21.618 5.308,19.934 5.308,19.934 3.454,21.671 3.454,21.671 3.454,21.671 2,12.942 2,12.942z M11.643,
 						2C14.229,2 16.924,3.382 18.692,5.066 18.692,5.066 20.546,3.329 20.546,3.329 20.546,3.329 22,12.058 22,12.058 22,12.058 13.774,9.759 13.774,
 						9.759 13.774,9.759 15.725,7.929 15.725,7.929 14.712,7.078 13.083,6.214 11.68,6.214 8.926,6.214 6.614,8.176 5.961,10.829 5.961,10.829 2.013,
-						9.778 2.013,9.778 3.109,5.307 7.004,2 11.643,2z" Fill="#FFB29958" Height="24" Width="23" Stroke="Red" StrokeThickness=".5">
-                                	<Path.Effect>
-                                		<DropShadowEffect BlurRadius="20" ShadowDepth="0" RenderingBias="Quality" Color="White"/>
-                                	</Path.Effect>
-                                </Path>
+						9.778 2.013,9.778 3.109,5.307 7.004,2 11.643,2z" Fill="#FFB29958" Height="24" Width="23"/>
 								</Button.Content>
                         </Button>
 
@@ -229,33 +201,21 @@
 						1.83 13.777,1.83 13.777,7.358 13.777,7.358 13.777,7.358 9.432,7.358 9.432,7.358 9.432,7.358 9.432,1.83 9.432,1.83z M1.626,1C1.626,1 4.207,1 4.207,
 						1 4.207,1 4.207,8.508 4.207,8.508 4.207,8.508 15.586,8.508 15.586,8.508 15.586,8.508 15.586,1 15.586,1 15.586,1 17.711,1 17.711,1 17.711,1 22,
 						5.246 22,5.246 22,5.246 22,21.381 22,21.381 22,21.723 21.72,22 21.374,22 21.374,22 1.626,22 1.626,22 1.28,22 1,21.723 1,21.381 1,21.381 1,1.62 1,
-						1.62 1,1.277 1.28,1 1.626,1z" Fill="seagreen" Height="23" Width="23">
-                                	<Path.Effect>
-                                		<DropShadowEffect BlurRadius="20" ShadowDepth="0" RenderingBias="Quality" Color="White"/>
-                                	</Path.Effect>
-                                </Path>
+						1.62 1,1.277 1.28,1 1.626,1z" Fill="seagreen" Height="23" Width="23"/>
                             </Button.Content>
                         </Button>
 
                          <Button Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="3"><!--Name="CloseCurrentClick"--> 
                             <Button.Content>
                                 <Path x:Name="back" Data="F1M10.4,12.687C10.4,12.687 10.4,18 10.4,18 10.4,18 2,9.5 2,9.5 2,9.5 10.4,1 10.4,1 10.4,1 10.4,6.312 10.4,6.312 10.4,
-						6.312 23,6.312 23,6.312 23,6.312 23,12.687 23,12.687 23,12.687 10.4,12.687 10.4,12.687z" Fill="Black" Height="19" Width="24">
-                                	<Path.Effect>
-                                		<DropShadowEffect BlurRadius="20" ShadowDepth="0" RenderingBias="Quality" Color="White"/>
-                                	</Path.Effect>
-                                </Path>
+						6.312 23,6.312 23,6.312 23,6.312 23,12.687 23,12.687 23,12.687 10.4,12.687 10.4,12.687z" Fill="Black" Height="19" Width="24"/>
                             </Button.Content>
                         </Button>
 
                          <Button Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="4">
                             <Button.Content>
 							<Path x:Name="Forward" Data="F1M23,9.5C23,9.5 14.6,18 14.6,18 14.6,18 14.6,12.687 14.6,12.687 14.6,12.687 2,12.687 2,12.687 2,12.687 2,6.312 2,6.312 2,
-							6.312 14.6,6.312 14.6,6.312 14.6,6.312 14.6,1 14.6,1 14.6,1 23,9.5 23,9.5z" Fill="Black" Height="19" Width="24">
-								<Path.Effect>
-									<DropShadowEffect BlurRadius="20" ShadowDepth="0" RenderingBias="Quality" Color="White"/>
-								</Path.Effect>
-							</Path>
+							6.312 14.6,6.312 14.6,6.312 14.6,6.312 14.6,1 14.6,1 14.6,1 23,9.5 23,9.5z" Fill="Black" Height="19" Width="24"/>
                             </Button.Content>
                         </Button>
 
@@ -264,11 +224,7 @@
                                <Path x:Name="autofill" Data="F1M16.844,4C16.844,4 15.755,7.6 15.755,7.6 15.755,7.6 17.932,7.6 17.932,7.6 17.932,7.6 16.844,4 16.844,
 							   4z M15.854,2C15.854,2 17.833,2 17.833,2 17.833,2 21,11 21,11 21,11 19.12,11 19.12,11 19.12,11 18.427,9 18.427,9 18.427,9 15.26,9 15.26,
 							   9 15.26,9 14.568,11 14.568,11 14.568,11 12.687,11 12.687,11 12.687,11 15.854,2 15.854,2z M2,2C2,2 11.896,2 11.896,2 11.896,2 7.937,11 7.937,
-							   11 7.937,11 11.896,11 11.896,11 11.896,11 4.969,23 4.969,23 4.969,23 4.969,14 4.969,14 4.969,14 2,14 2,14 2,14 2,2 2,2z" Fill="#FF5D87D1" Height="24" Width="22">
-                                	<Path.Effect>
-                                		<DropShadowEffect BlurRadius="20" ShadowDepth="0" RenderingBias="Quality" Color="White"/>
-                                	</Path.Effect>
-                                </Path>
+							   11 7.937,11 11.896,11 11.896,11 11.896,11 4.969,23 4.969,23 4.969,23 4.969,14 4.969,14 4.969,14 2,14 2,14 2,14 2,2 2,2z" Fill="#FF5D87D1" Height="24" Width="22"/>
                             </Button.Content>
                         </Button>
 						
@@ -279,11 +235,7 @@
 							   11.556 15.778,11.556 15.778,11.556 15.778,11.556 15.778,9.444 15.778,9.444 15.778,9.444 5.222,9.444 5.222,9.444z M5.222,5.222C5.222,
 							   5.222 5.222,7.333 5.222,7.333 5.222,7.333 15.778,7.333 15.778,7.333 15.778,7.333 15.778,5.222 15.778,5.222 15.778,5.222 5.222,5.222 5.222,
 							   5.222z M3.111,1C3.111,1 17.889,1 17.889,1 19.05,1 20,1.95 20,3.111 20,3.111 20,17.889 20,17.889 20,19.05 19.05,20 17.889,20 17.889,20 3.111,
-							   20 3.111,20 1.95,20 1,19.05 1,17.889 1,17.889 1,3.111 1,3.111 1,1.95 1.95,1 3.111,1z" Fill="White" Height="21" Canvas.Left="31" Canvas.Top="9" Width="21">
-                                	<Path.Effect>
-                                		<DropShadowEffect BlurRadius="20" ShadowDepth="0" RenderingBias="Quality" Color="White"/>
-                                	</Path.Effect>
-                                </Path>
+							   20 3.111,20 1.95,20 1,19.05 1,17.889 1,17.889 1,3.111 1,3.111 1,1.95 1.95,1 3.111,1z" Fill="White" Height="21" Canvas.Left="31" Canvas.Top="9" Width="21"/>
                             </Button.Content>
                         </Button>
 						
@@ -292,22 +244,14 @@
 						<Path x:Name="Filter" Data="F1M2.118,1C2.881,1 16.282,1 16.809,1 17.492,1 18,1.384 17.6,1.763 17.36,1.991 13.667,5.465 11.603,7.406L11,7.973 11,
 						9.797C11,13.312 11,18 11,18 11,18 8,20 8,20 8,20 8,19 8,18L8,17.792 8,17.213 8,17C8,17.5,8,17,8,16.625L8,16.527C8,16.438,8,16.281,8,16.172L8,16C8,
 						16.227,8,15.797,8,15.281L8,15.217 8,13.52 8,12.562 8,11.5 8,9.797 8,9.48 8,8.026 7.423,7.484C5.405,5.591 1.669,2.078 1.331,1.747 1,1.424 1.365,
-						1 2.118,1z" Fill="#ffb03636" Height="21" Width="20" Stretch="Fill">
-                                	<Path.Effect>
-                                		<DropShadowEffect BlurRadius="20" ShadowDepth="0" RenderingBias="Quality" Color="White"/>
-                                	</Path.Effect>
-                                </Path>
+						1 2.118,1z" Fill="#ffb03636" Height="21" Width="20" Stretch="Fill"/>
                             </Button.Content>
                         </Button>
 						
                          <Button Style="{StaticResource side}"  Name="SanitizingButton" Grid.Row="0" Width="45" Height="30" Grid.Column="8">
                             <Button.Content>
 							<Path x:Name="sanitize" Data="F1M1,12.667C1,12.667 8,12.667 8,12.667 8,12.667 8,15 8,15 8,15 1,15 1,15 1,15 1,12.667 1,12.667z M1,6.833C1,6.833 15,6.833 15,6.833 15,
-				6.833 15,9.167 15,9.167 15,9.167 1,9.167 1,9.167 1,9.167 1,6.833 1,6.833z M1,1C1,1 22,1 22,1 22,1 22,3.333 22,3.333 22,3.333 1,3.333 1,3.333 1,3.333 1,1 1,1z" Fill="#AE3399FF" Height="16" Width="23" >
-                                	<Path.Effect>
-                                		<DropShadowEffect BlurRadius="10" ShadowDepth="0" RenderingBias="Quality" Color="White"/>
-                                	</Path.Effect>
-                                </Path>
+				6.833 15,9.167 15,9.167 15,9.167 1,9.167 1,9.167 1,9.167 1,6.833 1,6.833z M1,1C1,1 22,1 22,1 22,1 22,3.333 22,3.333 22,3.333 1,3.333 1,3.333 1,3.333 1,1 1,1z" Fill="#AE3399FF" Height="16" Width="23"/>
                             </Button.Content>
                         </Button>
 						
@@ -327,11 +271,7 @@
 							3.312 12.286,3.312 12.286,3.312 9.714,3.312 9.714,3.312z M9.714,2C9.714,2 12.286,2 12.286,2 12.996,2 13.571,2.588 13.571,3.312 13.571,3.312 13.571,
 							4.625 13.571,4.625 13.571,4.625 20,4.625 20,4.625 20,4.625 20,5.937 20,5.937 20,5.937 12.286,5.937 12.286,5.937 12.286,5.937 9.714,5.937 9.714,
 							5.937 9.714,5.937 2,5.937 2,5.937 2,5.937 2,4.625 2,4.625 2,4.625 8.429,4.625 8.429,4.625 8.429,4.625 8.429,3.312 8.429,3.312 8.429,2.588 9.004,
-							2 9.714,2z" Fill="#FF893232" Height="24" Width="21">
-                                	<Path.Effect>
-                                		<DropShadowEffect BlurRadius="20" ShadowDepth="0" RenderingBias="Quality" Color="White"/>
-                                	</Path.Effect>
-                                </Path>
+							2 9.714,2z" Fill="#FF893232" Height="24" Width="21"/>
                             </Button.Content>
                         </Button>
 
@@ -342,11 +282,7 @@
 								12.5 22.7,12.033 22.7,11.333 22.7,10.633 22.24,10.167 21.55,10.167z M5.45,7.833C5.45,7.833 21.55,7.833 21.55,7.833 23.505,7.833 25,9.35 25,
 								11.333 25,11.333 25,18.333 25,18.333 25,18.333 20.4,18.333 20.4,18.333 20.4,18.333 20.4,23 20.4,23 20.4,23 6.6,23 6.6,23 6.6,23 6.6,
 								18.333 6.6,18.333 6.6,18.333 2,18.333 2,18.333 2,18.333 2,11.333 2,11.333 2,9.35 3.495,7.833 5.45,7.833z M6.6,2C6.6,2 20.4,2 20.4,2 20.4,
-								2 20.4,6.667 20.4,6.667 20.4,6.667 6.6,6.667 6.6,6.667 6.6,6.667 6.6,2 6.6,2z" Fill="Black" Height="24" Width="26">
-                                	<Path.Effect>
-                                		<DropShadowEffect BlurRadius="20" ShadowDepth="0" RenderingBias="Quality" Color="White"/>
-                                	</Path.Effect>
-                                </Path>
+								2 20.4,6.667 20.4,6.667 20.4,6.667 6.6,6.667 6.6,6.667 6.6,6.667 6.6,2 6.6,2z" Fill="Black" Height="24" Width="26"/>
                             </Button.Content>
                         </Button>
 
@@ -398,11 +334,11 @@
 				   
 				<Grid>
 					<Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="26"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="26*"/>
                             <RowDefinition Height="100"/>
 					</Grid.RowDefinitions>
-					<ContentControl DockPanel.Dock="Top" Grid.Row="0" ScrollViewer.CanContentScroll="True">
+					<ContentControl Grid.Row="0" ScrollViewer.CanContentScroll="True" Grid.ColumnSpan="2">
                         <DataGrid x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False" Height="478"
 						ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True"
 						BorderThickness="0">
@@ -422,7 +358,7 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </ContentControl> 
-					<DockPanel DockPanel.Dock="Bottom" Name="DataGridOptionpanel" Background="#FFBBCADC" Margin="1,0,0,0" Grid.Row="1">
+					<DockPanel Name="DataGridOptionpanel" Background="#FFBBCADC" Margin="1,0,0,0" Grid.Row="1" Grid.ColumnSpan="2">
                             <WrapPanel Name="buttontabcanvaswrap">
 					
                             </WrapPanel>
@@ -432,43 +368,23 @@
                          <Button Style="{StaticResource smallbutton}" Name="DataGridFirstPage" Margin="2,2,5,2" Click="DataGridFirstPage_Click" >
                             <Path x:Name="way_back" Data="F1M10.721,7C10.721,7 10.721,10.625 10.721,10.625 10.721,10.625 15,7 15,7 15,7 15,15 15,15 15,15 10.721,11.375 10.721,
 						11.375 10.721,11.375 10.721,15 10.721,15 10.721,15 6,11 6,11 6,11 10.721,7 10.721,7z M11,3C6.6,3 3,6.6 3,11 3,15.4 6.6,19 11,19 15.4,19 19,15.4 19,
-						11 19,6.6 15.4,3 11,3z M11,1C16.5,1 21,5.5 21,11 21,16.5 16.5,21 11,21 5.5,21 1,16.5 1,11 1,5.5 5.5,1 11,1z" Fill="#FF40445F" Height="22" Width="22">
-								<Path.Effect>
-                                		<DropShadowEffect BlurRadius="5" ShadowDepth="0" RenderingBias="Quality" Color="White"/>
-                                	</Path.Effect>
-                                </Path>
+						11 19,6.6 15.4,3 11,3z M11,1C16.5,1 21,5.5 21,11 21,16.5 16.5,21 11,21 5.5,21 1,16.5 1,11 1,5.5 5.5,1 11,1z" Fill="#FF40445F" Height="22" Width="22"/>
                         </Button>
                          <Button Style="{StaticResource smallbutton}" Click="DataGridPreviousPage_Click" Name="DataGridPreviousPage" Margin="5,2,5,2">
                             <Path x:Name="back1" Data="F1M13,6.5C13,6.5 13,15.5 13,15.5 13,15.5 7,11 7,11 7,11 13,6.5 13,6.5z M11,3C6.6,3 3,6.6 3,11 3,15.4 6.6,19 11,19 15.4,
-						19 19,15.4 19,11 19,6.6 15.4,3 11,3z M11,1C16.5,1 21,5.5 21,11 21,16.5 16.5,21 11,21 5.5,21 1,16.5 1,11 1,5.5 5.5,1 11,1z" Fill="#FF40445F" Height="22" Width="22">
-								<Path.Effect>
-                                		<DropShadowEffect BlurRadius="5" ShadowDepth="0" RenderingBias="Quality" Color="White"/>
-                                	</Path.Effect>
-                                </Path>
+						19 19,15.4 19,11 19,6.6 15.4,3 11,3z M11,1C16.5,1 21,5.5 21,11 21,16.5 16.5,21 11,21 5.5,21 1,16.5 1,11 1,5.5 5.5,1 11,1z" Fill="#FF40445F" Height="22" Width="22"/>
                         </Button>
                          <Button Style="{StaticResource smallbutton}" Name="DataGridCurrentPage" Click="DataGridCurrentPage_Click" Margin="5,2,5,2">
-                            <Path x:Name="Current" Data="F1M1,1C1,1 17,1 17,1 17,1 17,17 17,17 17,17 1,17 1,17 1,17 1,1 1,1z" Fill="#FF40445F" Height="18" Width="18">
-								<Path.Effect>
-                                		<DropShadowEffect BlurRadius="5" ShadowDepth="0" RenderingBias="Quality" Color="White"/>
-                                	</Path.Effect>
-                                </Path>
+                            <Path x:Name="Current" Data="F1M1,1C1,1 17,1 17,1 17,1 17,17 17,17 17,17 1,17 1,17 1,17 1,1 1,1z" Fill="#FF40445F" Height="18" Width="18"/>
                         </Button>
                          <Button Style="{StaticResource smallbutton}" x:Name="DataGridNextPage" Click="DataGridNextPage_Click" Margin="5,2,5,2" >
                             <Path x:Name="forth12" Data="F1M9,6.5C9,6.5 15,11 15,11 15,11 9,15.5 9,15.5 9,15.5 9,6.5 9,6.5z M11,3C6.6,3 3,6.6 3,11 3,15.4 6.6,19 11,19 15.4,
-						19 19,15.4 19,11 19,6.6 15.4,3 11,3z M11,1C16.5,1 21,5.5 21,11 21,16.5 16.5,21 11,21 5.5,21 1,16.5 1,11 1,5.5 5.5,1 11,1z" Fill="#FF40445F" Height="22" Width="22">
-								<Path.Effect>
-                                		<DropShadowEffect BlurRadius="5" ShadowDepth="0" RenderingBias="Quality" Color="White"/>
-                                	</Path.Effect>
-                                </Path>
+						19 19,15.4 19,11 19,6.6 15.4,3 11,3z M11,1C16.5,1 21,5.5 21,11 21,16.5 16.5,21 11,21 5.5,21 1,16.5 1,11 1,5.5 5.5,1 11,1z" Fill="#FF40445F" Height="22" Width="22"/>
                         </Button>
                          <Button Style="{StaticResource smallbutton}" Name="DataGridLastPage" Margin="5,2,5,2" Click="DataGridLastPage_Click">
                             <Path x:Name="wayforth" Data="F1M7,7C7,7 11.279,10.625 11.279,10.625 11.279,10.625 11.279,7 11.279,7 11.279,7 16,11 16,11 16,11 11.279,15 11.279,
 						15 11.279,15 11.279,11.375 11.279,11.375 11.279,11.375 7,15 7,15 7,15 7,7 7,7z M11,3C6.6,3 3,6.6 3,11 3,15.4 6.6,19 11,19 15.4,19 19,15.4 19,
-						11 19,6.6 15.4,3 11,3z M11,1C16.5,1 21,5.5 21,11 21,16.5 16.5,21 11,21 5.5,21 1,16.5 1,11 1,5.5 5.5,1 11,1z" Fill="#FF40445F" Height="22" Width="22">
-								<Path.Effect>
-                                		<DropShadowEffect BlurRadius="5" ShadowDepth="0" RenderingBias="Quality" Color="White"/>
-                                	</Path.Effect>
-                                </Path>
+						11 19,6.6 15.4,3 11,3z M11,1C16.5,1 21,5.5 21,11 21,16.5 16.5,21 11,21 5.5,21 1,16.5 1,11 1,5.5 5.5,1 11,1z" Fill="#FF40445F" Height="22" Width="22"/>
                         </Button>
 						<Path x:Name="pageo" Data="F1M8.308,16.714C8.308,16.714 8.308,18.143 8.308,18.143 8.308,18.143 17.077,18.143 17.077,18.143 17.077,18.143 17.077,16.714 17.077,
 						16.714 17.077,16.714 8.308,16.714 8.308,16.714z M8.308,13.857C8.308,13.857 8.308,15.286 8.308,15.286 8.308,15.286 17.077,15.286 17.077,15.286 17.077,15.286 17.077,
@@ -476,11 +392,8 @@
 						12.429 17.077,11 17.077,11 17.077,11 8.308,11 8.308,11z M8.308,8.143C8.308,8.143 8.308,9.571 8.308,9.571 8.308,9.571 17.077,9.571 17.077,9.571 17.077,9.571 17.077,
 						8.143 17.077,8.143 17.077,8.143 8.308,8.143 8.308,8.143z M5.385,5.286C5.385,5.286 20,5.286 20,5.286 20,5.286 20,21 20,21 20,21 5.385,21 5.385,21 5.385,21 5.385,
 						5.286 5.385,5.286z M1,1C1,1 15.615,1 15.615,1 15.615,1 15.615,3.857 15.615,3.857 15.615,3.857 3.923,3.857 3.923,3.857 3.923,3.857 3.923,16.714 3.923,16.714 3.923,
-						16.714 1,16.714 1,16.714 1,16.714 1,1 1,1z" Fill="#FF5E5EC5" Height="22" Width="21" Margin="38,0,0,0">
-								<Path.Effect>
-                                		<DropShadowEffect BlurRadius="10" ShadowDepth="0" RenderingBias="Quality" Color="White"/>
-                                	</Path.Effect>
-                                </Path>
+						16.714 1,16.714 1,16.714 1,16.714 1,1 1,1z" Fill="#FF5E5EC5" Height="22" Width="21" Margin="38,0,0,0"/>
+
                         <TextBox Name="DataGridPageNum" Width="30" Margin="3,0,0,0" Height="20" Text="{Binding Path=currentPageNo, Mode=TwoWay}" FontFamily="Segoe UI Semibold" TextAlignment="Center" BorderBrush="#FF7676FF"/>
                         <Path x:Name="rows" Data="F1M8.875,13.857C8.875,13.857 20.687,13.857 20.687,13.857 21.412,13.857 22,14.433 22,15.143 22,15.143 22,17.714 22,17.714 22,
 						18.424 21.412,19 20.687,19 20.687,19 8.875,19 8.875,19 8.15,19 7.562,18.424 7.562,17.714 7.562,17.714 7.562,15.143 7.562,15.143 7.562,14.433 8.15,13.857 8.875,
@@ -501,7 +414,7 @@
 						</WrapPanel>
                        
 				</DockPanel>
-				 <WrapPanel Name="NotificationBar" DockPanel.Dock="Bottom" Grid.Row="2">
+				 <WrapPanel Name="NotificationBar" Grid.Row="2" Grid.ColumnSpan="2">
                         <TextBlock Text="Log..." Name="MessageBlock"></TextBlock>
                     </WrapPanel>
 					</Grid>
