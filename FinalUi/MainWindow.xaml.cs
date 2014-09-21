@@ -408,7 +408,6 @@ namespace FinalUi
             dataGridHelper.getFirstPage();
 
             Button canvasButton = new Button();
-            canvasButton.Style = (Style)FindResource("Sheet_button");
 			canvasButton.Width = 90;
             canvasButton.Height = 20;
             if (key == 0)
@@ -425,11 +424,13 @@ namespace FinalUi
             Path pathsquare = new Path();
             pathsquare.Data = Geometry.Parse(@"F1M2,1.644C2,1.644 2,20 2,20 2,20 77.831,20 77.831,20 77.831,20 91.619,1.644 91.619,1.644 91.619,1.644 2,1.644 2,1.644z");
             pathsquare.Fill = Brushes.White;
+            pathsquare.Name = "squarepath";
             pathsquare.Height = 20;
             pathsquare.Width = 88.5;
             pathsquare.Stroke = Brushes.RoyalBlue;
             pathsquare.Stretch = Stretch.Fill;
             Button buttonsquare = new Button();
+            buttonsquare.Name = "buttonsquare";
             buttonsquare.Style = (Style)FindResource("Sheet_button");
            	buttonsquare.Content = pathsquare;
 
@@ -499,6 +500,27 @@ namespace FinalUi
             Button button = (Button)sender;
             dataGridHelper.setActiveSheet(buttonList[button]);
             dataGridHelper.refreshCurrentPage();
+            Canvas canvas = (Canvas)button.Content;
+            foreach (Button notactive in canvas.Children)
+            {
+                if (notactive.Name == "buttonsquare")
+                {
+                    Path path = (Path)notactive.Content;
+                    path.Fill = Brushes.Purple;
+                    break;
+                }
+            }
+            canvas = (Canvas)activeButton.Content;
+
+            foreach (Button notactive in canvas.Children)
+            {
+                if (notactive.Name == "buttonsquare")
+                {
+                    var path = (Path)notactive.Content;
+                    path.Fill = Brushes.White;
+                    break;
+                }
+            }
             activeButton = button;
         }
         #region DataGrid Navigation Method

@@ -108,6 +108,9 @@
     <Compile Include="ManageEmployee.xaml.cs">
       <DependentUpon>ManageEmployee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Page1.xaml.cs">
+      <DependentUpon>Page1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PrintWindow.xaml.cs">
       <DependentUpon>PrintWindow.xaml</DependentUpon>
     </Compile>
@@ -196,6 +199,10 @@
     <Page Include="ManageEmployee.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Page1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PowerEntry.xaml">
       <SubType>Designer</SubType>

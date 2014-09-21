@@ -20,19 +20,52 @@ namespace FinalUi
     /// </summary>
     public partial class AddEmployee : Window
     {
+        List<Roles_Permission> permission;
+        List<Roles_Permission> userPermission;
+        protected Employee emp;
         public AddEmployee()
         {
             InitializeComponent();
+            BillingDataDataContext db = new BillingDataDataContext();
+            permission = (from per in db.Roles_Permissions select per).ToList();
         }
         
-        public AddEmployee(Employee emp)
+        public AddEmployee(Employee emp): this()
         {
-            InitializeComponent();
-            setFieldsFromEmp(emp);
+            this.AddUpdateEmployee.Content = "update";
+            BillingDataDataContext db = new BillingDataDataContext();
+            permission = (from Rpermissions in db.Roles_Permissions
+                          select Rpermissions).ToList();
+            setFieldsFromEmp();
         }
-        public void setFieldsFromEmp(Employee emp)
-        {
 
+        private void AddNewEmployee()
+        {
+            BillingDataDataContext db = new BillingDataDataContext();
+            db.Employees.InsertOnSubmit(emp);
+            db.SubmitChanges();
+        }
+        private void updateEmployee()
+        {
+            BillingDataDataContext db = new BillingDataDataContext();
+            var data = db.Employees.Single(x => x.Id == emp.Id);
+            db.SubmitChanges();
+        }
+
+        public string PermisstionsToString(List<Roles_Permission> per)
+        {
+            return String.Join(",",per.Select(x => x.Id.ToString()).ToArray());
+        }
+        public void setDataFromEmp(Employee data)
+        {
+            data.Id = emp.Id;
+            data.Name = emp.Name;
+            data.EMPCode = emp.EMPCode;
+            data.Password = emp.Password;
+            data.permisstions = emp.permisstions;
+        }
+        public void setFieldsFromEmp()
+        {
             FullName.Text = emp.Name;
             UserName.Text = emp.UserName;
             Password.Password = "";
@@ -45,9 +78,8 @@ namespace FinalUi
             EmployeeCode.Text = emp.EMPCode;
             ConfirmPass.Password = "";
         }
-        public void setEmpFromFields(Employee emp)
+        public void setEmpFromFields()
         {
-
             emp.Name = FullName.Text;
             emp.Password = Password.Password;
             if ((Gender.SelectedIndex == 0))
@@ -70,7 +102,7 @@ namespace FinalUi
             {
                 Employee emp = new Employee();
                 emp.Id = Guid.NewGuid();
-                setEmpFromFields(emp);
+                setEmpFromFields();
                 addEmployeeINDatabase(emp);
                 this.Close();
             }
