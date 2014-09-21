@@ -301,7 +301,8 @@ namespace FinalUi
 
         private void ExecutePrint(object sender, ExecutedRoutedEventArgs e)
         {
-            PrintWindow win = new PrintWindow(dataGridHelper.getCurrentDataStack);
+            
+            PrintWindow win = new PrintWindow(dataGridHelper.getCurrentDataStack,(new BillingDataDataContext()).Clients.First());
             win.Show();
         }
         private void CanExecutePrintCommand(object sender, CanExecuteRoutedEventArgs e)

@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Reporting.Common;
-using Microsoft.Reporting.WebForms;
+using Microsoft.Reporting.WinForms;
 using System.Drawing.Printing;
 
 namespace FinalUi
@@ -25,7 +25,7 @@ namespace FinalUi
         CollectionViewSource ClientListSource;
         CollectionViewSource DataGridSource;
         List<RuntimeData> dataGridSource;
-        public PrintWindow(List<RuntimeData> data)
+        public PrintWindow(List<RuntimeData> data, Client clc)
         {
             InitializeComponent();
             ClientListSource = (CollectionViewSource)FindResource("ClientList");
@@ -40,6 +40,17 @@ namespace FinalUi
             //PageSettings pg = BillViewer.GetPageSettings() ;
             //pg.Margins = new Margins(6,6,6,6);
             //BillViewer.SetPageSettings(pg);
+            List<ReportParameter> repParams = new List<ReportParameter>();
+            repParams.Add(new ReportParameter("CompanyName", Configs.Default.CompanyName));
+            repParams.Add(new ReportParameter("ComapnyPhoneNo", Configs.Default.CompanyPhone));
+            repParams.Add(new ReportParameter("CompanyAddress", Configs.Default.CompanyAddress));
+            repParams.Add(new ReportParameter("CompanyEmail", Configs.Default.CompanyEmail));
+            repParams.Add(new ReportParameter("CompanyFax", Configs.Default.CompanyFax));
+            repParams.Add(new ReportParameter("ClientName", clc.CLNAME));
+            repParams.Add(new ReportParameter("ClientAddress", clc.ADDRESS));
+            repParams.Add(new ReportParameter("ClientPhoneNo", clc.CONTACTNO));
+            repParams.Add(new ReportParameter("InvoiceNumber", Guid.NewGuid().ToString()));
+            BillViewer.LocalReport.SetParameters(repParams);
             BillViewer.LocalReport.DataSources.Add(rs);
             BillViewer.ShowExportButton = true;
             BillViewer.RefreshReport();

@@ -34,5 +34,66 @@ namespace FinalUi {
                 this["ConnString"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("A. R. Enterprises")]
+        public string CompanyName {
+            get {
+                return ((string)(this["CompanyName"]));
+            }
+            set {
+                this["CompanyName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("23 Veer Savakar Block, Shop No.-4 opposite metro \rpillar no.-60 shakarpur, new de" +
+            "lhi-110092")]
+        public string CompanyAddress {
+            get {
+                return ((string)(this["CompanyAddress"]));
+            }
+            set {
+                this["CompanyAddress"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("9999999999")]
+        public string CompanyPhone {
+            get {
+                return ((string)(this["CompanyPhone"]));
+            }
+            set {
+                this["CompanyPhone"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("arentprises@gmail.com")]
+        public string CompanyEmail {
+            get {
+                return ((string)(this["CompanyEmail"]));
+            }
+            set {
+                this["CompanyEmail"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("999999999")]
+        public string CompanyFax {
+            get {
+                return ((string)(this["CompanyFax"]));
+            }
+            set {
+                this["CompanyFax"] = value;
+            }
+        }
     }
 }
