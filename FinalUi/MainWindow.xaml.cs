@@ -260,7 +260,7 @@ namespace FinalUi
                 int key = dataGridHelper.addNewSheet(new List<RuntimeData>(), "");
                 addingNewPage(key);
             }
-            SanitizingWindow window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber);
+            SanitizingWindow window = new SanitizingWindow(dataGridHelper.getCurrentDataStack,db, dataGridHelper.currentSheetNumber,dataGrid);
             window.Show();
         }
         #endregion

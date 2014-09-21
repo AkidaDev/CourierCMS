@@ -31,6 +31,7 @@ namespace FinalUi
             runtimeDataObj.FrAmount = trans.AmountCharged;
             runtimeDataObj.FrWeight = trans.WeightByFranchize;
             runtimeDataObj.Id = Guid.NewGuid();
+            if(trans.InvoiceDate != null)
             runtimeDataObj.InvoiceDate = (DateTime)trans.InvoiceDate;
             runtimeDataObj.InvoiceNo = trans.InvoiceNo;
             runtimeDataObj.Mode = trans.Mode;
