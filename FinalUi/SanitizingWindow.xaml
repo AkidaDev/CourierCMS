@@ -67,5 +67,8 @@
             <TextBlock Canvas.Left="37" TextWrapping="Wrap" Text="TextBlock" Canvas.Top="412" Name="StatusTextBox"></TextBlock>
             <Button Content="Submit" Click="SubmitSanitizingDetails_Click" Canvas.Left="130" Canvas.Top="397" Width="75"/>
         </Canvas>
+        <TextBox HorizontalAlignment="Left" Name="MODE" Height="23" Margin="339,345,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="253,410,0,-34" TextWrapping="Wrap" Text="MODE" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="404,354,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
     </Grid>
 </Window>

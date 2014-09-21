@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Reporting.Common;
 using Microsoft.Reporting.WebForms;
+using System.Drawing.Printing;
 
 namespace FinalUi
 {
@@ -33,9 +34,12 @@ namespace FinalUi
             BillingDataDataContext db = new BillingDataDataContext();
             ClientListSource.Source = db.Clients.Select(x => x.CLCODE);
             Microsoft.Reporting.WinForms.ReportDataSource rs = new Microsoft.Reporting.WinForms.ReportDataSource();
-            rs.Name = "RuntimeDataReport";
+            rs.Name = "DataSet1";
             rs.Value = dataGridSource;
-            BillViewer.LocalReport.ReportPath = "BillTemplate.rdlc";
+            BillViewer.LocalReport.ReportPath = "Report1.rdlc";
+            //PageSettings pg = BillViewer.GetPageSettings() ;
+            //pg.Margins = new Margins(6,6,6,6);
+            //BillViewer.SetPageSettings(pg);
             BillViewer.LocalReport.DataSources.Add(rs);
             BillViewer.ShowExportButton = true;
             BillViewer.RefreshReport();

@@ -62,7 +62,7 @@ namespace FinalUi
             data.Name = emp.Name;
             data.EMPCode = emp.EMPCode;
             data.Password = emp.Password;
-            data.permisstions = emp.permisstions;
+          //  data.permisstions = emp.permisstions;
         }
         public void setFieldsFromEmp()
         {
