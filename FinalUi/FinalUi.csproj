@@ -86,6 +86,9 @@
     <Compile Include="AddRole.xaml.cs">
       <DependentUpon>AddRole.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BillingData.cs">
+      <DependentUpon>BillingData.dbml</DependentUpon>
+    </Compile>
     <Compile Include="BillingData.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -254,10 +257,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Report1.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="BillingData.dbml.layout">
       <DependentUpon>BillingData.dbml</DependentUpon>
     </None>
-    <EmbeddedResource Include="BillTemplate.rdlc">
+    <EmbeddedResource Include="billing.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -333,6 +339,9 @@
       <Project>{3993d14b-ca77-45d6-9f3a-c8dcc6b34697}</Project>
       <Name>UtilityProject</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -80,6 +80,7 @@ namespace FinalUi
             data.Destination = Destination.Text;
             data.DestinationPin = Decimal.Parse(DestinationPin.Text);
             data.CustCode = CustomerSelected.Text;
+            data.Mode = MODE.Text;
             if (isDataInContext)
             {
                 data = db.RuntimeDatas.Single(x => x.Id == data.Id);
@@ -164,6 +165,7 @@ namespace FinalUi
         {
             WeightAccToDTDC.Text = data.Weight.ToString();
             Cost.Text = data.Amount.ToString();
+            MODE.Text = data.Mode;
             Destination.Text = data.Destination;
             DestinationPin.Text = data.DestinationPin.ToString();
             if (data.FrWeight != null)

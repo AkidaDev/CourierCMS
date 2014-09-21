@@ -10,7 +10,7 @@
         <TextBlock Name="ZoneDesc" Text="Zonedesrip" Margin="134,53,92,182"></TextBlock>
         <TextBox Name="ZoneDescription" Margin="205,53,10,195"></TextBox>
         <TextBlock Name="NameLabel" Text="Name" Margin="0,53,257,166"></TextBlock>
-        <TextBox Name="Name" Margin="57,53,163,195"></TextBox>
+        <TextBox Name="EmpName" Margin="57,53,163,195"></TextBox>
         <TextBlock Name="AddressLabel" Text="Address" Margin="0,89,237,146"></TextBlock>
         <TextBox Name="Address" Margin="60,89,163,157"></TextBox>
         <ComboBox Name="RateCombo" Margin="188,79,10,156"></ComboBox>

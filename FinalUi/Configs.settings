@@ -5,5 +5,20 @@
     <Setting Name="ConnString" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="CompanyName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">A. R. Enterprises</Value>
+    </Setting>
+    <Setting Name="CompanyAddress" Type="System.String" Scope="User">
+      <Value Profile="(Default)">23 Veer Savakar Block, Shop No.-4 opposite metro pillar no.-60 shakarpur, new delhi-110092</Value>
+    </Setting>
+    <Setting Name="CompanyPhone" Type="System.String" Scope="User">
+      <Value Profile="(Default)">9999999999</Value>
+    </Setting>
+    <Setting Name="CompanyEmail" Type="System.String" Scope="User">
+      <Value Profile="(Default)">arentprises@gmail.com</Value>
+    </Setting>
+    <Setting Name="CompanyFax" Type="System.String" Scope="User">
+      <Value Profile="(Default)">999999999</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

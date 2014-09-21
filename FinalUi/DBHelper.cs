@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Linq;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,12 +29,19 @@ namespace FinalUi
         }
         public void deleteRuntimeData(int sheetNo)
         {
-            BillingDataDataContext db = new BillingDataDataContext();
-            IQueryable<RuntimeMeta> metaDataList = db.RuntimeMetas.Where(x => x.UserName == SecurityModule.currentUserName && x.SheetNo == sheetNo) ;
-            IQueryable<RuntimeData> data = metaDataList.Select(x => x.RuntimeData);
-            db.RuntimeMetas.DeleteAllOnSubmit(metaDataList);
-            db.RuntimeDatas.DeleteAllOnSubmit(data);
-            db.SubmitChanges();
+            try
+            {
+                BillingDataDataContext db = new BillingDataDataContext();
+                IQueryable<RuntimeMeta> metaDataList = db.RuntimeMetas.Where(x => x.UserName == SecurityModule.currentUserName && x.SheetNo == sheetNo);
+                IQueryable<RuntimeData> data = metaDataList.Select(x => x.RuntimeData);
+                db.RuntimeMetas.DeleteAllOnSubmit(metaDataList);
+                db.RuntimeDatas.DeleteAllOnSubmit(data);
+                db.SubmitChanges();
+            }
+            catch(ChangeConflictException e)
+            {
+                Debug.WriteLine(e.Message);
+            }
         }
     }
 }
