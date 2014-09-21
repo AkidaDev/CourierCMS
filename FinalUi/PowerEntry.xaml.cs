@@ -46,10 +46,11 @@ namespace FinalUi
                 for (int i = startCOnnNoIndex; i <= endConnNoIndex; i++)
                 {
                     RuntimeData data = DataStack.ElementAt(i);
+                    data = db.RuntimeDatas.Single(x => x.Id == data.Id);
                     data.CustCode = clientCode.SelectedValue.ToString();
                     data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination, data.DestinationPin, data.Weight);
                     data.FrWeight = data.Weight;
-                    data = db.RuntimeDatas.Single(x => x.Id == data.Id);
+                   
                     data.CustCode = clientCode.SelectedValue.ToString();
                     data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination, data.DestinationPin, data.Weight);
                     data.FrWeight = data.Weight;

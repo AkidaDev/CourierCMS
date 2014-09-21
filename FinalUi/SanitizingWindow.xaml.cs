@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -27,14 +28,19 @@ namespace FinalUi
         CollectionViewSource viewSource;
         CollectionViewSource conssNumbers;
         List<RuntimeData> dataContext;
+        ListCollectionView dataListContext;
         BillingDataDataContext db;
+        DataGrid backDataGrid;
         int sheetNo;
-        public SanitizingWindow(List<RuntimeData> helperObj, BillingDataDataContext db, int sheetNo)
+        public SanitizingWindow(List<RuntimeData> dataContext, BillingDataDataContext db, int sheetNo, DataGrid dg)
         {
+            this.backDataGrid = dg;
             this.sheetNo = sheetNo;
             this.db = db;
-            if (helperObj != null)
-                dataContext = helperObj.ToList();
+            if (dataContext != null)
+                this.dataContext = dataContext;
+            if (dg.ItemsSource != null)
+                dataListContext = (ListCollectionView)dg.ItemsSource;
             InitializeComponent();
             viewSource = (CollectionViewSource)FindResource("CustomerNameList");
             viewSource.Source = from client in db.Clients
@@ -50,7 +56,6 @@ namespace FinalUi
         private void SubmitSanitizingDetails_Click(object sender, RoutedEventArgs e)
         {
             bool isDataInContext = true;
-          
             RuntimeData data;
             data = dataContext.SingleOrDefault(x => x.ConsignmentNo == ConnsignmentNumber.Text);
             if (data == null)
@@ -93,11 +98,12 @@ namespace FinalUi
                 metaData.Id = Guid.NewGuid();
                 metaData.RuntimeDataID = data.Id;
                 metaData.SheetNo = sheetNo;
-                metaData.UserName  = SecurityModule.currentUserName;
+                metaData.UserName = SecurityModule.currentUserName;
                 db.RuntimeMetas.InsertOnSubmit(metaData);
-                dataContext.Add(data);
+                dataListContext.AddNewItem(data);
             }
             db.SubmitChanges();
+
             setNextData();
         }
         public void setNextData()

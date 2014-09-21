@@ -48,6 +48,9 @@ namespace FinalUi
     partial void InsertRate(Rate instance);
     partial void UpdateRate(Rate instance);
     partial void DeleteRate(Rate instance);
+    partial void InsertRateDetail(RateDetail instance);
+    partial void UpdateRateDetail(RateDetail instance);
+    partial void DeleteRateDetail(RateDetail instance);
     partial void InsertRole(Role instance);
     partial void UpdateRole(Role instance);
     partial void DeleteRole(Role instance);
@@ -75,7 +78,7 @@ namespace FinalUi
     #endregion
 		
 		public BillingDataDataContext() : 
-				base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString2, mappingSource)
+				base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString5, mappingSource)
 		{
 			OnCreated();
 		}
@@ -149,6 +152,14 @@ namespace FinalUi
 			get
 			{
 				return this.GetTable<Rate>();
+			}
+		}
+		
+		public System.Data.Linq.Table<RateDetail> RateDetails
+		{
+			get
+			{
+				return this.GetTable<RateDetail>();
 			}
 		}
 		
@@ -227,13 +238,15 @@ namespace FinalUi
 		
 		private string _ServiceCode;
 		
-		private System.Nullable<char> _Dox;
+		private string _ClientCode;
 		
 		private string _ZoneCode;
 		
 		private string _RateCode;
 		
 		private EntityRef<ZONE> _ZONE;
+		
+		private EntityRef<Client> _Client;
 		
 		private EntityRef<Rate> _Rate;
 		
@@ -247,8 +260,8 @@ namespace FinalUi
     partial void OnIdChanged();
     partial void OnServiceCodeChanging(string value);
     partial void OnServiceCodeChanged();
-    partial void OnDoxChanging(System.Nullable<char> value);
-    partial void OnDoxChanged();
+    partial void OnClientCodeChanging(string value);
+    partial void OnClientCodeChanged();
     partial void OnZoneCodeChanging(string value);
     partial void OnZoneCodeChanged();
     partial void OnRateCodeChanging(string value);
@@ -258,6 +271,7 @@ namespace FinalUi
 		public Assignment()
 		{
 			this._ZONE = default(EntityRef<ZONE>);
+			this._Client = default(EntityRef<Client>);
 			this._Rate = default(EntityRef<Rate>);
 			this._Service = default(EntityRef<Service>);
 			OnCreated();
@@ -307,22 +321,26 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dox", DbType="Char(1)")]
-		public System.Nullable<char> Dox
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientCode", DbType="VarChar(6)")]
+		public string ClientCode
 		{
 			get
 			{
-				return this._Dox;
+				return this._ClientCode;
 			}
 			set
 			{
-				if ((this._Dox != value))
+				if ((this._ClientCode != value))
 				{
-					this.OnDoxChanging(value);
+					if (this._Client.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnClientCodeChanging(value);
 					this.SendPropertyChanging();
-					this._Dox = value;
-					this.SendPropertyChanged("Dox");
-					this.OnDoxChanged();
+					this._ClientCode = value;
+					this.SendPropertyChanged("ClientCode");
+					this.OnClientCodeChanged();
 				}
 			}
 		}
@@ -405,6 +423,40 @@ namespace FinalUi
 						this._ZoneCode = default(string);
 					}
 					this.SendPropertyChanged("ZONE");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Client_Assignment", Storage="_Client", ThisKey="ClientCode", OtherKey="CLCODE", IsForeignKey=true)]
+		public Client Client
+		{
+			get
+			{
+				return this._Client.Entity;
+			}
+			set
+			{
+				Client previousValue = this._Client.Entity;
+				if (((previousValue != value) 
+							|| (this._Client.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Client.Entity = null;
+						previousValue.Assignments.Remove(this);
+					}
+					this._Client.Entity = value;
+					if ((value != null))
+					{
+						value.Assignments.Add(this);
+						this._ClientCode = value.CLCODE;
+					}
+					else
+					{
+						this._ClientCode = default(string);
+					}
+					this.SendPropertyChanged("Client");
 				}
 			}
 		}
@@ -1168,6 +1220,8 @@ namespace FinalUi
 		
 		private string _APPTRF;
 		
+		private EntitySet<Assignment> _Assignments;
+		
 		private EntitySet<Transaction> _Transactions;
 		
     #region Extensibility Method Definitions
@@ -1220,6 +1274,7 @@ namespace FinalUi
 		
 		public Client()
 		{
+			this._Assignments = new EntitySet<Assignment>(new Action<Assignment>(this.attach_Assignments), new Action<Assignment>(this.detach_Assignments));
 			this._Transactions = new EntitySet<Transaction>(new Action<Transaction>(this.attach_Transactions), new Action<Transaction>(this.detach_Transactions));
 			OnCreated();
 		}
@@ -1644,6 +1699,19 @@ namespace FinalUi
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Client_Assignment", Storage="_Assignments", ThisKey="CLCODE", OtherKey="ClientCode")]
+		public EntitySet<Assignment> Assignments
+		{
+			get
+			{
+				return this._Assignments;
+			}
+			set
+			{
+				this._Assignments.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Client_Transaction", Storage="_Transactions", ThisKey="CLCODE", OtherKey="CustCode")]
 		public EntitySet<Transaction> Transactions
 		{
@@ -1675,6 +1743,18 @@ namespace FinalUi
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Assignments(Assignment entity)
+		{
+			this.SendPropertyChanging();
+			entity.Client = this;
+		}
+		
+		private void detach_Assignments(Assignment entity)
+		{
+			this.SendPropertyChanging();
+			entity.Client = null;
 		}
 		
 		private void attach_Transactions(Transaction entity)
@@ -1934,18 +2014,20 @@ namespace FinalUi
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _RateXML;
+		private string _Description;
 		
 		private string _RateCode;
 		
 		private EntitySet<Assignment> _Assignments;
 		
+		private EntitySet<RateDetail> _RateDetails;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnRateXMLChanging(string value);
-    partial void OnRateXMLChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
     partial void OnRateCodeChanging(string value);
     partial void OnRateCodeChanged();
     #endregion
@@ -1953,25 +2035,26 @@ namespace FinalUi
 		public Rate()
 		{
 			this._Assignments = new EntitySet<Assignment>(new Action<Assignment>(this.attach_Assignments), new Action<Assignment>(this.detach_Assignments));
+			this._RateDetails = new EntitySet<RateDetail>(new Action<RateDetail>(this.attach_RateDetails), new Action<RateDetail>(this.detach_RateDetails));
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RateXML", DbType="VarChar(MAX)")]
-		public string RateXML
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(MAX)")]
+		public string Description
 		{
 			get
 			{
-				return this._RateXML;
+				return this._Description;
 			}
 			set
 			{
-				if ((this._RateXML != value))
+				if ((this._Description != value))
 				{
-					this.OnRateXMLChanging(value);
+					this.OnDescriptionChanging(value);
 					this.SendPropertyChanging();
-					this._RateXML = value;
-					this.SendPropertyChanged("RateXML");
-					this.OnRateXMLChanged();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
 				}
 			}
 		}
@@ -2009,6 +2092,19 @@ namespace FinalUi
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rate_RateDetail", Storage="_RateDetails", ThisKey="RateCode", OtherKey="RateCode")]
+		public EntitySet<RateDetail> RateDetails
+		{
+			get
+			{
+				return this._RateDetails;
+			}
+			set
+			{
+				this._RateDetails.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2039,6 +2135,265 @@ namespace FinalUi
 		{
 			this.SendPropertyChanging();
 			entity.Rate = null;
+		}
+		
+		private void attach_RateDetails(RateDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.Rate = this;
+		}
+		
+		private void detach_RateDetails(RateDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.Rate = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.RateDetails")]
+	public partial class RateDetail : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _ID;
+		
+		private string _RateCode;
+		
+		private double _Weight;
+		
+		private double _DoxRate;
+		
+		private System.Nullable<double> _NonDoxRate;
+		
+		private int _Type;
+		
+		private System.Nullable<double> _StepWeight;
+		
+		private EntityRef<Rate> _Rate;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(System.Guid value);
+    partial void OnIDChanged();
+    partial void OnRateCodeChanging(string value);
+    partial void OnRateCodeChanged();
+    partial void OnWeightChanging(double value);
+    partial void OnWeightChanged();
+    partial void OnDoxRateChanging(double value);
+    partial void OnDoxRateChanged();
+    partial void OnNonDoxRateChanging(System.Nullable<double> value);
+    partial void OnNonDoxRateChanged();
+    partial void OnTypeChanging(int value);
+    partial void OnTypeChanged();
+    partial void OnStepWeightChanging(System.Nullable<double> value);
+    partial void OnStepWeightChanged();
+    #endregion
+		
+		public RateDetail()
+		{
+			this._Rate = default(EntityRef<Rate>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RateCode", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string RateCode
+		{
+			get
+			{
+				return this._RateCode;
+			}
+			set
+			{
+				if ((this._RateCode != value))
+				{
+					if (this._Rate.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnRateCodeChanging(value);
+					this.SendPropertyChanging();
+					this._RateCode = value;
+					this.SendPropertyChanged("RateCode");
+					this.OnRateCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Weight", DbType="Float NOT NULL")]
+		public double Weight
+		{
+			get
+			{
+				return this._Weight;
+			}
+			set
+			{
+				if ((this._Weight != value))
+				{
+					this.OnWeightChanging(value);
+					this.SendPropertyChanging();
+					this._Weight = value;
+					this.SendPropertyChanged("Weight");
+					this.OnWeightChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DoxRate", DbType="Float NOT NULL")]
+		public double DoxRate
+		{
+			get
+			{
+				return this._DoxRate;
+			}
+			set
+			{
+				if ((this._DoxRate != value))
+				{
+					this.OnDoxRateChanging(value);
+					this.SendPropertyChanging();
+					this._DoxRate = value;
+					this.SendPropertyChanged("DoxRate");
+					this.OnDoxRateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NonDoxRate", DbType="Float")]
+		public System.Nullable<double> NonDoxRate
+		{
+			get
+			{
+				return this._NonDoxRate;
+			}
+			set
+			{
+				if ((this._NonDoxRate != value))
+				{
+					this.OnNonDoxRateChanging(value);
+					this.SendPropertyChanging();
+					this._NonDoxRate = value;
+					this.SendPropertyChanged("NonDoxRate");
+					this.OnNonDoxRateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="Int NOT NULL")]
+		public int Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this.OnTypeChanging(value);
+					this.SendPropertyChanging();
+					this._Type = value;
+					this.SendPropertyChanged("Type");
+					this.OnTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StepWeight", DbType="Float")]
+		public System.Nullable<double> StepWeight
+		{
+			get
+			{
+				return this._StepWeight;
+			}
+			set
+			{
+				if ((this._StepWeight != value))
+				{
+					this.OnStepWeightChanging(value);
+					this.SendPropertyChanging();
+					this._StepWeight = value;
+					this.SendPropertyChanged("StepWeight");
+					this.OnStepWeightChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rate_RateDetail", Storage="_Rate", ThisKey="RateCode", OtherKey="RateCode", IsForeignKey=true)]
+		public Rate Rate
+		{
+			get
+			{
+				return this._Rate.Entity;
+			}
+			set
+			{
+				Rate previousValue = this._Rate.Entity;
+				if (((previousValue != value) 
+							|| (this._Rate.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Rate.Entity = null;
+						previousValue.RateDetails.Remove(this);
+					}
+					this._Rate.Entity = value;
+					if ((value != null))
+					{
+						value.RateDetails.Add(this);
+						this._RateCode = value.RateCode;
+					}
+					else
+					{
+						this._RateCode = default(string);
+					}
+					this.SendPropertyChanged("Rate");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -2359,15 +2714,15 @@ namespace FinalUi
 		
 		private decimal _Amount;
 		
-		private char _DOX;
+		private System.Nullable<char> _DOX;
 		
-		private double _ServiceTax;
+		private System.Nullable<double> _ServiceTax;
 		
-		private double _SplDisc;
+		private System.Nullable<double> _SplDisc;
 		
 		private string _InvoiceNo;
 		
-		private System.DateTime _InvoiceDate;
+		private System.Nullable<System.DateTime> _InvoiceDate;
 		
 		private System.Nullable<System.Guid> _EmpId;
 		
@@ -2375,7 +2730,7 @@ namespace FinalUi
 		
 		private System.Nullable<double> _FrWeight;
 		
-		private System.Guid _TransactionId;
+		private System.Nullable<System.Guid> _TransactionId;
 		
 		private string _CustCode;
 		
@@ -2405,15 +2760,15 @@ namespace FinalUi
     partial void OnBookingDateChanged();
     partial void OnAmountChanging(decimal value);
     partial void OnAmountChanged();
-    partial void OnDOXChanging(char value);
+    partial void OnDOXChanging(System.Nullable<char> value);
     partial void OnDOXChanged();
-    partial void OnServiceTaxChanging(double value);
+    partial void OnServiceTaxChanging(System.Nullable<double> value);
     partial void OnServiceTaxChanged();
-    partial void OnSplDiscChanging(double value);
+    partial void OnSplDiscChanging(System.Nullable<double> value);
     partial void OnSplDiscChanged();
     partial void OnInvoiceNoChanging(string value);
     partial void OnInvoiceNoChanged();
-    partial void OnInvoiceDateChanging(System.DateTime value);
+    partial void OnInvoiceDateChanging(System.Nullable<System.DateTime> value);
     partial void OnInvoiceDateChanged();
     partial void OnEmpIdChanging(System.Nullable<System.Guid> value);
     partial void OnEmpIdChanged();
@@ -2421,7 +2776,7 @@ namespace FinalUi
     partial void OnFrAmountChanged();
     partial void OnFrWeightChanging(System.Nullable<double> value);
     partial void OnFrWeightChanged();
-    partial void OnTransactionIdChanging(System.Guid value);
+    partial void OnTransactionIdChanging(System.Nullable<System.Guid> value);
     partial void OnTransactionIdChanged();
     partial void OnCustCodeChanging(string value);
     partial void OnCustCodeChanged();
@@ -2535,7 +2890,7 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mode", DbType="NChar(25) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mode", DbType="NChar(25)")]
 		public string Mode
 		{
 			get
@@ -2615,8 +2970,8 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DOX", DbType="Char(1) NOT NULL")]
-		public char DOX
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DOX", DbType="Char(1)")]
+		public System.Nullable<char> DOX
 		{
 			get
 			{
@@ -2635,8 +2990,8 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceTax", DbType="Float NOT NULL")]
-		public double ServiceTax
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceTax", DbType="Float")]
+		public System.Nullable<double> ServiceTax
 		{
 			get
 			{
@@ -2655,8 +3010,8 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SplDisc", DbType="Float NOT NULL")]
-		public double SplDisc
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SplDisc", DbType="Float")]
+		public System.Nullable<double> SplDisc
 		{
 			get
 			{
@@ -2675,7 +3030,7 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceNo", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceNo", DbType="VarChar(50)")]
 		public string InvoiceNo
 		{
 			get
@@ -2695,8 +3050,8 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceDate", DbType="Date NOT NULL")]
-		public System.DateTime InvoiceDate
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceDate", DbType="Date")]
+		public System.Nullable<System.DateTime> InvoiceDate
 		{
 			get
 			{
@@ -2775,8 +3130,8 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionId", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid TransactionId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionId", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> TransactionId
 		{
 			get
 			{
