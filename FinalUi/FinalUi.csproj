@@ -101,7 +101,6 @@
     <Compile Include="FilterSelectWindow.xaml.cs">
       <DependentUpon>FilterSelectWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InitializeScript.cs" />
     <Compile Include="ManageClient.xaml.cs">
       <DependentUpon>ManageClient.xaml</DependentUpon>
     </Compile>
@@ -134,6 +133,7 @@
     <Compile Include="UserControlGallery.xaml.cs">
       <DependentUpon>UserControlGallery.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Validator.cs" />
     <Page Include="AddClient.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

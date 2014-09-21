@@ -9,7 +9,6 @@ namespace FinalUi
 {
     class SecurityModule
     {
-        
         public enum Permissions 
         {
             DataGroupAccess,
@@ -22,7 +21,6 @@ namespace FinalUi
             BillingGroupAccess,
             ClientAnalysisGroupAccess,
         }
-        
         public static bool hasPermission(string userName, Permissions Permission)
         {
             List<string> roles = getUserRoles(userName);
@@ -63,11 +61,6 @@ namespace FinalUi
         {
             List<string> roles = new List<string>();
             BillingDataDataContext db = new BillingDataDataContext();
-            var roleColl = db.User_Roles.Where(x => x.Employee.UserName == userName);
-            foreach(var role in roleColl)
-            {
-                roles.Add(role.Role.Name);
-            }
             return roles;
         }
         
@@ -75,11 +68,6 @@ namespace FinalUi
         {
             List<String> permissions = new List<String>();
             BillingDataDataContext db = new BillingDataDataContext();
-            var permissionColl = db.Roles_Permissions.Where(x => x.Role.Name == role);
-            foreach(var permission in permissionColl)
-            {
-                permissions.Add(permission.Permission);
-            }
             return permissions;
         }
         static string _currentUser;

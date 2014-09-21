@@ -1,38 +1,42 @@
 ﻿<Window x:Class="FinalUi.AddEmployee"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="AddEmployee" Height="385" Width="469">
-    <Grid >
-        <Label Content="Enter Name:  "  Margin="10,25,364,294"></Label>
-        <TextBox Padding="5 5 5 5" Name="FullName" MinWidth="150" Margin="97,25,214,305"></TextBox>
+        Title="AddEmployee" Height="450" Width="500">
+    <Window.Resources>
+        <CollectionViewSource x:Key="Permisstion" CollectionViewType="ListCollectionView"></CollectionViewSource>
+        <CollectionViewSource x:Key="UserCurrentPermisstionToSet" CollectionViewType="ListCollectionView"></CollectionViewSource>
+    </Window.Resources>
+<Grid >
+        <Label Content="Enter Name:  "  Margin="10,25,400,364"></Label>
+        <TextBox Padding="5 5 5 5" Name="FullName" MinWidth="150" Margin="97,25,227,359"></TextBox>
 
         <Label Content="Gender"  Margin="270,25,121,300"></Label>
-        <ComboBox Name="Gender" SelectedIndex="0" Margin="345,25,32,305">
+        <ComboBox Name="Gender" SelectedIndex="0" Margin="345,25,32,359">
             <ComboBoxItem Content="Male"></ComboBoxItem>
             <ComboBoxItem Content="Female"></ComboBoxItem>
         </ComboBox>
         <Label MinWidth="85" Content="Empl Code" Margin="12,60,364,265"></Label>
-        <TextBox Padding="5 5 5 5" Name="EmployeeCode" Margin="97,65,247,265"></TextBox>
-        <Label MinWidth="85" Content="UserName" Margin="12,94,364,227">
+        <TextBox Padding="5 5 5 5" Name="EmployeeCode" Margin="97,65,260,317"></TextBox>
+        <Label MinWidth="85" Content="UserName" Margin="10,119,382,269">
         </Label>
-        <TextBox Name="UserName" Padding="5 5 5 5"  Margin="97,94,247,240"/>
-        <Label MinWidth="85" Content="Password" Margin="232,65,144,260"></Label>
-        <PasswordBox Name="Password" Padding="5 5 5 5" Margin="317,68,32,265" ></PasswordBox>
-        <Label MinWidth="85" Content="Confirm Pass:" Margin="232,99,144,226"></Label>
-        <PasswordBox Name="ConfirmPass"  Padding="5 5 5 5" Margin="317,99,32,231"></PasswordBox>
-        <DataGrid Margin="12,138,331,69">
+        <TextBox Name="UserName" Padding="5 5 5 5"  Margin="97,107,260,278"/>
+        <Label MinWidth="85" Content="Password" Margin="232,73,158,312"></Label>
+        <PasswordBox Name="Password" Padding="5 5 5 5" Margin="334,76,10,300" ></PasswordBox>
+        <Label MinWidth="85" Content="Confirm Pass:" Margin="232,136,175,249"></Label>
+        <PasswordBox Name="ConfirmPass"  Padding="5 5 5 5" Margin="339,136,10,249"></PasswordBox>
+        <DataGrid Name="PermisstionToset" Margin="10,208,333,59" Width="100" CanUserDeleteRows="False" CanUserAddRows="False" IsReadOnly="True" ItemsSource="{Binding}" DataContext="{StaticResource Permisstion}" SelectionMode="Single" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Permisstion"></DataGridTextColumn>
+                <DataGridTextColumn Header="Permisstion" Width="100" Binding="{Binding Per}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button  Name="AddPermisstion" Content="Add >>" Margin="169,160,197,165"></Button>
-        <Button  Name="RemovePermisstion" Content="Remove &lt;&lt; " Margin="169,229,197,96"></Button>
-        <DataGrid Margin="311,138,32,69">
+        <Button  Name="AddPermisstion" Content="Add >>" Click="AddPermisstion_Click" Margin="203,232,180,155"></Button>
+        <Button  Name="RemovePermisstion" Content="Remove &lt;&lt;" Click="RemovePermisstion_Click" Margin="188,286,214,106"></Button>
+        <DataGrid Margin="317,208,26,54" Width="100" Name="UserPermisstionToset" CanUserAddRows="False" CanUserDeleteRows="False"  IsReadOnly="True" ItemsSource="{Binding}" DataContext="{StaticResource UserCurrentPermisstionToSet}" SelectionMode="Single" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Permisstion">
+                <DataGridTextColumn Header="Permisstion" Width="100" Binding="{Binding Per}">
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Add" Name="AddUpdateEmployee" Click="CreateEmployee_Click" MaxWidth="150" Margin="38,300,86,29"></Button>
+        <Button Content="Add" Name="AddUpdateEmployee" Click="CreateEmployee_Click" MaxWidth="150" Margin="44,370,74,19"></Button>
     </Grid>
 </Window>

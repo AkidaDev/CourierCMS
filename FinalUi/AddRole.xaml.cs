@@ -39,27 +39,7 @@ namespace FinalUi
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            BillingDataDataContext db = new BillingDataDataContext();
-            Role role = new Role();
-            Guid roleId = Guid.NewGuid();
-            role.Id = roleId;
-            role.Name = RoleName.Text;
-            db.Roles.InsertOnSubmit(role);
-
-            foreach(var permission in Enum.GetNames(typeof(SecurityModule.Permissions)))
-            {
-                CheckBox check = (CheckBox)PermissionPanel.FindName(permission);
-                if(check.IsChecked == true)
-                {
-                    Roles_Permission rp = new Roles_Permission();
-                    rp.Id = Guid.NewGuid();
-                    rp.Role_Id = roleId;
-                    rp.Permission = permission;
-                    db.Roles_Permissions.InsertOnSubmit(rp);
-                }
-            }
-            db.SubmitChanges();
-            this.Close();
+           
         }
 
     }

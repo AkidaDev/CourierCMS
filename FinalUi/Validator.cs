@@ -6,12 +6,20 @@ using System.Threading.Tasks;
 
 namespace FinalUi
 {
-    class Validator
+    static class  Validator
     {
-    }
+        public static bool ClientV(Client client)
+        {
+            return true;
+        }
+        public static bool PermissionV(Permission per)
+        {
+            return true;
+        }
 
-    partial class VClient
-    {
-
+        public static bool EmployeeV(Employee emp)
+        {
+            return true;
+        }
     }
 }

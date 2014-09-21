@@ -39,15 +39,8 @@ namespace FinalUi
 
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-            BillingDataDataContext db = new BillingDataDataContext();
-
-            foreach (var employee in employeeToEdit)
-            {
-                var data = db.Employees.Single(x => x.Id == employee.Id);
-                data.Name = employee.Name;
-                data.Gender = employee.Gender;
-                db.SubmitChanges();
-            }
+            AddEmployee window = new AddEmployee((Employee)this.mangaEmployeegrid.SelectedItem);
+            window.Show();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -56,9 +49,5 @@ namespace FinalUi
             window.Show();
         }
 
-        private void mangaEmployeegrid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
-        {
-
-        }
     }
 }

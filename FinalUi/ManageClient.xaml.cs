@@ -44,7 +44,6 @@ namespace FinalUi
             window.Show();
         }
 
-
         private void update_Click(object sender, RoutedEventArgs e)
         {
            client = (Client)this.mangaclientgrid.SelectedItem;

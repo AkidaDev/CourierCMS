@@ -12,7 +12,7 @@
                 <Button Name="Add"  Content="Add" Margin="4 4 4 4" Width="60" Click="Add_Click"></Button>
                 <Button Name="Delete"  Content="Delete" Margin="4 4 4 4" Width="60"></Button>
             </WrapPanel>
-        <DataGrid x:Name="mangaEmployeegrid" ItemsSource="{Binding}" DataContext="{StaticResource EmployeeTable }"   RowEditEnding="mangaEmployeegrid_RowEditEnding" CellEditEnding="mangaEmployeegrid_CellEditEnding"  AutoGenerateColumns="False" >
+        <DataGrid x:Name="mangaEmployeegrid" ItemsSource="{Binding}" DataContext="{StaticResource EmployeeTable }"   CellEditEnding="mangaEmployeegrid_CellEditEnding"  AutoGenerateColumns="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="Gender" Binding="{Binding Gender , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>

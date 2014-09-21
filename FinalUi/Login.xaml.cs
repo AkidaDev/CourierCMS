@@ -46,16 +46,6 @@ namespace FinalUi
         }
         MainWindow window;
 
-        private void SetupButton_Click_1(object sender, RoutedEventArgs e)
-        {
-            InitializeScript scripts = new InitializeScript();
-            string error = scripts.intializeDatabase(UserName.Text, Password.Password, InstanceName.Text);
-            if (error != "")
-            {
-                MessageBox.Show("Error : " + error);
-            }
-        }
-
         private void Grid_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
             DragMove();
