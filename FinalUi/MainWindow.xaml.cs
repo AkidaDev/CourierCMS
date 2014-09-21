@@ -424,10 +424,9 @@ namespace FinalUi
             
             Path pathsquare = new Path();
             pathsquare.Data = Geometry.Parse(@"F1M2,1.644C2,1.644 2,20 2,20 2,20 77.831,20 77.831,20 77.831,20 91.619,1.644 91.619,1.644 91.619,1.644 2,1.644 2,1.644z");
-            pathsquare.Fill = Brushes.White;
+            pathsquare.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF5E5EC5"));
             pathsquare.Height = 20;
             pathsquare.Width = 88.5;
-            pathsquare.Stroke = Brushes.RoyalBlue;
             pathsquare.Stretch = Stretch.Fill;
             Button buttonsquare = new Button();
             buttonsquare.Style = (Style)FindResource("Sheet_button");
@@ -435,10 +434,10 @@ namespace FinalUi
 
 
             Path pathkatta = new Path();
-            pathkatta.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF706565"));
+            pathkatta.Fill = Brushes.White;
             pathkatta.Stretch = Stretch.Fill;
-            pathkatta.Height = 8;
-            pathkatta.Width = 8;
+            pathkatta.Height = 9;
+            pathkatta.Width = 9;
             pathkatta.Data = Geometry.Parse(@"F1M14.987,13.789C14.987,13.789 13.622,15.154 13.622,15.154 13.622,15.154 8.16,9.692 8.16,9.692 8.16,
                       9.692 2.699,15.154 2.699,15.154 2.699,15.154 1.333,13.789 1.333,13.789 1.333,13.789 6.795,8.327 6.795,8.327 6.795,8.327 1.333,2.865 1.333,2.865 1.333,
                      2.865 2.699,1.5 2.699,1.5 2.699,1.5 8.16,6.962 8.16,6.962 8.16,6.962 13.622,1.5 13.622,1.5 13.622,1.5 14.987,2.865 14.987,2.865 14.987,2.865 9.526,
@@ -446,9 +445,10 @@ namespace FinalUi
 
             TextBlock text = new TextBlock();
             text.Text = "Sheet- " + key.ToString();
-            text.Foreground = Brushes.RoyalBlue;
+            text.Foreground = Brushes.White;
             text.FontSize = 16;
             Canvas.SetLeft(text, 4);
+            Canvas.SetTop(text, -2);
 			
             Button buttonkatta = new Button();
             buttonkatta.Style = (Style)FindResource("smallbutton");
@@ -457,7 +457,7 @@ namespace FinalUi
             buttonkatta.Command = DeleteCommand;
 
             Canvas.SetLeft(buttonkatta, 67);
-            Canvas.SetTop(buttonkatta, 7.5);
+            Canvas.SetTop(buttonkatta, 5);
 
             canvastab.Children.Add(buttonsquare);
             canvastab.Children.Add(buttonkatta);
