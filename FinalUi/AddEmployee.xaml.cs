@@ -20,22 +20,17 @@ namespace FinalUi
     /// </summary>
     public partial class AddEmployee : Window
     {
-        List<Roles_Permission> permission;
-        List<Roles_Permission> userPermission;
         protected Employee emp;
         public AddEmployee()
         {
             InitializeComponent();
             BillingDataDataContext db = new BillingDataDataContext();
-            permission = (from per in db.Roles_Permissions select per).ToList();
         }
         
         public AddEmployee(Employee emp): this()
         {
             this.AddUpdateEmployee.Content = "update";
             BillingDataDataContext db = new BillingDataDataContext();
-            permission = (from Rpermissions in db.Roles_Permissions
-                          select Rpermissions).ToList();
             setFieldsFromEmp();
         }
 
@@ -52,18 +47,6 @@ namespace FinalUi
             db.SubmitChanges();
         }
 
-        public string PermisstionsToString(List<Roles_Permission> per)
-        {
-            return String.Join(",",per.Select(x => x.Id.ToString()).ToArray());
-        }
-        public void setDataFromEmp(Employee data)
-        {
-            data.Id = emp.Id;
-            data.Name = emp.Name;
-            data.EMPCode = emp.EMPCode;
-            data.Password = emp.Password;
-          //  data.permisstions = emp.permisstions;
-        }
         public void setFieldsFromEmp()
         {
             FullName.Text = emp.Name;
@@ -117,6 +100,16 @@ namespace FinalUi
             db.Employees.InsertOnSubmit(emp);
             db.SubmitChanges();
             return true;
+        }
+
+        private void AddPermisstion_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RemovePermisstion_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

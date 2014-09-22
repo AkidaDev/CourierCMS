@@ -90,6 +90,12 @@
       <DependentUpon>MicroDeep.dbml</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FinalUi\FinalUi.csproj">
+      <Project>{6f0304c3-e288-422e-a3b7-042e1b7d3686}</Project>
+      <Name>FinalUi</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

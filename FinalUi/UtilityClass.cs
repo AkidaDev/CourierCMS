@@ -31,8 +31,8 @@ namespace FinalUi
             runtimeDataObj.FrAmount = trans.AmountCharged;
             runtimeDataObj.FrWeight = trans.WeightByFranchize;
             runtimeDataObj.Id = Guid.NewGuid();
-            if(trans.InvoiceDate != null)
-            runtimeDataObj.InvoiceDate = (DateTime)trans.InvoiceDate;
+            if (trans.InvoiceDate != null)
+                runtimeDataObj.InvoiceDate = (DateTime)trans.InvoiceDate;
             runtimeDataObj.InvoiceNo = trans.InvoiceNo;
             runtimeDataObj.Mode = trans.Mode;
             runtimeDataObj.ServiceTax = trans.ServiceTax;
@@ -43,11 +43,11 @@ namespace FinalUi
         }
         static public List<RuntimeData> loadDataFromDatabase(DateTime startDate, DateTime endDate)
         {
-           
+
             BillingDataDataContext db = new BillingDataDataContext();
             List<Transaction> transData = db.Transactions.Where(x => startDate <= x.BookingDate && endDate >= x.BookingDate).ToList();
             return convertTransListToRuntimeList(transData);
-           
+
         }
         #endregion
         #region converting runtime data to transaction data
@@ -152,6 +152,40 @@ namespace FinalUi
         }
         #endregion
         #region Cost calculating
+        public static double getPriceFromRateCode(string rateCode, double weight, char isDox)
+        {
+            BillingDataDataContext db = new BillingDataDataContext();
+            Rate rate = db.Rates.SingleOrDefault(x => x.RateCode == rateCode);
+            if (rateCode != null)
+            {
+                List<RateDetail> rateDetails = rate.RateDetails.OrderBy(x => x.Weight).ToList();
+                double lastRangeWeight = 0;
+                double price = 0;
+                foreach (RateDetail rateD in rateDetails)
+                {
+                    if (rateD.Type == 1)
+                    {
+                        if (rateD.Weight > weight)
+                            return (double)(Char.ToUpper(isDox) == 'D' ? rateD.DoxRate : rateD.NonDoxRate);
+                        else
+                        {
+                            price = (double)(Char.ToUpper(isDox) == 'D' ? rateD.DoxRate : rateD.NonDoxRate);
+                            lastRangeWeight = (double)rateD.Weight;
+                        }
+                    }
+                    if (rateD.Type == 2 || rateD.Type == 3)
+                    {
+                        int steps;
+                        if (rateD.Weight >= weight)
+                            return price;
+                        steps = (((int)((weight - lastRangeWeight) / ((double)rateD.StepWeight))) + 1);
+                        price = price +  steps * ((double)(Char.ToUpper(isDox) == 'D' ? rateD.DoxRate : rateD.NonDoxRate));
+                    }
+                }
+                return price;
+            }
+            return -1;
+        }
         public static double getCost(string clientCode, string destinationCode, decimal destinationPin, double wieght)
         {
             return 100;

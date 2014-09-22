@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FinalUi;
 
 namespace UtilityProject
 {
@@ -10,7 +11,9 @@ namespace UtilityProject
     {
         static void Main(string[] args)
         {
-            assigningRateData();
+            FinalUi.BillingDataDataContext db = new FinalUi.BillingDataDataContext();
+            db.DeleteDatabase();
+            db.CreateDatabase();
         }
         static public void assigningRateData()
         {
