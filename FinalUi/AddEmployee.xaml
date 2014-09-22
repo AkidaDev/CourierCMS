@@ -24,7 +24,7 @@
         <PasswordBox Name="Password" Padding="5 5 5 5" Margin="334,76,10,300" ></PasswordBox>
         <Label MinWidth="85" Content="Confirm Pass:" Margin="232,136,175,249"></Label>
         <PasswordBox Name="ConfirmPass"  Padding="5 5 5 5" Margin="339,136,10,249"></PasswordBox>
-        <DataGrid Name="PermisstionToset" Margin="10,208,333,59" Width="100" CanUserDeleteRows="False" CanUserAddRows="False" IsReadOnly="True" ItemsSource="{Binding}" DataContext="{StaticResource Permisstion}" SelectionMode="Single" AutoGenerateColumns="False">
+        <DataGrid Name="PermisstionToset" Margin="10,208,333,59" Width="110" CanUserDeleteRows="False" CanUserAddRows="False" IsReadOnly="True" ItemsSource="{Binding}" DataContext="{StaticResource Permisstion}" SelectionMode="Single" AutoGenerateColumns="False" HeadersVisibility="Column">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Permisstion" Width="100" Binding="{Binding Per}"></DataGridTextColumn>
             </DataGrid.Columns>

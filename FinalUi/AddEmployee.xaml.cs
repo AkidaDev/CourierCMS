@@ -47,12 +47,11 @@ namespace FinalUi
         public AddEmployee(Employee emp)
             : this()
         {
+            BillingDataDataContext db = new BillingDataDataContext();
             this.emp = emp;
             isupdate = true;
             userPermission = emp.User_permissions.Select(x => x.Permission).ToList();
-            Permission per = new Permission();
             this.AddUpdateEmployee.Content = "update";
-            BillingDataDataContext db = new BillingDataDataContext();
             permission.RemoveAll(x => userPermission.Select(y => y.id).Contains(x.id));
             setFieldsFromEmp();
             this.AddUpdateEmployee.Content = "update";
@@ -156,15 +155,10 @@ namespace FinalUi
         {
             if (this.PermisstionToset.SelectedItem != null)
             {
-                var permissiontemp = (Permission)this.PermisstionToset.SelectedItem;
-                ListCollectionView dataContext = (ListCollectionView)UserPermisstionToset.ItemsSource;
-                dataContext.AddNewItem(permissiontemp);
-                dataContext = (ListCollectionView)PermisstionToset.ItemsSource;
-                dataContext.Remove(permissiontemp);
-                this.PermisstionToset.SelectedItem = null;
-                this.UserPermisstionToset.SelectedItem = null;
-                viewsourcePermission.Source = permission;
-                viewsourceUserPermission.Source = userPermission;
+                permission.Remove((Permission)this.PermisstionToset.SelectedItem);
+                userPermission.Add((Permission)this.PermisstionToset.SelectedItem);
+                this.PermisstionToset.Items.Refresh();
+                this.UserPermisstionToset.Items.Refresh();
             }
         }
 
@@ -173,16 +167,10 @@ namespace FinalUi
 
             if (this.UserPermisstionToset.SelectedItem != null)
             {
-                var permissiontemp = (Permission)this.UserPermisstionToset.SelectedItem;
-                ListCollectionView dataContext = (ListCollectionView)PermisstionToset.ItemsSource;
-                dataContext.AddNewItem(permissiontemp);
-                dataContext = (ListCollectionView)UserPermisstionToset.ItemsSource;
-                todelete.Add(permissiontemp);
-                dataContext.Remove(permissiontemp);
-                this.PermisstionToset.SelectedItem = null;
-                this.UserPermisstionToset.SelectedItem = null;
-                viewsourceUserPermission.Source = userPermission;
-                viewsourcePermission.Source = permission;
+                permission.Add((Permission)this.UserPermisstionToset.SelectedItem);
+                userPermission.Remove((Permission)this.UserPermisstionToset.SelectedItem);
+                this.PermisstionToset.Items.Refresh();
+                this.UserPermisstionToset.Items.Refresh();
             }
         }
         public List<User_permission> returnUserPermissionList(List<Permission> per)
