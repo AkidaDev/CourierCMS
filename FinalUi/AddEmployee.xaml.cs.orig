@@ -20,11 +20,14 @@ namespace FinalUi
     /// </summary>
     public partial class AddEmployee : Window
     {
+<<<<<<< local
+=======
         List<Permission> permission;
         List<Permission> userPermission;
         List<Permission> todelete;
         CollectionViewSource viewsourcePermission;
         CollectionViewSource viewsourceUserPermission;
+>>>>>>> other
         protected Employee emp;
         bool isupdate;
         public AddEmployee()
@@ -33,6 +36,8 @@ namespace FinalUi
             emp = new Employee();
             emp.Id = Guid.NewGuid();
             BillingDataDataContext db = new BillingDataDataContext();
+<<<<<<< local
+=======
             permission = (from per in db.Permissions select per).ToList();
             userPermission = emp.User_permissions.Select(x => x.Permission).ToList();
             viewsourcePermission = (CollectionViewSource)FindResource("Permisstion");
@@ -42,6 +47,7 @@ namespace FinalUi
             todelete = new List<Permission>();
             this.PermisstionToset.SelectedItem = null;
             this.UserPermisstionToset.SelectedItem = null;
+>>>>>>> other
         }
 
         public AddEmployee(Employee emp)
@@ -53,7 +59,10 @@ namespace FinalUi
             Permission per = new Permission();
             this.AddUpdateEmployee.Content = "update";
             BillingDataDataContext db = new BillingDataDataContext();
+<<<<<<< local
+=======
             permission.RemoveAll(x => userPermission.Select(y => y.id).Contains(x.id));
+>>>>>>> other
             setFieldsFromEmp();
             this.AddUpdateEmployee.Content = "update";
             viewsourceUserPermission.Source = userPermission;
@@ -101,6 +110,9 @@ namespace FinalUi
             db.User_permissions.DeleteAllOnSubmit(temp);
             db.SubmitChanges();
         }
+<<<<<<< local
+
+=======
         private void setDataFromEmp(Employee data)
         {
             data.Id = emp.Id;
@@ -108,12 +120,9 @@ namespace FinalUi
             data.UserName = emp.UserName;
             data.EMPCode = emp.EMPCode;
             data.Password = emp.Password;
-<<<<<<< local
             data.Gender = emp.Gender;
-=======
-          //  data.permisstions = emp.permisstions;
->>>>>>> other
         }
+>>>>>>> other
         public void setFieldsFromEmp()
         {
             FullName.Text = emp.Name;
@@ -131,8 +140,8 @@ namespace FinalUi
         public void setEmpFromFields()
         {
             emp.Name = FullName.Text;
-            if(!isupdate)
-            emp.Id = Guid.NewGuid();
+            if (!isupdate)
+                emp.Id = Guid.NewGuid();
             emp.Password = Password.Password;
             if ((Gender.SelectedIndex == 0))
             {
@@ -201,5 +210,16 @@ namespace FinalUi
             }
             return temp;
         }
+
+        private void AddPermisstion_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RemovePermisstion_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
+
