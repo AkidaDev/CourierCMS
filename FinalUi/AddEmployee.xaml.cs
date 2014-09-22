@@ -20,49 +20,95 @@ namespace FinalUi
     /// </summary>
     public partial class AddEmployee : Window
     {
-        List<Roles_Permission> permission;
-        List<Roles_Permission> userPermission;
+        List<Permission> permission;
+        List<Permission> userPermission;
+        List<Permission> todelete;
+        CollectionViewSource viewsourcePermission;
+        CollectionViewSource viewsourceUserPermission;
         protected Employee emp;
+        bool isupdate;
         public AddEmployee()
         {
             InitializeComponent();
+            emp = new Employee();
+            emp.Id = Guid.NewGuid();
             BillingDataDataContext db = new BillingDataDataContext();
-            permission = (from per in db.Roles_Permissions select per).ToList();
+            permission = (from per in db.Permissions select per).ToList();
+            userPermission = emp.User_permissions.Select(x => x.Permission).ToList();
+            viewsourcePermission = (CollectionViewSource)FindResource("Permisstion");
+            viewsourcePermission.Source = permission;
+            viewsourceUserPermission = (CollectionViewSource)FindResource("UserCurrentPermisstionToSet");
+            viewsourceUserPermission.Source = userPermission;
+            todelete = new List<Permission>();
+            this.PermisstionToset.SelectedItem = null;
+            this.UserPermisstionToset.SelectedItem = null;
         }
-        
-        public AddEmployee(Employee emp): this()
+
+        public AddEmployee(Employee emp)
+            : this()
         {
+            this.emp = emp;
+            isupdate = true;
+            userPermission = emp.User_permissions.Select(x => x.Permission).ToList();
+            Permission per = new Permission();
             this.AddUpdateEmployee.Content = "update";
             BillingDataDataContext db = new BillingDataDataContext();
-            permission = (from Rpermissions in db.Roles_Permissions
-                          select Rpermissions).ToList();
+            permission.RemoveAll(x => userPermission.Select(y => y.id).Contains(x.id));
             setFieldsFromEmp();
+            this.AddUpdateEmployee.Content = "update";
+            viewsourceUserPermission.Source = userPermission;
+            viewsourcePermission.Source = permission;
         }
 
         private void AddNewEmployee()
         {
-            BillingDataDataContext db = new BillingDataDataContext();
-            db.Employees.InsertOnSubmit(emp);
-            db.SubmitChanges();
+            if (Password.Password == ConfirmPass.Password)
+            {
+                setEmpFromFields();
+                BillingDataDataContext db = new BillingDataDataContext();
+                db.Employees.InsertOnSubmit(emp);
+                Debug.WriteLine("Type is" + UserPermisstionToset.ItemsSource.GetType().ToString());
+                db.User_permissions.InsertAllOnSubmit(returnUserPermissionList((List<Permission>)(viewsourceUserPermission.Source)));
+                if (Validator.EmployeeV(emp))
+                {
+                    db.SubmitChanges();
+                    this.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Password Invalid");
+            }
         }
         private void updateEmployee()
         {
+            setEmpFromFields();
             BillingDataDataContext db = new BillingDataDataContext();
-            var data = db.Employees.Single(x => x.Id == emp.Id);
+            Employee data = db.Employees.Single(x => x.Id == emp.Id);
+            removeduplicatePermission();
+            db.User_permissions.InsertAllOnSubmit(returnUserPermissionList((List<Permission>)(viewsourceUserPermission.Source)));
+            setDataFromEmp(data);
+            if (Validator.EmployeeV(data))
+            {
+                db.SubmitChanges();
+                this.Close();
+            }
+        }
+        private void removeduplicatePermission()
+        {
+            var db = new BillingDataDataContext();
+            List<User_permission> temp = (from a in db.User_permissions select a).Where(x => x.emp_id == emp.Id).ToList();
+            db.User_permissions.DeleteAllOnSubmit(temp);
             db.SubmitChanges();
         }
-
-        public string PermisstionsToString(List<Roles_Permission> per)
-        {
-            return String.Join(",",per.Select(x => x.Id.ToString()).ToArray());
-        }
-        public void setDataFromEmp(Employee data)
+        private void setDataFromEmp(Employee data)
         {
             data.Id = emp.Id;
             data.Name = emp.Name;
+            data.UserName = emp.UserName;
             data.EMPCode = emp.EMPCode;
             data.Password = emp.Password;
-          //  data.permisstions = emp.permisstions;
+            data.Gender = emp.Gender;
         }
         public void setFieldsFromEmp()
         {
@@ -81,6 +127,8 @@ namespace FinalUi
         public void setEmpFromFields()
         {
             emp.Name = FullName.Text;
+            if (!isupdate)
+                emp.Id = Guid.NewGuid();
             emp.Password = Password.Password;
             if ((Gender.SelectedIndex == 0))
             {
@@ -98,25 +146,57 @@ namespace FinalUi
 
         private void CreateEmployee_Click(object sender, RoutedEventArgs e)
         {
-            if (Password.Password == ConfirmPass.Password)
-            {
-                Employee emp = new Employee();
-                emp.Id = Guid.NewGuid();
-                setEmpFromFields();
-                addEmployeeINDatabase(emp);
-                this.Close();
-            }
+            if (isupdate)
+                updateEmployee();
             else
+                AddNewEmployee();
+        }
+
+        private void AddPermisstion_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.PermisstionToset.SelectedItem != null)
             {
-                MessageBox.Show("Password Invalid");
+                var permissiontemp = (Permission)this.PermisstionToset.SelectedItem;
+                ListCollectionView dataContext = (ListCollectionView)UserPermisstionToset.ItemsSource;
+                dataContext.AddNewItem(permissiontemp);
+                dataContext = (ListCollectionView)PermisstionToset.ItemsSource;
+                dataContext.Remove(permissiontemp);
+                this.PermisstionToset.SelectedItem = null;
+                this.UserPermisstionToset.SelectedItem = null;
+                viewsourcePermission.Source = permission;
+                viewsourceUserPermission.Source = userPermission;
             }
         }
-        bool addEmployeeINDatabase(Employee emp)
+
+        private void RemovePermisstion_Click(object sender, RoutedEventArgs e)
         {
-            BillingDataDataContext db = new BillingDataDataContext();
-            db.Employees.InsertOnSubmit(emp);
-            db.SubmitChanges();
-            return true;
+
+            if (this.UserPermisstionToset.SelectedItem != null)
+            {
+                var permissiontemp = (Permission)this.UserPermisstionToset.SelectedItem;
+                ListCollectionView dataContext = (ListCollectionView)PermisstionToset.ItemsSource;
+                dataContext.AddNewItem(permissiontemp);
+                dataContext = (ListCollectionView)UserPermisstionToset.ItemsSource;
+                todelete.Add(permissiontemp);
+                dataContext.Remove(permissiontemp);
+                this.PermisstionToset.SelectedItem = null;
+                this.UserPermisstionToset.SelectedItem = null;
+                viewsourceUserPermission.Source = userPermission;
+                viewsourcePermission.Source = permission;
+            }
+        }
+        public List<User_permission> returnUserPermissionList(List<Permission> per)
+        {
+            var temp = new List<User_permission>();
+            foreach (Permission t in per)
+            {
+                var p = new User_permission();
+                p.per_id = t.id;
+                p.emp_id = emp.Id;
+                temp.Add(p);
+            }
+            return temp;
         }
     }
 }
+
