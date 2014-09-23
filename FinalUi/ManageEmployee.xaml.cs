@@ -21,6 +21,7 @@ namespace FinalUi
     {
         public List<Employee> employeeToEdit;
         public List<Employee> employees;
+        private CollectionViewSource view;
         public ManageEmployee()
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace FinalUi
             BillingDataDataContext db = new BillingDataDataContext();
             employees = (from employee in db.Employees
                          select employee).ToList();
-            CollectionViewSource view = (CollectionViewSource)FindResource("EmployeeTable");
+            view = (CollectionViewSource)FindResource("EmployeeTable");
             view.Source = employees;
         }
 
@@ -41,6 +42,12 @@ namespace FinalUi
         {
             AddEmployee window = new AddEmployee((Employee)this.mangaEmployeegrid.SelectedItem);
             window.Show();
+            window.Closed += reloadgrid;
+        }
+        private void reloadgrid(object sender, EventArgs e)
+        {
+            var db = new BillingDataDataContext();
+            view.Source = db.Employees;
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)

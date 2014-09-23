@@ -47,12 +47,10 @@ namespace FinalUi
         public AddEmployee(Employee emp)
             : this()
         {
+            BillingDataDataContext db = new BillingDataDataContext();
             this.emp = emp;
             isupdate = true;
-            BillingDataDataContext db = new BillingDataDataContext();
-            this.emp = (from e in db.Employees select e).Where(x => x.Id == emp.Id).Single();
-            userPermission = this.emp.User_permissions.Select(x => x.Permission).ToList();
-            Permission per = new Permission();
+            userPermission = emp.User_permissions.Select(x => x.Permission).ToList();
             this.AddUpdateEmployee.Content = "update";
             permission.RemoveAll(x => userPermission.Select(y => y.id).Contains(x.id));
             setFieldsFromEmp();
@@ -155,40 +153,24 @@ namespace FinalUi
 
         private void AddPermisstion_Click(object sender, RoutedEventArgs e)
         {
-            UserPermisstionToset.CancelEdit();
-            PermisstionToset.CancelEdit();
-          
             if (this.PermisstionToset.SelectedItem != null)
             {
-                var permissiontemp = (Permission)this.PermisstionToset.SelectedItem;
-                ListCollectionView dataContext = (ListCollectionView)UserPermisstionToset.ItemsSource;
-                dataContext.AddNewItem(permissiontemp);
-                dataContext = (ListCollectionView)PermisstionToset.ItemsSource;
-                dataContext.Remove(permissiontemp);
-                this.PermisstionToset.SelectedItem = null;
-                this.UserPermisstionToset.SelectedItem = null;
-                viewsourcePermission.Source = permission;
-                viewsourceUserPermission.Source = userPermission;
+                permission.Remove((Permission)this.PermisstionToset.SelectedItem);
+                userPermission.Add((Permission)this.PermisstionToset.SelectedItem);
+                this.PermisstionToset.Items.Refresh();
+                this.UserPermisstionToset.Items.Refresh();
             }
         }
 
         private void RemovePermisstion_Click(object sender, RoutedEventArgs e)
         {
-            UserPermisstionToset.CancelEdit();
-            PermisstionToset.CancelEdit();
+
             if (this.UserPermisstionToset.SelectedItem != null)
             {
-                var permissiontemp = (Permission)this.UserPermisstionToset.SelectedItem;
-                ListCollectionView dataContext = (ListCollectionView)PermisstionToset.ItemsSource;
-                dataContext.AddNewItem(permissiontemp);
-                dataContext = (ListCollectionView)UserPermisstionToset.ItemsSource;
-
-                todelete.Add(permissiontemp);
-                dataContext.Remove(permissiontemp);
-                this.PermisstionToset.SelectedItem = null;
-                this.UserPermisstionToset.SelectedItem = null;
-                viewsourceUserPermission.Source = userPermission;
-                viewsourcePermission.Source = permission;
+                permission.Add((Permission)this.UserPermisstionToset.SelectedItem);
+                userPermission.Remove((Permission)this.UserPermisstionToset.SelectedItem);
+                this.PermisstionToset.Items.Refresh();
+                this.UserPermisstionToset.Items.Refresh();
             }
         }
         public List<User_permission> returnUserPermissionList(List<Permission> per)
