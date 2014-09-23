@@ -1,0 +1,31 @@
+﻿<Window x:Class="FinalUi.EditRateDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="EditRateDetailsWindow" Height="300" Width="300">
+    <Grid>
+
+        <StackPanel Name="MainPanel">
+            <WrapPanel>
+            <TextBlock Name="WeightTextBlock" Text="Enter Weight"></TextBlock>
+                <TextBox Name="WeightTextBox"></TextBox>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Name="DoxRateTextBlock" Text="Enter Rate for Dox Connsignemnt"></TextBlock>
+                <TextBox Name="DoxRateTextBox"></TextBox>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Name="NonDoxRateTextBlock" Text="Enter Rate for Non Dox Connsignment">
+                    </TextBlock>
+                <TextBox Name="NonDoxRateBox"></TextBox>
+                
+            </WrapPanel>
+            <WrapPanel Name="StepWeightWrap">
+                <TextBlock Name="StepWeightTextBlock" Text="Enter Step Weight"></TextBlock>
+                <TextBox Name="StepWeightTextBox"></TextBox>
+            </WrapPanel>
+            <WrapPanel>
+                <Button Name="SaveButton" Click="SaveButton_Click" Content="Save Details"></Button>
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</Window>

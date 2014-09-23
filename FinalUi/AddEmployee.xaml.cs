@@ -49,10 +49,11 @@ namespace FinalUi
         {
             this.emp = emp;
             isupdate = true;
-            userPermission = emp.User_permissions.Select(x => x.Permission).ToList();
+            BillingDataDataContext db = new BillingDataDataContext();
+            this.emp = (from e in db.Employees select e).Where(x => x.Id == emp.Id).Single();
+            userPermission = this.emp.User_permissions.Select(x => x.Permission).ToList();
             Permission per = new Permission();
             this.AddUpdateEmployee.Content = "update";
-            BillingDataDataContext db = new BillingDataDataContext();
             permission.RemoveAll(x => userPermission.Select(y => y.id).Contains(x.id));
             setFieldsFromEmp();
             this.AddUpdateEmployee.Content = "update";
@@ -154,6 +155,9 @@ namespace FinalUi
 
         private void AddPermisstion_Click(object sender, RoutedEventArgs e)
         {
+            UserPermisstionToset.CancelEdit();
+            PermisstionToset.CancelEdit();
+          
             if (this.PermisstionToset.SelectedItem != null)
             {
                 var permissiontemp = (Permission)this.PermisstionToset.SelectedItem;
@@ -170,13 +174,15 @@ namespace FinalUi
 
         private void RemovePermisstion_Click(object sender, RoutedEventArgs e)
         {
-
+            UserPermisstionToset.CancelEdit();
+            PermisstionToset.CancelEdit();
             if (this.UserPermisstionToset.SelectedItem != null)
             {
                 var permissiontemp = (Permission)this.UserPermisstionToset.SelectedItem;
                 ListCollectionView dataContext = (ListCollectionView)PermisstionToset.ItemsSource;
                 dataContext.AddNewItem(permissiontemp);
                 dataContext = (ListCollectionView)UserPermisstionToset.ItemsSource;
+
                 todelete.Add(permissiontemp);
                 dataContext.Remove(permissiontemp);
                 this.PermisstionToset.SelectedItem = null;

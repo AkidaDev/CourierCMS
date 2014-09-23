@@ -14,43 +14,42 @@
     <StackPanel>
         <WrapPanel>
             <TextBlock Text="Select Rate Code: "  Height="30" VerticalAlignment="Bottom"/>
-            <ComboBox IsEditable="True" KeyUp="ComboBoxRate_KeyUp"  SelectionChanged="ComboBoxRate_SelectionChanged" DisplayMemberPath="RateCode" ItemsSource="{Binding}" DataContext="{StaticResource RateCodes}" Name="ComboBoxRate" />
-        </WrapPanel>
-        
-        <WrapPanel>
-            <TextBlock Text="Select Service Code: "  />
-            <ComboBox IsEditable="True" x:Name="ComboBoxService" DataContext="{StaticResource ServiceCodes}" DisplayMemberPath="SER_CODE" ItemsSource="{Binding}" />
-        </WrapPanel>
-        <WrapPanel>
-            <TextBlock Text="Select Client Code: "/>
-            <ComboBox Name="ClientCodes" DataContext="{StaticResource ClientCodes}" DisplayMemberPath="CLCODE" ItemsSource="{Binding}"></ComboBox>
+            <ComboBox IsEditable="True" KeyUp="ComboBoxRate_KeyUp" Width="100"  SelectionChanged="ComboBoxRate_SelectionChanged" DisplayMemberPath="RateCode" ItemsSource="{Binding}" DataContext="{StaticResource RateCodes}" Name="ComboBoxRate" />
+            <Button Content="Add New" Name="AddNewRateButton" Click="AddNewRateButton_Click"></Button>
+            <Button Content="Assign Button" Name="AssignRateButton" Click="AssignRateButton_Click"></Button>
         </WrapPanel>
         <WrapPanel>
             <TextBlock Text="Description"  ></TextBlock>
             <TextBox TextWrapping="Wrap" AcceptsReturn="True" />
         </WrapPanel>
         <WrapPanel>
-            <TextBlock Text="Select Zone Code: "  />
-            <ComboBox Name="ComboBoxZone" DataContext="{StaticResource ZoneCodes}" ItemsSource="{Binding}" DisplayMemberPath="zcode" IsEditable="True"/>
-        </WrapPanel>
-        <WrapPanel>
             <ContentControl Height="200">
                 <DockPanel>
-                    <DataGrid CanUserAddRows="True" DockPanel.Dock="Left" HorizontalAlignment="Left" AutoGenerateColumns="False" ItemsSource="{Binding}" DataContext="{StaticResource Type1DGSource}" Name="Type1DG">
+                    <DataGrid IsReadOnly="True" SelectionMode="Single" MouseDoubleClick="Type1DG_MouseDoubleClick" DockPanel.Dock="Left" HorizontalAlignment="Left" AutoGenerateColumns="False" ItemsSource="{Binding}" DataContext="{StaticResource Type1DGSource}" Name="Type1DG">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Weight" Binding="{Binding Path=Weight}"></DataGridTextColumn>
                             <DataGridTextColumn Header="DoxRate" Binding="{Binding Path=DoxRate}"></DataGridTextColumn>
                             <DataGridTextColumn Header="NonDox Rate" Binding="{Binding Path=NonDoxRate}"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <DataGrid HorizontalAlignment="Left" DockPanel.Dock="Right" DataContext="{StaticResource Type2DGSource}" ItemsSource="{Binding}" Name="Type2DG" AutoGenerateColumns="False" VerticalAlignment="Top">
+                    <StackPanel VerticalAlignment="Center">
+                        <Button Name="Type1DGNewRowButton" Click="Type1DGNewRowButton_Click" Content="Add New" Height="25"></Button>
+                        <Button Name="Type1DGDeleteSelectedRowButton" Click="Type1DGDeleteSelectedRowButton_Click" Content="Delete" Height="25"/>
+                    </StackPanel>
+                    <DataGrid DockPanel.Dock="Left" DataContext="{StaticResource Type2DGSource}" MouseDoubleClick="Type1DG_MouseDoubleClick" ItemsSource="{Binding}" IsReadOnly="True" SelectionMode="Single" Name="Type2DG" AutoGenerateColumns="False" VerticalAlignment="Top">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Weight" Binding="{Binding Path=Weight}"></DataGridTextColumn>
                             <DataGridTextColumn Header="DoxRate" Binding="{Binding Path=DoxRate}"></DataGridTextColumn>
                             <DataGridTextColumn Header="NonDox Rate" Binding="{Binding Path=NonDoxRate}"></DataGridTextColumn>
                             <DataGridTextColumn Header="StepWeight" Binding="{Binding Path=StepWeight}"></DataGridTextColumn>
                         </DataGrid.Columns>
+
                     </DataGrid>
+
+                    <StackPanel VerticalAlignment="Center">
+                        <Button Name="Type2DGNewRowButton" Click="Type2DGNewRowButton_Click" Content="Add New" Height="25"></Button>
+                        <Button Name="Type2DGDeleteSelectedRowButton" Click="Type2DGDeleteSelectedRowButton_Click" Content="Delete" Height="25"/>
+                    </StackPanel>
                 </DockPanel>
             </ContentControl>
         </WrapPanel>
@@ -69,23 +68,23 @@
                         <TextBlock Text=" the price would be : "></TextBlock>
                         <TextBlock Name="TestPrice"></TextBlock>
                     </WrapPanel>
+
                     <WrapPanel DockPanel.Dock="Top">
                         <TextBlock Text="This rate code is also assigned to: "></TextBlock>
                     </WrapPanel>
 
-                    <DataGrid Name="DGRateAssignment" DockPanel.Dock="Bottom" DataContext="{StaticResource RateAssignmentDGSource}" ItemsSource="{Binding}" AutoGenerateColumns="False">
+                    <DataGrid Name="DGRateAssignment" DockPanel.Dock="Left" DataContext="{StaticResource RateAssignmentDGSource}" ItemsSource="{Binding}" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="SeriviceCode" Binding="{Binding Path=ServiceCode}"></DataGridTextColumn>
                             <DataGridTextColumn Header="ClientCode" Binding="{Binding Path=ClientCode}"></DataGridTextColumn>
                             <DataGridTextColumn Header="ZoneCode" Binding="{Binding Path=ZoneCode}"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
+                    <StackPanel VerticalAlignment="Center">
+                        <Button DockPanel.Dock="Right" Content="Add New" Height="20" Name="AddNewAssignmentButton" Click="AddNewAssignmentButton_Click"></Button>
+                    </StackPanel>
                 </DockPanel>
             </ContentControl>
-        </WrapPanel>
-        <WrapPanel>
-            <Button Content="Assign" Name="AssignRateToZoneServiceButton" Click="AssignButton_Click"></Button>
-            <Button Content="Save" Name="SaveRateDetailsButton" Click="SaveRateDetailsButton_Click"></Button>
         </WrapPanel>
     </StackPanel>
 </Window>

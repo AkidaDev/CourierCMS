@@ -20,11 +20,6 @@ namespace FinalUi
     /// </summary>
     public partial class RateWindow : Window
     {
-        #region Variable to be nulled after ratecode changed
-        List<Assignment> ToDeleteFromDatabase;
-        List<Assignment> ToAddToDatabase;
-        List<Assignment> ModifyFromDatabase;
-        #endregion
 
         CollectionViewSource ZoneList;
         CollectionViewSource ServiceList;
@@ -33,16 +28,11 @@ namespace FinalUi
         CollectionViewSource Type2DGSource;
         CollectionViewSource RateAssignmentDGSource;
         CollectionViewSource ClientCodeSource;
-        bool isEdited;
-        Rate rate;
         public RateWindow()
         {
-            ToDeleteFromDatabase = new List<Assignment>();
-            ToAddToDatabase = new List<Assignment>();
-            ModifyFromDatabase = new List<Assignment>();
             InitializeComponent();
             BillingDataDataContext db = new BillingDataDataContext();
-            isEdited = false;
+
             #region Defining Data Sources
             RateAssignmentDGSource = (CollectionViewSource)FindResource("RateAssignmentDGSource");
             Type1DGSource = (CollectionViewSource)FindResource("Type1DGSource");
@@ -58,16 +48,12 @@ namespace FinalUi
             #endregion
             #region EventHandlers
             #endregion
+            ComboBoxRate_GeneralEventHandler();
         }
-
-        void Type2DG_AddingNewItem(object sender, AddingNewItemEventArgs e)
+        public void refreshDataSources()
         {
-            throw new NotImplementedException();
-        }
-
-        void Type1DG_AddingNewItem(object sender, AddingNewItemEventArgs e)
-        {
-            throw new NotImplementedException();
+            BillingDataDataContext db = new BillingDataDataContext();
+            RateList.Source = db.Rates;
         }
         #region ComboBoxRate Event Handlers
         private void ComboBoxRate_GeneralEventHandler()
@@ -78,8 +64,8 @@ namespace FinalUi
             if (rate != null)
             {
                 List<RateDetail> rateDetails = rate.RateDetails.ToList();
-                Type1DGSource.Source = rateDetails.Where(x => x.Type == 1).OrderBy(y=>y.Weight).ToList();
-                Type2DGSource.Source = rateDetails.Where(x => x.Type == 2 || x.Type == 3).OrderBy(y=>y.Weight).ToList() ;
+                Type1DGSource.Source = rateDetails.Where(x => x.Type == 1).OrderBy(y => y.Weight).ToList();
+                Type2DGSource.Source = rateDetails.Where(x => x.Type == 2 || x.Type == 3).OrderBy(y => y.Weight).ToList();
                 List<Assignment> assignDetails = rate.Assignments.ToList();
                 RateAssignmentDGSource.Source = assignDetails;
             }
@@ -109,7 +95,7 @@ namespace FinalUi
         public void refreshTestPrice()
         {
             char dox = 'd';
-            if(TestDox.SelectedItem!= null)
+            if (TestDox.SelectedItem != null)
             {
                 if (TestDox.SelectedItem.ToString() != "Dox")
                     dox = 'n';
@@ -120,27 +106,117 @@ namespace FinalUi
             }
             catch (Exception)
             { }
-            
+
         }
         private void TestWeight_KeyUp(object sender, KeyEventArgs e)
         {
             refreshTestPrice();
         }
+        private void Type1DG_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DataGrid sourceGrid = (DataGrid)e.Source;
+            RateDetail detObj = (RateDetail)sourceGrid.SelectedItem;
+            EditRateDetailsWindow editWin = new EditRateDetailsWindow(detObj);
+            editWin.Show();
+        }
+        private void newDetObj(int type)
+        {
+            RateDetail retD = new RateDetail();
+            retD.ID = Guid.NewGuid();
+            retD.Type = type;
+            retD.RateCode = ComboBoxRate.Text;
+            ListCollectionView view;
+            if (type == 1)
+                view = (ListCollectionView)Type1DG.ItemsSource;
+            else
+                view = (ListCollectionView)Type2DG.ItemsSource;
+            view.AddNewItem(retD);
+            EditRateDetailsWindow win = new EditRateDetailsWindow(retD);
+            win.Closed += win_Closed;
+            win.Show();
+        }
+        void win_Closed(object sender, EventArgs e)
+        {
+            EditRateDetailsWindow win = (EditRateDetailsWindow)sender;
+            if (!win.isRateAdded)
+            {
+                ListCollectionView view;
+                if (win.retD.Type == 1)
+                    view = (ListCollectionView)Type1DG.ItemsSource;
+                else
+                    view = (ListCollectionView)Type2DG.ItemsSource;
+                view.Remove(win.retD);
+            }
+            else
+            {
+                BillingDataDataContext db = new BillingDataDataContext();
+                db.RateDetails.InsertOnSubmit(win.retD);
+                db.SubmitChanges();
+            }
+        }
+        private void Type1DGNewRowButton_Click(object sender, RoutedEventArgs e)
+        {
+            newDetObj(1);
+        }
 
-        private void AssignButton_Click(object sender, RoutedEventArgs e)
+        private void Type2DGDeleteSelectedRowButton_Click(object sender, RoutedEventArgs e)
         {
-             
+            RateDetail retD = (RateDetail)Type2DG.SelectedItem;
+            ListCollectionView view = (ListCollectionView)Type2DG.ItemsSource;
+            view.Remove(retD);
+            removeDGItemFromDB(retD);
         }
-        private void assignRoutine(Rate rateCode, ZONE ZoneCode, Service ServiceCode, Client ClientCode)
-        { 
+        private void removeDGItemFromDB(RateDetail retD)
+        {
+            BillingDataDataContext db = new BillingDataDataContext();
+            retD = db.RateDetails.SingleOrDefault(x => x.ID == retD.ID);
+            if (retD != null)
+            {
+                db.RateDetails.DeleteOnSubmit(retD);
+                db.SubmitChanges();
+            }
         }
-        private void saveRateDetailsRoutine(string rateCode, List<RateDetail> details)
+        private void Type2DGNewRowButton_Click(object sender, RoutedEventArgs e)
+        {
+            newDetObj(2);
+        }
+
+        private void Type1DGDeleteSelectedRowButton_Click(object sender, RoutedEventArgs e)
+        {
+            RateDetail retD = (RateDetail)Type1DG.SelectedItem;
+            ListCollectionView view = (ListCollectionView)Type1DG.ItemsSource;
+            view.Remove(retD);
+            removeDGItemFromDB(retD);
+        }
+
+
+        private void AssignRateButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
-        private void SaveRateDetailsButton_Click(object sender, RoutedEventArgs e)
+
+        private void AddNewRateButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            AddNewRateWindow addRateWindow = new AddNewRateWindow();
+            addRateWindow.Closed += addRateWindow_Closed;
+            addRateWindow.Show();
+        }
+
+        void addRateWindow_Closed(object sender, EventArgs e)
+        {
+            AddNewRateWindow addNewRateWindow = (AddNewRateWindow)sender;
+            if (addNewRateWindow.isEntered)
+            {
+                BillingDataDataContext db = new BillingDataDataContext();
+                db.Rates.InsertOnSubmit(addNewRateWindow.rate);
+                db.SubmitChanges();
+                refreshDataSources();
+            }
+        }
+
+        private void AddNewAssignmentButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

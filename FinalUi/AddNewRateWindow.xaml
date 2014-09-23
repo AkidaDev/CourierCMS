@@ -1,0 +1,12 @@
+﻿<Window x:Class="FinalUi.AddNewRateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AddNewRateWindow" Height="300" Width="300">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="21,24,0,0" TextWrapping="Wrap" Text="Enter Rate Code: " VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="21,71,0,0" TextWrapping="Wrap" Text="Enter Description: " VerticalAlignment="Top"/>
+        <TextBox Name="RateCodeTextBox" HorizontalAlignment="Left" Height="23" Margin="143,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="RateDescriptionTextBox" HorizontalAlignment="Left" Height="23" Margin="143,64,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Button Content="Add" Name="AddButton" Click="AddButton_Click" HorizontalAlignment="Left" Margin="112,129,0,0" VerticalAlignment="Top" Width="75"/>
+    </Grid>
+</Window>
