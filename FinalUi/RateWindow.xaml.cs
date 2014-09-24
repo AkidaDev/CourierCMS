@@ -125,12 +125,6 @@ namespace FinalUi
             retD.ID = Guid.NewGuid();
             retD.Type = type;
             retD.RateCode = ComboBoxRate.Text;
-            ListCollectionView view;
-            if (type == 1)
-                view = (ListCollectionView)Type1DG.ItemsSource;
-            else
-                view = (ListCollectionView)Type2DG.ItemsSource;
-            view.AddNewItem(retD);
             EditRateDetailsWindow win = new EditRateDetailsWindow(retD);
             win.Closed += win_Closed;
             win.Show();
@@ -138,20 +132,15 @@ namespace FinalUi
         void win_Closed(object sender, EventArgs e)
         {
             EditRateDetailsWindow win = (EditRateDetailsWindow)sender;
-            if (!win.isRateAdded)
-            {
-                ListCollectionView view;
-                if (win.retD.Type == 1)
-                    view = (ListCollectionView)Type1DG.ItemsSource;
-                else
-                    view = (ListCollectionView)Type2DG.ItemsSource;
-                view.Remove(win.retD);
-            }
-            else
+            if (win.isRateAdded)
             {
                 BillingDataDataContext db = new BillingDataDataContext();
                 db.RateDetails.InsertOnSubmit(win.retD);
                 db.SubmitChanges();
+                if (win.retD.Type == 1)
+                    ((ListCollectionView)Type1DG.ItemsSource).AddNewItem(win.retD);
+                else
+                    ((ListCollectionView)Type2DG.ItemsSource).AddNewItem(win.retD);
             }
         }
         private void Type1DGNewRowButton_Click(object sender, RoutedEventArgs e)
@@ -161,6 +150,7 @@ namespace FinalUi
 
         private void Type2DGDeleteSelectedRowButton_Click(object sender, RoutedEventArgs e)
         {
+            Type2DG.CancelEdit();
             RateDetail retD = (RateDetail)Type2DG.SelectedItem;
             ListCollectionView view = (ListCollectionView)Type2DG.ItemsSource;
             view.Remove(retD);
@@ -213,10 +203,62 @@ namespace FinalUi
                 refreshDataSources();
             }
         }
+        private void editAssignDetails(Assignment assign)
+        {
+            RateAssignment assignWin = new RateAssignment(assign);
+            assignWin.Closed += assignWin_Closed;
+            assignWin.Show();
+        }
 
+        void assignWin_Closed(object sender, EventArgs e)
+        {
+            RateAssignment window = (RateAssignment)sender;
+            if (window.isEdited)
+            {
+                BillingDataDataContext db = new BillingDataDataContext();
+                Assignment bdAssign = db.Assignments.SingleOrDefault(x => x.Id == window.assignment.Id);
+                bool isNew = false;
+                if (bdAssign == null)
+                {
+                    bdAssign = new Assignment();
+                    bdAssign.Id = Guid.NewGuid();
+                    isNew = true;
+                }
+                bdAssign.RateCode = window.assignment.RateCode;
+                bdAssign.ServiceCode = window.assignment.ServiceCode;
+                bdAssign.ClientCode = window.assignment.ClientCode;
+                bdAssign.ZoneCode = window.assignment.ZoneCode;
+                if (isNew)
+                {
+                    db.Assignments.InsertOnSubmit(bdAssign);
+                    ((ListCollectionView)DGRateAssignment.ItemsSource).AddNewItem(bdAssign);
+                }
+                db.SubmitChanges();
+            }
+        }
         private void AddNewAssignmentButton_Click(object sender, RoutedEventArgs e)
         {
+            Assignment assignment = new Assignment();
+            assignment.Id = Guid.NewGuid();
+            assignment.RateCode = ComboBoxRate.Text;
+            editAssignDetails(assignment);
+        }
 
+        private void DGRateAssignment_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Assignment assignment = (Assignment)DGRateAssignment.SelectedItem;
+            editAssignDetails(assignment);
+        }
+
+        private void DeleteAssignmentButton_Click(object sender, RoutedEventArgs e)
+        {
+            Assignment assignment = (Assignment)DGRateAssignment.SelectedItem;
+            BillingDataDataContext db = new BillingDataDataContext();
+            Assignment dbAssignment = db.Assignments.Single(x => x.Id == assignment.Id);
+            db.Assignments.DeleteOnSubmit(dbAssignment);
+            ListCollectionView view = (ListCollectionView)DGRateAssignment.ItemsSource;
+            view.Remove(assignment);
+            db.SubmitChanges();
         }
     }
 }

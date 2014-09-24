@@ -73,7 +73,7 @@
                         <TextBlock Text="This rate code is also assigned to: "></TextBlock>
                     </WrapPanel>
 
-                    <DataGrid Name="DGRateAssignment" DockPanel.Dock="Left" DataContext="{StaticResource RateAssignmentDGSource}" ItemsSource="{Binding}" AutoGenerateColumns="False">
+                    <DataGrid Name="DGRateAssignment" IsReadOnly="True" MouseDoubleClick="DGRateAssignment_MouseDoubleClick" DockPanel.Dock="Left" DataContext="{StaticResource RateAssignmentDGSource}" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="SeriviceCode" Binding="{Binding Path=ServiceCode}"></DataGridTextColumn>
                             <DataGridTextColumn Header="ClientCode" Binding="{Binding Path=ClientCode}"></DataGridTextColumn>
@@ -81,7 +81,8 @@
                         </DataGrid.Columns>
                     </DataGrid>
                     <StackPanel VerticalAlignment="Center">
-                        <Button DockPanel.Dock="Right" Content="Add New" Height="20" Name="AddNewAssignmentButton" Click="AddNewAssignmentButton_Click"></Button>
+                        <Button Content="Add New" Height="20" Name="AddNewAssignmentButton" Click="AddNewAssignmentButton_Click"></Button>
+                        <Button Content="Delete" Height="20" Name="DeleteAssignmentButton" Click="DeleteAssignmentButton_Click"></Button>
                     </StackPanel>
                 </DockPanel>
             </ContentControl>

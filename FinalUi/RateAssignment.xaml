@@ -2,6 +2,44 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="RateAssignment" Height="300" Width="300">
+    <Window.Resources>
+        <CollectionViewSource x:Key="RateList" CollectionViewType="ListCollectionView"></CollectionViewSource>
+        <CollectionViewSource x:Key="ServiceList" CollectionViewType="ListCollectionView"></CollectionViewSource>
+        <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"></CollectionViewSource>
+        <CollectionViewSource x:Key="ZoneList" CollectionViewType="ListCollectionView"></CollectionViewSource>
+    </Window.Resources>
     <Grid>
+        <StackPanel>
+            <WrapPanel>
+                <TextBlock Text="Enter Rate Code: "></TextBlock>
+                <TextBlock Text="" Name="RateCodeName"></TextBlock>    
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Name="RateDescription"></TextBlock>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Enter Service Code"></TextBlock>
+                <ComboBox Name="ComboBoxService" DataContext="{StaticResource ServiceList}" ItemsSource="{Binding}" DisplayMemberPath="SER_CODE" Width="100"></ComboBox>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="" Name="ServiceDescription"></TextBlock>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Enter Zone Code: "></TextBlock>
+                <ComboBox Name="ComboBoxZone" DataContext="{StaticResource ZoneList}" ItemsSource="{Binding}" DisplayMemberPath="zcode" Width="100"></ComboBox>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Name="ZoneDescription"></TextBlock>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Enter Client Code: "></TextBlock>
+                <ComboBox Name="ComboBoxClient" DataContext="{StaticResource ClientList}" ItemsSource="{Binding}" DisplayMemberPath="CLCODE" Width="100"></ComboBox>
+                
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Name="ClientDescription"></TextBlock>
+            </WrapPanel>
+            <Button Name="AssignButton" Click="AssignButton_Click" Content="Assign" Width="150"></Button>
+        </StackPanel>
     </Grid>
 </Window>

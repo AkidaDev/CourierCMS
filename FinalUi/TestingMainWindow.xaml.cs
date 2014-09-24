@@ -62,8 +62,7 @@ namespace FinalUi
 
         private void rateassignment_Click(object sender, RoutedEventArgs e)
         {
-            RateAssignment window = new RateAssignment();
-            window.Show();
+            
         }
     }
 }
