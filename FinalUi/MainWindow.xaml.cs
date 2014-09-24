@@ -50,13 +50,14 @@ namespace FinalUi
         {
             SecurityModule.authenticate("dharmendra", "pass");
             #region setupCode
-            this.SourceInitialized += Window_SourceInitialized;
+            PreviewMouseMove += OnPreviewMouseMove;
             #endregion
             #region WindowDimensionsCode
             this.Width = System.Windows.SystemParameters.WorkArea.Width;
             this.Height = System.Windows.SystemParameters.WorkArea.Height;
             this.Left = 0;
             this.Top = 0;
+            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             this.WindowState = WindowState.Normal;
             #endregion
             db = new BillingDataDataContext();
@@ -202,7 +203,7 @@ namespace FinalUi
                 int key = dataGridHelper.addNewSheet(new List<RuntimeData>(), "");
                 addingNewPage(key);
             }
-            SanitizingWindow window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber,dataGrid);
+            SanitizingWindow window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber, dataGrid);
             window.Show();
         }
         #endregion
@@ -243,8 +244,8 @@ namespace FinalUi
 
         private void ExecutePrint(object sender, ExecutedRoutedEventArgs e)
         {
-            
-            PrintWindow win = new PrintWindow(dataGridHelper.getCurrentDataStack,(new BillingDataDataContext()).Clients.First());
+
+            PrintWindow win = new PrintWindow(dataGridHelper.getCurrentDataStack, (new BillingDataDataContext()).Clients.First());
             win.Show();
         }
         private void CanExecutePrintCommand(object sender, CanExecuteRoutedEventArgs e)
@@ -352,7 +353,7 @@ namespace FinalUi
 
             Button canvasButton = new Button();
             canvasButton.Style = (Style)FindResource("Sheet_button");
-			canvasButton.Width = 90;
+            canvasButton.Width = 90;
             canvasButton.Height = 20;
             if (key == 0)
                 canvasButton.Margin = new Thickness(0, 1, 0, 0);
@@ -362,9 +363,9 @@ namespace FinalUi
             canvasButton.Width = 90;
 
             Canvas canvastab = new Canvas();
-           	canvastab.Width = 90;
+            canvastab.Width = 90;
             canvastab.Height = 20;
-            
+
             Path pathsquare = new Path();
             pathsquare.Data = Geometry.Parse(@"F1M2,1.644C2,1.644 2,20 2,20 2,20 77.831,20 77.831,20 77.831,20 91.619,1.644 91.619,1.644 91.619,1.644 2,1.644 2,1.644z");
             pathsquare.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF5E5EC5"));
@@ -373,7 +374,7 @@ namespace FinalUi
             pathsquare.Stretch = Stretch.Fill;
             Button buttonsquare = new Button();
             buttonsquare.Style = (Style)FindResource("Sheet_button");
-           	buttonsquare.Content = pathsquare;
+            buttonsquare.Content = pathsquare;
 
 
             Path pathkatta = new Path();
@@ -392,7 +393,7 @@ namespace FinalUi
             text.FontSize = 16;
             Canvas.SetLeft(text, 4);
             Canvas.SetTop(text, -2);
-			
+
             Button buttonkatta = new Button();
             buttonkatta.Style = (Style)FindResource("smallbutton");
             buttonkatta.Content = pathkatta;
@@ -406,13 +407,13 @@ namespace FinalUi
             canvastab.Children.Add(buttonkatta);
             canvastab.Children.Add(text);
             canvasButton.Content = canvastab;
-            canvasButton.Click += SheetSelectButton_Click; 
+            canvasButton.Click += SheetSelectButton_Click;
             buttontabcanvaswrap.Children.Add(canvasButton);
             buttonList.Add(canvasButton, key);
             activeButton = canvasButton;
-          
+
         }
-       
+
         void loadData_Closed(object sender, EventArgs e)
         {
             this.Effect = null;
@@ -494,64 +495,8 @@ namespace FinalUi
             }
         }
         #endregion
+
         #region Handling Resizing
-        private bool mRestoreIfMove = false;
-
-
-        void Window_SourceInitialized(object sender, EventArgs e)
-        {
-            IntPtr mWindowHandle = (new WindowInteropHelper(this)).Handle;
-            HwndSource.FromHwnd(mWindowHandle).AddHook(new HwndSourceHook(WindowProc));
-        }
-
-
-        private static System.IntPtr WindowProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
-        {
-            switch (msg)
-            {
-                case 0x0024:
-                    WmGetMinMaxInfo(hwnd, lParam);
-                    break;
-            }
-
-            return IntPtr.Zero;
-        }
-
-
-        private static void WmGetMinMaxInfo(System.IntPtr hwnd, System.IntPtr lParam)
-        {
-            POINT lMousePosition;
-            GetCursorPos(out lMousePosition);
-
-            IntPtr lPrimaryScreen = MonitorFromPoint(new POINT(0, 0), MonitorOptions.MONITOR_DEFAULTTOPRIMARY);
-            MONITORINFO lPrimaryScreenInfo = new MONITORINFO();
-            if (GetMonitorInfo(lPrimaryScreen, lPrimaryScreenInfo) == false)
-            {
-                return;
-            }
-
-            IntPtr lCurrentScreen = MonitorFromPoint(lMousePosition, MonitorOptions.MONITOR_DEFAULTTONEAREST);
-
-            MINMAXINFO lMmi = (MINMAXINFO)Marshal.PtrToStructure(lParam, typeof(MINMAXINFO));
-
-            if (lPrimaryScreen.Equals(lCurrentScreen) == true)
-            {
-                lMmi.ptMaxPosition.X = lPrimaryScreenInfo.rcWork.Left;
-                lMmi.ptMaxPosition.Y = lPrimaryScreenInfo.rcWork.Top;
-                lMmi.ptMaxSize.X = lPrimaryScreenInfo.rcWork.Right - lPrimaryScreenInfo.rcWork.Left;
-                lMmi.ptMaxSize.Y = lPrimaryScreenInfo.rcWork.Bottom - lPrimaryScreenInfo.rcWork.Top;
-            }
-            else
-            {
-                lMmi.ptMaxPosition.X = lPrimaryScreenInfo.rcMonitor.Left;
-                lMmi.ptMaxPosition.Y = lPrimaryScreenInfo.rcMonitor.Top;
-                lMmi.ptMaxSize.X = lPrimaryScreenInfo.rcMonitor.Right - lPrimaryScreenInfo.rcMonitor.Left;
-                lMmi.ptMaxSize.Y = lPrimaryScreenInfo.rcMonitor.Bottom - lPrimaryScreenInfo.rcMonitor.Top;
-            }
-
-            Marshal.StructureToPtr(lMmi, lParam, true);
-        }
-
         private void SwitchWindowState()
         {
             switch (WindowState)
@@ -591,114 +536,149 @@ namespace FinalUi
         }
 
 
-
-        private void rctHeader_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            mRestoreIfMove = false;
-        }
-
-
-        private void rctHeader_PreviewMouseMove(object sender, MouseEventArgs e)
-        {
-            if (mRestoreIfMove)
-            {
-                mRestoreIfMove = false;
-
-                double percentHorizontal = e.GetPosition(this).X / ActualWidth;
-                double targetHorizontal = RestoreBounds.Width * percentHorizontal;
-
-                double percentVertical = e.GetPosition(this).Y / ActualHeight;
-                double targetVertical = RestoreBounds.Height * percentVertical;
-
-                WindowState = WindowState.Normal;
-
-                POINT lMousePosition;
-                GetCursorPos(out lMousePosition);
-
-                Left = lMousePosition.X - targetHorizontal;
-                Top = lMousePosition.Y - targetVertical;
-
-                DragMove();
-            }
-        }
-
-        [DllImport("user32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        static extern bool GetCursorPos(out POINT lpPoint);
-
-
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern IntPtr MonitorFromPoint(POINT pt, MonitorOptions dwFlags);
-
-        enum MonitorOptions : uint
-        {
-            MONITOR_DEFAULTTONULL = 0x00000000,
-            MONITOR_DEFAULTTOPRIMARY = 0x00000001,
-            MONITOR_DEFAULTTONEAREST = 0x00000002
-        }
-
-        [DllImport("user32.dll")]
-        static extern bool GetMonitorInfo(IntPtr hMonitor, MONITORINFO lpmi);
-
-
-        [StructLayout(LayoutKind.Sequential)]
-        public struct POINT
-        {
-            public int X;
-            public int Y;
-
-            public POINT(int x, int y)
-            {
-                this.X = x;
-                this.Y = y;
-            }
-        }
-
-
-        [StructLayout(LayoutKind.Sequential)]
-        public struct MINMAXINFO
-        {
-            public POINT ptReserved;
-            public POINT ptMaxSize;
-            public POINT ptMaxPosition;
-            public POINT ptMinTrackSize;
-            public POINT ptMaxTrackSize;
-        };
-
-
-        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
-        public class MONITORINFO
-        {
-            public int cbSize = Marshal.SizeOf(typeof(MONITORINFO));
-            public RECT rcMonitor = new RECT();
-            public RECT rcWork = new RECT();
-            public int dwFlags = 0;
-        }
-
-
-        [StructLayout(LayoutKind.Sequential)]
-        public struct RECT
-        {
-            public int Left, Top, Right, Bottom;
-
-            public RECT(int left, int top, int right, int bottom)
-            {
-                this.Left = left;
-                this.Top = top;
-                this.Right = right;
-                this.Bottom = bottom;
-            }
-        }
         private void NormalMaximize_Click(object sender, RoutedEventArgs e)
         {
             SwitchWindowState();
         }
+
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            //Application.Current.Shutdown();
+            this.Close();
+        }
         #endregion
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        #region custom window resize
+        private void Rec_MouseMove(object sender, MouseEventArgs e)
         {
-          //  Application.Current.Shutdown();
-            this.Close();
+            var rec = (Rectangle)sender;
+            switch (rec.Name)
+            {
+                case "Rec_Top":
+                    {
+                        Cursor = Cursors.SizeNS;
+                        break;
+                    }
+                case "Rec_Top_Left":
+                    {
+                        Cursor = Cursors.SizeNWSE;
+                        break;
+                    }
+                case "Rec_Top_Right":
+                    {
+                        Cursor = Cursors.SizeNESW;
+                        break;
+                    }
+                case "Rec_Bottom":
+                    {
+                        Cursor = Cursors.SizeNS;
+                        break;
+                    }
+                case "Rec_Bottom_Left":
+                    {
+                        Cursor = Cursors.SizeNESW;
+                        break;
+                    }
+                case "Rec_Bottom_Right":
+                    {
+                        Cursor = Cursors.SizeNWSE;
+                        break;
+                    }
+                case "Rec_Left":
+                    {
+                        Cursor = Cursors.SizeWE;
+                        break;
+                    }
+                case "Rec_Right":
+                    {
+                        Cursor = Cursors.SizeWE;
+                        break;
+                    }
+            }
+        }
+        public void resizeWindow()
+        {
+        }
+
+        #endregion
+        protected void OnPreviewMouseMove(object sender, MouseEventArgs e)
+        {
+            if (Mouse.LeftButton != MouseButtonState.Pressed)
+                Cursor = Cursors.Arrow;
+        }
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern IntPtr SendMessage(IntPtr hWnd, UInt32 msg, IntPtr wParam, IntPtr lParam);
+
+        protected void ResizeRectangle_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Rectangle rectangle = sender as Rectangle;
+            switch (rectangle.Name)
+            {
+                case "Rec_Top":
+                    Cursor = Cursors.SizeNS;
+                    ResizeWindow(ResizeDirection.Top);
+                    break;
+                case "Rec_Bottom":
+                    Cursor = Cursors.SizeNS;
+                    ResizeWindow(ResizeDirection.Bottom);
+                    break;
+                case "Rec_Left":
+                    Cursor = Cursors.SizeWE;
+                    ResizeWindow(ResizeDirection.Left);
+                    break;
+                case "Rec_Right":
+                    Cursor = Cursors.SizeWE;
+                    ResizeWindow(ResizeDirection.Right);
+                    break;
+                case "Rec_Top_Left":
+                    Cursor = Cursors.SizeNWSE;
+                    ResizeWindow(ResizeDirection.TopLeft);
+                    break;
+                case "Rec_Top_Right":
+                    Cursor = Cursors.SizeNESW;
+                    ResizeWindow(ResizeDirection.TopRight);
+                    break;
+                case "Rec_Bottom_Left":
+                    Cursor = Cursors.SizeNESW;
+                    ResizeWindow(ResizeDirection.BottomLeft);
+                    break;
+                case "Rec_Bottom_Right":
+                    Cursor = Cursors.SizeNWSE;
+                    ResizeWindow(ResizeDirection.BottomRight);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void ResizeWindow(ResizeDirection direction)
+        {
+            SendMessage(_hwndSource.Handle, 0x112, (IntPtr)(61440 + direction), IntPtr.Zero);
+        }
+
+        private enum ResizeDirection
+        {
+            Left = 1,
+            Right = 2,
+            Top = 3,
+            TopLeft = 4,
+            TopRight = 5,
+            Bottom = 6,
+            BottomLeft = 7,
+            BottomRight = 8,
+        }
+
+        private HwndSource _hwndSource;
+
+        protected override void OnInitialized(EventArgs e)
+        {
+            SourceInitialized += OnSourceInitialized;
+            base.OnInitialized(e);
+        }
+
+        private void OnSourceInitialized(object sender, EventArgs e)
+        {
+            _hwndSource = (HwndSource)PresentationSource.FromVisual(this);
         }
     }
 }
