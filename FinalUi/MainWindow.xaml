@@ -176,7 +176,7 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
-                            <Button Style="{StaticResource side}" Command="ApplicationCommands.Open"  Grid.Row="0" Width="48" Height="30" Grid.Column="0">
+                            <Button ToolTip="Open File Button" Style="{StaticResource side}" Command="ApplicationCommands.Open"  Grid.Row="0" Width="48" Height="30" Grid.Column="0">
                                 <Button.Content>
                                     <Path x:Name="import_files" Data="F1M11.187,19.719C11.187,19.719 11.187,20.375 11.187,20.375 11.187,20.375 13.812,20.375 13.812,20.375 13.812,
 						20.375 13.812,19.719 13.812,19.719 13.812,19.719 11.187,19.719 11.187,19.719z M9.875,17.094C9.875,17.094 9.875,17.75 9.875,17.75 9.875,17.75 15.125,

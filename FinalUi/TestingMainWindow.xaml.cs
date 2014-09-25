@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -62,6 +63,25 @@ namespace FinalUi
 
         private void rateassignment_Click(object sender, RoutedEventArgs e)
         {
+            
+        }
+
+        private void ServiceWindow_Click(object sender, RoutedEventArgs e)
+        {
+            ServiceFinder window = new ServiceFinder();
+            window.Show();
+        }
+
+        private void AnalyzeInvoicebutton_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog fileD = new Microsoft.Win32.OpenFileDialog();
+            fileD.DefaultExt = "*.pdf";
+            Nullable<bool> result = fileD.ShowDialog();
+            if(result == true)
+            {
+                InvoiceReport win = new InvoiceReport(fileD.FileName);
+                win.Show();
+            }
             
         }
     }
