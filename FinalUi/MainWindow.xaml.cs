@@ -91,7 +91,6 @@ namespace FinalUi
             this.CommandBindings.Add(DeleteCommandBinding);
             #endregion
 
-
             #region loading initial pages
             List<int> sheets = db.RuntimeMetas.Where(y => y.UserName == SecurityModule.currentUserName).Select(x => x.SheetNo).Distinct().ToList();
             foreach (int sheet in sheets)
@@ -204,7 +203,7 @@ namespace FinalUi
                 addingNewPage(key);
             }
             SanitizingWindow window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber, dataGrid);
-            window.Show();
+            window.ShowDialog();
         }
         #endregion
         #region PowerEntryCommand
@@ -213,7 +212,7 @@ namespace FinalUi
         {
 
             PowerEntry powerWin = new PowerEntry(dataGridHelper.getCurrentDataStack, db.Clients.Select(c => c.CLCODE.ToString()).ToList(), db);
-            powerWin.Show();
+            powerWin.ShowDialog();
 
         }
         #endregion
@@ -246,7 +245,7 @@ namespace FinalUi
         {
 
             PrintWindow win = new PrintWindow(dataGridHelper.getCurrentDataStack, (new BillingDataDataContext()).Clients.First());
-            win.Show();
+            win.ShowDialog();
         }
         private void CanExecutePrintCommand(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -323,7 +322,7 @@ namespace FinalUi
             var current = this.Background;
             blur.Radius = 5;
             this.Effect = blur;
-            loadData.Show();
+            loadData.ShowDialog();
         }
 
         private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -483,7 +482,7 @@ namespace FinalUi
         {
             FilterSelectWindow window = new FilterSelectWindow(dataGridHelper.currentConnNos);
             window.Closed += window_Closed;
-            window.Show();
+            window.ShowDialog();
         }
 
         void window_Closed(object sender, EventArgs e)
@@ -650,7 +649,6 @@ namespace FinalUi
                     break;
             }
         }
-
         private void ResizeWindow(ResizeDirection direction)
         {
             SendMessage(_hwndSource.Handle, 0x112, (IntPtr)(61440 + direction), IntPtr.Zero);
@@ -667,15 +665,12 @@ namespace FinalUi
             BottomLeft = 7,
             BottomRight = 8,
         }
-
         private HwndSource _hwndSource;
-
         protected override void OnInitialized(EventArgs e)
         {
             SourceInitialized += OnSourceInitialized;
             base.OnInitialized(e);
         }
-
         private void OnSourceInitialized(object sender, EventArgs e)
         {
             _hwndSource = (HwndSource)PresentationSource.FromVisual(this);

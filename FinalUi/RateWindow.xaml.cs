@@ -63,6 +63,7 @@ namespace FinalUi
             Rate rate = db.Rates.SingleOrDefault(x => rateCode == x.RateCode);
             if (rate != null)
             {
+                RateDescription.Text = rate.Description;
                 List<RateDetail> rateDetails = rate.RateDetails.ToList();
                 Type1DGSource.Source = rateDetails.Where(x => x.Type == 1).OrderBy(y => y.Weight).ToList();
                 Type2DGSource.Source = rateDetails.Where(x => x.Type == 2 || x.Type == 3).OrderBy(y => y.Weight).ToList();
@@ -117,7 +118,7 @@ namespace FinalUi
             DataGrid sourceGrid = (DataGrid)e.Source;
             RateDetail detObj = (RateDetail)sourceGrid.SelectedItem;
             EditRateDetailsWindow editWin = new EditRateDetailsWindow(detObj);
-            editWin.Show();
+            editWin.ShowDialog();
         }
         private void newDetObj(int type)
         {
@@ -127,7 +128,7 @@ namespace FinalUi
             retD.RateCode = ComboBoxRate.Text;
             EditRateDetailsWindow win = new EditRateDetailsWindow(retD);
             win.Closed += win_Closed;
-            win.Show();
+            win.ShowDialog();
         }
         void win_Closed(object sender, EventArgs e)
         {
@@ -189,7 +190,7 @@ namespace FinalUi
         {
             AddNewRateWindow addRateWindow = new AddNewRateWindow();
             addRateWindow.Closed += addRateWindow_Closed;
-            addRateWindow.Show();
+            addRateWindow.ShowDialog();
         }
 
         void addRateWindow_Closed(object sender, EventArgs e)
@@ -207,7 +208,7 @@ namespace FinalUi
         {
             RateAssignment assignWin = new RateAssignment(assign);
             assignWin.Closed += assignWin_Closed;
-            assignWin.Show();
+            assignWin.ShowDialog();
         }
 
         void assignWin_Closed(object sender, EventArgs e)
@@ -259,6 +260,14 @@ namespace FinalUi
             ListCollectionView view = (ListCollectionView)DGRateAssignment.ItemsSource;
             view.Remove(assignment);
             db.SubmitChanges();
+        }
+        private void DragthisWindow(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+        private void Button_Click_Close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

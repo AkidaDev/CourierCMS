@@ -20,5 +20,8 @@
     <Setting Name="CompanyFax" Type="System.String" Scope="User">
       <Value Profile="(Default)">999999999</Value>
     </Setting>
+    <Setting Name="theme" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Blue</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

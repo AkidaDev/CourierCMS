@@ -1,45 +1,48 @@
 ﻿<Window x:Class="FinalUi.RateAssignment"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="RateAssignment" Height="300" Width="300">
+		Icon="Images/logo.png"
+        Title="RateAssignment" Height="300" Width="400" Background="Transparent"
+		ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Normal" BorderBrush="Transparent" AllowsTransparency="True" Padding="20">
     <Window.Resources>
         <CollectionViewSource x:Key="RateList" CollectionViewType="ListCollectionView"></CollectionViewSource>
         <CollectionViewSource x:Key="ServiceList" CollectionViewType="ListCollectionView"></CollectionViewSource>
         <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"></CollectionViewSource>
         <CollectionViewSource x:Key="ZoneList" CollectionViewType="ListCollectionView"></CollectionViewSource>
     </Window.Resources>
-    <Grid>
-        <StackPanel>
-            <WrapPanel>
-                <TextBlock Text="Enter Rate Code: "></TextBlock>
-                <TextBlock Text="" Name="RateCodeName"></TextBlock>    
-            </WrapPanel>
-            <WrapPanel>
-                <TextBlock Name="RateDescription"></TextBlock>
-            </WrapPanel>
-            <WrapPanel>
-                <TextBlock Text="Enter Service Code"></TextBlock>
-                <ComboBox Name="ComboBoxService" DataContext="{StaticResource ServiceList}" ItemsSource="{Binding}" DisplayMemberPath="SER_CODE" Width="100"></ComboBox>
-            </WrapPanel>
-            <WrapPanel>
-                <TextBlock Text="" Name="ServiceDescription"></TextBlock>
-            </WrapPanel>
-            <WrapPanel>
-                <TextBlock Text="Enter Zone Code: "></TextBlock>
-                <ComboBox Name="ComboBoxZone" DataContext="{StaticResource ZoneList}" ItemsSource="{Binding}" DisplayMemberPath="zcode" Width="100"></ComboBox>
-            </WrapPanel>
-            <WrapPanel>
-                <TextBlock Name="ZoneDescription"></TextBlock>
-            </WrapPanel>
-            <WrapPanel>
-                <TextBlock Text="Enter Client Code: "></TextBlock>
-                <ComboBox Name="ComboBoxClient" DataContext="{StaticResource ClientList}" ItemsSource="{Binding}" DisplayMemberPath="CLCODE" Width="100"></ComboBox>
-                
-            </WrapPanel>
-            <WrapPanel>
-                <TextBlock Name="ClientDescription"></TextBlock>
-            </WrapPanel>
-            <Button Name="AssignButton" Click="AssignButton_Click" Content="Assign" Width="150"></Button>
-        </StackPanel>
+    <Grid  Height="210" UseLayoutRounding="False"  Width="322"  >
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
+        </Grid.Effect>
+    	<Canvas x:Name="RateAssign" ClipToBounds="True" HorizontalAlignment="Left" Height="210" UseLayoutRounding="False" VerticalAlignment="Top" Width="322" Background="White">
+    		
+			<Path x:Name="Vertical_line" Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Black" Height="4" Canvas.Left="46" Canvas.Top="53" Width="237"/>
+    		
+			<Path x:Name="Rectangle_1" Fill="Transparent" Stroke="Gray" StrokeThickness=".5"  Data="F1M1,1C1,1 212,1 212,1 212,1 212,21 212,21 212,21 1,21 1,21 1,21 1,1 1,1z" Height="22" Canvas.Left="58" Canvas.Top="59" Width="213"/>
+    		<TextBlock Padding="12 2 0 0" Name="RateDescription" Height="22" Canvas.Left="58" Canvas.Top="59" Width="213"/>
+			<ComboBox IsEditable="True" Name="ComboBoxService" DataContext="{StaticResource ServiceList}" ItemsSource="{Binding}" DisplayMemberPath="SER_CODE" Height="23" Canvas.Left="148" Canvas.Top="94" Width="103"/>
+			<ComboBox IsEditable="True" Name="ComboBoxZone" DataContext="{StaticResource ZoneList}" ItemsSource="{Binding}" DisplayMemberPath="zcode" Height="23" Canvas.Left="148" Canvas.Top="118" Width="103"/>
+    		<ComboBox IsEditable="True" Name="ComboBoxClient" DataContext="{StaticResource ClientList}" ItemsSource="{Binding}" DisplayMemberPath="CLCODE"  Height="22" Canvas.Left="148" Canvas.Top="143" Width="103"/>
+			
+    		<TextBlock x:Name="Enter_Details_for___" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="47" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Enter Details for .:" Canvas.Top="38.16"/>
+    		<TextBlock x:Name="Service_Code___" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="27" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Service Code .:" Canvas.Top="101.16"/>
+    		<TextBlock x:Name="Zone_Code_______" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="27" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Zone Code     .:" Canvas.Top="125.16"/>
+    		<TextBlock x:Name="Client_Code______" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="25" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Client Code    .:" Canvas.Top="150.16"/>
+    		<Path x:Name="detail" Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Black" Height="24" Canvas.Left="19" Canvas.Top="32" Width="24"/>
+    		
+			<Button Name="AssignButton" Click="AssignButton_Click" Style="{StaticResource all}" Canvas.Left="230" Canvas.Top="174"><WrapPanel>
+			<Path x:Name="Shape_1" Data="F1M10.565,11.428C10.565,11.428 4.55,17.443 4.55,17.443 4.55,17.443 7.557,20.45 7.557,20.45 7.557,20.45 13.572,14.435 13.572,14.435 13.572,14.435 13.071,13.934 13.071,13.934 13.071,13.934 11.484,15.52 11.484,15.52 10.931,16.074 10.033,16.074 9.48,15.52 8.926,14.967 8.926,14.069 9.48,13.516 9.48,13.516 11.066,11.929 11.066,11.929 11.066,11.929 10.565,11.428 10.565,11.428z M14.492,9.09C14.855,9.09 15.218,9.229 15.494,9.506 16.048,10.059 16.048,10.957 15.494,11.511 15.494,11.511 13.082,13.923 13.082,13.923 13.082,13.923 14.586,15.427 14.586,15.427 15.139,15.98 15.139,16.878 14.586,17.432 14.586,17.432 8.571,23.446 8.571,23.446 8.017,24 7.12,24 6.566,23.446 6.566,23.446 1.554,18.434 1.554,18.434 1,17.88 1,16.983 1.554,16.429 1.554,16.429 7.568,10.414 7.568,10.414 8.122,9.861 9.02,9.861 9.573,10.414 9.573,10.414 11.077,11.918 11.077,11.918 11.077,11.918 13.489,9.506 13.489,9.506 13.766,9.229 14.129,9.09 14.492,9.09z M17.431,1.138C17.794,1.138 18.157,1.277 18.434,1.554 18.434,1.554 23.446,6.566 23.446,6.566 24,7.12 24,8.017 23.446,8.571 23.446,8.571 17.432,14.586 17.432,14.586 16.878,15.139 15.98,15.139 15.427,14.586 15.427,14.586 14.424,13.583 14.424,13.583 14.424,13.583 20.439,7.568 20.439,7.568 20.439,7.568 17.432,4.561 17.432,4.561 17.432,4.561 11.417,10.576 11.417,10.576 11.417,10.576 10.414,9.573 10.414,9.573 9.861,9.02 9.861,8.122 10.414,7.568 10.414,7.568 16.429,1.554 16.429,1.554 16.706,1.277 17.069,1.138 17.431,1.138z" Fill="Black" Height="25"  Width="25"/>
+    		<TextBlock x:Name="Assign" Foreground="Black" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Assign" Margin="0,5,5,5"/>
+    		</WrapPanel></Button>
+
+			<Path x:Name="Rectangle_2" Data="F1M1,1C1,1 87,1 87,1 87,1 87,18 87,18 87,18 1,18 1,18 1,18 1,1 1,1z" Fill="Transparent" Stroke="Gray" StrokeThickness=".5" Height="19" Canvas.Left="190" Canvas.Top="33" Width="88"/>
+    		<TextBlock Text="" Name="RateCodeName" Height="19" Canvas.Left="190" Canvas.Top="33" Width="88" Padding="12 1 0 0"></TextBlock> 
+			<Path MouseDown="DragthisWindow" x:Name="Memu_bar" Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="#FFCBCBCB" Height="26" Canvas.Left="0" Canvas.Top="0" Width="322" Stretch="Fill" Stroke="Black" />
+            <Button Height="18" Canvas.Left="283" Click="Button_Click_Close" Canvas.Top="4" Width="35" Style="{StaticResource all}">
+                <Path x:Name="close" Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,
+                  12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,
+                  3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" Width="15" Height="15"/>
+            </Button>
+			</Canvas>
     </Grid>
 </Window>

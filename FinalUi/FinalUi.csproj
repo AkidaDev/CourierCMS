@@ -35,14 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DoddleReport">
-      <HintPath>..\packages\DoddleReport.iTextSharp.1.4\lib\net40\DoddleReport.dll</HintPath>
-    </Reference>
-    <Reference Include="DoddleReport.iTextSharp">
-      <HintPath>..\packages\DoddleReport.iTextSharp.1.4\lib\net40\DoddleReport.iTextSharp.dll</HintPath>
-    </Reference>
     <Reference Include="itextsharp">
-      <HintPath>..\packages\DoddleReport.iTextSharp.1.4\lib\net40\itextsharp.dll</HintPath>
+      <HintPath>..\packages\iTextSharp.5.5.3\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -147,9 +141,6 @@
     <Compile Include="FilterSelectWindow.xaml.cs">
       <DependentUpon>FilterSelectWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InvoiceReport.xaml.cs">
-      <DependentUpon>InvoiceReport.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ManageClient.xaml.cs">
       <DependentUpon>ManageClient.xaml</DependentUpon>
     </Compile>
@@ -172,9 +163,6 @@
       <DependentUpon>SanitizingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SecurityModule.cs" />
-    <Compile Include="ServiceFinder.xaml.cs">
-      <DependentUpon>ServiceFinder.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Settings1.cs" />
     <Compile Include="Settings1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -221,10 +209,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FilterSelectWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="InvoiceReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -294,10 +278,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ServiceFinder.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="StockWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -305,6 +285,10 @@
     <Page Include="TestingMainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="theme\Red.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControlGallery.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -369,6 +353,7 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="EditRateDetail_Images\Layer 0.png" />
     <Resource Include="FilterSelectWindow_Images\Layer 0.png" />
     <Resource Include="Images\bottomnavigation bar.png" />
     <Resource Include="Images\left doc.png" />

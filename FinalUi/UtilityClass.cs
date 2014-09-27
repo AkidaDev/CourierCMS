@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace FinalUi
 {
-    class UtilityClass
+    public class UtilityClass
     {
         #region converting transaction to runtime data
         static public List<RuntimeData> convertTransListToRuntimeList(List<Transaction> transList)
@@ -24,8 +24,8 @@ namespace FinalUi
             runtimeDataObj.Amount = trans.AmountPayed;
             runtimeDataObj.BookingDate = trans.BookingDate;
             runtimeDataObj.Weight = trans.Weight;
-            runtimeDataObj.ConsignmentNo = trans.ConnsignmentNo;
-            runtimeDataObj.Destination = trans.Destination;
+            runtimeDataObj.ConsignmentNo = trans.ConnsignmentNo.Trim();
+            runtimeDataObj.Destination = trans.Destination.Trim();
             runtimeDataObj.DestinationPin = (decimal)trans.DestinationPin;
             runtimeDataObj.DOX = trans.DOX;
             runtimeDataObj.FrAmount = trans.AmountCharged;
@@ -33,12 +33,14 @@ namespace FinalUi
             runtimeDataObj.Id = Guid.NewGuid();
             if (trans.InvoiceDate != null)
                 runtimeDataObj.InvoiceDate = (DateTime)trans.InvoiceDate;
-            runtimeDataObj.InvoiceNo = trans.InvoiceNo;
-            runtimeDataObj.Mode = trans.Mode;
+            runtimeDataObj.InvoiceNo = trans.InvoiceNo.Trim();
+            runtimeDataObj.Mode = trans.Mode.Trim();
             runtimeDataObj.ServiceTax = trans.ServiceTax;
             runtimeDataObj.SplDisc = trans.SplDisc;
             runtimeDataObj.CustCode = trans.CustCode;
             runtimeDataObj.TransactionId = trans.ID;
+            if (runtimeDataObj.Type != null)
+                runtimeDataObj.Type = trans.Type.Trim();
             return runtimeDataObj;
         }
         static public List<RuntimeData> loadDataFromDatabase(DateTime startDate, DateTime endDate)
@@ -158,11 +160,17 @@ namespace FinalUi
             Rate rate = db.Rates.SingleOrDefault(x => x.RateCode == rateCode);
             if (rateCode != null)
             {
-                List<RateDetail> rateDetails = rate.RateDetails.OrderBy(x => x.Weight).ToList();
+                List<RateDetail> rateDetails = rate.RateDetails.OrderBy(x =>x.Type.ToString() +  x.Weight.ToString()).ToList();
                 double lastRangeWeight = 0;
                 double price = 0;
+                int i = 0;
+                double nextLimit = 99999;
                 foreach (RateDetail rateD in rateDetails)
                 {
+                    if (rateDetails.ElementAtOrDefault(i + 1) != null)
+                        nextLimit = rateDetails.ElementAt(i + 1).Weight;
+                    else
+                        nextLimit = 99999;
                     if (rateD.Type == 1)
                     {
                         if (rateD.Weight > weight)
@@ -175,20 +183,49 @@ namespace FinalUi
                     }
                     if (rateD.Type == 2 || rateD.Type == 3)
                     {
-                        int steps;
-                        if (rateD.Weight >= weight)
+                        int icurrentW, iWeight, iStepWeight;
+                        iWeight = (int)(weight * 1000);
+                        iStepWeight = (int)(rateD.StepWeight * 1000);
+                        int inextLimit;
+                        double currentW = rateD.Weight;
+                        icurrentW = (int)(rateD.Weight * 1000);
+                        if (weight <= currentW)
                             return price;
-                        steps = (((int)((weight - lastRangeWeight) / ((double)rateD.StepWeight))) + 1);
-                        price = price +  steps * ((double)(Char.ToUpper(isDox) == 'D' ? rateD.DoxRate : rateD.NonDoxRate));
+                        else
+                        {
+                            nextLimit = rateDetails.ElementAtOrDefault(i + 1) != null ? rateDetails.ElementAtOrDefault(i + 1).Weight : 999;
+                            inextLimit = (int)(nextLimit * 1000);
+                            while (icurrentW < inextLimit && icurrentW < iWeight)
+                            {
+                                price = price + (double)(isDox == 'D' ? rateD.DoxRate : rateD.NonDoxRate);
+                                icurrentW = icurrentW + iStepWeight;
+                            }
+                        }
                     }
+                    i++;
                 }
                 return price;
             }
             return -1;
         }
-        public static double getCost(string clientCode, string destinationCode, decimal destinationPin, double wieght)
+        public static double getCost(string clientCode, string destinationCode, decimal destinationPin, double wieght,string zoneCode, string serviceCode, char dox)
         {
-            return 100;
+            Assignment ab;
+            BillingDataDataContext db = new BillingDataDataContext();
+            ab = db.Assignments.FirstOrDefault(x => x.ServiceCode == serviceCode && x.ClientCode == clientCode && x.ZoneCode == zoneCode);
+            if(ab == null)
+            {
+                ab = db.Assignments.FirstOrDefault(x => x.ServiceCode == "DEFAULT" && x.ClientCode == clientCode && x.ZoneCode == zoneCode);
+                if(ab == null)
+                {
+                    ab = db.Assignments.FirstOrDefault(x => x.ServiceCode == "DEFAULT" && x.ClientCode == clientCode && x.ZoneCode == "DEF");
+                    if(ab == null)
+                    {
+                        ab = db.Assignments.FirstOrDefault(x => x.ServiceCode == "DEFAULT" && x.ClientCode == "DEF" && x.ZoneCode == "DEF");
+                    }
+                }
+            }
+            return getPriceFromRateCode(ab.RateCode, wieght, dox);
         }
         #endregion
     }

@@ -8,10 +8,10 @@
         <CollectionViewSource x:Key="CustomerNameList" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="ConsignmentNumbers" CollectionViewType="ListCollectionView"/>
     </Window.Resources>
-    <Grid  Height="392" UseLayoutRounding="False"  Width="498">
+  <Grid  Height="392" UseLayoutRounding="False"  Width="498">
         <Grid.Effect>
             <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
-        </Grid.Effect>
+        </Grid.Effect>  
 
         <!-- <WrapPanel>
                 <Button Name="SubmitSanitizingDetails" Click="SubmitSanitizingDetails_Click" Content="Next Button"/>

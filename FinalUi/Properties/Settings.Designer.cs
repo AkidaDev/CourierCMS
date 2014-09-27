@@ -97,5 +97,15 @@ namespace FinalUi.Properties {
                 return ((string)(this["BillingDatabaseConnectionString6"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SYSTEM;Initial Catalog=BillingDatabase;User ID=sa;Password=Alver!22")]
+        public string BillingDatabaseConnectionString7 {
+            get {
+                return ((string)(this["BillingDatabaseConnectionString7"]));
+            }
+        }
     }
 }

@@ -28,48 +28,44 @@ namespace FinalUi
         private void login_Click(object sender, RoutedEventArgs e)
         {
             Login window = new Login();
-            window.Show();
+            window.ShowDialog();
         }
 
         private void mainwindow_Click(object sender, RoutedEventArgs e)
         {
             MainWindow window = new MainWindow();
-            window.Show();
+            window.ShowDialog();
         }
 
         private void manageclient_Click(object sender, RoutedEventArgs e)
         {
             ManageClient window = new ManageClient();
-            window.Show();
+            window.ShowDialog();
         }
 
         private void manageemployee_Click(object sender, RoutedEventArgs e)
         {
             ManageEmployee window = new ManageEmployee();
-            window.Show();
+            window.ShowDialog();
         }
 
         private void ratewindow_Click(object sender, RoutedEventArgs e)
         {
             RateWindow winodw = new RateWindow();
-            winodw.Show();
+            winodw.ShowDialog();
         }
 
         private void stockwindow_Click(object sender, RoutedEventArgs e)
         {
             StockWindow window = new StockWindow();
-            window.Show();
+            window.ShowDialog();
         }
 
-        private void rateassignment_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
 
         private void ServiceWindow_Click(object sender, RoutedEventArgs e)
         {
-            ServiceFinder window = new ServiceFinder();
-            window.Show();
+            //ServiceFinder window = new ServiceFinder();
+            //window.Show();
         }
 
         private void AnalyzeInvoicebutton_Click(object sender, RoutedEventArgs e)
@@ -79,10 +75,16 @@ namespace FinalUi
             Nullable<bool> result = fileD.ShowDialog();
             if(result == true)
             {
-                InvoiceReport win = new InvoiceReport(fileD.FileName);
-                win.Show();
+                //InvoiceReport win = new InvoiceReport(fileD.FileName);
+                //win.Show();
             }
             
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+        //    testtheme win = new testtheme();
+        //    win.Show();
         }
     }
 }
