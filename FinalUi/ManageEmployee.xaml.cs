@@ -41,7 +41,7 @@ namespace FinalUi
         private void Update_Click(object sender, RoutedEventArgs e)
         {
             AddEmployee window = new AddEmployee((Employee)this.mangaEmployeegrid.SelectedItem);
-            window.Show();
+            window.ShowDialog();
             window.Closed += reloadgrid;
         }
         private void reloadgrid(object sender, EventArgs e)
@@ -53,7 +53,7 @@ namespace FinalUi
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             AddEmployee window = new AddEmployee();
-            window.Show();
+            window.ShowDialog();
         }
 
     }

@@ -76,9 +76,9 @@ namespace FinalUi
 		
 		public BillingDataDataContext() : 
 <<<<<<< local
-				base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString6, mappingSource)
+				base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString5, mappingSource)
 =======
-				base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString1, mappingSource)
+				base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString6, mappingSource)
 >>>>>>> other
 		{
 			OnCreated();

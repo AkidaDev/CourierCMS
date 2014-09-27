@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace FinalUi
 {
-    class UtilityClass
+    public class UtilityClass
     {
         #region converting transaction to runtime data
         static public List<RuntimeData> convertTransListToRuntimeList(List<Transaction> transList)
@@ -24,8 +24,8 @@ namespace FinalUi
             runtimeDataObj.Amount = trans.AmountPayed;
             runtimeDataObj.BookingDate = trans.BookingDate;
             runtimeDataObj.Weight = trans.Weight;
-            runtimeDataObj.ConsignmentNo = trans.ConnsignmentNo;
-            runtimeDataObj.Destination = trans.Destination;
+            runtimeDataObj.ConsignmentNo = trans.ConnsignmentNo.Trim();
+            runtimeDataObj.Destination = trans.Destination.Trim();
             runtimeDataObj.DestinationPin = (decimal)trans.DestinationPin;
             runtimeDataObj.DOX = trans.DOX;
             runtimeDataObj.FrAmount = trans.AmountCharged;
@@ -33,12 +33,14 @@ namespace FinalUi
             runtimeDataObj.Id = Guid.NewGuid();
             if (trans.InvoiceDate != null)
                 runtimeDataObj.InvoiceDate = (DateTime)trans.InvoiceDate;
-            runtimeDataObj.InvoiceNo = trans.InvoiceNo;
-            runtimeDataObj.Mode = trans.Mode;
+            runtimeDataObj.InvoiceNo = trans.InvoiceNo.Trim();
+            runtimeDataObj.Mode = trans.Mode.Trim();
             runtimeDataObj.ServiceTax = trans.ServiceTax;
             runtimeDataObj.SplDisc = trans.SplDisc;
             runtimeDataObj.CustCode = trans.CustCode;
             runtimeDataObj.TransactionId = trans.ID;
+            if (runtimeDataObj.Type != null)
+                runtimeDataObj.Type = trans.Type.Trim();
             return runtimeDataObj;
         }
         static public List<RuntimeData> loadDataFromDatabase(DateTime startDate, DateTime endDate)
@@ -161,8 +163,14 @@ namespace FinalUi
                 List<RateDetail> rateDetails = rate.RateDetails.OrderBy(x => x.Weight).ToList();
                 double lastRangeWeight = 0;
                 double price = 0;
+                int i = 0;
+                double nextLimit = 99999;
                 foreach (RateDetail rateD in rateDetails)
                 {
+                    if (rateDetails.ElementAtOrDefault(i + 1) != null)
+                        nextLimit = rateDetails.ElementAt(i + 1).Weight;
+                    else
+                        nextLimit = 99999;
                     if (rateD.Type == 1)
                     {
                         if (rateD.Weight > weight)
@@ -175,12 +183,22 @@ namespace FinalUi
                     }
                     if (rateD.Type == 2 || rateD.Type == 3)
                     {
+                        double tempWeight = weight;
+                        if (nextLimit < weight)
+                        {
+                            tempWeight = nextLimit - 0.01;
+                        }
                         int steps;
-                        if (rateD.Weight >= weight)
+                        if (rateD.Weight > weight)
                             return price;
-                        steps = (((int)((weight - lastRangeWeight) / ((double)rateD.StepWeight))) + 1);
-                        price = price +  steps * ((double)(Char.ToUpper(isDox) == 'D' ? rateD.DoxRate : rateD.NonDoxRate));
+                        int iweight, ilastRangeWeight, istepWeight;
+                        iweight = (int)(tempWeight * 100);
+                        ilastRangeWeight = (int)(lastRangeWeight * 100);
+                        istepWeight = (int)(rateD.StepWeight * 100);
+                        steps = ((iweight - ilastRangeWeight) / istepWeight) + 1;
+                        price = price + steps * ((double)(Char.ToUpper(isDox) == 'D' ? rateD.DoxRate : rateD.NonDoxRate));
                     }
+                    i++;
                 }
                 return price;
             }
