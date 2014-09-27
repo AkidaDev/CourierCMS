@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		Icon="Images/logo.png"
         Title="Vortex" 
-        ResizeMode="CanResizeWithGrip"  BorderBrush="Transparent" AllowsTransparency="True" WindowStartupLocation="CenterScreen" WindowState="Normal" Width="1024" Height="700" WindowStyle="None" MinWidth="1024">
+        ResizeMode="CanResizeWithGrip"  BorderBrush="Transparent" AllowsTransparency="True" WindowStartupLocation="CenterScreen" WindowState="Normal" Width="1024" Height="700" WindowStyle="None">
 
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Open"
@@ -307,9 +307,9 @@
                         </Grid>
 
                         <Grid HorizontalAlignment="Right" Margin="0,0,20,5">
-                            <WrapPanel Grid.Column="1">
 								<Rectangle  Height="29" Width="171" Stroke="Gray" RadiusX="13" RadiusY="13" Fill="AliceBlue" StrokeThickness="1.5" />
-                                <TextBox MinWidth="150" Background="transparent" BorderThickness="0" Height="25" Padding="28,4,5,0" HorizontalAlignment="Right"  FontSize="14" Margin="0,-27,0,0" />
+                            <WrapPanel Grid.Column="1">
+                                <TextBox Width="169" Background="transparent" BorderThickness="0" Height="25" Padding="28,5,5,0" HorizontalAlignment="Right"  FontSize="14" />
                             </WrapPanel>
                             <Path x:Name="search" Data="F1M7.473,3.773C6.412,3.97 5.425,4.578 4.764,5.551 3.444,7.499 3.922,10.178 5.83,11.523 7.738,12.871 10.365,12.384 11.687,
 						10.437 12.326,9.495 12.567,8.355 12.365,7.225 12.164,6.096 11.544,5.116 10.621,4.465 9.667,3.792 8.533,3.576 7.473,3.773z M7.145,1.94C8.666,1.658 10.292,
