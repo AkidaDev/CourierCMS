@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		Icon="Images/logo.png"
         Title="Vortex" 
-        ResizeMode="CanResizeWithGrip"  BorderBrush="Transparent" AllowsTransparency="True" WindowStartupLocation="CenterScreen" WindowState="Normal" Width="1024" Height="700" WindowStyle="None">
+        ResizeMode="CanResizeWithGrip"  BorderBrush="Transparent" AllowsTransparency="True" WindowStartupLocation="CenterScreen" WindowState="Normal" Width="1024" Height="700" WindowStyle="None" MinWidth="1024">
 
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Open"
@@ -39,12 +39,12 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="2"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="2"/>
+            <RowDefinition Height="4"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2"/>
+            <ColumnDefinition Width="4"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="2"/>
+            <ColumnDefinition Width="4"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="1" Grid.Column="1" >
             <Grid Background="#FFBBCADC" Height="26.62" >
@@ -60,7 +60,7 @@
                     </MenuItem>
                     <MenuItem Header="Help" Margin="10 0 0 0"/>
                 </Menu>
-                <WrapPanel HorizontalAlignment="Right" Margin="3,0,5,3">
+                <WrapPanel HorizontalAlignment="Right" Margin="3,1,5,4">
                     <Button Style="{StaticResource all}" Name="MinimizeButton" Click="MinimizeButton_Click" Width="25">
                         <Button.Content>
                             <Path x:Name="minimize" Data="F1M2,4C2,4 2,2 2,2 2,2 14,2 14,2 14,2 14,4 14,4 14,4 2,4 2,4z" Fill="Black" Height="5" Width="12" Margin="-1,0,0,-7"/>
@@ -103,15 +103,12 @@
 
             <Grid >
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5"/>
                     <ColumnDefinition Width="225"/>
-                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="4"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="5"/>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Column="0" Background="#FFBBCADC"/>
-                <StackPanel Background="White" Grid.Column="1">
+                <StackPanel Background="White" Grid.Column="0">
 
                     <WrapPanel>
                         <TreeView BorderBrush="Transparent" BorderThickness="0" >
@@ -154,9 +151,8 @@
                     </WrapPanel>
 
                 </StackPanel>
-                <StackPanel Grid.Column="2" Background="#FFBBCADC"/>
-                <StackPanel Grid.Column="4" Background="#FFBBCADC"/>
-                <StackPanel Grid.Column="3" Margin="-1,-.25,0,0" >
+                <StackPanel Grid.Column="1" Background="#FFBBCADC" Height="1080"/>
+                <StackPanel Grid.Column="2" Margin="-1,-.25,0,0" >
                     <DockPanel Background="#FFBBCADC" Height="34"  >
                         <Grid Margin="60 0 0 0" >
                             <Grid.ColumnDefinitions>
@@ -453,7 +449,6 @@
                     </DockPanel>
                 </StackPanel>
             </Grid>
-            <StackPanel Height="5" Background="#FFBBCADC" VerticalAlignment="Bottom"/>
         </StackPanel>
         <Rectangle  Name="Rec_Top" Fill="#FFBBCADC"  Grid.Row="0" Grid.Column="1" MouseMove="Rec_MouseMove"  MouseDown="ResizeRectangle_PreviewMouseDown"/>
         <Rectangle  Name="Rec_Top_Left" Fill="#FFBBCADC"  Grid.Row="0" Grid.Column="0" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown" />

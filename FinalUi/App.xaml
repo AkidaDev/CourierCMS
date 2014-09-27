@@ -120,7 +120,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
- <Style TargetType="Button" x:Key="Sheet_button">
+        <Style TargetType="Button" x:Key="Sheet_button">
             <Setter Property="SnapsToDevicePixels" Value="true"/>
             <Setter Property="OverridesDefaultStyle" Value="true"/>
             <Setter Property="Template">
@@ -145,7 +145,7 @@
                                 <Setter TargetName="Border" Property="Background" Value="Transparent"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
-                              <Setter TargetName="Border" Property="Background" Value="#FF4169E1"/> 
+                                <Setter TargetName="Border" Property="Background" Value="#FF4169E1"/>
                                 <Setter TargetName="Border" Property="BorderBrush" Value="#AAAAAA"/>
                                 <Setter Property="Foreground" Value="#FFCF2B2B"/>
                             </Trigger>
@@ -154,6 +154,5 @@
                 </Setter.Value>
             </Setter>
         </Style>
-      
     </Application.Resources>
 </Application>
