@@ -191,12 +191,18 @@ namespace FinalUi
                         int steps;
                         if (rateD.Weight > weight)
                             return price;
+<<<<<<< local
+                        
+                        steps = (((int)((weight - lastRangeWeight) / ((double)rateD.StepWeight))) + 1);
+                        price = price +  steps * ((double)(Char.ToUpper(isDox) == 'D' ? rateD.DoxRate : rateD.NonDoxRate));
+=======
                         int iweight, ilastRangeWeight, istepWeight;
                         iweight = (int)(tempWeight * 100);
                         ilastRangeWeight = (int)(lastRangeWeight * 100);
                         istepWeight = (int)(rateD.StepWeight * 100);
                         steps = ((iweight - ilastRangeWeight) / istepWeight) + 1;
                         price = price + steps * ((double)(Char.ToUpper(isDox) == 'D' ? rateD.DoxRate : rateD.NonDoxRate));
+>>>>>>> other
                     }
                     i++;
                 }

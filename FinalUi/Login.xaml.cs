@@ -39,7 +39,11 @@ namespace FinalUi
             /* 
            // window = new MainWindow("dharmendra");
             window = new MainWindow();
-            window.Show();
+            window
+             * 
+             * 
+             * 
+             * 
             this.Close();
             loginFlag = false;
            */
@@ -90,7 +94,7 @@ namespace FinalUi
                         LoadingGifPanel.Visibility = Visibility.Visible;
 
                         window = new MainWindow();
-                        window.Show();
+                        window.ShowDialog();
                         this.Close();
                         loginFlag = true;
                     }

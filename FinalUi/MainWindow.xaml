@@ -37,7 +37,7 @@
 
     <Grid Name="MainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="2"/>
+            <RowDefinition Height="3"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="4"/>
         </Grid.RowDefinitions>
@@ -60,7 +60,7 @@
                     </MenuItem>
                     <MenuItem Header="Help" Margin="10 0 0 0"/>
                 </Menu>
-                <WrapPanel HorizontalAlignment="Right" Margin="3,1,5,4">
+                <WrapPanel HorizontalAlignment="Right" Margin="0,0,0,9">
                     <Button Style="{StaticResource all}" Name="MinimizeButton" Click="MinimizeButton_Click" Width="25">
                         <Button.Content>
                             <Path x:Name="minimize" Data="F1M2,4C2,4 2,2 2,2 2,2 14,2 14,2 14,2 14,4 14,4 14,4 2,4 2,4z" Fill="Black" Height="5" Width="12" Margin="-1,0,0,-7"/>
@@ -76,13 +76,13 @@
                         </Button.Content>
                     </Button>
 
-                    <Rectangle Height="20" Stroke="#00832A2A" Width="50" Fill="#FFB65F5F" Margin="0,0,-50,0"/>
+                    <Rectangle Height="18" Stroke="#00832A2A" Width="50" Fill="#FFB65F5F" Margin="0,0,-50,0"/>
                     <Button Style="{StaticResource all}" Name="CloseButton" Click="CloseButton_Click" Width="50" Height="18" >
                         <Button.Content>
                             <Path x:Name="close1" Data="F1M14.987,13.789C14.987,13.789 13.622,15.154 13.622,15.154 13.622,15.154 8.16,9.692 8.16,9.692 8.16,
 				9.692 2.699,15.154 2.699,15.154 2.699,15.154 1.333,13.789 1.333,13.789 1.333,13.789 6.795,8.327 6.795,8.327 6.795,8.327 1.333,2.865 1.333,2.865 1.333,
 				2.865 2.699,1.5 2.699,1.5 2.699,1.5 8.16,6.962 8.16,6.962 8.16,6.962 13.622,1.5 13.622,1.5 13.622,1.5 14.987,2.865 14.987,2.865 14.987,2.865 9.526,
-				8.327 9.526,8.327 9.526,8.327 14.987,13.789 14.987,13.789z" Fill="Black" Height="17"  Width="16" Margin="2,0,0,0"/>
+				8.327 9.526,8.327 9.526,8.327 14.987,13.789 14.987,13.789z" Fill="Black" Height="13"  Width="14"  Stretch="Fill" Margin="0,1,0,0"/>
                         </Button.Content>
                     </Button>
                 </WrapPanel>
@@ -433,11 +433,8 @@
 						12.571 1,11.996 1,11.286 1,11.286 1,8.714 1,8.714 1,8.004 1.588,7.429 2.312,7.429z M8.875,1C8.875,1 20.687,1 20.687,1 21.412,1 22,1.576 22,2.286 22,2.286 22,
 						4.857 22,4.857 22,5.567 21.412,6.143 20.687,6.143 20.687,6.143 8.875,6.143 8.875,6.143 8.15,6.143 7.562,5.567 7.562,4.857 7.562,4.857 7.562,2.286 7.562,
 						2.286 7.562,1.576 8.15,1 8.875,1z M2.312,1C2.312,1 4.937,1 4.937,1 5.662,1 6.25,1.576 6.25,2.286 6.25,2.286 6.25,4.857 6.25,4.857 6.25,5.567 5.662,6.143 4.937,
-						6.143 4.937,6.143 2.312,6.143 2.312,6.143 1.588,6.143 1,5.567 1,4.857 1,4.857 1,2.286 1,2.286 1,1.576 1.588,1 2.312,1z" Fill="#FF5E5EC5" Height="20" Width="23"  Margin="30,0,0,0">
-                                        <Path.Effect>
-                                            <DropShadowEffect BlurRadius="10" ShadowDepth="0" RenderingBias="Quality" Color="White"/>
-                                        </Path.Effect>
-                                    </Path>
+						6.143 4.937,6.143 2.312,6.143 2.312,6.143 1.588,6.143 1,5.567 1,4.857 1,4.857 1,2.286 1,2.286 1,1.576 1.588,1 2.312,1z" Fill="#FF5E5EC5" Height="20" Width="23"  Margin="30,0,0,0"/>
+                                        
                                     <TextBox Name="DataGridNumOfRows" Width="30" Margin="3,0,11,0" Height="20" Text="{Binding Path=rowsPerPage, Mode=TwoWay}" FontFamily="Segoe UI Semibold" TextAlignment="Center" BorderBrush="#FF7676FF"/>
                                 </WrapPanel>
 

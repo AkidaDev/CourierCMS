@@ -113,7 +113,7 @@
         <classShapeMoniker Id="129b05d3-c24f-4164-866b-a5c5b2593f76" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(14.75 : 3.41429768880208); (15.5 : 3.41429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(14.75 : 3.41429768880208); (15.5 : 3.41429768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BillingDataDataContext/RuntimeData/RuntimeData_RuntimeMeta" />
       <nodes>
         <classShapeMoniker Id="af705a92-0883-4509-8484-6dce9b64612e" />
