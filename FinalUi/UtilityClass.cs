@@ -160,7 +160,7 @@ namespace FinalUi
             Rate rate = db.Rates.SingleOrDefault(x => x.RateCode == rateCode);
             if (rateCode != null)
             {
-                List<RateDetail> rateDetails = rate.RateDetails.OrderBy(x => x.Type.ToString() +  x.Weight.ToString()).ToList();
+                List<RateDetail> rateDetails = rate.RateDetails.OrderBy(x =>x.Type.ToString() +  x.Weight.ToString()).ToList();
                 double lastRangeWeight = 0;
                 double price = 0;
                 int i = 0;
@@ -183,20 +183,24 @@ namespace FinalUi
                     }
                     if (rateD.Type == 2 || rateD.Type == 3)
                     {
-                        double tempWeight = weight;
-                        if (nextLimit < weight)
-                        {
-                            tempWeight = nextLimit - 0.01;
-                        }
-                        int steps;
-                        if (rateD.Weight > weight)
+                        int icurrentW, iWeight, iStepWeight;
+                        iWeight = (int)(weight * 1000);
+                        iStepWeight = (int)(rateD.StepWeight * 1000);
+                        int inextLimit;
+                        double currentW = rateD.Weight;
+                        icurrentW = (int)(rateD.Weight * 1000);
+                        if (weight <= currentW)
                             return price;
-                        int iweight, ilastRangeWeight, istepWeight;
-                        iweight = (int)(tempWeight * 100);
-                        ilastRangeWeight = (int)(lastRangeWeight * 100);
-                        istepWeight = (int)(rateD.StepWeight * 100);
-                        steps = ((iweight - ilastRangeWeight) / istepWeight) + 1;
-                        price = price + steps * ((double)(Char.ToUpper(isDox) == 'D' ? rateD.DoxRate : rateD.NonDoxRate));
+                        else
+                        {
+                            nextLimit = rateDetails.ElementAtOrDefault(i + 1) != null ? rateDetails.ElementAtOrDefault(i + 1).Weight : 999;
+                            inextLimit = (int)(nextLimit * 1000);
+                            while (icurrentW < inextLimit && icurrentW < iWeight)
+                            {
+                                price = price + (double)(isDox == 'D' ? rateD.DoxRate : rateD.NonDoxRate);
+                                icurrentW = icurrentW + iStepWeight;
+                            }
+                        }
                     }
                     i++;
                 }
@@ -204,23 +208,24 @@ namespace FinalUi
             }
             return -1;
         }
-        public static double getCost(string clientCode, string destinationCode, decimal destinationPin, double wieght , string zonecode, string service, char isdox)
+        public static double getCost(string clientCode, string destinationCode, decimal destinationPin, double wieght,string zoneCode, string serviceCode, char dox)
         {
+            Assignment ab;
             BillingDataDataContext db = new BillingDataDataContext();
-            Assignment ab = db.Assignments.Where(x=> x.ServiceCode == service && x.ZoneCode == zonecode && x.ClientCode == clientCode).FirstOrDefault();
+            ab = db.Assignments.FirstOrDefault(x => x.ServiceCode == serviceCode && x.ClientCode == clientCode && x.ZoneCode == zoneCode);
             if(ab == null)
             {
-                ab = db.Assignments.Where(x => x.ServiceCode == service && x.ZoneCode == zonecode && x.ClientCode == "Def").FirstOrDefault();
+                ab = db.Assignments.FirstOrDefault(x => x.ServiceCode == "DEFAULT" && x.ClientCode == clientCode && x.ZoneCode == zoneCode);
                 if(ab == null)
                 {
-                    ab = db.Assignments.Where(x => x.ServiceCode == service && x.ZoneCode == "Default" && x.ClientCode == "Def").FirstOrDefault();
-                    if (ab == null)
-                        ab = db.Assignments.Where(x => x.ServiceCode == "Default" && x.ZoneCode == "Default" && x.ClientCode == "Def").FirstOrDefault();
+                    ab = db.Assignments.FirstOrDefault(x => x.ServiceCode == "DEFAULT" && x.ClientCode == clientCode && x.ZoneCode == "DEF");
+                    if(ab == null)
+                    {
+                        ab = db.Assignments.FirstOrDefault(x => x.ServiceCode == "DEFAULT" && x.ClientCode == "DEF" && x.ZoneCode == "DEF");
+                    }
                 }
             }
-            if (ab == null)
-                return getPriceFromRateCode("Default",wieght,isdox);
-            return getPriceFromRateCode(ab.RateCode,wieght,isdox);
+            return getPriceFromRateCode(ab.RateCode, wieght, dox);
         }
         #endregion
     }

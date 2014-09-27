@@ -35,14 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DoddleReport">
-      <HintPath>..\packages\DoddleReport.iTextSharp.1.4\lib\net40\DoddleReport.dll</HintPath>
-    </Reference>
-    <Reference Include="DoddleReport.iTextSharp">
-      <HintPath>..\packages\DoddleReport.iTextSharp.1.4\lib\net40\DoddleReport.iTextSharp.dll</HintPath>
-    </Reference>
     <Reference Include="itextsharp">
-      <HintPath>..\packages\DoddleReport.iTextSharp.1.4\lib\net40\itextsharp.dll</HintPath>
+      <HintPath>..\packages\iTextSharp.5.5.3\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -119,10 +113,6 @@
     <Compile Include="FilterSelectWindow.xaml.cs">
       <DependentUpon>FilterSelectWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InvoiceReport.xaml.cs">
-      <DependentUpon>InvoiceReport.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="LoadResources.cs" />
     <Compile Include="ManageClient.xaml.cs">
       <DependentUpon>ManageClient.xaml</DependentUpon>
     </Compile>
@@ -131,9 +121,6 @@
     </Compile>
     <Compile Include="Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PreferenceWindow.xaml.cs">
-      <DependentUpon>PreferenceWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="PrintWindow.xaml.cs">
       <DependentUpon>PrintWindow.xaml</DependentUpon>
@@ -148,17 +135,11 @@
       <DependentUpon>SanitizingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SecurityModule.cs" />
-    <Compile Include="ServiceFinder.xaml.cs">
-      <DependentUpon>ServiceFinder.xaml</DependentUpon>
-    </Compile>
     <Compile Include="StockWindow.xaml.cs">
       <DependentUpon>StockWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="TestingMainWindow.xaml.cs">
       <DependentUpon>TestingMainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="testtheme.xaml.cs">
-      <DependentUpon>testtheme.xaml</DependentUpon>
     </Compile>
     <Compile Include="UtilityClass.cs" />
     <Compile Include="UserControlGallery.xaml.cs">
@@ -194,10 +175,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FilterSelectWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="InvoiceReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -251,10 +228,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PreferenceWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="PrintWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -271,10 +244,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ServiceFinder.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="StockWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -283,18 +252,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="testtheme.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Blue.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Page>
     <Page Include="theme\Red.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControlGallery.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -378,8 +338,6 @@
     <Resource Include="Layout of App_Images\View.png" />
     <Resource Include="LoadData_Images\import files.png" />
     <Resource Include="LoadData_Images\Layer 0.png" />
-    <Resource Include="RateAssign_Images\Layer 0.png" />
-    <Resource Include="RateWindow_Images\Layer 1.png" />
     <Resource Include="SanitizingWindow_Images\Layer 2.png" />
     <Resource Include="vortex_pag_Images\Layer 0.png" />
     <Resource Include="vortex_pag_Images\Shape 21 copy.png" />

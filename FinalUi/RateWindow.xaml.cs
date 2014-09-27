@@ -63,6 +63,7 @@ namespace FinalUi
             Rate rate = db.Rates.SingleOrDefault(x => rateCode == x.RateCode);
             if (rate != null)
             {
+                RateDescription.Text = rate.Description;
                 List<RateDetail> rateDetails = rate.RateDetails.ToList();
                 Type1DGSource.Source = rateDetails.Where(x => x.Type == 1).OrderBy(y => y.Weight).ToList();
                 Type2DGSource.Source = rateDetails.Where(x => x.Type == 2 || x.Type == 3).OrderBy(y => y.Weight).ToList();
@@ -260,11 +261,11 @@ namespace FinalUi
             view.Remove(assignment);
             db.SubmitChanges();
         }
-		private void DragthisWindow(object sender, MouseButtonEventArgs e)
+        private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
-       private void Button_Click_Close(object sender, RoutedEventArgs e)
+        private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
