@@ -30,8 +30,8 @@
        <!-- <ImageBrush ImageSource="Images/Menu bar.png" x:Key="GridBackground" Opacity=".9"/>
         <ImageBrush ImageSource="Images/topnavigation bar.png" x:Key="NavigationBackground" Opacity=".9"/>
         <ImageBrush ImageSource="Images/bottomnavigation bar.png" x:Key="QuickbuttonBackground" Opacity=".9"/>
-        <ImageBrush ImageSource="Images/side menu.png" x:Key="SideMenuBackground" Opacity=".9"/>
-        <ImageBrush ImageSource="Images/searchbox.png" x:Key="Searchbarcontent"/>-->
+        <ImageBrush ImageSource="Images/side menu.png" x:Key="SideMenuBackground" Opacity=".9"/>-->
+        <ImageBrush ImageSource="Images/search.png" x:Key="Searchbarcontent"/>
 
     </Window.Resources>
 
@@ -136,10 +136,7 @@
                                 </TreeViewItem>
                             </TreeViewItem>
                         </TreeView>
-
                     </WrapPanel>
-
-
 
                     <WrapPanel>
                         <Path x:Name="drop_downarrow_3" Data="F1M1.5,1.2C1.5,1.2 1.5,10.8 1.5,10.8 1.5,10.8 7.5,5.981 7.5,5.981 7.5,5.981 1.5,1.2 1.5,1.2z" Fill="#FF5B5B5B" Height="12" Width="9" Margin="15,20,0,-19"/>
@@ -307,7 +304,7 @@
                         </Grid>
 
                         <Grid HorizontalAlignment="Right" Margin="0,0,20,5">
-								<Rectangle  Height="29" Width="171" Stroke="Gray" RadiusX="13" RadiusY="13" Fill="AliceBlue" StrokeThickness="1.5" />
+								<Rectangle  Height="29" Width="171" Stroke="#FF646464" RadiusX="13" RadiusY="13" StrokeThickness="1.5" Fill="{DynamicResource Searchbarcontent}" />
                             <WrapPanel Grid.Column="1">
                                 <TextBox Width="169" Background="transparent" BorderThickness="0" Height="25" Padding="28,5,5,0" HorizontalAlignment="Right"  FontSize="14" />
                             </WrapPanel>
@@ -323,7 +320,6 @@
                     <DockPanel x:Name="DataGridStackPanel" LastChildFill="True">
                         <DockPanel.Resources>
                             <Style TargetType="{x:Type DataGridCell}">
-
                                 <Setter Property="BorderThickness" Value="0"/>
                                 <Setter Property="Height" Value="25"/>
                                 <Setter Property="Padding" Value="20"/>
@@ -332,14 +328,10 @@
                                         <Setter Property="Background" Value="RoyalBLue" />
                                         <Setter Property="BorderBrush" Value="Transparent"/>
                                         <Setter Property="Foreground" Value="White"/>
-
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
-
                         </DockPanel.Resources>
-
-
 
                         <Grid>
                             <Grid.RowDefinitions>
@@ -456,5 +448,5 @@
         <Rectangle  Name="Rec_Bottom" Fill="#FFBBCADC"  Grid.Row="2" Grid.Column="1" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>
         <Rectangle  Name="Rec_Bottom_Left" Fill="#FFBBCADC"  Grid.Row="2" Grid.Column="0" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>
         <Rectangle  Name="Rec_Bottom_Right" Fill="#FFBBCADC"  Grid.Row="2" Grid.Column="2" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>
-    </Grid>
+       </Grid>
 </Window>
