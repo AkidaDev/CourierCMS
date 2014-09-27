@@ -41,7 +41,10 @@ namespace FinalUi
         {
             AddClient window = new AddClient();
             window.Closed += AddClient_close;
-            window.Show();
+            window.ShowDialog();
+
+
+
         }
 
         private void update_Click(object sender, RoutedEventArgs e)
@@ -49,7 +52,7 @@ namespace FinalUi
            client = (Client)this.mangaclientgrid.SelectedItem;
             AddClient add = new AddClient(client);
             add.Closed += AddClient_close;
-            add.Show();
+            add.ShowDialog();
          }
         private void AddClient_close(object sender, EventArgs e)
         {

@@ -33,9 +33,9 @@ namespace UtilityProject
     partial void InsertAssignment(Assignment instance);
     partial void UpdateAssignment(Assignment instance);
     partial void DeleteAssignment(Assignment instance);
-    partial void InsertUser_Role(User_Role instance);
-    partial void UpdateUser_Role(User_Role instance);
-    partial void DeleteUser_Role(User_Role instance);
+    partial void InsertZONE(ZONE instance);
+    partial void UpdateZONE(ZONE instance);
+    partial void DeleteZONE(ZONE instance);
     partial void InsertCity(City instance);
     partial void UpdateCity(City instance);
     partial void DeleteCity(City instance);
@@ -45,18 +45,15 @@ namespace UtilityProject
     partial void InsertEmployee(Employee instance);
     partial void UpdateEmployee(Employee instance);
     partial void DeleteEmployee(Employee instance);
+    partial void InsertPermission(Permission instance);
+    partial void UpdatePermission(Permission instance);
+    partial void DeletePermission(Permission instance);
     partial void InsertRate(Rate instance);
     partial void UpdateRate(Rate instance);
     partial void DeleteRate(Rate instance);
     partial void InsertRateDetail(RateDetail instance);
     partial void UpdateRateDetail(RateDetail instance);
     partial void DeleteRateDetail(RateDetail instance);
-    partial void InsertRole(Role instance);
-    partial void UpdateRole(Role instance);
-    partial void DeleteRole(Role instance);
-    partial void InsertRoles_Permission(Roles_Permission instance);
-    partial void UpdateRoles_Permission(Roles_Permission instance);
-    partial void DeleteRoles_Permission(Roles_Permission instance);
     partial void InsertRuntimeData(RuntimeData instance);
     partial void UpdateRuntimeData(RuntimeData instance);
     partial void DeleteRuntimeData(RuntimeData instance);
@@ -72,13 +69,13 @@ namespace UtilityProject
     partial void InsertTransaction(Transaction instance);
     partial void UpdateTransaction(Transaction instance);
     partial void DeleteTransaction(Transaction instance);
-    partial void InsertZONE(ZONE instance);
-    partial void UpdateZONE(ZONE instance);
-    partial void DeleteZONE(ZONE instance);
+    partial void InsertUser_permission(User_permission instance);
+    partial void UpdateUser_permission(User_permission instance);
+    partial void DeleteUser_permission(User_permission instance);
     #endregion
 		
 		public BillingDataDataContext() : 
-				base(global::UtilityProject.Properties.Settings.Default.BillingDatabaseConnectionString2, mappingSource)
+				base(global::UtilityProject.Properties.Settings.Default.BillingDatabaseConnectionString3, mappingSource)
 		{
 			OnCreated();
 		}
@@ -115,11 +112,11 @@ namespace UtilityProject
 			}
 		}
 		
-		public System.Data.Linq.Table<User_Role> User_Roles
+		public System.Data.Linq.Table<ZONE> ZONEs
 		{
 			get
 			{
-				return this.GetTable<User_Role>();
+				return this.GetTable<ZONE>();
 			}
 		}
 		
@@ -147,6 +144,14 @@ namespace UtilityProject
 			}
 		}
 		
+		public System.Data.Linq.Table<Permission> Permissions
+		{
+			get
+			{
+				return this.GetTable<Permission>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Rate> Rates
 		{
 			get
@@ -160,22 +165,6 @@ namespace UtilityProject
 			get
 			{
 				return this.GetTable<RateDetail>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Role> Roles
-		{
-			get
-			{
-				return this.GetTable<Role>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Roles_Permission> Roles_Permissions
-		{
-			get
-			{
-				return this.GetTable<Roles_Permission>();
 			}
 		}
 		
@@ -219,11 +208,11 @@ namespace UtilityProject
 			}
 		}
 		
-		public System.Data.Linq.Table<ZONE> ZONEs
+		public System.Data.Linq.Table<User_permission> User_permissions
 		{
 			get
 			{
-				return this.GetTable<ZONE>();
+				return this.GetTable<User_permission>();
 			}
 		}
 	}
@@ -244,13 +233,13 @@ namespace UtilityProject
 		
 		private string _RateCode;
 		
+		private EntityRef<ZONE> _ZONE;
+		
 		private EntityRef<Client> _Client;
 		
 		private EntityRef<Rate> _Rate;
 		
 		private EntityRef<Service> _Service;
-		
-		private EntityRef<ZONE> _ZONE;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -270,10 +259,10 @@ namespace UtilityProject
 		
 		public Assignment()
 		{
+			this._ZONE = default(EntityRef<ZONE>);
 			this._Client = default(EntityRef<Client>);
 			this._Rate = default(EntityRef<Rate>);
 			this._Service = default(EntityRef<Service>);
-			this._ZONE = default(EntityRef<ZONE>);
 			OnCreated();
 		}
 		
@@ -393,6 +382,40 @@ namespace UtilityProject
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ZONE_Assignment", Storage="_ZONE", ThisKey="ZoneCode", OtherKey="zcode", IsForeignKey=true)]
+		public ZONE ZONE
+		{
+			get
+			{
+				return this._ZONE.Entity;
+			}
+			set
+			{
+				ZONE previousValue = this._ZONE.Entity;
+				if (((previousValue != value) 
+							|| (this._ZONE.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ZONE.Entity = null;
+						previousValue.Assignments.Remove(this);
+					}
+					this._ZONE.Entity = value;
+					if ((value != null))
+					{
+						value.Assignments.Add(this);
+						this._ZoneCode = value.zcode;
+					}
+					else
+					{
+						this._ZoneCode = default(string);
+					}
+					this.SendPropertyChanged("ZONE");
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Client_Assignment", Storage="_Client", ThisKey="ClientCode", OtherKey="CLCODE", IsForeignKey=true)]
 		public Client Client
 		{
@@ -495,40 +518,6 @@ namespace UtilityProject
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ZONE_Assignment", Storage="_ZONE", ThisKey="ZoneCode", OtherKey="zcode", IsForeignKey=true)]
-		public ZONE ZONE
-		{
-			get
-			{
-				return this._ZONE.Entity;
-			}
-			set
-			{
-				ZONE previousValue = this._ZONE.Entity;
-				if (((previousValue != value) 
-							|| (this._ZONE.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ZONE.Entity = null;
-						previousValue.Assignments.Remove(this);
-					}
-					this._ZONE.Entity = value;
-					if ((value != null))
-					{
-						value.Assignments.Add(this);
-						this._ZoneCode = value.zcode;
-					}
-					else
-					{
-						this._ZoneCode = default(string);
-					}
-					this.SendPropertyChanged("ZONE");
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -550,174 +539,124 @@ namespace UtilityProject
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.User_Roles")]
-	public partial class User_Role : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ZONE")]
+	public partial class ZONE : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private System.Guid _Id;
+		private string _zcode;
 		
-		private System.Guid _EmployeeId;
+		private string _Zone_name;
 		
-		private System.Guid _RoleId;
+		private System.Nullable<char> _Mode;
 		
-		private EntityRef<Employee> _Employee;
+		private EntitySet<Assignment> _Assignments;
 		
-		private EntityRef<Role> _Role;
+		private EntitySet<City> _Cities;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnIdChanging(System.Guid value);
-    partial void OnIdChanged();
-    partial void OnEmployeeIdChanging(System.Guid value);
-    partial void OnEmployeeIdChanged();
-    partial void OnRoleIdChanging(System.Guid value);
-    partial void OnRoleIdChanged();
+    partial void OnzcodeChanging(string value);
+    partial void OnzcodeChanged();
+    partial void OnZone_nameChanging(string value);
+    partial void OnZone_nameChanged();
+    partial void OnModeChanging(System.Nullable<char> value);
+    partial void OnModeChanged();
     #endregion
 		
-		public User_Role()
+		public ZONE()
 		{
-			this._Employee = default(EntityRef<Employee>);
-			this._Role = default(EntityRef<Role>);
+			this._Assignments = new EntitySet<Assignment>(new Action<Assignment>(this.attach_Assignments), new Action<Assignment>(this.detach_Assignments));
+			this._Cities = new EntitySet<City>(new Action<City>(this.attach_Cities), new Action<City>(this.detach_Cities));
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid Id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_zcode", DbType="VarChar(30) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string zcode
 		{
 			get
 			{
-				return this._Id;
+				return this._zcode;
 			}
 			set
 			{
-				if ((this._Id != value))
+				if ((this._zcode != value))
 				{
-					this.OnIdChanging(value);
+					this.OnzcodeChanging(value);
 					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
+					this._zcode = value;
+					this.SendPropertyChanged("zcode");
+					this.OnzcodeChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeId", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid EmployeeId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Zone_name", DbType="VarChar(20)")]
+		public string Zone_name
 		{
 			get
 			{
-				return this._EmployeeId;
+				return this._Zone_name;
 			}
 			set
 			{
-				if ((this._EmployeeId != value))
+				if ((this._Zone_name != value))
 				{
-					if (this._Employee.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnEmployeeIdChanging(value);
+					this.OnZone_nameChanging(value);
 					this.SendPropertyChanging();
-					this._EmployeeId = value;
-					this.SendPropertyChanged("EmployeeId");
-					this.OnEmployeeIdChanged();
+					this._Zone_name = value;
+					this.SendPropertyChanged("Zone_name");
+					this.OnZone_nameChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleId", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid RoleId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mode", DbType="Char(1)")]
+		public System.Nullable<char> Mode
 		{
 			get
 			{
-				return this._RoleId;
+				return this._Mode;
 			}
 			set
 			{
-				if ((this._RoleId != value))
+				if ((this._Mode != value))
 				{
-					if (this._Role.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnRoleIdChanging(value);
+					this.OnModeChanging(value);
 					this.SendPropertyChanging();
-					this._RoleId = value;
-					this.SendPropertyChanged("RoleId");
-					this.OnRoleIdChanged();
+					this._Mode = value;
+					this.SendPropertyChanged("Mode");
+					this.OnModeChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_User_Role", Storage="_Employee", ThisKey="EmployeeId", OtherKey="Id", IsForeignKey=true)]
-		public Employee Employee
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ZONE_Assignment", Storage="_Assignments", ThisKey="zcode", OtherKey="ZoneCode")]
+		public EntitySet<Assignment> Assignments
 		{
 			get
 			{
-				return this._Employee.Entity;
+				return this._Assignments;
 			}
 			set
 			{
-				Employee previousValue = this._Employee.Entity;
-				if (((previousValue != value) 
-							|| (this._Employee.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Employee.Entity = null;
-						previousValue.User_Roles.Remove(this);
-					}
-					this._Employee.Entity = value;
-					if ((value != null))
-					{
-						value.User_Roles.Add(this);
-						this._EmployeeId = value.Id;
-					}
-					else
-					{
-						this._EmployeeId = default(System.Guid);
-					}
-					this.SendPropertyChanged("Employee");
-				}
+				this._Assignments.Assign(value);
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Role_User_Role", Storage="_Role", ThisKey="RoleId", OtherKey="Id", IsForeignKey=true)]
-		public Role Role
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ZONE_City", Storage="_Cities", ThisKey="zcode", OtherKey="ZONE")]
+		public EntitySet<City> Cities
 		{
 			get
 			{
-				return this._Role.Entity;
+				return this._Cities;
 			}
 			set
 			{
-				Role previousValue = this._Role.Entity;
-				if (((previousValue != value) 
-							|| (this._Role.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Role.Entity = null;
-						previousValue.User_Roles.Remove(this);
-					}
-					this._Role.Entity = value;
-					if ((value != null))
-					{
-						value.User_Roles.Add(this);
-						this._RoleId = value.Id;
-					}
-					else
-					{
-						this._RoleId = default(System.Guid);
-					}
-					this.SendPropertyChanged("Role");
-				}
+				this._Cities.Assign(value);
 			}
 		}
 		
@@ -739,6 +678,30 @@ namespace UtilityProject
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Assignments(Assignment entity)
+		{
+			this.SendPropertyChanging();
+			entity.ZONE = this;
+		}
+		
+		private void detach_Assignments(Assignment entity)
+		{
+			this.SendPropertyChanging();
+			entity.ZONE = null;
+		}
+		
+		private void attach_Cities(City entity)
+		{
+			this.SendPropertyChanging();
+			entity.ZONE1 = this;
+		}
+		
+		private void detach_Cities(City entity)
+		{
+			this.SendPropertyChanging();
+			entity.ZONE1 = null;
 		}
 	}
 	
@@ -776,9 +739,9 @@ namespace UtilityProject
 		
 		private string _ZONE;
 		
-		private EntityRef<State> _State;
-		
 		private EntityRef<ZONE> _ZONE1;
+		
+		private EntityRef<State> _State;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -816,8 +779,8 @@ namespace UtilityProject
 		
 		public City()
 		{
-			this._State = default(EntityRef<State>);
 			this._ZONE1 = default(EntityRef<ZONE>);
+			this._State = default(EntityRef<State>);
 			OnCreated();
 		}
 		
@@ -1109,40 +1072,6 @@ namespace UtilityProject
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="State_City", Storage="_State", ThisKey="CITY_STATE", OtherKey="STATE_CODE", IsForeignKey=true)]
-		public State State
-		{
-			get
-			{
-				return this._State.Entity;
-			}
-			set
-			{
-				State previousValue = this._State.Entity;
-				if (((previousValue != value) 
-							|| (this._State.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._State.Entity = null;
-						previousValue.Cities.Remove(this);
-					}
-					this._State.Entity = value;
-					if ((value != null))
-					{
-						value.Cities.Add(this);
-						this._CITY_STATE = value.STATE_CODE;
-					}
-					else
-					{
-						this._CITY_STATE = default(string);
-					}
-					this.SendPropertyChanged("State");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ZONE_City", Storage="_ZONE1", ThisKey="ZONE", OtherKey="zcode", IsForeignKey=true)]
 		public ZONE ZONE1
 		{
@@ -1173,6 +1102,40 @@ namespace UtilityProject
 						this._ZONE = default(string);
 					}
 					this.SendPropertyChanged("ZONE1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="State_City", Storage="_State", ThisKey="CITY_STATE", OtherKey="STATE_CODE", IsForeignKey=true)]
+		public State State
+		{
+			get
+			{
+				return this._State.Entity;
+			}
+			set
+			{
+				State previousValue = this._State.Entity;
+				if (((previousValue != value) 
+							|| (this._State.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._State.Entity = null;
+						previousValue.Cities.Remove(this);
+					}
+					this._State.Entity = value;
+					if ((value != null))
+					{
+						value.Cities.Add(this);
+						this._CITY_STATE = value.STATE_CODE;
+					}
+					else
+					{
+						this._CITY_STATE = default(string);
+					}
+					this.SendPropertyChanged("State");
 				}
 			}
 		}
@@ -1814,9 +1777,9 @@ namespace UtilityProject
 		
 		private string _Password;
 		
-		private EntitySet<User_Role> _User_Roles;
-		
 		private EntitySet<Transaction> _Transactions;
+		
+		private EntitySet<User_permission> _User_permissions;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1838,8 +1801,8 @@ namespace UtilityProject
 		
 		public Employee()
 		{
-			this._User_Roles = new EntitySet<User_Role>(new Action<User_Role>(this.attach_User_Roles), new Action<User_Role>(this.detach_User_Roles));
 			this._Transactions = new EntitySet<Transaction>(new Action<Transaction>(this.attach_Transactions), new Action<Transaction>(this.detach_Transactions));
+			this._User_permissions = new EntitySet<User_permission>(new Action<User_permission>(this.attach_User_permissions), new Action<User_permission>(this.detach_User_permissions));
 			OnCreated();
 		}
 		
@@ -1963,19 +1926,6 @@ namespace UtilityProject
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_User_Role", Storage="_User_Roles", ThisKey="Id", OtherKey="EmployeeId")]
-		public EntitySet<User_Role> User_Roles
-		{
-			get
-			{
-				return this._User_Roles;
-			}
-			set
-			{
-				this._User_Roles.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Transaction", Storage="_Transactions", ThisKey="Id", OtherKey="UserId")]
 		public EntitySet<Transaction> Transactions
 		{
@@ -1986,6 +1936,19 @@ namespace UtilityProject
 			set
 			{
 				this._Transactions.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_User_permission", Storage="_User_permissions", ThisKey="Id", OtherKey="emp_id")]
+		public EntitySet<User_permission> User_permissions
+		{
+			get
+			{
+				return this._User_permissions;
+			}
+			set
+			{
+				this._User_permissions.Assign(value);
 			}
 		}
 		
@@ -2009,18 +1972,6 @@ namespace UtilityProject
 			}
 		}
 		
-		private void attach_User_Roles(User_Role entity)
-		{
-			this.SendPropertyChanging();
-			entity.Employee = this;
-		}
-		
-		private void detach_User_Roles(User_Role entity)
-		{
-			this.SendPropertyChanging();
-			entity.Employee = null;
-		}
-		
 		private void attach_Transactions(Transaction entity)
 		{
 			this.SendPropertyChanging();
@@ -2031,6 +1982,132 @@ namespace UtilityProject
 		{
 			this.SendPropertyChanging();
 			entity.Employee = null;
+		}
+		
+		private void attach_User_permissions(User_permission entity)
+		{
+			this.SendPropertyChanging();
+			entity.Employee = this;
+		}
+		
+		private void detach_User_permissions(User_permission entity)
+		{
+			this.SendPropertyChanging();
+			entity.Employee = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Permissions")]
+	public partial class Permission : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _Per;
+		
+		private EntitySet<User_permission> _User_permissions;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnPerChanging(string value);
+    partial void OnPerChanged();
+    #endregion
+		
+		public Permission()
+		{
+			this._User_permissions = new EntitySet<User_permission>(new Action<User_permission>(this.attach_User_permissions), new Action<User_permission>(this.detach_User_permissions));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Per
+		{
+			get
+			{
+				return this._Per;
+			}
+			set
+			{
+				if ((this._Per != value))
+				{
+					this.OnPerChanging(value);
+					this.SendPropertyChanging();
+					this._Per = value;
+					this.SendPropertyChanged("Per");
+					this.OnPerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Permission_User_permission", Storage="_User_permissions", ThisKey="id", OtherKey="per_id")]
+		public EntitySet<User_permission> User_permissions
+		{
+			get
+			{
+				return this._User_permissions;
+			}
+			set
+			{
+				this._User_permissions.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_User_permissions(User_permission entity)
+		{
+			this.SendPropertyChanging();
+			entity.Permission = this;
+		}
+		
+		private void detach_User_permissions(User_permission entity)
+		{
+			this.SendPropertyChanging();
+			entity.Permission = null;
 		}
 	}
 	
@@ -2398,299 +2475,6 @@ namespace UtilityProject
 						this._RateCode = default(string);
 					}
 					this.SendPropertyChanged("Rate");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Roles")]
-	public partial class Role : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private System.Guid _Id;
-		
-		private string _Name;
-		
-		private EntitySet<User_Role> _User_Roles;
-		
-		private EntitySet<Roles_Permission> _Roles_Permissions;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(System.Guid value);
-    partial void OnIdChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    #endregion
-		
-		public Role()
-		{
-			this._User_Roles = new EntitySet<User_Role>(new Action<User_Role>(this.attach_User_Roles), new Action<User_Role>(this.detach_User_Roles));
-			this._Roles_Permissions = new EntitySet<Roles_Permission>(new Action<Roles_Permission>(this.attach_Roles_Permissions), new Action<Roles_Permission>(this.detach_Roles_Permissions));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50)")]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Role_User_Role", Storage="_User_Roles", ThisKey="Id", OtherKey="RoleId")]
-		public EntitySet<User_Role> User_Roles
-		{
-			get
-			{
-				return this._User_Roles;
-			}
-			set
-			{
-				this._User_Roles.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Role_Roles_Permission", Storage="_Roles_Permissions", ThisKey="Id", OtherKey="Role_Id")]
-		public EntitySet<Roles_Permission> Roles_Permissions
-		{
-			get
-			{
-				return this._Roles_Permissions;
-			}
-			set
-			{
-				this._Roles_Permissions.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_User_Roles(User_Role entity)
-		{
-			this.SendPropertyChanging();
-			entity.Role = this;
-		}
-		
-		private void detach_User_Roles(User_Role entity)
-		{
-			this.SendPropertyChanging();
-			entity.Role = null;
-		}
-		
-		private void attach_Roles_Permissions(Roles_Permission entity)
-		{
-			this.SendPropertyChanging();
-			entity.Role = this;
-		}
-		
-		private void detach_Roles_Permissions(Roles_Permission entity)
-		{
-			this.SendPropertyChanging();
-			entity.Role = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Roles_Permissions")]
-	public partial class Roles_Permission : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private System.Guid _Id;
-		
-		private System.Guid _Role_Id;
-		
-		private string _Permission;
-		
-		private EntityRef<Role> _Role;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(System.Guid value);
-    partial void OnIdChanged();
-    partial void OnRole_IdChanging(System.Guid value);
-    partial void OnRole_IdChanged();
-    partial void OnPermissionChanging(string value);
-    partial void OnPermissionChanged();
-    #endregion
-		
-		public Roles_Permission()
-		{
-			this._Role = default(EntityRef<Role>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Role_Id", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid Role_Id
-		{
-			get
-			{
-				return this._Role_Id;
-			}
-			set
-			{
-				if ((this._Role_Id != value))
-				{
-					if (this._Role.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnRole_IdChanging(value);
-					this.SendPropertyChanging();
-					this._Role_Id = value;
-					this.SendPropertyChanged("Role_Id");
-					this.OnRole_IdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Permission", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Permission
-		{
-			get
-			{
-				return this._Permission;
-			}
-			set
-			{
-				if ((this._Permission != value))
-				{
-					this.OnPermissionChanging(value);
-					this.SendPropertyChanging();
-					this._Permission = value;
-					this.SendPropertyChanged("Permission");
-					this.OnPermissionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Role_Roles_Permission", Storage="_Role", ThisKey="Role_Id", OtherKey="Id", IsForeignKey=true)]
-		public Role Role
-		{
-			get
-			{
-				return this._Role.Entity;
-			}
-			set
-			{
-				Role previousValue = this._Role.Entity;
-				if (((previousValue != value) 
-							|| (this._Role.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Role.Entity = null;
-						previousValue.Roles_Permissions.Remove(this);
-					}
-					this._Role.Entity = value;
-					if ((value != null))
-					{
-						value.Roles_Permissions.Add(this);
-						this._Role_Id = value.Id;
-					}
-					else
-					{
-						this._Role_Id = default(System.Guid);
-					}
-					this.SendPropertyChanged("Role");
 				}
 			}
 		}
@@ -4889,124 +4673,174 @@ namespace UtilityProject
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ZONE")]
-	public partial class ZONE : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.User_permission")]
+	public partial class User_permission : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _zcode;
+		private int _id;
 		
-		private string _Zone_name;
+		private System.Guid _emp_id;
 		
-		private System.Nullable<char> _Mode;
+		private int _per_id;
 		
-		private EntitySet<Assignment> _Assignments;
+		private EntityRef<Employee> _Employee;
 		
-		private EntitySet<City> _Cities;
+		private EntityRef<Permission> _Permission;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnzcodeChanging(string value);
-    partial void OnzcodeChanged();
-    partial void OnZone_nameChanging(string value);
-    partial void OnZone_nameChanged();
-    partial void OnModeChanging(System.Nullable<char> value);
-    partial void OnModeChanged();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onemp_idChanging(System.Guid value);
+    partial void Onemp_idChanged();
+    partial void Onper_idChanging(int value);
+    partial void Onper_idChanged();
     #endregion
 		
-		public ZONE()
+		public User_permission()
 		{
-			this._Assignments = new EntitySet<Assignment>(new Action<Assignment>(this.attach_Assignments), new Action<Assignment>(this.detach_Assignments));
-			this._Cities = new EntitySet<City>(new Action<City>(this.attach_Cities), new Action<City>(this.detach_Cities));
+			this._Employee = default(EntityRef<Employee>);
+			this._Permission = default(EntityRef<Permission>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_zcode", DbType="VarChar(30) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string zcode
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
 		{
 			get
 			{
-				return this._zcode;
+				return this._id;
 			}
 			set
 			{
-				if ((this._zcode != value))
+				if ((this._id != value))
 				{
-					this.OnzcodeChanging(value);
+					this.OnidChanging(value);
 					this.SendPropertyChanging();
-					this._zcode = value;
-					this.SendPropertyChanged("zcode");
-					this.OnzcodeChanged();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Zone_name", DbType="VarChar(20)")]
-		public string Zone_name
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_emp_id", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid emp_id
 		{
 			get
 			{
-				return this._Zone_name;
+				return this._emp_id;
 			}
 			set
 			{
-				if ((this._Zone_name != value))
+				if ((this._emp_id != value))
 				{
-					this.OnZone_nameChanging(value);
+					if (this._Employee.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onemp_idChanging(value);
 					this.SendPropertyChanging();
-					this._Zone_name = value;
-					this.SendPropertyChanged("Zone_name");
-					this.OnZone_nameChanged();
+					this._emp_id = value;
+					this.SendPropertyChanged("emp_id");
+					this.Onemp_idChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mode", DbType="Char(1)")]
-		public System.Nullable<char> Mode
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_per_id", DbType="Int NOT NULL")]
+		public int per_id
 		{
 			get
 			{
-				return this._Mode;
+				return this._per_id;
 			}
 			set
 			{
-				if ((this._Mode != value))
+				if ((this._per_id != value))
 				{
-					this.OnModeChanging(value);
+					if (this._Permission.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onper_idChanging(value);
 					this.SendPropertyChanging();
-					this._Mode = value;
-					this.SendPropertyChanged("Mode");
-					this.OnModeChanged();
+					this._per_id = value;
+					this.SendPropertyChanged("per_id");
+					this.Onper_idChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ZONE_Assignment", Storage="_Assignments", ThisKey="zcode", OtherKey="ZoneCode")]
-		public EntitySet<Assignment> Assignments
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_User_permission", Storage="_Employee", ThisKey="emp_id", OtherKey="Id", IsForeignKey=true)]
+		public Employee Employee
 		{
 			get
 			{
-				return this._Assignments;
+				return this._Employee.Entity;
 			}
 			set
 			{
-				this._Assignments.Assign(value);
+				Employee previousValue = this._Employee.Entity;
+				if (((previousValue != value) 
+							|| (this._Employee.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Employee.Entity = null;
+						previousValue.User_permissions.Remove(this);
+					}
+					this._Employee.Entity = value;
+					if ((value != null))
+					{
+						value.User_permissions.Add(this);
+						this._emp_id = value.Id;
+					}
+					else
+					{
+						this._emp_id = default(System.Guid);
+					}
+					this.SendPropertyChanged("Employee");
+				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ZONE_City", Storage="_Cities", ThisKey="zcode", OtherKey="ZONE")]
-		public EntitySet<City> Cities
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Permission_User_permission", Storage="_Permission", ThisKey="per_id", OtherKey="id", IsForeignKey=true)]
+		public Permission Permission
 		{
 			get
 			{
-				return this._Cities;
+				return this._Permission.Entity;
 			}
 			set
 			{
-				this._Cities.Assign(value);
+				Permission previousValue = this._Permission.Entity;
+				if (((previousValue != value) 
+							|| (this._Permission.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Permission.Entity = null;
+						previousValue.User_permissions.Remove(this);
+					}
+					this._Permission.Entity = value;
+					if ((value != null))
+					{
+						value.User_permissions.Add(this);
+						this._per_id = value.id;
+					}
+					else
+					{
+						this._per_id = default(int);
+					}
+					this.SendPropertyChanged("Permission");
+				}
 			}
 		}
 		
@@ -5028,30 +4862,6 @@ namespace UtilityProject
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_Assignments(Assignment entity)
-		{
-			this.SendPropertyChanging();
-			entity.ZONE = this;
-		}
-		
-		private void detach_Assignments(Assignment entity)
-		{
-			this.SendPropertyChanging();
-			entity.ZONE = null;
-		}
-		
-		private void attach_Cities(City entity)
-		{
-			this.SendPropertyChanging();
-			entity.ZONE1 = this;
-		}
-		
-		private void detach_Cities(City entity)
-		{
-			this.SendPropertyChanging();
-			entity.ZONE1 = null;
 		}
 	}
 }
