@@ -83,8 +83,8 @@ namespace FinalUi
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            testtheme win = new testtheme();
-            win.Show();
+        //    testtheme win = new testtheme();
+        //    win.Show();
         }
     }
 }
