@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BillingDatabase" Class="BillingDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=KHANCOMPUTER\SQLExpress;Initial Catalog=BillingDatabase;Integrated Security=True" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=RIZWANKHAN;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString3" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Assignment" Member="Assignments">
     <Type Name="Assignment">
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -77,6 +77,7 @@
       <Column Name="EMPCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="UserName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Password" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="Employee_Stock" Member="Stocks" ThisKey="Id" OtherKey="UserId" Type="Stock" />
       <Association Name="Employee_Transaction" Member="Transactions" ThisKey="Id" OtherKey="UserId" Type="Transaction" />
       <Association Name="Employee_User_permission" Member="User_permissions" ThisKey="Id" OtherKey="emp_id" Type="User_permission" />
     </Type>
@@ -142,6 +143,31 @@
       <Association Name="RuntimeData_RuntimeMeta" Member="RuntimeData" ThisKey="RuntimeDataID" OtherKey="Id" Type="RuntimeData" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.scs_serv_pincode_mas" Member="scs_serv_pincode_mas">
+    <Type Name="scs_serv_pincode_ma">
+      <Column Name="SSPM_PIN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SSPM_AREA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SSPM_REGION" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SSPM_ZONE" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SSPM_LOC_TYPE" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SSPM_LOC_CODE" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SSPM_SERVICED_BY" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SSPM_BRANCH" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SSPM_CITY" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SSPM_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MOD_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MOD_TIME" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NODEID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="USERID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SSPM_COD" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SSPM_REMARKS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SSPM_ODA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SSPM_ACTIVATION_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SSPM_DEACTIVATION_DATE" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SSPM_EXTENDED" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SSPM_RDA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Service" Member="Services">
     <Type Name="Service">
       <Column Name="SER_CODE" Type="System.String" DbType="NVarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -179,6 +205,17 @@
       <Column Name="TRANS_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="STATE_RO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Association Name="State_City" Member="Cities" ThisKey="STATE_CODE" OtherKey="CITY_STATE" Type="City" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Stock" Member="Stocks">
+    <Type Name="Stock">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="StockStart" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StockEnd" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="[desc]" Member="desc" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="cost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="Employee_Stock" Member="Employee" ThisKey="UserId" OtherKey="Id" Type="Employee" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.[Transaction]" Member="Transactions">

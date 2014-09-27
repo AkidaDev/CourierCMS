@@ -149,7 +149,6 @@ namespace FinalUi
                     StatusTextBox.Text = "New Record. This will be added in current sheet and database.";
                     clearDetails();
                 }
-
             }
         }
         void clearDetails()
