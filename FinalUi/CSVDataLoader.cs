@@ -34,7 +34,7 @@ namespace FinalUi
                 rowData.BookingDate = DateTime.ParseExact(lineData[10].Replace("\'", ""), "dd-MM-yyyy", new CultureInfo("en-US")).Date;
                 rowData.Amount = Decimal.Parse(lineData[11]);
                 rowData.TransMF_No = lineData[14].Trim('\'');
-                rowData.DOX = lineData[16].ToCharArray()[0];
+                rowData.DOX = lineData[16].Trim('\'').ToCharArray()[0];
                 Double doubledata;
                 if (Double.TryParse(lineData[17], out doubledata))
                 {
