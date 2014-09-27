@@ -158,7 +158,7 @@ namespace FinalUi
             Rate rate = db.Rates.SingleOrDefault(x => x.RateCode == rateCode);
             if (rateCode != null)
             {
-                List<RateDetail> rateDetails = rate.RateDetails.OrderBy(x => x.Weight).ToList();
+                List<RateDetail> rateDetails = rate.RateDetails.OrderBy(x => x.Type.ToString() +  x.Weight.ToString()).ToList();
                 double lastRangeWeight = 0;
                 double price = 0;
                 foreach (RateDetail rateD in rateDetails)
@@ -178,6 +178,7 @@ namespace FinalUi
                         int steps;
                         if (rateD.Weight >= weight)
                             return price;
+                        
                         steps = (((int)((weight - lastRangeWeight) / ((double)rateD.StepWeight))) + 1);
                         price = price +  steps * ((double)(Char.ToUpper(isDox) == 'D' ? rateD.DoxRate : rateD.NonDoxRate));
                     }
@@ -186,9 +187,23 @@ namespace FinalUi
             }
             return -1;
         }
-        public static double getCost(string clientCode, string destinationCode, decimal destinationPin, double wieght)
+        public static double getCost(string clientCode, string destinationCode, decimal destinationPin, double wieght , string zonecode, string service, char isdox)
         {
-            return 100;
+            BillingDataDataContext db = new BillingDataDataContext();
+            Assignment ab = db.Assignments.Where(x=> x.ServiceCode == service && x.ZoneCode == zonecode && x.ClientCode == clientCode).FirstOrDefault();
+            if(ab == null)
+            {
+                ab = db.Assignments.Where(x => x.ServiceCode == service && x.ZoneCode == zonecode && x.ClientCode == "Def").FirstOrDefault();
+                if(ab == null)
+                {
+                    ab = db.Assignments.Where(x => x.ServiceCode == service && x.ZoneCode == "Default" && x.ClientCode == "Def").FirstOrDefault();
+                    if (ab == null)
+                        ab = db.Assignments.Where(x => x.ServiceCode == "Default" && x.ZoneCode == "Default" && x.ClientCode == "Def").FirstOrDefault();
+                }
+            }
+            if (ab == null)
+                return getPriceFromRateCode("Default",wieght,isdox);
+            return getPriceFromRateCode(ab.RateCode,wieght,isdox);
         }
         #endregion
     }
