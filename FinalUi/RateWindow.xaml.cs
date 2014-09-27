@@ -260,5 +260,13 @@ namespace FinalUi
             view.Remove(assignment);
             db.SubmitChanges();
         }
+		private void DragthisWindow(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+       private void Button_Click_Close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

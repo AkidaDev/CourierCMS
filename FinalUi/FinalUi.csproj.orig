@@ -35,8 +35,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+<<<<<<< local
+=======
+    <Reference Include="DoddleReport">
+      <HintPath>..\packages\DoddleReport.iTextSharp.1.4\lib\net40\DoddleReport.dll</HintPath>
+    </Reference>
+    <Reference Include="DoddleReport.iTextSharp">
+      <HintPath>..\packages\DoddleReport.iTextSharp.1.4\lib\net40\DoddleReport.iTextSharp.dll</HintPath>
+    </Reference>
+>>>>>>> other
     <Reference Include="itextsharp">
+<<<<<<< local
       <HintPath>..\packages\iTextSharp.5.5.3\lib\itextsharp.dll</HintPath>
+=======
+      <HintPath>..\packages\DoddleReport.iTextSharp.1.4\lib\net40\itextsharp.dll</HintPath>
+>>>>>>> other
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -113,6 +126,9 @@
     <Compile Include="FilterSelectWindow.xaml.cs">
       <DependentUpon>FilterSelectWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="InvoiceReport.xaml.cs">
+      <DependentUpon>InvoiceReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ManageClient.xaml.cs">
       <DependentUpon>ManageClient.xaml</DependentUpon>
     </Compile>
@@ -135,6 +151,9 @@
       <DependentUpon>SanitizingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SecurityModule.cs" />
+    <Compile Include="ServiceFinder.xaml.cs">
+      <DependentUpon>ServiceFinder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StockWindow.xaml.cs">
       <DependentUpon>StockWindow.xaml</DependentUpon>
     </Compile>
@@ -175,6 +194,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FilterSelectWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InvoiceReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -241,6 +264,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SanitizingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ServiceFinder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -333,6 +360,7 @@
     <Resource Include="Layout of App_Images\View.png" />
     <Resource Include="LoadData_Images\import files.png" />
     <Resource Include="LoadData_Images\Layer 0.png" />
+    <Resource Include="RateWindow_Images\Layer 1.png" />
     <Resource Include="SanitizingWindow_Images\Layer 2.png" />
     <Resource Include="vortex_pag_Images\Layer 0.png" />
     <Resource Include="vortex_pag_Images\Shape 21 copy.png" />
