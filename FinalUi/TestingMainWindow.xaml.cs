@@ -61,10 +61,6 @@ namespace FinalUi
             window.ShowDialog();
         }
 
-        private void rateassignment_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
 
         private void ServiceWindow_Click(object sender, RoutedEventArgs e)
         {
@@ -83,6 +79,12 @@ namespace FinalUi
                 //win.Show();
             }
             
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            testtheme win = new testtheme();
+            win.Show();
         }
     }
 }

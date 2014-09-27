@@ -126,9 +126,13 @@
     <Compile Include="FilterSelectWindow.xaml.cs">
       <DependentUpon>FilterSelectWindow.xaml</DependentUpon>
     </Compile>
+<<<<<<< local
+=======
     <Compile Include="InvoiceReport.xaml.cs">
       <DependentUpon>InvoiceReport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LoadResources.cs" />
+>>>>>>> other
     <Compile Include="ManageClient.xaml.cs">
       <DependentUpon>ManageClient.xaml</DependentUpon>
     </Compile>
@@ -138,6 +142,12 @@
     <Compile Include="Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
     </Compile>
+<<<<<<< local
+=======
+    <Compile Include="PreferenceWindow.xaml.cs">
+      <DependentUpon>PreferenceWindow.xaml</DependentUpon>
+    </Compile>
+>>>>>>> other
     <Compile Include="PrintWindow.xaml.cs">
       <DependentUpon>PrintWindow.xaml</DependentUpon>
     </Compile>
@@ -151,15 +161,24 @@
       <DependentUpon>SanitizingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SecurityModule.cs" />
+<<<<<<< local
+=======
     <Compile Include="ServiceFinder.xaml.cs">
       <DependentUpon>ServiceFinder.xaml</DependentUpon>
     </Compile>
+>>>>>>> other
     <Compile Include="StockWindow.xaml.cs">
       <DependentUpon>StockWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="TestingMainWindow.xaml.cs">
       <DependentUpon>TestingMainWindow.xaml</DependentUpon>
     </Compile>
+<<<<<<< local
+=======
+    <Compile Include="testtheme.xaml.cs">
+      <DependentUpon>testtheme.xaml</DependentUpon>
+    </Compile>
+>>>>>>> other
     <Compile Include="UtilityClass.cs" />
     <Compile Include="UserControlGallery.xaml.cs">
       <DependentUpon>UserControlGallery.xaml</DependentUpon>
@@ -197,10 +216,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+<<<<<<< local
+=======
     <Page Include="InvoiceReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+>>>>>>> other
     <Page Include="LoadData.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -251,6 +273,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+<<<<<<< local
+=======
+    <Page Include="PreferenceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+>>>>>>> other
     <Page Include="PrintWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -267,10 +296,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+<<<<<<< local
+=======
     <Page Include="ServiceFinder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+>>>>>>> other
     <Page Include="StockWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -279,6 +311,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+<<<<<<< local
+=======
+    <Page Include="testtheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Blue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+    <Page Include="theme\Red.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+>>>>>>> other
     <Page Include="UserControlGallery.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -360,7 +408,11 @@
     <Resource Include="Layout of App_Images\View.png" />
     <Resource Include="LoadData_Images\import files.png" />
     <Resource Include="LoadData_Images\Layer 0.png" />
+<<<<<<< local
+=======
+    <Resource Include="RateAssign_Images\Layer 0.png" />
     <Resource Include="RateWindow_Images\Layer 1.png" />
+>>>>>>> other
     <Resource Include="SanitizingWindow_Images\Layer 2.png" />
     <Resource Include="vortex_pag_Images\Layer 0.png" />
     <Resource Include="vortex_pag_Images\Shape 21 copy.png" />

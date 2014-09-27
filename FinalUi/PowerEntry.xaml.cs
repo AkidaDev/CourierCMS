@@ -41,22 +41,20 @@ namespace FinalUi
         {
             int startCOnnNoIndex = startConnNo.SelectedIndex;
             int endConnNoIndex = endConnNo.SelectedIndex;
-            if (startCOnnNoIndex < endConnNoIndex && startCOnnNoIndex != -1 && endConnNoIndex != -1)
+            if (startCOnnNoIndex <= endConnNoIndex && startCOnnNoIndex != -1 && endConnNoIndex != -1)
             {
                 for (int i = startCOnnNoIndex; i <= endConnNoIndex; i++)
                 {
                     RuntimeData data = DataStack.ElementAt(i);
                     data.CustCode = clientCode.SelectedValue.ToString();
-                    data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination, data.DestinationPin, data.Weight);
-                    data.FrWeight = data.Weight;
+                    var c = (from m in db.Cities select m).Where(x => x.CITY_CODE== data.Destination && x.CITY_STATUS=="A").FirstOrDefault();
                     data = db.RuntimeDatas.Single(x => x.Id == data.Id);
                     data.CustCode = clientCode.SelectedValue.ToString();
-                    data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination, data.DestinationPin, data.Weight);
+                    data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination, data.DestinationPin, data.Weight, c.ZONE, data.Type, (char)data.DOX);
                     data.FrWeight = data.Weight;
                     db.SubmitChanges();
                 }
             }
         }
-
     }
 }

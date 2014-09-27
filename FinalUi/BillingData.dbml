@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BillingDatabase" Class="BillingDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=SYSTEM;Initial Catalog=BillingDatabase;Integrated Security=True" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString5" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=KHANCOMPUTER\SQLExpress;Initial Catalog=BillingDatabase;Integrated Security=True" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Assignment" Member="Assignments">
     <Type Name="Assignment">
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -7,19 +7,10 @@
       <Column Name="ClientCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
       <Column Name="ZoneCode" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="RateCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Association Name="ZONE_Assignment" Member="ZONE" ThisKey="ZoneCode" OtherKey="zcode" Type="ZONE" IsForeignKey="true" />
       <Association Name="Client_Assignment" Member="Client" ThisKey="ClientCode" OtherKey="CLCODE" Type="Client" IsForeignKey="true" />
       <Association Name="Rate_Assignment" Member="Rate" ThisKey="RateCode" OtherKey="RateCode" Type="Rate" IsForeignKey="true" />
       <Association Name="Service_Assignment" Member="Service" ThisKey="ServiceCode" OtherKey="SER_CODE" Type="Service" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ZONE" Member="ZONEs">
-    <Type Name="ZONE">
-      <Column Name="zcode" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Zone_name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="Mode" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Association Name="ZONE_Assignment" Member="Assignments" ThisKey="zcode" OtherKey="ZoneCode" Type="Assignment" />
-      <Association Name="ZONE_City" Member="Cities" ThisKey="zcode" OtherKey="ZONE" Type="City" />
+      <Association Name="ZONE_Assignment" Member="ZONE" ThisKey="ZoneCode" OtherKey="zcode" Type="ZONE" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.City" Member="Cities">
@@ -38,8 +29,8 @@
       <Column Name="CITY_CATG_PDN" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="city_category" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="ZONE" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Association Name="ZONE_City" Member="ZONE1" ThisKey="ZONE" OtherKey="zcode" Type="ZONE" IsForeignKey="true" />
       <Association Name="State_City" Member="State" ThisKey="CITY_STATE" OtherKey="STATE_CODE" Type="State" IsForeignKey="true" />
+      <Association Name="ZONE_City" Member="ZONE1" ThisKey="ZONE" OtherKey="zcode" Type="ZONE" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Client" Member="Clients">
@@ -77,6 +68,7 @@
       <Column Name="EMPCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="UserName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Password" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="Employee_StockAssignemnt" Member="StockAssignemnts" ThisKey="Id" OtherKey="EmployeeId" Type="StockAssignemnt" />
       <Association Name="Employee_Transaction" Member="Transactions" ThisKey="Id" OtherKey="UserId" Type="Transaction" />
       <Association Name="Employee_User_permission" Member="User_permissions" ThisKey="Id" OtherKey="emp_id" Type="User_permission" />
     </Type>
@@ -181,6 +173,16 @@
       <Association Name="State_City" Member="Cities" ThisKey="STATE_CODE" OtherKey="CITY_STATE" Type="City" />
     </Type>
   </Table>
+  <Table Name="dbo.StockAssignemnt" Member="StockAssignemnts">
+    <Type Name="StockAssignemnt">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EmployeeId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="StockTo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StockFrom" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Association Name="Employee_StockAssignemnt" Member="Employee" ThisKey="EmployeeId" OtherKey="Id" Type="Employee" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.[Transaction]" Member="Transactions">
     <Type Name="Transaction">
       <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -215,6 +217,15 @@
       <Column Name="per_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Employee_User_permission" Member="Employee" ThisKey="emp_id" OtherKey="Id" Type="Employee" IsForeignKey="true" />
       <Association Name="Permission_User_permission" Member="Permission" ThisKey="per_id" OtherKey="id" Type="Permission" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ZONE" Member="ZONEs">
+    <Type Name="ZONE">
+      <Column Name="zcode" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Zone_name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Mode" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="ZONE_Assignment" Member="Assignments" ThisKey="zcode" OtherKey="ZoneCode" Type="Assignment" />
+      <Association Name="ZONE_City" Member="Cities" ThisKey="zcode" OtherKey="ZONE" Type="City" />
     </Type>
   </Table>
 </Database>
