@@ -208,9 +208,24 @@ namespace FinalUi
             }
             return -1;
         }
-        public static double getCost(string clientCode, string destinationCode, decimal destinationPin, double wieght)
+        public static double getCost(string clientCode, string destinationCode, decimal destinationPin, double wieght,string zoneCode, string serviceCode, char dox)
         {
-            return 100;
+            Assignment ab;
+            BillingDataDataContext db = new BillingDataDataContext();
+            ab = db.Assignments.FirstOrDefault(x => x.ServiceCode == serviceCode && x.ClientCode == clientCode && x.ZoneCode == zoneCode);
+            if(ab == null)
+            {
+                ab = db.Assignments.FirstOrDefault(x => x.ServiceCode == "DEFAULT" && x.ClientCode == clientCode && x.ZoneCode == zoneCode);
+                if(ab == null)
+                {
+                    ab = db.Assignments.FirstOrDefault(x => x.ServiceCode == "DEFAULT" && x.ClientCode == clientCode && x.ZoneCode == "DEF");
+                    if(ab == null)
+                    {
+                        ab = db.Assignments.FirstOrDefault(x => x.ServiceCode == "DEFAULT" && x.ClientCode == "DEF" && x.ZoneCode == "DEF");
+                    }
+                }
+            }
+            return getPriceFromRateCode(ab.RateCode, wieght, dox);
         }
         #endregion
     }
