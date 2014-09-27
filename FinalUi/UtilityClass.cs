@@ -160,7 +160,7 @@ namespace FinalUi
             Rate rate = db.Rates.SingleOrDefault(x => x.RateCode == rateCode);
             if (rateCode != null)
             {
-                List<RateDetail> rateDetails = rate.RateDetails.OrderBy(x => x.Weight).ToList();
+                List<RateDetail> rateDetails = rate.RateDetails.OrderBy(x =>x.Type.ToString() +  x.Weight.ToString()).ToList();
                 double lastRangeWeight = 0;
                 double price = 0;
                 int i = 0;
@@ -183,20 +183,24 @@ namespace FinalUi
                     }
                     if (rateD.Type == 2 || rateD.Type == 3)
                     {
-                        double tempWeight = weight;
-                        if (nextLimit < weight)
-                        {
-                            tempWeight = nextLimit - 0.01;
-                        }
-                        int steps;
-                        if (rateD.Weight > weight)
+                        int icurrentW, iWeight, iStepWeight;
+                        iWeight = (int)(weight * 1000);
+                        iStepWeight = (int)(rateD.StepWeight * 1000);
+                        int inextLimit;
+                        double currentW = rateD.Weight;
+                        icurrentW = (int)(rateD.Weight * 1000);
+                        if (weight <= currentW)
                             return price;
-                        int iweight, ilastRangeWeight, istepWeight;
-                        iweight = (int)(tempWeight * 100);
-                        ilastRangeWeight = (int)(lastRangeWeight * 100);
-                        istepWeight = (int)(rateD.StepWeight * 100);
-                        steps = ((iweight - ilastRangeWeight) / istepWeight) + 1;
-                        price = price + steps * ((double)(Char.ToUpper(isDox) == 'D' ? rateD.DoxRate : rateD.NonDoxRate));
+                        else
+                        {
+                            nextLimit = rateDetails.ElementAtOrDefault(i + 1) != null ? rateDetails.ElementAtOrDefault(i + 1).Weight : 999;
+                            inextLimit = (int)(nextLimit * 1000);
+                            while (icurrentW < inextLimit && icurrentW < iWeight)
+                            {
+                                price = price + (double)(isDox == 'D' ? rateD.DoxRate : rateD.NonDoxRate);
+                                icurrentW = icurrentW + iStepWeight;
+                            }
+                        }
                     }
                     i++;
                 }
