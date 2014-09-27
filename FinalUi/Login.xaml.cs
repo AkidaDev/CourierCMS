@@ -31,7 +31,7 @@ namespace FinalUi
 
             InitializeComponent();
 
-            ImageBehavior.SetRepeatBehavior(LoadingGif, RepeatBehavior.Forever);
+           // ImageBehavior.SetRepeatBehavior(LoadingGif, RepeatBehavior.Forever);
             CommandBinding command = new CommandBinding();
 
             /*  Testing Code  */
@@ -86,12 +86,12 @@ namespace FinalUi
             {
                 if (!loginFlag)
                 {
-                    LoadingGifPanel.Visibility = Visibility.Visible;
+                  //  LoadingGifPanel.Visibility = Visibility.Visible;
                     string userName = UserName.Text;
                     string passWord = Password.Password;
                     if (SecurityModule.authenticate(userName, passWord))
                     {
-                        LoadingGifPanel.Visibility = Visibility.Visible;
+                       // LoadingGifPanel.Visibility = Visibility.Visible;
 
                         window = new MainWindow();
                         window.ShowDialog();

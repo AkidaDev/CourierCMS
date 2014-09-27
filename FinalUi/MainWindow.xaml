@@ -27,11 +27,11 @@
         <CollectionViewSource x:Key="ClientCodeList" CollectionViewType="ListCollectionView"></CollectionViewSource>
         <CollectionViewSource x:Key="DataGridDataContext" CollectionViewType="ListCollectionView"></CollectionViewSource>
 
-        <ImageBrush ImageSource="Images/Menu bar.png" x:Key="GridBackground" Opacity=".9"/>
+       <!-- <ImageBrush ImageSource="Images/Menu bar.png" x:Key="GridBackground" Opacity=".9"/>
         <ImageBrush ImageSource="Images/topnavigation bar.png" x:Key="NavigationBackground" Opacity=".9"/>
         <ImageBrush ImageSource="Images/bottomnavigation bar.png" x:Key="QuickbuttonBackground" Opacity=".9"/>
         <ImageBrush ImageSource="Images/side menu.png" x:Key="SideMenuBackground" Opacity=".9"/>
-        <ImageBrush ImageSource="Images/searchbox.png" x:Key="Searchbarcontent"/>
+        <ImageBrush ImageSource="Images/searchbox.png" x:Key="Searchbarcontent"/>-->
 
     </Window.Resources>
 
@@ -88,7 +88,7 @@
                 </WrapPanel>
             </Grid>
             <DockPanel Background="#FFBBCADC" Height="31.78" Margin="0,-1,0,0">
-                <Button Style="{StaticResource all}" x:Name="LoadDataButton" Foreground="White" Margin="5,5,5,5" Command="ApplicationCommands.Open" FontSize="16">
+                <Button Style="{StaticResource all}" x:Name="LoadDataButton" Foreground="White" Margin="5,3" Command="ApplicationCommands.Open" FontSize="16">
                     <WrapPanel Margin="7,0,5,0">
                         <Path x:Name="folder1" Data="F1M2,5.562C2,5.562 3.199,5.562 3.199,5.562 3.199,5.562 19.979,5.562 19.979,5.562 19.979,5.562 21.178,5.562 21.178,
 					5.562 21.178,5.562 21.178,6.749 21.178,6.749 21.178,6.749 21.178,18.621 21.178,18.621 21.178,19.277 20.641,19.808 19.979,19.808 19.979,19.808 3.199,
@@ -307,8 +307,9 @@
                         </Grid>
 
                         <Grid HorizontalAlignment="Right" Margin="0,0,20,5">
-                            <WrapPanel  Height="27" Width="171" Background="{DynamicResource Searchbarcontent}" Grid.Column="1"  >
-                                <TextBox MinWidth="150" Background="transparent" BorderThickness="0" Height="25" Padding="28,4,5,0" HorizontalAlignment="Right"  FontSize="14"/>
+                            <WrapPanel Grid.Column="1">
+								<Rectangle  Height="29" Width="171" Stroke="Gray" RadiusX="13" RadiusY="13" Fill="AliceBlue" StrokeThickness="1.5" />
+                                <TextBox MinWidth="150" Background="transparent" BorderThickness="0" Height="25" Padding="28,4,5,0" HorizontalAlignment="Right"  FontSize="14" Margin="0,-27,0,0" />
                             </WrapPanel>
                             <Path x:Name="search" Data="F1M7.473,3.773C6.412,3.97 5.425,4.578 4.764,5.551 3.444,7.499 3.922,10.178 5.83,11.523 7.738,12.871 10.365,12.384 11.687,
 						10.437 12.326,9.495 12.567,8.355 12.365,7.225 12.164,6.096 11.544,5.116 10.621,4.465 9.667,3.792 8.533,3.576 7.473,3.773z M7.145,1.94C8.666,1.658 10.292,
