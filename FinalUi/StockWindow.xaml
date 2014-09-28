@@ -1,20 +1,36 @@
 ﻿<Window x:Class="FinalUi.StockWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="StockWindow" Height="300" Width="400" ResizeMode="NoResize">
-    <Window.Resources>
+		Icon="Images/logo.png"
+        Title="StockWindow" Height="260" Width="372" Background="Transparent"
+		ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Normal" BorderBrush="Transparent" AllowsTransparency="True" Padding="20">
+   <Window.Resources>
         <CollectionViewSource x:Key="EmpList" CollectionViewType="ListCollectionView"></CollectionViewSource>
     </Window.Resources>
-    <Grid Margin="0,0,4,-4">
-        <TextBlock Text="StockEntry" Margin="20,10,141,227" FontSize="22"></TextBlock>
-        <TextBlock Name="FromLabel"  Text="From" Margin="0,53,350,196"></TextBlock>
-        <TextBox Name="FromBox" Margin="40,52,268,197"></TextBox>
-        <TextBlock Name="ToLabel" Text="To" Margin="147,52,208,197"></TextBlock>
-        <TextBox Name="ToBox" Margin="206,52,10,196" RenderTransformOrigin="0.555,0.713"></TextBox>
-        <TextBlock Name="CostLabel" Text="Cost"  Margin="0,80,355,161"></TextBlock>
-        <TextBox Name="CostBox" Margin="40,80,268,173"></TextBox>
-        <TextBlock Name="AssignLabel" Text="Assign" Margin="147,83,195,161"></TextBlock>
-        <ComboBox Name="AssignCombo" Margin="206,84,10,161"  ItemsSource="{Binding}" DataContext="{StaticResource EmpList}"  IsEditable="False" >
+     <Grid  Height="210" UseLayoutRounding="False"  Width="322"  >
+    	<Grid.Effect>
+            <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
+        </Grid.Effect>
+		<Canvas x:Name="MainPanel" ClipToBounds="True" HorizontalAlignment="Left" Height="210" UseLayoutRounding="False" VerticalAlignment="Top" Width="322" Background="White">
+    		<Path x:Name="Vertical_line" Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Black" Height="4" Canvas.Left="46" Canvas.Top="53" Width="237"/>
+    		<Path MouseDown="DragthisWindow" x:Name="Memu_bar" Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="#FFCBCBCB" Height="26" Canvas.Left="0" Canvas.Top="0" Width="322" Stretch="Fill" Stroke="Black" />
+            <Path x:Name="detail" Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Black" Height="24" Canvas.Left="19" Canvas.Top="32" Width="24"/>
+    		<TextBlock x:Name="Enter_Details___" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="47" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Enter Details .:" Canvas.Top="38.16"/>
+    		<Button Height="18" Canvas.Left="283" Click="Button_Click_Close" Canvas.Top="4" Width="35" Style="{StaticResource all}">
+                <Path x:Name="close" Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,
+                  12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,
+                  3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" Width="15" Height="15"/>
+            </Button>
+		<TextBlock Canvas.Left="22.33" Canvas.Top="85.292" />
+		<TextBlock Name="ToLabel" Text="To .:"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="187.301" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Canvas.Top="80.16"/>
+    	<TextBox Name="ToBox" Canvas.Left="221.253" Canvas.Top="73.954" Width="80" Height="22"/>
+		<TextBlock Name="FromLabel" Text="From  .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="25.293" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Canvas.Top="80.16"/>
+    		<TextBlock  Canvas.Left="23.266" Canvas.Top="106.252" />
+		<TextBox Name="FromBox"  Canvas.Left="85.852" Canvas.Top="73.954" Width="80" Height="22" />
+		<TextBlock  Name="CostLabel" Text="Cost .:"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="171.911" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap"  Canvas.Top="112.212"/>
+    	<TextBox Name="CostBox" Canvas.Left="221.253"   Width="80" Height="22" Canvas.Top="107.551" />
+        <TextBlock Name="AssignLabel" Text="Assign .:" Canvas.Left="19.687" Canvas.Top="112.212"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap"/>
+        <ComboBox Name="AssignCombo"  Width="80" Height="22" ItemsSource="{Binding}" DataContext="{StaticResource EmpList}"  IsEditable="False" Canvas.Left="85.852" Canvas.Top="107.551" >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
@@ -27,9 +43,14 @@
                     </TextBlock>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
-        </ComboBox>
-        <TextBlock Name="DescriptionLabel" Text="Description" Margin="117,135,195,103"></TextBlock>
-        <TextBox Name="DescriptionBox" Margin="200,135,16,119"></TextBox>
-        <Button Name="AddstockLabel" Content="AddStock" Click="AddstockLabel_Click" Margin="40,177,208,66"></Button>
+        </ComboBox>	
+		<TextBlock Name="DescriptionLabel" Text="Description .:" Canvas.Left="26.453" Canvas.Top="150.648"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap"/>
+        <TextBox Name="DescriptionBox" Canvas.Left="130.733" Canvas.Top="146.163" Width="150" Height="22"/>
+        
+			<Button Name="AddstockLabel"  Click="AddstockLabel_Click" Canvas.Left="209.283" Canvas.Top="177" Style="{StaticResource all}"><Button.Content><WrapPanel>
+			<Path x:Name="AddFilter" Data="F1M13.455,5.818C13.455,5.818 13.455,9.636 13.455,9.636 13.455,9.636 9.636,9.636 9.636,9.636 9.636,9.636 9.636,11.545 9.636,11.545 9.636,11.545 13.455,11.545 13.455,11.545 13.455,11.545 13.455,15.364 13.455,15.364 13.455,15.364 15.364,15.364 15.364,15.364 15.364,15.364 15.364,11.545 15.364,11.545 15.364,11.545 19.182,11.545 19.182,11.545 19.182,11.545 19.182,9.636 19.182,9.636 19.182,9.636 15.364,9.636 15.364,9.636 15.364,9.636 15.364,5.818 15.364,5.818 15.364,5.818 13.455,5.818 13.455,5.818z M2,5.818C2,5.818 3.909,5.818 3.909,5.818 3.909,5.818 3.909,21.091 3.909,21.091 3.909,21.091 19.182,21.091 19.182,21.091 19.182,21.091 19.182,23 19.182,23 19.182,23 3.909,23 3.909,23 2.859,23 2,22.141 2,21.091 2,21.091 2,5.818 2,5.818z M7.727,2C7.727,2 21.091,2 21.091,2 22.141,2 23,2.859 23,3.909 23,3.909 23,17.273 23,17.273 23,18.323 22.141,19.182 21.091,19.182 21.091,19.182 7.727,19.182 7.727,19.182 6.677,19.182 5.818,18.323 5.818,17.273 5.818,17.273 5.818,3.909 5.818,3.909 5.818,2.859 6.677,2 7.727,2z" Fill="Black" Height="24" Width="24"/>
+			<TextBlock x:Name="Add_Filter" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"  LineHeight="18" TextAlignment="Center" Text="Add Stock" Padding="3 3 0 0"/>
+        	</WrapPanel></Button.Content></Button>
+			</Canvas>
     </Grid>
 </Window>

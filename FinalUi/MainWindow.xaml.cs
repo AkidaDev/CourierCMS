@@ -675,5 +675,36 @@ namespace FinalUi
         {
             _hwndSource = (HwndSource)PresentationSource.FromVisual(this);
         }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+        #region menuItem
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void ManageClient_Click(object sender, RoutedEventArgs e)
+        {
+            ManageClient window = new ManageClient(); window.ShowDialog();
+        }
+
+        private void ManageEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            ManageEmployee window = new ManageEmployee(); window.ShowDialog();
+        }
+
+        private void RateWindowMenu_Click(object sender, RoutedEventArgs e)
+        {
+            RateWindow window = new RateWindow(); window.ShowDialog();
+        }
+
+        private void AboutMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            About window = new About(); window.ShowDialog();
+        }
+        #endregion
     }
 }

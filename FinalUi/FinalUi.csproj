@@ -107,6 +107,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddClient.xaml.cs">
       <DependentUpon>AddClient.xaml</DependentUpon>
     </Compile>
@@ -154,6 +157,9 @@
     <Compile Include="Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PleaseWait.xaml.cs">
+      <DependentUpon>PleaseWait.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PreferenceWindow.xaml.cs">
       <DependentUpon>PreferenceWindow.xaml</DependentUpon>
     </Compile>
@@ -193,6 +199,10 @@
       <DependentUpon>UserControlGallery.xaml</DependentUpon>
     </Compile>
     <Compile Include="Validator.cs" />
+    <Page Include="About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddClient.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -276,6 +286,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Page1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PleaseWait.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -396,6 +410,7 @@
     <Resource Include="Data\NF037_DSR_TABLE_ITL.TXT" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="RateWindow_Images\" />
     <Folder Include="test\" />
   </ItemGroup>
   <ItemGroup>
@@ -403,7 +418,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="RateAssign_Images\Layer 0.png" />
-    <Resource Include="RateWindow_Images\Layer 1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

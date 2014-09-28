@@ -21,5 +21,9 @@ namespace FinalUi
         {
             return true;
         }
+        public static bool StockV(Stock s)
+        {
+            return true;
+        }
     }
 }
