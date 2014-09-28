@@ -125,7 +125,7 @@
                                     <TreeViewItem.Header>
                                         <WrapPanel>
                                             <Path x:Name="drop_downarrow_2" Data="F1M1.5,1.2C1.5,1.2 1.5,10.8 1.5,10.8 1.5,10.8 7.5,5.981 7.5,5.981 7.5,5.981 1.5,1.2 1.5,1.2z" Fill="#FF5B5B5B" Height="12" Width="9" Margin="15,20,0,-19"/>
-                                            <Button Style="{StaticResource all}" Name="BillAnalysis" >
+                                            <Button Style="{StaticResource all}" Name="BillAnalysis" Click="BillAnalysis_Click" >
                                                 <Button.Content>
                                                     <TextBlock Text="Bill Analysis" FontSize="16" FontWeight="Bold" Width="225"   Foreground="#FF5B5B5B" FontFamily="Calibri"/>
                                                 </Button.Content>
@@ -339,7 +339,7 @@
                                 <RowDefinition Height="100"/>
                             </Grid.RowDefinitions>
                             <ContentControl Grid.Row="0" ScrollViewer.CanContentScroll="True" Grid.ColumnSpan="2">
-                                <DataGrid x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False" Height="478"
+                                <DataGrid IsReadOnly="True" x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False" Height="478"
 						ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True"
 						BorderThickness="0" CanUserAddRows="True">
 

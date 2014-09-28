@@ -292,6 +292,10 @@ namespace FinalUi
             }
             return sb.ToString().TrimEnd();
         }
+        public static string getZoneCodeFromCityCode()
+        {
+            return "";
+        }
         #endregion
     }
 }

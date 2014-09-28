@@ -95,7 +95,7 @@ namespace FinalUi
             List<int> sheets = db.RuntimeMetas.Where(y => y.UserName == SecurityModule.currentUserName).Select(x => x.SheetNo).Distinct().ToList();
             foreach (int sheet in sheets)
             {
-                List<RuntimeData> runtimeData = db.RuntimeMetas.Where(x => x.SheetNo == sheet && x.UserName == SecurityModule.currentUserName).Select(y => y.RuntimeData).OrderBy(x => x.BookingDate).ThenBy(z=>z.ConsignmentNo).ToList(); ;
+                List<RuntimeData> runtimeData = (db.RuntimeMetas.Where(x => x.SheetNo == sheet && x.UserName == SecurityModule.currentUserName).Select(y => y.RuntimeData)).OrderBy(x => x.BookingDate).ThenBy(z=>z.ConsignmentNo).ToList(); ;
                 dataGridHelper.addNewSheet(runtimeData, "sheet " + sheet.ToString());
                 addingNewPage(sheet);
             }
@@ -171,7 +171,7 @@ namespace FinalUi
         #region Delete Sheet Worker
         void DeleteWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBlock.Text = MessageBlock.Text + "\n" + "Delete Opoeration Completed. " + e.Error;
+            MessageBlock.Text = MessageBlock.Text + "\n" + "Delete Operation Completed. " + e.Error;
         }
         void DeleteWorker_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -706,5 +706,11 @@ namespace FinalUi
             About window = new About(); window.ShowDialog();
         }
         #endregion
+
+        private void BillAnalysis_Click(object sender, RoutedEventArgs e)
+        {
+            BillReportWindow win = new BillReportWindow();
+            win.ShowDialog();
+        }
     }
 }
