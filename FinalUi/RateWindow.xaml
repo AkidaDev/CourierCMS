@@ -47,7 +47,7 @@
             <Path x:Name="Rectangle_1_copy_6" StrokeThickness="1" Stroke="Black" Data="F1M2,1C2,1 79,1 79,1 79,1 79,18 79,18 79,18 2,18 2,18 2,18 2,1 2,1z" Fill="Transparent" Height="19" Canvas.Left="398" Canvas.Top="126" Width="80" Stretch="Uniform"/>
             <TextBox Name="TestWeight" KeyUp="TestWeight_KeyUp" Height="19" Canvas.Left="398" Canvas.Top="126" Width="80"/>
 
-            <ComboBox IsEditable="True" Name="TestDox" Height="19" Canvas.Left="398" Canvas.Top="147" Width="80" Background="White" >
+            <ComboBox Padding="0" IsEditable="True" Name="TestDox" Height="19" Canvas.Left="398" Canvas.Top="147" Width="80" Background="White" >
                 <ComboBoxItem Content="DOX"></ComboBoxItem>
                 <ComboBoxItem Content="NonDox"></ComboBoxItem>
             </ComboBox>

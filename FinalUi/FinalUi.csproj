@@ -386,43 +386,14 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="EditRateDetail_Images\Layer 0.png" />
-    <Resource Include="FilterSelectWindow_Images\Layer 0.png" />
-    <Resource Include="Images\bottomnavigation bar.png" />
-    <Resource Include="Images\left doc.png" />
     <Resource Include="Images\logo.png" />
-    <Resource Include="Images\Menu bar.png" />
-    <Resource Include="Images\middock.png" />
-    <Resource Include="Images\rightdoc.png" />
-    <Resource Include="Images\searchbox.png" />
-    <Resource Include="Images\side menu.png" />
-    <Resource Include="Images\topnavigation bar.png" />
-    <Resource Include="Images\vortex0.png" />
-    <Resource Include="Images\vortex1.png" />
-    <Resource Include="Images\vortex3.png" />
-    <Resource Include="Layout of App_Images\File.png" />
-    <Resource Include="Layout of App_Images\Help.png" />
-    <Resource Include="Layout of App_Images\Layer 0.png" />
-    <Resource Include="Layout of App_Images\navigation bar.png" />
-    <Resource Include="Layout of App_Images\toolbar.png" />
-    <Resource Include="Layout of App_Images\Tools.png" />
-    <Resource Include="Layout of App_Images\View.png" />
-    <Resource Include="LoadData_Images\import files.png" />
-    <Resource Include="LoadData_Images\Layer 0.png" />
-    <Resource Include="SanitizingWindow_Images\Layer 2.png" />
-    <Resource Include="vortex_pag_Images\Layer 0.png" />
-    <Resource Include="vortex_pag_Images\Shape 21 copy.png" />
-    <Resource Include="vortex_pag_Images\Shape 21.png" />
+    <Resource Include="Images\search.png" />
+    <Resource Include="Images\Shape 21 copy.png" />
+    <Resource Include="Images\Shape 21.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Data\NF037_DSR_TABLE.TXT" />
     <Resource Include="Data\NF037_DSR_TABLE_ITL.TXT" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\vortex.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="gifs\loading-GIF.gif" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="test\" />
