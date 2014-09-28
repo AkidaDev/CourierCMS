@@ -298,16 +298,18 @@ namespace FinalUi
         {
             if (buttonList.Count > 0)
             {
+                Button b;
                 DeleteSheetWorker.RunWorkerAsync(dataGridHelper.currentSheetNumber);
                 dataGridHelper.removeSheet(dataGridHelper.currentSheetNumber);
                 buttontabcanvaswrap.Children.Remove(activeButton);
-
-                buttonList.Remove(activeButton);
                 if (buttonList.Count > 0)
-                    activeButton = buttonList.Single(x => x.Value == buttonList.Values.Min()).Key;
+                    b = buttonList.Single(x => x.Value == buttonList.Values.Min()).Key;
                 else
-                    activeButton = null;
-
+                    b = null;
+                changeSheetButton(activeButton,b);
+                buttonList.Remove(activeButton);
+                activeButton = b;
+                
             }
         }
         #endregion
@@ -357,7 +359,7 @@ namespace FinalUi
             if (key == 0)
                 canvasButton.Margin = new Thickness(0, 1, 0, 0);
             else
-                canvasButton.Margin = new Thickness(-11, 1, 0, 0);
+                canvasButton.Margin = new Thickness(-9, 1, 0, 0);
             canvasButton.Height = 20;
             canvasButton.Width = 90;
 
@@ -367,11 +369,12 @@ namespace FinalUi
 
             Path pathsquare = new Path();
             pathsquare.Data = Geometry.Parse(@"F1M2,1.644C2,1.644 2,20 2,20 2,20 77.831,20 77.831,20 77.831,20 91.619,1.644 91.619,1.644 91.619,1.644 2,1.644 2,1.644z");
-            pathsquare.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF5E5EC5"));
+            pathsquare.Fill = Brushes.RoyalBlue;
             pathsquare.Height = 20;
             pathsquare.Width = 88.5;
             pathsquare.Stretch = Stretch.Fill;
             Button buttonsquare = new Button();
+            buttonsquare.Name = "_pathsquare";
             buttonsquare.Style = (Style)FindResource("Sheet_button");
             buttonsquare.Content = pathsquare;
 
@@ -387,6 +390,7 @@ namespace FinalUi
                     8.327 9.526,8.327 9.526,8.327 14.987,13.789 14.987,13.789z");
 
             TextBlock text = new TextBlock();
+            text.Name = "Sheettext";
             text.Text = "Sheet- " + key.ToString();
             text.Foreground = Brushes.White;
             text.FontSize = 16;
@@ -409,6 +413,8 @@ namespace FinalUi
             canvasButton.Click += SheetSelectButton_Click;
             buttontabcanvaswrap.Children.Add(canvasButton);
             buttonList.Add(canvasButton, key);
+            if(activeButton != null)
+            changeSheetButton(activeButton, canvasButton);
             activeButton = canvasButton;
 
         }
@@ -432,16 +438,65 @@ namespace FinalUi
                     dataGridHelper.refreshCurrentPage();
                 }
                 LoadWorker.RunWorkerAsync(dataWind.data);
-
-
             }
         }
 
+        void changeSheetButton(Button current_active, Button button)
+        {
+            if (!current_active.Equals(button))
+            {
+                Canvas c = (Canvas)button.Content;
+                foreach (UIElement u in c.Children)
+                {
+                    if (u is Button)
+                    {
+                        var p = (Button)u;
+
+                        if (p.Name == "_pathsquare")
+                        {
+                            var b = (Path)p.Content;
+                            b.Fill = Brushes.RoyalBlue;
+                        }
+                    }
+                    if (u is TextBlock)
+                    {
+                        var p = (TextBlock)u;
+                        if (p.Name == "Sheettext")
+                        {
+                            p.Foreground = Brushes.White;
+                        }
+                    }
+                }
+                c = (Canvas)current_active.Content;
+                foreach (UIElement u in c.Children)
+                {
+                    if (u is Button)
+                    {
+                        var p = (Button)u;
+
+                        if (p.Name == "_pathsquare")
+                        {
+                            var b = (Path)p.Content;
+                            b.Fill = Brushes.AliceBlue;
+                        }
+                    }
+                    if (u is TextBlock)
+                    {
+                        var p = (TextBlock)u;
+                        if (p.Name == "Sheettext")
+                        {
+                            p.Foreground = Brushes.Black;
+                        }
+                    }
+                }
+            }
+        }
         private void SheetSelectButton_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
             dataGridHelper.setActiveSheet(buttonList[button]);
             dataGridHelper.refreshCurrentPage();
+            changeSheetButton(activeButton, button);
             activeButton = button;
         }
         #region DataGrid Navigation Method
