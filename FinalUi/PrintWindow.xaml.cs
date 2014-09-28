@@ -25,7 +25,8 @@ namespace FinalUi
         CollectionViewSource ClientListSource;
         CollectionViewSource DataGridSource;
         List<RuntimeData> dataGridSource;
-        public PrintWindow(List<RuntimeData> data, Client clc)
+        Microsoft.Reporting.WinForms.ReportDataSource rs;
+        public PrintWindow(List<RuntimeData> data)
         {
             InitializeComponent();
             ClientListSource = (CollectionViewSource)FindResource("ClientList");
@@ -33,27 +34,11 @@ namespace FinalUi
             dataGridSource = data;
             BillingDataDataContext db = new BillingDataDataContext();
             ClientListSource.Source = db.Clients.Select(x => x.CLCODE);
-            Microsoft.Reporting.WinForms.ReportDataSource rs = new Microsoft.Reporting.WinForms.ReportDataSource();
+            rs = new Microsoft.Reporting.WinForms.ReportDataSource();
             rs.Name = "DataSet1";
             rs.Value = dataGridSource;
             BillViewer.LocalReport.ReportPath = "Report1.rdlc";
-            //PageSettings pg = BillViewer.GetPageSettings() ;
-            //pg.Margins = new Margins(6,6,6,6);
-            //BillViewer.SetPageSettings(pg);
-            List<ReportParameter> repParams = new List<ReportParameter>();
-            repParams.Add(new ReportParameter("CompanyName", Configs.Default.CompanyName));
-            repParams.Add(new ReportParameter("ComapnyPhoneNo", Configs.Default.CompanyPhone));
-            repParams.Add(new ReportParameter("CompanyAddress", Configs.Default.CompanyAddress));
-            repParams.Add(new ReportParameter("CompanyEmail", Configs.Default.CompanyEmail));
-            repParams.Add(new ReportParameter("CompanyFax", Configs.Default.CompanyFax));
-            repParams.Add(new ReportParameter("ClientName", clc.CLNAME));
-            repParams.Add(new ReportParameter("ClientAddress", clc.ADDRESS));
-            repParams.Add(new ReportParameter("ClientPhoneNo", clc.CONTACTNO));
-            repParams.Add(new ReportParameter("InvoiceNumber", Guid.NewGuid().ToString()));
-            BillViewer.LocalReport.SetParameters(repParams);
-            BillViewer.LocalReport.DataSources.Add(rs);
-            BillViewer.ShowExportButton = true;
-            BillViewer.RefreshReport();
+            
         }
 
         void BillViewer_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
@@ -79,7 +64,43 @@ namespace FinalUi
         }
         private void printObj()
         {
-            
+
+            BillingDataDataContext db = new BillingDataDataContext();
+            List<RuntimeData> source = dataGridSource.Where(x => x.CustCode == ClientList.Text  && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
+            rs.Value = source;
+            Client clc = db.Clients.SingleOrDefault(x => x.CLCODE == ClientList.Text);
+            BillViewer.LocalReport.DataSources.Clear();
+            BillViewer.LocalReport.DataSources.Add(rs);
+            List<ReportParameter> repParams = new List<ReportParameter>();
+            BillViewer.LocalReport.SetParameters(repParams);
+            string dateString = FromDate.DisplayDate.ToString() + " to " + ToDate.DisplayDate.ToString();
+            repParams.Add(new ReportParameter("DateString", dateString));
+            string descriptionString = "";
+            descriptionString = "Total Connsignments: " + source.Count;
+            repParams.Add(new ReportParameter("DescriptionString", descriptionString));
+            string mainAmount = source.Sum(x => x.FrAmount).ToString();
+            repParams.Add(new ReportParameter("MainAmountString", mainAmount));
+            repParams.Add(new ReportParameter("TaxPercentageString", TaxBox.Text));
+            double taxamount = double.Parse(TaxBox.Text) * double.Parse(mainAmount) / 100;
+            repParams.Add(new ReportParameter("TaxAmountString", taxamount.ToString()));
+            repParams.Add(new ReportParameter("MiscellaneousAmountString", MiscBox.Text));
+            double totalAmount = double.Parse(mainAmount) + taxamount + double.Parse(MiscBox.Text) + double.Parse(PreviousDueTextBox.Text);
+            repParams.Add(new ReportParameter("TotalAmountString", totalAmount.ToString()));
+            string totalAmountinWordString = UtilityClass.NumbersToWords((int)totalAmount);
+            repParams.Add(new ReportParameter("TotalAmountInWordString", totalAmountinWordString));
+            repParams.Add(new ReportParameter("PreviousDueString", PreviousDueTextBox.Text));
+            repParams.Add(new ReportParameter("CompanyName", Configs.Default.CompanyName));
+            repParams.Add(new ReportParameter("ComapnyPhoneNo", Configs.Default.CompanyPhone));
+            repParams.Add(new ReportParameter("CompanyAddress", Configs.Default.CompanyAddress));
+            repParams.Add(new ReportParameter("CompanyEmail", Configs.Default.CompanyEmail));
+            repParams.Add(new ReportParameter("CompanyFax", Configs.Default.CompanyFax));
+            repParams.Add(new ReportParameter("ClientName", clc.CLNAME));
+            repParams.Add(new ReportParameter("ClientAddress", clc.ADDRESS));
+            repParams.Add(new ReportParameter("ClientPhoneNo", clc.CONTACTNO));
+            repParams.Add(new ReportParameter("InvoiceNumber", Guid.NewGuid().ToString()));
+            BillViewer.LocalReport.SetParameters(repParams);
+            BillViewer.ShowExportButton = true;
+           
             BillViewer.RefreshReport();
           }
         private void Button_Click(object sender, RoutedEventArgs e)

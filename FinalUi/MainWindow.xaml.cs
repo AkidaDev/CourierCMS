@@ -95,7 +95,7 @@ namespace FinalUi
             List<int> sheets = db.RuntimeMetas.Where(y => y.UserName == SecurityModule.currentUserName).Select(x => x.SheetNo).Distinct().ToList();
             foreach (int sheet in sheets)
             {
-                List<RuntimeData> runtimeData = db.RuntimeMetas.Where(x => x.SheetNo == sheet && x.UserName == SecurityModule.currentUserName).Select(y => y.RuntimeData).OrderBy(x => x.ConsignmentNo).ToList(); ;
+                List<RuntimeData> runtimeData = db.RuntimeMetas.Where(x => x.SheetNo == sheet && x.UserName == SecurityModule.currentUserName).Select(y => y.RuntimeData).OrderBy(x => x.BookingDate).ThenBy(z=>z.ConsignmentNo).ToList(); ;
                 dataGridHelper.addNewSheet(runtimeData, "sheet " + sheet.ToString());
                 addingNewPage(sheet);
             }
@@ -244,7 +244,7 @@ namespace FinalUi
         private void ExecutePrint(object sender, ExecutedRoutedEventArgs e)
         {
 
-            PrintWindow win = new PrintWindow(dataGridHelper.getCurrentDataStack, (new BillingDataDataContext()).Clients.First());
+            PrintWindow win = new PrintWindow(dataGridHelper.getCurrentDataStack);
             win.ShowDialog();
         }
         private void CanExecutePrintCommand(object sender, CanExecuteRoutedEventArgs e)

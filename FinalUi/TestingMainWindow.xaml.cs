@@ -86,5 +86,11 @@ namespace FinalUi
            testtheme win = new testtheme();
             win.Show();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            BillReportWindow win = new BillReportWindow();
+            win.Show();
+        }
     }
 }

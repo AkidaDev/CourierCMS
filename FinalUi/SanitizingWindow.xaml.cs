@@ -47,7 +47,7 @@ namespace FinalUi
                                 select client.CLCODE;
             conssNumbers = (CollectionViewSource)FindResource("ConsignmentNumbers");
             conssNumbers.Source = (from id in dataContext
-                                   orderby id.ConsignmentNo
+                                   orderby id.BookingDate,id.ConsignmentNo
                                    select id.ConsignmentNo).ToList();
             InsertionDate.SelectedDate = DateTime.Today;
             fillAllElements(ConnsignmentNumber.Text);

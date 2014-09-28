@@ -39,7 +39,7 @@ namespace FinalUi
             runtimeDataObj.SplDisc = trans.SplDisc;
             runtimeDataObj.CustCode = trans.CustCode;
             runtimeDataObj.TransactionId = trans.ID;
-            if (runtimeDataObj.Type != null)
+            if (trans.Type != null)
                 runtimeDataObj.Type = trans.Type.Trim();
             return runtimeDataObj;
         }
@@ -48,7 +48,7 @@ namespace FinalUi
 
             BillingDataDataContext db = new BillingDataDataContext();
             List<Transaction> transData = db.Transactions.Where(x => startDate <= x.BookingDate && endDate >= x.BookingDate).ToList();
-            return convertTransListToRuntimeList(transData);
+            return convertTransListToRuntimeList(transData).OrderBy(x => x.BookingDate).ThenBy(y => y.ConsignmentNo).ToList();
 
         }
         #endregion
@@ -160,7 +160,7 @@ namespace FinalUi
             Rate rate = db.Rates.SingleOrDefault(x => x.RateCode == rateCode);
             if (rateCode != null)
             {
-                List<RateDetail> rateDetails = rate.RateDetails.OrderBy(x =>x.Type.ToString() +  x.Weight.ToString()).ToList();
+                List<RateDetail> rateDetails = rate.RateDetails.OrderBy(x => x.Type.ToString() + x.Weight.ToString()).ToList();
                 double lastRangeWeight = 0;
                 double price = 0;
                 int i = 0;
@@ -208,24 +208,89 @@ namespace FinalUi
             }
             return -1;
         }
-        public static double getCost(string clientCode, string destinationCode, decimal destinationPin, double wieght,string zoneCode, string serviceCode, char dox)
+        public static double getCost(string clientCode, string destinationCode, decimal destinationPin, double wieght, string zoneCode, string serviceCode, char dox)
         {
             Assignment ab;
             BillingDataDataContext db = new BillingDataDataContext();
             ab = db.Assignments.FirstOrDefault(x => x.ServiceCode == serviceCode && x.ClientCode == clientCode && x.ZoneCode == zoneCode);
-            if(ab == null)
+            if (ab == null)
             {
                 ab = db.Assignments.FirstOrDefault(x => x.ServiceCode == "DEFAULT" && x.ClientCode == clientCode && x.ZoneCode == zoneCode);
-                if(ab == null)
+                if (ab == null)
                 {
                     ab = db.Assignments.FirstOrDefault(x => x.ServiceCode == "DEFAULT" && x.ClientCode == clientCode && x.ZoneCode == "DEF");
-                    if(ab == null)
+                    if (ab == null)
                     {
                         ab = db.Assignments.FirstOrDefault(x => x.ServiceCode == "DEFAULT" && x.ClientCode == "DEF" && x.ZoneCode == "DEF");
                     }
                 }
             }
             return getPriceFromRateCode(ab.RateCode, wieght, dox);
+        }
+        #endregion
+        #region Miscellaneous Utilities
+        public static string NumbersToWords(int inputNumber)
+        {
+            int inputNo = inputNumber;
+
+            if (inputNo == 0)
+                return "Zero";
+
+            int[] numbers = new int[4];
+            int first = 0;
+            int u, h, t;
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+            if (inputNo < 0)
+            {
+                sb.Append("Minus ");
+                inputNo = -inputNo;
+            }
+
+            string[] words0 = {"" ,"One ", "Two ", "Three ", "Four ",
+            "Five " ,"Six ", "Seven ", "Eight ", "Nine "};
+            string[] words1 = {"Ten ", "Eleven ", "Twelve ", "Thirteen ", "Fourteen ",
+            "Fifteen ","Sixteen ","Seventeen ","Eighteen ", "Nineteen "};
+            string[] words2 = {"Twenty ", "Thirty ", "Forty ", "Fifty ", "Sixty ",
+            "Seventy ","Eighty ", "Ninety "};
+            string[] words3 = { "Thousand ", "Lakh ", "Crore " };
+
+            numbers[0] = inputNo % 1000; // units
+            numbers[1] = inputNo / 1000;
+            numbers[2] = inputNo / 100000;
+            numbers[1] = numbers[1] - 100 * numbers[2]; // thousands
+            numbers[3] = inputNo / 10000000; // crores
+            numbers[2] = numbers[2] - 100 * numbers[3]; // lakhs
+
+            for (int i = 3; i > 0; i--)
+            {
+                if (numbers[i] != 0)
+                {
+                    first = i;
+                    break;
+                }
+            }
+            for (int i = first; i >= 0; i--)
+            {
+                if (numbers[i] == 0) continue;
+                u = numbers[i] % 10; // ones
+                t = numbers[i] / 10;
+                h = numbers[i] / 100; // hundreds
+                t = t - 10 * h; // tens
+                if (h > 0) sb.Append(words0[h] + "Hundred ");
+                if (u > 0 || t > 0)
+                {
+                    if (h > 0 || i == 0) sb.Append("and ");
+                    if (t == 0)
+                        sb.Append(words0[u]);
+                    else if (t == 1)
+                        sb.Append(words1[u]);
+                    else
+                        sb.Append(words2[t - 2] + words0[u]);
+                }
+                if (i != 0) sb.Append(words3[i - 1]);
+            }
+            return sb.ToString().TrimEnd();
         }
         #endregion
     }

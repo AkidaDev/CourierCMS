@@ -190,7 +190,7 @@ namespace UtilityProject
                     addToAnalyzingResults(analyzingResults, data, "Weight does not match with observed weight");
                 if (origData.Amount != data.Amount)
                     addToAnalyzingResults(analyzingResults, data, "Amount does not match with original results");
-                if (origData.Type != data.Type)
+                if (origData.Type.Trim() != data.Type.Trim())
                     addToAnalyzingResults(analyzingResults, data, "Type does not match with original type");
 
                 City city = db.Cities.FirstOrDefault(x => x.CITY_CODE == origData.Destination && x.CITY_STATUS == "A");

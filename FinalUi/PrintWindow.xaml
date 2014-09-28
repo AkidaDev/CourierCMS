@@ -10,7 +10,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
         </Grid.RowDefinitions>
         <WrapPanel Grid.Row="0">
             <TextBlock Text="Client: "></TextBlock>
@@ -19,8 +19,15 @@
             <DatePicker Name="FromDate" CalendarClosed="ToDate_CalendarClosed"></DatePicker>
             <TextBlock Text="ToDate: "></TextBlock>
             <DatePicker Name="ToDate" CalendarClosed="ToDate_CalendarClosed"></DatePicker>
+            <TextBlock Text="PreviousDue"></TextBlock>
+            <TextBox Name="PreviousDueTextBox" Width="50"></TextBox>
+            <TextBlock Text="Tax(in %)"></TextBlock>
+            <TextBox Name="TaxBox" Width="50"></TextBox>
+            <TextBlock Text="Miscellaneous Charges"></TextBlock>
+            <TextBox Name="MiscBox" Width="50"></TextBox>
             <Button HorizontalAlignment="Right" Content="Print" Click="Button_Click"></Button>
         </WrapPanel>
+        
         <WindowsFormsHost Grid.Row="1">
                 <rv:ReportViewer x:Name="BillViewer" ShowContextMenu="True" ShowExportButton="True" ></rv:ReportViewer>
             </WindowsFormsHost>

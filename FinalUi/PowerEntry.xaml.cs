@@ -26,8 +26,9 @@ namespace FinalUi
         public PowerEntry(List<RuntimeData> DataStack, List<String> ClientCodes, BillingDataDataContext db)
             : this()
         {
-            startConnNo.DataContext = DataStack.Select(c => c.ConsignmentNo).ToList();
-            endConnNo.DataContext = DataStack.Select(c => c.ConsignmentNo).ToList();
+            List<string> connList = DataStack.OrderBy(x => x.BookingDate).ThenBy(y => y.ConsignmentNo).Select(c => c.ConsignmentNo).ToList();
+            startConnNo.DataContext = connList;
+            endConnNo.DataContext =connList;
             clientCode.DataContext = ClientCodes;
             this.DataStack = DataStack;
             this.db = db;
@@ -52,8 +53,9 @@ namespace FinalUi
                     data.CustCode = clientCode.SelectedValue.ToString();
                     data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination, data.DestinationPin, data.Weight, c.ZONE, data.Type, (char)data.DOX);
                     data.FrWeight = data.Weight;
-                    db.SubmitChanges();
+                   
                 }
+                db.SubmitChanges();
             }
         }
     }
