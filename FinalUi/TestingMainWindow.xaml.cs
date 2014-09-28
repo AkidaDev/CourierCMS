@@ -64,8 +64,8 @@ namespace FinalUi
 
         private void ServiceWindow_Click(object sender, RoutedEventArgs e)
         {
-            //ServiceFinder window = new ServiceFinder();
-            //window.Show();
+            ServiceFinder window = new ServiceFinder();
+            window.Show();
         }
 
         private void AnalyzeInvoicebutton_Click(object sender, RoutedEventArgs e)
@@ -83,8 +83,8 @@ namespace FinalUi
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-        //    testtheme win = new testtheme();
-        //    win.Show();
+           testtheme win = new testtheme();
+            win.Show();
         }
     }
 }

@@ -143,31 +143,6 @@
       <Association Name="RuntimeData_RuntimeMeta" Member="RuntimeData" ThisKey="RuntimeDataID" OtherKey="Id" Type="RuntimeData" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.scs_serv_pincode_mas" Member="scs_serv_pincode_mas">
-    <Type Name="scs_serv_pincode_ma">
-      <Column Name="SSPM_PIN" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="SSPM_AREA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="SSPM_REGION" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="SSPM_ZONE" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="SSPM_LOC_TYPE" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="SSPM_LOC_CODE" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="SSPM_SERVICED_BY" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="SSPM_BRANCH" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="SSPM_CITY" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="SSPM_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="MOD_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="MOD_TIME" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="NODEID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="USERID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="SSPM_COD" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="SSPM_REMARKS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="SSPM_ODA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="SSPM_ACTIVATION_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="SSPM_DEACTIVATION_DATE" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="SSPM_EXTENDED" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="SSPM_RDA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Service" Member="Services">
     <Type Name="Service">
       <Column Name="SER_CODE" Type="System.String" DbType="NVarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
