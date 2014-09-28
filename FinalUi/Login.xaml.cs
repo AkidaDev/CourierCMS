@@ -31,22 +31,8 @@ namespace FinalUi
 
             InitializeComponent();
 
-           // ImageBehavior.SetRepeatBehavior(LoadingGif, RepeatBehavior.Forever);
+           //ImageBehavior.SetRepeatBehavior(LoadingGif, RepeatBehavior.Forever);
             CommandBinding command = new CommandBinding();
-
-            /*  Testing Code  */
-            /********************* Must Delete Afterwards **********************/
-            /* 
-           // window = new MainWindow("dharmendra");
-            window = new MainWindow();
-            window
-             * 
-             * 
-             * 
-             * 
-            this.Close();
-            loginFlag = false;
-           */
         }
         MainWindow window;
 
@@ -57,7 +43,7 @@ namespace FinalUi
 
         private void CloseButton_MouseLeave_1(object sender, MouseEventArgs e)
         {
-            //    this.CloseButton.Foreground = new SolidColorBrush(Colors.White);
+            //this.CloseButton.Foreground = new SolidColorBrush(Colors.White);
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

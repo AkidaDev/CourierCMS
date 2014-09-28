@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,6 +43,7 @@ namespace FinalUi
         {
             int startCOnnNoIndex = startConnNo.SelectedIndex;
             int endConnNoIndex = endConnNo.SelectedIndex;
+            this.progressbar.Visibility = Visibility.Hidden;
             if (startCOnnNoIndex <= endConnNoIndex && startCOnnNoIndex != -1 && endConnNoIndex != -1)
             {
                 for (int i = startCOnnNoIndex; i <= endConnNoIndex; i++)
@@ -57,6 +59,15 @@ namespace FinalUi
                 }
                 db.SubmitChanges();
             }
+        }
+        private void Button_Click_Close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void DragthisWindow(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }

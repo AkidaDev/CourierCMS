@@ -42,9 +42,9 @@ namespace FinalUi
             this.CostBox.Text = s.cost.ToString();
             this.DescriptionBox.Text = s.desc;
         }
-       bool getdetails()
+        bool getdetails()
         {
-            var e = new  Employee();
+            var e = new Employee();
             this.s.StockStart = this.FromBox.Text;
             this.s.StockEnd = this.ToBox.Text;
             this.s.desc = this.DescriptionBox.Text;
@@ -69,14 +69,18 @@ namespace FinalUi
 
         private void AddstockLabel_Click(object sender, RoutedEventArgs e)
         {
-            bool flag =  true;
+            bool flag = true;
             if (getdetails())
             {
                 BillingDataDataContext db = new BillingDataDataContext();
                 db.Stocks.InsertOnSubmit(this.s);
                 try
                 {
-                    db.SubmitChanges();
+                    if (Validator.StockV(this.s))
+                    {
+                        db.SubmitChanges();
+                    }
+                    flag = false;
                 }
                 catch (Exception d) { flag = false; }
                 if (flag)
@@ -104,6 +108,15 @@ namespace FinalUi
                 }
                 return DependencyProperty.UnsetValue;
             }
+        }
+        private void Button_Click_Close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void DragthisWindow(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }

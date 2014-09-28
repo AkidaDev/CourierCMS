@@ -26,11 +26,6 @@
         </LinearGradientBrush>
         <CollectionViewSource x:Key="ClientCodeList" CollectionViewType="ListCollectionView"></CollectionViewSource>
         <CollectionViewSource x:Key="DataGridDataContext" CollectionViewType="ListCollectionView"></CollectionViewSource>
-
-       <!-- <ImageBrush ImageSource="Images/Menu bar.png" x:Key="GridBackground" Opacity=".9"/>
-        <ImageBrush ImageSource="Images/topnavigation bar.png" x:Key="NavigationBackground" Opacity=".9"/>
-        <ImageBrush ImageSource="Images/bottomnavigation bar.png" x:Key="QuickbuttonBackground" Opacity=".9"/>
-        <ImageBrush ImageSource="Images/side menu.png" x:Key="SideMenuBackground" Opacity=".9"/>-->
         <ImageBrush ImageSource="Images/search.png" x:Key="Searchbarcontent"/>
 
     </Window.Resources>
@@ -48,17 +43,21 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="1" Grid.Column="1" >
             <Grid Background="#FFBBCADC" Height="26.62" >
-                <Menu Margin="3" Background="Transparent" FontSize="14">
-                    <MenuItem Header="File" Margin="10 0 0 0"/>
-                    <MenuItem Header="View" Margin="10 0 0 0"/>
+                <Menu Margin="3" Background="Transparent" FontSize="14" MouseDown="Grid_MouseDown">
+                    <MenuItem Header="File" Margin="10 0 0 0">
+                        <MenuItem Header="Import Data" Name="ImportDataMenuItem" Command="ApplicationCommands.Open"></MenuItem>
+                        <MenuItem Header="Print" Name="PrintMenuItem" Command="ApplicationCommands.Print"></MenuItem>                        <MenuItem Header="Close" Click="MenuItem_Click"></MenuItem>
+                    </MenuItem>
                     <MenuItem Header="Tools" Margin="10 0 0 0">
                         <MenuItem Header="Managment">
-                            <MenuItem Header="Clients"></MenuItem>
-                            <MenuItem Header="Employees"></MenuItem>
+                            <MenuItem Header="Clients" Name="ManageClient" Click="ManageClient_Click"></MenuItem>
+                            <MenuItem Header="Employees" Name="ManageEmployee" Click="ManageEmployee_Click"></MenuItem>
                         </MenuItem>
-                        <MenuItem Header="Edit Rates"></MenuItem>
+                        <MenuItem Header="Edit Rates" Name="RateWindowMenu" Click="RateWindowMenu_Click"></MenuItem>
                     </MenuItem>
-                    <MenuItem Header="Help" Margin="10 0 0 0"/>
+                    <MenuItem Header="Help" Margin="10 0 0 0"> 
+                        <MenuItem Header="About" Name="AboutMenuItem" Click="AboutMenuItem_Click"></MenuItem>
+                    </MenuItem>
                 </Menu>
                 <WrapPanel HorizontalAlignment="Right" Margin="0,0,0,9">
                     <Button Style="{StaticResource all}" Name="MinimizeButton" Click="MinimizeButton_Click" Width="25">
