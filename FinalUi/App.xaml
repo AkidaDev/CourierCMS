@@ -130,7 +130,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border Name="Border" CornerRadius="0" BorderThickness="0"
-						Background="#FFC33636"
+						Background="Transparent"
 						BorderBrush="Transparent">
                             <ContentPresenter Margin="0" 
                                  HorizontalAlignment="Center"

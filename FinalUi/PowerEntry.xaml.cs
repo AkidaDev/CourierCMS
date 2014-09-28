@@ -55,7 +55,6 @@ namespace FinalUi
                     data.CustCode = clientCode.SelectedValue.ToString();
                     data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination, data.DestinationPin, data.Weight, c.ZONE, data.Type, (char)data.DOX);
                     data.FrWeight = data.Weight;
-                   
                 }
                 db.SubmitChanges();
             }
