@@ -60,6 +60,8 @@
 						<MenuItem Header="About" x:Name="AboutMenuItem" Click="AboutMenuItem_Click" Background="White"/>
 					</MenuItem>
 				</Menu>
+					<TextBlock FontSize="20" Padding="0 5 0 0" FontFamily="Trajan Pro 3" Height="24" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Vortex" Width="90"/>
+				
 				<WrapPanel HorizontalAlignment="Right" Margin="0,0,0,9">
 					<Button Style="{StaticResource all}" x:Name="MinimizeButton" Click="MinimizeButton_Click" Width="25">
 						<Path x:Name="minimize" Data="F1M2,4C2,4 2,2 2,2 2,2 14,2 14,2 14,2 14,4 14,4 14,4 2,4 2,4z" Fill="Black" Height="5" Width="12" Margin="-1,0,0,-7"/>
