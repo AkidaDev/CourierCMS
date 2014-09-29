@@ -212,7 +212,7 @@ namespace FinalUi
         {
 
             PowerEntry powerWin = new PowerEntry(dataGridHelper.getCurrentDataStack, db.Clients.Select(c => c.CLCODE.ToString()).ToList(), db);
-            powerWin.ShowDialog();
+            powerWin.Show();
 
         }
         #endregion

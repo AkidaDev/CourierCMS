@@ -42,6 +42,7 @@ namespace FinalUi
 
         void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            
             SubmitRecords.IsEnabled = true;
         }
 
@@ -57,14 +58,16 @@ namespace FinalUi
                     RuntimeData data = DataStack.ElementAt(i);
                     data.CustCode = clientCode.SelectedValue.ToString();
                     var c = cs.Where(x => x.CITY_CODE == data.Destination && x.CITY_STATUS == "A").FirstOrDefault();
+                    if (c == null)
+                        c = db.Cities.SingleOrDefault(x => x.CITY_CODE == "DEL");
                     data = db.RuntimeDatas.Single(x => x.Id == data.Id);
                     data.CustCode = clientCode.SelectedValue.ToString();
                     data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination, data.DestinationPin, data.Weight, c.ZONE, data.Type, (char)data.DOX);
                     data.FrWeight = data.Weight;
-
                 }
                 db.SubmitChanges();
             }
+            SubmitRecords.IsEnabled = true;
         }
         PowerEntry()
         {
@@ -74,7 +77,7 @@ namespace FinalUi
         private void SubmitRecords_Click(object sender, RoutedEventArgs e)
         {
             SubmitRecords.IsEnabled = false;
-            worker.RunWorkerAsync();
+            worker_DoWork(null, null);
         }
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
