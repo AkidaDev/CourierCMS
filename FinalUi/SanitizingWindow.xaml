@@ -84,7 +84,7 @@
 
             <TextBlock Canvas.Left="385.04" TextWrapping="Wrap" Text="TextBlock" Canvas.Top="45.04" Name="StatusTextBox"/>
         </Canvas>
-        <TextBox HorizontalAlignment="Left" Name="MODE" Height="23" Margin="260.307,42.21,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Name="MODE" Height="23" Margin="-421,62,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="224,45.25,0,0" TextWrapping="Wrap" Text="MODE" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="290,44.25,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
     </Grid>

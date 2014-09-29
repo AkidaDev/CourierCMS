@@ -28,7 +28,7 @@ namespace FinalUi
             DataStack = DataStack.OrderBy(x => x.BookingDate).ThenBy(y => y.ConsignmentNo).ToList();
             List<string> connList = DataStack.Select(c => c.ConsignmentNo).ToList();
             startConnNo.DataContext = connList;
-            endConnNo.DataContext =connList;
+            endConnNo.DataContext = connList;
             clientCode.DataContext = ClientCodes;
             this.DataStack = DataStack;
             this.db = db;
