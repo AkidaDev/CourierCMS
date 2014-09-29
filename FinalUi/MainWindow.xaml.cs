@@ -609,6 +609,11 @@ namespace FinalUi
                     {
                         Cursor = Cursors.SizeNS;
                         break;
+                    } 
+				case "Rec2":
+                    {
+                        Cursor = Cursors.SizeWE;
+                        break;
                     }
                 case "Rec_Top_Left":
                     {
