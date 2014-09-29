@@ -356,10 +356,7 @@ namespace FinalUi
             canvasButton.Style = (Style)FindResource("Sheet_button");
             canvasButton.Width = 90;
             canvasButton.Height = 20;
-            if (key == 0)
-                canvasButton.Margin = new Thickness(0, 1, 0, 0);
-            else
-                canvasButton.Margin = new Thickness(-9, 1, 0, 0);
+            canvasButton.Margin = new Thickness(-9, 1, 0, 0);
             canvasButton.Height = 20;
             canvasButton.Width = 90;
 
