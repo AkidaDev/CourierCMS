@@ -39,6 +39,7 @@
     <Reference Include="itextsharp">
       <HintPath>..\packages\iTextSharp.5.5.3\lib\itextsharp.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Expression.Effects" />
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.Common.dll</HintPath>
