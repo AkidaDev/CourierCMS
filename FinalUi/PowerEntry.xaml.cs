@@ -15,8 +15,6 @@ using System.Windows.Shapes;
 
 namespace FinalUi
 {
-
-    
     /// <summary>
     /// Interaction logic for PowerEntry.xaml
     /// </summary>
@@ -29,7 +27,7 @@ namespace FinalUi
         {
             List<string> connList = DataStack.OrderBy(x => x.BookingDate).ThenBy(y => y.ConsignmentNo).Select(c => c.ConsignmentNo).ToList();
             startConnNo.DataContext = connList;
-            endConnNo.DataContext =connList;
+            endConnNo.DataContext = connList;
             clientCode.DataContext = ClientCodes;
             this.DataStack = DataStack;
             this.db = db;

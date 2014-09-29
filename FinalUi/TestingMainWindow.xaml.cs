@@ -92,5 +92,11 @@ namespace FinalUi
             BillReportWindow win = new BillReportWindow();
             win.Show();
         }
+
+        private void PreferenceWindow_Click(object sender, RoutedEventArgs e)
+        {
+            PreferenceWindow window = new PreferenceWindow(); window.ShowDialog();
+
+        }
     }
 }

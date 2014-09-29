@@ -6,15 +6,12 @@
 
     </Window.Resources>
     <Grid Margin="0,0,123,179">
-        <Button Name="login" Content="Login" Click="login_Click" Margin="28,29,28,31"></Button>
-        <Button Name="manageclient" Content="manageclient" Click="manageclient_Click" Margin="28,109,35,-64"></Button>
-        <Button Name="manageemployee" Content="ManageEmployee" Click="manageemployee_Click" Margin="28,67,45,-14"></Button>
-        <Button x:Name="mainwindow" Content="MainWindow" Click="mainwindow_Click" Margin="188,67,-105,-16"/>
-        <Button Name="ratewindow" Content="RateWindow" Click="ratewindow_Click" Margin="155,111,-93,-69" ></Button>
-        <Button Name="stockwindow" Content="Stock Window" Click="stockwindow_Click" Margin="167,30,-117,31"></Button>
-        <Button Name="ServiceWindow" Content="Service Window" Click="ServiceWindow_Click" Margin="28,208,28,-152"></Button>
-        <Button Content="AnalyzeInvoice" HorizontalAlignment="Left" Height="34" Name="AnalyzeInvoicebutton" Click="AnalyzeInvoicebutton_Click" Margin="188,220,-94,-164" VerticalAlignment="Top" Width="75"/>
-        <Button Content="testTemp" Click="Button_Click" Margin="155,164,-61,-114"></Button>
-        <Button Content="InvoiceAnalysis" Click="Button_Click_1" HorizontalAlignment="Left" Height="26" Margin="65,177,0,-113" VerticalAlignment="Top" Width="59" RenderTransformOrigin="0.114,0.176"/>
+        <Button x:Name="mainwindow" Content="MainWindow" Click="mainwindow_Click" Margin="188,23,-105,28"/>
+        <Button Name="ratewindow" Content="RateWindow" Click="ratewindow_Click" Margin="22,76,40,-34" ></Button>
+        <Button Name="stockwindow" Content="Stock Window" Click="stockwindow_Click" Margin="22,19,28,42"></Button>
+        <Button Name="ServiceWindow" Content="Service Window" Click="ServiceWindow_Click" Margin="16,145,40,-89"></Button>
+        <Button Content="AnalyzeInvoice" HorizontalAlignment="Left" Height="34" Name="AnalyzeInvoicebutton" Click="AnalyzeInvoicebutton_Click" Margin="174,135,-105,-79" VerticalAlignment="Top" Width="100"/>
+        <Button Content="InvoiceAnalysis" Click="Button_Click_1" HorizontalAlignment="Left" Height="26" Margin="174,87,-105,-23" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.114,0.176"/>
+        <Button Content="Preference" Name="PreferenceWindow" Click="PreferenceWindow_Click" Width="100" Height="50" Margin="16,196,53,-156"></Button>
     </Grid>
 </Window>
