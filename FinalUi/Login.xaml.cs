@@ -80,7 +80,7 @@ namespace FinalUi
                        // LoadingGifPanel.Visibility = Visibility.Visible;
 
                         window = new MainWindow();
-                        window.ShowDialog();
+                        window.Show();
                         this.Close();
                         loginFlag = true;
                     }

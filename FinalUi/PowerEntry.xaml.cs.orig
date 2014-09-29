@@ -15,8 +15,6 @@ using System.Windows.Shapes;
 
 namespace FinalUi
 {
-
-    
     /// <summary>
     /// Interaction logic for PowerEntry.xaml
     /// </summary>
@@ -24,15 +22,50 @@ namespace FinalUi
     {
         BillingDataDataContext db;
         List<RuntimeData> DataStack;
+        BackgroundWorker worker;
         public PowerEntry(List<RuntimeData> DataStack, List<String> ClientCodes, BillingDataDataContext db)
             : this()
         {
-            List<string> connList = DataStack.OrderBy(x => x.BookingDate).ThenBy(y => y.ConsignmentNo).Select(c => c.ConsignmentNo).ToList();
+            DataStack = DataStack.OrderBy(x => x.BookingDate).ThenBy(y => y.ConsignmentNo).ToList();
+            List<string> connList = DataStack.Select(c => c.ConsignmentNo).ToList();
             startConnNo.DataContext = connList;
-            endConnNo.DataContext =connList;
+            endConnNo.DataContext = connList;
             clientCode.DataContext = ClientCodes;
             this.DataStack = DataStack;
             this.db = db;
+            worker = new BackgroundWorker();
+            worker.DoWork += worker_DoWork;
+            worker.RunWorkerCompleted += worker_RunWorkerCompleted;
+        }
+
+        void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            
+            SubmitRecords.IsEnabled = true;
+        }
+
+        void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            int startCOnnNoIndex = startConnNo.SelectedIndex;
+            int endConnNoIndex = endConnNo.SelectedIndex;
+            if (startCOnnNoIndex <= endConnNoIndex && startCOnnNoIndex != -1 && endConnNoIndex != -1)
+            {
+                var cs = (from m in db.Cities select m).ToList();
+                for (int i = startCOnnNoIndex; i <= endConnNoIndex; i++)
+                {
+                    RuntimeData data = DataStack.ElementAt(i);
+                    data.CustCode = clientCode.SelectedValue.ToString();
+                    var c = cs.Where(x => x.CITY_CODE == data.Destination && x.CITY_STATUS == "A").FirstOrDefault();
+                    if (c == null)
+                        c = db.Cities.SingleOrDefault(x => x.CITY_CODE == "DEL");
+                    data = db.RuntimeDatas.Single(x => x.Id == data.Id);
+                    data.CustCode = clientCode.SelectedValue.ToString();
+                    data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination, data.DestinationPin, data.Weight, c.ZONE, data.Type, (char)data.DOX);
+                    data.FrWeight = data.Weight;
+                }
+                db.SubmitChanges();
+            }
+            SubmitRecords.IsEnabled = true;
         }
         PowerEntry()
         {
@@ -41,38 +74,8 @@ namespace FinalUi
 
         private void SubmitRecords_Click(object sender, RoutedEventArgs e)
         {
-            int startCOnnNoIndex = startConnNo.SelectedIndex;
-            int endConnNoIndex = endConnNo.SelectedIndex;
-            this.progressbar.Visibility = Visibility.Hidden;
-            if (startCOnnNoIndex <= endConnNoIndex && startCOnnNoIndex != -1 && endConnNoIndex != -1)
-            {
-<<<<<<< local
-                for (int i = startCOnnNoIndex; i <= endConnNoIndex; i++)
-                {
-                    RuntimeData data = DataStack.ElementAt(i);
-                    data.CustCode = clientCode.SelectedValue.ToString();
-                    var c = (from m in db.Cities select m).Where(x => x.CITY_CODE== data.Destination && x.CITY_STATUS=="A").FirstOrDefault();
-                    data = db.RuntimeDatas.Single(x => x.Id == data.Id);
-                    data.CustCode = clientCode.SelectedValue.ToString();
-                    data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination, data.DestinationPin, data.Weight, c.ZONE, data.Type, (char)data.DOX);
-                    data.FrWeight = data.Weight;
-                   
-                }
-                db.SubmitChanges();
-=======
-                    for (int i = startCOnnNoIndex; i <= endConnNoIndex; i++)
-                    {
-                        RuntimeData data = DataStack.ElementAt(i);
-                        data.CustCode = clientCode.SelectedValue.ToString();
-                        var c = (from m in db.Cities select m).Where(x => x.CITY_CODE == data.Destination && x.CITY_STATUS == "A").FirstOrDefault();
-                        data = db.RuntimeDatas.Single(x => x.Id == data.Id);
-                        data.CustCode = clientCode.SelectedValue.ToString();
-                        data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination, data.DestinationPin, data.Weight, c.ZONE, data.Type, (char)data.DOX);
-                        data.FrWeight = data.Weight;
-                        db.SubmitChanges();
-                    }
->>>>>>> other
-            }
+            SubmitRecords.IsEnabled = false;
+            worker_DoWork(null, null);
         }
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
