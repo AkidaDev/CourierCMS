@@ -35,7 +35,18 @@
             <TextBlock x:Name="Retype_Password______" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="23.999" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Confirm Pass.     .:" Canvas.Top="199.994"/>
 			<TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="99.556" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Set Permissions .:" Canvas.Top="230.16"/>
 			<Path Data="F1M1.986,3C1.986,3 1.986,1.786 1.986,1.786 1.986,1.786 501.982,1.786 501.982,1.786 501.982,1.786 501.982,3 501.982,3 501.982,3 1.986,3 1.986,3" Fill="Black" Height="1" Canvas.Left="90" Canvas.Top="245.846" Width="150" Stretch="Fill"/>
-
+			<TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="352.5" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Details .:" Canvas.Top="163"/>
+			<Path Data="F1M1.986,3C1.986,3 1.986,1.786 1.986,1.786 1.986,1.786 501.982,1.786 501.982,1.786 501.982,1.786 501.982,3 501.982,3 501.982,3 1.986,3 1.986,3" Fill="Black" Height="1" Canvas.Left="341" Canvas.Top="179" Width="100" Stretch="Fill"/>
+			<Canvas Height="158.126" Canvas.Left="341" Canvas.Top="186" Width="183">
+				<Rectangle Stroke="Gray" Height="158.126" Canvas.Left="0" Canvas.Top="0" Width="183"/>
+				<TextBlock FontSize="14" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="6.476" Text="Contact .:" Canvas.Top="11"/>
+				<TextBox Padding="3 2 0 0" Height="23" Canvas.Left="62.5" Canvas.Top="5" Width="113"/>
+				<TextBlock FontSize="14" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="4.976" Text="Address .:" Canvas.Top="41"/>
+				<TextBox Padding="3 2 0 0" Height="85.5" Canvas.Left="62.5" Canvas.Top="35" Width="113"/>
+				<TextBlock FontSize="14" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="17.242" Text="Other .:" Canvas.Top="133"/>
+				<TextBox Padding="3 2 0 0" Height="23" Canvas.Left="62.5" Canvas.Top="127" Width="113"/>
+			 </Canvas>
+            
             <DataGrid  Height="130" Canvas.Left="23.585" Canvas.Top="253.017" Width="100" BorderThickness="1" BorderBrush="Gray"  Name="PermisstionToset" CanUserDeleteRows="False" CanUserAddRows="False" IsReadOnly="True" ItemsSource="{Binding}" DataContext="{StaticResource Permisstion}" SelectionMode="Single" AutoGenerateColumns="False" HeadersVisibility="Column">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Permission .:" Width="98" Binding="{Binding Per}"/>
@@ -49,9 +60,9 @@
             <Path x:Name="Vertical_line" Data="F1M2,3C2,3 2,2 2,2 2,2 331,2 331,2 331,2 331,3 331,3 331,3 2,3 2,3" Fill="Black" Height="4" Canvas.Left="108" Canvas.Top="56" Width="332"/>
             <Path x:Name="detail" Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Black" Height="24" Canvas.Left="81" Canvas.Top="35" Width="24"/>
 
-            <Button Name="AddUpdateEmployee" Click="CreateEmployee_Click" Canvas.Left="389" Canvas.Top="363" Style="{StaticResource all}">
+            <Button Name="AddUpdateEmployee" Click="CreateEmployee_Click" Canvas.Left="389.851" Canvas.Top="357.679" Style="{StaticResource all}">
                 <Button.Content>
-                    <WrapPanel>
+                    <WrapPanel Margin="6,3,6,3">
                         <Path x:Name="AddFilter" Data="F1M13.455,5.818C13.455,5.818 13.455,9.636 13.455,9.636 13.455,9.636 9.636,9.636 9.636,9.636 9.636,9.636 9.636,11.545 9.636,11.545 9.636,11.545 13.455,11.545 13.455,11.545 13.455,11.545 13.455,15.364 13.455,15.364 13.455,15.364 15.364,15.364 15.364,15.364 15.364,15.364 15.364,11.545 15.364,11.545 15.364,11.545 19.182,11.545 19.182,11.545 19.182,11.545 19.182,9.636 19.182,9.636 19.182,9.636 15.364,9.636 15.364,9.636 15.364,9.636 15.364,5.818 15.364,5.818 15.364,5.818 13.455,5.818 13.455,5.818z M2,5.818C2,5.818 3.909,5.818 3.909,5.818 3.909,5.818 3.909,21.091 3.909,21.091 3.909,21.091 19.182,21.091 19.182,21.091 19.182,21.091 19.182,23 19.182,23 19.182,23 3.909,23 3.909,23 2.859,23 2,22.141 2,21.091 2,21.091 2,5.818 2,5.818z M7.727,2C7.727,2 21.091,2 21.091,2 22.141,2 23,2.859 23,3.909 23,3.909 23,17.273 23,17.273 23,18.323 22.141,19.182 21.091,19.182 21.091,19.182 7.727,19.182 7.727,19.182 6.677,19.182 5.818,18.323 5.818,17.273 5.818,17.273 5.818,3.909 5.818,3.909 5.818,2.859 6.677,2 7.727,2z" Fill="Black" Height="24" Width="24"/>
                         <TextBlock x:Name="Add_Filter" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"  LineHeight="18" TextAlignment="Center" Text="Add Employee" Padding="3 3 0 0"/>
                     </WrapPanel>

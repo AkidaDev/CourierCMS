@@ -112,7 +112,7 @@ CanExecute="CanExecutePrintCommand"/>
 								<TreeViewItem>
 									<TreeViewItem.Header>
 										<Button Style="{StaticResource all}" x:Name="BillAnalysis" Click="BillAnalysis_Click" >
-											<TextBlock Text="Bill Analysis" FontSize="16" FontWeight="Bold" Width="224"   Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="-40,0,0,0"/>
+											<TextBlock Text="            Bill Analysis" FontSize="16" FontWeight="Bold" Width="224"   Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="-40,0,0,0"/>
 										</Button>
 									</TreeViewItem.Header>
 								</TreeViewItem>
@@ -133,7 +133,7 @@ CanExecute="CanExecutePrintCommand"/>
 								<TreeViewItem>
 									<TreeViewItem.Header>
 										<Button Style="{StaticResource all}"  >
-											<TextBlock Text="Add Manager" FontSize="16" FontWeight="Bold" Width="224"   Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="-40,0,0,0"/>
+											<TextBlock Text="            Add Manager" FontSize="16" FontWeight="Bold" Width="224"   Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="-40,0,0,0"/>
 										</Button>
 									</TreeViewItem.Header>
 								</TreeViewItem>
