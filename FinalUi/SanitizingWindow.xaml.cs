@@ -52,8 +52,12 @@ namespace FinalUi
             InsertionDate.SelectedDate = DateTime.Today;
             fillAllElements(ConnsignmentNumber.Text);
         }
-
         private void SubmitSanitizingDetails_Click(object sender, RoutedEventArgs e)
+        {
+            SaveData();
+            setNextData();
+        }
+        public void SaveData()
         {
             bool isDataInContext = true;
             RuntimeData data;
@@ -88,7 +92,7 @@ namespace FinalUi
                 data.FrWeight = Double.Parse(WeightAccToFranchize.Text);
                 data.Amount = Decimal.Parse(Cost.Text);
                 data.FrAmount = Decimal.Parse(BilledAmount.Text);
-                data.Destination = Destination.Text;
+                data.Destination = db.Cities.Where(x => x.CITY_DESC == Destination.Text).Select(y => y.CITY_CODE).FirstOrDefault();
                 data.DestinationPin = Decimal.Parse(DestinationPin.Text);
                 data.CustCode = CustomerSelected.Text;
             }
@@ -104,15 +108,12 @@ namespace FinalUi
                 dataListContext.AddNewItem(data);
             }
             db.SubmitChanges();
-
-            setNextData();
         }
         public void setNextData()
         {
             int index = ConnsignmentNumber.SelectedIndex;
             if (ConnsignmentNumber.Items.Count - 1 == index)
             {
-
             }
             else
             {
@@ -120,10 +121,20 @@ namespace FinalUi
                 fillAllElements(ConnsignmentNumber.Text);
             }
         }
-
+        public void setPreviousData()
+        {
+            int index = ConnsignmentNumber.SelectedIndex;
+            if ( index == 0)
+            {
+            }
+            else
+            {
+                ConnsignmentNumber.Text = (string)ConnsignmentNumber.Items.GetItemAt(index - 1);
+                fillAllElements(ConnsignmentNumber.Text);
+            }
+        }
         private void ConnsignmentNumber_KeyUp(object sender, KeyEventArgs e)
         {
-
             fillAllElements(ConnsignmentNumber.Text);
         }
         void fillAllElements(string connsignmentNo)
@@ -141,7 +152,6 @@ namespace FinalUi
                 if (TData != null)
                 {
                     fillDetails(UtilityClass.convertTransObjToRunObj(TData));
-
                     StatusTextBox.Text = "This record will be added to current sheet";
                 }
                 else
@@ -162,10 +172,11 @@ namespace FinalUi
         }
         public void fillDetails(RuntimeData data)
         {
+            BillingDataDataContext db = new BillingDataDataContext();
             WeightAccToDTDC.Text = data.Weight.ToString();
             Cost.Text = data.Amount.ToString();
             MODE.Text = data.Mode;
-            Destination.Text = data.Destination;
+            Destination.Text = db.Cities.Where(x => x.CITY_CODE == data.Destination).Select(y => y.CITY_DESC).FirstOrDefault();
             DestinationPin.Text = data.DestinationPin.ToString();
             if (data.FrWeight != null)
                 WeightAccToFranchize.Text = data.FrWeight.ToString();
@@ -175,14 +186,12 @@ namespace FinalUi
                 BilledAmount.Text = data.FrAmount.ToString();
             else
                 BilledAmount.Text = "";
-
         }
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
             //  this.Owner.Effect = null;
             this.Close();
         }
-
         private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {
             DragMove();
@@ -190,6 +199,11 @@ namespace FinalUi
         private void DoneButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+        private void Previous_Click(object sender, RoutedEventArgs e)
+        {
+            SaveData();
+            setPreviousData();
         }
     }
 }

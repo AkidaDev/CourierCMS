@@ -49,19 +49,6 @@ namespace FinalUi {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("23 Veer Savakar Block, Shop No.-4 opposite metro \rpillar no.-60 shakarpur, new de" +
-            "lhi-110092")]
-        public string CompanyAddress {
-            get {
-                return ((string)(this["CompanyAddress"]));
-            }
-            set {
-                this["CompanyAddress"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("9999999999")]
         public string CompanyPhone {
             get {
@@ -105,6 +92,31 @@ namespace FinalUi {
             }
             set {
                 this["theme"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("23 Veer Savakar Block, Shop No.-4 opposite metro \r\npillar no.-60 shakarpur, new d" +
+            "elhi-110092")]
+        public string CompanyAddress {
+            get {
+                return ((string)(this["CompanyAddress"]));
+            }
+            set {
+                this["CompanyAddress"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1200")]
+        public string ServiceTax {
+            get {
+                return ((string)(this["ServiceTax"]));
+            }
+            set {
+                this["ServiceTax"] = value;
             }
         }
     }
