@@ -30,9 +30,6 @@ namespace FinalUi
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertAssignment(Assignment instance);
-    partial void UpdateAssignment(Assignment instance);
-    partial void DeleteAssignment(Assignment instance);
     partial void InsertZONE(ZONE instance);
     partial void UpdateZONE(ZONE instance);
     partial void DeleteZONE(ZONE instance);
@@ -75,10 +72,13 @@ namespace FinalUi
     partial void InsertUser_permission(User_permission instance);
     partial void UpdateUser_permission(User_permission instance);
     partial void DeleteUser_permission(User_permission instance);
+    partial void InsertAssignment(Assignment instance);
+    partial void UpdateAssignment(Assignment instance);
+    partial void DeleteAssignment(Assignment instance);
     #endregion
 		
 		public BillingDataDataContext() : 
-				base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString6, mappingSource)
+				base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -105,14 +105,6 @@ namespace FinalUi
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<Assignment> Assignments
-		{
-			get
-			{
-				return this.GetTable<Assignment>();
-			}
 		}
 		
 		public System.Data.Linq.Table<ZONE> ZONEs
@@ -226,326 +218,12 @@ namespace FinalUi
 				return this.GetTable<User_permission>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Assignment")]
-	public partial class Assignment : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private System.Guid _Id;
-		
-		private string _ServiceCode;
-		
-		private string _ClientCode;
-		
-		private string _ZoneCode;
-		
-		private string _RateCode;
-		
-		private EntityRef<ZONE> _ZONE;
-		
-		private EntityRef<Client> _Client;
-		
-		private EntityRef<Rate> _Rate;
-		
-		private EntityRef<Service> _Service;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(System.Guid value);
-    partial void OnIdChanged();
-    partial void OnServiceCodeChanging(string value);
-    partial void OnServiceCodeChanged();
-    partial void OnClientCodeChanging(string value);
-    partial void OnClientCodeChanged();
-    partial void OnZoneCodeChanging(string value);
-    partial void OnZoneCodeChanged();
-    partial void OnRateCodeChanging(string value);
-    partial void OnRateCodeChanged();
-    #endregion
-		
-		public Assignment()
-		{
-			this._ZONE = default(EntityRef<ZONE>);
-			this._Client = default(EntityRef<Client>);
-			this._Rate = default(EntityRef<Rate>);
-			this._Service = default(EntityRef<Service>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid Id
+		public System.Data.Linq.Table<Assignment> Assignments
 		{
 			get
 			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceCode", DbType="NVarChar(255)")]
-		public string ServiceCode
-		{
-			get
-			{
-				return this._ServiceCode;
-			}
-			set
-			{
-				if ((this._ServiceCode != value))
-				{
-					if (this._Service.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnServiceCodeChanging(value);
-					this.SendPropertyChanging();
-					this._ServiceCode = value;
-					this.SendPropertyChanged("ServiceCode");
-					this.OnServiceCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientCode", DbType="VarChar(6)")]
-		public string ClientCode
-		{
-			get
-			{
-				return this._ClientCode;
-			}
-			set
-			{
-				if ((this._ClientCode != value))
-				{
-					if (this._Client.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnClientCodeChanging(value);
-					this.SendPropertyChanging();
-					this._ClientCode = value;
-					this.SendPropertyChanged("ClientCode");
-					this.OnClientCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZoneCode", DbType="VarChar(30)")]
-		public string ZoneCode
-		{
-			get
-			{
-				return this._ZoneCode;
-			}
-			set
-			{
-				if ((this._ZoneCode != value))
-				{
-					if (this._ZONE.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnZoneCodeChanging(value);
-					this.SendPropertyChanging();
-					this._ZoneCode = value;
-					this.SendPropertyChanged("ZoneCode");
-					this.OnZoneCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RateCode", DbType="VarChar(50)")]
-		public string RateCode
-		{
-			get
-			{
-				return this._RateCode;
-			}
-			set
-			{
-				if ((this._RateCode != value))
-				{
-					if (this._Rate.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnRateCodeChanging(value);
-					this.SendPropertyChanging();
-					this._RateCode = value;
-					this.SendPropertyChanged("RateCode");
-					this.OnRateCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ZONE_Assignment", Storage="_ZONE", ThisKey="ZoneCode", OtherKey="zcode", IsForeignKey=true)]
-		public ZONE ZONE
-		{
-			get
-			{
-				return this._ZONE.Entity;
-			}
-			set
-			{
-				ZONE previousValue = this._ZONE.Entity;
-				if (((previousValue != value) 
-							|| (this._ZONE.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ZONE.Entity = null;
-						previousValue.Assignments.Remove(this);
-					}
-					this._ZONE.Entity = value;
-					if ((value != null))
-					{
-						value.Assignments.Add(this);
-						this._ZoneCode = value.zcode;
-					}
-					else
-					{
-						this._ZoneCode = default(string);
-					}
-					this.SendPropertyChanged("ZONE");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Client_Assignment", Storage="_Client", ThisKey="ClientCode", OtherKey="CLCODE", IsForeignKey=true)]
-		public Client Client
-		{
-			get
-			{
-				return this._Client.Entity;
-			}
-			set
-			{
-				Client previousValue = this._Client.Entity;
-				if (((previousValue != value) 
-							|| (this._Client.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Client.Entity = null;
-						previousValue.Assignments.Remove(this);
-					}
-					this._Client.Entity = value;
-					if ((value != null))
-					{
-						value.Assignments.Add(this);
-						this._ClientCode = value.CLCODE;
-					}
-					else
-					{
-						this._ClientCode = default(string);
-					}
-					this.SendPropertyChanged("Client");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rate_Assignment", Storage="_Rate", ThisKey="RateCode", OtherKey="RateCode", IsForeignKey=true)]
-		public Rate Rate
-		{
-			get
-			{
-				return this._Rate.Entity;
-			}
-			set
-			{
-				Rate previousValue = this._Rate.Entity;
-				if (((previousValue != value) 
-							|| (this._Rate.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Rate.Entity = null;
-						previousValue.Assignments.Remove(this);
-					}
-					this._Rate.Entity = value;
-					if ((value != null))
-					{
-						value.Assignments.Add(this);
-						this._RateCode = value.RateCode;
-					}
-					else
-					{
-						this._RateCode = default(string);
-					}
-					this.SendPropertyChanged("Rate");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Service_Assignment", Storage="_Service", ThisKey="ServiceCode", OtherKey="SER_CODE", IsForeignKey=true)]
-		public Service Service
-		{
-			get
-			{
-				return this._Service.Entity;
-			}
-			set
-			{
-				Service previousValue = this._Service.Entity;
-				if (((previousValue != value) 
-							|| (this._Service.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Service.Entity = null;
-						previousValue.Assignments.Remove(this);
-					}
-					this._Service.Entity = value;
-					if ((value != null))
-					{
-						value.Assignments.Add(this);
-						this._ServiceCode = value.SER_CODE;
-					}
-					else
-					{
-						this._ServiceCode = default(string);
-					}
-					this.SendPropertyChanged("Service");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				return this.GetTable<Assignment>();
 			}
 		}
 	}
@@ -562,9 +240,9 @@ namespace FinalUi
 		
 		private System.Nullable<char> _Mode;
 		
-		private EntitySet<Assignment> _Assignments;
-		
 		private EntitySet<City> _Cities;
+		
+		private EntitySet<Assignment> _Assignments;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -580,8 +258,8 @@ namespace FinalUi
 		
 		public ZONE()
 		{
-			this._Assignments = new EntitySet<Assignment>(new Action<Assignment>(this.attach_Assignments), new Action<Assignment>(this.detach_Assignments));
 			this._Cities = new EntitySet<City>(new Action<City>(this.attach_Cities), new Action<City>(this.detach_Cities));
+			this._Assignments = new EntitySet<Assignment>(new Action<Assignment>(this.attach_Assignments), new Action<Assignment>(this.detach_Assignments));
 			OnCreated();
 		}
 		
@@ -645,19 +323,6 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ZONE_Assignment", Storage="_Assignments", ThisKey="zcode", OtherKey="ZoneCode")]
-		public EntitySet<Assignment> Assignments
-		{
-			get
-			{
-				return this._Assignments;
-			}
-			set
-			{
-				this._Assignments.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ZONE_City", Storage="_Cities", ThisKey="zcode", OtherKey="ZONE")]
 		public EntitySet<City> Cities
 		{
@@ -668,6 +333,19 @@ namespace FinalUi
 			set
 			{
 				this._Cities.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ZONE_Assignment", Storage="_Assignments", ThisKey="zcode", OtherKey="ZoneCode")]
+		public EntitySet<Assignment> Assignments
+		{
+			get
+			{
+				return this._Assignments;
+			}
+			set
+			{
+				this._Assignments.Assign(value);
 			}
 		}
 		
@@ -691,18 +369,6 @@ namespace FinalUi
 			}
 		}
 		
-		private void attach_Assignments(Assignment entity)
-		{
-			this.SendPropertyChanging();
-			entity.ZONE = this;
-		}
-		
-		private void detach_Assignments(Assignment entity)
-		{
-			this.SendPropertyChanging();
-			entity.ZONE = null;
-		}
-		
 		private void attach_Cities(City entity)
 		{
 			this.SendPropertyChanging();
@@ -713,6 +379,18 @@ namespace FinalUi
 		{
 			this.SendPropertyChanging();
 			entity.ZONE1 = null;
+		}
+		
+		private void attach_Assignments(Assignment entity)
+		{
+			this.SendPropertyChanging();
+			entity.ZONE = this;
+		}
+		
+		private void detach_Assignments(Assignment entity)
+		{
+			this.SendPropertyChanging();
+			entity.ZONE = null;
 		}
 	}
 	
@@ -1220,9 +898,9 @@ namespace FinalUi
 		
 		private string _APPTRF;
 		
-		private EntitySet<Assignment> _Assignments;
-		
 		private EntitySet<Transaction> _Transactions;
+		
+		private EntitySet<Assignment> _Assignments;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1274,8 +952,8 @@ namespace FinalUi
 		
 		public Client()
 		{
-			this._Assignments = new EntitySet<Assignment>(new Action<Assignment>(this.attach_Assignments), new Action<Assignment>(this.detach_Assignments));
 			this._Transactions = new EntitySet<Transaction>(new Action<Transaction>(this.attach_Transactions), new Action<Transaction>(this.detach_Transactions));
+			this._Assignments = new EntitySet<Assignment>(new Action<Assignment>(this.attach_Assignments), new Action<Assignment>(this.detach_Assignments));
 			OnCreated();
 		}
 		
@@ -1699,19 +1377,6 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Client_Assignment", Storage="_Assignments", ThisKey="CLCODE", OtherKey="ClientCode")]
-		public EntitySet<Assignment> Assignments
-		{
-			get
-			{
-				return this._Assignments;
-			}
-			set
-			{
-				this._Assignments.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Client_Transaction", Storage="_Transactions", ThisKey="CLCODE", OtherKey="CustCode")]
 		public EntitySet<Transaction> Transactions
 		{
@@ -1722,6 +1387,19 @@ namespace FinalUi
 			set
 			{
 				this._Transactions.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Client_Assignment", Storage="_Assignments", ThisKey="CLCODE", OtherKey="ClientCode")]
+		public EntitySet<Assignment> Assignments
+		{
+			get
+			{
+				return this._Assignments;
+			}
+			set
+			{
+				this._Assignments.Assign(value);
 			}
 		}
 		
@@ -1745,18 +1423,6 @@ namespace FinalUi
 			}
 		}
 		
-		private void attach_Assignments(Assignment entity)
-		{
-			this.SendPropertyChanging();
-			entity.Client = this;
-		}
-		
-		private void detach_Assignments(Assignment entity)
-		{
-			this.SendPropertyChanging();
-			entity.Client = null;
-		}
-		
 		private void attach_Transactions(Transaction entity)
 		{
 			this.SendPropertyChanging();
@@ -1764,6 +1430,18 @@ namespace FinalUi
 		}
 		
 		private void detach_Transactions(Transaction entity)
+		{
+			this.SendPropertyChanging();
+			entity.Client = null;
+		}
+		
+		private void attach_Assignments(Assignment entity)
+		{
+			this.SendPropertyChanging();
+			entity.Client = this;
+		}
+		
+		private void detach_Assignments(Assignment entity)
 		{
 			this.SendPropertyChanging();
 			entity.Client = null;
@@ -2160,9 +1838,9 @@ namespace FinalUi
 		
 		private string _RateCode;
 		
-		private EntitySet<Assignment> _Assignments;
-		
 		private EntitySet<RateDetail> _RateDetails;
+		
+		private EntitySet<Assignment> _Assignments;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2176,8 +1854,8 @@ namespace FinalUi
 		
 		public Rate()
 		{
-			this._Assignments = new EntitySet<Assignment>(new Action<Assignment>(this.attach_Assignments), new Action<Assignment>(this.detach_Assignments));
 			this._RateDetails = new EntitySet<RateDetail>(new Action<RateDetail>(this.attach_RateDetails), new Action<RateDetail>(this.detach_RateDetails));
+			this._Assignments = new EntitySet<Assignment>(new Action<Assignment>(this.attach_Assignments), new Action<Assignment>(this.detach_Assignments));
 			OnCreated();
 		}
 		
@@ -2221,19 +1899,6 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rate_Assignment", Storage="_Assignments", ThisKey="RateCode", OtherKey="RateCode")]
-		public EntitySet<Assignment> Assignments
-		{
-			get
-			{
-				return this._Assignments;
-			}
-			set
-			{
-				this._Assignments.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rate_RateDetail", Storage="_RateDetails", ThisKey="RateCode", OtherKey="RateCode")]
 		public EntitySet<RateDetail> RateDetails
 		{
@@ -2244,6 +1909,19 @@ namespace FinalUi
 			set
 			{
 				this._RateDetails.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rate_Assignment", Storage="_Assignments", ThisKey="RateCode", OtherKey="RateCode")]
+		public EntitySet<Assignment> Assignments
+		{
+			get
+			{
+				return this._Assignments;
+			}
+			set
+			{
+				this._Assignments.Assign(value);
 			}
 		}
 		
@@ -2267,18 +1945,6 @@ namespace FinalUi
 			}
 		}
 		
-		private void attach_Assignments(Assignment entity)
-		{
-			this.SendPropertyChanging();
-			entity.Rate = this;
-		}
-		
-		private void detach_Assignments(Assignment entity)
-		{
-			this.SendPropertyChanging();
-			entity.Rate = null;
-		}
-		
 		private void attach_RateDetails(RateDetail entity)
 		{
 			this.SendPropertyChanging();
@@ -2286,6 +1952,18 @@ namespace FinalUi
 		}
 		
 		private void detach_RateDetails(RateDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.Rate = null;
+		}
+		
+		private void attach_Assignments(Assignment entity)
+		{
+			this.SendPropertyChanging();
+			entity.Rate = this;
+		}
+		
+		private void detach_Assignments(Assignment entity)
 		{
 			this.SendPropertyChanging();
 			entity.Rate = null;
@@ -5102,6 +4780,328 @@ namespace FinalUi
 						this._per_id = default(int);
 					}
 					this.SendPropertyChanged("Permission");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Assignment")]
+	public partial class Assignment : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _Id;
+		
+		private string _ServiceCode;
+		
+		private string _ClientCode;
+		
+		private string _ZoneCode;
+		
+		private string _RateCode;
+		
+		private EntityRef<Client> _Client;
+		
+		private EntityRef<Rate> _Rate;
+		
+		private EntityRef<Service> _Service;
+		
+		private EntityRef<ZONE> _ZONE;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(System.Guid value);
+    partial void OnIdChanged();
+    partial void OnServiceCodeChanging(string value);
+    partial void OnServiceCodeChanged();
+    partial void OnClientCodeChanging(string value);
+    partial void OnClientCodeChanged();
+    partial void OnZoneCodeChanging(string value);
+    partial void OnZoneCodeChanged();
+    partial void OnRateCodeChanging(string value);
+    partial void OnRateCodeChanged();
+    #endregion
+		
+		public Assignment()
+		{
+			this._Client = default(EntityRef<Client>);
+			this._Rate = default(EntityRef<Rate>);
+			this._Service = default(EntityRef<Service>);
+			this._ZONE = default(EntityRef<ZONE>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceCode", DbType="NVarChar(255)")]
+		public string ServiceCode
+		{
+			get
+			{
+				return this._ServiceCode;
+			}
+			set
+			{
+				if ((this._ServiceCode != value))
+				{
+					if (this._Service.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnServiceCodeChanging(value);
+					this.SendPropertyChanging();
+					this._ServiceCode = value;
+					this.SendPropertyChanged("ServiceCode");
+					this.OnServiceCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientCode", DbType="VarChar(6)")]
+		public string ClientCode
+		{
+			get
+			{
+				return this._ClientCode;
+			}
+			set
+			{
+				if ((this._ClientCode != value))
+				{
+					if (this._Client.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnClientCodeChanging(value);
+					this.SendPropertyChanging();
+					this._ClientCode = value;
+					this.SendPropertyChanged("ClientCode");
+					this.OnClientCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZoneCode", DbType="VarChar(30)")]
+		public string ZoneCode
+		{
+			get
+			{
+				return this._ZoneCode;
+			}
+			set
+			{
+				if ((this._ZoneCode != value))
+				{
+					if (this._ZONE.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnZoneCodeChanging(value);
+					this.SendPropertyChanging();
+					this._ZoneCode = value;
+					this.SendPropertyChanged("ZoneCode");
+					this.OnZoneCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RateCode", DbType="VarChar(50)")]
+		public string RateCode
+		{
+			get
+			{
+				return this._RateCode;
+			}
+			set
+			{
+				if ((this._RateCode != value))
+				{
+					if (this._Rate.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnRateCodeChanging(value);
+					this.SendPropertyChanging();
+					this._RateCode = value;
+					this.SendPropertyChanged("RateCode");
+					this.OnRateCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Client_Assignment", Storage="_Client", ThisKey="ClientCode", OtherKey="CLCODE", IsForeignKey=true)]
+		public Client Client
+		{
+			get
+			{
+				return this._Client.Entity;
+			}
+			set
+			{
+				Client previousValue = this._Client.Entity;
+				if (((previousValue != value) 
+							|| (this._Client.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Client.Entity = null;
+						previousValue.Assignments.Remove(this);
+					}
+					this._Client.Entity = value;
+					if ((value != null))
+					{
+						value.Assignments.Add(this);
+						this._ClientCode = value.CLCODE;
+					}
+					else
+					{
+						this._ClientCode = default(string);
+					}
+					this.SendPropertyChanged("Client");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rate_Assignment", Storage="_Rate", ThisKey="RateCode", OtherKey="RateCode", IsForeignKey=true)]
+		public Rate Rate
+		{
+			get
+			{
+				return this._Rate.Entity;
+			}
+			set
+			{
+				Rate previousValue = this._Rate.Entity;
+				if (((previousValue != value) 
+							|| (this._Rate.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Rate.Entity = null;
+						previousValue.Assignments.Remove(this);
+					}
+					this._Rate.Entity = value;
+					if ((value != null))
+					{
+						value.Assignments.Add(this);
+						this._RateCode = value.RateCode;
+					}
+					else
+					{
+						this._RateCode = default(string);
+					}
+					this.SendPropertyChanged("Rate");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Service_Assignment", Storage="_Service", ThisKey="ServiceCode", OtherKey="SER_CODE", IsForeignKey=true)]
+		public Service Service
+		{
+			get
+			{
+				return this._Service.Entity;
+			}
+			set
+			{
+				Service previousValue = this._Service.Entity;
+				if (((previousValue != value) 
+							|| (this._Service.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Service.Entity = null;
+						previousValue.Assignments.Remove(this);
+					}
+					this._Service.Entity = value;
+					if ((value != null))
+					{
+						value.Assignments.Add(this);
+						this._ServiceCode = value.SER_CODE;
+					}
+					else
+					{
+						this._ServiceCode = default(string);
+					}
+					this.SendPropertyChanged("Service");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ZONE_Assignment", Storage="_ZONE", ThisKey="ZoneCode", OtherKey="zcode", IsForeignKey=true)]
+		public ZONE ZONE
+		{
+			get
+			{
+				return this._ZONE.Entity;
+			}
+			set
+			{
+				ZONE previousValue = this._ZONE.Entity;
+				if (((previousValue != value) 
+							|| (this._ZONE.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ZONE.Entity = null;
+						previousValue.Assignments.Remove(this);
+					}
+					this._ZONE.Entity = value;
+					if ((value != null))
+					{
+						value.Assignments.Add(this);
+						this._ZoneCode = value.zcode;
+					}
+					else
+					{
+						this._ZoneCode = default(string);
+					}
+					this.SendPropertyChanged("ZONE");
 				}
 			}
 		}
