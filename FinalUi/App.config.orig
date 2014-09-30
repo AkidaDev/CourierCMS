@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <configSections>
+        <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+            <section name="FinalUi.Settings1" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false"/>
+            <section name="FinalUi.Configs" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false"/>
+        </sectionGroup>
+    </configSections>
+    <connectionStrings>
+  </connectionStrings>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0"/>
+    </startup>
+    <userSettings>
+        <FinalUi.Settings1>
+            <setting name="theme" serializeAs="String">
+                <value>Default</value>
+            </setting>
+        </FinalUi.Settings1>
+        <FinalUi.Configs>
+            <setting name="ConnString" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="CompanyName" serializeAs="String">
+                <value>A. R. Enterprises</value>
+            </setting>
+            <setting name="CompanyPhone" serializeAs="String">
+                <value>9999999999</value>
+            </setting>
+            <setting name="CompanyEmail" serializeAs="String">
+                <value>arentprises@gmail.com</value>
+            </setting>
+            <setting name="CompanyFax" serializeAs="String">
+                <value>999999999</value>
+            </setting>
+            <setting name="theme" serializeAs="String">
+                <value>Blue</value>
+            </setting>
+            <setting name="CompanyAddress" serializeAs="String">
+                <value>23 Veer Savakar Block, Shop No.-4 opposite metro 
+                pillar no.-60 shakarpur, new delhi-110092</value>
+            </setting>
+        </FinalUi.Configs>
+    </userSettings>
+</configuration>

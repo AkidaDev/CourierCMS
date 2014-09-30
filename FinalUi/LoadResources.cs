@@ -20,7 +20,7 @@ namespace FinalUi
                         {
                             // Read in ResourceDictionary File
                             var asq = (ResourceDictionary)XamlReader.Load(fs); 
-                              ResourceDictionary dic = asq;
+                             ResourceDictionary dic = asq;
                             // Clear any previous dictionaries loaded
                             Application.Current.Resources.MergedDictionaries.Clear();
                             // Add in newly loaded Resource Dictionary
@@ -29,7 +29,6 @@ namespace FinalUi
                     }
                     else
                         MessageBox.Show("File: " + fileName + " does not exist. Please re-enter the name.");
-                
         }
     }
 }

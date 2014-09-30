@@ -38,7 +38,6 @@ namespace FinalUi
             Configs.Default.Save();
             this.Close();
         }
-
         private void DefaultButton_Click(object sender, RoutedEventArgs e)
         {
             Configs.Default.Reset();

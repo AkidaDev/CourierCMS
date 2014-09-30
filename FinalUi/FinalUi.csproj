@@ -156,12 +156,6 @@
     <Compile Include="ManageEmployee.xaml.cs">
       <DependentUpon>ManageEmployee.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Page1.xaml.cs">
-      <DependentUpon>Page1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PleaseWait.xaml.cs">
-      <DependentUpon>PleaseWait.xaml</DependentUpon>
-    </Compile>
     <Compile Include="PreferenceWindow.xaml.cs">
       <DependentUpon>PreferenceWindow.xaml</DependentUpon>
     </Compile>
@@ -181,12 +175,6 @@
     <Compile Include="ServiceFinder.xaml.cs">
       <DependentUpon>ServiceFinder.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Settings1.cs" />
-    <Compile Include="Settings1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings1.settings</DependentUpon>
-    </Compile>
     <Compile Include="StockWindow.xaml.cs">
       <DependentUpon>StockWindow.xaml</DependentUpon>
     </Compile>
@@ -201,6 +189,9 @@
       <DependentUpon>UserControlGallery.xaml</DependentUpon>
     </Compile>
     <Compile Include="Validator.cs" />
+    <Compile Include="ZoneAssignment.xaml.cs">
+      <DependentUpon>ZoneAssignment.xaml</DependentUpon>
+    </Compile>
     <Page Include="About.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -287,14 +278,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Page1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="PleaseWait.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="PowerEntry.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -343,6 +326,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="ZoneAssignment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PowerEntry.xaml.cs">
@@ -390,10 +377,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Settings1.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -414,7 +397,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RateWindow_Images\" />
-    <Folder Include="test\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
