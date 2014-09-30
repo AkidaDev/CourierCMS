@@ -138,9 +138,6 @@
     <Compile Include="CityWindow.xaml.cs">
       <DependentUpon>CityWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ClientWindow.xaml.cs">
-      <DependentUpon>ClientWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Configs.cs" />
     <Compile Include="EditRateDetailsWindow.xaml.cs">
       <DependentUpon>EditRateDetailsWindow.xaml</DependentUpon>
@@ -233,10 +230,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="CityWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ClientWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

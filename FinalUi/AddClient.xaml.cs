@@ -46,9 +46,16 @@ namespace FinalUi
             client.CONTACTNO = ClientPhoneNo.Text;
             client.EMAILID = CLientEmailAddress.Text;
             client.CLCODE = ClientCode.Text;
+            client.FUEL = float.Parse(ClientFuel.Text);
+            client.INTRODATE = DateTime.Now;
             BillingDataDataContext db = new BillingDataDataContext();
             db.Clients.InsertOnSubmit(client);
             db.SubmitChanges();
+            if (MessageBox.Show("Do you Want Assgin Rate to this client right now ?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            {
+                RateWindow window = new RateWindow();
+                window.ShowDialog();
+            }
             this.Close();
         }
         public void update()
@@ -60,6 +67,7 @@ namespace FinalUi
             data.ADDRESS = ClientAddress.Text;
             data.EMAILID = CLientEmailAddress.Text;
             data.CONTACTNO = ClientPhoneNo.Text;
+            data.FUEL = double.Parse(ClientFuel.Text);
             try
             {
                 db.SubmitChanges();
@@ -79,6 +87,7 @@ namespace FinalUi
             this.ClientAddress.Text = client.ADDRESS;
             this.ClientPhoneNo.Text = client.CONTACTNO;
             this.CLientEmailAddress.Text = client.EMAILID;
+            this.ClientFuel.Text = client.FUEL.ToString();
         }
     }
 }

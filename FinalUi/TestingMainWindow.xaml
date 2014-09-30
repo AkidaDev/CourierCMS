@@ -6,15 +6,13 @@
 
     </Window.Resources>
     <Grid Margin="0,0,123,179">
-        <Button Name="login" Content="Login" Click="login_Click" Margin="28,29,28,31"></Button>
-        <Button Name="manageclient" Content="manageclient" Click="manageclient_Click" Margin="28,109,35,-64"></Button>
-        <Button Name="manageemployee" Content="ManageEmployee" Click="manageemployee_Click" Margin="28,67,45,-14"></Button>
+        <Button Content="PreferenceWindow" Click="Button_Click_2" Margin="167,145,-117,-104"></Button>
+        <Button Name="manageclient" Content="manageclient" Click="manageclient_Click" Margin="18,109,45,-64"></Button>
+        <Button Name="manageemployee" Content="ManageEmployee" Click="manageemployee_Click" Margin="28,30,45,23"></Button>
         <Button x:Name="mainwindow" Content="MainWindow" Click="mainwindow_Click" Margin="188,67,-105,-16"/>
-        <Button Name="ratewindow" Content="RateWindow" Click="ratewindow_Click" Margin="155,111,-93,-69" ></Button>
         <Button Name="stockwindow" Content="Stock Window" Click="stockwindow_Click" Margin="167,30,-117,31"></Button>
         <Button Name="ServiceWindow" Content="Service Window" Click="ServiceWindow_Click" Margin="28,208,28,-152"></Button>
         <Button Content="AnalyzeInvoice" Name="AnalyzeInvoicebutton" Click="AnalyzeInvoicebutton_Click" Margin="188,220,-94,-164"/>
-        <Button Content="testTemp" Click="Button_Click" Margin="155,164,-61,-114"></Button>
         <Button Content="InvoiceAnalysis" Click="Button_Click_1" Margin="37,171,28,-107"/>
     </Grid>
 </Window>
