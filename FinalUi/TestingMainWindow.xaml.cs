@@ -93,10 +93,10 @@ namespace FinalUi
             win.Show();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void PreferenceWindow_Click(object sender, RoutedEventArgs e)
         {
-            PreferenceWindow window = new PreferenceWindow();
-            window.Show();
+            PreferenceWindow window = new PreferenceWindow(); window.ShowDialog();
+
         }
     }
 }

@@ -34,7 +34,6 @@ namespace FinalUi
             this.AssignCombo.ItemsSource = this.emp;
             this.AssignCombo.SelectedItem = null;
         }
-
         void filldetails(Stock s)
         {
             this.FromBox.Text = s.StockStart;
@@ -66,7 +65,6 @@ namespace FinalUi
 
             return true;
         }
-
         private void AddstockLabel_Click(object sender, RoutedEventArgs e)
         {
             bool flag = true;
@@ -97,7 +95,6 @@ namespace FinalUi
                 DateTime date = (DateTime)value;
                 return date.ToShortDateString();
             }
-
             public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
             {
                 string strValue = value as string;
@@ -113,7 +110,6 @@ namespace FinalUi
         {
             this.Close();
         }
-
         private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {
             DragMove();
