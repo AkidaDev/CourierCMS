@@ -7,13 +7,25 @@
             <ColumnDefinition Width="170"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TreeView Height="300" Grid.Column="0" VerticalAlignment="Top" Background="#FFD4E5F5" FontSize="16">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="73"/>
+        </Grid.RowDefinitions>
+        <TreeView Height="300" Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" Background="#FFD4E5F5" FontSize="16">
             <TreeViewItem Header="hey"></TreeViewItem>
             <TreeViewItem Header="hey"></TreeViewItem>
             <TreeViewItem Header="hey"></TreeViewItem>
             <TreeViewItem Header="hey"></TreeViewItem>
         </TreeView>
-        <StackPanel Grid.Column="1" Background="#FFBF0000" Height="420" Margin="5 0 0 10" VerticalAlignment="Top" >
+        <StackPanel Grid.Column="1" Grid.Row="0" Background="#FFBF0000" Height="420" Margin="5,0,0,0" VerticalAlignment="Top" Grid.RowSpan="3" >
+            <WrapPanel >
+                <TextBlock Text="Service Tax"/>
+                <TextBox Name="serviceTaxBox"  Width="50"/>
+            </WrapPanel>
         </StackPanel>
+        <WrapPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right">
+            <Button Content="Save" Click="SaveButton_Click"/>
+            <Button Content="Reset" Click="DefaultButton_Click"/>
+        </WrapPanel>
     </Grid>
 </Window>

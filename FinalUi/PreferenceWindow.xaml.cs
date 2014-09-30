@@ -25,9 +25,6 @@ namespace FinalUi
         };
         enum dataFormat
         {
-           f1 = "mm/dd/yyyy",
-           f2 = "dd/mm/yyyy",
-           f3 = "yyyy/dd/mm",
         };
         public PreferenceWindow()
         {

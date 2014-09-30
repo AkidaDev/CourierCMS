@@ -107,5 +107,17 @@ namespace FinalUi {
                 this["CompanyAddress"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string ServiceTax {
+            get {
+                return ((string)(this["ServiceTax"]));
+            }
+            set {
+                this["ServiceTax"] = value;
+            }
+        }
     }
 }
