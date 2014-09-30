@@ -97,12 +97,12 @@
 			18 3.778,18 3.778,18 2.8,18 2,17.2 2,16.222 2,16.222 2,3.778 2,3.778 2,2.8 2.8,2 3.778,2z" Fill="Black" Height="19" Width="19" Visibility="Hidden" />
                 </Canvas>
             </Button>
-
 			<TextBlock x:Name="ADD_Data_in_Current_Sheet" FontWeight="Bold" FontSize="14" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="94" LineHeight="14" TextAlignment="Left" TextWrapping="Wrap" Text="ADD Data in Current Sheet" Canvas.Top="83.68"/>
         	<TextBox Name="filename"   Height="25" Canvas.Left="131" Canvas.Top="41" Width="171" Padding="0 4 0 0" BorderBrush="Black" BorderThickness="1.5"/>
-			<Path MouseDown="DragthisWindow" x:Name="Memu_bar" Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="#FFCBCBCB" Height="26" Canvas.Left="0" Canvas.Top="0" Width="322" Stretch="Fill" Stroke="Black" />
-            <TextBlock FontSize="18" FontFamily="Trajan Pro 3" Height="24" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="0" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Load Data" Canvas.Top="6" Width="320"/>
-			<Button Height="18" Canvas.Left="283" Click="Button_Click_Close" Canvas.Top="4" Width="35" Style="{StaticResource all}">
+			<Path Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="#FFCBCBCB" Height="26" Canvas.Left="0" Canvas.Top="0" Width="322" Stretch="Fill" Stroke="Black" />
+            <TextBlock FontSize="16" Height="24" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="0" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Load Data" Canvas.Top="4.666" Width="320" FontFamily="Arial"/>
+			<Path MouseDown="DragthisWindow" x:Name="Memu_bar" Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26" Canvas.Left="0" Canvas.Top="0" Width="322" Stretch="Fill" />
+            <Button Height="18" Canvas.Left="283" Click="Button_Click_Close" Canvas.Top="4" Width="35" Style="{StaticResource all}">
                 <Path x:Name="close" Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,
                   12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,
                   3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" Width="15" Height="15"/>
