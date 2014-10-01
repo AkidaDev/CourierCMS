@@ -48,7 +48,7 @@ CanExecute="CanExecutePrintCommand"/>
 					<MenuItem Header="File" Margin="10 0 0 0">
 						<MenuItem Header="Import Data" x:Name="ImportDataMenuItem" Command="ApplicationCommands.Open"/>
 						<MenuItem Header="Print" x:Name="PrintMenuItem" Command="ApplicationCommands.Print"/>
-						<MenuItem Header="Close" Click="MenuItem_Click" Background="White"/>
+						<MenuItem Header="Close" Click="MenuItem_Click"/>
 					</MenuItem>
 					<MenuItem Header="Tools" Margin="10 0 0 0">
 						<MenuItem Header="Managment">
@@ -61,11 +61,10 @@ CanExecute="CanExecutePrintCommand"/>
 						<MenuItem Header="About" x:Name="AboutMenuItem" Click="AboutMenuItem_Click"/>
 					</MenuItem>
 				</Menu>
+				<TextBlock FontSize="24" Padding="0 7 0 0" Height="24" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Vortex" Width="100" FontFamily="Lithos Pro Regular"/>
 				<Canvas Margin="160,0,113,0">
 						<Path MouseDown="Grid_MouseDown" x:Name="Memu_bar" Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26.62" Canvas.Left="0.667" Canvas.Top="0" Stretch="Fill" Width="1920" />
-					</Canvas>
-					<TextBlock FontSize="24" Padding="0 5 0 0" Height="24" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Vortex" Width="90"/>
-				
+				</Canvas>
 				<WrapPanel HorizontalAlignment="Right" Margin="0,0,0,9">
 					<Button Style="{StaticResource all}" x:Name="MinimizeButton" Click="MinimizeButton_Click" Width="25">
 						<Path x:Name="minimize" Data="F1M2,4C2,4 2,2 2,2 2,2 14,2 14,2 14,2 14,4 14,4 14,4 2,4 2,4z" Fill="Black" Height="5" Width="12" Margin="-1,0,0,-7"/>
@@ -305,7 +304,7 @@ CanExecute="CanExecutePrintCommand"/>
 							<WrapPanel Grid.Column="1">
 								<TextBox Width="169" Background="transparent" BorderThickness="0" Height="25" Padding="28,5,5,0" HorizontalAlignment="Right"  FontSize="14" />
 							</WrapPanel>
-							<Path x:Name="search" Data="F1M7.473,3.773C6.412,3.97 5.425,4.578 4.764,5.551 3.444,7.499 3.922,10.178 5.83,11.523 7.738,12.871 10.365,12.384 11.687,10.437 12.326,9.495 12.567,8.355 12.365,7.225 12.164,6.096 11.544,5.116 10.621,4.465 9.667,3.792 8.533,3.576 7.473,3.773z M7.145,1.94C8.666,1.658 10.292,1.965 11.66,2.931 14.144,4.685 14.938,8.014 13.647,10.701 14.152,10.485 14.75,10.527 15.235,10.869 15.235,10.869 22.058,15.683 22.058,15.683 22.812,16.216 23,17.27 22.478,18.039 21.957,18.807 20.922,19 20.169,18.467 20.169,18.467 13.347,13.653 13.347,13.653 12.864,13.313 12.615,12.759 12.633,12.202 11.755,13.163 10.6,13.809 9.307,14.048 7.72,14.344 6.116,13.99 4.792,13.056 3.468,12.122 2.579,10.716 2.289,9.098 2,7.478 2.345,5.842 3.262,4.49 4.209,3.095 5.624,2.222 7.145,1.94z" Fill="Black" Height="20" Width="24" Margin="0,0,138,0"/>
+							<Path x:Name="search" Data="F1M7.473,3.773C6.412,3.97 5.425,4.578 4.764,5.551 3.444,7.499 3.922,10.178 5.83,11.523 7.738,12.871 10.365,12.384 11.687,10.437 12.326,9.495 12.567,8.355 12.365,7.225 12.164,6.096 11.544,5.116 10.621,4.465 9.667,3.792 8.533,3.576 7.473,3.773z M7.145,1.94C8.666,1.658 10.292,1.965 11.66,2.931 14.144,4.685 14.938,8.014 13.647,10.701 14.152,10.485 14.75,10.527 15.235,10.869 15.235,10.869 22.058,15.683 22.058,15.683 22.812,16.216 23,17.27 22.478,18.039 21.957,18.807 20.922,19 20.169,18.467 20.169,18.467 13.347,13.653 13.347,13.653 12.864,13.313 12.615,12.759 12.633,12.202 11.755,13.163 10.6,13.809 9.307,14.048 7.72,14.344 6.116,13.99 4.792,13.056 3.468,12.122 2.579,10.716 2.289,9.098 2,7.478 2.345,5.842 3.262,4.49 4.209,3.095 5.624,2.222 7.145,1.94z" Fill="Black" Height="20" Width="24" Margin="4.5,5,142.5,4"/>
 						</Grid>
 					</DockPanel>
 
@@ -332,7 +331,7 @@ CanExecute="CanExecutePrintCommand"/>
 								<RowDefinition Height="100"/>
 							</Grid.RowDefinitions>
 							<ContentControl Grid.Row="0" ScrollViewer.CanContentScroll="True" Grid.ColumnSpan="2">
-								<DataGrid IsReadOnly="True" x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False" Height="478"
+								<DataGrid  RowHeaderWidth="0" IsReadOnly="True" x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False" Height="478"
 									ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True"
 									BorderThickness="0" CanUserAddRows="True" >
 
