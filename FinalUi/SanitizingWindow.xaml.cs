@@ -107,7 +107,11 @@ namespace FinalUi
                 db.RuntimeMetas.InsertOnSubmit(metaData);
                 dataListContext.AddNewItem(data);
             }
-            db.SubmitChanges();
+            try
+            {
+                db.SubmitChanges();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); return; }
         }
         public void setNextData()
         {

@@ -59,7 +59,11 @@ namespace FinalUi
                     data.FrWeight = data.Weight;
                     data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination, data.DestinationPin,(double)data.FrWeight, c.ZONE, data.Type, (char)data.DOX);                    
                 }
-                db.SubmitChanges();
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); return; }
             }
             SubmitRecords.IsEnabled = true;
         }
