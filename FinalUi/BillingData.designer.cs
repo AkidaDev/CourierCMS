@@ -45,6 +45,15 @@ namespace FinalUi
     partial void InsertEmployee(Employee instance);
     partial void UpdateEmployee(Employee instance);
     partial void DeleteEmployee(Employee instance);
+    partial void InsertInvoice(Invoice instance);
+    partial void UpdateInvoice(Invoice instance);
+    partial void DeleteInvoice(Invoice instance);
+    partial void InsertInvoiceAssignment(InvoiceAssignment instance);
+    partial void UpdateInvoiceAssignment(InvoiceAssignment instance);
+    partial void DeleteInvoiceAssignment(InvoiceAssignment instance);
+    partial void InsertPaymentEntry(PaymentEntry instance);
+    partial void UpdatePaymentEntry(PaymentEntry instance);
+    partial void DeletePaymentEntry(PaymentEntry instance);
     partial void InsertPermission(Permission instance);
     partial void UpdatePermission(Permission instance);
     partial void DeletePermission(Permission instance);
@@ -78,7 +87,7 @@ namespace FinalUi
     #endregion
 		
 		public BillingDataDataContext() : 
-				base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString6, mappingSource)
+				base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString7, mappingSource)
 		{
 			OnCreated();
 		}
@@ -144,6 +153,30 @@ namespace FinalUi
 			get
 			{
 				return this.GetTable<Employee>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Invoice> Invoices
+		{
+			get
+			{
+				return this.GetTable<Invoice>();
+			}
+		}
+		
+		public System.Data.Linq.Table<InvoiceAssignment> InvoiceAssignments
+		{
+			get
+			{
+				return this.GetTable<InvoiceAssignment>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PaymentEntry> PaymentEntries
+		{
+			get
+			{
+				return this.GetTable<PaymentEntry>();
 			}
 		}
 		
@@ -1222,6 +1255,8 @@ namespace FinalUi
 		
 		private EntitySet<Assignment> _Assignments;
 		
+		private EntitySet<PaymentEntry> _PaymentEntries;
+		
 		private EntitySet<Transaction> _Transactions;
 		
     #region Extensibility Method Definitions
@@ -1275,6 +1310,7 @@ namespace FinalUi
 		public Client()
 		{
 			this._Assignments = new EntitySet<Assignment>(new Action<Assignment>(this.attach_Assignments), new Action<Assignment>(this.detach_Assignments));
+			this._PaymentEntries = new EntitySet<PaymentEntry>(new Action<PaymentEntry>(this.attach_PaymentEntries), new Action<PaymentEntry>(this.detach_PaymentEntries));
 			this._Transactions = new EntitySet<Transaction>(new Action<Transaction>(this.attach_Transactions), new Action<Transaction>(this.detach_Transactions));
 			OnCreated();
 		}
@@ -1712,6 +1748,19 @@ namespace FinalUi
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Client_PaymentEntry", Storage="_PaymentEntries", ThisKey="CLCODE", OtherKey="ClientCode")]
+		public EntitySet<PaymentEntry> PaymentEntries
+		{
+			get
+			{
+				return this._PaymentEntries;
+			}
+			set
+			{
+				this._PaymentEntries.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Client_Transaction", Storage="_Transactions", ThisKey="CLCODE", OtherKey="CustCode")]
 		public EntitySet<Transaction> Transactions
 		{
@@ -1752,6 +1801,18 @@ namespace FinalUi
 		}
 		
 		private void detach_Assignments(Assignment entity)
+		{
+			this.SendPropertyChanging();
+			entity.Client = null;
+		}
+		
+		private void attach_PaymentEntries(PaymentEntry entity)
+		{
+			this.SendPropertyChanging();
+			entity.Client = this;
+		}
+		
+		private void detach_PaymentEntries(PaymentEntry entity)
 		{
 			this.SendPropertyChanging();
 			entity.Client = null;
@@ -2033,6 +2094,727 @@ namespace FinalUi
 		{
 			this.SendPropertyChanging();
 			entity.Employee = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Invoice")]
+	public partial class Invoice : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _BillId;
+		
+		private string _BillDisplayNumber;
+		
+		private string _ClientCode;
+		
+		private System.DateTime _Date;
+		
+		private double _TotalAmount;
+		
+		private double _Fuel;
+		
+		private double _STax;
+		
+		private double _Basic;
+		
+		private string _Remarks;
+		
+		private EntitySet<InvoiceAssignment> _InvoiceAssignments;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnBillIdChanging(System.Guid value);
+    partial void OnBillIdChanged();
+    partial void OnBillDisplayNumberChanging(string value);
+    partial void OnBillDisplayNumberChanged();
+    partial void OnClientCodeChanging(string value);
+    partial void OnClientCodeChanged();
+    partial void OnDateChanging(System.DateTime value);
+    partial void OnDateChanged();
+    partial void OnTotalAmountChanging(double value);
+    partial void OnTotalAmountChanged();
+    partial void OnFuelChanging(double value);
+    partial void OnFuelChanged();
+    partial void OnSTaxChanging(double value);
+    partial void OnSTaxChanged();
+    partial void OnBasicChanging(double value);
+    partial void OnBasicChanged();
+    partial void OnRemarksChanging(string value);
+    partial void OnRemarksChanged();
+    #endregion
+		
+		public Invoice()
+		{
+			this._InvoiceAssignments = new EntitySet<InvoiceAssignment>(new Action<InvoiceAssignment>(this.attach_InvoiceAssignments), new Action<InvoiceAssignment>(this.detach_InvoiceAssignments));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid BillId
+		{
+			get
+			{
+				return this._BillId;
+			}
+			set
+			{
+				if ((this._BillId != value))
+				{
+					this.OnBillIdChanging(value);
+					this.SendPropertyChanging();
+					this._BillId = value;
+					this.SendPropertyChanged("BillId");
+					this.OnBillIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillDisplayNumber", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string BillDisplayNumber
+		{
+			get
+			{
+				return this._BillDisplayNumber;
+			}
+			set
+			{
+				if ((this._BillDisplayNumber != value))
+				{
+					this.OnBillDisplayNumberChanging(value);
+					this.SendPropertyChanging();
+					this._BillDisplayNumber = value;
+					this.SendPropertyChanged("BillDisplayNumber");
+					this.OnBillDisplayNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientCode", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
+		public string ClientCode
+		{
+			get
+			{
+				return this._ClientCode;
+			}
+			set
+			{
+				if ((this._ClientCode != value))
+				{
+					this.OnClientCodeChanging(value);
+					this.SendPropertyChanging();
+					this._ClientCode = value;
+					this.SendPropertyChanged("ClientCode");
+					this.OnClientCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date NOT NULL")]
+		public System.DateTime Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalAmount", DbType="Float NOT NULL")]
+		public double TotalAmount
+		{
+			get
+			{
+				return this._TotalAmount;
+			}
+			set
+			{
+				if ((this._TotalAmount != value))
+				{
+					this.OnTotalAmountChanging(value);
+					this.SendPropertyChanging();
+					this._TotalAmount = value;
+					this.SendPropertyChanged("TotalAmount");
+					this.OnTotalAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fuel", DbType="Float NOT NULL")]
+		public double Fuel
+		{
+			get
+			{
+				return this._Fuel;
+			}
+			set
+			{
+				if ((this._Fuel != value))
+				{
+					this.OnFuelChanging(value);
+					this.SendPropertyChanging();
+					this._Fuel = value;
+					this.SendPropertyChanged("Fuel");
+					this.OnFuelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STax", DbType="Float NOT NULL")]
+		public double STax
+		{
+			get
+			{
+				return this._STax;
+			}
+			set
+			{
+				if ((this._STax != value))
+				{
+					this.OnSTaxChanging(value);
+					this.SendPropertyChanging();
+					this._STax = value;
+					this.SendPropertyChanged("STax");
+					this.OnSTaxChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Basic", DbType="Float NOT NULL")]
+		public double Basic
+		{
+			get
+			{
+				return this._Basic;
+			}
+			set
+			{
+				if ((this._Basic != value))
+				{
+					this.OnBasicChanging(value);
+					this.SendPropertyChanging();
+					this._Basic = value;
+					this.SendPropertyChanged("Basic");
+					this.OnBasicChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remarks", DbType="VarChar(50)")]
+		public string Remarks
+		{
+			get
+			{
+				return this._Remarks;
+			}
+			set
+			{
+				if ((this._Remarks != value))
+				{
+					this.OnRemarksChanging(value);
+					this.SendPropertyChanging();
+					this._Remarks = value;
+					this.SendPropertyChanged("Remarks");
+					this.OnRemarksChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Invoice_InvoiceAssignment", Storage="_InvoiceAssignments", ThisKey="BillId", OtherKey="BillId")]
+		public EntitySet<InvoiceAssignment> InvoiceAssignments
+		{
+			get
+			{
+				return this._InvoiceAssignments;
+			}
+			set
+			{
+				this._InvoiceAssignments.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_InvoiceAssignments(InvoiceAssignment entity)
+		{
+			this.SendPropertyChanging();
+			entity.Invoice = this;
+		}
+		
+		private void detach_InvoiceAssignments(InvoiceAssignment entity)
+		{
+			this.SendPropertyChanging();
+			entity.Invoice = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InvoiceAssignment")]
+	public partial class InvoiceAssignment : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _Id;
+		
+		private System.Guid _BillId;
+		
+		private System.Guid _TransactionId;
+		
+		private EntityRef<Invoice> _Invoice;
+		
+		private EntityRef<Transaction> _Transaction;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(System.Guid value);
+    partial void OnIdChanged();
+    partial void OnBillIdChanging(System.Guid value);
+    partial void OnBillIdChanged();
+    partial void OnTransactionIdChanging(System.Guid value);
+    partial void OnTransactionIdChanged();
+    #endregion
+		
+		public InvoiceAssignment()
+		{
+			this._Invoice = default(EntityRef<Invoice>);
+			this._Transaction = default(EntityRef<Transaction>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid BillId
+		{
+			get
+			{
+				return this._BillId;
+			}
+			set
+			{
+				if ((this._BillId != value))
+				{
+					if (this._Invoice.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnBillIdChanging(value);
+					this.SendPropertyChanging();
+					this._BillId = value;
+					this.SendPropertyChanged("BillId");
+					this.OnBillIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid TransactionId
+		{
+			get
+			{
+				return this._TransactionId;
+			}
+			set
+			{
+				if ((this._TransactionId != value))
+				{
+					if (this._Transaction.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnTransactionIdChanging(value);
+					this.SendPropertyChanging();
+					this._TransactionId = value;
+					this.SendPropertyChanged("TransactionId");
+					this.OnTransactionIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Invoice_InvoiceAssignment", Storage="_Invoice", ThisKey="BillId", OtherKey="BillId", IsForeignKey=true)]
+		public Invoice Invoice
+		{
+			get
+			{
+				return this._Invoice.Entity;
+			}
+			set
+			{
+				Invoice previousValue = this._Invoice.Entity;
+				if (((previousValue != value) 
+							|| (this._Invoice.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Invoice.Entity = null;
+						previousValue.InvoiceAssignments.Remove(this);
+					}
+					this._Invoice.Entity = value;
+					if ((value != null))
+					{
+						value.InvoiceAssignments.Add(this);
+						this._BillId = value.BillId;
+					}
+					else
+					{
+						this._BillId = default(System.Guid);
+					}
+					this.SendPropertyChanged("Invoice");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Transaction_InvoiceAssignment", Storage="_Transaction", ThisKey="TransactionId", OtherKey="ID", IsForeignKey=true)]
+		public Transaction Transaction
+		{
+			get
+			{
+				return this._Transaction.Entity;
+			}
+			set
+			{
+				Transaction previousValue = this._Transaction.Entity;
+				if (((previousValue != value) 
+							|| (this._Transaction.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Transaction.Entity = null;
+						previousValue.InvoiceAssignments.Remove(this);
+					}
+					this._Transaction.Entity = value;
+					if ((value != null))
+					{
+						value.InvoiceAssignments.Add(this);
+						this._TransactionId = value.ID;
+					}
+					else
+					{
+						this._TransactionId = default(System.Guid);
+					}
+					this.SendPropertyChanged("Transaction");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PaymentEntry")]
+	public partial class PaymentEntry : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _Id;
+		
+		private System.DateTime _Date;
+		
+		private double _RecievedAmount;
+		
+		private string _Type;
+		
+		private string _ChequeNumber;
+		
+		private string _ClientCode;
+		
+		private string _Remarks;
+		
+		private EntityRef<Client> _Client;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(System.Guid value);
+    partial void OnIdChanged();
+    partial void OnDateChanging(System.DateTime value);
+    partial void OnDateChanged();
+    partial void OnRecievedAmountChanging(double value);
+    partial void OnRecievedAmountChanged();
+    partial void OnTypeChanging(string value);
+    partial void OnTypeChanged();
+    partial void OnChequeNumberChanging(string value);
+    partial void OnChequeNumberChanged();
+    partial void OnClientCodeChanging(string value);
+    partial void OnClientCodeChanged();
+    partial void OnRemarksChanging(string value);
+    partial void OnRemarksChanged();
+    #endregion
+		
+		public PaymentEntry()
+		{
+			this._Client = default(EntityRef<Client>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date NOT NULL")]
+		public System.DateTime Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecievedAmount", DbType="Float NOT NULL")]
+		public double RecievedAmount
+		{
+			get
+			{
+				return this._RecievedAmount;
+			}
+			set
+			{
+				if ((this._RecievedAmount != value))
+				{
+					this.OnRecievedAmountChanging(value);
+					this.SendPropertyChanging();
+					this._RecievedAmount = value;
+					this.SendPropertyChanged("RecievedAmount");
+					this.OnRecievedAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this.OnTypeChanging(value);
+					this.SendPropertyChanging();
+					this._Type = value;
+					this.SendPropertyChanged("Type");
+					this.OnTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChequeNumber", DbType="VarChar(50)")]
+		public string ChequeNumber
+		{
+			get
+			{
+				return this._ChequeNumber;
+			}
+			set
+			{
+				if ((this._ChequeNumber != value))
+				{
+					this.OnChequeNumberChanging(value);
+					this.SendPropertyChanging();
+					this._ChequeNumber = value;
+					this.SendPropertyChanged("ChequeNumber");
+					this.OnChequeNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientCode", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
+		public string ClientCode
+		{
+			get
+			{
+				return this._ClientCode;
+			}
+			set
+			{
+				if ((this._ClientCode != value))
+				{
+					if (this._Client.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnClientCodeChanging(value);
+					this.SendPropertyChanging();
+					this._ClientCode = value;
+					this.SendPropertyChanged("ClientCode");
+					this.OnClientCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remarks", DbType="VarChar(50)")]
+		public string Remarks
+		{
+			get
+			{
+				return this._Remarks;
+			}
+			set
+			{
+				if ((this._Remarks != value))
+				{
+					this.OnRemarksChanging(value);
+					this.SendPropertyChanging();
+					this._Remarks = value;
+					this.SendPropertyChanged("Remarks");
+					this.OnRemarksChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Client_PaymentEntry", Storage="_Client", ThisKey="ClientCode", OtherKey="CLCODE", IsForeignKey=true)]
+		public Client Client
+		{
+			get
+			{
+				return this._Client.Entity;
+			}
+			set
+			{
+				Client previousValue = this._Client.Entity;
+				if (((previousValue != value) 
+							|| (this._Client.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Client.Entity = null;
+						previousValue.PaymentEntries.Remove(this);
+					}
+					this._Client.Entity = value;
+					if ((value != null))
+					{
+						value.PaymentEntries.Add(this);
+						this._ClientCode = value.CLCODE;
+					}
+					else
+					{
+						this._ClientCode = default(string);
+					}
+					this.SendPropertyChanged("Client");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -4359,6 +5141,8 @@ namespace FinalUi
 		
 		private string _TransMF_No;
 		
+		private EntitySet<InvoiceAssignment> _InvoiceAssignments;
+		
 		private EntityRef<Employee> _Employee;
 		
 		private EntityRef<Client> _Client;
@@ -4413,6 +5197,7 @@ namespace FinalUi
 		
 		public Transaction()
 		{
+			this._InvoiceAssignments = new EntitySet<InvoiceAssignment>(new Action<InvoiceAssignment>(this.attach_InvoiceAssignments), new Action<InvoiceAssignment>(this.detach_InvoiceAssignments));
 			this._Employee = default(EntityRef<Employee>);
 			this._Client = default(EntityRef<Client>);
 			OnCreated();
@@ -4846,6 +5631,19 @@ namespace FinalUi
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Transaction_InvoiceAssignment", Storage="_InvoiceAssignments", ThisKey="ID", OtherKey="TransactionId")]
+		public EntitySet<InvoiceAssignment> InvoiceAssignments
+		{
+			get
+			{
+				return this._InvoiceAssignments;
+			}
+			set
+			{
+				this._InvoiceAssignments.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Transaction", Storage="_Employee", ThisKey="UserId", OtherKey="Id", IsForeignKey=true)]
 		public Employee Employee
 		{
@@ -4932,6 +5730,18 @@ namespace FinalUi
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_InvoiceAssignments(InvoiceAssignment entity)
+		{
+			this.SendPropertyChanging();
+			entity.Transaction = this;
+		}
+		
+		private void detach_InvoiceAssignments(InvoiceAssignment entity)
+		{
+			this.SendPropertyChanging();
+			entity.Transaction = null;
 		}
 	}
 	

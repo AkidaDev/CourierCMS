@@ -1,0 +1,28 @@
+﻿<Window x:Class="FinalUi.PaymentRecieved"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PaymentRecieved" Height="200" Width="500">
+    <Grid>
+        <ContentControl>
+            <StackPanel>
+                <WrapPanel>
+                    <TextBlock Text="Select Client's Code: "/>
+                    <ComboBox Name="ClientComboBox" Width="300"/>
+                 </WrapPanel>
+                <WrapPanel>
+                    <TextBlock Text="Enter Amount: "/>
+                    <TextBox Name="AmountTextBox" Width="100"/>
+                </WrapPanel>
+                <WrapPanel>
+                    <TextBlock Text="PaymentOption"></TextBlock>
+                    <RadioButton Name="ChequeRadio" Content="Cheque"></RadioButton>
+                    <RadioButton Name="CashRadio" Content="Cash"></RadioButton>
+                </WrapPanel>
+                <WrapPanel Name="ChequeNumberPanel">
+                    <TextBlock Text="Enter Cheque Number: "/>
+                    <TextBox Width="100" Name="ChequeNumberBox"></TextBox>
+                </WrapPanel>
+            </StackPanel>
+        </ContentControl>
+    </Grid>
+</Window>

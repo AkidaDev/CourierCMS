@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BillingDatabase" Class="BillingDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=PANKAJ\SQLEXPRESS;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString6" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=SYSTEM;Initial Catalog=BillingDatabase;User ID=sa" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString7" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Assignment" Member="Assignments">
     <Type Name="Assignment">
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -66,6 +66,7 @@
       <Column Name="BOYNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="APPTRF" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
       <Association Name="Client_Assignment" Member="Assignments" ThisKey="CLCODE" OtherKey="ClientCode" Type="Assignment" />
+      <Association Name="Client_PaymentEntry" Member="PaymentEntries" ThisKey="CLCODE" OtherKey="ClientCode" Type="PaymentEntry" />
       <Association Name="Client_Transaction" Member="Transactions" ThisKey="CLCODE" OtherKey="CustCode" Type="Transaction" />
     </Type>
   </Table>
@@ -80,6 +81,41 @@
       <Association Name="Employee_Stock" Member="Stocks" ThisKey="Id" OtherKey="UserId" Type="Stock" />
       <Association Name="Employee_Transaction" Member="Transactions" ThisKey="Id" OtherKey="UserId" Type="Transaction" />
       <Association Name="Employee_User_permission" Member="User_permissions" ThisKey="Id" OtherKey="emp_id" Type="User_permission" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Invoice" Member="Invoices">
+    <Type Name="Invoice">
+      <Column Name="BillId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="BillDisplayNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientCode" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="TotalAmount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Fuel" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="STax" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Basic" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Remarks" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Invoice_InvoiceAssignment" Member="InvoiceAssignments" ThisKey="BillId" OtherKey="BillId" Type="InvoiceAssignment" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InvoiceAssignment" Member="InvoiceAssignments">
+    <Type Name="InvoiceAssignment">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="BillId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="TransactionId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Invoice_InvoiceAssignment" Member="Invoice" ThisKey="BillId" OtherKey="BillId" Type="Invoice" IsForeignKey="true" />
+      <Association Name="Transaction_InvoiceAssignment" Member="Transaction" ThisKey="TransactionId" OtherKey="ID" Type="Transaction" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PaymentEntry" Member="PaymentEntries">
+    <Type Name="PaymentEntry">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="RecievedAmount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ChequeNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClientCode" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
+      <Column Name="Remarks" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Client_PaymentEntry" Member="Client" ThisKey="ClientCode" OtherKey="CLCODE" Type="Client" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Permissions" Member="Permissions">
@@ -216,6 +252,7 @@
       <Column Name="InvoiceDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="CustCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
       <Column Name="TransMF_No" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Transaction_InvoiceAssignment" Member="InvoiceAssignments" ThisKey="ID" OtherKey="TransactionId" Type="InvoiceAssignment" />
       <Association Name="Employee_Transaction" Member="Employee" ThisKey="UserId" OtherKey="Id" Type="Employee" IsForeignKey="true" />
       <Association Name="Client_Transaction" Member="Client" ThisKey="CustCode" OtherKey="CLCODE" Type="Client" IsForeignKey="true" />
     </Type>
