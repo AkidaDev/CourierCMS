@@ -42,7 +42,7 @@
 				<TextBlock FontSize="14" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="6.476" Text="Contact .:" Canvas.Top="11"/>
 				<TextBox Padding="3 2 0 0" Height="23" Canvas.Left="62.5" Canvas.Top="5" Width="113"/>
 				<TextBlock FontSize="14" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="4.976" Text="Address .:" Canvas.Top="41"/>
-				<TextBox Padding="3 2 0 0" Height="85.5" Canvas.Left="62.5" Canvas.Top="35" Width="113"/>
+				<TextBox Padding="3 2 0 0" Height="85.5" Canvas.Left="62.5" Canvas.Top="35" Width="113" TextWrapping="Wrap"/>
 				<TextBlock FontSize="14" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="17.242" Text="Other .:" Canvas.Top="133"/>
 				<TextBox Padding="3 2 0 0" Height="23" Canvas.Left="62.5" Canvas.Top="127" Width="113"/>
 			 </Canvas>
