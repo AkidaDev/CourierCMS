@@ -108,7 +108,7 @@
   </Table>
   <Table Name="dbo.PaymentEntry" Member="PaymentEntries">
     <Type Name="PaymentEntry">
-      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="RecievedAmount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="Type" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
@@ -246,8 +246,8 @@
       <Column Name="Type" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
       <Column Name="Mode" Type="System.String" DbType="NChar(25) NOT NULL" CanBeNull="false" />
       <Column Name="DOX" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-      <Column Name="ServiceTax" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="SplDisc" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="ServiceTax" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SplDisc" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="InvoiceNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="InvoiceDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="CustCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />

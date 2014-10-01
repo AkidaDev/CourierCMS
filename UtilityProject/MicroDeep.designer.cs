@@ -22,7 +22,7 @@ namespace UtilityProject
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="MicroDeep")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Micro")]
 	public partial class MicroDeepDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -30,10 +30,16 @@ namespace UtilityProject
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void Insertclienttariff(clienttariff instance);
+    partial void Updateclienttariff(clienttariff instance);
+    partial void Deleteclienttariff(clienttariff instance);
+    partial void InsertFWDTARIFF(FWDTARIFF instance);
+    partial void UpdateFWDTARIFF(FWDTARIFF instance);
+    partial void DeleteFWDTARIFF(FWDTARIFF instance);
     #endregion
 		
 		public MicroDeepDataContext() : 
-				base(global::UtilityProject.Properties.Settings.Default.MicroDeepConnectionString, mappingSource)
+				base(global::UtilityProject.Properties.Settings.Default.MicroConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -60,6 +66,482 @@ namespace UtilityProject
 				base(connection, mappingSource)
 		{
 			OnCreated();
+		}
+		
+		public System.Data.Linq.Table<clienttariff> clienttariffs
+		{
+			get
+			{
+				return this.GetTable<clienttariff>();
+			}
+		}
+		
+		public System.Data.Linq.Table<FWDTARIFF> FWDTARIFFs
+		{
+			get
+			{
+				return this.GetTable<FWDTARIFF>();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.clienttariff")]
+	public partial class clienttariff : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _clientcombi;
+		
+		private System.Nullable<double> _wt;
+		
+		private System.Nullable<double> _dox;
+		
+		private System.Nullable<double> _ndox;
+		
+		private System.Nullable<int> _ratetype;
+		
+		private string _method;
+		
+		private string _FWDCD;
+		
+		private string _FWDNAME;
+		
+		private string _CLNAME;
+		
+		private int _ID;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnclientcombiChanging(string value);
+    partial void OnclientcombiChanged();
+    partial void OnwtChanging(System.Nullable<double> value);
+    partial void OnwtChanged();
+    partial void OndoxChanging(System.Nullable<double> value);
+    partial void OndoxChanged();
+    partial void OnndoxChanging(System.Nullable<double> value);
+    partial void OnndoxChanged();
+    partial void OnratetypeChanging(System.Nullable<int> value);
+    partial void OnratetypeChanged();
+    partial void OnmethodChanging(string value);
+    partial void OnmethodChanged();
+    partial void OnFWDCDChanging(string value);
+    partial void OnFWDCDChanged();
+    partial void OnFWDNAMEChanging(string value);
+    partial void OnFWDNAMEChanged();
+    partial void OnCLNAMEChanging(string value);
+    partial void OnCLNAMEChanged();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    #endregion
+		
+		public clienttariff()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_clientcombi", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string clientcombi
+		{
+			get
+			{
+				return this._clientcombi;
+			}
+			set
+			{
+				if ((this._clientcombi != value))
+				{
+					this.OnclientcombiChanging(value);
+					this.SendPropertyChanging();
+					this._clientcombi = value;
+					this.SendPropertyChanged("clientcombi");
+					this.OnclientcombiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_wt", DbType="Float")]
+		public System.Nullable<double> wt
+		{
+			get
+			{
+				return this._wt;
+			}
+			set
+			{
+				if ((this._wt != value))
+				{
+					this.OnwtChanging(value);
+					this.SendPropertyChanging();
+					this._wt = value;
+					this.SendPropertyChanged("wt");
+					this.OnwtChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dox", DbType="Float")]
+		public System.Nullable<double> dox
+		{
+			get
+			{
+				return this._dox;
+			}
+			set
+			{
+				if ((this._dox != value))
+				{
+					this.OndoxChanging(value);
+					this.SendPropertyChanging();
+					this._dox = value;
+					this.SendPropertyChanged("dox");
+					this.OndoxChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ndox", DbType="Float")]
+		public System.Nullable<double> ndox
+		{
+			get
+			{
+				return this._ndox;
+			}
+			set
+			{
+				if ((this._ndox != value))
+				{
+					this.OnndoxChanging(value);
+					this.SendPropertyChanging();
+					this._ndox = value;
+					this.SendPropertyChanged("ndox");
+					this.OnndoxChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ratetype", DbType="Int")]
+		public System.Nullable<int> ratetype
+		{
+			get
+			{
+				return this._ratetype;
+			}
+			set
+			{
+				if ((this._ratetype != value))
+				{
+					this.OnratetypeChanging(value);
+					this.SendPropertyChanging();
+					this._ratetype = value;
+					this.SendPropertyChanged("ratetype");
+					this.OnratetypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_method", DbType="VarChar(50)")]
+		public string method
+		{
+			get
+			{
+				return this._method;
+			}
+			set
+			{
+				if ((this._method != value))
+				{
+					this.OnmethodChanging(value);
+					this.SendPropertyChanging();
+					this._method = value;
+					this.SendPropertyChanged("method");
+					this.OnmethodChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FWDCD", DbType="Char(10)")]
+		public string FWDCD
+		{
+			get
+			{
+				return this._FWDCD;
+			}
+			set
+			{
+				if ((this._FWDCD != value))
+				{
+					this.OnFWDCDChanging(value);
+					this.SendPropertyChanging();
+					this._FWDCD = value;
+					this.SendPropertyChanged("FWDCD");
+					this.OnFWDCDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FWDNAME", DbType="VarChar(50)")]
+		public string FWDNAME
+		{
+			get
+			{
+				return this._FWDNAME;
+			}
+			set
+			{
+				if ((this._FWDNAME != value))
+				{
+					this.OnFWDNAMEChanging(value);
+					this.SendPropertyChanging();
+					this._FWDNAME = value;
+					this.SendPropertyChanged("FWDNAME");
+					this.OnFWDNAMEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CLNAME", DbType="VarChar(50)")]
+		public string CLNAME
+		{
+			get
+			{
+				return this._CLNAME;
+			}
+			set
+			{
+				if ((this._CLNAME != value))
+				{
+					this.OnCLNAMEChanging(value);
+					this.SendPropertyChanging();
+					this._CLNAME = value;
+					this.SendPropertyChanged("CLNAME");
+					this.OnCLNAMEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FWDTARIFF")]
+	public partial class FWDTARIFF : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _fcombi;
+		
+		private System.Nullable<double> _WT;
+		
+		private System.Nullable<double> _dox;
+		
+		private System.Nullable<double> _ndox;
+		
+		private string _ratetype;
+		
+		private int _ID;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnfcombiChanging(string value);
+    partial void OnfcombiChanged();
+    partial void OnWTChanging(System.Nullable<double> value);
+    partial void OnWTChanged();
+    partial void OndoxChanging(System.Nullable<double> value);
+    partial void OndoxChanged();
+    partial void OnndoxChanging(System.Nullable<double> value);
+    partial void OnndoxChanged();
+    partial void OnratetypeChanging(string value);
+    partial void OnratetypeChanged();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    #endregion
+		
+		public FWDTARIFF()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fcombi", DbType="VarChar(100)")]
+		public string fcombi
+		{
+			get
+			{
+				return this._fcombi;
+			}
+			set
+			{
+				if ((this._fcombi != value))
+				{
+					this.OnfcombiChanging(value);
+					this.SendPropertyChanging();
+					this._fcombi = value;
+					this.SendPropertyChanged("fcombi");
+					this.OnfcombiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WT", DbType="Float")]
+		public System.Nullable<double> WT
+		{
+			get
+			{
+				return this._WT;
+			}
+			set
+			{
+				if ((this._WT != value))
+				{
+					this.OnWTChanging(value);
+					this.SendPropertyChanging();
+					this._WT = value;
+					this.SendPropertyChanged("WT");
+					this.OnWTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dox", DbType="Float")]
+		public System.Nullable<double> dox
+		{
+			get
+			{
+				return this._dox;
+			}
+			set
+			{
+				if ((this._dox != value))
+				{
+					this.OndoxChanging(value);
+					this.SendPropertyChanging();
+					this._dox = value;
+					this.SendPropertyChanged("dox");
+					this.OndoxChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ndox", DbType="Float")]
+		public System.Nullable<double> ndox
+		{
+			get
+			{
+				return this._ndox;
+			}
+			set
+			{
+				if ((this._ndox != value))
+				{
+					this.OnndoxChanging(value);
+					this.SendPropertyChanging();
+					this._ndox = value;
+					this.SendPropertyChanged("ndox");
+					this.OnndoxChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ratetype", DbType="Char(2)")]
+		public string ratetype
+		{
+			get
+			{
+				return this._ratetype;
+			}
+			set
+			{
+				if ((this._ratetype != value))
+				{
+					this.OnratetypeChanging(value);
+					this.SendPropertyChanging();
+					this._ratetype = value;
+					this.SendPropertyChanged("ratetype");
+					this.OnratetypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

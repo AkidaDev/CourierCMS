@@ -324,7 +324,7 @@ namespace FinalUi
             var current = this.Background;
             blur.Radius = 5;
             this.Effect = blur;
-            loadData.ShowDialog();
+            loadData.Show();
         }
 
         private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)

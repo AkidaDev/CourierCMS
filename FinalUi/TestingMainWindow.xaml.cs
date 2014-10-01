@@ -34,7 +34,7 @@ namespace FinalUi
         private void mainwindow_Click(object sender, RoutedEventArgs e)
         {
             MainWindow window = new MainWindow();
-            window.ShowDialog();
+            window.Show();
         }
 
         private void manageclient_Click(object sender, RoutedEventArgs e)
@@ -97,6 +97,12 @@ namespace FinalUi
         {
             PreferenceWindow window = new PreferenceWindow(); window.ShowDialog();
 
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            PaymentRecieved window = new PaymentRecieved();
+            window.Show();
         }
     }
 }

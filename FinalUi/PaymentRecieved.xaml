@@ -2,26 +2,57 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="PaymentRecieved" Height="200" Width="500">
+    <Window.Resources>
+        <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"></CollectionViewSource>
+
+    </Window.Resources>
     <Grid>
         <ContentControl>
             <StackPanel>
                 <WrapPanel>
+                    <TextBlock Text="Payment Ref No."/>
+                    <TextBox IsReadOnly="True" Name="PaymentRefNoBox" Width="100"></TextBox>
+                </WrapPanel>
+                <WrapPanel>
                     <TextBlock Text="Select Client's Code: "/>
-                    <ComboBox Name="ClientComboBox" Width="300"/>
-                 </WrapPanel>
+                    <ComboBox  DataContext="{StaticResource ClientList}" IsTextSearchEnabled="True" ItemsSource="{Binding}" Name="ClientComboBox" Width="300">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <WrapPanel>
+                                    <TextBlock Text="{Binding Path=CLNAME}"></TextBlock>
+                                    <TextBlock Text=" : "></TextBlock>
+                                    <TextBlock Text="{Binding Path=CLCODE}"></TextBlock>
+                                </WrapPanel>
+                            </DataTemplate>
+
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </WrapPanel>
                 <WrapPanel>
                     <TextBlock Text="Enter Amount: "/>
                     <TextBox Name="AmountTextBox" Width="100"/>
                 </WrapPanel>
                 <WrapPanel>
+                    <TextBlock Text="Enter Date:"/>
+                    <DatePicker Name="PaymentDatePicker"></DatePicker>
+                </WrapPanel>
+                <WrapPanel>
                     <TextBlock Text="PaymentOption"></TextBlock>
-                    <RadioButton Name="ChequeRadio" Content="Cheque"></RadioButton>
-                    <RadioButton Name="CashRadio" Content="Cash"></RadioButton>
+                    <RadioButton GroupName="PaymentOptionRadio"  IsChecked="True" Name="ChequeRadio" Content="Cheque"></RadioButton>
+                    <RadioButton Name="CashRadio" GroupName="PaymentOptionRadio" Content="Cash" ></RadioButton>
                 </WrapPanel>
                 <WrapPanel Name="ChequeNumberPanel">
                     <TextBlock Text="Enter Cheque Number: "/>
                     <TextBox Width="100" Name="ChequeNumberBox"></TextBox>
                 </WrapPanel>
+                <WrapPanel>
+                    <TextBlock Text="Enter Remarks: "></TextBlock>
+                    <TextBox Width="100" Name="RemarkBox"></TextBox>
+                </WrapPanel>
+                <WrapPanel> 
+                    <Button Content="Submit Details" Name="SubmitButton" Click="SubmitButton_Click"></Button>
+                </WrapPanel>
+                
             </StackPanel>
         </ContentControl>
     </Grid>

@@ -2577,7 +2577,7 @@ namespace FinalUi
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private System.Guid _Id;
+		private string _Id;
 		
 		private System.DateTime _Date;
 		
@@ -2597,7 +2597,7 @@ namespace FinalUi
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnIdChanging(System.Guid value);
+    partial void OnIdChanging(string value);
     partial void OnIdChanged();
     partial void OnDateChanging(System.DateTime value);
     partial void OnDateChanged();
@@ -2619,8 +2619,8 @@ namespace FinalUi
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid Id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Id
 		{
 			get
 			{
@@ -5129,9 +5129,9 @@ namespace FinalUi
 		
 		private char _DOX;
 		
-		private double _ServiceTax;
+		private System.Nullable<double> _ServiceTax;
 		
-		private double _SplDisc;
+		private System.Nullable<double> _SplDisc;
 		
 		private string _InvoiceNo;
 		
@@ -5181,9 +5181,9 @@ namespace FinalUi
     partial void OnModeChanged();
     partial void OnDOXChanging(char value);
     partial void OnDOXChanged();
-    partial void OnServiceTaxChanging(double value);
+    partial void OnServiceTaxChanging(System.Nullable<double> value);
     partial void OnServiceTaxChanged();
-    partial void OnSplDiscChanging(double value);
+    partial void OnSplDiscChanging(System.Nullable<double> value);
     partial void OnSplDiscChanged();
     partial void OnInvoiceNoChanging(string value);
     partial void OnInvoiceNoChanged();
@@ -5507,8 +5507,8 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceTax", DbType="Float NOT NULL")]
-		public double ServiceTax
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceTax", DbType="Float")]
+		public System.Nullable<double> ServiceTax
 		{
 			get
 			{
@@ -5527,8 +5527,8 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SplDisc", DbType="Float NOT NULL")]
-		public double SplDisc
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SplDisc", DbType="Float")]
+		public System.Nullable<double> SplDisc
 		{
 			get
 			{

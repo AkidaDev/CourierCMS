@@ -74,5 +74,15 @@ namespace UtilityProject.Properties {
                 return ((string)(this["BillingDatabaseConnectionString3"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SYSTEM;Initial Catalog=Micro;User ID=sa;Password=Alver!22")]
+        public string MicroConnectionString {
+            get {
+                return ((string)(this["MicroConnectionString"]));
+            }
+        }
     }
 }

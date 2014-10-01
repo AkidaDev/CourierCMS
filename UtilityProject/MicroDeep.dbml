@@ -1,3 +1,27 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MicroDeep" Class="MicroDeepDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=VJAIN;Initial Catalog=MicroDeep;Integrated Security=True" SettingsObjectName="UtilityProject.Properties.Settings" SettingsPropertyName="MicroDeepConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Micro" Class="MicroDeepDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=SYSTEM;Initial Catalog=Micro;User ID=sa" SettingsObjectName="UtilityProject.Properties.Settings" SettingsPropertyName="MicroConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.clienttariff" Member="clienttariffs">
+    <Type Name="clienttariff">
+      <Column Name="clientcombi" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="wt" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="dox" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ndox" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ratetype" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="method" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FWDCD" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="FWDNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CLNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FWDTARIFF" Member="FWDTARIFFs">
+    <Type Name="FWDTARIFF">
+      <Column Name="fcombi" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="WT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="dox" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ndox" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ratetype" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+    </Type>
+  </Table>
 </Database>
