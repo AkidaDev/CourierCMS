@@ -18,12 +18,16 @@
             <WrapPanel>
                 <Label Content="Phone Number: "></Label>
                 <TextBox Name="ClientPhoneNo" MinWidth="150"></TextBox>
-
             </WrapPanel>
             <WrapPanel>
                 <Label Content="Email Address: "></Label>
                 <TextBox Name="CLientEmailAddress" MinWidth="150">
                 </TextBox>
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="Fuel">
+                </Label>
+                <TextBox Name="ClientFuel"  MinWidth="150"></TextBox>
             </WrapPanel>
             <WrapPanel>
                 <Label Content="Address">

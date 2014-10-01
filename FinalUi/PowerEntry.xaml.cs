@@ -12,11 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 namespace FinalUi
 {
-
-    
     /// <summary>
     /// Interaction logic for PowerEntry.xaml
     /// </summary>
@@ -31,7 +28,7 @@ namespace FinalUi
             DataStack = DataStack.OrderBy(x => x.BookingDate).ThenBy(y => y.ConsignmentNo).ToList();
             List<string> connList = DataStack.Select(c => c.ConsignmentNo).ToList();
             startConnNo.DataContext = connList;
-            endConnNo.DataContext =connList;
+            endConnNo.DataContext = connList;
             clientCode.DataContext = ClientCodes;
             this.DataStack = DataStack;
             this.db = db;
@@ -39,13 +36,10 @@ namespace FinalUi
             worker.DoWork += worker_DoWork;
             worker.RunWorkerCompleted += worker_RunWorkerCompleted;
         }
-
         void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            
             SubmitRecords.IsEnabled = true;
         }
-
         void worker_DoWork(object sender, DoWorkEventArgs e)
         {
             int startCOnnNoIndex = startConnNo.SelectedIndex;
@@ -62,8 +56,8 @@ namespace FinalUi
                         c = db.Cities.SingleOrDefault(x => x.CITY_CODE == "DEL");
                     data = db.RuntimeDatas.Single(x => x.Id == data.Id);
                     data.CustCode = clientCode.SelectedValue.ToString();
-                    data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination, data.DestinationPin, data.Weight, c.ZONE, data.Type, (char)data.DOX);
                     data.FrWeight = data.Weight;
+                    data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination, data.DestinationPin,(double)data.FrWeight, c.ZONE, data.Type, (char)data.DOX);                    
                 }
                 db.SubmitChanges();
             }
@@ -73,7 +67,6 @@ namespace FinalUi
         {
             InitializeComponent();
         }
-
         private void SubmitRecords_Click(object sender, RoutedEventArgs e)
         {
             SubmitRecords.IsEnabled = false;
@@ -83,7 +76,6 @@ namespace FinalUi
         {
             this.Close();
         }
-
         private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {
             DragMove();

@@ -40,6 +40,7 @@ namespace FinalUi
             if (assignment.ZoneCode != null)
                 ComboBoxZone.Text = assignment.ZoneCode;
         }
+        
         private void InitializeDataSources()
         {
             ClientList = (CollectionViewSource)FindResource("ClientList");
@@ -52,7 +53,6 @@ namespace FinalUi
             ZoneList.Source = db.ZONEs;
             ServiceList.Source = db.Services;
         }
-
         private void AssignButton_Click(object sender, RoutedEventArgs e)
         {
             assignment.ClientCode = ComboBoxClient.Text;
@@ -63,7 +63,6 @@ namespace FinalUi
         }
 		private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
-            //  this.Owner.Effect = null;
             this.Close();
         }
 
