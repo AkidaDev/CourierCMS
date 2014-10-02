@@ -20,8 +20,8 @@
             <DatePicker Name="PaymentDatePicker" Canvas.Left="401" Canvas.Top="85"   Height="26"  Width="124"  BorderThickness="0" Padding="0 4 0 0"/>
             <Path x:Name="Rectangle_2" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="27" Canvas.Left="399" Canvas.Top="84" Width="98" Stroke="Black"/>
         	
-			<TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="39" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Client's Code .:" Canvas.Top="129"/>
-            <ComboBox IsEditable="False" DataContext="{StaticResource ClientList}" IsTextSearchEnabled="True" ItemsSource="{Binding}" Name="ClientComboBox" Height="26" Canvas.Left="152" Canvas.Top="120" Width="344.623">
+			<TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="39" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Select Client .:" Canvas.Top="129"/>
+            <ComboBox IsEditable="False" DataContext="{StaticResource ClientList}" IsTextSearchEnabled="True" ItemsSource="{Binding}" Name="ClientComboBox" Height="26" Canvas.Left="149.893" Canvas.Top="120" Width="346.73">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <WrapPanel>
@@ -43,9 +43,9 @@
             <TextBox Name="AmountTextBox" Padding="13 3 0 0" Height="27" Canvas.Left="394" Canvas.Top="156" Width="103"/>
             <TextBlock FontWeight="Bold" FontSize="18" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="399" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="&#8377;" Canvas.Top="161" FontFamily="Arial"/>
             <Path x:Name="line" Data="F1M1,2C1,2 1,1 1,1 1,1 262,1 262,1 262,1 262,2 262,2 262,2 1,2 1,2" Fill="Black" Height="1" Canvas.Left="31" Canvas.Top="202" Width="245" Stretch="Fill"/>
-			<WrapPanel Canvas.Left="31" Canvas.Top="210" >
+			<WrapPanel Canvas.Left="31" Canvas.Top="210" Width="465.623" >
                      <TextBlock Padding="0 5 0 0" Text="Enter Remarks    .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" />
-                     <TextBox  x:Name="RemarkBox"  Width="90" Height="22" Margin="3,0,0,0"/>
+                     <TextBox  x:Name="RemarkBox"  Width="327" Height="22" Margin="3,0,0,0"/>
             </WrapPanel>
 			<WrapPanel Name="ChequeNumberPanel" Canvas.Left="31" Canvas.Top="240" Width="263">
 					<TextBlock Padding="0 5 0 0" Text="Cheque Number .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" />

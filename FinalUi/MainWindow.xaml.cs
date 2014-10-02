@@ -48,7 +48,7 @@ namespace FinalUi
         #endregion
         public MainWindow()
         {
-            SecurityModule.authenticate("dharmendra", "pass");
+           // SecurityModule.authenticate("dharmendra", "pass");
             #region setupCode
             PreviewMouseMove += OnPreviewMouseMove;
             #endregion
@@ -779,6 +779,21 @@ namespace FinalUi
         {
             BillReportWindow win = new BillReportWindow();
             win.ShowDialog();
+        }
+
+        private void PaymentEntry_Click(object sender, RoutedEventArgs e)
+        {
+            PaymentDetailsWindow window = new PaymentDetailsWindow(); window.ShowDialog();
+        }
+
+        private void PaymentRecieved_Click(object sender, RoutedEventArgs e)
+        {
+            PaymentRecieved window = new PaymentRecieved(); window.ShowDialog();
+        }
+
+        private void StockEntry_Click(object sender, RoutedEventArgs e)
+        {
+            StockWindow window = new StockWindow(); window.ShowDialog();
         }
     }
 }

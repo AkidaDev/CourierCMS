@@ -55,7 +55,10 @@ CanExecute="CanExecutePrintCommand"/>
 							<MenuItem Header="Clients" x:Name="ManageClient" Click="ManageClient_Click"/>
 							<MenuItem Header="Employees" x:Name="ManageEmployee" Click="ManageEmployee_Click"/>
 						</MenuItem>
-						<MenuItem Header="Edit Rates" x:Name="RateWindowMenu" Click="RateWindowMenu_Click"/>
+                        <MenuItem Header="Payment Entry"  Name="PaymentEntryMenuItem" Click="PaymentEntry_Click"/>
+                        <MenuItem Header="Payment Recived"  Name="PaymentRecievedMenuItem"  Click="PaymentRecieved_Click"/>
+                        <MenuItem Header="Stock   Entry"  Name="StockEntryMenuItem" Click="StockEntry_Click"/>
+                        <MenuItem Header="Edit Rates" x:Name="RateWindowMenu" Click="RateWindowMenu_Click"/>
 					</MenuItem>
 					<MenuItem ToolTip="Know more" Header="Help" Margin="10 0 0 0"> 
 						<MenuItem Header="About" x:Name="AboutMenuItem" Click="AboutMenuItem_Click"/>
