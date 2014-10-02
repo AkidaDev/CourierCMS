@@ -259,6 +259,41 @@ namespace FinalUi
 				return this.GetTable<User_permission>();
 			}
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_LoadToRuntimeFromDate")]
+		public int sp_LoadToRuntimeFromDate([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserName", DbType="VarChar(50)")] string userName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SheetNo", DbType="Int")] System.Nullable<int> sheetNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ToDate", DbType="DateTime")] System.Nullable<System.DateTime> toDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FromDate", DbType="DateTime")] System.Nullable<System.DateTime> fromDate)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userName, sheetNo, toDate, fromDate);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail")]
+		public int sp_TransferMInvoiceDetailToBInvoiceDetail()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferMInvoiceToBInvoice")]
+		public int sp_TransferMInvoiceToBInvoice()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_deleteSheetFromRuntime")]
+		public int sp_deleteSheetFromRuntime([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserName", DbType="VarChar(50)")] string userName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SheetNo", DbType="Int")] System.Nullable<int> sheetNo)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userName, sheetNo);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_SaveDataFromRunToTran")]
+		public int sp_SaveDataFromRunToTran([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserName", DbType="VarChar(50)")] string userName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SheetNo", DbType="Int")] System.Nullable<int> sheetNo)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userName, sheetNo);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Assignment")]
@@ -589,6 +624,8 @@ namespace FinalUi
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
+		private System.Guid _Id;
+		
 		private string _zcode;
 		
 		private string _Zone_name;
@@ -603,6 +640,8 @@ namespace FinalUi
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
+    partial void OnIdChanging(System.Guid value);
+    partial void OnIdChanged();
     partial void OnzcodeChanging(string value);
     partial void OnzcodeChanged();
     partial void OnZone_nameChanging(string value);
@@ -618,7 +657,27 @@ namespace FinalUi
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_zcode", DbType="VarChar(30) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_zcode", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
 		public string zcode
 		{
 			get
@@ -2103,9 +2162,7 @@ namespace FinalUi
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private System.Guid _BillId;
-		
-		private string _BillDisplayNumber;
+		private string _BillId;
 		
 		private string _ClientCode;
 		
@@ -2121,16 +2178,16 @@ namespace FinalUi
 		
 		private string _Remarks;
 		
+		private System.Nullable<double> _PreviousDue;
+		
 		private EntitySet<InvoiceAssignment> _InvoiceAssignments;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnBillIdChanging(System.Guid value);
+    partial void OnBillIdChanging(string value);
     partial void OnBillIdChanged();
-    partial void OnBillDisplayNumberChanging(string value);
-    partial void OnBillDisplayNumberChanged();
     partial void OnClientCodeChanging(string value);
     partial void OnClientCodeChanged();
     partial void OnDateChanging(System.DateTime value);
@@ -2145,6 +2202,8 @@ namespace FinalUi
     partial void OnBasicChanged();
     partial void OnRemarksChanging(string value);
     partial void OnRemarksChanged();
+    partial void OnPreviousDueChanging(System.Nullable<double> value);
+    partial void OnPreviousDueChanged();
     #endregion
 		
 		public Invoice()
@@ -2153,8 +2212,8 @@ namespace FinalUi
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid BillId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillId", DbType="VarChar(32) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string BillId
 		{
 			get
 			{
@@ -2169,26 +2228,6 @@ namespace FinalUi
 					this._BillId = value;
 					this.SendPropertyChanged("BillId");
 					this.OnBillIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillDisplayNumber", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string BillDisplayNumber
-		{
-			get
-			{
-				return this._BillDisplayNumber;
-			}
-			set
-			{
-				if ((this._BillDisplayNumber != value))
-				{
-					this.OnBillDisplayNumberChanging(value);
-					this.SendPropertyChanging();
-					this._BillDisplayNumber = value;
-					this.SendPropertyChanged("BillDisplayNumber");
-					this.OnBillDisplayNumberChanged();
 				}
 			}
 		}
@@ -2333,6 +2372,26 @@ namespace FinalUi
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PreviousDue", DbType="Float")]
+		public System.Nullable<double> PreviousDue
+		{
+			get
+			{
+				return this._PreviousDue;
+			}
+			set
+			{
+				if ((this._PreviousDue != value))
+				{
+					this.OnPreviousDueChanging(value);
+					this.SendPropertyChanging();
+					this._PreviousDue = value;
+					this.SendPropertyChanged("PreviousDue");
+					this.OnPreviousDueChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Invoice_InvoiceAssignment", Storage="_InvoiceAssignments", ThisKey="BillId", OtherKey="BillId")]
 		public EntitySet<InvoiceAssignment> InvoiceAssignments
 		{
@@ -2387,7 +2446,7 @@ namespace FinalUi
 		
 		private System.Guid _Id;
 		
-		private System.Guid _BillId;
+		private string _BillId;
 		
 		private System.Guid _TransactionId;
 		
@@ -2401,7 +2460,7 @@ namespace FinalUi
     partial void OnCreated();
     partial void OnIdChanging(System.Guid value);
     partial void OnIdChanged();
-    partial void OnBillIdChanging(System.Guid value);
+    partial void OnBillIdChanging(string value);
     partial void OnBillIdChanged();
     partial void OnTransactionIdChanging(System.Guid value);
     partial void OnTransactionIdChanged();
@@ -2434,8 +2493,8 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillId", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid BillId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillId", DbType="VarChar(32) NOT NULL", CanBeNull=false)]
+		public string BillId
 		{
 			get
 			{
@@ -2509,7 +2568,7 @@ namespace FinalUi
 					}
 					else
 					{
-						this._BillId = default(System.Guid);
+						this._BillId = default(string);
 					}
 					this.SendPropertyChanged("Invoice");
 				}
@@ -2591,6 +2650,8 @@ namespace FinalUi
 		
 		private string _Remarks;
 		
+		private string _BankName;
+		
 		private EntityRef<Client> _Client;
 		
     #region Extensibility Method Definitions
@@ -2611,6 +2672,8 @@ namespace FinalUi
     partial void OnClientCodeChanged();
     partial void OnRemarksChanging(string value);
     partial void OnRemarksChanged();
+    partial void OnBankNameChanging(string value);
+    partial void OnBankNameChanged();
     #endregion
 		
 		public PaymentEntry()
@@ -2759,6 +2822,26 @@ namespace FinalUi
 					this._Remarks = value;
 					this.SendPropertyChanged("Remarks");
 					this.OnRemarksChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankName", DbType="VarChar(50)")]
+		public string BankName
+		{
+			get
+			{
+				return this._BankName;
+			}
+			set
+			{
+				if ((this._BankName != value))
+				{
+					this.OnBankNameChanging(value);
+					this.SendPropertyChanging();
+					this._BankName = value;
+					this.SendPropertyChanged("BankName");
+					this.OnBankNameChanged();
 				}
 			}
 		}
@@ -3339,7 +3422,7 @@ namespace FinalUi
 		
 		private string _Mode;
 		
-		private decimal _DestinationPin;
+		private System.Nullable<decimal> _DestinationPin;
 		
 		private System.DateTime _BookingDate;
 		
@@ -3385,7 +3468,7 @@ namespace FinalUi
     partial void OnDestinationChanged();
     partial void OnModeChanging(string value);
     partial void OnModeChanged();
-    partial void OnDestinationPinChanging(decimal value);
+    partial void OnDestinationPinChanging(System.Nullable<decimal> value);
     partial void OnDestinationPinChanged();
     partial void OnBookingDateChanging(System.DateTime value);
     partial void OnBookingDateChanged();
@@ -3541,8 +3624,8 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DestinationPin", DbType="Decimal(18,0) NOT NULL")]
-		public decimal DestinationPin
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DestinationPin", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> DestinationPin
 		{
 			get
 			{

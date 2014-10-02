@@ -131,7 +131,7 @@ namespace FinalUi
             string response;
             try
             {
-                help.insertRuntimeData((List<RuntimeData>)e.Argument, dataGridHelper.currentSheetNumber);
+                help.insertRuntimeData((List<RuntimeData>)e.Argument, dataGridHelper.currentSheetNumber,isLoadedFromFile,toDate_loadDataWin,fromDate_loadDataWin);
                 response = "Data Loading Successful";
             }
             catch (Exception ex)
@@ -415,7 +415,9 @@ namespace FinalUi
             activeButton = canvasButton;
 
         }
-
+        bool isLoadedFromFile = true;
+        DateTime? toDate_loadDataWin;
+        DateTime? fromDate_loadDataWin;
         void loadData_Closed(object sender, EventArgs e)
         {
             this.Effect = null;
@@ -433,6 +435,12 @@ namespace FinalUi
                 {
                     dataGridHelper.addDataToCurrentSheet(dataWind.data);
                     dataGridHelper.refreshCurrentPage();
+                }
+                isLoadedFromFile = dataWind.isLoadedFromFile;
+                if(!isLoadedFromFile)
+                {
+                    toDate_loadDataWin = dataWind.toDate;
+                    fromDate_loadDataWin = dataWind.fromDate;
                 }
                 LoadWorker.RunWorkerAsync(dataWind.data);
             }

@@ -156,6 +156,9 @@
     <Compile Include="ManageEmployee.xaml.cs">
       <DependentUpon>ManageEmployee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PaymentDetailsWindow.xaml.cs">
+      <DependentUpon>PaymentDetailsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PaymentRecieved.xaml.cs">
       <DependentUpon>PaymentRecieved.xaml</DependentUpon>
     </Compile>
@@ -280,6 +283,10 @@
     <Page Include="ManageEmployee.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PaymentDetailsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PaymentRecieved.xaml">
       <SubType>Designer</SubType>

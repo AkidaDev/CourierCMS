@@ -10,9 +10,14 @@ namespace FinalUi
 {
     class DBHelper
     {
-        public void insertRuntimeData(List<RuntimeData> data, int sheetNo)
+        public void insertRuntimeData(List<RuntimeData> data, int sheetNo, bool isLoadedFromFile, DateTime? toDate = null, DateTime? fromDate = null)
         {
             BillingDataDataContext db = new BillingDataDataContext();
+            if(isLoadedFromFile == false)
+            {
+                db.sp_LoadToRuntimeFromDate(SecurityModule.currentUserName, sheetNo, toDate, fromDate);
+                return;
+            }
             List<RuntimeMeta> MetaData = new List<RuntimeMeta>();
             foreach(var runData in data)
             {
@@ -32,11 +37,7 @@ namespace FinalUi
             try
             {
                 BillingDataDataContext db = new BillingDataDataContext();
-                IQueryable<RuntimeMeta> metaDataList = db.RuntimeMetas.Where(x => x.UserName == SecurityModule.currentUserName && x.SheetNo == sheetNo);
-                IQueryable<RuntimeData> data = metaDataList.Select(x => x.RuntimeData);
-                db.RuntimeMetas.DeleteAllOnSubmit(metaDataList);
-                db.RuntimeDatas.DeleteAllOnSubmit(data);
-                db.SubmitChanges();
+                db.sp_deleteSheetFromRuntime(SecurityModule.currentUserName, sheetNo);
             }
             catch(ChangeConflictException e)
             {

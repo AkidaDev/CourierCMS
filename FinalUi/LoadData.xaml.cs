@@ -23,10 +23,14 @@ namespace FinalUi
         {
             isNewSheet = true;
             InitializeComponent();
+            isLoadedFromFile = false;
         }
         public bool dataLoaded { get; set; }
         public string filename1 { get; set; }
         public bool isNewSheet { get; set; }
+        public bool isLoadedFromFile { get; set; }
+        public DateTime toDate;
+        public DateTime fromDate;
         public List<RuntimeData> data
         {
             get
@@ -62,7 +66,7 @@ namespace FinalUi
                 CSVDataLoader load = new CSVDataLoader();
                 _data = load.getRuntimeDataFromCSV(filename1, '"', '\'');
                 dataLoaded = true;
-
+                isLoadedFromFile = true;
                 this.Close();
             }
             else
@@ -108,6 +112,9 @@ namespace FinalUi
                     BillingDataDataContext db = new BillingDataDataContext();
                     _data = UtilityClass.loadDataFromDatabase((DateTime)StartLoadDate.SelectedDate, (DateTime)EndLoadDate.SelectedDate);
                     dataLoaded = true;
+                    isLoadedFromFile = false;
+                    toDate = (DateTime)EndLoadDate.SelectedDate;
+                    fromDate = (DateTime)StartLoadDate.SelectedDate;
                     this.Close();
                 }
             }

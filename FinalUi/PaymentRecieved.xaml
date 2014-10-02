@@ -44,6 +44,8 @@
                 <WrapPanel Name="ChequeNumberPanel">
                     <TextBlock Text="Enter Cheque Number: "/>
                     <TextBox Width="100" Name="ChequeNumberBox"></TextBox>
+                    <TextBlock Text="Enter Bank Name: "/>
+                    <TextBox Width="100" Name="ChequeBankName"></TextBox>
                 </WrapPanel>
                 <WrapPanel>
                     <TextBlock Text="Enter Remarks: "></TextBlock>
