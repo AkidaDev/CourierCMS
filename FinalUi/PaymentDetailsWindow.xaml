@@ -35,7 +35,9 @@
             <DatePicker Name="ToDatePicker" Canvas.Left="286" Canvas.Top="121"   Height="26"  Width="124"  BorderThickness="0" Padding="0 4 0 0"/>
             <Path x:Name="Rectangle2" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="27" Canvas.Left="284" Canvas.Top="120" Width="98" Stroke="Black"/>
         	<Button Content="Fetch Records" Name="FetchButton" Click="FetchButton_Click" Canvas.Left="443" Canvas.Top="124"/>
-             <DataGrid Name="InvoiceDatagrid" DockPanel.Dock="Left" AutoGenerateColumns="False" DataContext="{StaticResource InvoiceDetailsSourceGrid}" ItemsSource="{Binding}" RowHeaderWidth="0" BorderThickness="1" BorderBrush="Gray" Background="White" IsReadOnly="True" SelectionMode="Single" Height="105" Canvas.Left="28.333" Canvas.Top="156" Width="493">
+             <ContentControl Canvas.Left="28.333" Canvas.Top="156">
+				<StackPanel >
+					<DataGrid Name="InvoiceDatagrid" DockPanel.Dock="Left" AutoGenerateColumns="False" DataContext="{StaticResource InvoiceDetailsSourceGrid}" ItemsSource="{Binding}" RowHeaderWidth="0" BorderThickness="1" BorderBrush="Gray" Background="White" IsReadOnly="True" SelectionMode="Single" Width="493" Height="105">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="BillNumber" Binding="{Binding BillId}"/>
                         <DataGridTextColumn Header="Date" Binding="{Binding Date}"/>
@@ -45,10 +47,10 @@
                         <DataGridTextColumn Header="Total" Binding="{Binding TotalAmount}"/>
                         <DataGridTextColumn Header="Remarks" Binding="{Binding Remarks}"/>
                     </DataGrid.Columns>
-                </DataGrid>
-			 <Button Name="FetchInvoiceButton" Content="View Selected invoice" Click="FetchInvoiceButton_Click" Canvas.Left="390" Canvas.Top="263"/>
+					</DataGrid>
+					<Button Name="FetchInvoiceButton" Content="View Selected invoice" Click="FetchInvoiceButton_Click" Margin="0,2,28,11" Width="120" HorizontalAlignment="Right"/>
            
-			 <DataGrid DockPanel.Dock="Right" AutoGenerateColumns="False" DataContext="{StaticResource PaymentDetailsSourceGrid}" ItemsSource="{Binding}" RowHeaderWidth="0" BorderThickness="1" BorderBrush="Gray" Background="White" IsReadOnly="True" SelectionMode="Single" Height="105" Canvas.Left="28.333" Canvas.Top="295" Width="493">
+					<DataGrid DockPanel.Dock="Right" AutoGenerateColumns="False" DataContext="{StaticResource PaymentDetailsSourceGrid}" ItemsSource="{Binding}" RowHeaderWidth="0" BorderThickness="1" BorderBrush="Gray" Background="White" IsReadOnly="True" SelectionMode="Single" Width="493"  Height="105">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Date" Binding="{Binding Date}"/>
                         <DataGridTextColumn Header="Amount" Binding="{Binding RecievedAmount}"/>
@@ -56,9 +58,11 @@
                         <DataGridTextColumn Header="ChequeNumber" Binding="{Binding ChequeNumber}"/>
                         <DataGridTextColumn Header="Remarks" Binding="{Binding Remarks}"/>
                     </DataGrid.Columns>
-                </DataGrid>
-                <Button Name="ViewRecieptButton" Content="View Selected Payment Reciepted" Canvas.Left="326" Canvas.Top="402"/>
-            
+					</DataGrid>
+					<Button Name="ViewRecieptButton" Content="View Selected Payment Reciepted" Margin="0,2,28,0" Width="186" HorizontalAlignment="Right" />
+				</StackPanel>
+			</ContentControl>
+			
 			<Path Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="#FFCBCBCB" Height="26" Canvas.Left="0" Canvas.Top="0" Width="550" Stretch="Fill" Stroke="Black" />
             <Path x:Name="Vertical_line" Data="F1M2,3C2,3 2,2 2,2 2,2 331,2 331,2 331,2 331,3 331,3 331,3 2,3 2,3" Fill="Black" Height="4" Canvas.Left="108" Canvas.Top="56" Width="332"/>
             <Path x:Name="detail" Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Black" Height="24" Canvas.Left="81" Canvas.Top="35" Width="24"/>
