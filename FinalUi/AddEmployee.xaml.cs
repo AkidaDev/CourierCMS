@@ -43,7 +43,6 @@ namespace FinalUi
             this.PermisstionToset.SelectedItem = null;
             this.UserPermisstionToset.SelectedItem = null;
         }
-
         public AddEmployee(Employee emp)
             : this()
         {
@@ -58,7 +57,6 @@ namespace FinalUi
             viewsourceUserPermission.Source = userPermission;
             viewsourcePermission.Source = permission;
         }
-
         private void AddNewEmployee()
         {
             if (Password.Password == ConfirmPass.Password)

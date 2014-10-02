@@ -124,6 +124,9 @@
     <Compile Include="AddRole.xaml.cs">
       <DependentUpon>AddRole.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddZone.xaml.cs">
+      <DependentUpon>AddZone.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BillingData.cs">
       <DependentUpon>BillingData.dbml</DependentUpon>
     </Compile>
@@ -214,6 +217,10 @@
     <Page Include="AddRole.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AddZone.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BillReportWindow.xaml">
       <SubType>Designer</SubType>

@@ -1,0 +1,18 @@
+﻿<Window x:Class="FinalUi.AddZone"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AddZone" Height="300" Width="300">
+    <Grid>
+        <StackPanel>
+            <WrapPanel>
+                <TextBlock Text="Zone code"/>
+                <TextBox Name="Zonecodebox" Width="100" Height="26" />
+            </WrapPanel>
+            <WrapPanel>
+            <TextBlock Text="Zone name"/>
+            <TextBox  Name="ZoneNameTextBox" Width="100" Height="26" />
+            </WrapPanel>
+            <Button Name="AddZoneButton" Click="AddZoneButton_Click" Content="AddZone" Margin="5 5 5 5 " />
+        </StackPanel>
+    </Grid>
+</Window>

@@ -2,10 +2,49 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="ZoneAssignment" Height="300" Width="300">
+    <Window.Resources>
+        <CollectionViewSource x:Key="zoneTable" CollectionViewType="ListCollectionView" />
+        <CollectionViewSource x:Key="CityTable" CollectionViewType="ListCollectionView" />
+    </Window.Resources>
     <Grid>
-        <ComboBox Name="ZoneCombo" Width="100" Height="50"/>
-        <ComboBox Name="ServiceCombo" Width="100" Height="50"/>
-        <ComboBox Name="CityCombo" Width="100" Height="50"/>
-        <ComboBox Name="ModeCombo" Width="100" Height="50"/>
+        <StackPanel>
+            <Button Content="Add New Zone" Name="Addzone"  Click="Button_Click" Margin=" 5 5 5 5"/>
+            <WrapPanel>
+                <TextBlock Text="ZoneCode"/>
+                <ComboBox Name="ZoneCombo" Width="100"  ItemsSource="{Binding}"  DataContext="{StaticResource zoneTable}" SelectionChanged="ZoneCombo_SelectionChanged" Height="27" >
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0}({1})">
+                                        <Binding Path="Zone_name" />
+                                        <Binding Path="zcode" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate> 
+                </ComboBox>
+                <TextBlock Text="Zone not found" Foreground="Red" Visibility="Hidden"/>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="City"/>
+                <ComboBox Name="CityCombo" Width="100" ItemsSource="{Binding}" DataContext="{StaticResource CityTable}" Height="27">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} ({1})">
+                                        <Binding Path="CITY_DESC" />
+                                        <Binding Path="CITY_CODE" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </WrapPanel>
+            <Button Content="Assgin Zone" Name="Assign_Zone" Click="Assign_Zone_Click" Width="200" Height="50" Margin="10 10 10 10 "/>
+        </StackPanel>
     </Grid>
 </Window>

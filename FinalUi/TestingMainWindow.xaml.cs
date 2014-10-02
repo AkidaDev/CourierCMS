@@ -49,9 +49,9 @@ namespace FinalUi
             window.ShowDialog();
         }
 
-        private void ratewindow_Click(object sender, RoutedEventArgs e)
+        private void zonewindow_Click(object sender, RoutedEventArgs e)
         {
-            RateWindow winodw = new RateWindow();
+            ZoneAssignment winodw = new ZoneAssignment();
             winodw.ShowDialog();
         }
 

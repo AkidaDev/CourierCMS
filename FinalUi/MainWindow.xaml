@@ -81,7 +81,7 @@ CanExecute="CanExecutePrintCommand"/>
 				</WrapPanel>
 			</Grid>
 			<DockPanel Background="#FFBBCADC" Height="32" Margin="0,-1,0,0"  >
-				<Button Style="{StaticResource all}" x:Name="LoadDataButton" Foreground="White" Margin="5,3" Command="ApplicationCommands.Open" FontSize="16">
+				<Button ToolTip="Import Data" Style="{StaticResource all}" x:Name="LoadDataButton" Foreground="White" Margin="5,3" Command="ApplicationCommands.Open" FontSize="16">
 					<WrapPanel Margin="7,0,5,0">
 						<Path x:Name="folder" Data="F1M20.664,6.138C20.664,6.138 4.336,6.138 4.336,6.138 4.336,6.138 2.668,11.569 2.668,11.569 2.668,11.569 2.053,11.043 2.053,11.043 2.053,11.043 3.546,5.349 3.546,5.349 3.546,5.349 20.664,5.349 20.664,5.349 20.664,5.349 20.664,4.036 20.664,4.036 20.664,4.036 9.547,4.036 9.547,4.036 9.547,4.036 7.906,1 7.906,1 7.906,1 1,1 1,1 1,1 1,17 1,17 1,17 20.664,17 20.664,17 20.664,17 24,6.138 24,6.138 24,6.138 20.664,6.138 20.664,6.138z" Fill="White" Height="18" Width="26"/>
 						<TextBlock ToolTip="Load new files " Text="Open File" Margin="8 -4 1 1" FontSize="16" Padding="1 3 1 0.5"/>

@@ -7,7 +7,7 @@
     </Window.Resources>
     <Grid Margin="0,0,123,179">
         <Button x:Name="mainwindow" Content="MainWindow" Click="mainwindow_Click" Margin="188,23,-105,28"/>
-        <Button Name="ratewindow" Content="RateWindow" Click="ratewindow_Click" Margin="22,76,40,-34" ></Button>
+        <Button Name="zoneWindow" Content="zonewindow" Click="zonewindow_Click" Margin="22,76,40,-34" ></Button>
         <Button Name="stockwindow" Content="Stock Window" Click="stockwindow_Click" Margin="22,19,28,42"></Button>
         <Button Name="ServiceWindow" Content="Service Window" Click="ServiceWindow_Click" Margin="16,145,40,-89"></Button>
         <Button Content="AnalyzeInvoice" HorizontalAlignment="Left" Height="34" Name="AnalyzeInvoicebutton" Click="AnalyzeInvoicebutton_Click" Margin="174,135,-105,-79" VerticalAlignment="Top" Width="100"/>
