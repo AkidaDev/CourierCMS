@@ -101,7 +101,7 @@ namespace FinalUi
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            PaymentDetailsWindow window = new PaymentDetailsWindow();
+            PaymentRecieved window = new PaymentRecieved();
             window.Show();
         }
     }

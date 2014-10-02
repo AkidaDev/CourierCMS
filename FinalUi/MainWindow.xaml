@@ -61,10 +61,12 @@ CanExecute="CanExecutePrintCommand"/>
 						<MenuItem Header="About" x:Name="AboutMenuItem" Click="AboutMenuItem_Click"/>
 					</MenuItem>
 				</Menu>
-				<TextBlock FontSize="24" Padding="0 7 0 0" Height="24" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Vortex" Width="100" FontFamily="Lithos Pro Regular"/>
-				<Canvas Margin="160,0,113,0">
-						<Path MouseDown="Grid_MouseDown" x:Name="Memu_bar" Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26.62" Canvas.Left="0.667" Canvas.Top="0" Stretch="Fill" Width="1920" />
-				</Canvas>
+				<TextBlock FontSize="20" Height="24" TextAlignment="Center" Text="Vortex" Width="100" FontFamily="Lithos Pro Regular"/>
+                <Canvas Margin="160,0,113,0">
+                    <Button MouseDoubleClick="NormalMaximize_Click" Style="{StaticResource window}">
+                    <Path MouseDown="Grid_MouseDown" x:Name="Memu_bar" Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26.62" Canvas.Left="0.667" Canvas.Top="0" Stretch="Fill" Width="1920" />
+                        </Button>
+                </Canvas>
 				<WrapPanel HorizontalAlignment="Right" Margin="0,0,0,9">
 					<Button ToolTip="Minimize" Style="{StaticResource all}" x:Name="MinimizeButton" Click="MinimizeButton_Click" Width="25">
 						<Path x:Name="minimize" Data="F1M2,4C2,4 2,2 2,2 2,2 14,2 14,2 14,2 14,4 14,4 14,4 2,4 2,4z" Fill="Black" Height="5" Width="12" Margin="-1,0,0,-7"/>

@@ -79,5 +79,13 @@ namespace FinalUi
             PrintWindow window = new PrintWindow(UtilityClass.convertTransListToRuntimeList(transactions), (Client)ClientComboBox.SelectedItem, DateTime.ParseExact(toDate, "dd/MM/yy", new CultureInfo("en-US")), DateTime.ParseExact(fromDate, "dd/MM/yy", new CultureInfo("en-US")), tax, (double)inv.PreviousDue);
             window.ShowDialog();
         }
+		private void DragthisWindow(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+        private void Button_Click_Close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
