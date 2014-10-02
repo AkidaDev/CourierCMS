@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -67,12 +68,15 @@ namespace FinalUi
             Invoice inv = (Invoice)InvoiceDatagrid.SelectedItem;
             BillingDataDataContext db = new BillingDataDataContext();
             List<Transaction> transactions = db.InvoiceAssignments.Where(x => x.BillId == inv.BillId).Select(y => y.Transaction).ToList();
-            string fromDate = inv.Remarks.Split('M')[0] + "M";
-            string toDate = inv.Remarks.Split('M')[1] + "M";
-            Double tax = (((inv.Basic + inv.Fuel) / (inv.TotalAmount)) * 100);
+            string fromDate = new string(inv.Remarks.TakeWhile(x => x != 't').ToArray());
+            string toDate = new string(inv.Remarks.SkipWhile(x => x != 'o').ToArray());
+            toDate = toDate.Substring(1, toDate.Length - 1);
+            fromDate = fromDate.Trim();
+            toDate = toDate.Trim();
+            Double tax = (((inv.TotalAmount - (inv.Basic + inv.Fuel)) / (inv.TotalAmount)) * 100);
             if (inv.PreviousDue == null)
                 inv.PreviousDue = 0;
-            PrintWindow window = new PrintWindow(UtilityClass.convertTransListToRuntimeList(transactions), (Client)ClientComboBox.SelectedItem, DateTime.Parse(toDate), DateTime.Parse(fromDate), tax, (double)inv.PreviousDue);
+            PrintWindow window = new PrintWindow(UtilityClass.convertTransListToRuntimeList(transactions), (Client)ClientComboBox.SelectedItem, DateTime.ParseExact(toDate, "dd/MM/yy", new CultureInfo("en-US")), DateTime.ParseExact(fromDate, "dd/MM/yy", new CultureInfo("en-US")), tax, (double)inv.PreviousDue);
             window.ShowDialog();
         }
     }

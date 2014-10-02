@@ -36,7 +36,7 @@
             <WrapPanel>
                 <DataGrid Name="InvoiceDatagrid" DockPanel.Dock="Left" AutoGenerateColumns="False" DataContext="{StaticResource InvoiceDetailsSourceGrid}" ItemsSource="{Binding}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="BillNumber" Binding="{Binding BillDisplayNumber}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="BillNumber" Binding="{Binding BillId}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Date" Binding="{Binding Date}"/>
                         <DataGridTextColumn Header="Basic" Binding="{Binding Basic}"/>
                         <DataGridTextColumn Header="Fuel" Binding="{Binding Fuel}"/>

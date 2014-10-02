@@ -29,8 +29,8 @@ namespace FinalUi
         public PrintWindow(List<RuntimeData> data, Client client, DateTime toDate, DateTime fromDate, double tax, double previousDue)
             : this(data)
         {
-            ToDate.DisplayDate = toDate.Date;
-            FromDate.DisplayDate = fromDate.Date;
+            ToDate.SelectedDate = toDate.Date;
+            FromDate.SelectedDate = fromDate.Date;
             ToDate.IsEnabled = false;
             FromDate.IsEnabled = false;
             ClientList.SelectedItem = client.CLCODE;
@@ -39,6 +39,7 @@ namespace FinalUi
             TaxBox.IsEnabled = false;
             PreviousDueTextBox.Text = previousDue.ToString();
             PreviousDueTextBox.IsEnabled = false;
+            MiscBox.Text = "0";
             printObj();
         }
         public PrintWindow(List<RuntimeData> data)
