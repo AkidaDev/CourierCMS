@@ -71,7 +71,11 @@ namespace FinalUi
             {
                 BillingDataDataContext db = new BillingDataDataContext();
                 db.PaymentEntries.InsertOnSubmit(paymentEntry);
-                db.SubmitChanges();
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); return; }
             }
             else
             {

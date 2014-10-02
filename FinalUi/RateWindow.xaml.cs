@@ -137,7 +137,11 @@ namespace FinalUi
             {
                 BillingDataDataContext db = new BillingDataDataContext();
                 db.RateDetails.InsertOnSubmit(win.retD);
-                db.SubmitChanges();
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); return; }
                 if (win.retD.Type == 1)
                     ((ListCollectionView)Type1DG.ItemsSource).AddNewItem(win.retD);
                 else
@@ -164,7 +168,11 @@ namespace FinalUi
             if (retD != null)
             {
                 db.RateDetails.DeleteOnSubmit(retD);
-                db.SubmitChanges();
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); return; }
             }
         }
         private void Type2DGNewRowButton_Click(object sender, RoutedEventArgs e)
@@ -200,7 +208,11 @@ namespace FinalUi
             {
                 BillingDataDataContext db = new BillingDataDataContext();
                 db.Rates.InsertOnSubmit(addNewRateWindow.rate);
-                db.SubmitChanges();
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); return; }
                 refreshDataSources();
             }
         }
@@ -234,7 +246,11 @@ namespace FinalUi
                     db.Assignments.InsertOnSubmit(bdAssign);
                     ((ListCollectionView)DGRateAssignment.ItemsSource).AddNewItem(bdAssign);
                 }
-                db.SubmitChanges();
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); return; }
             }
         }
         private void AddNewAssignmentButton_Click(object sender, RoutedEventArgs e)
@@ -259,7 +275,11 @@ namespace FinalUi
             db.Assignments.DeleteOnSubmit(dbAssignment);
             ListCollectionView view = (ListCollectionView)DGRateAssignment.ItemsSource;
             view.Remove(assignment);
-            db.SubmitChanges();
+            try
+            {
+                db.SubmitChanges();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); return; }
         }
         private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {

@@ -76,7 +76,11 @@ namespace FinalUi
                 {
                     if (Validator.StockV(this.s))
                     {
-                        db.SubmitChanges();
+                        try
+                        {
+                            db.SubmitChanges();
+                        }
+                        catch (Exception ex) { MessageBox.Show(ex.Message); return; }
                     }
                     flag = false;
                 }

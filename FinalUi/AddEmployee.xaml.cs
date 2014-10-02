@@ -70,7 +70,11 @@ namespace FinalUi
                 db.User_permissions.InsertAllOnSubmit(returnUserPermissionList((List<Permission>)(viewsourceUserPermission.Source)));
                 if (Validator.EmployeeV(emp))
                 {
-                    db.SubmitChanges();
+                    try
+                    {
+                        db.SubmitChanges();
+                    }
+                    catch (Exception ex) { MessageBox.Show(ex.Message); return; }
                     this.Close();
                 }
             }
@@ -89,7 +93,11 @@ namespace FinalUi
             setDataFromEmp(data);
             if (Validator.EmployeeV(data))
             {
-                db.SubmitChanges();
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); return; }
                 this.Close();
             }
         }
@@ -98,7 +106,11 @@ namespace FinalUi
             var db = new BillingDataDataContext();
             List<User_permission> temp = (from a in db.User_permissions select a).Where(x => x.emp_id == emp.Id).ToList();
             db.User_permissions.DeleteAllOnSubmit(temp);
-            db.SubmitChanges();
+            try
+            {
+                db.SubmitChanges();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); return; }
         }
         private void setDataFromEmp(Employee data)
         {

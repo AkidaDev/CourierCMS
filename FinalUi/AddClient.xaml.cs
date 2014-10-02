@@ -50,7 +50,11 @@ namespace FinalUi
             client.INTRODATE = DateTime.Now;
             BillingDataDataContext db = new BillingDataDataContext();
             db.Clients.InsertOnSubmit(client);
-            db.SubmitChanges();
+            try
+            {
+                db.SubmitChanges();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); return; }
             if (MessageBox.Show("Do you Want Assgin Rate to this client right now ?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
             {
                 RateWindow window = new RateWindow();
@@ -71,14 +75,8 @@ namespace FinalUi
             try
             {
                 db.SubmitChanges();
-
-                this.Close();
             }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-
+            catch (Exception ex) { MessageBox.Show(ex.Message); return; }
         }
         public void FillField()
         {

@@ -399,7 +399,6 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="AddEmployee_Images\Layer 1.png" />
     <Resource Include="Images\logo.png" />
     <Resource Include="Images\search.png" />
     <Resource Include="Images\Shape 21 copy.png" />
@@ -410,14 +409,10 @@
     <Resource Include="Data\NF037_DSR_TABLE_ITL.TXT" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="RateWindow_Images\" />
     <Folder Include="test\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="RateAssign_Images\Layer 0.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

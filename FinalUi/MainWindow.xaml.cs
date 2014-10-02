@@ -574,11 +574,13 @@ namespace FinalUi
                         StackPanel panel = new StackPanel();
                         panel.Children.Add(path);
                         this.NormalMaximize.Content = panel;
+                        this.NormalMaximize.ToolTip = "Restore Down";
                         break;
                     }
                 case WindowState.Maximized:
                     {
                         WindowState = WindowState.Normal;
+                        
                         this.WindowState = WindowState.Normal;
                         Path path = new Path();
                         path.Data = Geometry.Parse(@"F1M3.222,5L3.222,6.702C3.222,9.071 3.222,11.778 3.222,11.778 3.222,11.778 11.778,11.778 11.778,11.778 11.778,11.778 11.778,9.071 11.778,
@@ -589,6 +591,7 @@ namespace FinalUi
                         StackPanel panel = new StackPanel();
                         panel.Children.Add(path);
                         this.NormalMaximize.Content = panel;
+                        this.NormalMaximize.ToolTip = "Maximize";
                         break;
                     }
             }
