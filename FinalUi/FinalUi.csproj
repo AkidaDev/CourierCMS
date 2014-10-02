@@ -187,6 +187,9 @@
     <Compile Include="TestingMainWindow.xaml.cs">
       <DependentUpon>TestingMainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TestingReporting.xaml.cs">
+      <DependentUpon>TestingReporting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="testtheme.xaml.cs">
       <DependentUpon>testtheme.xaml</DependentUpon>
     </Compile>
@@ -328,6 +331,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="TestingReporting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="testtheme.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -362,8 +369,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="AccountStatementReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report1.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="BillingData.dbml.layout">
       <DependentUpon>BillingData.dbml</DependentUpon>

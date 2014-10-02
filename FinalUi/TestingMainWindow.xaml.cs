@@ -104,5 +104,10 @@ namespace FinalUi
             PaymentRecieved window = new PaymentRecieved();
             window.Show();
         }
+
+        private void AccountStatement_Click(object sender, RoutedEventArgs e)
+        {
+            TestingReporting window = new TestingReporting(); window.Show();
+        }
     }
 }

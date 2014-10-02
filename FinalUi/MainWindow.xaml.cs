@@ -245,7 +245,7 @@ namespace FinalUi
         {
 
             PrintWindow win = new PrintWindow(dataGridHelper.getCurrentDataStack);
-            win.ShowDialog();
+            win.Show();
         }
         private void CanExecutePrintCommand(object sender, CanExecuteRoutedEventArgs e)
         {
