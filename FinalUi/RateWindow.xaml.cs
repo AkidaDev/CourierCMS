@@ -188,12 +188,6 @@ namespace FinalUi
             removeDGItemFromDB(retD);
         }
 
-
-        private void AssignRateButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void AddNewRateButton_Click(object sender, RoutedEventArgs e)
         {
             AddNewRateWindow addRateWindow = new AddNewRateWindow();

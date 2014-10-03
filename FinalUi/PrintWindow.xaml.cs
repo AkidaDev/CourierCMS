@@ -17,7 +17,7 @@ using System.Drawing.Printing;
 
 namespace FinalUi
 {
- /// <summary>
+    /// <summary>
     /// Interaction logic for PrintWindow.xaml
     /// </summary>
     public partial class PrintWindow : Window
@@ -26,6 +26,22 @@ namespace FinalUi
         CollectionViewSource DataGridSource;
         List<RuntimeData> dataGridSource;
         Microsoft.Reporting.WinForms.ReportDataSource rs;
+        public PrintWindow(List<RuntimeData> data, Client client, DateTime toDate, DateTime fromDate, double tax, double previousDue)
+            : this(data)
+        {
+            ToDate.SelectedDate = toDate.Date;
+            FromDate.SelectedDate = fromDate.Date;
+            ToDate.IsEnabled = false;
+            FromDate.IsEnabled = false;
+            ClientList.SelectedItem = client.CLCODE;
+            ClientList.IsEnabled = false;
+            TaxBox.Text = tax.ToString();
+            TaxBox.IsEnabled = false;
+            PreviousDueTextBox.Text = previousDue.ToString();
+            PreviousDueTextBox.IsEnabled = false;
+            MiscBox.Text = "0";
+            printObj();
+        }
         public PrintWindow(List<RuntimeData> data)
         {
             InitializeComponent();
@@ -38,7 +54,7 @@ namespace FinalUi
             rs.Name = "DataSet1";
             rs.Value = dataGridSource;
             BillViewer.LocalReport.ReportPath = "Report1.rdlc";
-            
+
         }
 
         void BillViewer_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
@@ -50,7 +66,7 @@ namespace FinalUi
             if (ClientList.SelectedValue != null && ToDate.SelectedDate != null && FromDate.SelectedDate != null)
             {
 
-                DataGridSource.Source = dataGridSource.Where(x => x.CustCode == (string)ClientList.SelectedValue && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList() ;
+                DataGridSource.Source = dataGridSource.Where(x => x.CustCode == (string)ClientList.SelectedValue && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
             }
         }
         private void ToDate_CalendarClosed(object sender, RoutedEventArgs e)
@@ -62,13 +78,17 @@ namespace FinalUi
         {
             RefreshDataGridSource();
         }
-        private void printObj()
+        private void printObj(Client client = null)
         {
 
             BillingDataDataContext db = new BillingDataDataContext();
-            List<RuntimeData> source = dataGridSource.Where(x => x.CustCode == ClientList.Text  && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
+            List<RuntimeData> source = dataGridSource.Where(x => x.CustCode == ClientList.Text && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
             rs.Value = source;
-            Client clc = db.Clients.SingleOrDefault(x => x.CLCODE == ClientList.Text);
+            Client clc;
+            if (client == null)
+                clc = db.Clients.SingleOrDefault(x => x.CLCODE == ClientList.Text);
+            else
+                clc = client;
             BillViewer.LocalReport.DataSources.Clear();
             BillViewer.LocalReport.DataSources.Add(rs);
             List<ReportParameter> repParams = new List<ReportParameter>();
@@ -100,9 +120,9 @@ namespace FinalUi
             repParams.Add(new ReportParameter("InvoiceNumber", Guid.NewGuid().ToString()));
             BillViewer.LocalReport.SetParameters(repParams);
             BillViewer.ShowExportButton = true;
-           
+
             BillViewer.RefreshReport();
-          }
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             printObj();

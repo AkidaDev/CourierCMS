@@ -48,7 +48,7 @@ namespace FinalUi
         #endregion
         public MainWindow()
         {
-            SecurityModule.authenticate("dharmendra", "pass");
+           // SecurityModule.authenticate("dharmendra", "pass");
             #region setupCode
             PreviewMouseMove += OnPreviewMouseMove;
             #endregion
@@ -131,7 +131,7 @@ namespace FinalUi
             string response;
             try
             {
-                help.insertRuntimeData((List<RuntimeData>)e.Argument, dataGridHelper.currentSheetNumber);
+                help.insertRuntimeData((List<RuntimeData>)e.Argument, dataGridHelper.currentSheetNumber,isLoadedFromFile,toDate_loadDataWin,fromDate_loadDataWin);
                 response = "Data Loading Successful";
             }
             catch (Exception ex)
@@ -415,7 +415,9 @@ namespace FinalUi
             activeButton = canvasButton;
 
         }
-
+        bool isLoadedFromFile = true;
+        DateTime? toDate_loadDataWin;
+        DateTime? fromDate_loadDataWin;
         void loadData_Closed(object sender, EventArgs e)
         {
             this.Effect = null;
@@ -433,6 +435,12 @@ namespace FinalUi
                 {
                     dataGridHelper.addDataToCurrentSheet(dataWind.data);
                     dataGridHelper.refreshCurrentPage();
+                }
+                isLoadedFromFile = dataWind.isLoadedFromFile;
+                if(!isLoadedFromFile)
+                {
+                    toDate_loadDataWin = dataWind.toDate;
+                    fromDate_loadDataWin = dataWind.fromDate;
                 }
                 LoadWorker.RunWorkerAsync(dataWind.data);
             }
@@ -771,6 +779,21 @@ namespace FinalUi
         {
             BillReportWindow win = new BillReportWindow();
             win.ShowDialog();
+        }
+
+        private void PaymentEntry_Click(object sender, RoutedEventArgs e)
+        {
+            PaymentDetailsWindow window = new PaymentDetailsWindow(); window.ShowDialog();
+        }
+
+        private void PaymentRecieved_Click(object sender, RoutedEventArgs e)
+        {
+            PaymentRecieved window = new PaymentRecieved(); window.ShowDialog();
+        }
+
+        private void StockEntry_Click(object sender, RoutedEventArgs e)
+        {
+            StockWindow window = new StockWindow(); window.ShowDialog();
         }
     }
 }

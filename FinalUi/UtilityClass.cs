@@ -210,7 +210,7 @@ namespace FinalUi
             }
             return -1;
         }
-        public static double getCost(string clientCode, string destinationCode, decimal destinationPin, double wieght, string zoneCode, string serviceCode, char dox)
+        public static double getCost(string clientCode, string destinationCode, double wieght, string zoneCode, string serviceCode, char dox)
         {
             Assignment ab;
             BillingDataDataContext db = new BillingDataDataContext();
