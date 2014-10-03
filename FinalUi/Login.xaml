@@ -33,11 +33,8 @@
 		</Canvas>
 
                 <StackPanel Margin="283,139,0,0">
-                <WrapPanel HorizontalAlignment="Center" >
-                    <TextBox  Text="SQLEXPRESS" x:Name="InstanceName" MinWidth="150" Padding="5 5 5 5" HorizontalAlignment="Center" FontSize="14"  >
-                    </TextBox>
-                </WrapPanel>
-                <Separator Visibility="Hidden"/>
+                <WrapPanel HorizontalAlignment="Center" />
+            <Separator Visibility="Hidden"/>
                 <WrapPanel HorizontalAlignment="Center" >
                 <TextBox MinWidth="150" Padding="5 5 5 5" Name="UserName" FontSize="14" />
                 </WrapPanel>

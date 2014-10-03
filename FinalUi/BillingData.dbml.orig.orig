@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BillingDatabase" Class="BillingDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+<<<<<<< local
+  <Connection Mode="AppSettings" ConnectionString="Data Source=KHANCOMPUTER\SQLExpress;Initial Catalog=BillingDatabase;Integrated Security=True" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString1" Provider="System.Data.SqlClient" />
+=======
+<<<<<<< local
   <Connection Mode="AppSettings" ConnectionString="Data Source=PANKAJ\SQLEXPRESS;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString6" Provider="System.Data.SqlClient" />
+=======
+  <Connection Mode="AppSettings" ConnectionString="Data Source=SYSTEM;Initial Catalog=BillingDatabase;User ID=sa" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString7" Provider="System.Data.SqlClient" />
+>>>>>>> other
+>>>>>>> other
   <Table Name="dbo.Assignment" Member="Assignments">
     <Type Name="Assignment">
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -273,8 +281,23 @@
     <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
+<<<<<<< local
+=======
+<<<<<<< local
+>>>>>>> other
   <Function Name="dbo.sp_TransferMInvoiceToBInvoice" Method="sp_TransferMInvoiceToBInvoice" />
   <Function Name="dbo.sp_ImportZoneData" Method="sp_ImportZoneData" />
+<<<<<<< local
+=======
+=======
+  <Function Name="dbo.sp_TransferPaymentDetails" Method="sp_TransferPaymentDetails">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_ImportZoneData" Method="sp_ImportZoneData">
+    <Return Type="System.Int32" />
+  </Function>
+>>>>>>> other
+>>>>>>> other
   <Function Name="dbo.sp_LoadToRuntimeFromDate" Method="sp_LoadToRuntimeFromDate">
     <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
@@ -287,5 +310,20 @@
     <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
+<<<<<<< local
+=======
+<<<<<<< local
+>>>>>>> other
   <Function Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail" Method="sp_TransferMInvoiceDetailToBInvoiceDetail" />
+<<<<<<< local
+=======
+=======
+  <Function Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail" Method="sp_TransferMInvoiceDetailToBInvoiceDetail">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_TransferMInvoiceToBInvoice" Method="sp_TransferMInvoiceToBInvoice">
+    <Return Type="System.Int32" />
+  </Function>
+>>>>>>> other
+>>>>>>> other
 </Database>

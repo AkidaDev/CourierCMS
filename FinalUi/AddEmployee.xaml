@@ -15,23 +15,20 @@
         </Grid.Effect>
         <Canvas x:Name="AddEmployee1" ClipToBounds="True" HorizontalAlignment="Left" Height="405" UseLayoutRounding="False" VerticalAlignment="Top" Width="550" Background="White">
 
-            <TextBox Padding="5 5 5 5" Name="FullName"  Height="27" Canvas.Left="158" Canvas.Top="84" Width="148"/>
+            <TextBox Padding="3 3 0 0" Name="FullName"  Height="27" Canvas.Left="158" Canvas.Top="84" Width="148"/>
             <TextBlock x:Name="Enter_Name___" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="54" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Enter Name .:" Canvas.Top="92.827"/>
-            <Path x:Name="Rectangle_1_copy_3" Data="F1M2,1.492C2,1.492 80.737,1.492 80.737,1.492 80.737,1.492 80.737,25.512 80.737,25.512 80.737,25.512 2,25.512 2,25.512 2,25.512 2,1.492 2,1.492z" Fill="White"/>
             <ComboBox Name="Gender" SelectedIndex="0"  Height="27" Canvas.Left="442" Canvas.Top="84" Width="82" IsEditable="True">
                 <ComboBoxItem Content="Male"/>
                 <ComboBoxItem Content="Female"/>
             </ComboBox>
             <TextBlock x:Name="Gender_____" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="362" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Gender   .:" Canvas.Top="93"/>
-            <TextBox Name="UserName" Padding="5 5 5 5" Height="26" Canvas.Left="158" Canvas.Top="120" Width="148"/>
-            <Path x:Name="Rectangle_1_copy_2" Data="F1M2,1C2,1 147,1 147,1 147,1 147,25 147,25 147,25 2,25 2,25 2,25 2,1 2,1z" Fill="White" />
+            <TextBox Name="UserName" Padding="3 3 0 0" Height="26" Canvas.Left="158" Canvas.Top="120" Width="148"/>
             <TextBlock x:Name="UserName_____" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="54" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="UserName   .:" Canvas.Top="128.827"/>
-            <TextBox Padding="5 5 5 5" Name="EmployeeCode" Height="27" Canvas.Left="442" Canvas.Top="120" Width="82"/>
+            <TextBox Padding="3 3 0 0" Name="EmployeeCode" Height="27" Canvas.Left="442" Canvas.Top="120" Width="82"/>
             <TextBlock x:Name="Empl__Code___" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="341" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Empl. Code .:" Canvas.Top="129"/>
-            <PasswordBox Name="Password" Padding="5 5 5 5" Height="26" Canvas.Left="158" Canvas.Top="156" Width="147"/>
+            <PasswordBox Name="Password" Padding="3 3 0 0" Height="26" Canvas.Left="158" Canvas.Top="156" Width="147"/>
             <TextBlock x:Name="Password__" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="66" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Password  .:" Canvas.Top="164.333"/>
-            <Path x:Name="Rectangle_1_copy_6" Data="F1M1,1C1,1 146,1 146,1 146,1 146,25 146,25 146,25 1,25 1,25 1,25 1,1 1,1z" Fill="White" />
-            <PasswordBox Name="ConfirmPass"  Padding="5 5 5 5" Height="26" Canvas.Left="158" Canvas.Top="192" Width="147"/>
+            <PasswordBox Name="ConfirmPass"  Padding="3 3 0 0" Height="26" Canvas.Left="158" Canvas.Top="192" Width="147"/>
             <TextBlock x:Name="Retype_Password______" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="23.999" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Confirm Pass.     .:" Canvas.Top="199.994"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="99.556" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Set Permissions .:" Canvas.Top="230.16"/>
             <Path Data="F1M1.986,3C1.986,3 1.986,1.786 1.986,1.786 1.986,1.786 501.982,1.786 501.982,1.786 501.982,1.786 501.982,3 501.982,3 501.982,3 1.986,3 1.986,3" Fill="Black" Height="1" Canvas.Left="90" Canvas.Top="245.846" Width="150" Stretch="Fill"/>
