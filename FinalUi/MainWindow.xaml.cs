@@ -105,7 +105,7 @@ namespace FinalUi
             DeleteSheetWorker = new BackgroundWorker();
             DeleteSheetWorker.DoWork += DeleteWorker_DoWork;
             DeleteSheetWorker.RunWorkerCompleted += DeleteWorker_RunWorkerCompleted;
-            filterObj = new Filter("abc","bcd");
+         
         }
         #region backGround Worker Functions
         #region LoadWorker
@@ -534,21 +534,18 @@ namespace FinalUi
         #endregion DataGrid Methods Ends
 
         #region filter functions
-        Filter filterObj;
+       
         private void FilterButton_Click(object sender, RoutedEventArgs e)
         {
-            FilterSelectWindow window = new FilterSelectWindow(filterObj,dataGridHelper.currentConnNos);
+            FilterSelectWindow window = new FilterSelectWindow(dataGridHelper.currentDataSheet.filterObj,dataGridHelper.currentConnNosNoFilter);
             window.Closed += window_Closed;
-            window.ShowDialog();
+            window.Show();
         }
 
         void window_Closed(object sender, EventArgs e)
         {
-            FilterSelectWindow filterWindow = (FilterSelectWindow)sender;
-            foreach (var filter in filterWindow.filters)
-            {
-                dataGridHelper.currentDataSheet.addFilter(filter);
-            }
+            dataGridHelper.refreshCurrentPage();
+
         }
         #endregion
 

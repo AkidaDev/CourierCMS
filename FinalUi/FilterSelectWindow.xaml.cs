@@ -20,12 +20,12 @@ namespace FinalUi
     public partial class FilterSelectWindow : Window
     {
         CollectionViewSource clientListToSet;
-        CollectionContainer clientListToAdd;
+        CollectionViewSource clientListToAdd;
         CollectionViewSource StartConnNoList;
         CollectionViewSource EndConnoList;
         Filter filterObj;
 
-        public List<Func<RuntimeData, int,bool>> filters;
+        public List<Func<RuntimeData, int, bool>> filters;
         /// <summary>
         /// Creates a new Filter Selection Window
         /// </summary>
@@ -34,49 +34,82 @@ namespace FinalUi
         public FilterSelectWindow(Filter filterObj, IEnumerable<string> ConnNo)
         {
             setDataSource(filterObj, ConnNo);
-          //  List<WrapPanel> panels = (List<WrapPanel>)SelectClient.ItemsSource;
+            //  List<WrapPanel> panels = (List<WrapPanel>)SelectClient.ItemsSource;
         }
         public void setDataSource(Filter filterObj, IEnumerable<string> ConnNo)
         {
             InitializeComponent();
             this.filterObj = filterObj;
             BillingDataDataContext db = new BillingDataDataContext();
-            
+
             StartConnNoList = (CollectionViewSource)FindResource("StartConnNoList");
             StartConnNoList.Source = ConnNo;
             EndConnoList = (CollectionViewSource)FindResource("EndConnoList");
             EndConnoList.Source = ConnNo;
-        }
+            clientListToAdd = (CollectionViewSource)FindResource("ClientToAdd");
+            clientListToSet = (CollectionViewSource)FindResource("ClientToSet");
+            List<Client> fClientList = db.Clients.ToList();
+            clientListToSet.Source = fClientList.Where(x => !filterObj.selectedClientList.Select(y=>y.CLCODE).Contains(x.CLCODE)).ToList();
+            clientListToAdd.Source = filterObj.selectedClientList;
+            switch (filterObj.showBilled)
+            {
+                case true:
+                    {
+                        BilledRadio.IsChecked = true;
+                        break;
+                    }
+                case false:
+                    {
+                        UnBilledRadio.IsChecked = true;
+                        break;
+                    }
+                case null:
+                    {
+                        AllRadio.IsChecked = true;
+                        break;
+                    }
 
+            }
+            if (filterObj.startConnNo != "" && ConnNo.Contains(filterObj.startConnNo))
+                StartConnNo.Text = filterObj.startConnNo;
+            else
+                StartConnNo.Text = ConnNo.FirstOrDefault()??"";
+            if (filterObj.endConnNo != "" && ConnNo.Contains(filterObj.endConnNo))
+                EndConnNo.Text = filterObj.endConnNo;
+            else
+                EndConnNo.Text = ConnNo.LastOrDefault()??"";
+            ToDate.SelectedDate = filterObj.toDate;
+            FromDate.SelectedDate = filterObj.fromDate;
+        }
+        
         private void GetFilter_Click(object sender, RoutedEventArgs e)
         {
-            if(EndConnNo.SelectedIndex > StartConnNo.SelectedIndex)
+            string errorMsg = "";
+            if (!((List<string>)EndConnoList.Source).Contains(EndConnNo.Text) && !((List<string>)StartConnNoList.Source).Contains(StartConnNo.Text))
+                errorMsg += "Enter the connsignments correctly \n";
+            if (ToDate.SelectedDate < FromDate.SelectedDate)
+                errorMsg += "Enter the date correctly \n";
+            if (errorMsg != "")
+                MessageBox.Show("Please correct the following errors: \n" + errorMsg);
+            else
             {
-                Func<RuntimeData, int, bool> filter = (o, i) => i < EndConnNo.SelectedIndex && i > StartConnNo.SelectedIndex;
-                filters.Add(filter);
+                filterObj.endConnNo = EndConnNo.Text;
+                filterObj.fromDate =(DateTime) FromDate.SelectedDate;
+                filterObj.selectedClientList = ((List<Client>)clientListToAdd.Source);
+                if (BilledRadio.IsChecked == true)
+                    filterObj.showBilled = true;
+                if (UnBilledRadio.IsChecked == true)
+                    filterObj.showBilled = false;
+                if (AllRadio.IsChecked == true)
+                    filterObj.showBilled = null;
+                filterObj.startConnNo = StartConnNo.Text;
+                filterObj.toDate = (DateTime)ToDate.SelectedDate;
+                
             }
-            if(filterObj.selectedClientList.Count > 0 )
-            {
-                Func<RuntimeData, int , bool> filter = (o,i) => filterObj.selectedClientList.Contains(o.CustCode);
-                filters.Add(filter);
-            }
-
             this.Close();
-        } 
-
-        private void CheckBox_SelectClient_Checked(object sender, RoutedEventArgs e)
-        {
-           
-            //CheckBox thisCheckBox = (CheckBox)sender;
-            //if ((bool)thisCheckBox.IsChecked)
-            //{
-            //    SelectedClientList.Add((string)thisCheckBox.Tag);
-            //}
-            //else
-            //{
-            //    SelectedClientList.Remove((string)thisCheckBox.Tag);
-            //}
         }
+
+
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -85,6 +118,17 @@ namespace FinalUi
         private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {
             DragMove();
+        }
+
+
+        private void RemoveClient_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddClient_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

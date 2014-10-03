@@ -10,72 +10,34 @@ using System.Windows.Forms;
 
 namespace FinalUi
 {
-    class FilterManager<T>
+  
+    class DataSheet
     {
-        List<Func<T, int, bool>> _filters;
-        List<Func<T, int, bool>> filters
+        public List<RuntimeData> dataStack
         {
             get
             {
-                return _filters;
-            }
-        }
-        public FilterManager()
-        {
-            _filters = new List<Func<T, int, bool>>();
-        }
-        public void addFilter(Func<T, int, bool> filter)
-        {
-            _filters.Add(filter);
-        }
-        public List<T> applyFilter(List<T> dataStack)
-        {
-            IEnumerable<T> dataSource = dataStack;
-            foreach (var filter in filters)
-            {
-                dataSource = dataSource.Where(filter);
-            }
-            return dataSource.ToList();
-        }
-        public void removeFilter(Func<T, int, bool> filter)
-        {
-            _filters.Remove(filter);
-        }
-    }
-
-    class DataSheet<T>
-    {
-        public List<T> dataStack
-        {
-            get
-            {
-                return filterManager.applyFilter(_dataStack);
+                return filterObj.applyFilter(_dataStack);
             }
             set
             {
                 _dataStack = value;
             }
         }
-        public List<T> _dataStack { get; set; }
+        public List<RuntimeData> _dataStack { get; set; }
         public string name { get; set; }
         public int currentPageNo;
         public int rowsPerPage;
-        public FilterManager<T> filterManager;
-
-        public DataSheet(List<T> value, string name)
+        public Filter filterObj;
+        public DataSheet(List<RuntimeData> value, string name)
         {
             currentPageNo = 1;
             rowsPerPage = 100;
             dataStack = value;
-            filterManager = new FilterManager<T>();
+            filterObj = new Filter();
             this.name = name;
         }
-        public void addFilter(Func<T, int, bool> filter)
-        {
-
-            filterManager.addFilter(filter);
-        }
-        public void addData(List<T> value)
+        public void addData(List<RuntimeData> value)
         {
             if (_dataStack == null)
             {
@@ -92,12 +54,12 @@ namespace FinalUi
 
 
 
-    class DataSheetmanager<T>
+    class DataSheetmanager
     {
         CollectionViewSource dataGridSource;
-        Dictionary<int, DataSheet<T>> sheets;
-        DataSheet<T> _currentDataSheet;
-        public DataSheet<T> currentDataSheet
+        Dictionary<int, DataSheet> sheets;
+        DataSheet _currentDataSheet;
+        public DataSheet currentDataSheet
         {
             get
             {
@@ -136,7 +98,7 @@ namespace FinalUi
 
         public DataSheetmanager(CollectionViewSource dataGridSource)
         {
-            sheets = new Dictionary<int, DataSheet<T>>();
+            sheets = new Dictionary<int, DataSheet>();
             this.dataGridSource = dataGridSource;
         }
         public void removeSheet(int sheetKey)
@@ -156,7 +118,7 @@ namespace FinalUi
                 }
             }
         }
-        public int addNewSheet(List<T> data, string name)
+        public int addNewSheet(List<RuntimeData> data, string name)
         {
             int key = maxIndex + 1;
             if (name == "")
@@ -170,12 +132,12 @@ namespace FinalUi
             }
 
 
-            DataSheet<T> sheet = new DataSheet<T>(data, name);
+            DataSheet sheet = new DataSheet(data, name);
             sheets.Add(key, sheet);
             setActiveSheet(key);
             return key;
         }
-        public void addDataToCurrentSheet(List<T> data)
+        public void addDataToCurrentSheet(List<RuntimeData> data)
         {
             try
             {
@@ -195,6 +157,17 @@ namespace FinalUi
             _currentSheet = index;
             _currentDataSheet = sheets[index];
         }
+        public Filter CurrentSheetFilterObject
+        {
+            get
+            {
+                return currentDataSheet.filterObj;
+            }
+            set
+            {
+                currentDataSheet.filterObj = value;
+            }
+        }
 
     }
 
@@ -202,7 +175,7 @@ namespace FinalUi
 
     class DataGridHelper : INotifyPropertyChanged
     {
-        DataSheetmanager<RuntimeData> dataSheetManager;
+        DataSheetmanager dataSheetManager;
         CollectionViewSource dataGrid;
         public event PropertyChangedEventHandler PropertyChanged;
         public List<RuntimeData> getCurrentDataStack
@@ -227,7 +200,7 @@ namespace FinalUi
                 return dataSheetManager.currentSheet;
             }
         }
-        public DataSheet<RuntimeData> currentDataSheet
+        public DataSheet currentDataSheet
         {
             get
             {
@@ -239,6 +212,17 @@ namespace FinalUi
             if (PropertyChanged != null)
             {
                 this.PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+        public List<string> currentConnNosNoFilter
+        {
+            get
+            {
+                if (dataSheetManager.currentDataSheet != null)
+                    return dataSheetManager.currentDataSheet._dataStack.Select(c => c.ConsignmentNo).ToList();
+                else
+                    return null;
+
             }
         }
         public List<string> currentConnNos
@@ -313,7 +297,7 @@ namespace FinalUi
         }
         public DataGridHelper(CollectionViewSource dataGrid)
         {
-            dataSheetManager = new DataSheetmanager<RuntimeData>(dataGrid);
+            dataSheetManager = new DataSheetmanager(dataGrid);
             this.dataGrid = dataGrid;
 
         }
@@ -387,6 +371,17 @@ namespace FinalUi
             this.notifyPropertyChanged("rowsPerPage");
             if (dataSheetManager.totalSheets != 0)
                 refreshCurrentPage();
+        }
+        public Filter CurrentSheetFilterObject
+        {
+            get
+            {
+                return currentDataSheet.filterObj;
+            }
+            set
+            {
+                currentDataSheet.filterObj = value;
+            }
         }
         #endregion sheetManagmentMethodsEnds
     }

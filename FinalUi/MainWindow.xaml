@@ -248,8 +248,8 @@ CanExecute="CanExecutePrintCommand"/>
                                 <RowDefinition Height="26"/>
                                 <RowDefinition Height="20"/>
                             </Grid.RowDefinitions>
-                            <ContentControl Grid.Row="0" ScrollViewer.CanContentScroll="True" Grid.ColumnSpan="2">
-                                <DataGrid  RowHeaderWidth="0" IsReadOnly="True" x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False" Height="478"
+                            <ContentControl  Grid.Row="0" ScrollViewer.CanContentScroll="True" Grid.ColumnSpan="2">
+                                <DataGrid RowHeaderWidth="0" IsReadOnly="True" x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False" Height="478"
 									ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True"
 									BorderThickness="0" CanUserAddRows="True" >
 
