@@ -64,11 +64,11 @@ CanExecute="CanExecutePrintCommand"/>
                         <MenuItem Header="About" x:Name="AboutMenuItem" Click="AboutMenuItem_Click"/>
                     </MenuItem>
                 </Menu>
-				<TextBlock FontSize="20" Height="24" TextAlignment="Center" Text="Vortex" Width="100" FontFamily="Lithos Pro Regular"/>
+                <TextBlock  FontSize="16" Height="24" TextAlignment="Center" Text="Vortex" Width="100" FontFamily="Arial"/>
                 <Canvas Margin="160,0,113,0">
                     <Button MouseDoubleClick="NormalMaximize_Click" Style="{StaticResource window}">
-                    <Path MouseDown="Grid_MouseDown" x:Name="Memu_bar" Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26.62" Canvas.Left="0.667" Canvas.Top="0" Stretch="Fill" Width="1920" />
-                        </Button>
+                        <Path MouseDown="Grid_MouseDown" x:Name="Memu_bar" Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26.62" Canvas.Left="0.667" Canvas.Top="0" Stretch="Fill" Width="1920" />
+                    </Button>
                 </Canvas>
                 <WrapPanel HorizontalAlignment="Right" Margin="0,0,0,9">
                     <Button ToolTip="Minimize" Style="{StaticResource all}" x:Name="MinimizeButton" Click="MinimizeButton_Click" Width="25">
@@ -92,12 +92,8 @@ CanExecute="CanExecutePrintCommand"/>
                         <TextBlock ToolTip="Load new files " Text="Open File" Margin="8 -4 1 1" FontSize="16" Padding="1 3 1 0.5"/>
                     </WrapPanel>
                 </Button>
-                <Grid Margin="140,1,0,0" >
+                <Grid Margin="0,1,0,0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
@@ -110,48 +106,32 @@ CanExecute="CanExecutePrintCommand"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <Button ToolTip="Open File Button" Style="{StaticResource side}" Command="ApplicationCommands.Open"  Grid.Row="0" Width="48" Height="30" Grid.Column="0">
-                        <Path x:Name="import_files" Data="F1M11.187,19.719C11.187,19.719 11.187,20.375 11.187,20.375 11.187,20.375 13.812,20.375 13.812,20.375 13.812,       20.375 13.812,19.719 13.812,19.719 13.812,19.719 11.187,19.719 11.187,19.719z M9.875,17.094C9.875,17.094 9.875,17.75 9.875,17.75 9.875,17.75 15.125,       17.75 15.125,17.75 15.125,17.75 15.125,17.094 15.125,17.094 15.125,17.094 9.875,17.094 9.875,17.094z M20.375,12.5C20.375,12.5 20.375,13.812 20.375,       13.812 20.375,13.812 21.687,13.812 21.687,13.812 21.687,13.812 21.687,12.5 21.687,12.5 21.687,12.5 20.375,12.5 20.375,12.5z M11.187,4.625C11.187,       4.625 13.812,4.625 13.812,4.625 13.812,4.625 13.812,5.937 13.812,5.937 13.812,5.937 13.812,7.25 13.812,7.25 13.812,7.25 15.781,7.25 15.781,       7.25 15.781,7.25 12.5,10.531 12.5,10.531 12.5,10.531 9.219,7.25 9.219,7.25 9.219,7.25 11.187,7.25 11.187,7.25 11.187,7.25 11.187,5.937 11.187,       5.937 11.187,5.937 11.187,4.625 11.187,4.625z M7.906,3.312C7.906,3.312 4.01,11.187 4.01,11.187 4.01,11.187 9.875,11.187 9.875,11.187 9.875,       11.187 9.875,12.5 9.875,12.5 9.875,13.225 10.463,13.812 11.187,13.812 11.187,13.812 13.812,13.812 13.812,13.812 14.537,13.812 15.125,       13.225 15.125,12.5 15.125,12.5 15.125,11.187 15.125,11.187 15.125,11.187 21.031,11.187 21.031,11.187 21.031,11.187 17.094,3.312 17.094,       3.312 17.094,3.312 7.906,3.312 7.906,3.312z M7.25,2C7.25,2 17.709,2 17.709,2 17.709,2 23,11.187 23,11.187 23,11.187 23,23 23,23 23,23 2,23 2,23 2,       23 2,11.187 2,11.187 2,11.187 7.25,2 7.25,2z" Fill="Black" Height="24" Width="24"/>
-                    </Button>
 
-                    <Button ToolTip="Refresh" Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="1" >
-                        <Path  x:Name="reload" Data="F1M2,12.942C2,12.942 10.226,15.241 10.226,15.241 10.226,15.241 8.275,17.071 8.275,       17.071 9.288,17.922 10.917,18.786 12.32,18.786 15.074,18.786 17.386,16.824 18.039,14.171 18.039,14.171 21.987,15.222 21.987,15.222 20.891,       19.693 16.996,23 12.357,23 9.771,23 7.076,21.618 5.308,19.934 5.308,19.934 3.454,21.671 3.454,21.671 3.454,21.671 2,12.942 2,12.942z M11.643,       2C14.229,2 16.924,3.382 18.692,5.066 18.692,5.066 20.546,3.329 20.546,3.329 20.546,3.329 22,12.058 22,12.058 22,12.058 13.774,9.759 13.774,       9.759 13.774,9.759 15.725,7.929 15.725,7.929 14.712,7.078 13.083,6.214 11.68,6.214 8.926,6.214 6.614,8.176 5.961,10.829 5.961,10.829 2.013,       9.778 2.013,9.778 3.109,5.307 7.004,2 11.643,2z" Fill="#FFB29958" Height="24" Width="23"/>
-                    </Button>
-
-                    <Button ToolTip="Save" Style="{StaticResource side}"  x:Name="SaveButton" Grid.Row="0" Width="45" Height="30" Grid.Column="2">
+                    <Button ToolTip="Save" Style="{StaticResource side}"  x:Name="SaveButton" Grid.Row="0" Width="45" Height="30" Grid.Column="0">
                         <Path  x:Name="save" Data="F1M5.707,16.89C5.707,16.89 16.879,16.89 16.879,16.89 16.879,16.89 16.879,18.13 16.879,18.13 16.879,18.13 5.707,18.13 5.707,       18.13 5.707,18.13 5.707,16.89 5.707,16.89z M5.707,13.414C5.707,13.414 16.879,13.414 16.879,13.414 16.879,13.414 16.879,14.653 16.879,14.653 16.879,       14.653 5.707,14.653 5.707,14.653 5.707,14.653 5.707,13.414 5.707,13.414z M4.207,10.739C4.207,10.739 4.207,20.566 4.207,20.566 4.207,20.566 18.793,       20.566 18.793,20.566 18.793,20.566 18.793,10.739 18.793,10.739 18.793,10.739 4.207,10.739 4.207,10.739z M9.432,1.83C9.432,1.83 13.777,1.83 13.777,       1.83 13.777,1.83 13.777,7.358 13.777,7.358 13.777,7.358 9.432,7.358 9.432,7.358 9.432,7.358 9.432,1.83 9.432,1.83z M1.626,1C1.626,1 4.207,1 4.207,       1 4.207,1 4.207,8.508 4.207,8.508 4.207,8.508 15.586,8.508 15.586,8.508 15.586,8.508 15.586,1 15.586,1 15.586,1 17.711,1 17.711,1 17.711,1 22,       5.246 22,5.246 22,5.246 22,21.381 22,21.381 22,21.723 21.72,22 21.374,22 21.374,22 1.626,22 1.626,22 1.28,22 1,21.723 1,21.381 1,21.381 1,1.62 1,       1.62 1,1.277 1.28,1 1.626,1z" Fill="seagreen" Height="23" Width="23"/>
                     </Button>
 
-                    <Button ToolTip="Backward" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="3">
-                        <!--Name="CloseCurrentClick"-->
-                        <Path x:Name="back" Data="F1M10.4,12.687C10.4,12.687 10.4,18 10.4,18 10.4,18 2,9.5 2,9.5 2,9.5 10.4,1 10.4,1 10.4,1 10.4,6.312 10.4,6.312 10.4,       6.312 23,6.312 23,6.312 23,6.312 23,12.687 23,12.687 23,12.687 10.4,12.687 10.4,12.687z" Fill="Black" Height="19" Width="24"/>
-                    </Button>
-
-                    <Button ToolTip="Forward" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="4">
-                        <Path  x:Name="Forward" Data="F1M23,9.5C23,9.5 14.6,18 14.6,18 14.6,18 14.6,12.687 14.6,12.687 14.6,12.687 2,12.687 2,12.687 2,12.687 2,6.312 2,6.312 2,        6.312 14.6,6.312 14.6,6.312 14.6,6.312 14.6,1 14.6,1 14.6,1 23,9.5 23,9.5z" Fill="Black" Height="19" Width="24"/>
-                    </Button>
-
-                    <Button ToolTip="Power Entry" Style="{StaticResource side}" x:Name="PowerEntryButton" Grid.Row="0" Width="45" Height="30" Grid.Column="5">
+                    <Button ToolTip="Power Entry" Style="{StaticResource side}" x:Name="PowerEntryButton" Grid.Row="0" Width="45" Height="30" Grid.Column="1">
                         <Path x:Name="autofill" Data="F1M16.844,4C16.844,4 15.755,7.6 15.755,7.6 15.755,7.6 17.932,7.6 17.932,7.6 17.932,7.6 16.844,4 16.844,           4z M15.854,2C15.854,2 17.833,2 17.833,2 17.833,2 21,11 21,11 21,11 19.12,11 19.12,11 19.12,11 18.427,9 18.427,9 18.427,9 15.26,9 15.26,           9 15.26,9 14.568,11 14.568,11 14.568,11 12.687,11 12.687,11 12.687,11 15.854,2 15.854,2z M2,2C2,2 11.896,2 11.896,2 11.896,2 7.937,11 7.937,           11 7.937,11 11.896,11 11.896,11 11.896,11 4.969,23 4.969,23 4.969,23 4.969,14 4.969,14 4.969,14 2,14 2,14 2,14 2,2 2,2z" Fill="#FF5D87D1" Height="24" Width="22"/>
                     </Button>
 
-                    <Button ToolTip="Export" Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="6">
+                    <Button ToolTip="Export" Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="2">
                         <Path x:Name="export1" Data="F1M5.222,13.667C5.222,13.667 5.222,15.778 5.222,15.778 5.222,15.778 12.611,15.778 12.611,15.778 12.611,           15.778 12.611,13.667 12.611,13.667 12.611,13.667 5.222,13.667 5.222,13.667z M5.222,9.444C5.222,9.444 5.222,11.556 5.222,11.556 5.222,           11.556 15.778,11.556 15.778,11.556 15.778,11.556 15.778,9.444 15.778,9.444 15.778,9.444 5.222,9.444 5.222,9.444z M5.222,5.222C5.222,           5.222 5.222,7.333 5.222,7.333 5.222,7.333 15.778,7.333 15.778,7.333 15.778,7.333 15.778,5.222 15.778,5.222 15.778,5.222 5.222,5.222 5.222,           5.222z M3.111,1C3.111,1 17.889,1 17.889,1 19.05,1 20,1.95 20,3.111 20,3.111 20,17.889 20,17.889 20,19.05 19.05,20 17.889,20 17.889,20 3.111,           20 3.111,20 1.95,20 1,19.05 1,17.889 1,17.889 1,3.111 1,3.111 1,1.95 1.95,1 3.111,1z" Fill="White" Height="21" Canvas.Left="31" Canvas.Top="9" Width="21"/>
                     </Button>
 
-                    <Button ToolTip="Filter" Style="{StaticResource side}"  Click="FilterButton_Click" Grid.Row="0" Width="45" Height="30" Grid.Column="7">
-                        <Path Data="F1M2.118,1C2.881,1 16.282,1 16.809,1 17.492,1 18,1.384 17.6,1.763 17.36,1.991 13.667,5.465 11.603,7.406L11,7.973 11,       9.797C11,13.312 11,18 11,18 11,18 8,20 8,20 8,20 8,19 8,18L8,17.792 8,17.213 8,17C8,17.5,8,17,8,16.625L8,16.527C8,16.438,8,16.281,8,16.172L8,16C8,       16.227,8,15.797,8,15.281L8,15.217 8,13.52 8,12.562 8,11.5 8,9.797 8,9.48 8,8.026 7.423,7.484C5.405,5.591 1.669,2.078 1.331,1.747 1,1.424 1.365,       1 2.118,1z" Fill="#ffb03636" Height="21" Width="20" Stretch="Fill"/>
+                    <Button ToolTip="Filter" Style="{StaticResource side}"  Click="FilterButton_Click" Grid.Row="0" Width="45" Height="30" Grid.Column="3">
+                        <Path Data="F1M2.118,1C2.881,1 16.282,1 16.809,1 17.492,1 18,1.384 17.6,1.763 17.36,1.991 13.667,5.465 11.603,7.406L11,7.973 11,       9.797C11,13.312 11,18 11,18 11,18 8,20 8,20 8,20 8,19 8,18L8,17.792 8,17.213 8,17C8,17.5,8,17,8,16.625L8,16.527C8,16.438,8,16.281,8,16.172L8,16C8,       16.227,8,15.797,8,15.281L8,15.217 8,13.52 8,12.562 8,11.5 8,9.797 8,9.48 8,8.026 7.423,7.484C5.405,5.591 1.669,2.078 1.331,1.747 1,1.424 1.365,       1 2.118,1z" Fill="#FF893232" Height="21" Width="20" Stretch="Fill"/>
                     </Button>
 
-                    <Button ToolTip="Sanitize data" Style="{StaticResource side}"  x:Name="SanitizingButton" Grid.Row="0" Width="45" Height="30" Grid.Column="8">
+                    <Button ToolTip="Sanitize data" Style="{StaticResource side}"  x:Name="SanitizingButton" Grid.Row="0" Width="45" Height="30" Grid.Column="4">
                         <Path x:Name="sanitize" Data="F1M1,12.667C1,12.667 8,12.667 8,12.667 8,12.667 8,15 8,15 8,15 1,15 1,15 1,15 1,12.667 1,12.667z M1,6.833C1,6.833 15,6.833 15,6.833 15,     6.833 15,9.167 15,9.167 15,9.167 1,9.167 1,9.167 1,9.167 1,6.833 1,6.833z M1,1C1,1 22,1 22,1 22,1 22,3.333 22,3.333 22,3.333 1,3.333 1,3.333 1,3.333 1,1 1,1z" Fill="#AE3399FF" Height="16" Width="23"/>
                     </Button>
 
-                    <Button ToolTip="Delete" Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="9">
+                    <Button ToolTip="Delete" Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="5">
                         <Path x:Name="delete" Data="F1M13.571,9.875C13.571,9.875 13.571,11.187 13.571,11.187 13.571,11.187 13.571,15.125 13.571,15.125 13.571,15.125 13.571,        20.375 13.571,20.375 13.571,20.375 16.143,20.375 16.143,20.375 16.143,20.375 16.143,15.125 16.143,15.125 16.143,15.125 16.143,11.187 16.143,        11.187 16.143,11.187 16.143,9.875 16.143,9.875 16.143,9.875 13.571,9.875 13.571,9.875z M9.714,9.875C9.714,9.875 9.714,11.187 9.714,11.187 9.714,        11.187 9.714,15.125 9.714,15.125 9.714,15.125 9.714,20.375 9.714,20.375 9.714,20.375 12.286,20.375 12.286,20.375 12.286,20.375 12.286,15.125 12.286,        15.125 12.286,15.125 12.286,11.187 12.286,11.187 12.286,11.187 12.286,9.875 12.286,9.875 12.286,9.875 9.714,9.875 9.714,9.875z M5.857,9.875C5.857,        9.875 5.857,11.187 5.857,11.187 5.857,11.187 5.857,15.125 5.857,15.125 5.857,15.125 5.857,20.375 5.857,20.375 5.857,20.375 8.429,20.375 8.429,        20.375 8.429,20.375 8.429,15.125 8.429,15.125 8.429,15.125 8.429,11.187 8.429,11.187 8.429,11.187 8.429,9.875 8.429,9.875 8.429,9.875 5.857,        9.875 5.857,9.875z M3.286,7.25C3.286,7.25 18.714,7.25 18.714,7.25 18.714,7.25 18.714,8.562 18.714,8.562 18.714,8.562 18.714,17.75 18.714,        17.75 18.714,17.75 18.714,19.062 18.714,19.062 18.714,19.062 18.714,20.375 18.714,20.375 18.714,21.825 17.563,23 16.143,23 16.143,23 5.857,23 5.857,        23 4.437,23 3.286,21.825 3.286,20.375 3.286,20.375 3.286,19.062 3.286,19.062 3.286,19.062 3.286,17.75 3.286,17.75 3.286,17.75 3.286,8.562 3.286,        8.562 3.286,8.562 3.286,7.25 3.286,7.25z M9.714,3.312C9.714,3.312 9.714,4.625 9.714,4.625 9.714,4.625 12.286,4.625 12.286,4.625 12.286,4.625 12.286,        3.312 12.286,3.312 12.286,3.312 9.714,3.312 9.714,3.312z M9.714,2C9.714,2 12.286,2 12.286,2 12.996,2 13.571,2.588 13.571,3.312 13.571,3.312 13.571,        4.625 13.571,4.625 13.571,4.625 20,4.625 20,4.625 20,4.625 20,5.937 20,5.937 20,5.937 12.286,5.937 12.286,5.937 12.286,5.937 9.714,5.937 9.714,        5.937 9.714,5.937 2,5.937 2,5.937 2,5.937 2,4.625 2,4.625 2,4.625 8.429,4.625 8.429,4.625 8.429,4.625 8.429,3.312 8.429,3.312 8.429,2.588 9.004,        2 9.714,2z" Fill="#FF893232" Height="24" Width="21"/>
                     </Button>
 
-                    <Button ToolTip="Print" Style="{StaticResource side}"  Grid.Row="0" Width="48" Height="30" Grid.Column="10" Command="ApplicationCommands.Print">
+                    <Button ToolTip="Print" Style="{StaticResource side}"  Grid.Row="0" Width="48" Height="30" Grid.Column="6" Command="ApplicationCommands.Print">
                         <Path x:Name="print" Data="F1M8.9,14.833C8.9,14.833 8.9,20.667 8.9,20.667 8.9,20.667 18.1,20.667 18.1,20.667 18.1,20.667 18.1,14.833 18.1,         14.833 18.1,14.833 8.9,14.833 8.9,14.833z M21.55,10.167C20.86,10.167 20.4,10.633 20.4,11.333 20.4,12.033 20.86,12.5 21.55,12.5 22.24,         12.5 22.7,12.033 22.7,11.333 22.7,10.633 22.24,10.167 21.55,10.167z M5.45,7.833C5.45,7.833 21.55,7.833 21.55,7.833 23.505,7.833 25,9.35 25,         11.333 25,11.333 25,18.333 25,18.333 25,18.333 20.4,18.333 20.4,18.333 20.4,18.333 20.4,23 20.4,23 20.4,23 6.6,23 6.6,23 6.6,23 6.6,         18.333 6.6,18.333 6.6,18.333 2,18.333 2,18.333 2,18.333 2,11.333 2,11.333 2,9.35 3.495,7.833 5.45,7.833z M6.6,2C6.6,2 20.4,2 20.4,2 20.4,         2 20.4,6.667 20.4,6.667 20.4,6.667 6.6,6.667 6.6,6.667 6.6,6.667 6.6,2 6.6,2z" Fill="Black" Height="24" Width="26"/>
                     </Button>
 
@@ -200,20 +180,50 @@ CanExecute="CanExecutePrintCommand"/>
                     </WrapPanel>
 
                     <WrapPanel Margin="0,10,0,0" >
-                        <TreeView BorderBrush="Transparent" BorderThickness="0" Background="AliceBlue" >
-                            <TreeViewItem BorderBrush="Transparent" BorderThickness="0" >
+                        <TreeView BorderBrush="Transparent" BorderThickness="0" Background="AliceBlue"  >
+                            <TreeViewItem BorderBrush="Transparent" BorderThickness="0">
                                 <TreeViewItem.Header>
                                     <WrapPanel>
                                         <Button Style="{StaticResource all}">
-                                            <TextBlock Text="Manage" Padding="0 1 0 4" FontSize="16" Width="203" FontWeight="Bold"  Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                            <TextBlock Text="Master" FontSize="16" FontWeight="Bold" Width="203"  Padding="0 1 0 4" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
                                         </Button>
                                     </WrapPanel>
                                 </TreeViewItem.Header>
                                 <TreeViewItem>
                                     <TreeViewItem.Header>
-                                        <Button Style="{StaticResource all}"  >
-                                            <TextBlock Text="            Add Manager" FontSize="16" FontWeight="Bold" Width="224"   Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="-40,0,0,0"/>
+                                        <Button  Name="countrytreeitembutton" Click="countrytreeitembutton_Click" FontSize="16" FontWeight="Bold" Width="203"  Padding="0 1 0 4" Foreground="#FF5B5B5B" FontFamily="Calibri">
+                                            <TextBlock Text="Country" />
                                         </Button>
+                                    </TreeViewItem.Header>
+                                </TreeViewItem>
+                                <TreeViewItem>
+                                    <TreeViewItem.Header>
+                                        <Button Content="Zone" Name="zonetreeitembutton" Click="zonetreeitembutton_Click"/>
+                                    </TreeViewItem.Header>
+                                </TreeViewItem>
+                                <TreeViewItem>
+                                    <TreeViewItem.Header>
+                                        <Button Content="City" Name="citytreeviewitembutton" Click="citytreeviewitembutton_Click"/>
+                                    </TreeViewItem.Header>
+                                </TreeViewItem>
+                                <TreeViewItem>
+                                    <TreeViewItem.Header>
+                                        <Button Content="Client" Name="clienttreeviewitembutton" Click="clienttreeviewitembutton_Click"/>
+                                    </TreeViewItem.Header>
+                                </TreeViewItem>
+                                <TreeViewItem>
+                                    <TreeViewItem.Header>
+                                        <Button Content="Client Tariff" Name="clienttarifftreeviewitembutton" Click="clienttarifftreeviewitembutton_Click"/>
+                                    </TreeViewItem.Header>
+                                </TreeViewItem>
+                                <TreeViewItem>
+                                    <TreeViewItem.Header>
+                                        <Button Content="Forwarder Tariff" Name="forwardertarifftreeviewitembutton" Click="forwardertarifftreeviewitembutton_Click"/>
+                                    </TreeViewItem.Header>
+                                </TreeViewItem>
+                                <TreeViewItem>
+                                    <TreeViewItem.Header>
+                                        <Button Content="Service Tax" Name="servicetaxtreeviewitembutton" Click="servicetaxtreeviewitembutton_Click"/>
                                     </TreeViewItem.Header>
                                 </TreeViewItem>
                             </TreeViewItem>
@@ -244,13 +254,11 @@ CanExecute="CanExecutePrintCommand"/>
 
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="3"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="26"/>
                                 <RowDefinition Height="20"/>
                             </Grid.RowDefinitions>
-								<WrapPanel Grid.Row="0" Background="#FFBBCADC" Margin="0,-1,0,0" />
-                            <ContentControl Grid.Row="1" ScrollViewer.CanContentScroll="True" Grid.ColumnSpan="2">
+                            <ContentControl Grid.Row="0" ScrollViewer.CanContentScroll="True" Grid.ColumnSpan="2">
                                 <DataGrid  RowHeaderWidth="0" IsReadOnly="True" x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False" Height="478"
 									ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True"
 									BorderThickness="0" CanUserAddRows="True" >
@@ -290,7 +298,7 @@ CanExecute="CanExecutePrintCommand"/>
                                     </DataGrid.RowDetailsTemplate>
                                 </DataGrid>
                             </ContentControl>
-                            <DockPanel x:Name="DataGridOptionpanel" Background="#FFBBCADC" Grid.Row="2" Grid.ColumnSpan="2">
+                            <DockPanel x:Name="DataGridOptionpanel" Background="#FFBBCADC" Grid.Row="1" Grid.ColumnSpan="2">
                                 <WrapPanel x:Name="buttontabcanvaswrap" Margin="9,0,0,0" />
                                 <WrapPanel HorizontalAlignment="Right">
                                     <Button ToolTip="First Page" Style="{StaticResource smallbutton}" x:Name="DataGridFirstPage" Margin="2,2,5,2" Click="DataGridFirstPage_Click" >
@@ -317,7 +325,7 @@ CanExecute="CanExecutePrintCommand"/>
                                 </WrapPanel>
 
                             </DockPanel>
-                            <ContentControl ScrollViewer.CanContentScroll="True" x:Name="NotificationBar" Height="50" Grid.Row="3" Grid.ColumnSpan="2">
+                            <ContentControl ScrollViewer.CanContentScroll="True" x:Name="NotificationBar" Height="50" Grid.Row="2" Grid.ColumnSpan="2">
                                 <TextBlock Text="Log..." x:Name="MessageBlock"/>
                             </ContentControl>
                         </Grid>
