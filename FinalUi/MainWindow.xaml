@@ -112,7 +112,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 					<Path x:Name="newSheet" Data="F1M3.667,15.929C3.667,15.929 3.667,17.286 3.667,17.286 3.667,17.286 14.333,17.286 14.333,17.286 14.333,17.286 14.333,15.929 14.333,15.929 14.333,15.929 3.667,15.929 3.667,15.929z M3.667,11.857C3.667,11.857 3.667,13.214 3.667,13.214 3.667,13.214 14.333,13.214 14.333,13.214 14.333,13.214 14.333,11.857 14.333,11.857 14.333,11.857 3.667,11.857 3.667,11.857z M3.667,7.786C3.667,7.786 3.667,9.143 3.667,9.143 3.667,9.143 14.333,9.143 14.333,9.143 14.333,9.143 14.333,7.786 14.333,7.786 14.333,7.786 3.667,7.786 3.667,7.786z M3.667,3.714C3.667,3.714 3.667,5.071 3.667,5.071 3.667,5.071 14.333,5.071 14.333,5.071 14.333,5.071 14.333,3.714 14.333,3.714 14.333,3.714 3.667,3.714 3.667,3.714z M1,1C1,1 17,1 17,1 17,1 17,20 17,20 17,20 1,20 1,20 1,20 1,1 1,1z" Fill="White" Height="21" Width="18"/>
 				</Button>
 
-				<Button ToolTip="Filter" Style="{StaticResource side}"  Click="FilterButton_Click" Grid.Row="0" Width="45" Height="30" Grid.Column="3">
+				<Button ToolTip="Filter &amp; Select" Style="{StaticResource side}"  Click="FilterButton_Click" Grid.Row="0" Width="45" Height="30" Grid.Column="3">
 					<Path Data="F1M2.118,1C2.881,1 16.282,1 16.809,1 17.492,1 18,1.384 17.6,1.763 17.36,1.991 13.667,5.465 11.603,7.406L11,7.973 11,9.797C11,13.312 11,18 11,18 11,18 8,20 8,20 8,20 8,19 8,18L8,17.792 8,17.213 8,17C8,17.5,8,17,8,16.625L8,16.527C8,16.438,8,16.281,8,16.172L8,16C8,16.227,8,15.797,8,15.281L8,15.217 8,13.52 8,12.562 8,11.5 8,9.797 8,9.48 8,8.026 7.423,7.484C5.405,5.591 1.669,2.078 1.331,1.747 1,1.424 1.365,1 2.118,1z" Fill="#FF893232" Height="21" Width="20" Stretch="Fill"/>
 				</Button>
 
@@ -303,11 +303,8 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 				</WrapPanel>
 			</DockPanel>
             <ScrollViewer VerticalScrollBarVisibility="Auto" Height="126" HorizontalScrollBarVisibility="Disabled">
-				<TextBlock Text="Log..." x:Name="MessageBlock" TextWrapping="Wrap"  HorizontalAlignment="Stretch" Background="White" Margin="4,0,0,0" />
+				<TextBlock Text="Log..." x:Name="MessageBlock" Background="White" Margin="4,0,0,0" />
             </ScrollViewer>
-				<!--<ScrollViewer>
-				<TextBlock Text="Log..." x:Name="MessageBlock" TextWrapping="Wrap" Background="White" Margin="4,0,0,0" Height="136"/>
-				</ScrollViewer>-->
 			</StackPanel>
 		</Grid>
 	</StackPanel>
