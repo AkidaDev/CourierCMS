@@ -41,7 +41,7 @@ namespace FinalUi
         #endregion
         public MainWindow()
         {
-           // SecurityModule.authenticate("dharmendra", "pass");
+            SecurityModule.authenticate("dharmendra", "pass");
             #region setupCode
             PreviewMouseMove += OnPreviewMouseMove;
             #endregion
