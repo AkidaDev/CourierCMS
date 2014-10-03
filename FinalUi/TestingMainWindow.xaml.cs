@@ -109,5 +109,10 @@ namespace FinalUi
         {
             TestingReporting window = new TestingReporting(); window.Show();
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            ClientReport window = new ClientReport(); window.Show();
+        }
     }
 }

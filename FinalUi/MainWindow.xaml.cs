@@ -793,5 +793,50 @@ namespace FinalUi
         {
             StockWindow window = new StockWindow(); window.ShowDialog();
         }
+
+        private void servicetaxtreeviewitembutton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void forwardertarifftreeviewitembutton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void clienttarifftreeviewitembutton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void clienttreeviewitembutton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void citytreeviewitembutton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void zonetreeviewitembutton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void countrytreeviewitembutton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void zonetreeitembutton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void countrytreeitembutton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

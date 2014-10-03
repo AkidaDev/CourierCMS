@@ -141,11 +141,13 @@
     <Compile Include="CityWindow.xaml.cs">
       <DependentUpon>CityWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ClientReport.xaml.cs">
+      <DependentUpon>ClientReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Configs.cs" />
     <Compile Include="EditRateDetailsWindow.xaml.cs">
       <DependentUpon>EditRateDetailsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Extensions.cs" />
     <Compile Include="Filter.cs" />
     <Compile Include="FilterSelectWindow.xaml.cs">
       <DependentUpon>FilterSelectWindow.xaml</DependentUpon>
@@ -197,7 +199,6 @@
     <Compile Include="testtheme.xaml.cs">
       <DependentUpon>testtheme.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UiServices.cs" />
     <Compile Include="UtilityClass.cs" />
     <Compile Include="UserControlGallery.xaml.cs">
       <DependentUpon>UserControlGallery.xaml</DependentUpon>
@@ -239,6 +240,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="CityWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClientReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -382,6 +387,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="ClientReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report1.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -405,7 +413,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Configs.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Data\VORTEX_ALPHA_TEST_REPORT.xlsx" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Assignment.datasource" />
     <None Include="Properties\DataSources\BillingDataDataContext.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

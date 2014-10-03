@@ -1,9 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BillingDatabase" Class="BillingDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-<<<<<<< local
-  <Connection Mode="AppSettings" ConnectionString="Data Source=RIZWANKHAN;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString3" Provider="System.Data.SqlClient" />
-=======
-  <Connection Mode="AppSettings" ConnectionString="Data Source=PANKAJ\SQLEXPRESS;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString6" Provider="System.Data.SqlClient" />
->>>>>>> other
+  <Connection Mode="AppSettings" ConnectionString="Data Source=KHANCOMPUTER\SQLExpress;Initial Catalog=BillingDatabase;Integrated Security=True" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Assignment" Member="Assignments">
     <Type Name="Assignment">
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -75,54 +71,6 @@
       <Association Name="Client_Transaction" Member="Transactions" ThisKey="CLCODE" OtherKey="CustCode" Type="Transaction" />
     </Type>
   </Table>
-  <Table Name="dbo.DATAENTRY" Member="DATAENTRies">
-    <Type Name="DATAENTRY">
-      <Column Name="AWBNO" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="BKDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="DEST" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="CLCODE" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
-      <Column Name="CONSIGNEE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="CNEADDRESS" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="TYPE" Type="System.String" DbType="Char(2)" CanBeNull="true" />
-      <Column Name="BMODE" Type="System.String" DbType="Char(2)" CanBeNull="true" />
-      <Column Name="MMODE" Type="System.String" DbType="Char(2)" CanBeNull="true" />
-      <Column Name="PKGS" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="BWT" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="MWT" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="PMODE" Type="System.String" DbType="Char(2)" CanBeNull="true" />
-      <Column Name="AMOUNT" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="POD_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="POD_TIME" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="STATUS" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="REMARKS" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="USERNAME" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="BILLNO" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="network" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="destination" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="clname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="tdesc" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="tamt" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="ntdesc" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="ntamt" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="fname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="famt" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="fcode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
-      <Column Name="adsns" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="state" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="NETNO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="dlvboy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="mainbilno" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="BRANCH" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="MFNO" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
-      <Column Name="MFDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="MFWD" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Actualdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="upload" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="Shpchrg" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="dtdamt" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="zone" Type="System.String" DbType="Char(3)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Employee" Member="Employees">
     <Type Name="Employee">
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -156,6 +104,7 @@
       <Column Name="BillId" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
       <Column Name="TransactionId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Association Name="Invoice_InvoiceAssignment" Member="Invoice" ThisKey="BillId" OtherKey="BillId" Type="Invoice" IsForeignKey="true" />
+      <Association Name="Transaction_InvoiceAssignment" Member="Transaction" ThisKey="TransactionId" OtherKey="ID" Type="Transaction" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.PaymentEntry" Member="PaymentEntries">
@@ -305,6 +254,7 @@
       <Column Name="InvoiceDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="CustCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
       <Column Name="TransMF_No" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Transaction_InvoiceAssignment" Member="InvoiceAssignments" ThisKey="ID" OtherKey="TransactionId" Type="InvoiceAssignment" />
       <Association Name="Employee_Transaction" Member="Employee" ThisKey="UserId" OtherKey="Id" Type="Employee" IsForeignKey="true" />
       <Association Name="Client_Transaction" Member="Client" ThisKey="CustCode" OtherKey="CLCODE" Type="Client" IsForeignKey="true" />
     </Type>
@@ -318,6 +268,13 @@
       <Association Name="Permission_User_permission" Member="Permission" ThisKey="per_id" OtherKey="id" Type="Permission" IsForeignKey="true" />
     </Type>
   </Table>
+  <Function Name="dbo.sp_deleteSheetFromRuntime" Method="sp_deleteSheetFromRuntime">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_TransferMInvoiceToBInvoice" Method="sp_TransferMInvoiceToBInvoice" />
+  <Function Name="dbo.sp_ImportZoneData" Method="sp_ImportZoneData" />
   <Function Name="dbo.sp_LoadToRuntimeFromDate" Method="sp_LoadToRuntimeFromDate">
     <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
@@ -325,20 +282,10 @@
     <Parameter Name="FromDate" Parameter="fromDate" Type="System.DateTime" DbType="DateTime" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail" Method="sp_TransferMInvoiceDetailToBInvoiceDetail">
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.sp_TransferMInvoiceToBInvoice" Method="sp_TransferMInvoiceToBInvoice">
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.sp_deleteSheetFromRuntime" Method="sp_deleteSheetFromRuntime">
-    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.sp_SaveDataFromRunToTran" Method="sp_SaveDataFromRunToTran">
     <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail" Method="sp_TransferMInvoiceDetailToBInvoiceDetail" />
 </Database>
