@@ -145,6 +145,7 @@
     <Compile Include="EditRateDetailsWindow.xaml.cs">
       <DependentUpon>EditRateDetailsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Extensions.cs" />
     <Compile Include="Filter.cs" />
     <Compile Include="FilterSelectWindow.xaml.cs">
       <DependentUpon>FilterSelectWindow.xaml</DependentUpon>
@@ -196,6 +197,7 @@
     <Compile Include="testtheme.xaml.cs">
       <DependentUpon>testtheme.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UiServices.cs" />
     <Compile Include="UtilityClass.cs" />
     <Compile Include="UserControlGallery.xaml.cs">
       <DependentUpon>UserControlGallery.xaml</DependentUpon>

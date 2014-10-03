@@ -27,13 +27,6 @@ namespace FinalUi
     public partial class MainWindow : Window
     {
         #region initScripts
-        void RunCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (e.Error != null)
-                MessageBox.Show(e.Error.Message);
-            else
-                MessageBox.Show("Done");
-        }
 
         #endregion
         #region Global Objects
@@ -65,7 +58,7 @@ namespace FinalUi
             InitializeComponent();
             CollectionViewSource clientCodeList = (CollectionViewSource)FindResource("ClientCodeList");
             clientCodeList.Source = db.Clients.Select(c => c.CLCODE);
-
+            
             #region DataGrid Code Lines
             dataGridSource = (CollectionViewSource)FindResource("DataGridDataContext");
             dataGridHelper = new DataGridHelper(dataGridSource);
@@ -95,7 +88,7 @@ namespace FinalUi
             List<int> sheets = db.RuntimeMetas.Where(y => y.UserName == SecurityModule.currentUserName).Select(x => x.SheetNo).Distinct().ToList();
             foreach (int sheet in sheets)
             {
-                List<RuntimeData> runtimeData = (db.RuntimeMetas.Where(x => x.SheetNo == sheet && x.UserName == SecurityModule.currentUserName).Select(y => y.RuntimeData)).OrderBy(x => x.BookingDate).ThenBy(z=>z.ConsignmentNo).ToList(); ;
+                List<RuntimeData> runtimeData = (db.RuntimeMetas.Where(x => x.SheetNo == sheet && x.UserName == SecurityModule.currentUserName).Select(y => y.RuntimeData)).OrderBy(x => x.BookingDate).ThenBy(z => z.ConsignmentNo).ToList(); ;
                 dataGridHelper.addNewSheet(runtimeData, "sheet " + sheet.ToString());
                 addingNewPage(sheet);
             }
@@ -112,6 +105,7 @@ namespace FinalUi
             DeleteSheetWorker = new BackgroundWorker();
             DeleteSheetWorker.DoWork += DeleteWorker_DoWork;
             DeleteSheetWorker.RunWorkerCompleted += DeleteWorker_RunWorkerCompleted;
+            filterObj = new Filter("abc","bcd");
         }
         #region backGround Worker Functions
         #region LoadWorker
@@ -131,7 +125,7 @@ namespace FinalUi
             string response;
             try
             {
-                help.insertRuntimeData((List<RuntimeData>)e.Argument, dataGridHelper.currentSheetNumber,isLoadedFromFile,toDate_loadDataWin,fromDate_loadDataWin);
+                help.insertRuntimeData((List<RuntimeData>)e.Argument, dataGridHelper.currentSheetNumber, isLoadedFromFile, toDate_loadDataWin, fromDate_loadDataWin);
                 response = "Data Loading Successful";
             }
             catch (Exception ex)
@@ -144,7 +138,7 @@ namespace FinalUi
         #region Save Worker
         void SaveWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBlock.Text = MessageBlock.Text + "\n " + e.Result;
+            MessageBlock.Text = MessageBlock.Text + "\n " + "Save Completed" +  e.Result;
         }
 
         void SaveWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -202,8 +196,12 @@ namespace FinalUi
                 int key = dataGridHelper.addNewSheet(new List<RuntimeData>(), "");
                 addingNewPage(key);
             }
-            SanitizingWindow window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber, dataGrid);
-            window.ShowDialog();
+            SanitizingWindow window;
+            if (dataGrid.SelectedItem != null)
+                window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber, dataGrid, (RuntimeData)dataGrid.SelectedItem);
+            else
+                window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber, dataGrid);
+            window.Show();
         }
         #endregion
         #region PowerEntryCommand
@@ -265,7 +263,6 @@ namespace FinalUi
         #region LoadCommand
         private void OpenCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            Debug.WriteLine("Here in open..");
             if (LoadWorker != null)
             {
                 if (LoadWorker.IsBusy == true)
@@ -275,7 +272,6 @@ namespace FinalUi
             }
             else
                 e.CanExecute = false;
-            Debug.WriteLine("Here in open out");
         }
         #endregion
         #region deleteCommand
@@ -306,10 +302,10 @@ namespace FinalUi
                     b = buttonList.Single(x => x.Value == buttonList.Values.Min()).Key;
                 else
                     b = null;
-                changeSheetButton(activeButton,b);
+                changeSheetButton(activeButton, b);
                 buttonList.Remove(activeButton);
                 activeButton = b;
-                
+
             }
         }
         #endregion
@@ -410,8 +406,8 @@ namespace FinalUi
             canvasButton.Click += SheetSelectButton_Click;
             buttontabcanvaswrap.Children.Add(canvasButton);
             buttonList.Add(canvasButton, key);
-            if(activeButton != null)
-            changeSheetButton(activeButton, canvasButton);
+            if (activeButton != null)
+                changeSheetButton(activeButton, canvasButton);
             activeButton = canvasButton;
 
         }
@@ -437,7 +433,7 @@ namespace FinalUi
                     dataGridHelper.refreshCurrentPage();
                 }
                 isLoadedFromFile = dataWind.isLoadedFromFile;
-                if(!isLoadedFromFile)
+                if (!isLoadedFromFile)
                 {
                     toDate_loadDataWin = dataWind.toDate;
                     fromDate_loadDataWin = dataWind.fromDate;
@@ -538,9 +534,10 @@ namespace FinalUi
         #endregion DataGrid Methods Ends
 
         #region filter functions
+        Filter filterObj;
         private void FilterButton_Click(object sender, RoutedEventArgs e)
         {
-            FilterSelectWindow window = new FilterSelectWindow(dataGridHelper.currentConnNos);
+            FilterSelectWindow window = new FilterSelectWindow(filterObj,dataGridHelper.currentConnNos);
             window.Closed += window_Closed;
             window.ShowDialog();
         }
@@ -580,7 +577,7 @@ namespace FinalUi
                 case WindowState.Maximized:
                     {
                         WindowState = WindowState.Normal;
-                        
+
                         this.WindowState = WindowState.Normal;
                         Path path = new Path();
                         path.Data = Geometry.Parse(@"F1M3.222,5L3.222,6.702C3.222,9.071 3.222,11.778 3.222,11.778 3.222,11.778 11.778,11.778 11.778,11.778 11.778,11.778 11.778,9.071 11.778,
@@ -611,63 +608,6 @@ namespace FinalUi
         #endregion
 
         #region custom window resize
-        private void Rec_MouseMove(object sender, MouseEventArgs e)
-        {
-            var rec = (Rectangle)sender;
-            switch (rec.Name)
-            {
-                case "Rec_Top":
-                    {
-                        Cursor = Cursors.SizeNS;
-                        break;
-                    } 
-				case "Rec2":
-                    {
-                        Cursor = Cursors.SizeWE;
-                        break;
-                    }
-                case "Rec_Top_Left":
-                    {
-                        Cursor = Cursors.SizeNWSE;
-                        break;
-                    }
-                case "Rec_Top_Right":
-                    {
-                        Cursor = Cursors.SizeNESW;
-                        break;
-                    }
-                case "Rec_Bottom":
-                    {
-                        Cursor = Cursors.SizeNS;
-                        break;
-                    }
-                case "Rec_Bottom_Left":
-                    {
-                        Cursor = Cursors.SizeNESW;
-                        break;
-                    }
-                case "Rec_Bottom_Right":
-                    {
-                        Cursor = Cursors.SizeNWSE;
-                        break;
-                    }
-                case "Rec_Left":
-                    {
-                        Cursor = Cursors.SizeWE;
-                        break;
-                    }
-                case "Rec_Right":
-                    {
-                        Cursor = Cursors.SizeWE;
-                        break;
-                    }
-            }
-        }
-        public void resizeWindow()
-        {
-        }
-
-        #endregion
         protected void OnPreviewMouseMove(object sender, MouseEventArgs e)
         {
             if (Mouse.LeftButton != MouseButtonState.Pressed)
@@ -748,6 +688,64 @@ namespace FinalUi
         {
             DragMove();
         }
+        private void Rec_MouseMove(object sender, MouseEventArgs e)
+        {
+            var rec = (Rectangle)sender;
+            switch (rec.Name)
+            {
+                case "Rec_Top":
+                    {
+                        Cursor = Cursors.SizeNS;
+                        break;
+                    }
+                case "Rec2":
+                    {
+                        Cursor = Cursors.SizeWE;
+                        break;
+                    }
+                case "Rec_Top_Left":
+                    {
+                        Cursor = Cursors.SizeNWSE;
+                        break;
+                    }
+                case "Rec_Top_Right":
+                    {
+                        Cursor = Cursors.SizeNESW;
+                        break;
+                    }
+                case "Rec_Bottom":
+                    {
+                        Cursor = Cursors.SizeNS;
+                        break;
+                    }
+                case "Rec_Bottom_Left":
+                    {
+                        Cursor = Cursors.SizeNESW;
+                        break;
+                    }
+                case "Rec_Bottom_Right":
+                    {
+                        Cursor = Cursors.SizeNWSE;
+                        break;
+                    }
+                case "Rec_Left":
+                    {
+                        Cursor = Cursors.SizeWE;
+                        break;
+                    }
+                case "Rec_Right":
+                    {
+                        Cursor = Cursors.SizeWE;
+                        break;
+                    }
+            }
+        }
+        public void resizeWindow()
+        {
+        }
+
+        #endregion
+
         #region menuItem
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
