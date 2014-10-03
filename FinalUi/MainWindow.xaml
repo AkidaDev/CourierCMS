@@ -92,7 +92,7 @@ CanExecute="CanExecutePrintCommand"/>
                         <TextBlock ToolTip="Load new files " Text="Open File" Margin="8 -4 1 1" FontSize="16" Padding="1 3 1 0.5"/>
                     </WrapPanel>
                 </Button>
-                <Grid Margin="60,1,0,0" >
+                <Grid Margin="140,1,0,0" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
@@ -244,11 +244,13 @@ CanExecute="CanExecutePrintCommand"/>
 
                         <Grid>
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="3"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="26"/>
                                 <RowDefinition Height="20"/>
                             </Grid.RowDefinitions>
-                            <ContentControl Grid.Row="0" ScrollViewer.CanContentScroll="True" Grid.ColumnSpan="2">
+								<WrapPanel Grid.Row="0" Background="#FFBBCADC" Margin="0,-1,0,0" />
+                            <ContentControl Grid.Row="1" ScrollViewer.CanContentScroll="True" Grid.ColumnSpan="2">
                                 <DataGrid  RowHeaderWidth="0" IsReadOnly="True" x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False" Height="478"
 									ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True"
 									BorderThickness="0" CanUserAddRows="True" >
@@ -288,7 +290,7 @@ CanExecute="CanExecutePrintCommand"/>
                                     </DataGrid.RowDetailsTemplate>
                                 </DataGrid>
                             </ContentControl>
-                            <DockPanel x:Name="DataGridOptionpanel" Background="#FFBBCADC" Grid.Row="1" Grid.ColumnSpan="2">
+                            <DockPanel x:Name="DataGridOptionpanel" Background="#FFBBCADC" Grid.Row="2" Grid.ColumnSpan="2">
                                 <WrapPanel x:Name="buttontabcanvaswrap" Margin="9,0,0,0" />
                                 <WrapPanel HorizontalAlignment="Right">
                                     <Button ToolTip="First Page" Style="{StaticResource smallbutton}" x:Name="DataGridFirstPage" Margin="2,2,5,2" Click="DataGridFirstPage_Click" >
@@ -315,7 +317,7 @@ CanExecute="CanExecutePrintCommand"/>
                                 </WrapPanel>
 
                             </DockPanel>
-                            <ContentControl ScrollViewer.CanContentScroll="True" x:Name="NotificationBar" Height="50" Grid.Row="2" Grid.ColumnSpan="2">
+                            <ContentControl ScrollViewer.CanContentScroll="True" x:Name="NotificationBar" Height="50" Grid.Row="3" Grid.ColumnSpan="2">
                                 <TextBlock Text="Log..." x:Name="MessageBlock"/>
                             </ContentControl>
                         </Grid>
