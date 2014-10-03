@@ -18,7 +18,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		<CommandBinding Command="ApplicationCommands.Print" Executed="ExecutePrint" CanExecute="CanExecutePrintCommand"/>
     </Window.CommandBindings>
 
-    <Grid x:Name="MainGrid" Background="Black">
+    <Grid x:Name="MainGrid" Background="#FFBBCADC">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="3"/>
 			<RowDefinition Height="*"/>
@@ -146,19 +146,15 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	
 			<StackPanel Background="AliceBlue" Grid.Column="0" Margin="0,4,0,0">
 				<WrapPanel Margin="0,20,0,0" >
-				<TreeView BorderBrush="Transparent" BorderThickness="0" Background="AliceBlue"  >
+                        <TreeView BorderBrush="Transparent" BorderThickness="0" Background="AliceBlue">
 					<TreeViewItem BorderBrush="Transparent" BorderThickness="0">
 					<TreeViewItem.Header>
-					<WrapPanel>
-						<Button Style="{StaticResource all}">
-							<TextBlock Text="My Assignments" FontSize="16" FontWeight="Bold" Width="203"  Padding="0 1 0 4" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-						</Button>
-					</WrapPanel>
+						<TextBlock Text="My Assignments" FontSize="16" FontWeight="Bold" Width="203"  Padding="0 1 0 4" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
 					</TreeViewItem.Header>
 					<TreeViewItem>
 					<TreeViewItem.Header>
-						<Button Style="{StaticResource all}" x:Name="BillAnalysis" Click="BillAnalysis_Click" >
-							<TextBlock Text="            Bill Analysis" FontSize="16" FontWeight="Bold" Width="224"   Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+						<Button Style="{StaticResource all}" x:Name="BillAnalysis" Click="BillAnalysis_Click" Margin="-40,0,0,0">
+							<TextBlock Text="            Bill Analysis" FontSize="16" Width="224"   Foreground="#FF5B5B5B" FontFamily="Calibri"/>
 						</Button>
 					</TreeViewItem.Header>
 					</TreeViewItem>
@@ -170,58 +166,54 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 				<TreeView BorderBrush="Transparent" BorderThickness="0" Background="AliceBlue"  >
 					<TreeViewItem BorderBrush="Transparent" BorderThickness="0">
 					<TreeViewItem.Header>
-					<WrapPanel>
-						<Button Style="{StaticResource all}">
-							<TextBlock Text="Master" FontSize="16" FontWeight="Bold" Width="203"  Padding="0 1 0 4" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-						</Button>
-					</WrapPanel>
+						<TextBlock Text="Master" FontSize="16" FontWeight="Bold" Width="203"  Padding="0 1 0 4" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
 					</TreeViewItem.Header>
-					<TreeViewItem>
+					<TreeViewItem Margin="0,2,0,2">
 					<TreeViewItem.Header>
 						<Button Style="{StaticResource all}"  Name="countrytreeitembutton" Click="countrytreeitembutton_Click" Margin="-40,0,0,0" >
-							<TextBlock Text="            Country" FontSize="16" FontWeight="Bold" Width="224"   Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+							<TextBlock Text="            Country" FontSize="16" Width="224"   Foreground="#FF5B5B5B" FontFamily="Calibri"/>
 						</Button>
 					</TreeViewItem.Header>
 					</TreeViewItem>
-					<TreeViewItem>
+					<TreeViewItem Margin="0,2,0,2">
 					<TreeViewItem.Header>
 						<Button Style="{StaticResource all}"  Name="zonetreeitembutton" Click="zonetreeitembutton_Click" Margin="-40,0,0,0">
-							<TextBlock Text="            Zone" FontSize="16" FontWeight="Bold" Width="224"   Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+							<TextBlock Text="            Zone" FontSize="16" Width="224"   Foreground="#FF5B5B5B" FontFamily="Calibri"/>
 						</Button>
 					</TreeViewItem.Header>
 					</TreeViewItem>
-					<TreeViewItem>
+					<TreeViewItem Margin="0,2,0,2">
 					<TreeViewItem.Header>
 						<Button Style="{StaticResource all}"  Name="citytreeviewitembutton" Click="citytreeviewitembutton_Click" Margin="-40,0,0,0">
-							<TextBlock Text="            City" FontSize="16" FontWeight="Bold" Width="224"   Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+							<TextBlock Text="            City" FontSize="16" Width="224"   Foreground="#FF5B5B5B" FontFamily="Calibri"/>
 						</Button>
 					</TreeViewItem.Header>
 					</TreeViewItem>
-					<TreeViewItem>
+					<TreeViewItem Margin="0,2,0,2">
 					<TreeViewItem.Header>
 						<Button Style="{StaticResource all}" Name="clienttreeviewitembutton" Click="clienttreeviewitembutton_Click" Margin="-40,0,0,0">
-							<TextBlock Text="            Client" FontSize="16" FontWeight="Bold" Width="224"   Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+							<TextBlock Text="            Client" FontSize="16" Width="224"   Foreground="#FF5B5B5B" FontFamily="Calibri"/>
 						</Button>
 					</TreeViewItem.Header>
 					</TreeViewItem>
-					<TreeViewItem>
+					<TreeViewItem Margin="0,2,0,2">
 					<TreeViewItem.Header>
 						<Button Style="{StaticResource all}" Name="clienttarifftreeviewitembutton" Click="clienttarifftreeviewitembutton_Click" Margin="-40,0,0,0">
-							<TextBlock Text="            Client Tariff" FontSize="16" FontWeight="Bold" Width="224"   Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+							<TextBlock Text="            Client Tariff" FontSize="16" Width="224"   Foreground="#FF5B5B5B" FontFamily="Calibri"/>
 						</Button>
 					</TreeViewItem.Header>
 					</TreeViewItem>
-					<TreeViewItem>
+					<TreeViewItem Margin="0,2,0,2">
 					<TreeViewItem.Header>
 						<Button Style="{StaticResource all}" Name="forwardertarifftreeviewitembutton" Click="forwardertarifftreeviewitembutton_Click" Margin="-40,0,0,0">
-							<TextBlock Text="            Forwarder Tariff" FontSize="16" FontWeight="Bold" Width="224"   Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+							<TextBlock Text="            Forwarder Tariff" FontSize="16" Width="224"   Foreground="#FF5B5B5B" FontFamily="Calibri"/>
 						</Button>
 					</TreeViewItem.Header>
 					</TreeViewItem>
-					<TreeViewItem>
+					<TreeViewItem Margin="0,2,0,2">
 					<TreeViewItem.Header>
 						<Button Style="{StaticResource all}" Name="servicetaxtreeviewitembutton" Click="servicetaxtreeviewitembutton_Click" Margin="-40,0,0,0">
-							<TextBlock Text="            Service Tax" FontSize="16" FontWeight="Bold" Width="224"   Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+							<TextBlock Text="            Service Tax" FontSize="16" Width="224"   Foreground="#FF5B5B5B" FontFamily="Calibri"/>
 						</Button>
 					</TreeViewItem.Header>
 					</TreeViewItem>
