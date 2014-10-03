@@ -47,9 +47,9 @@ namespace FinalUi
         {
 
             BillingDataDataContext db = new BillingDataDataContext();
-             var c  =  (Client) this.ClientListCombo.SelectedItem;
-            List<Invoice> source = db.Invoices.Where(x=> x.ClientCode == c.CLCODE).ToList();
-            rs.Value = source;
+            var c  =  (Client) this.ClientListCombo.SelectedItem;
+            invoice = db.Invoices.Where(x=> x.ClientCode == c.CLCODE).ToList();
+            rs.Value = invoice;
             AccountStatementViewer.LocalReport.DataSources.Clear();
             AccountStatementViewer.LocalReport.DataSources.Add(rs);
             List<ReportParameter> repParams = new List<ReportParameter>();
@@ -58,6 +58,10 @@ namespace FinalUi
             repParams.Add(new ReportParameter("CompanyAddress", Configs.Default.CompanyAddress));
             repParams.Add(new ReportParameter("CompanyEmail", Configs.Default.CompanyEmail));
             repParams.Add(new ReportParameter("CompanyFax", Configs.Default.CompanyFax));
+            string basicsum = this.invoice.Select(y => y.Basic).Sum().ToString() ?? "";
+            string totalsum = this.invoice.Select(y => y.TotalAmount).Sum().ToString() ?? "";
+            repParams.Add(new ReportParameter("BasicTotal", basicsum));
+            repParams.Add(new ReportParameter("TotalSum", basicsum));
             repParams.Add(new ReportParameter("ClientName", c.CLNAME));
             repParams.Add(new ReportParameter("ClientAddress", c.ADDRESS));
             repParams.Add(new ReportParameter("ClientPhoneNo", c.CONTACTNO));
