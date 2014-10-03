@@ -24,32 +24,41 @@ namespace FinalUi
         public SanitizingWindow()
         {
             InitializeComponent();
+            db = new BillingDataDataContext();
+            viewSource = (CollectionViewSource)FindResource("CustomerNameList");
+            viewSource.Source = from client in db.Clients
+                                select client.CLCODE;
+            cityList = (CollectionViewSource)FindResource("CityList");
+            cityList.Source = db.Cities.ToList();
+            ServiceListSource = (CollectionViewSource)FindResource("ServiceList");
+            ServiceListSource.Source = db.Services.ToList();
         }
         CollectionViewSource viewSource;
         CollectionViewSource conssNumbers;
         List<RuntimeData> dataContext;
+        CollectionViewSource cityList;
         ListCollectionView dataListContext;
+        CollectionViewSource ServiceListSource;
         BillingDataDataContext db;
         DataGrid backDataGrid;
         int sheetNo;
-        public SanitizingWindow(List<RuntimeData> dataContext, BillingDataDataContext db, int sheetNo, DataGrid dg)
+        public SanitizingWindow(List<RuntimeData> dataContext, BillingDataDataContext db, int sheetNo, DataGrid dg, RuntimeData selectedRec = null) :this()
         {
             this.backDataGrid = dg;
             this.sheetNo = sheetNo;
-            this.db = db;
             if (dataContext != null)
                 this.dataContext = dataContext;
             if (dg.ItemsSource != null)
                 dataListContext = (ListCollectionView)dg.ItemsSource;
-            InitializeComponent();
-            viewSource = (CollectionViewSource)FindResource("CustomerNameList");
-            viewSource.Source = from client in db.Clients
-                                select client.CLCODE;
+            
+           
             conssNumbers = (CollectionViewSource)FindResource("ConsignmentNumbers");
             conssNumbers.Source = (from id in dataContext
                                    orderby id.BookingDate,id.ConsignmentNo
                                    select id.ConsignmentNo).ToList();
             InsertionDate.SelectedDate = DateTime.Today;
+            if (selectedRec != null)
+                ConnsignmentNumber.Text = selectedRec.ConsignmentNo;
             fillAllElements(ConnsignmentNumber.Text);
         }
         private void SubmitSanitizingDetails_Click(object sender, RoutedEventArgs e)
@@ -59,6 +68,8 @@ namespace FinalUi
         }
         public void SaveData()
         {
+            if (BilledAmount.Text == "" || CustomerSelected.Text == "<NONE>")
+                return;
             bool isDataInContext = true;
             RuntimeData data;
             data = dataContext.SingleOrDefault(x => x.ConsignmentNo == ConnsignmentNumber.Text);
@@ -85,6 +96,9 @@ namespace FinalUi
             data.DestinationPin = Decimal.Parse(DestinationPin.Text);
             data.CustCode = CustomerSelected.Text;
             data.Mode = MODE.Text;
+            data.Type = TypeComboBox.Text;
+            data.BookingDate = (DateTime)InsertionDate.SelectedDate;
+            data.DOX = DoxCombobox.Text.ElementAt(0);
             if (isDataInContext)
             {
                 data = db.RuntimeDatas.Single(x => x.Id == data.Id);
@@ -143,7 +157,7 @@ namespace FinalUi
         }
         void fillAllElements(string connsignmentNo)
         {
-            StatusTextBox.Text = "";
+ //           StatusTextBox.Text = "";
             RuntimeData data;
             data = dataContext.SingleOrDefault(x => x.ConsignmentNo == connsignmentNo);
             if (data != null)
@@ -156,11 +170,11 @@ namespace FinalUi
                 if (TData != null)
                 {
                     fillDetails(UtilityClass.convertTransObjToRunObj(TData));
-                    StatusTextBox.Text = "This record will be added to current sheet";
+        //            StatusTextBox.Text = "This record will be added to current sheet";
                 }
                 else
                 {
-                    StatusTextBox.Text = "New Record. This will be added in current sheet and database.";
+      //              StatusTextBox.Text = "New Record. This will be added in current sheet and database.";
                     clearDetails();
                 }
             }
@@ -180,7 +194,17 @@ namespace FinalUi
             WeightAccToDTDC.Text = data.Weight.ToString();
             Cost.Text = data.Amount.ToString();
             MODE.Text = data.Mode;
+            if (data.DOX == 'N')
+                DoxCombobox.Text = "Non Dox";
+            else
+                DoxCombobox.Text = "Dox";
+            if (data.BookingDate != null)
+                InsertionDate.SelectedDate = data.BookingDate;
             Destination.Text = db.Cities.Where(x => x.CITY_CODE == data.Destination).Select(y => y.CITY_DESC).FirstOrDefault();
+            if (data.CustCode != "")
+                CustomerSelected.Text = data.CustCode;
+            else
+                CustomerSelected.Text = "<NONE>";
             DestinationPin.Text = data.DestinationPin.ToString();
             if (data.FrWeight != null)
                 WeightAccToFranchize.Text = data.FrWeight.ToString();
@@ -190,6 +214,10 @@ namespace FinalUi
                 BilledAmount.Text = data.FrAmount.ToString();
             else
                 BilledAmount.Text = "";
+            if (data.Type != "")
+                TypeComboBox.Text = data.Type.Trim();
+            if (data.Mode != "")
+                MODE.Text = data.Mode.Trim();
         }
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
@@ -209,5 +237,6 @@ namespace FinalUi
             SaveData();
             setPreviousData();
         }
+
     }
 }

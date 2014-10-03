@@ -7,12 +7,14 @@
     <Window.Resources>
         <CollectionViewSource x:Key="CustomerNameList" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="ConsignmentNumbers" CollectionViewType="ListCollectionView"/>
+        <CollectionViewSource x:Key="CityList" CollectionViewType="ListCollectionView"/>
+        <CollectionViewSource x:Key="ServiceList" CollectionViewType="ListCollectionView"/>
     </Window.Resources>
     <Grid  Height="550" UseLayoutRounding="False"  Width="650">
         <Grid.Effect>
             <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
         </Grid.Effect>
-        <Canvas x:Name="SanitizingWindow1" ClipToBounds="True" HorizontalAlignment="Left" Height="550" UseLayoutRounding="False" VerticalAlignment="Top" Width="650" Background="White" Margin="0,0,0,-46.269">
+        <Canvas x:Name="SanitizingWindow1" ClipToBounds="True" HorizontalAlignment="Left" Height="550" UseLayoutRounding="False" VerticalAlignment="Top" Width="650" Background="White" Margin="0,10,0,-10">
             <ComboBox BorderThickness="2" IsEditable="True" Name="ConnsignmentNumber"  ItemsSource="{Binding}" DataContext="{StaticResource ConsignmentNumbers}"  IsTextSearchEnabled="True" KeyUp="ConnsignmentNumber_KeyUp" Height="26" Canvas.Left="265" Canvas.Top="84" Width="108"/>
             <TextBlock x:Name="DTDC__" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="147" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="DTDC.:" Canvas.Top="158.16"/>
             <TextBox BorderThickness="2" Name="WeightAccToDTDC"  Height="27" Canvas.Left="203" Canvas.Top="149" Width="81" Padding="0 4 0 0"/>
@@ -21,10 +23,23 @@
             <ComboBox BorderThickness="2" Name="CustomerSelected" IsEditable="True" ItemsSource="{Binding}" DataContext="{StaticResource CustomerNameList}" Height="26" Canvas.Left="191" Canvas.Top="197" Width="114"/>
             <TextBox BorderThickness="2" Name="BilledAmount" Height="27" Canvas.Left="203" Canvas.Top="246" Width="81" Padding="0 4 0 0"/>
             <TextBox BorderThickness="2" Name="Cost" Height="27" Canvas.Left="423" Canvas.Top="244" Width="81" Padding="0 4 0 0"/>
-            <TextBox BorderThickness="2" Name="Destination" Height="26" Canvas.Left="184" Canvas.Top="294" Width="99" Padding="0 4 0 0"/>
+            <ComboBox BorderThickness="2" Name="Destination" Height="26" Canvas.Left="184" Canvas.Top="294" Width="99" Padding="0 4 0 0" IsEditable="True" ItemsSource="{Binding}" DataContext="{StaticResource CityList}" DisplayMemberPath="CITY_DESC"/>
             <TextBox BorderThickness="2" Name="DestinationPin" Height="26" Canvas.Left="404" Canvas.Top="294" Width="99" Padding="0 4 0 0"/>
             <DatePicker BorderThickness="2" Name="InsertionDate" Height="26" Canvas.Left="184" Canvas.Top="341" Width="107"/>
-            <Button Click="Previous_Click" Canvas.Left="355" Canvas.Top="343" Style="{StaticResource all}" >
+            <TextBlock Canvas.Left="324" Canvas.Top="341" Text="Mode"></TextBlock>
+            <ComboBox Canvas.Left="424" Canvas.Top="341" Name="MODE" Width="50">
+                <ComboBoxItem Content="SF"></ComboBoxItem>
+                <ComboBoxItem Content="AR"></ComboBoxItem>
+                <ComboBoxItem Content="AC"></ComboBoxItem>
+            </ComboBox>
+            <TextBlock Text="Type" Canvas.Left="55" Canvas.Top="383"></TextBlock>
+            <ComboBox Name="TypeComboBox" Canvas.Left="100" Canvas.Top="383" DisplayMemberPath="SER_CODE" ItemsSource="{Binding}" Width="100" DataContext="{StaticResource ServiceList}" />
+            <TextBlock Text="DOX type: " Canvas.Left="325" Canvas.Top="383"></TextBlock>
+            <ComboBox Canvas.Left="425" Width="100" Canvas.Top="383" Name="DoxCombobox">
+                <ComboBoxItem Content="Non Dox"></ComboBoxItem>
+                <ComboBoxItem Content="Dox"></ComboBoxItem>
+            </ComboBox>
+            <Button Click="Previous_Click" Canvas.Left="55" Canvas.Top="443" Style="{StaticResource all}" >
                 <WrapPanel Margin="6,3,6,3">
                     <Path x:Name="PreviousPath" Data="F1M24.383,14.132C24.383,14.132 32.794,22.624 32.794,22.624 32.794,22.624 24.383,31.117 24.383,31.117 24.383,31.117 24.383,25.809 24.383,25.809 24.383,25.809 11.765,25.809 11.765,25.809 11.765,25.809 11.765,19.44 11.765,19.44 11.765,19.44 24.383,19.44 24.383,19.44 24.383,19.44 24.383,14.132 24.383,14.132z M22.25,6.05C13.34,6.05 6.05,13.34 6.05,22.25 6.05,31.16 13.34,38.45 22.25,38.45 31.16,38.45 38.45,31.16 38.45,22.25 38.45,13.34 31.16,6.05 22.25,6.05z M22.25,2C33.387,2 42.5,11.112 42.5,22.25 42.5,33.387 33.387,42.5 22.25,42.5 11.112,42.5 2,33.387 2,22.25 2,11.112 11.112,2 22.25,2z" Fill="Black" Height="23" Width="23" Stretch="Fill" Margin="0,0,3,0" RenderTransformOrigin="0.5,0.5">
                         <Path.RenderTransform>
@@ -39,13 +54,13 @@
                     <TextBlock x:Name="Previous" FontWeight="Bold" FontSize="24" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="413" LineHeight="24" TextAlignment="Left" TextWrapping="Wrap" Text="Previous" Canvas.Top="363.88" Height="20" />
                 </WrapPanel>
             </Button>
-            <Button Click="SubmitSanitizingDetails_Click" Canvas.Left="482" Canvas.Top="343" Style="{StaticResource all}" >
+            <Button Click="SubmitSanitizingDetails_Click" Canvas.Left="182" Canvas.Top="443" Style="{StaticResource all}" >
                 <WrapPanel Margin="6,3,6,3">
                     <Path x:Name="next" Data="F1M24.383,14.132C24.383,14.132 32.794,22.624 32.794,22.624 32.794,22.624 24.383,31.117 24.383,31.117 24.383,31.117 24.383,25.809 24.383,25.809 24.383,25.809 11.765,25.809 11.765,25.809 11.765,25.809 11.765,19.44 11.765,19.44 11.765,19.44 24.383,19.44 24.383,19.44 24.383,19.44 24.383,14.132 24.383,14.132z M22.25,6.05C13.34,6.05 6.05,13.34 6.05,22.25 6.05,31.16 13.34,38.45 22.25,38.45 31.16,38.45 38.45,31.16 38.45,22.25 38.45,13.34 31.16,6.05 22.25,6.05z M22.25,2C33.387,2 42.5,11.112 42.5,22.25 42.5,33.387 33.387,42.5 22.25,42.5 11.112,42.5 2,33.387 2,22.25 2,11.112 11.112,2 22.25,2z" Fill="Black" Height="23" Width="23" Stretch="Fill" Margin="0,0,3,0"/>
                     <TextBlock x:Name="SubmitNext" FontWeight="Bold" FontSize="24" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="413" LineHeight="24" TextAlignment="Left" TextWrapping="Wrap" Text="Next" Canvas.Top="363.88" Height="20" />
                 </WrapPanel>
             </Button>
-            <Button  Click="DoneButton_Click" Canvas.Left="524" Canvas.Top="399" Style="{StaticResource all}">
+            <Button  Click="DoneButton_Click" Canvas.Left="524" Canvas.Top="443" Style="{StaticResource all}">
                 <Button.Content>
                     <WrapPanel Margin="6,3,6,3" >
                         <Path x:Name="done" Data="F1M9.909,22C9.909,22 1,13.224 1,13.224 1,13.224 3.227,11.03 3.227,11.03 3.227,11.03 9.909,17.612 9.909,17.612 9.909,17.612 26.773,1 26.773,1 26.773,1 29,3.194 29,3.194 29,3.194 9.909,22 9.909,22z" Fill="Black" Height="23" Width="30"/>
@@ -53,7 +68,7 @@
                     </WrapPanel>
                 </Button.Content>
             </Button>
-            <TextBlock x:Name="Select_Date__" Foreground="Black" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="76" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Select Date.:" Canvas.Top="349.16"/>
+            <TextBlock x:Name="Select_Date__" Foreground="Black" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="76" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Booking Date.:" Canvas.Top="349.16"/>
             <Path x:Name="Date" Data="F1M12.5,11.187C12.5,11.187 15.125,11.187 15.125,11.187 15.125,11.187 15.961,11.187 15.961,11.187 15.961,11.187 17.094,11.187 17.094,11.187 17.094,11.187 17.094,11.913 17.094,11.913 17.094,11.913 17.062,12 17.062,12 17.049,12.054 17.033,12.104 17.007,12.151 17.007,12.151 15.119,17.338 15.119,17.338 14.995,17.679 14.619,17.855 14.278,17.731 13.938,17.607 13.762,17.23 13.886,16.889 13.886,16.889 15.484,12.5 15.484,12.5 15.484,12.5 12.5,12.5 12.5,12.5 12.138,12.5 11.844,12.206 11.844,11.844 11.844,11.481 12.138,11.187 12.5,11.187z M8.562,11.187C8.562,11.187 9.875,11.187 9.875,11.187 9.875,11.187 9.875,17.75 9.875,17.75 9.875,17.75 8.562,17.75 8.562,17.75 8.562,17.75 8.562,11.187 8.562,11.187z M4.625,8.562C4.625,8.562 4.625,20.375 4.625,20.375 4.625,20.375 20.375,20.375 20.375,20.375 20.375,20.375 20.375,11.187 20.375,11.187 20.375,11.187 20.375,8.562 20.375,8.562 20.375,8.562 19.719,8.562 19.719,8.562 19.719,8.562 17.094,8.562 17.094,8.562 17.094,8.562 15.125,8.562 15.125,8.562 15.125,8.562 4.625,8.562 4.625,8.562z M3.312,3.312C3.312,3.312 4.625,3.312 4.625,3.312 4.625,3.312 4.625,4.625 4.625,4.625 4.625,5.35 5.213,5.937 5.937,5.937 5.937,5.937 7.25,5.937 7.25,5.937 7.975,5.937 8.562,5.35 8.562,4.625 8.562,4.625 8.562,3.312 8.562,3.312 8.562,3.312 16.437,3.312 16.437,3.312 16.437,3.312 16.437,4.625 16.437,4.625 16.437,5.35 17.025,5.937 17.75,5.937 17.75,5.937 19.062,5.937 19.062,5.937 19.787,5.937 20.375,5.35 20.375,4.625 20.375,4.625 20.375,3.312 20.375,3.312 20.375,3.312 21.687,3.312 21.687,3.312 22.412,3.312 23,3.9 23,4.625 23,4.625 23,21.687 23,21.687 23,22.412 22.412,23 21.687,23 21.687,23 3.312,23 3.312,23 2.588,23 2,22.412 2,21.687 2,21.687 2,4.625 2,4.625 2,3.9 2.588,3.312 3.312,3.312z M18.406,2C18.769,2 19.062,2.294 19.062,2.656 19.062,2.656 19.062,3.969 19.062,3.969 19.062,4.331 18.769,4.625 18.406,4.625 18.044,4.625 17.75,4.331 17.75,3.969 17.75,3.969 17.75,2.656 17.75,2.656 17.75,2.294 18.044,2 18.406,2z M6.594,2C6.956,2 7.25,2.294 7.25,2.656 7.25,2.656 7.25,3.969 7.25,3.969 7.25,4.331 6.956,4.625 6.594,4.625 6.231,4.625 5.937,4.331 5.937,3.969 5.937,3.969 5.937,2.656 5.937,2.656 5.937,2.294 6.231,2 6.594,2z" Fill="Black" Height="24" Canvas.Left="46" Canvas.Top="342" Width="24"/>
             <TextBlock x:Name="PIN_Code__" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="317" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="PIN Code.:" Canvas.Top="302.16"/>
             <Path x:Name="line_copy_2" Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Canvas.Left="302" Canvas.Top="291" Width="3"/>
@@ -75,17 +90,12 @@
             <Path x:Name="detail1" Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Black" Height="24" Canvas.Left="81" Canvas.Top="41" Width="24"/>
             <Path MouseDown="DragthisWindow" x:Name="Memu_bar" Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="#FFCBCBCB" Height="26" Canvas.Left="0" Canvas.Top="0" Width="650" Stretch="Fill" Stroke="Black" />
             <TextBlock FontSize="18" FontFamily="Trajan Pro 3" Height="25" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="0" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Data Entry" Canvas.Top="6" Width="548" FontWeight="Medium"/>
-            <Button ToolTip="Close" Height="18" Canvas.Left="510" Click="Button_Click_Close" Canvas.Top="4" Width="35" Style="{StaticResource all}">
+            
+            <Button ToolTip="Close" Height="18" Canvas.Right="0" Click="Button_Click_Close" Canvas.Top="4" Width="35" Style="{StaticResource all}">
                 <Path x:Name="close" Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,
                   12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,
                   3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" Width="15" Height="15"/>
             </Button>
-
-
-            <TextBlock Canvas.Left="385.04" TextWrapping="Wrap" Text="TextBlock" Canvas.Top="45.04" Name="StatusTextBox"/>
         </Canvas>
-        <TextBox HorizontalAlignment="Left" Name="MODE" Height="23" Margin="-421,62,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="224,45.25,0,0" TextWrapping="Wrap" Text="MODE" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="290,44.25,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-    </Grid>
+      </Grid>
 </Window>

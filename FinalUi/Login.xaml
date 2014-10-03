@@ -39,11 +39,11 @@
                 </WrapPanel>
                 <Separator Visibility="Hidden"/>
                 <WrapPanel HorizontalAlignment="Center" >
-                    <TextBox MinWidth="150" Padding="5 5 5 5" Name="UserName" />
+                <TextBox MinWidth="150" Padding="5 5 5 5" Name="UserName" FontSize="14" />
                 </WrapPanel>
                 <Separator Visibility="Hidden"/>
                 <WrapPanel HorizontalAlignment="Center" >
-                    <PasswordBox MinWidth="150" Name="Password" Padding="5 5 5 5"/>
+                <PasswordBox MinWidth="150" Name="Password" Padding="5 5 5 5" FontSize="14"/>
                 </WrapPanel>
                 <!--
                    <Button Content="Setup Data" x:Name="SetupButton" Click="SetupButton_Click_1" Width="107" HorizontalAlignment="Right"/>
