@@ -302,9 +302,12 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 					<TextBox ToolTip="No. of Rows" x:Name="DataGridNumOfRows" Width="30" Margin="3,0,11,0" Height="20" Text="{Binding rowsPerPage, Mode=TwoWay}" FontFamily="Segoe UI Semibold" TextAlignment="Center" BorderBrush="#FF7676FF"/>
 				</WrapPanel>
 			</DockPanel>
-			<ContentControl ScrollViewer.CanContentScroll="True" x:Name="NotificationBar" Height="136">
-				<TextBlock Text="Log..." x:Name="MessageBlock" Background="White" Margin="4,0,0,0"/>
-			</ContentControl>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="126" HorizontalScrollBarVisibility="Disabled">
+				<TextBlock Text="Log..." x:Name="MessageBlock" TextWrapping="Wrap"  HorizontalAlignment="Stretch" Background="White" Margin="4,0,0,0" />
+            </ScrollViewer>
+				<!--<ScrollViewer>
+				<TextBlock Text="Log..." x:Name="MessageBlock" TextWrapping="Wrap" Background="White" Margin="4,0,0,0" Height="136"/>
+				</ScrollViewer>-->
 			</StackPanel>
 		</Grid>
 	</StackPanel>
