@@ -2,61 +2,61 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		Icon="Images/logo.png"
-        Title="FilterSelectWindow" Height="460" Width="372"
-		Background="Transparent"
+        Title="Filter &amp; Select" Height="465" Width="600" Background="Transparent"
 		ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Normal" BorderBrush="Transparent" AllowsTransparency="True" Padding="20">
+
     <Window.Resources>
-        <CollectionViewSource x:Key="StartConnNoList" CollectionViewType="ListCollectionView"/>
+         <CollectionViewSource x:Key="StartConnNoList" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="EndConnoList" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="ClientToSet" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="ClientToAdd" CollectionViewType="ListCollectionView"/>
     </Window.Resources>
-    <Grid Name="MainGrid"  Height="410" UseLayoutRounding="False" Width="322">
+    <Grid Name="MainGrid" Height="415" UseLayoutRounding="False"  Width="550">
         <Grid.Effect>
             <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
         </Grid.Effect>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto">
-            </RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-        <Grid.Resources>
-            <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"/>
-        </Grid.Resources>
-        <Canvas x:Name="FilterSelectWindow1" ClipToBounds="True" HorizontalAlignment="Left" Height="410" UseLayoutRounding="False" VerticalAlignment="Top" Width="322" Background="White">
-            <WrapPanel Canvas.Top="35">
-                <TextBox Text="Show Transactions.: " ></TextBox>
-                <RadioButton Name="BilledRadio" GroupName="BilledStat" Tag="Billed" Content="Billed"></RadioButton>
-                <RadioButton Name="UnBilledRadio" GroupName="BilledStat" Tag="UnBilled" Content="UnBilled" ></RadioButton>
-                <RadioButton Name="AllRadio" GroupName="BilledStat" Tag="All" Content="All"></RadioButton>
+        <Canvas x:Name="FilterSelectWindow1" ClipToBounds="True" HorizontalAlignment="Left" Height="415" UseLayoutRounding="False" VerticalAlignment="Top" Width="550" Background="White">
+		<Path x:Name="Vertical_line" Data="F1M2,3C2,3 2,2 2,2 2,2 331,2 331,2 331,2 331,3 331,3 331,3 2,3 2,3" Fill="Black" Height="4" Canvas.Left="108" Canvas.Top="56" Width="332"/>
+        <Path x:Name="detail" Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Black" Height="24" Canvas.Left="81" Canvas.Top="35" Width="24"/>
+		<TextBlock x:Name="Enter_Details__" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="109" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Enter Details.:" Canvas.Top="41.16"/>
+			<Path  Data="F1M2,3C2,3 2,2 2,2 2,2 331,2 331,2 331,2 331,3 331,3 331,3 2,3 2,3" Fill="Black" Height="1" Canvas.Left="212.5" Canvas.Top="105" Width="281.5" Stretch="Fill"/>
+			<WrapPanel Canvas.Left="56.6" Canvas.Top="84">
+				<TextBlock  FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Show Transactions .:        "/>
+				<RadioButton Name="BilledRadio" GroupName="BilledStat" Tag="Billed" Content="Billed      " FontWeight="Bold" FontSize="16" FontFamily="Calibri" Padding="5 -3 0 0" Margin="0,3,0,0"/>
+                <RadioButton Name="UnBilledRadio" GroupName="BilledStat" Tag="UnBilled" Content="UnBilled       " FontWeight="Bold" FontSize="16" FontFamily="Calibri" Padding="5 -3 0 0" Margin="0,3,0,0"/>
+                <RadioButton Name="AllRadio" GroupName="BilledStat" Tag="All" Content="All" FontWeight="Bold" FontSize="16" FontFamily="Calibri" Padding="5 -3 0 0" Margin="0,3,0,0"/>
             </WrapPanel>
-            <TextBlock x:Name="End_No_" FontWeight="Bold" FontSize="16" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="168.667" LineHeight="16" TextAlignment="Left" TextWrapping="Wrap" Text="End No." Canvas.Top="123.92"/>
-            <ComboBox IsEditable="True" ItemsSource="{Binding}" DataContext="{StaticResource EndConnoList}" Name="EndConnNo" Height="20" Canvas.Left="223" Canvas.Top="118" Width="81"/>
-            <ComboBox IsEditable="True" ItemsSource="{Binding}" DataContext="{StaticResource StartConnNoList}" Name="StartConnNo" Height="20" Canvas.Left="65" Canvas.Top="118" Width="81"/>
-            <TextBlock x:Name="Select_Client" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="44" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Select Client .:" Canvas.Top="158.16"/>
-            <Path x:Name="consign" Data="F1M9.199,17.196C9.199,17.196 16.002,17.196 16.002,17.196 16.002,17.196 16.002,17.807 16.002,17.807 16.002,17.807 9.199,17.807 9.199,17.807 9.199,17.807 9.199,17.196 9.199,17.196z M9.199,15.36C9.199,15.36 13.2,15.36 13.2,15.36 13.2,15.36 13.2,15.971 13.2,15.971 13.2,15.971 9.199,15.971 9.199,15.971 9.199,15.971 9.199,15.36 9.199,15.36z M9.199,13.527C9.199,13.527 14.4,13.527 14.4,13.527 14.4,13.527 14.4,14.138 14.4,14.138 14.4,14.138 9.199,14.138 9.199,14.138 9.199,14.138 9.199,13.527 9.199,13.527z M9.199,11.695C9.199,11.695 16.401,11.695 16.401,11.695 16.401,11.695 16.401,12.305 16.401,12.305 16.401,12.305 9.199,12.305 9.199,12.305 9.199,12.305 9.199,11.695 9.199,11.695z M9.199,9.862C9.199,9.862 13.2,9.862 13.2,9.862 13.2,9.862 13.2,10.473 13.2,10.473 13.2,10.473 9.199,10.473 9.199,10.473 9.199,10.473 9.199,9.862 9.199,9.862z M7.399,6.501C7.399,6.501 7.399,21.167 7.399,21.167 7.399,21.167 18.2,21.167 18.2,21.167 18.2,21.167 18.2,6.501 18.2,6.501 18.2,6.501 7.399,6.501 7.399,6.501z M5.599,4.666C5.599,4.666 20,4.666 20,4.666 20,4.666 20,23 20,23 20,23 5.599,23 5.599,23 5.599,23 5.599,4.666 5.599,4.666z M2,1C2,1 16.401,1 16.401,1 16.401,1 16.401,2.833 16.401,2.833 16.401,2.833 16.401,3.749 16.401,3.749 16.401,3.749 14.601,3.749 14.601,3.749 14.601,3.749 14.601,2.833 14.601,2.833 14.601,2.833 3.8,2.833 3.8,2.833 3.8,2.833 3.8,17.501 3.8,17.501 3.8,17.501 4.7,17.501 4.7,17.501 4.7,17.501 4.7,19.334 4.7,19.334 4.7,19.334 3.8,19.334 3.8,19.334 3.8,19.334 2,19.334 2,19.334 2,19.334 2,1 2,1z" Fill="Black" Height="24" Canvas.Left="13" Canvas.Top="83" Width="21"/>
-            <Path x:Name="line" Data="F1M2,2C2,2 3,2 3,2 3,2 3,35 3,35 3,35 2,35 2,35 2,35 2,2 2,2" Fill="Black" Height="36" Canvas.Left="162" Canvas.Top="112" Width="4"/>
-            <TextBlock x:Name="Start_No_" FontWeight="Bold" FontSize="16" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="3" LineHeight="16" TextAlignment="Left" TextWrapping="Wrap" Text="Start No." Canvas.Top="123.92"/>
-            <DataGrid  Height="130" Canvas.Left="24" Canvas.Top="180" Width="100" BorderThickness="1" BorderBrush="Gray"  Name="ClientsToSet" CanUserDeleteRows="False" CanUserAddRows="False" IsReadOnly="True" ItemsSource="{Binding}" DataContext="{StaticResource ClientToSet}" SelectionMode="Single" AutoGenerateColumns="False" HeadersVisibility="Column">
+			<TextBlock x:Name="Start_No_" FontWeight="Bold" FontSize="16" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="87.662" LineHeight="16" TextAlignment="Left" TextWrapping="Wrap" Text="Start No. .:" Canvas.Top="146"/>
+            <Path x:Name="start" Data="F1M11.605,8.832C11.605,8.832 11.605,19 11.605,19 11.605,19 6.395,19 6.395,19 6.395,19 6.395,8.832 6.395,8.832 6.395,8.832 2,8.832 2,8.832 2,8.832 9,2 9,2 9,2 16,8.832 16,8.832 16,8.832 11.605,8.832 11.605,8.832z" Fill="Black" Height="20" Canvas.Left="251" Canvas.Top="140" Width="17"/>
+            <ComboBox IsEditable="True" ItemsSource="{Binding}" DataContext="{StaticResource StartConnNoList}" Name="StartConnNo" Height="20" Canvas.Left="163" Canvas.Top="140" Width="85"/>
+            <Path x:Name="line" Data="F1M2,2C2,2 3,2 3,2 3,2 3,35 3,35 3,35 2,35 2,35 2,35 2,2 2,2" Fill="Black" Height="36" Canvas.Left="278" Canvas.Top="128.5" Width="4"/>
+            <TextBlock x:Name="End_No_" FontWeight="Bold" FontSize="16" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="314.521" LineHeight="16" TextAlignment="Left" TextWrapping="Wrap" Text="End No. .:" Canvas.Top="146"/>
+            <Path x:Name="end" Data="F1M9,19C9,19 2,12.168 2,12.168 2,12.168 6.395,12.168 6.395,12.168 6.395,12.168 6.395,2 6.395,2 6.395,2 11.605,2 11.605,2 11.605,2 11.605,12.168 11.605,12.168 11.605,12.168 16,12.168 16,12.168 16,12.168 9,19 9,19z" Fill="Black" Height="20" Canvas.Left="471.084" Canvas.Top="140" Width="17"/>
+            <ComboBox IsEditable="True" ItemsSource="{Binding}" DataContext="{StaticResource EndConnoList}" Name="EndConnNo" Height="20" Canvas.Left="383.173" Canvas.Top="140" Width="85"/>
+            <TextBlock x:Name="Select_Client" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="64.232" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Select Client .:" Canvas.Top="227.079"/>
+            <Path x:Name="consign" Data="F1M9.199,17.196C9.199,17.196 16.002,17.196 16.002,17.196 16.002,17.196 16.002,17.807 16.002,17.807 16.002,17.807 9.199,17.807 9.199,17.807 9.199,17.807 9.199,17.196 9.199,17.196z M9.199,15.36C9.199,15.36 13.2,15.36 13.2,15.36 13.2,15.36 13.2,15.971 13.2,15.971 13.2,15.971 9.199,15.971 9.199,15.971 9.199,15.971 9.199,15.36 9.199,15.36z M9.199,13.527C9.199,13.527 14.4,13.527 14.4,13.527 14.4,13.527 14.4,14.138 14.4,14.138 14.4,14.138 9.199,14.138 9.199,14.138 9.199,14.138 9.199,13.527 9.199,13.527z M9.199,11.695C9.199,11.695 16.401,11.695 16.401,11.695 16.401,11.695 16.401,12.305 16.401,12.305 16.401,12.305 9.199,12.305 9.199,12.305 9.199,12.305 9.199,11.695 9.199,11.695z M9.199,9.862C9.199,9.862 13.2,9.862 13.2,9.862 13.2,9.862 13.2,10.473 13.2,10.473 13.2,10.473 9.199,10.473 9.199,10.473 9.199,10.473 9.199,9.862 9.199,9.862z M7.399,6.501C7.399,6.501 7.399,21.167 7.399,21.167 7.399,21.167 18.2,21.167 18.2,21.167 18.2,21.167 18.2,6.501 18.2,6.501 18.2,6.501 7.399,6.501 7.399,6.501z M5.599,4.666C5.599,4.666 20,4.666 20,4.666 20,4.666 20,23 20,23 20,23 5.599,23 5.599,23 5.599,23 5.599,4.666 5.599,4.666z M2,1C2,1 16.401,1 16.401,1 16.401,1 16.401,2.833 16.401,2.833 16.401,2.833 16.401,3.749 16.401,3.749 16.401,3.749 14.601,3.749 14.601,3.749 14.601,3.749 14.601,2.833 14.601,2.833 14.601,2.833 3.8,2.833 3.8,2.833 3.8,2.833 3.8,17.501 3.8,17.501 3.8,17.501 4.7,17.501 4.7,17.501 4.7,17.501 4.7,19.334 4.7,19.334 4.7,19.334 3.8,19.334 3.8,19.334 3.8,19.334 2,19.334 2,19.334 2,19.334 2,1 2,1z" Fill="Black" Height="24" Canvas.Left="61.984" Canvas.Top="139.971" Width="21"/>
+            <DataGrid  Height="130" Canvas.Left="33.671" Canvas.Top="243" Width="200" CanUserResizeColumns="True" BorderThickness="1" BorderBrush="Gray"  Name="ClientsToSet" CanUserDeleteRows="False" CanUserAddRows="False" IsReadOnly="True" ItemsSource="{Binding}" DataContext="{StaticResource ClientToSet}" SelectionMode="Single" AutoGenerateColumns="False" HeadersVisibility="Column">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Client .:" Width="98" Binding="{Binding NameAndCode}"/>
+                    <DataGridTextColumn Header="Client .:" Width="198" Binding="{Binding NameAndCode}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <DataGrid Height="130" Canvas.Left="204.753" Canvas.Top="180" Width="100" BorderThickness="1" BorderBrush="Gray" Name="ClientsToAdd" CanUserAddRows="False" CanUserDeleteRows="False"  IsReadOnly="True" ItemsSource="{Binding}" DataContext="{StaticResource ClientToAdd}" SelectionMode="Single" AutoGenerateColumns="False" HeadersVisibility="Column">
+            <DataGrid Height="130" Canvas.Right="33.671" Canvas.Top="243" CanUserResizeColumns="True" Width="200" BorderThickness="1" BorderBrush="Gray" Name="ClientsToAdd" CanUserAddRows="False" CanUserDeleteRows="False"  IsReadOnly="True" ItemsSource="{Binding}" DataContext="{StaticResource ClientToAdd}" SelectionMode="Single" AutoGenerateColumns="False" HeadersVisibility="Column" Canvas.Left="316.329">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Client.:" Width="98" Binding="{Binding NameAndCode}"/>
+                    <DataGridTextColumn Header="Client.:" Width="198" Binding="{Binding NameAndCode}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button   Name="AddClient" Content="Add >>" Click="AddClient_Click" Canvas.Left="129.167" Canvas.Top="225.167" Width="66.55"/>
-            <Button  Name="RemoveClient" Content="&lt;&lt; Remove" Click="RemoveClient_Click" Margin="129.167,254.166,350.167,56.501"></Button>
-            <TextBlock Text="Select Date.: " Canvas.Top="320"></TextBlock>
-            <TextBlock Text="To" Canvas.Top="340"></TextBlock>
-            <DatePicker Name="ToDate" Canvas.Top="340" Canvas.Left="20"/>
-            <TextBlock Text="From" Canvas.Left="150" Canvas.Top="340"/>
-            <DatePicker Name="FromDate" Canvas.Top="340" Canvas.Left="180"/>
-            <Button Name="GetFilter" Click="GetFilter_Click" Canvas.Left="202" Canvas.Top="373" Style="{StaticResource all}">
+            <Button Name="AddAllButton" Click="AddAllButton_Click"  Content="Add All >>"  Canvas.Left="241.223" Canvas.Top="263.994" Width="66.55"/>
+            <Button   Name="AddClient" Content="Add >>" Click="AddClient_Click" Canvas.Left="241.223" Canvas.Top="290.778" Width="66.55"/>
+            <Button  Name="RemoveClient" Content="&lt;&lt; Remove" Click="RemoveClient_Click" Canvas.Left="241.221" Canvas.Top="312.656"/>
+			<Button Name="ClearAllButton" Click="ClearAllButton_Click"  Content="&lt;&lt; Clear All" Canvas.Left="241.223" Canvas.Top="340.108" Width="66.55"/>
+            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="87.99" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="From .:" Canvas.Top="199"/>
+            <DatePicker Name="FromDate" Canvas.Left="146" Canvas.Top="189"   Height="26"  Width="124"  BorderThickness="0" Padding="0 4 0 0"/>
+            <Path x:Name="Rectangle_2" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="27" Canvas.Left="144" Canvas.Top="188" Width="98" Stroke="Black"/>
+            <Path  Data="F1M2,2C2,2 3,2 3,2 3,2 3,35 3,35 3,35 2,35 2,35 2,35 2,2 2,2" Fill="Black" Height="36" Canvas.Left="278" Canvas.Top="184" Width="4"/>
+            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="329.304" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="To .:" Canvas.Top="199"/>
+            <DatePicker Name="ToDate" Canvas.Left="366" Canvas.Top="189"   Height="26"  Width="124"  BorderThickness="0" Padding="0 4 0 0"/>
+            <Path x:Name="Rectangle2" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="27" Canvas.Left="364" Canvas.Top="188" Width="98" Stroke="Black"/>
+            <Button Name="GetFilter" Click="GetFilter_Click" Canvas.Left="416.995" Canvas.Top="377.662" Style="{StaticResource all}">
                 <Button.Content>
                     <WrapPanel Margin="6,3,6,3">
                         <Path x:Name="AddFilter" Data="F1M13.455,5.818C13.455,5.818 13.455,9.636 13.455,9.636 13.455,9.636 9.636,9.636 9.636,9.636 9.636,9.636 9.636,11.545 9.636,11.545 9.636,11.545 13.455,11.545 13.455,11.545 13.455,11.545 13.455,15.364 13.455,15.364 13.455,15.364 15.364,15.364 15.364,15.364 15.364,15.364 15.364,11.545 15.364,11.545 15.364,11.545 19.182,11.545 19.182,11.545 19.182,11.545 19.182,9.636 19.182,9.636 19.182,9.636 15.364,9.636 15.364,9.636 15.364,9.636 15.364,5.818 15.364,5.818 15.364,5.818 13.455,5.818 13.455,5.818z M2,5.818C2,5.818 3.909,5.818 3.909,5.818 3.909,5.818 3.909,21.091 3.909,21.091 3.909,21.091 19.182,21.091 19.182,21.091 19.182,21.091 19.182,23 19.182,23 19.182,23 3.909,23 3.909,23 2.859,23 2,22.141 2,21.091 2,21.091 2,5.818 2,5.818z M7.727,2C7.727,2 21.091,2 21.091,2 22.141,2 23,2.859 23,3.909 23,3.909 23,17.273 23,17.273 23,18.323 22.141,19.182 21.091,19.182 21.091,19.182 7.727,19.182 7.727,19.182 6.677,19.182 5.818,18.323 5.818,17.273 5.818,17.273 5.818,3.909 5.818,3.909 5.818,2.859 6.677,2 7.727,2z" Fill="Black" Height="24" Width="24"/>
@@ -64,14 +64,13 @@
                     </WrapPanel>
                 </Button.Content>
             </Button>
-            <Path x:Name="client" Data="F1M7.006,17.756C8.089,18.341 9.324,18.675 10.635,18.675 11.947,18.675 13.183,18.341 14.264,17.756 16.602,18.374 18.432,19.843 19.272,23 19.272,23 2,23 2,23 2.839,19.843 4.67,18.375 7.006,17.756z M22.992,14.925C25.33,15.543 27.161,17.011 28,20.168 28,20.168 19.469,20.168 19.469,20.168 18.486,18.463 17.033,17.311 15.075,16.685 15.597,16.276 16.061,15.798 16.456,15.264 17.354,15.635 18.334,15.843 19.363,15.843 20.674,15.843 21.911,15.51 22.992,14.925z M6.639,12.72C7.558,14.518 9.136,15.706 10.928,15.706 12.722,15.706 14.298,14.518 15.217,12.72 15.217,12.72 6.639,12.72 6.639,12.72z M10.635,4.831C13.958,4.831 16.649,7.548 16.649,10.899 16.649,14.252 13.958,16.968 10.635,16.968 7.313,16.968 4.621,14.252 4.621,10.899 4.621,7.548 7.313,4.831 10.635,4.831z M19.363,2C22.685,2 25.377,4.717 25.377,8.068 25.377,11.421 22.685,14.137 19.363,14.137 18.642,14.137 17.954,14.003 17.313,13.768 17.499,13.331 17.641,12.872 17.74,12.396 18.332,12.704 18.979,12.874 19.656,12.874 21.449,12.874 23.026,11.686 23.944,9.888 23.944,9.888 17.819,9.888 17.819,9.888 17.513,7.667 16.22,5.766 14.398,4.645 15.482,3.049 17.3,2 19.363,2z" Fill="Black" Height="24" Canvas.Left="13" Canvas.Top="152" Width="29"/>
-            <Path x:Name="end" Data="F1M9,19C9,19 2,12.168 2,12.168 2,12.168 6.395,12.168 6.395,12.168 6.395,12.168 6.395,2 6.395,2 6.395,2 11.605,2 11.605,2 11.605,2 11.605,12.168 11.605,12.168 11.605,12.168 16,12.168 16,12.168 16,12.168 9,19 9,19z" Fill="Black" Height="20" Canvas.Left="303" Canvas.Top="118" Width="17"/>
-            <Path x:Name="start" Data="F1M11.605,8.832C11.605,8.832 11.605,19 11.605,19 11.605,19 6.395,19 6.395,19 6.395,19 6.395,8.832 6.395,8.832 6.395,8.832 2,8.832 2,8.832 2,8.832 9,2 9,2 9,2 16,8.832 16,8.832 16,8.832 11.605,8.832 11.605,8.832z" Fill="Black" Height="20" Canvas.Left="145" Canvas.Top="118" Width="17"/>
-            <TextBlock x:Name="Consignment_Number___" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="43" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Consignment Number .:" Canvas.Top="87.827"/>
-            <Path Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="#FFCBCBCB" Height="26" Canvas.Left="0" Canvas.Top="0" Width="322" Stretch="Fill" Stroke="Black" />
-            <TextBlock FontSize="16" Height="24" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="0" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Filter &amp; Select" Canvas.Top="4.666" Width="320" FontFamily="Arial"/>
-            <Path MouseDown="DragthisWindow" x:Name="Memu_bar" Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26" Canvas.Left="0" Canvas.Top="0" Width="322" Stretch="Fill" />
-            <Button ToolTip="Close" Height="18" Canvas.Left="283" Click="Button_Click_Close" Canvas.Top="4" Width="35" Style="{StaticResource all}">
+            <Path x:Name="client" Data="F1M7.006,17.756C8.089,18.341 9.324,18.675 10.635,18.675 11.947,18.675 13.183,18.341 14.264,17.756 16.602,18.374 18.432,19.843 19.272,23 19.272,23 2,23 2,23 2.839,19.843 4.67,18.375 7.006,17.756z M22.992,14.925C25.33,15.543 27.161,17.011 28,20.168 28,20.168 19.469,20.168 19.469,20.168 18.486,18.463 17.033,17.311 15.075,16.685 15.597,16.276 16.061,15.798 16.456,15.264 17.354,15.635 18.334,15.843 19.363,15.843 20.674,15.843 21.911,15.51 22.992,14.925z M6.639,12.72C7.558,14.518 9.136,15.706 10.928,15.706 12.722,15.706 14.298,14.518 15.217,12.72 15.217,12.72 6.639,12.72 6.639,12.72z M10.635,4.831C13.958,4.831 16.649,7.548 16.649,10.899 16.649,14.252 13.958,16.968 10.635,16.968 7.313,16.968 4.621,14.252 4.621,10.899 4.621,7.548 7.313,4.831 10.635,4.831z M19.363,2C22.685,2 25.377,4.717 25.377,8.068 25.377,11.421 22.685,14.137 19.363,14.137 18.642,14.137 17.954,14.003 17.313,13.768 17.499,13.331 17.641,12.872 17.74,12.396 18.332,12.704 18.979,12.874 19.656,12.874 21.449,12.874 23.026,11.686 23.944,9.888 23.944,9.888 17.819,9.888 17.819,9.888 17.513,7.667 16.22,5.766 14.398,4.645 15.482,3.049 17.3,2 19.363,2z" Fill="Black" Height="19" Canvas.Left="37.833" Canvas.Top="222.365" Width="23" Stretch="Fill"/>
+            <TextBlock x:Name="Consignment_Number___" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="40.988" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Consignment Number .:" Canvas.Top="117.326"/>
+            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="40.988" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Date .:" Canvas.Top="175.663"/>
+            <Path Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="#FFCBCBCB" Height="26" Canvas.Left="0" Canvas.Top="0" Width="550" Stretch="Fill" Stroke="Black" />
+            <TextBlock FontSize="16" Height="25" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="0" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Filter &amp; Select" Canvas.Top="6" Width="548" FontFamily="Arial"/>
+            <Path MouseDown="DragthisWindow" x:Name="Memu_bar" Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26" Canvas.Left="0" Canvas.Top="0" Width="550" Stretch="Fill" />
+            <Button ToolTip="Close" Height="18" Canvas.Left="510" Click="Button_Click_Close" Canvas.Top="4" Width="35" Style="{StaticResource all}">
                 <Path x:Name="close" Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,
                   12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,
                   3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" Width="15" Height="15"/>

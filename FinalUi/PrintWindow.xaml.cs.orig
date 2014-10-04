@@ -104,11 +104,16 @@ namespace FinalUi
             repParams.Add(new ReportParameter("DescriptionString", descriptionString));
             string mainAmount = source.Sum(x => x.FrAmount).ToString();
             repParams.Add(new ReportParameter("MainAmountString", mainAmount));
+<<<<<<< local
+            repParams.Add(new ReportParameter("TaxPercentageString", TaxBox.Text));
+            double taxamount = double.Parse(TaxBox.Text) * double.Parse(mainAmount) / 100 ;
+=======
             repParams.Add(new ReportParameter("FuelString", TaxBox.Text));
             repParams.Add(new ReportParameter("ServiceTaxString", ServiceTaxBox.Text));
             double tax = double.Parse(TaxBox.Text) + double.Parse(ServiceTaxBox.Text);
             repParams.Add(new ReportParameter("TaxPercentageString", tax.ToString()));
             double taxamount = tax * double.Parse(mainAmount) / 100;
+>>>>>>> other
             repParams.Add(new ReportParameter("TaxAmountString", taxamount.ToString()));
             repParams.Add(new ReportParameter("MiscellaneousAmountString", MiscBox.Text));
             double totalAmount = double.Parse(mainAmount) + taxamount + double.Parse(MiscBox.Text) + double.Parse(PreviousDueTextBox.Text);

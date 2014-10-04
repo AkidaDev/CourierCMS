@@ -56,8 +56,8 @@ namespace FinalUi
                         c = db.Cities.SingleOrDefault(x => x.CITY_CODE == "DEL");
                     data = db.RuntimeDatas.Single(x => x.Id == data.Id);
                     data.CustCode = clientCode.SelectedValue.ToString();
-                    data.FrWeight = data.Weight;
-                    data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination,(double)data.FrWeight, c.ZONE, data.Type, (char)data.DOX);                    
+                    data.BilledWeight = data.Weight;
+                    data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination,(double)data.BilledWeight, c.ZONE, data.Type, (char)data.DOX);                    
                 }
                 try
                 {

@@ -13,19 +13,16 @@ using System.Windows.Shapes;
 namespace FinalUi
 {
 	/// <summary>
-	/// Interaction logic for Window1.xaml
+	/// Interaction logic for AddCountry.xaml
 	/// </summary>
-	public partial class ZoneAssignment : Window
+	public partial class AddCountry : Window
 	{
-		public ZoneAssignment()
+		public AddCountry()
 		{
 			this.InitializeComponent();
 			
+			// Insert code required on object creation below this point.
 		}
-		private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            AddZone window = new AddZone(); window.ShowDialog();
-        }
         private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {
             DragMove();

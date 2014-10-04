@@ -62,5 +62,13 @@ namespace FinalUi
             viewsource = (CollectionViewSource)FindResource("ClienTable");
             viewsource.Source = clients;
         }
+        private void DragthisWindow(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+        private void Button_Click_Close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

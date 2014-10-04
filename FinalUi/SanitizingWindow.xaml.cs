@@ -21,6 +21,8 @@ namespace FinalUi
     /// </summary>
     public partial class SanitizingWindow : Window
     {
+        bool isnew = false;
+        bool changeamount = false;
         public SanitizingWindow()
         {
             InitializeComponent();
@@ -42,7 +44,8 @@ namespace FinalUi
         BillingDataDataContext db;
         DataGrid backDataGrid;
         int sheetNo;
-        public SanitizingWindow(List<RuntimeData> dataContext, BillingDataDataContext db, int sheetNo, DataGrid dg, RuntimeData selectedRec = null) :this()
+        public SanitizingWindow(List<RuntimeData> dataContext, BillingDataDataContext db, int sheetNo, DataGrid dg, RuntimeData selectedRec = null)
+            : this()
         {
             this.backDataGrid = dg;
             this.sheetNo = sheetNo;
@@ -50,11 +53,11 @@ namespace FinalUi
                 this.dataContext = dataContext;
             if (dg.ItemsSource != null)
                 dataListContext = (ListCollectionView)dg.ItemsSource;
-            
-           
+
+
             conssNumbers = (CollectionViewSource)FindResource("ConsignmentNumbers");
             conssNumbers.Source = (from id in dataContext
-                                   orderby id.BookingDate,id.ConsignmentNo
+                                   orderby id.BookingDate, id.ConsignmentNo
                                    select id.ConsignmentNo).ToList();
             InsertionDate.SelectedDate = DateTime.Today;
             if (selectedRec != null)
@@ -68,8 +71,17 @@ namespace FinalUi
         }
         public void SaveData()
         {
-            if (BilledAmount.Text == "" || CustomerSelected.Text == "<NONE>")
-                return;
+            if (CustomerSelected.Text == "")
+                CustomerSelected.Text = "<NONE>";
+            if (WeightAccToFranchize.Text == "")
+                WeightAccToFranchize.Text = WeightAccToDTDC.Text;
+            if (BilledWeightTextBox.Text == "")
+                BilledWeightTextBox.Text = WeightAccToFranchize.Text;
+            if (BilledAmount.Text == "")
+            {
+                BilledAmount.Text = "0";
+            }
+
             bool isDataInContext = true;
             RuntimeData data;
             data = dataContext.SingleOrDefault(x => x.ConsignmentNo == ConnsignmentNumber.Text);
@@ -91,14 +103,19 @@ namespace FinalUi
             data.Weight = Double.Parse(WeightAccToDTDC.Text);
             data.FrWeight = Double.Parse(WeightAccToFranchize.Text);
             data.Amount = Decimal.Parse(Cost.Text);
-            data.FrAmount = Decimal.Parse(BilledAmount.Text);
             data.Destination = Destination.Text;
-            data.DestinationPin = Decimal.Parse(DestinationPin.Text);
+            DestinationPin.Text = DestinationPin.Text ?? "";
             data.CustCode = CustomerSelected.Text;
             data.Mode = MODE.Text;
             data.Type = TypeComboBox.Text;
             data.BookingDate = (DateTime)InsertionDate.SelectedDate;
+            data.FrAmount = Decimal.Parse(BilledAmount.Text);
             data.DOX = DoxCombobox.Text.ElementAt(0);
+            float tempValue;
+            if (float.TryParse(BilledWeightTextBox.Text, out tempValue))
+                data.BilledWeight = tempValue;
+            else
+                BilledWeightTextBox.Text = "";
             if (isDataInContext)
             {
                 data = db.RuntimeDatas.Single(x => x.Id == data.Id);
@@ -107,8 +124,20 @@ namespace FinalUi
                 data.Amount = Decimal.Parse(Cost.Text);
                 data.FrAmount = Decimal.Parse(BilledAmount.Text);
                 data.Destination = db.Cities.Where(x => x.CITY_DESC == Destination.Text).Select(y => y.CITY_CODE).FirstOrDefault();
-                data.DestinationPin = Decimal.Parse(DestinationPin.Text);
+                if(data.Destination == null)
+                {
+                    MessageBoxResult rsltMessageBox = MessageBox.Show("No city with this code is entered. Do you want to enter it now?", "", MessageBoxButton.YesNo, MessageBoxImage.Asterisk);
+                    if(MessageBoxResult.Yes == rsltMessageBox)
+                    {
+                        CityWindow window = new CityWindow(); window.ShowDialog();
+                    }
+                }
+                if(DestinationPin.Text == "" || DestinationPin.Text == null)
+                data.DestinationPin = null;
+                else
+                    data.DestinationPin = Decimal.Parse(DestinationPin.Text);
                 data.CustCode = CustomerSelected.Text;
+                data.BilledWeight = float.Parse(this.BilledWeightTextBox.Text);
             }
             else
             {
@@ -120,6 +149,14 @@ namespace FinalUi
                 metaData.UserName = SecurityModule.currentUserName;
                 db.RuntimeMetas.InsertOnSubmit(metaData);
                 dataListContext.AddNewItem(data);
+            }
+            
+            if(data.FrAmount == null)
+            {
+                var c = db.Cities.Where(x => x.CITY_CODE == data.Destination && x.CITY_STATUS == "A").FirstOrDefault();
+                if (c == null)
+                    c = db.Cities.SingleOrDefault(x => x.CITY_CODE == "DEL");
+                data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination, (double)data.BilledWeight, c.ZONE, data.Type, (char)data.DOX);
             }
             try
             {
@@ -142,7 +179,7 @@ namespace FinalUi
         public void setPreviousData()
         {
             int index = ConnsignmentNumber.SelectedIndex;
-            if ( index == 0)
+            if (index == 0)
             {
             }
             else
@@ -157,7 +194,6 @@ namespace FinalUi
         }
         void fillAllElements(string connsignmentNo)
         {
- //           StatusTextBox.Text = "";
             RuntimeData data;
             data = dataContext.SingleOrDefault(x => x.ConsignmentNo == connsignmentNo);
             if (data != null)
@@ -170,11 +206,9 @@ namespace FinalUi
                 if (TData != null)
                 {
                     fillDetails(UtilityClass.convertTransObjToRunObj(TData));
-        //            StatusTextBox.Text = "This record will be added to current sheet";
                 }
                 else
                 {
-      //              StatusTextBox.Text = "New Record. This will be added in current sheet and database.";
                     clearDetails();
                 }
             }
@@ -201,7 +235,7 @@ namespace FinalUi
             if (data.BookingDate != null)
                 InsertionDate.SelectedDate = data.BookingDate;
             Destination.Text = db.Cities.Where(x => x.CITY_CODE == data.Destination).Select(y => y.CITY_DESC).FirstOrDefault();
-            if (data.CustCode != "")
+            if (data.CustCode != "" && data.CustCode != null)
                 CustomerSelected.Text = data.CustCode;
             else
                 CustomerSelected.Text = "<NONE>";
@@ -214,14 +248,17 @@ namespace FinalUi
                 BilledAmount.Text = data.FrAmount.ToString();
             else
                 BilledAmount.Text = "";
-            if (data.Type != "")
+            if (data.BilledWeight != null)
+                this.BilledWeightTextBox.Text = data.BilledWeight.ToString();
+            else
+                this.BilledWeightTextBox.Text = "";
+            if (data.Type != "" && data.Type != null)
                 TypeComboBox.Text = data.Type.Trim();
             if (data.Mode != "")
                 MODE.Text = data.Mode.Trim();
         }
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
-            //  this.Owner.Effect = null;
             this.Close();
         }
         private void DragthisWindow(object sender, MouseButtonEventArgs e)
@@ -237,6 +274,41 @@ namespace FinalUi
             SaveData();
             setPreviousData();
         }
-
+        private void BilledWeightTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.GetRateButton.Visibility = Visibility.Visible;
+        }
+        private void GetRateButton_Click(object sender, RoutedEventArgs e)
+        {
+            getrate();
+        }
+        private void getrate()
+        {
+            if (this.BilledWeightTextBox.Text != null && this.BilledWeightTextBox.Text != "")
+            {
+                RuntimeData data = dataContext.SingleOrDefault(x => x.ConsignmentNo == ConnsignmentNumber.Text);
+                var c = db.Cities.Where(x => x.CITY_CODE == data.Destination && x.CITY_STATUS == "A").FirstOrDefault();
+                if (c == null)
+                    c = db.Cities.SingleOrDefault(x => x.CITY_CODE == "DEL");
+                var d = (City)this.Destination.SelectedItem;
+                double cost;
+                if (d != null)
+                {
+                    cost = UtilityClass.getCost(data.CustCode, d.CITY_CODE, double.Parse(this.BilledWeightTextBox.Text), c.ZONE, data.Type, (char)data.DOX);
+                    this.BilledAmount.Text = cost.ToString();
+                }
+            }
+            else
+            {
+                this.BilledAmount.Text = "0";
+            }
+        }
+        private void BilledWeightTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (this.BilledAmount.Text == "" || this.BilledAmount.Text == null)
+            {
+                getrate();
+            }
+        }
     }
 }

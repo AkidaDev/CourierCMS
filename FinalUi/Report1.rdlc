@@ -413,14 +413,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="FrWeight">
+                    <Textbox Name="BilledWeight">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!FrWeight.Value</Value>
+                              <Value>=Fields!BilledWeight.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <Color>#4d4d4d</Color>
@@ -432,7 +432,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>FrWeight</rd:DefaultName>
+                      <rd:DefaultName>BilledWeight</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>#e5e5e5</Color>
@@ -1120,7 +1120,7 @@
               <TextRun>
                 <Value>Statement no.:</Value>
                 <Style>
-                  <FontSize>7pt</FontSize>
+                  <FontSize>8pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1131,7 +1131,7 @@
         <Top>0.96383cm</Top>
         <Left>14.09554cm</Left>
         <Height>0.38833cm</Height>
-        <Width>5.28662cm</Width>
+        <Width>1.84704cm</Width>
         <ZIndex>19</ZIndex>
         <Style>
           <Border>
@@ -1489,7 +1489,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>Payment Against Invoice: </Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -1519,7 +1519,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>=Parameters!InvoiceNumber.Value</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -1549,7 +1549,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>Cash/Cheque Amount:</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -1572,36 +1572,6 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox88">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value />
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox88</rd:DefaultName>
-            <Top>0.67394cm</Top>
-            <Left>9.8197cm</Left>
-            <Height>0.92355cm</Height>
-            <Width>10.37599cm</Width>
-            <ZIndex>9</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Textbox Name="Textbox89">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
@@ -1609,7 +1579,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>ChequeNo:</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -1621,7 +1591,7 @@
             <Left>0.0181cm</Left>
             <Height>1.12323cm</Height>
             <Width>3.43662cm</Width>
-            <ZIndex>10</ZIndex>
+            <ZIndex>9</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1651,7 +1621,7 @@
             <Left>3.45473cm</Left>
             <Height>1.12323cm</Height>
             <Width>6.36498cm</Width>
-            <ZIndex>11</ZIndex>
+            <ZIndex>10</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1669,7 +1639,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>Date:</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -1681,7 +1651,7 @@
             <Left>9.85498cm</Left>
             <Height>1.12323cm</Height>
             <Width>4.3578cm</Width>
-            <ZIndex>12</ZIndex>
+            <ZIndex>11</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1711,7 +1681,7 @@
             <Left>14.24806cm</Left>
             <Height>1.14819cm</Height>
             <Width>2.77064cm</Width>
-            <ZIndex>13</ZIndex>
+            <ZIndex>12</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1741,7 +1711,7 @@
             <Left>16.98342cm</Left>
             <Height>1.12323cm</Height>
             <Width>3.21206cm</Width>
-            <ZIndex>14</ZIndex>
+            <ZIndex>13</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2507,7 +2477,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Tax</Value>
+                    <Value>Tax:</Value>
                     <Style>
                       <FontSize>7pt</FontSize>
                     </Style>
@@ -2517,10 +2487,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox33</rd:DefaultName>
-            <Top>3.29974cm</Top>
-            <Left>9.44444cm</Left>
+            <Top>3.26446cm</Top>
+            <Left>3.89553cm</Left>
             <Height>0.49417cm</Height>
-            <Width>3.20897cm</Width>
+            <Width>0.72992cm</Width>
             <ZIndex>20</ZIndex>
             <Style>
               <Border>
@@ -2672,10 +2642,145 @@
             </Paragraphs>
             <rd:DefaultName>Textbox35</rd:DefaultName>
             <Top>3.89974cm</Top>
-            <Left>9.44444cm</Left>
+            <Left>3.89553cm</Left>
             <Height>0.55535cm</Height>
-            <Width>3.20897cm</Width>
+            <Width>8.75788cm</Width>
             <ZIndex>25</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox11">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>FUEL</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox11</rd:DefaultName>
+            <Top>3.29974cm</Top>
+            <Left>4.91361cm</Left>
+            <Height>0.42361cm</Height>
+            <Width>0.81313cm</Width>
+            <ZIndex>26</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox31">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!FuelString.Value</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox31</rd:DefaultName>
+            <Top>3.26446cm</Top>
+            <Left>5.90312cm</Left>
+            <Height>0.49417cm</Height>
+            <Width>0.52507cm</Width>
+            <ZIndex>27</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox39">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>STAX</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox39</rd:DefaultName>
+            <Top>3.29974cm</Top>
+            <Left>6.60458cm</Left>
+            <Height>0.49417cm</Height>
+            <Width>1.02716cm</Width>
+            <ZIndex>28</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox40">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!ServiceTaxString.Value</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox40</rd:DefaultName>
+            <Top>3.29974cm</Top>
+            <Left>7.80812cm</Left>
+            <Height>0.49417cm</Height>
+            <Width>0.72558cm</Width>
+            <ZIndex>29</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2719,6 +2824,36 @@
         <Height>0.6cm</Height>
         <Width>11.33609cm</Width>
         <ZIndex>40</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox41">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!InvoiceNumber.Value</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox41</rd:DefaultName>
+        <Top>0.96383cm</Top>
+        <Left>16.50853cm</Left>
+        <Height>0.38833cm</Height>
+        <Width>4.02627cm</Width>
+        <ZIndex>41</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2897,6 +3032,10 @@
           <DataField>Amount</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="BilledWeight">
+          <DataField>BilledWeight</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
         <Field Name="BookingDate">
           <DataField>BookingDate</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
@@ -2915,11 +3054,11 @@
         </Field>
         <Field Name="DestinationPin">
           <DataField>DestinationPin</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
+          <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
         <Field Name="DOX">
           <DataField>DOX</DataField>
-          <rd:TypeName>System.Char</rd:TypeName>
+          <rd:TypeName>System.Nullable`1[[System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
         <Field Name="EmpId">
           <DataField>EmpId</DataField>
@@ -2939,7 +3078,7 @@
         </Field>
         <Field Name="InvoiceDate">
           <DataField>InvoiceDate</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
         <Field Name="InvoiceNo">
           <DataField>InvoiceNo</DataField>
@@ -2951,15 +3090,15 @@
         </Field>
         <Field Name="ServiceTax">
           <DataField>ServiceTax</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
+          <rd:TypeName>System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
         <Field Name="SplDisc">
           <DataField>SplDisc</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
+          <rd:TypeName>System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
         <Field Name="TransactionId">
           <DataField>TransactionId</DataField>
-          <rd:TypeName>System.Guid</rd:TypeName>
+          <rd:TypeName>System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
         <Field Name="TransMF_No">
           <DataField>TransMF_No</DataField>
@@ -3065,6 +3204,14 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="TotalAmountInWordString">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="FuelString">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ServiceTaxString">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
