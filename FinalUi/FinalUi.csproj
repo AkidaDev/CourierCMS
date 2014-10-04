@@ -148,6 +148,7 @@
     <Compile Include="EditRateDetailsWindow.xaml.cs">
       <DependentUpon>EditRateDetailsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Extensions.cs" />
     <Compile Include="Filter.cs" />
     <Compile Include="FilterSelectWindow.xaml.cs">
       <DependentUpon>FilterSelectWindow.xaml</DependentUpon>

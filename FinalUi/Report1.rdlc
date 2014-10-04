@@ -413,14 +413,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="FrWeight">
+                    <Textbox Name="BilledWeight">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!FrWeight.Value</Value>
+                              <Value>=Fields!BilledWeight.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <Color>#4d4d4d</Color>
@@ -432,7 +432,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>FrWeight</rd:DefaultName>
+                      <rd:DefaultName>BilledWeight</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>#e5e5e5</Color>
@@ -2895,6 +2895,10 @@
           <DataField>Amount</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="BilledWeight">
+          <DataField>BilledWeight</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
         <Field Name="BookingDate">
           <DataField>BookingDate</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
@@ -2913,11 +2917,11 @@
         </Field>
         <Field Name="DestinationPin">
           <DataField>DestinationPin</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
+          <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
         <Field Name="DOX">
           <DataField>DOX</DataField>
-          <rd:TypeName>System.Char</rd:TypeName>
+          <rd:TypeName>System.Nullable`1[[System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
         <Field Name="EmpId">
           <DataField>EmpId</DataField>
@@ -2937,7 +2941,7 @@
         </Field>
         <Field Name="InvoiceDate">
           <DataField>InvoiceDate</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
         <Field Name="InvoiceNo">
           <DataField>InvoiceNo</DataField>
@@ -2949,15 +2953,15 @@
         </Field>
         <Field Name="ServiceTax">
           <DataField>ServiceTax</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
+          <rd:TypeName>System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
         <Field Name="SplDisc">
           <DataField>SplDisc</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
+          <rd:TypeName>System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
         <Field Name="TransactionId">
           <DataField>TransactionId</DataField>
-          <rd:TypeName>System.Guid</rd:TypeName>
+          <rd:TypeName>System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
         <Field Name="TransMF_No">
           <DataField>TransMF_No</DataField>

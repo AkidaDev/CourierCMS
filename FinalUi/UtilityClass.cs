@@ -110,7 +110,6 @@ namespace FinalUi
         {
             try
             {
-
                 BillingDataDataContext db = new BillingDataDataContext();
                 List<RuntimeData> oldData = runList.Where(x => x.TransactionId != Guid.Empty && x.TransactionId != null).ToList();
                 List<RuntimeData> newData = runList.Where(x => x.TransactionId == null || x.TransactionId == Guid.Empty).ToList();

@@ -124,11 +124,31 @@ namespace FinalUi
         private void RemoveClient_Click(object sender, RoutedEventArgs e)
         {
 
+            if (this.ClientsToAdd.SelectedItem != null)
+            {
+                foreach (Client item in ClientsToAdd.SelectedItems)
+                {
+                    ((List<Client>)clientListToAdd.Source).Remove(item);
+                    ((List<Client>)clientListToSet.Source).Add(item);
+                }
+                ClientsToSet.Items.Refresh();
+                ClientsToAdd.Items.Refresh();
+            }
         }
 
         private void AddClient_Click(object sender, RoutedEventArgs e)
         {
-
+            if (this.ClientsToSet.SelectedItem != null)
+            {
+                foreach(Client item in ClientsToSet.SelectedItems)
+                {
+                    ((List<Client>)clientListToSet.Source).Remove(item);
+                   ((List<Client>)clientListToAdd.Source).Add(item);
+                }
+                ClientsToSet.Items.Refresh();
+                ClientsToAdd.Items.Refresh();
+            }
         }
+      
     }
 }

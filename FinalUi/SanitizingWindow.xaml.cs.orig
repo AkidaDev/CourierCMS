@@ -70,17 +70,8 @@ namespace FinalUi
         }
         public void SaveData()
         {
-            if (CustomerSelected.Text == "")
-                CustomerSelected.Text = "<NONE>";
-            if (WeightAccToFranchize.Text == "")
-                WeightAccToFranchize.Text = WeightAccToDTDC.Text;
-            if (BilledWeightTextBox.Text == "")
-                BilledWeightTextBox.Text = WeightAccToFranchize.Text;
-            if (BilledAmount.Text == "")
-            {
-                BilledAmount.Text = "0";
-            }
-
+            if (BilledAmount.Text == "" || CustomerSelected.Text == "<NONE>")
+                return;
             bool isDataInContext = true;
             RuntimeData data;
             data = dataContext.SingleOrDefault(x => x.ConsignmentNo == ConnsignmentNumber.Text);
@@ -110,11 +101,7 @@ namespace FinalUi
             data.Type = TypeComboBox.Text;
             data.BookingDate = (DateTime)InsertionDate.SelectedDate;
             data.DOX = DoxCombobox.Text.ElementAt(0);
-            float tempValue;
-            if (float.TryParse(BilledWeightTextBox.Text, out tempValue))
-                data.BilledWeight = tempValue;
-            else
-                BilledWeightTextBox.Text = "";
+            data.BilledWeight = data.FrWeight;
             if (isDataInContext)
             {
                 data = db.RuntimeDatas.Single(x => x.Id == data.Id);
@@ -123,13 +110,8 @@ namespace FinalUi
                 data.Amount = Decimal.Parse(Cost.Text);
                 data.FrAmount = Decimal.Parse(BilledAmount.Text);
                 data.Destination = db.Cities.Where(x => x.CITY_DESC == Destination.Text).Select(y => y.CITY_CODE).FirstOrDefault();
-                if(data.Destination == null)
-                {
-                    MessageBox.Show("No city with this code is entered. Do you want to enter it now? \n Alishan display city dialogue here");
-                }
                 data.DestinationPin = Decimal.Parse(DestinationPin.Text);
                 data.CustCode = CustomerSelected.Text;
-                data.BilledWeight = float.Parse(this.BilledWeightTextBox.Text);
             }
             else
             {
@@ -142,10 +124,6 @@ namespace FinalUi
                 db.RuntimeMetas.InsertOnSubmit(metaData);
                 dataListContext.AddNewItem(data);
             }
-            var c = db.Cities.Where(x => x.CITY_CODE == data.Destination && x.CITY_STATUS == "A").FirstOrDefault();
-            if (c == null)
-                c = db.Cities.SingleOrDefault(x => x.CITY_CODE == "DEL");
-            data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination, (double)data.BilledWeight, c.ZONE, data.Type, (char)data.DOX);
             try
             {
                 db.SubmitChanges();
@@ -223,7 +201,7 @@ namespace FinalUi
             if (data.BookingDate != null)
                 InsertionDate.SelectedDate = data.BookingDate;
             Destination.Text = db.Cities.Where(x => x.CITY_CODE == data.Destination).Select(y => y.CITY_DESC).FirstOrDefault();
-            if (data.CustCode != "" && data.CustCode != null)
+            if (data.CustCode != "")
                 CustomerSelected.Text = data.CustCode;
             else
                 CustomerSelected.Text = "<NONE>";
@@ -236,11 +214,7 @@ namespace FinalUi
                 BilledAmount.Text = data.FrAmount.ToString();
             else
                 BilledAmount.Text = "";
-            if (data.BilledWeight != null)
-                this.BilledWeightTextBox.Text = data.BilledWeight.ToString();
-            else
-                this.BilledWeightTextBox.Text = "";
-            if (data.Type != "" && data.Type != null)
+            if (data.Type != "")
                 TypeComboBox.Text = data.Type.Trim();
             if (data.Mode != "")
                 MODE.Text = data.Mode.Trim();
