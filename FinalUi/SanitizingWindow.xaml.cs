@@ -101,7 +101,11 @@ namespace FinalUi
             data.Type = TypeComboBox.Text;
             data.BookingDate = (DateTime)InsertionDate.SelectedDate;
             data.DOX = DoxCombobox.Text.ElementAt(0);
-            data.BilledWeight = float.Parse(this.BilledWeightTextBox.Text);
+            float tempValue;
+            if (float.TryParse(BilledWeightTextBox.Text, out tempValue))
+                data.BilledWeight = tempValue;
+            else
+                BilledWeightTextBox.Text = "";
             if (isDataInContext)
             {
                 data = db.RuntimeDatas.Single(x => x.Id == data.Id);
