@@ -39,12 +39,11 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 				<MenuItem Header="Close" Click="MenuItem_Click"/>
 			</MenuItem>
 
-			<MenuItem ToolTip="Open advanced options"  Header="Tools" Margin="10 0 0 0">
+			<MenuItem ToolTip="Open advanced options"  Header="View" Margin="10 0 0 0">
 			<MenuItem Header="Managment">
 			<MenuItem Header="Clients" x:Name="ManageClient" Click="ManageClient_Click"/>
 			<MenuItem Header="Employees" x:Name="ManageEmployee" Click="ManageEmployee_Click"/>
 			</MenuItem>
-
 			<MenuItem Header="Payment Entry"  Name="PaymentEntryMenuItem" Click="PaymentEntry_Click"/>
 			<MenuItem Header="Payment Recived"  Name="PaymentRecievedMenuItem"  Click="PaymentRecieved_Click"/>
 			<MenuItem Header="Stock   Entry"  Name="StockEntryMenuItem" Click="StockEntry_Click"/>
