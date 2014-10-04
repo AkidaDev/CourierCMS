@@ -59,6 +59,7 @@ namespace FinalUi
         CollectionViewSource dataGridSource;
         Dictionary<int, DataSheet> sheets;
         DataSheet _currentDataSheet;
+        
         public DataSheet currentDataSheet
         {
             get
@@ -381,6 +382,16 @@ namespace FinalUi
             set
             {
                 currentDataSheet.filterObj = value;
+            }
+        }
+        public bool areSheetsPresent
+        {
+            get
+            {
+                if (dataSheetManager.totalSheets > 0)
+                    return true;
+                else
+                    return false;
             }
         }
         #endregion sheetManagmentMethodsEnds

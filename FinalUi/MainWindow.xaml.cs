@@ -58,7 +58,7 @@ namespace FinalUi
             InitializeComponent();
             CollectionViewSource clientCodeList = (CollectionViewSource)FindResource("ClientCodeList");
             clientCodeList.Source = db.Clients.Select(c => c.CLCODE);
-            
+
             #region DataGrid Code Lines
             dataGridSource = (CollectionViewSource)FindResource("DataGridDataContext");
             dataGridHelper = new DataGridHelper(dataGridSource);
@@ -105,7 +105,7 @@ namespace FinalUi
             DeleteSheetWorker = new BackgroundWorker();
             DeleteSheetWorker.DoWork += DeleteWorker_DoWork;
             DeleteSheetWorker.RunWorkerCompleted += DeleteWorker_RunWorkerCompleted;
-         
+
         }
         #region backGround Worker Functions
         #region LoadWorker
@@ -138,7 +138,7 @@ namespace FinalUi
         #region Save Worker
         void SaveWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBlock.Text = MessageBlock.Text + "\n " + "Save Completed" +  e.Result;
+            MessageBlock.Text = MessageBlock.Text + "\n " + "Save Completed" + e.Result;
         }
 
         void SaveWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -249,15 +249,8 @@ namespace FinalUi
         {
             if (dataGridHelper != null)
             {
-                if (dataGridHelper.getCurrentDataStack != null)
-                {
-                    e.CanExecute = true;
-                }
-                else
-                    e.CanExecute = false;
+                e.CanExecute = dataGridHelper.areSheetsPresent;
             }
-            else
-                e.CanExecute = false;
         }
         #endregion
         #region LoadCommand
@@ -534,10 +527,10 @@ namespace FinalUi
         #endregion DataGrid Methods Ends
 
         #region filter functions
-       
+
         private void FilterButton_Click(object sender, RoutedEventArgs e)
         {
-            FilterSelectWindow window = new FilterSelectWindow(dataGridHelper.currentDataSheet.filterObj,dataGridHelper.currentConnNosNoFilter);
+            FilterSelectWindow window = new FilterSelectWindow(dataGridHelper.currentDataSheet.filterObj, dataGridHelper.currentConnNosNoFilter);
             window.Closed += window_Closed;
             window.Show();
         }

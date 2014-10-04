@@ -37,12 +37,7 @@ namespace FinalUi
         }
         public List<RuntimeData> applyFilter(List<RuntimeData> data)
         {
-            IEnumerable<RuntimeData> fData = data;
-            if (selectedClientList.Count > 0)
-                fData = fData.Where(x => selectedClientList.Select(y => y.CLCODE).Contains(x.CustCode));
-            fData = fData.Where(x => x.BookingDate <= toDate && x.BookingDate >= fromDate);
-            if (startConnNo != "" && endConnNo != "")
-                fData = fData.Where(x => x.ConsignmentNo.CompareTo(startConnNo) >= 0 && x.ConsignmentNo.CompareTo(endConnNo) <= 0);
+            throw new NotImplementedException();
             if (showBilled != null)
             {
                 if (showBilled == true)
@@ -50,6 +45,13 @@ namespace FinalUi
 
                 }
             }
+            IEnumerable<RuntimeData> fData = data;
+            if (selectedClientList.Count > 0)
+                fData = fData.Where(x => selectedClientList.Select(y => y.CLCODE).Contains(x.CustCode));
+            fData = fData.Where(x => x.BookingDate <= toDate && x.BookingDate >= fromDate);
+            if (startConnNo != "" && endConnNo != "")
+                fData = fData.Where(x => x.ConsignmentNo.CompareTo(startConnNo) >= 0 && x.ConsignmentNo.CompareTo(endConnNo) <= 0);
+            
             return fData.ToList();
         }
         public IEnumerable<string> getBilledRecords(IEnumerable<RuntimeData> data)
