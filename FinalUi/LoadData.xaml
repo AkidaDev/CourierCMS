@@ -9,8 +9,8 @@
             <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
         </Grid.Effect>
         <Canvas x:Name="LoadData1" ClipToBounds="True" Background="White" Height="210"  Width="322">
-            <DatePicker Name="StartLoadDate" Canvas.Left="38" Canvas.Top="150.5"   Height="26"  Width="124"  BorderThickness="0" Padding="0 4 0 0"/>
-            <DatePicker Name="EndLoadDate" Height="26" Canvas.Left="178" Canvas.Top="151" Width="124"  BorderThickness="0" Padding="0 4 0 0"/>
+            <DatePicker Name="StartLoadDate" Canvas.Left="38" Canvas.Top="147.5"   Height="26"  Width="124"  BorderThickness="0" Padding="0 4 0 0"/>
+            <DatePicker Name="EndLoadDate" Height="26" Canvas.Left="178" Canvas.Top="147.5" Width="124"  BorderThickness="0" Padding="0 4 0 0"/>
         	<WrapPanel  Canvas.Top="119" Canvas.Left="31">
 			<Path x:Name="import_files" Height="24"  Data="F1M11.187,19.719C11.187,19.719 11.187,20.375 11.187,20.375 11.187,20.375 13.812,20.375 13.812,20.375 13.812,
 			20.375 13.812,19.719 13.812,19.719 13.812,19.719 11.187,19.719 11.187,19.719z M9.875,17.094C9.875,17.094 9.875,17.75 9.875,17.75 9.875,17.75 15.125,
@@ -25,8 +25,8 @@
 			23 2,11.187 2,11.187 2,11.187 7.25,2 7.25,2z" Fill="Black"  Width="24"/>
         	<TextBlock x:Name="LOAD_From_DataBase" FontWeight="Bold" FontSize="14" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="62" LineHeight="14" TextAlignment="Left" TextWrapping="Wrap" Text="LOAD From DataBase" Canvas.Top="128.68" Margin="5,7,0,0" />
         	</WrapPanel>
-			<Path x:Name="Rectangle_2" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="27" Canvas.Left="36" Canvas.Top="150" Width="98" Stroke="Black"/>
-        	<Path x:Name="Rectangle_2_copy" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="27" Canvas.Left="176" Canvas.Top="150" Width="98" Stroke="Black"/>
+			<Path x:Name="Rectangle_2" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="27" Canvas.Left="36" Canvas.Top="147" Width="98" Stroke="Black"/>
+        	<Path x:Name="Rectangle_2_copy" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="27" Canvas.Left="176" Canvas.Top="147" Width="98" Stroke="Black"/>
         	<Path x:Name="line" Data="F1M1,2C1,2 1,1 1,1 1,1 262,1 262,1 262,1 262,2 262,2 262,2 1,2 1,2" Fill="Black" Height="3" Canvas.Left="28" Canvas.Top="108.827" Width="263"/>
 
             <Button  Click="DataBrowserRadio_Click" Name="DataBrowserRadio" Canvas.Left="8" Canvas.Top="123" Style="{StaticResource smallbutton}">
@@ -94,7 +94,7 @@
                 </Canvas>
             </Button>
 			<TextBlock x:Name="ADD_Data_in_Current_Sheet" FontWeight="Bold" FontSize="14" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="94.5" LineHeight="14" TextAlignment="Left" TextWrapping="Wrap" Text="ADD Data in Current Sheet" Canvas.Top="92.178"/>
-        	<TextBox Name="filename"   Height="25" Canvas.Left="128" Canvas.Top="48" Width="171" Padding="0 4 0 0" BorderBrush="Black" BorderThickness="1.5"/>
+        	<TextBox Name="filename"   Height="25" Canvas.Left="123.5" Canvas.Top="49" Width="171" Padding="0 4 0 0" BorderBrush="Black" BorderThickness="1.5"/>
 			<Path Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="#FFCBCBCB" Height="26" Canvas.Left="0" Canvas.Top="0" Width="322" Stretch="Fill" Stroke="Black" />
             <TextBlock FontSize="16" Height="24" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="0" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Load Data" Canvas.Top="4.666" Width="320" FontFamily="Arial"/>
 			<Path MouseDown="DragthisWindow" x:Name="Memu_bar" Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26" Canvas.Left="0" Canvas.Top="0" Width="322" Stretch="Fill" />
