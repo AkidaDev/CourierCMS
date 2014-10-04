@@ -81,6 +81,10 @@ namespace FinalUi
 
             CommandBinding DeleteCommandBinding = new CommandBinding(DeleteCommand, DeleteCommandExecuted, DeleteCommand_CanExecute);
             this.CommandBindings.Add(DeleteCommandBinding);
+            CommandBinding NewSheetCommandBinding = new CommandBinding(NewSheetCommand, NewSheetCommandExecuted, NewSheetCommand_CanExecute );
+            NewSheetCommand.InputGestures.Add(new KeyGesture(Key.N, ModifierKeys.Control));
+            NewSheetButton.Command = NewSheetMenuItem.Command = NewSheetCommand;
+            this.CommandBindings.Add(NewSheetCommandBinding);
             #endregion
 
             #region loading initial pages
@@ -182,6 +186,25 @@ namespace FinalUi
             else
                 e.CanExecute = false;
         }
+#region NewSheetCommands
+        RoutedCommand NewSheetCommand = new RoutedCommand();
+        private void NewSheetCommandExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            int key = this.dataGridHelper.addNewSheet(new List<RuntimeData>(),"");
+            addingNewPage(key);
+        }
+        private void NewSheetCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (this.buttonList.Count >= 6)
+            {
+                e.CanExecute = false;
+            }
+            else {
+                e.CanExecute = true;
+            }
+            
+        }
+#endregion
         #region SanitizingCommand
         public RoutedCommand SanitizingCommand = new RoutedCommand();
         private void CanExecuteSanitizingCommand(object sender, CanExecuteRoutedEventArgs e)
@@ -207,10 +230,8 @@ namespace FinalUi
         RoutedCommand PowerEntryCommand = new RoutedCommand();
         private void PowerEntryCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-
             PowerEntry powerWin = new PowerEntry(dataGridHelper.getCurrentDataStack, db.Clients.Select(c => c.CLCODE.ToString()).ToList(), db);
             powerWin.Show();
-
         }
         #endregion
         #region SaveCommand
@@ -839,6 +860,12 @@ namespace FinalUi
         private void countrytreeitembutton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            AddCity window = new AddCity();
+            window.ShowDialog();
         }
 
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -5,19 +5,16 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		Icon="Images/logo.png"
 		Title="Vortex" 
 		ResizeMode="CanResizeWithGrip"  BorderBrush="Transparent" AllowsTransparency="True" WindowStartupLocation="CenterScreen" WindowState="Normal" Width="1024" Height="700" WindowStyle="None">
-
     <Window.Resources>
 		<CollectionViewSource x:Key="ClientCodeList" CollectionViewType="{x:Type ListCollectionView}"/>
 		<CollectionViewSource x:Key="DataGridDataContext" CollectionViewType="{x:Type ListCollectionView}"/>
 		<ImageBrush ImageSource="Images/search.png" x:Key="Searchbarcontent"/>
 	</Window.Resources>
-
     <Window.CommandBindings>
 		<CommandBinding Command="ApplicationCommands.Open" Executed="Open_Executed" CanExecute="OpenCommand_CanExecute"/>
 		<CommandBinding Command="ApplicationCommands.Close" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
 		<CommandBinding Command="ApplicationCommands.Print" Executed="ExecutePrint" CanExecute="CanExecutePrintCommand"/>
     </Window.CommandBindings>
-
     <Grid x:Name="MainGrid" Background="#FFBBCADC"><!--light purple = #9f00a7, blue = #a32d89ef, yellow = #a3ffc40d, teal = #00aba9, camel = #e3a21a, green = #00a300 -->
 		<Grid.RowDefinitions>
 			<RowDefinition Height="3"/>
@@ -29,61 +26,54 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 			<ColumnDefinition Width="*"/>
 			<ColumnDefinition Width="4"/>
 		</Grid.ColumnDefinitions>
-		
 		<StackPanel Grid.Row="1" Grid.Column="1" >
 			<Grid Background="Transparent" Height="26.62" >
-			<Menu  Background="Transparent" FontSize="14" >
-				<MenuItem ToolTip="Open new document" Header="File" Margin="10 0 0 0">
-				<MenuItem Header="Import Data" x:Name="ImportDataMenuItem" Command="ApplicationCommands.Open"/>
-				<MenuItem Header="Print" x:Name="PrintMenuItem" Command="ApplicationCommands.Print"/>
-				<MenuItem Header="Close" Click="MenuItem_Click"/>
-			</MenuItem>
-
-			<MenuItem ToolTip="Open advanced options"  Header="View" Margin="10 0 0 0">
-			<MenuItem Header="Managment">
-			<MenuItem Header="Clients" x:Name="ManageClient" Click="ManageClient_Click"/>
-			<MenuItem Header="Employees" x:Name="ManageEmployee" Click="ManageEmployee_Click"/>
-			</MenuItem>
-			<MenuItem Header="Payment Entry"  Name="PaymentEntryMenuItem" Click="PaymentEntry_Click"/>
-			<MenuItem Header="Payment Recived"  Name="PaymentRecievedMenuItem"  Click="PaymentRecieved_Click"/>
-			<MenuItem Header="Stock   Entry"  Name="StockEntryMenuItem" Click="StockEntry_Click"/>
-			<MenuItem Header="Edit Rates" x:Name="RateWindowMenu" Click="RateWindowMenu_Click"/>
-			</MenuItem>
-
-			<MenuItem ToolTip="Know more" Header="Help" Margin="10 0 0 0">
-			<MenuItem Header="About" x:Name="AboutMenuItem" Click="AboutMenuItem_Click"/>
-			</MenuItem>
-			</Menu>
-
-			<TextBlock  FontSize="20" Height="24" TextAlignment="Center" Text="Vortex" Width="100" FontFamily="Copperplate Gothic Light" FontWeight="Bold"/>
+                <Menu  Background="Transparent" FontSize="14" >
+                    <MenuItem ToolTip="Open new document" Header="File" Margin="10 0 0 0">
+                        <MenuItem Header="New Sheet" Name="NewSheetMenuItem" />
+                        <MenuItem Header="Import Data" x:Name="ImportDataMenuItem" Command="ApplicationCommands.Open"/>
+                        <MenuItem Header="Print" x:Name="PrintMenuItem" Command="ApplicationCommands.Print"/>
+                        <MenuItem Header="Close" Click="MenuItem_Click"/>
+                    </MenuItem>
+                    <MenuItem ToolTip="Open advanced options"  Header="View" Margin="10 0 0 0">
+                        <MenuItem Header="Managment">
+                            <MenuItem Header="Add City" Click="MenuItem_Click_1" />
+                            <MenuItem Header="Clients" x:Name="ManageClient" Click="ManageClient_Click"/>
+                            <MenuItem Header="Employees" x:Name="ManageEmployee" Click="ManageEmployee_Click"/>
+                        </MenuItem>
+                        <MenuItem Header="Payment Entry"  Name="PaymentEntryMenuItem" Click="PaymentEntry_Click"/>
+                        <MenuItem Header="Payment Recived"  Name="PaymentRecievedMenuItem"  Click="PaymentRecieved_Click"/>
+                        <MenuItem Header="Stock   Entry"  Name="StockEntryMenuItem" Click="StockEntry_Click"/>
+                        <MenuItem Header="Edit Rates" x:Name="RateWindowMenu" Click="RateWindowMenu_Click"/>
+                    </MenuItem>
+                    <MenuItem ToolTip="Know more" Header="Help" Margin="10 0 0 0">
+                        <MenuItem Header="About" x:Name="AboutMenuItem" Click="AboutMenuItem_Click"/>
+                    </MenuItem>
+                </Menu>
+                <TextBlock  FontSize="20" Height="24" TextAlignment="Center" Text="Vortex" Width="100" FontFamily="Copperplate Gothic Light" FontWeight="Bold"/>
 			<Canvas Margin="160,0,113,0">
 				<Button MouseDoubleClick="NormalMaximize_Click" Style="{StaticResource window}">
 				<Path MouseDown="Grid_MouseDown" x:Name="Memu_bar" Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26.62" Canvas.Left="0" Canvas.Top="0" Stretch="Fill" Width="1920" />
 				</Button>
 			</Canvas>
-
 			<WrapPanel HorizontalAlignment="Right" Margin="0,0,0,9">
 				<Button ToolTip="Minimize" Style="{StaticResource all}" x:Name="MinimizeButton" Click="MinimizeButton_Click" Width="25">
 					<Path x:Name="minimize" Data="F1M2,4C2,4 2,2 2,2 2,2 14,2 14,2 14,2 14,4 14,4 14,4 2,4 2,4z" Fill="Black" Height="5" Width="12" Margin="-1,0,0,-7"/>
 				</Button>
-
 				<Button ToolTip="Maximize" Style="{StaticResource all}" x:Name="NormalMaximize" Click="NormalMaximize_Click"  Width="30" Margin="1,0">
 					<Path x:Name="normal" Data="F1M3.222,5L3.222,6.702C3.222,9.071 3.222,11.778 3.222,11.778 3.222,11.778 11.778,11.778 11.778,11.778 11.778,11.778 11.778,9.071 11.778,6.702L11.778,5 11.281,5C9.219,5,5.781,5,3.719,5z M3.222,2C3.222,2 11.778,2 11.778,2 12.114,2 12.42,2.138 12.641,2.359L12.908,3 13,3C13,3,13,3.25,13,3.222L13,3.5 13,3.59 13,3.844C13,3.938 13,4 13,4 13,4 13,4.25 13,4.5L13,4.559 13,5 13,6.702C13,9.071 13,11.778 13,11.778 13,12.45 12.45,13 11.778,13 11.778,13 3.222,13 3.222,13 2.55,13 2,12.45 2,11.778 2,11.778 2,8.436 2,5.929L2,5 2,4.559C2,5,2,4.75,2,4.5L2,4C2,3.757 2,3.222 2,3.222 2,2.55 2.55,2 3.222,2z" Fill="Black" Height="14" Width="14" Margin="0,0,0,-1"/>
 				</Button>
-
 				<Rectangle Height="18" Stroke="#00832A2A" Width="50" Fill="#FFB65F5F" Margin="0,0,-50,0"/>
 				<Button ToolTip="Close" Style="{StaticResource all}" x:Name="CloseButton" Click="CloseButton_Click" Width="50" Height="18">
 					<Path ToolTip="Close" x:Name="close1" Data="F1M14.987,13.789C14.987,13.789 13.622,15.154 13.622,15.154 13.622,15.154 8.16,9.692 8.16,9.692 8.16,9.692 2.699,15.154 2.699,15.154 2.699,15.154 1.333,13.789 1.333,13.789 1.333,13.789 6.795,8.327 6.795,8.327 6.795,8.327 1.333,2.865 1.333,2.865 1.333,2.865 2.699,1.5 2.699,1.5 2.699,1.5 8.16,6.962 8.16,6.962 8.16,6.962 13.622,1.5 13.622,1.5 13.622,1.5 14.987,2.865 14.987,2.865 14.987,2.865 9.526,8.327 9.526,8.327 9.526,8.327 14.987,13.789 14.987,13.789z" Fill="Black" Height="13"  Width="14"  Stretch="Fill" Margin="0,1,0,0"/>
 				</Button>
 			</WrapPanel>
 			</Grid>
-
 			<DockPanel Background="Transparent" Height="32" Margin="0,-1,0,0">
 				<Button HorizontalAlignment="Left" Style="{StaticResource all}" x:Name="LoadDataButton" Width="150" Foreground="White" Margin="5,3" Command="ApplicationCommands.Open" FontSize="16"><WrapPanel Margin="7,0,5,0">
 					<Path x:Name="folder" Data="F1M20.664,6.138C20.664,6.138 4.336,6.138 4.336,6.138 4.336,6.138 2.668,11.569 2.668,11.569 2.668,11.569 2.053,11.043 2.053,11.043 2.053,11.043 3.546,5.349 3.546,5.349 3.546,5.349 20.664,5.349 20.664,5.349 20.664,5.349 20.664,4.036 20.664,4.036 20.664,4.036 9.547,4.036 9.547,4.036 9.547,4.036 7.906,1 7.906,1 7.906,1 1,1 1,1 1,1 1,17 1,17 1,17 20.664,17 20.664,17 20.664,17 24,6.138 24,6.138 24,6.138 20.664,6.138 20.664,6.138z" Fill="White" Height="18" Width="26"/>
 					<TextBlock ToolTip="Load new files " Text="Open File" Margin="8 -4 1 1" FontSize="16" Padding="1 3 1 0.5"/></WrapPanel>
 				</Button>
-
 				<Grid Margin="0,1,0,0">
 					<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="Auto"/>
@@ -97,53 +87,42 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto"/>
 				</Grid.RowDefinitions>
-
-
 				<Button ToolTip="Save" Style="{StaticResource side}"  x:Name="SaveButton" Grid.Row="0" Width="45" Height="30" Grid.Column="0">
 					<Path  x:Name="save" Data="F1M5.707,16.89C5.707,16.89 16.879,16.89 16.879,16.89 16.879,16.89 16.879,18.13 16.879,18.13 16.879,18.13 5.707,18.13 5.707,18.13 5.707,18.13 5.707,16.89 5.707,16.89z M5.707,13.414C5.707,13.414 16.879,13.414 16.879,13.414 16.879,13.414 16.879,14.653 16.879,14.653 16.879,14.653 5.707,14.653 5.707,14.653 5.707,14.653 5.707,13.414 5.707,13.414z M4.207,10.739C4.207,10.739 4.207,20.566 4.207,20.566 4.207,20.566 18.793,20.566 18.793,20.566 18.793,20.566 18.793,10.739 18.793,10.739 18.793,10.739 4.207,10.739 4.207,10.739z M9.432,1.83C9.432,1.83 13.777,1.83 13.777,1.83 13.777,1.83 13.777,7.358 13.777,7.358 13.777,7.358 9.432,7.358 9.432,7.358 9.432,7.358 9.432,1.83 9.432,1.83z M1.626,1C1.626,1 4.207,1 4.207,1 4.207,1 4.207,8.508 4.207,8.508 4.207,8.508 15.586,8.508 15.586,8.508 15.586,8.508 15.586,1 15.586,1 15.586,1 17.711,1 17.711,1 17.711,1 22,5.246 22,5.246 22,5.246 22,21.381 22,21.381 22,21.723 21.72,22 21.374,22 21.374,22 1.626,22 1.626,22 1.28,22 1,21.723 1,21.381 1,21.381 1,1.62 1,1.62 1,1.277 1.28,1 1.626,1z" Fill="seagreen" Height="23" Width="23"/>
 				</Button>
-
 				<Button ToolTip="Power Entry" Style="{StaticResource side}" x:Name="PowerEntryButton" Grid.Row="0" Width="45" Height="30" Grid.Column="1">
 					<Path x:Name="autofill" Data="F1M16.844,4C16.844,4 15.755,7.6 15.755,7.6 15.755,7.6 17.932,7.6 17.932,7.6 17.932,7.6 16.844,4 16.844,4z M15.854,2C15.854,2 17.833,2 17.833,2 17.833,2 21,11 21,11 21,11 19.12,11 19.12,11 19.12,11 18.427,9 18.427,9 18.427,9 15.26,9 15.26,9 15.26,9 14.568,11 14.568,11 14.568,11 12.687,11 12.687,11 12.687,11 15.854,2 15.854,2z M2,2C2,2 11.896,2 11.896,2 11.896,2 7.937,11 7.937,11 7.937,11 11.896,11 11.896,11 11.896,11 4.969,23 4.969,23 4.969,23 4.969,14 4.969,14 4.969,14 2,14 2,14 2,14 2,2 2,2z" Height="24" Width="22" Fill="#FF1E00A6"/>
 				</Button>
-
-				<Button ToolTip="New Sheet" Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="2">
+                    <Button ToolTip="New Sheet" Name="NewSheetButton" Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="2">
 					<Path x:Name="newSheet" Data="F1M3.667,15.929C3.667,15.929 3.667,17.286 3.667,17.286 3.667,17.286 14.333,17.286 14.333,17.286 14.333,17.286 14.333,15.929 14.333,15.929 14.333,15.929 3.667,15.929 3.667,15.929z M3.667,11.857C3.667,11.857 3.667,13.214 3.667,13.214 3.667,13.214 14.333,13.214 14.333,13.214 14.333,13.214 14.333,11.857 14.333,11.857 14.333,11.857 3.667,11.857 3.667,11.857z M3.667,7.786C3.667,7.786 3.667,9.143 3.667,9.143 3.667,9.143 14.333,9.143 14.333,9.143 14.333,9.143 14.333,7.786 14.333,7.786 14.333,7.786 3.667,7.786 3.667,7.786z M3.667,3.714C3.667,3.714 3.667,5.071 3.667,5.071 3.667,5.071 14.333,5.071 14.333,5.071 14.333,5.071 14.333,3.714 14.333,3.714 14.333,3.714 3.667,3.714 3.667,3.714z M1,1C1,1 17,1 17,1 17,1 17,20 17,20 17,20 1,20 1,20 1,20 1,1 1,1z" Fill="White" Height="21" Width="18"/>
 				</Button>
-
 				<Button ToolTip="Filter &amp; Select" Style="{StaticResource side}"  Click="FilterButton_Click" Grid.Row="0" Width="45" Height="30" Grid.Column="3">
 					<Path Data="F1M2.118,1C2.881,1 16.282,1 16.809,1 17.492,1 18,1.384 17.6,1.763 17.36,1.991 13.667,5.465 11.603,7.406L11,7.973 11,9.797C11,13.312 11,18 11,18 11,18 8,20 8,20 8,20 8,19 8,18L8,17.792 8,17.213 8,17C8,17.5,8,17,8,16.625L8,16.527C8,16.438,8,16.281,8,16.172L8,16C8,16.227,8,15.797,8,15.281L8,15.217 8,13.52 8,12.562 8,11.5 8,9.797 8,9.48 8,8.026 7.423,7.484C5.405,5.591 1.669,2.078 1.331,1.747 1,1.424 1.365,1 2.118,1z" Fill="#FF2D6356" Height="21" Width="20" Stretch="Fill"/>
 				</Button>
-
 				<Button ToolTip="Sanitize data" Style="{StaticResource side}"  x:Name="SanitizingButton" Grid.Row="0" Width="45" Height="30" Grid.Column="4" Background="Black">
 					<Path x:Name="sanitize" Data="F1M1,12.667C1,12.667 8,12.667 8,12.667 8,12.667 8,15 8,15 8,15 1,15 1,15 1,15 1,12.667 1,12.667z M1,6.833C1,6.833 15,6.833 15,6.833 15,     6.833 15,9.167 15,9.167 15,9.167 1,9.167 1,9.167 1,9.167 1,6.833 1,6.833z M1,1C1,1 22,1 22,1 22,1 22,3.333 22,3.333 22,3.333 1,3.333 1,3.333 1,3.333 1,1 1,1z" Fill="White" Height="16" Width="23"/>
 				</Button>
-
-				<Button ToolTip="Delete" Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="5">
-					<Path x:Name="delete1" Data="F1M3.056,10.35C3.714,11.001 6.347,11.109 9.499,11.109 12.65,11.109 15.286,11.001 15.941,10.35 16.022,10.432 16.077,10.516 16.091,10.603 16.091,10.603 16.1,10.603 16.1,10.603 16.1,10.603 16.096,10.65 16.096,10.65 16.096,10.655 16.1,10.661 16.1,10.666 16.1,10.679 16.096,10.69 16.095,10.702 16.095,10.702 15.581,20.977 15.581,20.977 15.581,20.977 15.578,20.977 15.578,20.977 15.533,21.782 14.589,23 9.499,23 4.409,23 3.465,21.782 3.42,20.977 3.42,20.977 3.419,20.977 3.419,20.977 3.419,20.977 2.906,10.702 2.906,10.702 2.904,10.69 2.9,10.679 2.9,10.666 2.9,10.661 2.902,10.655 2.902,10.65 2.902,10.65 2.9,10.603 2.9,10.603 2.9,10.603 2.906,10.603 2.906,10.603 2.925,10.516 2.975,10.432 3.056,10.35z M7.59,3.334C7.516,3.334 7.453,3.694 7.453,4.133 7.453,4.133 7.453,5.138 7.453,5.138 7.453,5.138 7.66,5.125 7.66,5.125 8.247,5.093 8.864,5.075 9.499,5.075 10.111,5.075 10.703,5.093 11.272,5.122 11.272,5.122 11.272,4.133 11.272,4.133 11.272,3.694 11.211,3.334 11.135,3.334 11.06,3.334 10.63,3.334 10.182,3.334 10.182,3.334 8.545,3.334 8.545,3.334 8.095,3.334 7.666,3.334 7.59,3.334z M6.906,2C6.906,2 11.818,2 11.818,2 12.268,2 12.635,2.362 12.635,2.8 12.635,2.8 12.635,5.226 12.635,5.226 15.21,5.483 17,6.046 17,6.699 17,6.699 17,7.899 17,7.899 17,8.145 16.743,8.379 16.288,8.59 15.089,9.14 12.501,9.522 9.499,9.522 6.499,9.522 3.91,9.14 2.712,8.59 2.255,8.379 2,8.145 2,7.899 2,7.899 2,6.699 2,6.699 2,6.068 3.662,5.523 6.09,5.253 6.09,5.253 6.09,2.8 6.09,2.8 6.09,2.362 6.459,2 6.906,2z" Fill="#FF893232" Height="24" Width="18"/>
-				</Button>
-
-				<Button ToolTip="Print" Style="{StaticResource side}"  Grid.Row="0" Width="48" Height="30" Grid.Column="6" Command="ApplicationCommands.Print">
+                    <Button ToolTip="Print" Style="{StaticResource side}"  Grid.Row="0" Width="48" Height="30" Grid.Column="6" Command="ApplicationCommands.Print">
 					<Path x:Name="print" Data="F1M8.9,14.833C8.9,14.833 8.9,20.667 8.9,20.667 8.9,20.667 18.1,20.667 18.1,20.667 18.1,20.667 18.1,14.833 18.1,14.833 18.1,14.833 8.9,14.833 8.9,14.833z M21.55,10.167C20.86,10.167 20.4,10.633 20.4,11.333 20.4,12.033 20.86,12.5 21.55,12.5 22.24,12.5 22.7,12.033 22.7,11.333 22.7,10.633 22.24,10.167 21.55,10.167z M5.45,7.833C5.45,7.833 21.55,7.833 21.55,7.833 23.505,7.833 25,9.35 25,11.333 25,11.333 25,18.333 25,18.333 25,18.333 20.4,18.333 20.4,18.333 20.4,18.333 20.4,23 20.4,23 20.4,23 6.6,23 6.6,23 6.6,23 6.6,18.333 6.6,18.333 6.6,18.333 2,18.333 2,18.333 2,18.333 2,11.333 2,11.333 2,9.35 3.495,7.833 5.45,7.833z M6.6,2C6.6,2 20.4,2 20.4,2 20.4,2 20.4,6.667 20.4,6.667 20.4,6.667 6.6,6.667 6.6,6.667 6.6,6.667 6.6,2 6.6,2z" Fill="Black" Height="24" Width="26"/>
 				</Button>
-
 				<Rectangle VerticalAlignment="Stretch" Grid.Row="0" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="0" HorizontalAlignment="Right" Fill="Black"/>
 				<Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
 				<Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
 				<Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
 				<Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
-				<Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="5" HorizontalAlignment="Right"/>
-				<Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="6" HorizontalAlignment="Right"/>
+                    <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="6" HorizontalAlignment="Right"/>
 			</Grid>
 		</DockPanel>
-
-		<Grid >
-			<Grid.ColumnDefinitions>
-				<!--<ColumnDefinition Width="225"/>-->
-				<ColumnDefinition Width="*"/>
-			</Grid.ColumnDefinitions>
-	
-			<!--<StackPanel Background="AliceBlue" Grid.Column="0" Margin="0,4,0,0">
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <!--<ColumnDefinition Width="225"/>-->
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="150"/>
+                </Grid.RowDefinitions>
+                <!--<StackPanel Background="AliceBlue" Grid.Column="0" Margin="0,4,0,0">
 				<WrapPanel Margin="0,20,0,0" >
                         <TreeView BorderBrush="Transparent" BorderThickness="0" Background="AliceBlue">
 					<TreeViewItem BorderBrush="Transparent" BorderThickness="0">
@@ -160,7 +139,6 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 					</TreeViewItem>
 				</TreeView>
 				</WrapPanel>
-
 				<WrapPanel Margin="0,10,0,0" >
 				<TreeView BorderBrush="Transparent" BorderThickness="0" Background="AliceBlue"  >
 					<TreeViewItem BorderBrush="Transparent" BorderThickness="0">
@@ -222,62 +200,64 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 				<Path Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Black" Height="4" HorizontalAlignment="Left" Margin="15,6,0,0"  Width="194"/>
 			</StackPanel>-->
 
-			<StackPanel Grid.Column="1" >
+                <StackPanel Grid.Column="1" Grid.Row="0">
 			
 				<DockPanel x:Name="DataGridStackPanel" LastChildFill="True" VerticalAlignment="Top">
-					<DockPanel.Resources>
-						<Style TargetType="{x:Type DataGridCell}">
-							<Setter Property="BorderThickness" Value="0"/>
-							<Setter Property="Height" Value="25"/>
-							<Setter Property="Padding" Value="20"/>
-							<Style.Triggers>
-								<Trigger Property="IsSelected" Value="True">
-								<Setter Property="Background" Value="RoyalBLue" />
-								<Setter Property="BorderBrush" Value="Transparent"/>
-								<Setter Property="Foreground" Value="White"/>
-								</Trigger>
-							</Style.Triggers>
-						</Style>
-					</DockPanel.Resources>
+                        <DockPanel.Resources>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="Height" Value="25"/>
+                                <Setter Property="Padding" Value="20"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="RoyalBLue" />
+                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DockPanel.Resources>
 				<ScrollViewer VerticalScrollBarVisibility="Auto" Height="Auto" HorizontalScrollBarVisibility="Disabled">
-					<DataGrid RowHeaderWidth="0" IsReadOnly="True" x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False" Height="478" ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" >
-						<DataGrid.Columns>
-						<DataGridTextColumn Header="ConnsignmentNo" Binding="{Binding ConsignmentNo}"/>
-						<DataGridTextColumn Header="Weight" Binding="{Binding Weight}"/>
-						<DataGridTextColumn Header="ObservedWeight" Binding="{Binding BilledWeight}"/>
-						<DataGridTextColumn Header="Cost" Binding="{Binding Amount}"/>
-						<DataGridTextColumn Header="Billed Amount" Binding="{Binding FrAmount}"/>
-						<DataGridTextColumn Header="Client" Binding="{Binding CustCode}"/>
-						<DataGridTextColumn Header="BookingDate" Binding="{Binding BookingDate}"/>
-						<DataGridTextColumn Header="Destination" Binding="{Binding Destination}"/>
-						<DataGridTextColumn Header="PinCode" Binding="{Binding DestinationPin}"/>
-						<DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
-						<DataGridTextColumn Header="Mode" Binding="{Binding Mode}"/>
-					</DataGrid.Columns>
-					<DataGrid.RowDetailsTemplate>
-						<DataTemplate>
-						<Border BorderThickness="0" Background="BlanchedAlmond" Padding="10">
-							<StackPanel Orientation="Vertical">
-								<StackPanel Orientation="Horizontal">
-									<TextBlock FontSize="12" Text="Booking Date: " VerticalAlignment="Center" />
-									<TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding BookingDate}" VerticalAlignment="Center" />
-								</StackPanel>
-								<StackPanel Orientation="Horizontal">
-									<TextBlock FontSize="12" Text="TransMfNo: " VerticalAlignment="Center" />
-									<TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding TransMF_No}" VerticalAlignment="Center" />
-								</StackPanel>
-								<StackPanel Orientation="Horizontal">
-									<TextBlock FontSize="12" Text="Invoice No " VerticalAlignment="Center" />
-									<TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding InvoiceNo}" VerticalAlignment="Center" />
-								</StackPanel>
-							</StackPanel>
-						</Border>
-						</DataTemplate>
-					</DataGrid.RowDetailsTemplate>
-					</DataGrid>
+                            <DataGrid RowHeaderWidth="0" IsReadOnly="True" x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False"  ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True"  Height="478" >
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ConnsignmentNo" Binding="{Binding ConsignmentNo}"/>
+                                    <DataGridTextColumn Header="Weight" Binding="{Binding Weight}"/>
+                                    <DataGridTextColumn Header="ObservedWeight" Binding="{Binding BilledWeight}"/>
+                                    <DataGridTextColumn Header="Cost" Binding="{Binding Amount}"/>
+                                    <DataGridTextColumn Header="Billed Amount" Binding="{Binding FrAmount}"/>
+                                    <DataGridTextColumn Header="Client" Binding="{Binding CustCode}"/>
+                                    <DataGridTextColumn Header="BookingDate" Binding="{Binding BookingDate}"/>
+                                    <DataGridTextColumn Header="Destination" Binding="{Binding Destination}"/>
+                                    <DataGridTextColumn Header="PinCode" Binding="{Binding DestinationPin}"/>
+                                    <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
+                                    <DataGridTextColumn Header="Mode" Binding="{Binding Mode}"/>
+                                </DataGrid.Columns>
+                                <DataGrid.RowDetailsTemplate>
+                                    <DataTemplate>
+                                        <Border BorderThickness="0" Background="BlanchedAlmond" Padding="10">
+                                            <StackPanel Orientation="Vertical">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock FontSize="12" Text="Booking Date: " VerticalAlignment="Center" />
+                                                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding BookingDate}" VerticalAlignment="Center" />
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock FontSize="12" Text="TransMfNo: " VerticalAlignment="Center" />
+                                                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding TransMF_No}" VerticalAlignment="Center" />
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock FontSize="12" Text="Invoice No " VerticalAlignment="Center" />
+                                                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding InvoiceNo}" VerticalAlignment="Center" />
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGrid.RowDetailsTemplate>
+                            </DataGrid>
 				</ScrollViewer>
-			</DockPanel>
-			<DockPanel x:Name="DataGridOptionpanel" Background="Transparent">
+                    </DockPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="1">
+                    <DockPanel x:Name="DataGridOptionpanel" Background="Transparent">
 				<WrapPanel x:Name="buttontabcanvaswrap" Margin="13,0,0,0" />
 				<WrapPanel HorizontalAlignment="Right">
 					<Button ToolTip="First Page" Style="{StaticResource smallbutton}" x:Name="DataGridFirstPage" Margin="2,2,5,2" Click="DataGridFirstPage_Click" >

@@ -58,7 +58,7 @@ namespace FinalUi
         private void stockwindow_Click(object sender, RoutedEventArgs e)
         {
             ManageCity window = new ManageCity();
-            window.ShowDialog();
+            window.Show();
         }
 
 
