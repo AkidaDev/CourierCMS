@@ -70,8 +70,17 @@ namespace FinalUi
         }
         public void SaveData()
         {
-            if (BilledAmount.Text == "" || CustomerSelected.Text == "<NONE>")
-                return;
+            if (CustomerSelected.Text == "")
+                CustomerSelected.Text = "<NONE>";
+            if (WeightAccToFranchize.Text == "")
+                WeightAccToFranchize.Text = WeightAccToDTDC.Text;
+            if (BilledWeightTextBox.Text == "")
+                BilledWeightTextBox.Text = WeightAccToFranchize.Text;
+            if (BilledAmount.Text == "")
+            {
+                BilledAmount.Text = "0";
+            }
+
             bool isDataInContext = true;
             RuntimeData data;
             data = dataContext.SingleOrDefault(x => x.ConsignmentNo == ConnsignmentNumber.Text);
@@ -114,6 +123,10 @@ namespace FinalUi
                 data.Amount = Decimal.Parse(Cost.Text);
                 data.FrAmount = Decimal.Parse(BilledAmount.Text);
                 data.Destination = db.Cities.Where(x => x.CITY_DESC == Destination.Text).Select(y => y.CITY_CODE).FirstOrDefault();
+                if(data.Destination == null)
+                {
+                    MessageBox.Show("No city with this code is entered. Do you want to enter it now? \n Alishan display city dialogue here");
+                }
                 data.DestinationPin = Decimal.Parse(DestinationPin.Text);
                 data.CustCode = CustomerSelected.Text;
                 data.BilledWeight = float.Parse(this.BilledWeightTextBox.Text);
@@ -210,7 +223,7 @@ namespace FinalUi
             if (data.BookingDate != null)
                 InsertionDate.SelectedDate = data.BookingDate;
             Destination.Text = db.Cities.Where(x => x.CITY_CODE == data.Destination).Select(y => y.CITY_DESC).FirstOrDefault();
-            if (data.CustCode != "")
+            if (data.CustCode != "" && data.CustCode != null)
                 CustomerSelected.Text = data.CustCode;
             else
                 CustomerSelected.Text = "<NONE>";
