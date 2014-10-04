@@ -17,7 +17,7 @@ namespace FinalUi
         {
             get
             {
-                return filterObj.applyFilter(_dataStack);
+                return filterObj.applyFilter(_dataStack,int.Parse(name.Last().ToString()));
             }
             set
             {

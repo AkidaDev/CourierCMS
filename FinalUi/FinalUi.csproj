@@ -162,6 +162,7 @@
     <Compile Include="ManageEmployee.xaml.cs">
       <DependentUpon>ManageEmployee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MoreLinq\MoreEnumerable.ExceptBy.cs" />
     <Compile Include="PaymentDetailsWindow.xaml.cs">
       <DependentUpon>PaymentDetailsWindow.xaml</DependentUpon>
     </Compile>
@@ -424,7 +425,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
