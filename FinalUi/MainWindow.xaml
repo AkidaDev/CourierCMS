@@ -140,11 +140,11 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 
 		<Grid >
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="225"/>
+				<!--<ColumnDefinition Width="225"/>-->
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
 	
-			<StackPanel Background="AliceBlue" Grid.Column="0" Margin="0,4,0,0">
+			<!--<StackPanel Background="AliceBlue" Grid.Column="0" Margin="0,4,0,0">
 				<WrapPanel Margin="0,20,0,0" >
                         <TreeView BorderBrush="Transparent" BorderThickness="0" Background="AliceBlue">
 					<TreeViewItem BorderBrush="Transparent" BorderThickness="0">
@@ -221,7 +221,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 				</TreeView>
 				</WrapPanel>
 				<Path Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Black" Height="4" HorizontalAlignment="Left" Margin="15,6,0,0"  Width="194"/>
-			</StackPanel>
+			</StackPanel>-->
 
 			<StackPanel Grid.Column="1" >
 
@@ -240,7 +240,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 							</Style.Triggers>
 						</Style>
 					</DockPanel.Resources>
-				<ContentControl ScrollViewer.CanContentScroll="True" Margin="4,4,0,0">
+				<ContentControl ScrollViewer.CanContentScroll="True" Margin="0,4,0,0">
 					<DataGrid RowHeaderWidth="0" IsReadOnly="True" x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False" Height="478" ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" >
 						<DataGrid.Columns>
 						<DataGridTextColumn Header="ConnsignmentNo" Binding="{Binding ConsignmentNo}"/>
@@ -303,7 +303,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 				</WrapPanel>
 			</DockPanel>
             <ScrollViewer VerticalScrollBarVisibility="Auto" Height="126" HorizontalScrollBarVisibility="Disabled">
-				<TextBlock Text="Log..." x:Name="MessageBlock" Background="White" Margin="4,0,0,0" />
+				<TextBlock Text="Log..." x:Name="MessageBlock" Background="White" Margin="0,0,0,0" />
             </ScrollViewer>
 			</StackPanel>
 		</Grid>
