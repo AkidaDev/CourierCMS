@@ -50,10 +50,11 @@ namespace FinalUi
             this.emp = emp;
             isupdate = true;
             userPermission = emp.User_permissions.Select(x => x.Permission).ToList();
-            this.AddUpdateEmployee.Content = "update";
             permission.RemoveAll(x => userPermission.Select(y => y.id).Contains(x.id));
             setFieldsFromEmp();
-            this.AddUpdateEmployee.Content = "update";
+          //this.AddFilter.Data =   Geometry.Parse(@"put your code here panku");
+            this.AddUpdateTitle.Text = "Update Employee";
+            this.Add_FilterE.Text = "Update";
             viewsourceUserPermission.Source = userPermission;
             viewsourcePermission.Source = permission;
         }

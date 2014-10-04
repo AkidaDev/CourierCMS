@@ -32,6 +32,7 @@ namespace FinalUi
             this.client = client;
             FillField();
             isupdate = true;
+            this.AddUpdateTitle.Text = "Update Client";
             this.ClientDetailAddUpdate.Content = "Update";
         }
 
