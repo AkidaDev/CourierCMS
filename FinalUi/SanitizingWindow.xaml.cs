@@ -104,7 +104,7 @@ namespace FinalUi
             data.FrWeight = Double.Parse(WeightAccToFranchize.Text);
             data.Amount = Decimal.Parse(Cost.Text);
             data.Destination = Destination.Text;
-            data.DestinationPin = Decimal.Parse(DestinationPin.Text);
+            DestinationPin.Text = DestinationPin.Text ?? "";
             data.CustCode = CustomerSelected.Text;
             data.Mode = MODE.Text;
             data.Type = TypeComboBox.Text;
@@ -126,9 +126,16 @@ namespace FinalUi
                 data.Destination = db.Cities.Where(x => x.CITY_DESC == Destination.Text).Select(y => y.CITY_CODE).FirstOrDefault();
                 if(data.Destination == null)
                 {
-                    MessageBox.Show("No city with this code is entered. Do you want to enter it now? \n Alishan display city dialogue here");
+                    MessageBoxResult rsltMessageBox = MessageBox.Show("No city with this code is entered. Do you want to enter it now?", "", MessageBoxButton.YesNo, MessageBoxImage.Asterisk);
+                    if(MessageBoxResult.Yes == rsltMessageBox)
+                    {
+                        CityWindow window = new CityWindow(); window.ShowDialog();
+                    }
                 }
-                data.DestinationPin = Decimal.Parse(DestinationPin.Text);
+                if(DestinationPin.Text == "" || DestinationPin.Text == null)
+                data.DestinationPin = null;
+                else
+                    data.DestinationPin = Decimal.Parse(DestinationPin.Text);
                 data.CustCode = CustomerSelected.Text;
                 data.BilledWeight = float.Parse(this.BilledWeightTextBox.Text);
             }

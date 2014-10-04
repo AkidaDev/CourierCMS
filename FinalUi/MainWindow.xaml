@@ -30,7 +30,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 			<ColumnDefinition Width="4"/>
 		</Grid.ColumnDefinitions>
 		
-		<StackPanel Grid.Row="1" Grid.Column="1" >
+		<StackPanel Grid.Row="1" Grid.Column="1" Height="Auto">
 			<Grid Background="Transparent" Height="26.62" >
 			<Menu  Background="Transparent" FontSize="14" >
 				<MenuItem ToolTip="Open new document" Header="File" Margin="10 0 0 0">
@@ -39,12 +39,11 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 				<MenuItem Header="Close" Click="MenuItem_Click"/>
 			</MenuItem>
 
-			<MenuItem ToolTip="Open advanced options"  Header="Tools" Margin="10 0 0 0">
+			<MenuItem ToolTip="Open advanced options"  Header="View" Margin="10 0 0 0">
 			<MenuItem Header="Managment">
 			<MenuItem Header="Clients" x:Name="ManageClient" Click="ManageClient_Click"/>
 			<MenuItem Header="Employees" x:Name="ManageEmployee" Click="ManageEmployee_Click"/>
 			</MenuItem>
-
 			<MenuItem Header="Payment Entry"  Name="PaymentEntryMenuItem" Click="PaymentEntry_Click"/>
 			<MenuItem Header="Payment Recived"  Name="PaymentRecievedMenuItem"  Click="PaymentRecieved_Click"/>
 			<MenuItem Header="Stock   Entry"  Name="StockEntryMenuItem" Click="StockEntry_Click"/>
@@ -240,8 +239,8 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 							</Style.Triggers>
 						</Style>
 					</DockPanel.Resources>
-				<ContentControl ScrollViewer.CanContentScroll="True" Margin="0,4,0,0">
-					<DataGrid RowHeaderWidth="0" IsReadOnly="True" x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False" Height="478" ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" >
+				<ContentControl ScrollViewer.CanContentScroll="True" Margin="0,4,0,0" Height="Auto">
+					<DataGrid RowHeaderWidth="0" IsReadOnly="True" x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False"  ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" >
 						<DataGrid.Columns>
 						<DataGridTextColumn Header="ConnsignmentNo" Binding="{Binding ConsignmentNo}"/>
 						<DataGridTextColumn Header="Weight" Binding="{Binding Weight}"/>
