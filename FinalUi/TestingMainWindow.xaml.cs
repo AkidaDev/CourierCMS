@@ -57,7 +57,7 @@ namespace FinalUi
 
         private void stockwindow_Click(object sender, RoutedEventArgs e)
         {
-            StockWindow window = new StockWindow();
+            ManageCity window = new ManageCity();
             window.ShowDialog();
         }
 
@@ -101,7 +101,7 @@ namespace FinalUi
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            PaymentDetailsWindow window = new PaymentDetailsWindow();
+            CountryAssignment window = new CountryAssignment();
             window.Show();
         }
 
