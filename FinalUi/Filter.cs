@@ -75,7 +75,7 @@ namespace FinalUi
 	                and
 	                RuntimeMeta.SheetNo = {1};
 
-                ",SecurityModule.currentUserName,sheetNo).ToList();
+                ", SecurityModule.currentUserName, sheetNo).ToList();
 
             if (showBilled != null)
             {
@@ -87,7 +87,9 @@ namespace FinalUi
                             select fdata;
                 }
                 else
-                {}//  fData = fData.ExceptBy(qData,)
+                {
+                    fData = fData.Where(x => !qData.Select(y => y.ConsignmentNo).Contains(x.ConsignmentNo));
+                }
             }
             bool areNullAllowed = selectedClientList.Select(x => x.CLCODE).Contains("<NONE>");
             if (selectedClientList.Count > 0)
@@ -95,32 +97,8 @@ namespace FinalUi
             fData = fData.Where(x => x.BookingDate <= toDate && x.BookingDate >= fromDate);
             if (startConnNo != "" && endConnNo != "")
                 fData = fData.Where(x => x.ConsignmentNo.CompareTo(startConnNo) >= 0 && x.ConsignmentNo.CompareTo(endConnNo) <= 0);
-            
+
             return fData.ToList();
-        }
-        public IEnumerable<string> getBilledRecords(IEnumerable<RuntimeData> data)
-        {
-            BillingDataDataContext db = new BillingDataDataContext();
-            List<string> BilledList = new List<string>();
-            using (SqlCommand cmd = new SqlCommand("EXECUTE [dbo].[sp_getUnbilledTransactions] @List", (SqlConnection)db.Connection))
-            {
-                var table = new DataTable();
-                table.Columns.Add("ConnNo", typeof(string));
-
-                foreach (var itemNode in data)
-                    table.Rows.Add(itemNode.ConsignmentNo);
-
-                var pList = new SqlParameter("@List", SqlDbType.Structured);
-                pList.TypeName = "dbo.ConnsignmentNoList";
-                pList.Value = table;
-
-                using (var dr = cmd.ExecuteReader())
-                {
-                    while (dr.Read())
-                        BilledList.Add((string)dr["ConnsignmentNo"]);
-                }
-            }
-            return BilledList;
         }
     }
 }
