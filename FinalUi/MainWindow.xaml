@@ -223,8 +223,8 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 			</StackPanel>-->
 
 			<StackPanel Grid.Column="1" >
-
-				<DockPanel x:Name="DataGridStackPanel" LastChildFill="True">
+			
+				<DockPanel x:Name="DataGridStackPanel" LastChildFill="True" VerticalAlignment="Top">
 					<DockPanel.Resources>
 						<Style TargetType="{x:Type DataGridCell}">
 							<Setter Property="BorderThickness" Value="0"/>
@@ -239,7 +239,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 							</Style.Triggers>
 						</Style>
 					</DockPanel.Resources>
-				<ContentControl ScrollViewer.CanContentScroll="True" Margin="0,4,0,0">
+				<ScrollViewer VerticalScrollBarVisibility="Auto" Height="Auto" HorizontalScrollBarVisibility="Disabled">
 					<DataGrid RowHeaderWidth="0" IsReadOnly="True" x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False" Height="478" ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" >
 						<DataGrid.Columns>
 						<DataGridTextColumn Header="ConnsignmentNo" Binding="{Binding ConsignmentNo}"/>
@@ -275,7 +275,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 						</DataTemplate>
 					</DataGrid.RowDetailsTemplate>
 					</DataGrid>
-				</ContentControl>
+				</ScrollViewer>
 			</DockPanel>
 			<DockPanel x:Name="DataGridOptionpanel" Background="Transparent">
 				<WrapPanel x:Name="buttontabcanvaswrap" Margin="13,0,0,0" />
@@ -301,7 +301,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 					<TextBox ToolTip="No. of Rows" x:Name="DataGridNumOfRows" Width="30" Margin="3,0,11,0" Height="20" Text="{Binding rowsPerPage, Mode=TwoWay}" FontFamily="Segoe UI Semibold" TextAlignment="Center" BorderBrush="#FF7676FF"/>
 				</WrapPanel>
 			</DockPanel>
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="126" HorizontalScrollBarVisibility="Disabled">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="132" HorizontalScrollBarVisibility="Disabled" >
 				<TextBlock Text="Log..." x:Name="MessageBlock" Background="White" Margin="0,0,0,0" />
             </ScrollViewer>
 			</StackPanel>
