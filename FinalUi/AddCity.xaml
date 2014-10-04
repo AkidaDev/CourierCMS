@@ -2,10 +2,10 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		Icon="Images/logo.png"
-        Title="Add City" Height="323" Width="600" Background="Transparent"
+        Title="Add City" Height="280" Width="600" Background="Transparent"
 		ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Normal" BorderBrush="Transparent" AllowsTransparency="True" Padding="20">
 
-    <Grid  Height="273" UseLayoutRounding="False"  Width="550">
+    <Grid  Height="230" UseLayoutRounding="False"  Width="550">
         <Grid.Effect>
             <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
         </Grid.Effect>
