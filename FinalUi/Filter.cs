@@ -37,7 +37,6 @@ namespace FinalUi
         }
         public List<RuntimeData> applyFilter(List<RuntimeData> data)
         {
-            throw new NotImplementedException();
             if (showBilled != null)
             {
                 if (showBilled == true)

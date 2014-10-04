@@ -42,7 +42,8 @@ namespace FinalUi
         BillingDataDataContext db;
         DataGrid backDataGrid;
         int sheetNo;
-        public SanitizingWindow(List<RuntimeData> dataContext, BillingDataDataContext db, int sheetNo, DataGrid dg, RuntimeData selectedRec = null) :this()
+        public SanitizingWindow(List<RuntimeData> dataContext, BillingDataDataContext db, int sheetNo, DataGrid dg, RuntimeData selectedRec = null)
+            : this()
         {
             this.backDataGrid = dg;
             this.sheetNo = sheetNo;
@@ -50,11 +51,11 @@ namespace FinalUi
                 this.dataContext = dataContext;
             if (dg.ItemsSource != null)
                 dataListContext = (ListCollectionView)dg.ItemsSource;
-            
-           
+
+
             conssNumbers = (CollectionViewSource)FindResource("ConsignmentNumbers");
             conssNumbers.Source = (from id in dataContext
-                                   orderby id.BookingDate,id.ConsignmentNo
+                                   orderby id.BookingDate, id.ConsignmentNo
                                    select id.ConsignmentNo).ToList();
             InsertionDate.SelectedDate = DateTime.Today;
             if (selectedRec != null)
@@ -93,7 +94,8 @@ namespace FinalUi
             data.Amount = Decimal.Parse(Cost.Text);
             data.FrAmount = Decimal.Parse(BilledAmount.Text);
             data.Destination = Destination.Text;
-            data.DestinationPin = Decimal.Parse(DestinationPin.Text);
+            if (DestinationPin.Text != "")
+                data.DestinationPin = Decimal.Parse(DestinationPin.Text);
             data.CustCode = CustomerSelected.Text;
             data.Mode = MODE.Text;
             data.Type = TypeComboBox.Text;
@@ -107,7 +109,8 @@ namespace FinalUi
                 data.Amount = Decimal.Parse(Cost.Text);
                 data.FrAmount = Decimal.Parse(BilledAmount.Text);
                 data.Destination = db.Cities.Where(x => x.CITY_DESC == Destination.Text).Select(y => y.CITY_CODE).FirstOrDefault();
-                data.DestinationPin = Decimal.Parse(DestinationPin.Text);
+                if (DestinationPin.Text != "")
+                    data.DestinationPin = Decimal.Parse(DestinationPin.Text);
                 data.CustCode = CustomerSelected.Text;
             }
             else
@@ -142,7 +145,7 @@ namespace FinalUi
         public void setPreviousData()
         {
             int index = ConnsignmentNumber.SelectedIndex;
-            if ( index == 0)
+            if (index == 0)
             {
             }
             else
@@ -157,7 +160,7 @@ namespace FinalUi
         }
         void fillAllElements(string connsignmentNo)
         {
- //           StatusTextBox.Text = "";
+            //           StatusTextBox.Text = "";
             RuntimeData data;
             data = dataContext.SingleOrDefault(x => x.ConsignmentNo == connsignmentNo);
             if (data != null)
@@ -170,11 +173,11 @@ namespace FinalUi
                 if (TData != null)
                 {
                     fillDetails(UtilityClass.convertTransObjToRunObj(TData));
-        //            StatusTextBox.Text = "This record will be added to current sheet";
+                    //            StatusTextBox.Text = "This record will be added to current sheet";
                 }
                 else
                 {
-      //              StatusTextBox.Text = "New Record. This will be added in current sheet and database.";
+                    //              StatusTextBox.Text = "New Record. This will be added in current sheet and database.";
                     clearDetails();
                 }
             }
@@ -214,7 +217,7 @@ namespace FinalUi
                 BilledAmount.Text = data.FrAmount.ToString();
             else
                 BilledAmount.Text = "";
-            if (data.Type != "")
+            if (data.Type != "" && data.Type != null)
                 TypeComboBox.Text = data.Type.Trim();
             if (data.Mode != "")
                 MODE.Text = data.Mode.Trim();
