@@ -18,7 +18,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		<CommandBinding Command="ApplicationCommands.Print" Executed="ExecutePrint" CanExecute="CanExecutePrintCommand"/>
     </Window.CommandBindings>
 
-    <Grid x:Name="MainGrid" Background="#FFBBCADC">
+    <Grid x:Name="MainGrid" Background="#FFBBCADC"><!--light purple = #9f00a7, blue = #a32d89ef, yellow = #a3ffc40d, teal = #00aba9, camel = #e3a21a, green = #00a300 -->
 		<Grid.RowDefinitions>
 			<RowDefinition Height="3"/>
 			<RowDefinition Height="*"/>
@@ -56,7 +56,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 			</MenuItem>
 			</Menu>
 
-			<TextBlock  FontSize="16" Height="24" TextAlignment="Center" Text="Vortex" Width="100" FontFamily="Arial"/>
+			<TextBlock  FontSize="20" Height="24" TextAlignment="Center" Text="Vortex" Width="100" FontFamily="Copperplate Gothic Light" FontWeight="Bold"/>
 			<Canvas Margin="160,0,113,0">
 				<Button MouseDoubleClick="NormalMaximize_Click" Style="{StaticResource window}">
 				<Path MouseDown="Grid_MouseDown" x:Name="Memu_bar" Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26.62" Canvas.Left="0" Canvas.Top="0" Stretch="Fill" Width="1920" />
@@ -79,7 +79,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 			</WrapPanel>
 			</Grid>
 
-			<DockPanel Background="Transparent" Height="32" Margin="0,-1,0,0"  >
+			<DockPanel Background="Transparent" Height="32" Margin="0,-1,0,0">
 				<Button HorizontalAlignment="Left" Style="{StaticResource all}" x:Name="LoadDataButton" Width="150" Foreground="White" Margin="5,3" Command="ApplicationCommands.Open" FontSize="16"><WrapPanel Margin="7,0,5,0">
 					<Path x:Name="folder" Data="F1M20.664,6.138C20.664,6.138 4.336,6.138 4.336,6.138 4.336,6.138 2.668,11.569 2.668,11.569 2.668,11.569 2.053,11.043 2.053,11.043 2.053,11.043 3.546,5.349 3.546,5.349 3.546,5.349 20.664,5.349 20.664,5.349 20.664,5.349 20.664,4.036 20.664,4.036 20.664,4.036 9.547,4.036 9.547,4.036 9.547,4.036 7.906,1 7.906,1 7.906,1 1,1 1,1 1,1 1,17 1,17 1,17 20.664,17 20.664,17 20.664,17 24,6.138 24,6.138 24,6.138 20.664,6.138 20.664,6.138z" Fill="White" Height="18" Width="26"/>
 					<TextBlock ToolTip="Load new files " Text="Open File" Margin="8 -4 1 1" FontSize="16" Padding="1 3 1 0.5"/></WrapPanel>
@@ -105,7 +105,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 				</Button>
 
 				<Button ToolTip="Power Entry" Style="{StaticResource side}" x:Name="PowerEntryButton" Grid.Row="0" Width="45" Height="30" Grid.Column="1">
-					<Path x:Name="autofill" Data="F1M16.844,4C16.844,4 15.755,7.6 15.755,7.6 15.755,7.6 17.932,7.6 17.932,7.6 17.932,7.6 16.844,4 16.844,4z M15.854,2C15.854,2 17.833,2 17.833,2 17.833,2 21,11 21,11 21,11 19.12,11 19.12,11 19.12,11 18.427,9 18.427,9 18.427,9 15.26,9 15.26,9 15.26,9 14.568,11 14.568,11 14.568,11 12.687,11 12.687,11 12.687,11 15.854,2 15.854,2z M2,2C2,2 11.896,2 11.896,2 11.896,2 7.937,11 7.937,11 7.937,11 11.896,11 11.896,11 11.896,11 4.969,23 4.969,23 4.969,23 4.969,14 4.969,14 4.969,14 2,14 2,14 2,14 2,2 2,2z" Fill="#FF5D87D1" Height="24" Width="22"/>
+					<Path x:Name="autofill" Data="F1M16.844,4C16.844,4 15.755,7.6 15.755,7.6 15.755,7.6 17.932,7.6 17.932,7.6 17.932,7.6 16.844,4 16.844,4z M15.854,2C15.854,2 17.833,2 17.833,2 17.833,2 21,11 21,11 21,11 19.12,11 19.12,11 19.12,11 18.427,9 18.427,9 18.427,9 15.26,9 15.26,9 15.26,9 14.568,11 14.568,11 14.568,11 12.687,11 12.687,11 12.687,11 15.854,2 15.854,2z M2,2C2,2 11.896,2 11.896,2 11.896,2 7.937,11 7.937,11 7.937,11 11.896,11 11.896,11 11.896,11 4.969,23 4.969,23 4.969,23 4.969,14 4.969,14 4.969,14 2,14 2,14 2,14 2,2 2,2z" Height="24" Width="22" Fill="#FF1E00A6"/>
 				</Button>
 
 				<Button ToolTip="New Sheet" Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="2">
@@ -113,11 +113,11 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 				</Button>
 
 				<Button ToolTip="Filter &amp; Select" Style="{StaticResource side}"  Click="FilterButton_Click" Grid.Row="0" Width="45" Height="30" Grid.Column="3">
-					<Path Data="F1M2.118,1C2.881,1 16.282,1 16.809,1 17.492,1 18,1.384 17.6,1.763 17.36,1.991 13.667,5.465 11.603,7.406L11,7.973 11,9.797C11,13.312 11,18 11,18 11,18 8,20 8,20 8,20 8,19 8,18L8,17.792 8,17.213 8,17C8,17.5,8,17,8,16.625L8,16.527C8,16.438,8,16.281,8,16.172L8,16C8,16.227,8,15.797,8,15.281L8,15.217 8,13.52 8,12.562 8,11.5 8,9.797 8,9.48 8,8.026 7.423,7.484C5.405,5.591 1.669,2.078 1.331,1.747 1,1.424 1.365,1 2.118,1z" Fill="#FF893232" Height="21" Width="20" Stretch="Fill"/>
+					<Path Data="F1M2.118,1C2.881,1 16.282,1 16.809,1 17.492,1 18,1.384 17.6,1.763 17.36,1.991 13.667,5.465 11.603,7.406L11,7.973 11,9.797C11,13.312 11,18 11,18 11,18 8,20 8,20 8,20 8,19 8,18L8,17.792 8,17.213 8,17C8,17.5,8,17,8,16.625L8,16.527C8,16.438,8,16.281,8,16.172L8,16C8,16.227,8,15.797,8,15.281L8,15.217 8,13.52 8,12.562 8,11.5 8,9.797 8,9.48 8,8.026 7.423,7.484C5.405,5.591 1.669,2.078 1.331,1.747 1,1.424 1.365,1 2.118,1z" Fill="#FF2D6356" Height="21" Width="20" Stretch="Fill"/>
 				</Button>
 
-				<Button ToolTip="Sanitize data" Style="{StaticResource side}"  x:Name="SanitizingButton" Grid.Row="0" Width="45" Height="30" Grid.Column="4">
-					<Path x:Name="sanitize" Data="F1M1,12.667C1,12.667 8,12.667 8,12.667 8,12.667 8,15 8,15 8,15 1,15 1,15 1,15 1,12.667 1,12.667z M1,6.833C1,6.833 15,6.833 15,6.833 15,     6.833 15,9.167 15,9.167 15,9.167 1,9.167 1,9.167 1,9.167 1,6.833 1,6.833z M1,1C1,1 22,1 22,1 22,1 22,3.333 22,3.333 22,3.333 1,3.333 1,3.333 1,3.333 1,1 1,1z" Fill="#AE3399FF" Height="16" Width="23"/>
+				<Button ToolTip="Sanitize data" Style="{StaticResource side}"  x:Name="SanitizingButton" Grid.Row="0" Width="45" Height="30" Grid.Column="4" Background="Black">
+					<Path x:Name="sanitize" Data="F1M1,12.667C1,12.667 8,12.667 8,12.667 8,12.667 8,15 8,15 8,15 1,15 1,15 1,15 1,12.667 1,12.667z M1,6.833C1,6.833 15,6.833 15,6.833 15,     6.833 15,9.167 15,9.167 15,9.167 1,9.167 1,9.167 1,9.167 1,6.833 1,6.833z M1,1C1,1 22,1 22,1 22,1 22,3.333 22,3.333 22,3.333 1,3.333 1,3.333 1,3.333 1,1 1,1z" Fill="White" Height="16" Width="23"/>
 				</Button>
 
 				<Button ToolTip="Delete" Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="5">
