@@ -22,6 +22,7 @@ namespace FinalUi
     public partial class SanitizingWindow : Window
     {
         bool isnew = false;
+        bool changeamount = false;
         public SanitizingWindow()
         {
             InitializeComponent();
@@ -102,13 +103,13 @@ namespace FinalUi
             data.Weight = Double.Parse(WeightAccToDTDC.Text);
             data.FrWeight = Double.Parse(WeightAccToFranchize.Text);
             data.Amount = Decimal.Parse(Cost.Text);
-            data.FrAmount = Decimal.Parse(BilledAmount.Text);
             data.Destination = Destination.Text;
             data.DestinationPin = Decimal.Parse(DestinationPin.Text);
             data.CustCode = CustomerSelected.Text;
             data.Mode = MODE.Text;
             data.Type = TypeComboBox.Text;
             data.BookingDate = (DateTime)InsertionDate.SelectedDate;
+            data.FrAmount = Decimal.Parse(BilledAmount.Text);
             data.DOX = DoxCombobox.Text.ElementAt(0);
             float tempValue;
             if (float.TryParse(BilledWeightTextBox.Text, out tempValue))
@@ -142,10 +143,14 @@ namespace FinalUi
                 db.RuntimeMetas.InsertOnSubmit(metaData);
                 dataListContext.AddNewItem(data);
             }
-            var c = db.Cities.Where(x => x.CITY_CODE == data.Destination && x.CITY_STATUS == "A").FirstOrDefault();
-            if (c == null)
-                c = db.Cities.SingleOrDefault(x => x.CITY_CODE == "DEL");
-            data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination, (double)data.BilledWeight, c.ZONE, data.Type, (char)data.DOX);
+            
+            if(data.FrAmount == null)
+            {
+                var c = db.Cities.Where(x => x.CITY_CODE == data.Destination && x.CITY_STATUS == "A").FirstOrDefault();
+                if (c == null)
+                    c = db.Cities.SingleOrDefault(x => x.CITY_CODE == "DEL");
+                data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination, (double)data.BilledWeight, c.ZONE, data.Type, (char)data.DOX);
+            }
             try
             {
                 db.SubmitChanges();
@@ -261,6 +266,42 @@ namespace FinalUi
         {
             SaveData();
             setPreviousData();
+        }
+        private void BilledWeightTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.GetRateButton.Visibility = Visibility.Visible;
+        }
+        private void GetRateButton_Click(object sender, RoutedEventArgs e)
+        {
+            getrate();
+        }
+        private void getrate()
+        {
+            if (this.BilledWeightTextBox.Text != null && this.BilledWeightTextBox.Text != "")
+            {
+                RuntimeData data = dataContext.SingleOrDefault(x => x.ConsignmentNo == ConnsignmentNumber.Text);
+                var c = db.Cities.Where(x => x.CITY_CODE == data.Destination && x.CITY_STATUS == "A").FirstOrDefault();
+                if (c == null)
+                    c = db.Cities.SingleOrDefault(x => x.CITY_CODE == "DEL");
+                var d = (City)this.Destination.SelectedItem;
+                double cost;
+                if (d != null)
+                {
+                    cost = UtilityClass.getCost(data.CustCode, d.CITY_CODE, double.Parse(this.BilledWeightTextBox.Text), c.ZONE, data.Type, (char)data.DOX);
+                    this.BilledAmount.Text = cost.ToString();
+                }
+            }
+            else
+            {
+                this.BilledAmount.Text = "0";
+            }
+        }
+        private void BilledWeightTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (this.BilledAmount.Text == "" || this.BilledAmount.Text == null)
+            {
+                getrate();
+            }
         }
     }
 }

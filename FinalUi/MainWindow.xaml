@@ -245,7 +245,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 						<DataGrid.Columns>
 						<DataGridTextColumn Header="ConnsignmentNo" Binding="{Binding ConsignmentNo}"/>
 						<DataGridTextColumn Header="Weight" Binding="{Binding Weight}"/>
-						<DataGridTextColumn Header="ObservedWeight" Binding="{Binding FrWeight}"/>
+						<DataGridTextColumn Header="ObservedWeight" Binding="{Binding BilledWeight}"/>
 						<DataGridTextColumn Header="Cost" Binding="{Binding Amount}"/>
 						<DataGridTextColumn Header="Billed Amount" Binding="{Binding FrAmount}"/>
 						<DataGridTextColumn Header="Client" Binding="{Binding CustCode}"/>
