@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
         <WrapPanel Grid.Row="0">
             <TextBlock Text="Client: "></TextBlock>
-            <ComboBox Name="ClientList" MinWidth="50" SelectionChanged="ClientList_SelectionChanged" ItemsSource="{Binding}" DataContext="{StaticResource ClientList}"></ComboBox>
+            <ComboBox IsEditable="True" Name="ClientList" MinWidth="50" SelectionChanged="ClientList_SelectionChanged" ItemsSource="{Binding}" DataContext="{StaticResource ClientList}"></ComboBox>
             <TextBlock Text="FromDate: "></TextBlock>
             <DatePicker Name="FromDate" CalendarClosed="ToDate_CalendarClosed"></DatePicker>
             <TextBlock Text="ToDate: "></TextBlock>

@@ -114,5 +114,6 @@ namespace FinalUi
         {
             ClientReport window = new ClientReport(); window.Show();
         }
+
     }
 }

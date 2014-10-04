@@ -101,7 +101,7 @@ namespace FinalUi
             string mainAmount = source.Sum(x => x.FrAmount).ToString();
             repParams.Add(new ReportParameter("MainAmountString", mainAmount));
             repParams.Add(new ReportParameter("TaxPercentageString", TaxBox.Text));
-            double taxamount = double.Parse(TaxBox.Text) * double.Parse(mainAmount) / 100;
+            double taxamount = double.Parse(TaxBox.Text) * double.Parse(mainAmount) / 100 ;
             repParams.Add(new ReportParameter("TaxAmountString", taxamount.ToString()));
             repParams.Add(new ReportParameter("MiscellaneousAmountString", MiscBox.Text));
             double totalAmount = double.Parse(mainAmount) + taxamount + double.Parse(MiscBox.Text) + double.Parse(PreviousDueTextBox.Text);
