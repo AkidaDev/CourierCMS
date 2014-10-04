@@ -53,10 +53,8 @@ namespace FinalUi
             {
                 filename.Text = filename1 = file.FileName;
             }
-
                 this.selected_Circle.Visibility = Visibility.Visible;
                 this.selected1_Circle.Visibility = Visibility.Hidden;
-            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

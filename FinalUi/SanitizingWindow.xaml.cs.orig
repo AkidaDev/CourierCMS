@@ -101,7 +101,7 @@ namespace FinalUi
             data.Type = TypeComboBox.Text;
             data.BookingDate = (DateTime)InsertionDate.SelectedDate;
             data.DOX = DoxCombobox.Text.ElementAt(0);
-            data.BilledWeight = float.Parse(this.BilledWeightTextBox.Text);
+            data.BilledWeight = data.FrWeight;
             if (isDataInContext)
             {
                 data = db.RuntimeDatas.Single(x => x.Id == data.Id);
@@ -112,7 +112,6 @@ namespace FinalUi
                 data.Destination = db.Cities.Where(x => x.CITY_DESC == Destination.Text).Select(y => y.CITY_CODE).FirstOrDefault();
                 data.DestinationPin = Decimal.Parse(DestinationPin.Text);
                 data.CustCode = CustomerSelected.Text;
-                data.BilledWeight = float.Parse(this.BilledWeightTextBox.Text);
             }
             else
             {
@@ -125,10 +124,6 @@ namespace FinalUi
                 db.RuntimeMetas.InsertOnSubmit(metaData);
                 dataListContext.AddNewItem(data);
             }
-            var c = db.Cities.Where(x => x.CITY_CODE == data.Destination && x.CITY_STATUS == "A").FirstOrDefault();
-            if (c == null)
-                c = db.Cities.SingleOrDefault(x => x.CITY_CODE == "DEL");
-            data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination, (double)data.BilledWeight, c.ZONE, data.Type, (char)data.DOX);
             try
             {
                 db.SubmitChanges();
@@ -219,11 +214,7 @@ namespace FinalUi
                 BilledAmount.Text = data.FrAmount.ToString();
             else
                 BilledAmount.Text = "";
-            if (data.BilledWeight != null)
-                this.BilledWeightTextBox.Text = data.BilledWeight.ToString();
-            else
-                this.BilledWeightTextBox.Text = "";
-            if (data.Type != "" && data.Type != null)
+            if (data.Type != "")
                 TypeComboBox.Text = data.Type.Trim();
             if (data.Mode != "")
                 MODE.Text = data.Mode.Trim();

@@ -107,5 +107,16 @@ namespace FinalUi.Properties {
                 return ((string)(this["BillingDatabaseConnectionString7"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=KHANCOMPUTER\\SQLExpress;Initial Catalog=BillingDatabase;Integrated Se" +
+            "curity=True")]
+        public string BillingDatabaseConnectionString8 {
+            get {
+                return ((string)(this["BillingDatabaseConnectionString8"]));
+            }
+        }
     }
 }
