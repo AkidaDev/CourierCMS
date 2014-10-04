@@ -27,10 +27,9 @@ namespace FinalUi
         List<RuntimeData> dataGridSource;
         Microsoft.Reporting.WinForms.ReportDataSource rs;
         public PrintWindow(List<RuntimeData> data, Client client, DateTime toDate, DateTime fromDate, double tax, double previousDue)
-            : this(data)
+            : this(data,toDate,fromDate)
         {
-            ToDate.SelectedDate = toDate.Date;
-            FromDate.SelectedDate = fromDate.Date;
+           
             ToDate.IsEnabled = false;
             FromDate.IsEnabled = false;
             ClientList.SelectedItem = client.CLCODE;
@@ -42,14 +41,18 @@ namespace FinalUi
             MiscBox.Text = "0";
             printObj();
         }
-        public PrintWindow(List<RuntimeData> data)
+        public PrintWindow(List<RuntimeData> data,DateTime toDate, DateTime fromDate)
         {
             InitializeComponent();
+            ToDate.SelectedDate = toDate.Date;
+            FromDate.SelectedDate = fromDate.Date;
+            TaxBox.Text = Configs.Default.ServiceTax;
+            
             ClientListSource = (CollectionViewSource)FindResource("ClientList");
             DataGridSource = (CollectionViewSource)FindResource("DataGridDataSource");
             dataGridSource = data;
             BillingDataDataContext db = new BillingDataDataContext();
-            ClientListSource.Source = db.Clients.Select(x => x.CLCODE);
+            ClientListSource.Source = db.Clients;
             rs = new Microsoft.Reporting.WinForms.ReportDataSource();
             rs.Name = "DataSet1";
             rs.Value = dataGridSource;
@@ -66,7 +69,7 @@ namespace FinalUi
             if (ClientList.SelectedValue != null && ToDate.SelectedDate != null && FromDate.SelectedDate != null)
             {
 
-                DataGridSource.Source = dataGridSource.Where(x => x.CustCode == (string)ClientList.SelectedValue && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
+                DataGridSource.Source = dataGridSource.Where(x => x.CustCode == ((Client)ClientList.SelectedValue).CLCODE && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
             }
         }
         private void ToDate_CalendarClosed(object sender, RoutedEventArgs e)
@@ -76,17 +79,18 @@ namespace FinalUi
 
         private void ClientList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            TaxBox.Text = ((Client)ClientList.SelectedItem).FUEL.ToString() ;
             RefreshDataGridSource();
         }
         private void printObj(Client client = null)
         {
 
             BillingDataDataContext db = new BillingDataDataContext();
-            List<RuntimeData> source = dataGridSource.Where(x => x.CustCode == ClientList.Text && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
+            List<RuntimeData> source = dataGridSource.Where(x => x.CustCode == ((Client)ClientList.SelectedItem).CLCODE && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
             rs.Value = source;
             Client clc;
             if (client == null)
-                clc = db.Clients.SingleOrDefault(x => x.CLCODE == ClientList.Text);
+                clc = db.Clients.SingleOrDefault(x => x.CLCODE == ((Client)ClientList.SelectedItem).CLCODE);
             else
                 clc = client;
             BillViewer.LocalReport.DataSources.Clear();
@@ -100,8 +104,11 @@ namespace FinalUi
             repParams.Add(new ReportParameter("DescriptionString", descriptionString));
             string mainAmount = source.Sum(x => x.FrAmount).ToString();
             repParams.Add(new ReportParameter("MainAmountString", mainAmount));
-            repParams.Add(new ReportParameter("TaxPercentageString", TaxBox.Text));
-            double taxamount = double.Parse(TaxBox.Text) * double.Parse(mainAmount) / 100;
+            repParams.Add(new ReportParameter("FuelString", TaxBox.Text));
+            repParams.Add(new ReportParameter("ServiceTaxString", ServiceTaxBox.Text));
+            double tax = double.Parse(TaxBox.Text) + double.Parse(ServiceTaxBox.Text);
+            repParams.Add(new ReportParameter("TaxPercentageString", tax.ToString()));
+            double taxamount = tax * double.Parse(mainAmount) / 100;
             repParams.Add(new ReportParameter("TaxAmountString", taxamount.ToString()));
             repParams.Add(new ReportParameter("MiscellaneousAmountString", MiscBox.Text));
             double totalAmount = double.Parse(mainAmount) + taxamount + double.Parse(MiscBox.Text) + double.Parse(PreviousDueTextBox.Text);
@@ -117,7 +124,8 @@ namespace FinalUi
             repParams.Add(new ReportParameter("ClientName", clc.CLNAME));
             repParams.Add(new ReportParameter("ClientAddress", clc.ADDRESS));
             repParams.Add(new ReportParameter("ClientPhoneNo", clc.CONTACTNO));
-            repParams.Add(new ReportParameter("InvoiceNumber", Guid.NewGuid().ToString()));
+
+            repParams.Add(new ReportParameter("InvoiceNumber", DateTime.Now.ToString("yyyyMMddhhmm")));
             BillViewer.LocalReport.SetParameters(repParams);
             BillViewer.ShowExportButton = true;
 

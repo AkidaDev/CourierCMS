@@ -92,8 +92,7 @@ namespace FinalUi
                 }
             }
             bool areNullAllowed = selectedClientList.Select(x => x.CLCODE).Contains("<NONE>");
-            if (selectedClientList.Count > 0)
-                fData = fData.Where(x => selectedClientList.Select(y => y.CLCODE).Contains(x.CustCode) || (x.CustCode == null && areNullAllowed));
+            fData = fData.Where(x => selectedClientList.Select(y => y.CLCODE).Contains(x.CustCode) || (x.CustCode == null && areNullAllowed));
             fData = fData.Where(x => x.BookingDate <= toDate && x.BookingDate >= fromDate);
             if (startConnNo != "" && endConnNo != "")
                 fData = fData.Where(x => x.ConsignmentNo.CompareTo(startConnNo) >= 0 && x.ConsignmentNo.CompareTo(endConnNo) <= 0);

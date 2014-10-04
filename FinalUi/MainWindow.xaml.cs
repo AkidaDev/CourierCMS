@@ -240,9 +240,9 @@ namespace FinalUi
 
         private void ExecutePrint(object sender, ExecutedRoutedEventArgs e)
         {
-
-            PrintWindow win = new PrintWindow(dataGridHelper.getCurrentDataStack);
-            win.Show();
+            List<RuntimeData> cData = dataGridHelper.getCurrentDataStack;
+            PrintWindow win = new PrintWindow(cData, cData.Select(x => x.BookingDate).Max(), cData.Select(x => x.BookingDate).Min());
+           win.Show();
         }
         private void CanExecutePrintCommand(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -430,7 +430,20 @@ namespace FinalUi
                     toDate_loadDataWin = dataWind.toDate;
                     fromDate_loadDataWin = dataWind.fromDate;
                 }
-                LoadWorker.RunWorkerAsync(dataWind.data);
+                
+             //   LoadWorker.RunWorkerAsync(dataWind.data);
+                DBHelper help = new DBHelper();
+                string response;
+              //  try
+                {
+                    help.insertRuntimeData(dataWind.data, dataGridHelper.currentSheetNumber, isLoadedFromFile, toDate_loadDataWin, fromDate_loadDataWin);
+                    response = "Data Loading Successful";
+                }
+                /*catch (Exception ex)
+                {
+                    response = ex.Message;
+                }*/
+               
             }
         }
 

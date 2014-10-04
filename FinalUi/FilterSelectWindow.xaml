@@ -45,10 +45,10 @@
                     <DataGridTextColumn Header="Client.:" Width="198" Binding="{Binding NameAndCode}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button  Content="Add All >>"  Canvas.Left="241.223" Canvas.Top="263.994" Width="66.55"/>
+            <Button Name="AddAllButton" Click="AddAllButton_Click"  Content="Add All >>"  Canvas.Left="241.223" Canvas.Top="263.994" Width="66.55"/>
             <Button   Name="AddClient" Content="Add >>" Click="AddClient_Click" Canvas.Left="241.223" Canvas.Top="290.778" Width="66.55"/>
             <Button  Name="RemoveClient" Content="&lt;&lt; Remove" Click="RemoveClient_Click" Canvas.Left="241.221" Canvas.Top="312.656"/>
-			<Button  Content="&lt;&lt; Clear All" Canvas.Left="241.223" Canvas.Top="340.108" Width="66.55"/>
+			<Button Name="ClearAllButton" Click="ClearAllButton_Click"  Content="&lt;&lt; Clear All" Canvas.Left="241.223" Canvas.Top="340.108" Width="66.55"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="87.99" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="From .:" Canvas.Top="199"/>
             <DatePicker Name="FromDate" Canvas.Left="146" Canvas.Top="189"   Height="26"  Width="124"  BorderThickness="0" Padding="0 4 0 0"/>
             <Path x:Name="Rectangle_2" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="27" Canvas.Left="144" Canvas.Top="188" Width="98" Stroke="Black"/>

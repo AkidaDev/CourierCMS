@@ -286,6 +286,7 @@
     <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
     <Parameter Name="ToDate" Parameter="toDate" Type="System.DateTime" DbType="DateTime" />
     <Parameter Name="FromDate" Parameter="fromDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.sp_SaveDataFromRunToTran" Method="sp_SaveDataFromRunToTran">
     <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
