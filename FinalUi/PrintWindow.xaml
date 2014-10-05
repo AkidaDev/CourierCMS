@@ -27,7 +27,10 @@
             <TextBox x:Name="ServiceTaxBox" Width="50"/>
             <TextBlock Text="Miscellaneous Charges"/>
             <TextBox x:Name="MiscBox" Width="50"/>
+            <TextBlock Text="Remarks"/>
+            <TextBox Name="RemarkBox" Width="100"/>
             <Button HorizontalAlignment="Right" Content="Print" Click="Button_Click"/>
+            <Button Name="SaveInvoiceButton" Click="SaveInvoiceButton_Click" Content="Save this invoice" Margin="2 0 0 0"/>
         </WrapPanel>
 
         <WindowsFormsHost Grid.Row="1">
