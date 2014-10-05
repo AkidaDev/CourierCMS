@@ -210,6 +210,9 @@
     <Compile Include="TestingMainWindow.xaml.cs">
       <DependentUpon>TestingMainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TestingPermisstion.xaml.cs">
+      <DependentUpon>TestingPermisstion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TestingReporting.xaml.cs">
       <DependentUpon>TestingReporting.xaml</DependentUpon>
     </Compile>
@@ -379,6 +382,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TestingMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestingPermisstion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
