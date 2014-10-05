@@ -144,9 +144,6 @@
     <Compile Include="BillReportWindow.xaml.cs">
       <DependentUpon>BillReportWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CityWindow.xaml.cs">
-      <DependentUpon>CityWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ClientReport.xaml.cs">
       <DependentUpon>ClientReport.xaml</DependentUpon>
     </Compile>
@@ -263,10 +260,6 @@
     <Page Include="Blue.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="CityWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ClientReport.xaml">
       <SubType>Designer</SubType>
