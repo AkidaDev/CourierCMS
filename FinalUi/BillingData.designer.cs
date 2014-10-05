@@ -87,7 +87,7 @@ namespace FinalUi
     #endregion
 		
 		public BillingDataDataContext() : 
-				base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString7, mappingSource)
+				base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString6, mappingSource)
 		{
 			OnCreated();
 		}
@@ -299,18 +299,16 @@ namespace FinalUi
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferPaymentDetails")]
-		public int sp_TransferPaymentDetails()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferMInvoiceToBInvoice", IsComposable=true)]
+		public object sp_TransferMInvoiceToBInvoice()
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((int)(result.ReturnValue));
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod()))).ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_ImportZoneData")]
-		public int sp_ImportZoneData()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_ImportZoneData", IsComposable=true)]
+		public object sp_ImportZoneData()
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((int)(result.ReturnValue));
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod()))).ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_LoadToRuntimeFromDate")]
@@ -327,18 +325,16 @@ namespace FinalUi
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail")]
-		public int sp_TransferMInvoiceDetailToBInvoiceDetail()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail", IsComposable=true)]
+		public object sp_TransferMInvoiceDetailToBInvoiceDetail()
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((int)(result.ReturnValue));
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod()))).ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferMInvoiceToBInvoice")]
-		public int sp_TransferMInvoiceToBInvoice()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferPaymentDetails", IsComposable=true)]
+		public object sp_TransferPaymentDetails()
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((int)(result.ReturnValue));
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod()))).ReturnValue));
 		}
 	}
 	
@@ -1358,6 +1354,8 @@ namespace FinalUi
 		
 		private string _APPTRF;
 		
+		private System.Nullable<bool> _CASTATUS;
+		
 		private EntitySet<Assignment> _Assignments;
 		
 		private EntitySet<PaymentEntry> _PaymentEntries;
@@ -1410,6 +1408,8 @@ namespace FinalUi
     partial void OnBOYNAMEChanged();
     partial void OnAPPTRFChanging(string value);
     partial void OnAPPTRFChanged();
+    partial void OnCASTATUSChanging(System.Nullable<bool> value);
+    partial void OnCASTATUSChanged();
     #endregion
 		
 		public Client()
@@ -1836,6 +1836,26 @@ namespace FinalUi
 					this._APPTRF = value;
 					this.SendPropertyChanged("APPTRF");
 					this.OnAPPTRFChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CASTATUS", DbType="Bit")]
+		public System.Nullable<bool> CASTATUS
+		{
+			get
+			{
+				return this._CASTATUS;
+			}
+			set
+			{
+				if ((this._CASTATUS != value))
+				{
+					this.OnCASTATUSChanging(value);
+					this.SendPropertyChanging();
+					this._CASTATUS = value;
+					this.SendPropertyChanged("CASTATUS");
+					this.OnCASTATUSChanged();
 				}
 			}
 		}

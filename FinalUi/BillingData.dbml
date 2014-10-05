@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BillingDatabase" Class="BillingDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=SYSTEM;Initial Catalog=BillingDatabase;User ID=sa" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString7" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=PANKAJ\SQLEXPRESS;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString6" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Assignment" Member="Assignments">
     <Type Name="Assignment">
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -66,6 +66,7 @@
       <Column Name="BOYCD" Type="System.String" DbType="Char(10)" CanBeNull="true" />
       <Column Name="BOYNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="APPTRF" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="CASTATUS" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="Client_Assignment" Member="Assignments" ThisKey="CLCODE" OtherKey="ClientCode" Type="Assignment" />
       <Association Name="Client_PaymentEntry" Member="PaymentEntries" ThisKey="CLCODE" OtherKey="ClientCode" Type="PaymentEntry" />
       <Association Name="Client_Transaction" Member="Transactions" ThisKey="CLCODE" OtherKey="CustCode" Type="Transaction" />
@@ -315,11 +316,11 @@
     <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_TransferPaymentDetails" Method="sp_TransferPaymentDetails">
-    <Return Type="System.Int32" />
+  <Function Name="dbo.sp_TransferMInvoiceToBInvoice" Method="sp_TransferMInvoiceToBInvoice" IsComposable="true">
+    <Return Type="object" />
   </Function>
-  <Function Name="dbo.sp_ImportZoneData" Method="sp_ImportZoneData">
-    <Return Type="System.Int32" />
+  <Function Name="dbo.sp_ImportZoneData" Method="sp_ImportZoneData" IsComposable="true">
+    <Return Type="object" />
   </Function>
   <Function Name="dbo.sp_LoadToRuntimeFromDate" Method="sp_LoadToRuntimeFromDate">
     <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
@@ -333,10 +334,10 @@
     <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail" Method="sp_TransferMInvoiceDetailToBInvoiceDetail">
-    <Return Type="System.Int32" />
+  <Function Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail" Method="sp_TransferMInvoiceDetailToBInvoiceDetail" IsComposable="true">
+    <Return Type="object" />
   </Function>
-  <Function Name="dbo.sp_TransferMInvoiceToBInvoice" Method="sp_TransferMInvoiceToBInvoice">
-    <Return Type="System.Int32" />
+  <Function Name="dbo.sp_TransferPaymentDetails" Method="sp_TransferPaymentDetails" IsComposable="true">
+    <Return Type="object" />
   </Function>
 </Database>

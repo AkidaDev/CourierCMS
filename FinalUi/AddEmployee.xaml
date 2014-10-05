@@ -61,7 +61,7 @@
                 <Button.Content>
                     <WrapPanel Margin="6,3,6,3">
                         <Path x:Name="AddFilter" Data="F1M13.455,5.818C13.455,5.818 13.455,9.636 13.455,9.636 13.455,9.636 9.636,9.636 9.636,9.636 9.636,9.636 9.636,11.545 9.636,11.545 9.636,11.545 13.455,11.545 13.455,11.545 13.455,11.545 13.455,15.364 13.455,15.364 13.455,15.364 15.364,15.364 15.364,15.364 15.364,15.364 15.364,11.545 15.364,11.545 15.364,11.545 19.182,11.545 19.182,11.545 19.182,11.545 19.182,9.636 19.182,9.636 19.182,9.636 15.364,9.636 15.364,9.636 15.364,9.636 15.364,5.818 15.364,5.818 15.364,5.818 13.455,5.818 13.455,5.818z M2,5.818C2,5.818 3.909,5.818 3.909,5.818 3.909,5.818 3.909,21.091 3.909,21.091 3.909,21.091 19.182,21.091 19.182,21.091 19.182,21.091 19.182,23 19.182,23 19.182,23 3.909,23 3.909,23 2.859,23 2,22.141 2,21.091 2,21.091 2,5.818 2,5.818z M7.727,2C7.727,2 21.091,2 21.091,2 22.141,2 23,2.859 23,3.909 23,3.909 23,17.273 23,17.273 23,18.323 22.141,19.182 21.091,19.182 21.091,19.182 7.727,19.182 7.727,19.182 6.677,19.182 5.818,18.323 5.818,17.273 5.818,17.273 5.818,3.909 5.818,3.909 5.818,2.859 6.677,2 7.727,2z" Fill="Black" Height="24" Width="24"/>
-                        <TextBlock x:Name="Add_Filter" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"  LineHeight="18" TextAlignment="Center" Text="Add Employee" Padding="3 3 0 0"/>
+                        <TextBlock Name="Add_FilterE" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"  LineHeight="18" TextAlignment="Center" Text="Add Employee" Padding="3 3 0 0"/>
                     </WrapPanel>
                 </Button.Content>
             </Button>
@@ -72,7 +72,7 @@
             <Button   Name="AddPermisstion" Content="Add >>" Click="AddPermisstion_Click" Canvas.Left="129.167" Canvas.Top="295.167" Width="66.55"/>
             <Button  Name="RemovePermisstion" Content="&lt;&lt; Remove" Click="RemovePermisstion_Click" Margin="129.167,324.166,350.167,56.501"></Button>
             <Path Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="#FFCBCBCB" Height="26" Canvas.Left="0" Canvas.Top="0" Width="550" Stretch="Fill" Stroke="Black" />
-            <TextBlock FontSize="16" Height="25" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="0" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Add Employee" Canvas.Top="6" Width="548" FontFamily="Arial"/>
+            <TextBlock FontSize="16" Height="25" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="0" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap"  Name="AddUpdateTitle" Text="Add Employee" Canvas.Top="6" Width="548" FontFamily="Arial"/>
             <Path MouseDown="DragthisWindow" x:Name="Memu_bar" Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26" Canvas.Left="0" Canvas.Top="0" Width="550" Stretch="Fill" />
             <Button ToolTip="Close" Height="18" Canvas.Left="510" Click="Button_Click_Close" Canvas.Top="4" Width="35" Style="{StaticResource all}">
                 <Path x:Name="close" Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,

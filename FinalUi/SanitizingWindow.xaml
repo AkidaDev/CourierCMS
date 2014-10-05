@@ -10,7 +10,7 @@
         <CollectionViewSource x:Key="CityList" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="ServiceList" CollectionViewType="ListCollectionView"/>
     </Window.Resources>
-    <Grid  Height="550" UseLayoutRounding="False"  Width="650">
+    <Grid   Height="550" UseLayoutRounding="False"  Width="650">
         <Grid.Effect>
             <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
         </Grid.Effect>
