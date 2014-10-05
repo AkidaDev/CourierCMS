@@ -270,6 +270,46 @@
       <Association Name="Permission_User_permission" Member="Permission" ThisKey="per_id" OtherKey="id" Type="Permission" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.AccountStatement" Member="AccountStatements">
+    <Type Name="AccountStatement">
+      <Column Name="Id" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TransactionDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="ClientCode" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
+      <Column Name="RecievedAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PayAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RateAssignmentReportingView" Member="RateAssignmentReportingViews">
+    <Type Name="RateAssignmentReportingView">
+      <Column Name="ClCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="ServiceCode" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ZoneCode" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="RateCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DoxRate" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="NonDoxRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StepWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BalanceView" Member="BalanceViews">
+    <Type Name="BalanceView">
+      <Column Name="PC" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentRecieved" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="AmountBilled" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NetBalance" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PROFITVIEW" Member="PROFITVIEWs">
+    <Type Name="PROFITVIEW">
+      <Column Name="TotalPayed" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
+      <Column Name="TotalChargedAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CustCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="netProfit" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FUEL" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.sp_deleteSheetFromRuntime" Method="sp_deleteSheetFromRuntime">
     <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
