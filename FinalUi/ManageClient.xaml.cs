@@ -70,5 +70,10 @@ namespace FinalUi
         {
             this.Close();
         }
+
+        private void showReport_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

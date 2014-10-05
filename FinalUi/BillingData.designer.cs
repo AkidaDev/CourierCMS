@@ -260,6 +260,14 @@ namespace FinalUi
 			}
 		}
 		
+		public System.Data.Linq.Table<RateAssignmentReportingView> RateAssignmentReportingViews
+		{
+			get
+			{
+				return this.GetTable<RateAssignmentReportingView>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_deleteSheetFromRuntime")]
 		public int sp_deleteSheetFromRuntime([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserName", DbType="VarChar(50)")] string userName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SheetNo", DbType="Int")] System.Nullable<int> sheetNo)
 		{
@@ -6078,6 +6086,195 @@ namespace FinalUi
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.RateAssignmentReportingView")]
+	public partial class RateAssignmentReportingView
+	{
+		
+		private string _ClCode;
+		
+		private string _ServiceCode;
+		
+		private string _ZoneCode;
+		
+		private string _RateCode;
+		
+		private string _Description;
+		
+		private double _DoxRate;
+		
+		private System.Nullable<double> _NonDoxRate;
+		
+		private double _Weight;
+		
+		private int _Type;
+		
+		private System.Nullable<double> _StepWeight;
+		
+		public RateAssignmentReportingView()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClCode", DbType="VarChar(6)")]
+		public string ClCode
+		{
+			get
+			{
+				return this._ClCode;
+			}
+			set
+			{
+				if ((this._ClCode != value))
+				{
+					this._ClCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceCode", DbType="NVarChar(255)")]
+		public string ServiceCode
+		{
+			get
+			{
+				return this._ServiceCode;
+			}
+			set
+			{
+				if ((this._ServiceCode != value))
+				{
+					this._ServiceCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZoneCode", DbType="VarChar(30)")]
+		public string ZoneCode
+		{
+			get
+			{
+				return this._ZoneCode;
+			}
+			set
+			{
+				if ((this._ZoneCode != value))
+				{
+					this._ZoneCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RateCode", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string RateCode
+		{
+			get
+			{
+				return this._RateCode;
+			}
+			set
+			{
+				if ((this._RateCode != value))
+				{
+					this._RateCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(MAX)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this._Description = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DoxRate", DbType="Float NOT NULL")]
+		public double DoxRate
+		{
+			get
+			{
+				return this._DoxRate;
+			}
+			set
+			{
+				if ((this._DoxRate != value))
+				{
+					this._DoxRate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NonDoxRate", DbType="Float")]
+		public System.Nullable<double> NonDoxRate
+		{
+			get
+			{
+				return this._NonDoxRate;
+			}
+			set
+			{
+				if ((this._NonDoxRate != value))
+				{
+					this._NonDoxRate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Weight", DbType="Float NOT NULL")]
+		public double Weight
+		{
+			get
+			{
+				return this._Weight;
+			}
+			set
+			{
+				if ((this._Weight != value))
+				{
+					this._Weight = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="Int NOT NULL")]
+		public int Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this._Type = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StepWeight", DbType="Float")]
+		public System.Nullable<double> StepWeight
+		{
+			get
+			{
+				return this._StepWeight;
+			}
+			set
+			{
+				if ((this._StepWeight != value))
+				{
+					this._StepWeight = value;
+				}
 			}
 		}
 	}

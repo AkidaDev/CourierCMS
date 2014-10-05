@@ -15,6 +15,13 @@
 
         <Canvas Name="Container" ClipToBounds="True" HorizontalAlignment="Left" Height="405" UseLayoutRounding="False" VerticalAlignment="Top" Width="550" Background="White">
 			<WrapPanel Canvas.Top="60" Canvas.Left="60">
+                <Button Name="showReport" Click="showReport_Click" Style="{StaticResource all}">
+                    <Button.Content>
+                        <WrapPanel Margin="6,3,6,3">
+                            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"  LineHeight="18" TextAlignment="Center" Text="Show Report" Padding="3 3 0 0"/>
+                        </WrapPanel>
+                    </Button.Content>
+                </Button>
             <Button x:Name="update" Click="update_Click" Canvas.Left="404.5" Canvas.Top="233" Style="{StaticResource all}" Margin="0,0,10,0">
                 <Button.Content>
                     <WrapPanel Margin="6,3,6,3">

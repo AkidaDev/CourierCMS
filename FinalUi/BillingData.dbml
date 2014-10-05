@@ -270,6 +270,20 @@
       <Association Name="Permission_User_permission" Member="Permission" ThisKey="per_id" OtherKey="id" Type="Permission" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.RateAssignmentReportingView" Member="RateAssignmentReportingViews">
+    <Type Name="RateAssignmentReportingView">
+      <Column Name="ClCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="ServiceCode" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ZoneCode" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="RateCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DoxRate" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="NonDoxRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StepWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.sp_deleteSheetFromRuntime" Method="sp_deleteSheetFromRuntime">
     <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />

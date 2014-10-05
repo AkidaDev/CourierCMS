@@ -141,11 +141,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BillingData.dbml</DependentUpon>
     </Compile>
+    <Compile Include="BillingDatabaseDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BillingDatabaseDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="BillReportWindow.xaml.cs">
       <DependentUpon>BillReportWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="CityWindow.xaml.cs">
       <DependentUpon>CityWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClientAnalyzingWindow.xaml.cs">
+      <DependentUpon>ClientAnalyzingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ClientReport.xaml.cs">
       <DependentUpon>ClientReport.xaml</DependentUpon>
@@ -191,6 +199,7 @@
     <Compile Include="RateAssignment.xaml.cs">
       <DependentUpon>RateAssignment.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RateAssignmentReportingObject.cs" />
     <Compile Include="RateWindow.xaml.cs">
       <DependentUpon>RateWindow.xaml</DependentUpon>
     </Compile>
@@ -262,6 +271,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="CityWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClientAnalyzingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -417,6 +430,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="ClientAnalysis.rdlc" />
     <EmbeddedResource Include="ClientReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -439,6 +453,17 @@
       <LastGenOutput>BillingData.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <None Include="BillingDatabaseDataSet.xsc">
+      <DependentUpon>BillingDatabaseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="BillingDatabaseDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BillingDatabaseDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BillingDatabaseDataSet.xss">
+      <DependentUpon>BillingDatabaseDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Configs.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Configs.Designer.cs</LastGenOutput>
@@ -447,6 +472,11 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Assignment.datasource" />
     <None Include="Properties\DataSources\BillingDataDataContext.datasource" />
+    <None Include="Properties\DataSources\Extensions.datasource" />
+    <None Include="Properties\DataSources\Rate.datasource" />
+    <None Include="Properties\DataSources\RateAssignment.datasource" />
+    <None Include="Properties\DataSources\RateAssignmentReportingView.datasource" />
+    <None Include="Properties\DataSources\RateDetail.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

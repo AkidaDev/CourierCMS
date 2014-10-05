@@ -84,7 +84,31 @@ namespace FinalUi
         }
         private void printObj(Client client = null)
         {
-
+            string errorMsg = "";
+            if (ToDate.SelectedDate == null || FromDate.SelectedDate == null || ToDate.SelectedDate < FromDate.SelectedDate)
+                errorMsg += "Please set the date properly. \n";
+            if (ServiceTaxBox.Text == "")
+                ServiceTaxBox.Text = "0";
+            double temp;
+            if (TaxBox.Text == "")
+                TaxBox.Text = "0";
+            if (MiscBox.Text == "")
+                MiscBox.Text = "0";
+            if (PreviousDueTextBox.Text == "")
+                PreviousDueTextBox.Text = "0";
+            if (double.TryParse(TaxBox.Text, out temp) == false)
+                errorMsg += "Please enter fuel surcharge correctly. \n";
+            if (double.TryParse(ServiceTaxBox.Text, out temp) == false)
+                errorMsg += "Please enter service tax correctly. \n";
+            if (double.TryParse(MiscBox.Text, out temp) == false)
+                errorMsg += "Please enter miscellenaeous charge correctly. \n";
+            if (double.TryParse(PreviousDueTextBox.Text, out temp) == false)
+                errorMsg += "Please enter previous charge correctly. \n";
+            if (errorMsg != "")
+            {
+                MessageBox.Show(errorMsg);
+                return;
+            }
             BillingDataDataContext db = new BillingDataDataContext();
             List<RuntimeData> source = dataGridSource.Where(x => x.CustCode == ((Client)ClientList.SelectedItem).CLCODE && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
             rs.Value = source;
