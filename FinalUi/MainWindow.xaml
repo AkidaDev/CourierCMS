@@ -15,7 +15,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		<CommandBinding Command="ApplicationCommands.Close" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
 		<CommandBinding Command="ApplicationCommands.Print" Executed="ExecutePrint" CanExecute="CanExecutePrintCommand"/>
     </Window.CommandBindings>
-    <Grid x:Name="MainGrid" Background="#FFBBCADC"><!--light purple = #9f00a7, blue = #a32d89ef, yellow = #a3ffc40d, teal = #00aba9, camel = #e3a21a, green = #00a300 -->
+    <Grid x:Name="MainGrid" Background="#FFBBCADC"><!--light purple = #9f00a7, blue = #a32d89ef, yellow = #a3ffc40d, teal = #00aba9, camel = #dae3a21a, green = #00a300 -->
 		<Grid.RowDefinitions>
 			<RowDefinition Height="5"/>
 			<RowDefinition Height="*"/>
@@ -38,13 +38,14 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     <MenuItem ToolTip="Open advanced options"  Header="View" Margin="10 0 0 0">
                         <MenuItem Header="Managment">
                             <MenuItem Header="Add City" Click="MenuItem_Click_1" />
-                            <MenuItem Header="Clients" x:Name="ManageClient" Click="ManageClient_Click"/>
+                            <MenuItem Header="Clients" x:Name="ManageClient" Click="ManageClient_Click"/>	
                             <MenuItem Header="Employees" x:Name="ManageEmployee" Click="ManageEmployee_Click"/>
                         </MenuItem>
                         <MenuItem Header="Payment Entry"  Name="PaymentEntryMenuItem" Click="PaymentEntry_Click"/>
                         <MenuItem Header="Payment Recived"  Name="PaymentRecievedMenuItem"  Click="PaymentRecieved_Click"/>
-                        <MenuItem Header="Stock   Entry"  Name="StockEntryMenuItem" Click="StockEntry_Click"/>
+                        <MenuItem Header="Stock Entry"  Name="StockEntryMenuItem" Click="StockEntry_Click"/>
                         <MenuItem Header="Edit Rates" x:Name="RateWindowMenu" Click="RateWindowMenu_Click"/>
+                        <MenuItem Header="Client Report" x:Name="ClientReport" Click="ClientReport_Click"/>
                     </MenuItem>
                     <MenuItem ToolTip="Know more" Header="Help" Margin="10 0 0 0">
                         <MenuItem Header="About" x:Name="AboutMenuItem" Click="AboutMenuItem_Click"/>

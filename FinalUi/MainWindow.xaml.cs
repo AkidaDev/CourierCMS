@@ -816,7 +816,10 @@ namespace FinalUi
         {
             StockWindow window = new StockWindow(); window.ShowDialog();
         }
-
+		private void ClientReport_Click(object sender, RoutedEventArgs e)
+        {
+            ClientReportWindow window = new ClientReportWindow(); window.ShowDialog();
+        }
         private void servicetaxtreeviewitembutton_Click(object sender, RoutedEventArgs e)
         {
 

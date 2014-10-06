@@ -207,8 +207,8 @@
     <Compile Include="TestingMainWindow.xaml.cs">
       <DependentUpon>TestingMainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TestingReporting.xaml.cs">
-      <DependentUpon>TestingReporting.xaml</DependentUpon>
+    <Compile Include="AccountStatementReportingWindow.xaml.cs">
+      <DependentUpon>AccountStatementReportingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="testtheme.xaml.cs">
       <DependentUpon>testtheme.xaml</DependentUpon>
@@ -375,7 +375,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TestingReporting.xaml">
+    <Page Include="AccountStatementReportingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
