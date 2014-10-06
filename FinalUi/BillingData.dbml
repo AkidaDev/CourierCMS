@@ -7,16 +7,20 @@
       <Column Name="ClientCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
       <Column Name="ZoneCode" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="RateCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="ZONE_Assignment" Member="ZONE" ThisKey="ZoneCode" OtherKey="zcode" Type="ZONE" IsForeignKey="true" />
       <Association Name="Client_Assignment" Member="Client" ThisKey="ClientCode" OtherKey="CLCODE" Type="Client" IsForeignKey="true" />
       <Association Name="Rate_Assignment" Member="Rate" ThisKey="RateCode" OtherKey="RateCode" Type="Rate" IsForeignKey="true" />
       <Association Name="Service_Assignment" Member="Service" ThisKey="ServiceCode" OtherKey="SER_CODE" Type="Service" IsForeignKey="true" />
-      <Association Name="ZONE_Assignment" Member="ZONE" ThisKey="ZoneCode" OtherKey="zcode" Type="ZONE" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.world_cities_free" Member="world_cities_frees">
-    <Type Name="world_cities_free">
-      <Column Name="cc_fips" Type="System.String" DbType="NVarChar(2) NOT NULL" CanBeNull="false" />
-      <Column Name="full_name_nd" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+  <Table Name="dbo.ZONE" Member="ZONEs">
+    <Type Name="ZONE">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="zcode" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Zone_name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Mode" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="ZONE_Assignment" Member="Assignments" ThisKey="zcode" OtherKey="ZoneCode" Type="Assignment" />
+      <Association Name="ZONE_City" Member="Cities" ThisKey="zcode" OtherKey="ZONE" Type="City" />
     </Type>
   </Table>
   <Table Name="dbo.City" Member="Cities">
@@ -35,8 +39,8 @@
       <Column Name="CITY_CATG_PDN" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="city_category" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="ZONE" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Association Name="State_City" Member="State" ThisKey="CITY_STATE" OtherKey="STATE_CODE" Type="State" IsForeignKey="true" />
       <Association Name="ZONE_City" Member="ZONE1" ThisKey="ZONE" OtherKey="zcode" Type="ZONE" IsForeignKey="true" />
+      <Association Name="State_City" Member="State" ThisKey="CITY_STATE" OtherKey="STATE_CODE" Type="State" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Client" Member="Clients">
@@ -275,14 +279,10 @@
       <Association Name="Permission_User_permission" Member="Permission" ThisKey="per_id" OtherKey="id" Type="Permission" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.ZONE" Member="ZONEs">
-    <Type Name="ZONE">
-      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="zcode" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="Zone_name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="Mode" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Association Name="ZONE_Assignment" Member="Assignments" ThisKey="zcode" OtherKey="ZoneCode" Type="Assignment" />
-      <Association Name="ZONE_City" Member="Cities" ThisKey="zcode" OtherKey="ZONE" Type="City" />
+  <Table Name="dbo.world_cities_free" Member="world_cities_frees">
+    <Type Name="world_cities_free">
+      <Column Name="cc_fips" Type="System.String" DbType="NVarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="full_name_nd" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.AccountStatement" Member="AccountStatements">
@@ -356,7 +356,9 @@
     <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_TransferTransactionDetails" Method="sp_TransferTransactionDetails" />
+  <Function Name="dbo.sp_TransferTransactionDetails" Method="sp_TransferTransactionDetails" IsComposable="true">
+    <Return Type="object" />
+  </Function>
   <Function Name="dbo.sp_getRateReportingObject" Method="sp_getRateReportingObject">
     <Parameter Name="ClientCode" Parameter="clientCode" Type="System.String" DbType="VarChar(50)" />
     <ElementType Name="sp_getRateReportingObjectResult">
@@ -381,11 +383,25 @@
     <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_TransferClients" Method="sp_TransferClients" />
-  <Function Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail" Method="sp_TransferMInvoiceDetailToBInvoiceDetail" />
-  <Function Name="dbo.sp_TransferMInvoiceToBInvoice" Method="sp_TransferMInvoiceToBInvoice" />
-  <Function Name="dbo.sp_TransferPaymentDetails" Method="sp_TransferPaymentDetails" />
-  <Function Name="dbo.sp_TransferRatespart1" Method="sp_TransferRatespart1" />
-  <Function Name="dbo.sp_TransferRatespart2" Method="sp_TransferRatespart2" />
-  <Function Name="dbo.sp_ImportZoneData" Method="sp_ImportZoneData" />
+  <Function Name="dbo.sp_TransferClients" Method="sp_TransferClients" IsComposable="true">
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail" Method="sp_TransferMInvoiceDetailToBInvoiceDetail" IsComposable="true">
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.sp_TransferMInvoiceToBInvoice" Method="sp_TransferMInvoiceToBInvoice" IsComposable="true">
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.sp_TransferPaymentDetails" Method="sp_TransferPaymentDetails" IsComposable="true">
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.sp_TransferRatespart1" Method="sp_TransferRatespart1" IsComposable="true">
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.sp_TransferRatespart2" Method="sp_TransferRatespart2" IsComposable="true">
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.sp_ImportZoneData" Method="sp_ImportZoneData" IsComposable="true">
+    <Return Type="object" />
+  </Function>
 </Database>
