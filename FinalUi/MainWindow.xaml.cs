@@ -29,7 +29,7 @@ namespace FinalUi
 
         #endregion
         #region Global Objects
-        DataGridHelper dataGridHelper;
+		DataGridHelper dataGridHelper;
         CollectionViewSource dataGridSource;
         Dictionary<Button, int> buttonList;
         Button activeButton;
@@ -40,7 +40,7 @@ namespace FinalUi
         #endregion
         public MainWindow()
         {
-            SecurityModule.authenticate("dharmendra", "pass");
+			SecurityModule.authenticate("dharmendra", "pass");
             #region setupCode
             PreviewMouseMove += OnPreviewMouseMove;
             #endregion

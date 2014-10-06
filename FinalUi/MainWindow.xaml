@@ -4,7 +4,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:ee="http://schemas.microsoft.com/expression/2010/effects" x:Class="FinalUi.MainWindow"
 		Icon="Images/logo.png"
 		Title="Vortex" 
-		ResizeMode="CanResizeWithGrip"  BorderBrush="Transparent" AllowsTransparency="True" WindowStartupLocation="CenterScreen" WindowState="Normal" Width="1024" Height="700" WindowStyle="None">
+		 BorderBrush="Transparent" AllowsTransparency="True" WindowStartupLocation="CenterScreen" WindowState="Normal" Width="1024" Height="700" WindowStyle="None">
     <Window.Resources>
 		<CollectionViewSource x:Key="ClientCodeList" CollectionViewType="{x:Type ListCollectionView}"/>
 		<CollectionViewSource x:Key="DataGridDataContext" CollectionViewType="{x:Type ListCollectionView}"/>
@@ -50,9 +50,9 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                         <MenuItem Header="About" x:Name="AboutMenuItem" Click="AboutMenuItem_Click"/>
                     </MenuItem>
                 </Menu>
-                <TextBlock  FontSize="24" Height="26" TextAlignment="Center" Text="V" Width="100" FontFamily="Segoe UI Emoji" Margin="-67,-9,0,0" FontWeight="Bold"/>
-                <TextBlock  FontSize="18" Height="26" TextAlignment="Center" Text="ORTEX" Width="100" FontFamily="Segoe UI Emoji" Margin="0,2,0,0" />
-			<Canvas Margin="160,0,113,0">
+                <TextBlock Foreground="Black" FontSize="20" TextAlignment="Center"  IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="26" TextWrapping="Wrap" Text="ORTEX" Margin="38,2,0,0"/>
+        		<TextBlock Foreground="Black" FontSize="28" TextAlignment="Center"  IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="26" TextWrapping="Wrap" Text="V" FontWeight="Bold" Margin="-38,2,0,0"/>
+        	<Canvas Margin="160,0,113,0">
 				<Button MouseDoubleClick="NormalMaximize_Click" Style="{StaticResource window}">
 				<Path MouseDown="Grid_MouseDown" x:Name="Memu_bar" Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26.62" Canvas.Left="0" Canvas.Top="0" Stretch="Fill" Width="1920" />
 				</Button>
@@ -212,8 +212,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                                 </Style.Triggers>
                             </Style>
                         </StackPanel.Resources>
-				<ScrollViewer VerticalScrollBarVisibility="Auto" Height="Auto" HorizontalScrollBarVisibility="Disabled">
-                            <DataGrid RowHeaderWidth="0" IsReadOnly="True" x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False"  ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True"  Height="478" >
+				            <DataGrid RowHeaderWidth="0" IsReadOnly="True" x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False"  ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True"  Height="478" >
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ConnsignmentNo" Binding="{Binding ConsignmentNo}"/>
                                     <DataGridTextColumn Header="Weight" Binding="{Binding Weight}"/>
@@ -248,7 +247,6 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                                     </DataTemplate>
                                 </DataGrid.RowDetailsTemplate>
                             </DataGrid>
-						</ScrollViewer>
                     
 				<DockPanel x:Name="DataGridOptionpanel" Background="Transparent" VerticalAlignment="Bottom">
 				<WrapPanel x:Name="buttontabcanvaswrap" Margin="9,0,0,0" />
@@ -274,13 +272,14 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 					<TextBox ToolTip="No. of Rows" x:Name="DataGridNumOfRows" Width="30" Margin="3,0,11,0" Height="20" Text="{Binding rowsPerPage, Mode=TwoWay}" FontFamily="Segoe UI Semibold" TextAlignment="Center" BorderBrush="#FF7676FF"/>
 				</WrapPanel>
 			</DockPanel>
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="131" HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Bottom">
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="131" HorizontalScrollBarVisibility="Disabled">
 				<TextBlock Text="Log..." x:Name="MessageBlock" Background="White" Margin="0,0,0,0" />
             </ScrollViewer>
 		</StackPanel>
 		</Grid>
 	</StackPanel>
-			<Rectangle  x:Name="Rec_Top" Fill="Transparent"  Grid.Row="0" Grid.Column="1" MouseMove="Rec_MouseMove"  MouseDown="ResizeRectangle_PreviewMouseDown"/>
+			<Rectangle  x:Name="Rec_Top" Fill="Transparent"  Grid.Row="0" Grid.Column="1" MouseMove="Rec_MouseMove"  MouseDown="ResizeRectangle_PreviewMouseDown" />
 			<Rectangle  x:Name="Rec_Top_Left" Fill="Transparent"  Grid.Row="0" Grid.Column="0" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>
 			<Rectangle  x:Name="Rec_Top_Right" Fill="Transparent"  Grid.Row="0" Grid.Column="2" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown" />
 			<Rectangle  x:Name="Rec_Left" Fill="Transparent"  Grid.Row="1" Grid.Column="0" MouseMove="Rec_MouseMove"  MouseDown="ResizeRectangle_PreviewMouseDown"/>

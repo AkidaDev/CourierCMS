@@ -21,15 +21,15 @@
         			<ScaleTransform ScaleY="0.482" ScaleX="0.482"/>
         		</TextBlock.RenderTransform>
         	</TextBlock>
-        	<TextBlock Foreground="Black" FontSize="38" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="367" LineHeight="45" TextAlignment="Left" TextWrapping="Wrap" Text="   ORTEX" Canvas.Top="78"/>
-        	<TextBlock Foreground="Black" FontSize="48" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="368" LineHeight="45" TextAlignment="Left" TextWrapping="Wrap" Text="V" Canvas.Top="79" FontWeight="Bold"/>
+        	<TextBlock Foreground="Black" FontSize="34" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="402" LineHeight="45" TextAlignment="Left" TextWrapping="Wrap" Text="ORTEX" Canvas.Top="78"/>
+        	<TextBlock Foreground="Black" FontSize="48" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="374" LineHeight="45" TextAlignment="Left" TextWrapping="Wrap" Text="V" Canvas.Top="78" FontWeight="Bold"/>
         	<Button ToolTip="Close" Style="{StaticResource 1}" Click="CloseButton_Click" Name="CloseButton" Height="20" Canvas.Left="555" Canvas.Top="6" Width="40">
 			<Path Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,
 			14 3.2,14 2,12.8 2,12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,
 			6.8 12.8,2 12.8,2 12.8,2 14,3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" />
         	</Button>
 			<Button ToolTip="Minimize" Style="{StaticResource 1}"  Click="MinimizeButton_Click" Height="20" Canvas.Left="533" Canvas.Top="6" Width="20">
-			<Path x:Name="minimize" Data="F1M2,4C2,4 2,2 2,2 2,2 14,2 14,2 14,2 14,4 14,4 14,4 2,4 2,4z" Fill="Black" Margin="0,5,2,0" />
+			<Path x:Name="minimize" Data="F1M2,4C2,4 2,2 2,2 2,2 14,2 14,2 14,2 14,4 14,4 14,4 2,4 2,4z" Fill="Black" Margin="0,5,2,0"/>
 			</Button>
 		</Canvas>
 
