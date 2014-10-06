@@ -9,37 +9,20 @@ namespace FinalUi
 {
     class SecurityModule
     {
-        public enum Permissions 
+        private static List<Permission> permisstionList;
+        private static List<Permission> userpermissionList;
+        static SecurityModule()
         {
-            DataGroupAccess,
-            SanitizingGroupAccess,
-            FilterGroupAccess,
-            EmpoyeeGroupAccess,
-            PermissionGroupAccess,
-            LogGroupAccess,
-            ClientManagmentGroupAccess,
-            BillingGroupAccess,
-            ClientAnalysisGroupAccess,
+            BillingDataDataContext db = new BillingDataDataContext();
+            permisstionList = db.Permissions.ToList();
+            userpermissionList = new List<Permission>();
         }
-        public static bool hasPermission(string userName, Permissions Permission)
+        public static bool hasPermission(Guid id, string permission)
         {
-            List<string> roles = getUserRoles(userName);
-            if(roles.Contains("SuperUser"))
-            {
+            var p = userpermissionList.Where(x => x.Per == permission).FirstOrDefault();
+            if (p != null)
                 return true;
-            }
-            foreach(string role in roles)
-            {
-                if (doesRoleHavePermission(role,Permission))
-                    return true;
-            }
-            
             return false;
-        }
-        public static bool doesRoleHavePermission(string role, Permissions permission)
-        {
-            
-            return getAllPermissions(role).Contains(permission.ToString());
         }
         public static string CalculateMD5Hash(string input)
         {
@@ -54,30 +37,17 @@ namespace FinalUi
             }
             return sb.ToString();
         }
-        
-//Database Interaction Methods Starts
 
-        public static List<string> getUserRoles(string userName)
-        {
-            List<string> roles = new List<string>();
-            BillingDataDataContext db = new BillingDataDataContext();
-            return roles;
-        }
-        
-        static List<String> getAllPermissions(string role)
-        {
-            List<String> permissions = new List<String>();
-            BillingDataDataContext db = new BillingDataDataContext();
-            return permissions;
-        }
         static string _currentUser;
         public static bool authenticate(string userName, string Password)
         {
             BillingDataDataContext db = new BillingDataDataContext();
-            
-            if (db.Employees.Where(x=> x.UserName == userName && x.Password == Password).Count() == 1)
+
+            if (db.Employees.Where(x => x.UserName == userName && x.Password == Password).Count() == 1)
             {
                 _currentUser = userName;
+                var emp = db.Employees.Where(x => x.UserName == userName).FirstOrDefault();
+                userpermissionList = emp.User_permissions.Select(x => x.Permission).ToList();
                 return true;
             }
             else
@@ -90,6 +60,5 @@ namespace FinalUi
                 return _currentUser;
             }
         }
-//Database Interactin Method Ends
-    }
+        }
 }

@@ -30,13 +30,11 @@ namespace FinalUi
             Login window = new Login();
             window.ShowDialog();
         }
-
         private void mainwindow_Click(object sender, RoutedEventArgs e)
         {
             MainWindow window = new MainWindow();
             window.Show();
         }
-
         private void manageclient_Click(object sender, RoutedEventArgs e)
         {
             ManageClient window = new ManageClient();
@@ -113,6 +111,12 @@ namespace FinalUi
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             ClientReport window = new ClientReport(); window.Show();
+        }
+
+        private void TestingPermisstion_Click(object sender, RoutedEventArgs e)
+        {
+            TestingPermisstion window = new TestingPermisstion();
+            window.Show();
         }
 
     }

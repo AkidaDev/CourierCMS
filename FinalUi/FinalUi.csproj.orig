@@ -144,9 +144,6 @@
     <Compile Include="BillReportWindow.xaml.cs">
       <DependentUpon>BillReportWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CityWindow.xaml.cs">
-      <DependentUpon>CityWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ClientReport.xaml.cs">
       <DependentUpon>ClientReport.xaml</DependentUpon>
     </Compile>
@@ -210,11 +207,16 @@
     <Compile Include="TestingMainWindow.xaml.cs">
       <DependentUpon>TestingMainWindow.xaml</DependentUpon>
     </Compile>
+<<<<<<< local
+    <Compile Include="AccountStatementReportingWindow.xaml.cs">
+      <DependentUpon>AccountStatementReportingWindow.xaml</DependentUpon>
+=======
     <Compile Include="TestingPermisstion.xaml.cs">
       <DependentUpon>TestingPermisstion.xaml</DependentUpon>
     </Compile>
     <Compile Include="TestingReporting.xaml.cs">
       <DependentUpon>TestingReporting.xaml</DependentUpon>
+>>>>>>> other
     </Compile>
     <Compile Include="testtheme.xaml.cs">
       <DependentUpon>testtheme.xaml</DependentUpon>
@@ -266,10 +268,6 @@
     <Page Include="Blue.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="CityWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ClientReport.xaml">
       <SubType>Designer</SubType>
@@ -385,11 +383,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+<<<<<<< local
+    <Page Include="AccountStatementReportingWindow.xaml">
+=======
     <Page Include="TestingPermisstion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TestingReporting.xaml">
+>>>>>>> other
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

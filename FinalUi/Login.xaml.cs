@@ -26,26 +26,20 @@ namespace FinalUi
     public partial class Login : Window
     {
         bool loginFlag;
+        public static Guid userid;
         public Login()
         {
-
             InitializeComponent();
-
-           //ImageBehavior.SetRepeatBehavior(LoadingGif, RepeatBehavior.Forever);
             CommandBinding command = new CommandBinding();
+            userid = new Guid();
         }
         MainWindow window;
-
         private void Grid_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
-
         private void CloseButton_MouseLeave_1(object sender, MouseEventArgs e)
-        {
-            //this.CloseButton.Foreground = new SolidColorBrush(Colors.White);
-        }
-
+        { }
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
@@ -65,20 +59,18 @@ namespace FinalUi
             shadow.ShadowDepth = 0;
             this.MainGrid.Effect = shadow;
         }
-
         private void MainGrid_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
                 if (!loginFlag)
                 {
-                  //  LoadingGifPanel.Visibility = Visibility.Visible;
                     string userName = UserName.Text;
                     string passWord = Password.Password;
                     if (SecurityModule.authenticate(userName, passWord))
                     {
-                       // LoadingGifPanel.Visibility = Visibility.Visible;
-
+                        BillingDataDataContext db = new BillingDataDataContext();
+                        userid = db.Employees.Where(x => x.UserName == userName).Select(y => y.Id).FirstOrDefault();
                         window = new MainWindow();
                         window.Show();
                         this.Close();

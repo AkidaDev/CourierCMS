@@ -7,7 +7,9 @@
     </Window.Resources>
     <Grid >
         <WrapPanel>
+            <Button Content="Login" Name="Login" Click="login_Click" Height="26" Width="100"/>
             <Button Name="AccountStatement" Content=" AccountStatement" Height="26" Width="100" Click="AccountStatement_Click" Margin="10"/>
+            <Button Name="TestingPermisstion" Content=" Testing Permisstion" Height="26" Width="100" Click="TestingPermisstion_Click" Margin="10"/>
             <Button x:Name="mainwindow" Content="MainWindow" Click="mainwindow_Click" Height="26" Width="100" Margin="10"/>
             <Button Name="zoneWindow" Content="zonewindow" Click="zonewindow_Click" Height="26" Width="100" Margin="10"></Button>
             <Button Name="stockwindow" Content="Mange city" Click="stockwindow_Click"  Height="26" Width="100" Margin="10"></Button>
