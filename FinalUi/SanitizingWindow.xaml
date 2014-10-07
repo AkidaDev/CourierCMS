@@ -66,9 +66,9 @@
             <TextBox BorderThickness="2" Name="DestinationPin" Height="26" Canvas.Left="361.666" Canvas.Top="257.96" Width="99" Padding="3 3 0 0"/>
             </Canvas>
 			<Canvas Canvas.Top="45">
-			<DatePicker Name="InsertionDate" Height="23" Canvas.Left="169" Canvas.Top="301.834" Width="107"  BorderThickness="0" Padding="3 3 0 0"/>
-            <Rectangle Height="26" Canvas.Left="167" Canvas.Top="300" Width="82" Stroke="LightGray" StrokeThickness="1.5"/>
-        	<TextBlock Text="DOX type .:" Canvas.Left="323" Canvas.Top="304" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap"/>
+            <DatePicker Name="InsertionDate"  Canvas.Left="169" Canvas.Top="301"  Height="26"  Width="124"  BorderThickness="0" Padding="0 4 0 0"/>
+            <Path x:Name="Rectangle_2" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="26" Canvas.Left="167" Canvas.Top="300" Width="98" Stroke="Black"/>
+            <TextBlock Text="DOX type .:" Canvas.Left="323" Canvas.Top="304" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap"/>
             <ComboBox Height="26" Canvas.Left="410" Width="100" Canvas.Top="298" Name="DoxCombobox">
                 <ComboBoxItem Content="Non Dox"></ComboBoxItem>
                 <ComboBoxItem Content="Dox"></ComboBoxItem>
