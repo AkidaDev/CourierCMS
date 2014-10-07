@@ -252,6 +252,7 @@
     <Compile Include="ServiceFinder.xaml.cs">
       <DependentUpon>ServiceFinder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="StockWindow.xaml.cs">
       <DependentUpon>StockWindow.xaml</DependentUpon>
     </Compile>
