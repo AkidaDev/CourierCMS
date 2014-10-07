@@ -38,7 +38,6 @@ namespace FinalUi
         }
         public List<RuntimeData> applyFilter(List<RuntimeData> data, int sheetNo)
         {
-            SecurityModule.authenticate("dharmendra", "pass");
             IEnumerable<RuntimeData> fData = data;
             BillingDataDataContext db = new BillingDataDataContext();
             List<RuntimeData> qData = db.ExecuteQuery<RuntimeData>(@"
@@ -92,7 +91,7 @@ namespace FinalUi
                     fData = fData.Where(x => !qData.Select(y => y.ConsignmentNo).Contains(x.ConsignmentNo));
                 }
             }
-            bool areNullAllowed = selectedClientList.Select(x => x.CLCODE).Contains("<NONE>");
+            bool areNullAllowed = selectedClientList.Select(x => x.CLCODE).Contains("NONE");
             fData = fData.Where(x => selectedClientList.Select(y => y.CLCODE).Contains(x.CustCode) || (x.CustCode == null && areNullAllowed));
             fData = fData.Where(x => x.BookingDate <= toDate && x.BookingDate >= fromDate);
             if (startConnNo != "" && endConnNo != "")

@@ -181,7 +181,7 @@ namespace FinalUi
             else
                 e.CanExecute = false;
         }
-#region NewSheetCommands
+        #region NewSheetCommands
         RoutedCommand NewSheetCommand = new RoutedCommand();
         private void NewSheetCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
@@ -429,7 +429,7 @@ namespace FinalUi
             string name = "";
             if (dataWind.dataLoaded)
             {
-                if (dataWind.isNewSheet)
+                if (dataWind.isNewSheet || dataGridHelper.CurrentNumberOfSheets <= 0)
                 {
                     int key = dataGridHelper.addNewSheet(dataWind.data, name);
                     addingNewPage(key);
@@ -446,18 +446,7 @@ namespace FinalUi
                     fromDate_loadDataWin = dataWind.fromDate;
                 }
                 
-             //   LoadWorker.RunWorkerAsync(dataWind.data);
-                DBHelper help = new DBHelper();
-                string response;
-              //  try
-                {
-                    help.insertRuntimeData(dataWind.data, dataGridHelper.currentSheetNumber, isLoadedFromFile, toDate_loadDataWin, fromDate_loadDataWin);
-                    response = "Data Loading Successful";
-                }
-                /*catch (Exception ex)
-                {
-                    response = ex.Message;
-                }*/
+               LoadWorker.RunWorkerAsync(dataWind.data);
                
             }
         }

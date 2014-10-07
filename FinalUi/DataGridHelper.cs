@@ -145,6 +145,15 @@ namespace FinalUi
             setActiveSheet(key);
             return key;
         }
+        public int currentSheetCount
+        {
+            get
+            {
+                if (sheets == null)
+                    return 0;
+                return sheets.Count;
+            }
+        }
         public void addDataToCurrentSheet(List<RuntimeData> data)
         {
             try
@@ -325,7 +334,13 @@ namespace FinalUi
             this.notifyPropertyChanged("rowsPerPage");
             refreshCurrentPage();
         }
-
+        public int CurrentNumberOfSheets
+        {
+            get
+            {
+                return dataSheetManager.currentSheetCount;
+            }
+        }
         #region pageNavigationMethods
         public List<RuntimeData> getDataForPage(int pageNo, int rows)
         {
