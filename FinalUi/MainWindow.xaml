@@ -50,8 +50,8 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                         <MenuItem Header="About" x:Name="AboutMenuItem" Click="AboutMenuItem_Click"/>
                     </MenuItem>
                 </Menu>
-                <TextBlock Foreground="Black" FontSize="20" TextAlignment="Center"  IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="26" TextWrapping="Wrap" Text="ORTEX" Margin="38,2,0,0"/>
-        		<TextBlock Foreground="Black" FontSize="28" TextAlignment="Center"  IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="26" TextWrapping="Wrap" Text="V" FontWeight="Bold" Margin="-38,2,0,0"/>
+                <TextBlock Foreground="Black" FontSize="20" TextAlignment="Center"  IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="26" TextWrapping="Wrap" Text="ORTEX" Margin="38,2,0,0" Width="100"/>
+                <TextBlock Foreground="Black" FontSize="28" TextAlignment="Center"  IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="26" TextWrapping="Wrap" Text="V" FontWeight="Bold" Margin="-38,2,0,0" Width="30"/>
         	<Canvas Margin="160,0,113,0">
 				<Button MouseDoubleClick="NormalMaximize_Click" Style="{StaticResource window}">
 				<Path MouseDown="Grid_MouseDown" x:Name="Memu_bar" Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26.62" Canvas.Left="0" Canvas.Top="0" Stretch="Fill" Width="1920" />

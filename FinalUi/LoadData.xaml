@@ -45,7 +45,7 @@
            
             <Button  Click="loaddata" Canvas.Left="239.5" Canvas.Top="179" Style="{StaticResource all}" >
         		<Button.Content>
-                    <WrapPanel  Margin="6,1,6,1">
+                    <WrapPanel  Margin="6,2,6,2">
 			<Path x:Name="start" Data="F1M13.222,1C13.222,1 21,1 21,1 21,1 21,8.778 21,8.778 21,8.778 18.778,
 			8.778 18.778,8.778 18.778,8.778 18.778,4.778 18.778,4.778 18.778,4.778 7.889,15.667 7.889,15.667 7.889,
 			15.667 6.333,14.111 6.333,14.111 6.333,14.111 17.222,3.222 17.222,3.222 17.222,3.222 13.222,3.222 13.222,
@@ -79,7 +79,7 @@
         	</WrapPanel>
 			</Button.Content>
 			</Button>
-			<Button Click="addData_CheckedUnChecked" Canvas.Left="72" Canvas.Top="87.496" Style="{StaticResource all}">
+			<Button Click="addData_CheckedUnChecked" Canvas.Left="72" Canvas.Top="87.496" Style="{StaticResource 1}">
                 <Canvas Height="19" Width="19">
 			<Path x:Name="checkbox_unselected" Data="F1M2.778,3.778C2.778,3.778 2.778,16.222 2.778,16.222 2.778,
 			16.222 15.222,16.222 15.222,16.222 15.222,16.222 15.222,3.778 15.222,3.778 15.222,3.778 2.778,
