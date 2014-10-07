@@ -13,11 +13,12 @@ namespace FinalUi
   
     class DataSheet
     {
+        List<RuntimeData> filteredData;
         public List<RuntimeData> dataStack
         {
             get
             {
-                return filterObj.applyFilter(_dataStack,int.Parse(name.Last().ToString()));
+                return filteredData;
             }
             set
             {
@@ -36,6 +37,12 @@ namespace FinalUi
             dataStack = value;
             filterObj = new Filter();
             this.name = name;
+            if (filteredData == null)
+                applyFilter();
+        }
+        public void applyFilter()
+        {
+            filteredData = filterObj.applyFilter(_dataStack, int.Parse(name.Last().ToString()));
         }
         public void addData(List<RuntimeData> value)
         {

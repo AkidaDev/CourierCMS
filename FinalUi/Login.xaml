@@ -21,7 +21,7 @@
         			<ScaleTransform ScaleY="0.482" ScaleX="0.482"/>
         		</TextBlock.RenderTransform>
         	</TextBlock>
-        	<TextBlock x:Name="VORTEX" Foreground="Black" FontWeight="Bold" FontSize="45" FontFamily="Orator Std" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="357.673" LineHeight="45" TextAlignment="Left" TextWrapping="Wrap" Text="VORTEX" Canvas.Top="78.4"/>
+        	<TextBlock x:Name="VORTEX" Foreground="Black" FontSize="45" FontFamily="Orator Std" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="357.673" LineHeight="45" TextAlignment="Left" TextWrapping="Wrap" Text="VORTEX" Canvas.Top="78.4"/>
         	<Button ToolTip="Close" Style="{StaticResource all}" Click="CloseButton_Click" Name="CloseButton" Height="20" Canvas.Left="555" Canvas.Top="6" Width="40">
 			<Path Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,
 			14 3.2,14 2,12.8 2,12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,

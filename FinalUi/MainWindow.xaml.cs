@@ -40,7 +40,7 @@ namespace FinalUi
         #endregion
         public MainWindow()
         {
-            SecurityModule.authenticate("dharmendra", "pass");
+         //   SecurityModule.authenticate("dharmendra", "pass");
             #region setupCode
             PreviewMouseMove += OnPreviewMouseMove;
             #endregion
@@ -570,6 +570,7 @@ namespace FinalUi
 
         void window_Closed(object sender, EventArgs e)
         {
+            dataGridHelper.currentDataSheet.applyFilter();
             dataGridHelper.refreshCurrentPage();
 
         }
