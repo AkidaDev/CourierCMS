@@ -317,14 +317,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Destination">
+                    <Textbox Name="CITY_DESC">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Destination.Value</Value>
+                              <Value>=Fields!CITY_DESC.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <Color>#4d4d4d</Color>
@@ -336,7 +336,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Destination</rd:DefaultName>
+                      <rd:DefaultName>CITY_DESC</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>#e5e5e5</Color>
@@ -509,14 +509,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox19">
+                    <Textbox Name="Amount">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Runningvalue(Fields!FrAmount.Value,Sum,"Tablix1")</Value>
+                              <Value>=Fields!Amount.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <Color>#4d4d4d</Color>
@@ -528,7 +528,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox19</rd:DefaultName>
+                      <rd:DefaultName>Amount</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>#e5e5e5</Color>
@@ -3411,6 +3411,10 @@
           <DataField>BookingDate</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
+        <Field Name="CITY_DESC">
+          <DataField>CITY_DESC</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="ConsignmentNo">
           <DataField>ConsignmentNo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -3487,7 +3491,7 @@
       <rd:DataSetInfo>
         <rd:DataSetName>FinalUi</rd:DataSetName>
         <rd:TableName>BillingDataDataContext</rd:TableName>
-        <rd:ObjectDataSourceSelectMethod>RuntimeDatas</rd:ObjectDataSourceSelectMethod>
+        <rd:ObjectDataSourceSelectMethod>RuntimeCityViews</rd:ObjectDataSourceSelectMethod>
         <rd:ObjectDataSourceType>FinalUi.BillingDataDataContext, BillingData.designer.cs, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>

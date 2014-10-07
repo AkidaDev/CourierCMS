@@ -122,9 +122,8 @@ namespace FinalUi
             }
             #endregion
             BillingDataDataContext db = new BillingDataDataContext();
-           source = dataGridSource.Where(x => x.CustCode == ((Client)ClientList.SelectedItem).CLCODE && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
+           var source = db.RuntimeCityViews.Where(x => x.CustCode == ((Client)ClientList.SelectedItem).CLCODE && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
             rs.Value = source;
-            
             if (client == null)
                 clc = db.Clients.SingleOrDefault(x => x.CLCODE == ((Client)ClientList.SelectedItem).CLCODE);
             else

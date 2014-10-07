@@ -212,11 +212,11 @@ namespace FinalUi
         }
         private void editAssignDetails(Assignment assign)
         {
+
             RateAssignment assignWin = new RateAssignment(assign);
             assignWin.Closed += assignWin_Closed;
             assignWin.ShowDialog();
         }
-
         void assignWin_Closed(object sender, EventArgs e)
         {
             RateAssignment window = (RateAssignment)sender;
@@ -257,8 +257,12 @@ namespace FinalUi
 
         private void DGRateAssignment_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Assignment assignment = (Assignment)DGRateAssignment.SelectedItem;
-            editAssignDetails(assignment);
+            var datagrid = (DataGrid)sender;
+            if (datagrid.SelectedItem != null)
+            {
+                Assignment assignment = (Assignment)DGRateAssignment.SelectedItem;
+                editAssignDetails(assignment);
+            }
         }
 
         private void DeleteAssignmentButton_Click(object sender, RoutedEventArgs e)
@@ -282,6 +286,17 @@ namespace FinalUi
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Type1DG_LostFocus(object sender, RoutedEventArgs e)
+        {
+            var datagrid = (DataGrid)sender;
+            datagrid.SelectedItem = null;
+        }
+
+        private void Type1DG_CurrentCellChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

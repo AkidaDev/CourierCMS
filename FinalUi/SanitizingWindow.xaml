@@ -17,7 +17,7 @@
         <Canvas x:Name="SanitizingWindow1" ClipToBounds="True" HorizontalAlignment="Left" Height="550" UseLayoutRounding="False" VerticalAlignment="Top" Width="650" Background="White" >
             <ComboBox BorderThickness="2" IsEditable="True" Name="ConnsignmentNumber"  ItemsSource="{Binding}" DataContext="{StaticResource ConsignmentNumbers}"  IsTextSearchEnabled="True" KeyUp="ConnsignmentNumber_KeyUp" Height="26" Canvas.Left="265" Canvas.Top="84" Width="108"/>
             <TextBlock x:Name="DTDC__" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="135" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="DTDC.:" Canvas.Top="157"/>
-            <TextBox BorderThickness="2" Name="WeightAccToDTDC"  Height="27" Canvas.Left="191" Canvas.Top="149" Width="81" Padding="0 4 0 0"/>
+            <TextBox x:Uid="" BorderThickness="2"  Name="WeightAccToDTDC"  Height="27" Canvas.Left="191" Canvas.Top="149" Width="81" Padding="0 4 0 0"/>
             <TextBlock x:Name="Franchise__" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="293" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Franchise.:" Canvas.Top="157"/>
             <TextBlock x:Name="Billed__" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="496" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Billed.:" Canvas.Top="157"/>
             <TextBox BorderThickness="2" Name="WeightAccToFranchize" Height="27" Canvas.Left="378" Canvas.Top="148" Width="81" Padding="0 4 0 0"/>

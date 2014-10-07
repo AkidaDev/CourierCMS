@@ -3,8 +3,7 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:ee="http://schemas.microsoft.com/expression/2010/effects" x:Class="FinalUi.MainWindow"
 		Icon="Images/logo.png"
-		Title="Vortex" 
-		 BorderBrush="Transparent" AllowsTransparency="True" WindowStartupLocation="CenterScreen" WindowState="Normal" Width="1024" Height="700" WindowStyle="None">
+		Title="Vortex"  BorderBrush="Transparent" AllowsTransparency="True" WindowStartupLocation="CenterScreen" WindowState="Normal" Width="1024" Height="700" MinHeight="100" MinWidth="100" WindowStyle="None">
     <Window.Resources>
 		<CollectionViewSource x:Key="ClientCodeList" CollectionViewType="{x:Type ListCollectionView}"/>
 		<CollectionViewSource x:Key="DataGridDataContext" CollectionViewType="{x:Type ListCollectionView}"/>
@@ -16,12 +15,12 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     </Window.CommandBindings>
     <Grid x:Name="MainGrid" Background="#FFBBCADC"><!--light purple = #9f00a7, blue = #a32d89ef, yellow = #a3ffc40d, teal = #00aba9, camel = #dae3a21a, green = #00a300 -->
 		<Grid.RowDefinitions>
-			<RowDefinition Height="3"/>
+			<RowDefinition Height="6"/>
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="5"/>
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="5"/>
+			<ColumnDefinition Width="6"/>
 			<ColumnDefinition Width="*"/>
 			<ColumnDefinition Width="5"/>
 		</Grid.ColumnDefinitions>
