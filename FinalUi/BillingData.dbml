@@ -352,39 +352,7 @@
       <Column Name="StepWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
     </Type>
   </Table>
-  <Function Name="dbo.sp_deleteSheetFromRuntime" Method="sp_deleteSheetFromRuntime">
-    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.sp_getRateReportingObject" Method="sp_getRateReportingObject">
-    <Parameter Name="ClientCode" Parameter="clientCode" Type="System.String" DbType="VarChar(50)" />
-    <ElementType Name="sp_getRateReportingObjectResult">
-      <Column Name="RateCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="DoxRate" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="NonDoxRate" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="StepWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.sp_ImportZoneData" Method="sp_ImportZoneData">
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.sp_LoadToRuntimeFromDate" Method="sp_LoadToRuntimeFromDate">
-    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
-    <Parameter Name="ToDate" Parameter="toDate" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="FromDate" Parameter="fromDate" Type="System.DateTime" DbType="DateTime" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.sp_SaveDataFromRunToTran" Method="sp_SaveDataFromRunToTran">
-    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.sp_TransferClients" Method="sp_TransferClients">
+  <Function Name="dbo.sp_TransferTransactionDetails" Method="sp_TransferTransactionDetails">
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.sp_TransferFRWRDRAsService" Method="sp_TransferFRWRDRAsService">
@@ -405,7 +373,39 @@
   <Function Name="dbo.sp_TransferRatespart2" Method="sp_TransferRatespart2">
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_TransferTransactionDetails" Method="sp_TransferTransactionDetails">
+  <Function Name="dbo.sp_TransferClients" Method="sp_TransferClients">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_ImportZoneData" Method="sp_ImportZoneData">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_LoadToRuntimeFromDate" Method="sp_LoadToRuntimeFromDate">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ToDate" Parameter="toDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="FromDate" Parameter="fromDate" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_SaveDataFromRunToTran" Method="sp_SaveDataFromRunToTran">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_getRateReportingObject" Method="sp_getRateReportingObject">
+    <Parameter Name="ClientCode" Parameter="clientCode" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="sp_getRateReportingObjectResult">
+      <Column Name="RateCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DoxRate" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="NonDoxRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StepWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_deleteSheetFromRuntime" Method="sp_deleteSheetFromRuntime">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
 </Database>
