@@ -53,8 +53,6 @@ namespace FinalUi
                 this.dataContext = dataContext;
             if (dg.ItemsSource != null)
                 dataListContext = (ListCollectionView)dg.ItemsSource;
-
-
             conssNumbers = (CollectionViewSource)FindResource("ConsignmentNumbers");
             conssNumbers.Source = (from id in dataContext
                                    orderby id.BookingDate, id.ConsignmentNo
@@ -81,7 +79,6 @@ namespace FinalUi
             {
                 BilledAmount.Text = "0";
             }
-
             bool isDataInContext = true;
             RuntimeData data;
             data = dataContext.SingleOrDefault(x => x.ConsignmentNo == ConnsignmentNumber.Text);
@@ -216,12 +213,12 @@ namespace FinalUi
         }
         void clearDetails()
         {
-            WeightAccToDTDC.Text = "";
-            Cost.Text = "";
-            Destination.Text = "";
-            DestinationPin.Text = "";
-            WeightAccToFranchize.Text = "";
-            BilledAmount.Text = "";
+            this.WeightAccToDTDC.Text = "";
+            this.Cost.Text = "";
+            this.Destination.Text = "";
+            this.DestinationPin.Text = "";
+            this.WeightAccToFranchize.Text = "";
+            this.BilledAmount.Text = "";
         }
         public void fillDetails(RuntimeData data)
         {
@@ -303,6 +300,11 @@ namespace FinalUi
             {
                 this.BilledAmount.Text = "0";
             }
+        }
+        private void Validate_Form()
+        { 
+
+
         }
         private void BilledWeightTextBox_LostFocus(object sender, RoutedEventArgs e)
         {

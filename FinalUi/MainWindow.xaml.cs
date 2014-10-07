@@ -57,7 +57,6 @@ namespace FinalUi
             InitializeComponent();
             CollectionViewSource clientCodeList = (CollectionViewSource)FindResource("ClientCodeList");
             clientCodeList.Source = db.Clients.Select(c => c.CLCODE);
-
             #region DataGrid Code Lines
             dataGridSource = (CollectionViewSource)FindResource("DataGridDataContext");
             dataGridHelper = new DataGridHelper(dataGridSource);
@@ -65,7 +64,6 @@ namespace FinalUi
             DataGridPageNum.DataContext = dataGridHelper;
             DataGridNumOfRows.DataContext = dataGridHelper;
             #endregion
-
             #region Command Bindings
             CommandBinding SanitizingCommandBinding = new CommandBinding(SanitizingCommand, ExecuteSanitizingCommand, CanExecuteSanitizingCommand);
             this.CommandBindings.Add(SanitizingCommandBinding);
@@ -86,7 +84,6 @@ namespace FinalUi
             NewSheetButton.Command = NewSheetMenuItem.Command = NewSheetCommand;
             this.CommandBindings.Add(NewSheetCommandBinding);
             #endregion
-
             #region loading initial pages
             List<int> sheets = db.RuntimeMetas.Where(y => y.UserName == SecurityModule.currentUserName).Select(x => x.SheetNo).Distinct().ToList();
             foreach (int sheet in sheets)
@@ -96,7 +93,6 @@ namespace FinalUi
                 addingNewPage(sheet);
             }
             #endregion
-
             SaveWorker = new BackgroundWorker();
             SaveWorker.DoWork += SaveWorker_DoWork;
             SaveWorker.ProgressChanged += SaveWorker_ProgressChanged;
@@ -108,7 +104,6 @@ namespace FinalUi
             DeleteSheetWorker = new BackgroundWorker();
             DeleteSheetWorker.DoWork += DeleteWorker_DoWork;
             DeleteSheetWorker.RunWorkerCompleted += DeleteWorker_RunWorkerCompleted;
-
         }
         #region backGround Worker Functions
         #region LoadWorker
@@ -323,7 +318,6 @@ namespace FinalUi
         }
         #endregion
         #endregion
-
         #region CommandFunctions
         private void Open_Executed(object sender, ExecutedRoutedEventArgs e)
         {
@@ -558,7 +552,6 @@ namespace FinalUi
 
         #endregion DataGrid Sheet Methods Ends
         #endregion DataGrid Methods Ends
-
         #region filter functions
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)
@@ -574,7 +567,6 @@ namespace FinalUi
 
         }
         #endregion
-
         #region Handling Resizing
         private void SwitchWindowState()
         {
@@ -629,7 +621,6 @@ namespace FinalUi
             this.Close();
         }
         #endregion
-
         #region custom window resize
         protected void OnPreviewMouseMove(object sender, MouseEventArgs e)
         {
@@ -768,7 +759,6 @@ namespace FinalUi
         }
 
         #endregion
-
         #region menuItem
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -787,7 +777,7 @@ namespace FinalUi
 
         private void RateWindowMenu_Click(object sender, RoutedEventArgs e)
         {
-            RateWindow window = new RateWindow(); window.ShowDialog();
+            RateWindow window = new RateWindow(); window.Show();
         }
 
         private void AboutMenuItem_Click(object sender, RoutedEventArgs e)
@@ -795,23 +785,19 @@ namespace FinalUi
             About window = new About(); window.ShowDialog();
         }
         #endregion
-
         private void BillAnalysis_Click(object sender, RoutedEventArgs e)
         {
             BillReportWindow win = new BillReportWindow();
             win.ShowDialog();
         }
-
         private void PaymentEntry_Click(object sender, RoutedEventArgs e)
         {
             PaymentDetailsWindow window = new PaymentDetailsWindow(); window.ShowDialog();
         }
-
         private void PaymentRecieved_Click(object sender, RoutedEventArgs e)
         {
             PaymentRecieved window = new PaymentRecieved(); window.ShowDialog();
         }
-
         private void StockEntry_Click(object sender, RoutedEventArgs e)
         {
             StockWindow window = new StockWindow(); window.ShowDialog();
@@ -822,63 +808,41 @@ namespace FinalUi
         }
         private void servicetaxtreeviewitembutton_Click(object sender, RoutedEventArgs e)
         {
-
         }
-
         private void forwardertarifftreeviewitembutton_Click(object sender, RoutedEventArgs e)
         {
-
         }
-
         private void clienttarifftreeviewitembutton_Click(object sender, RoutedEventArgs e)
         {
-
         }
-
         private void clienttreeviewitembutton_Click(object sender, RoutedEventArgs e)
         {
-
         }
-
         private void citytreeviewitembutton_Click(object sender, RoutedEventArgs e)
         {
-
         }
-
         private void zonetreeviewitembutton_Click(object sender, RoutedEventArgs e)
         {
-
         }
-
         private void countrytreeviewitembutton_Click(object sender, RoutedEventArgs e)
         {
-
         }
-
         private void zonetreeitembutton_Click(object sender, RoutedEventArgs e)
         {
-
         }
-
         private void countrytreeitembutton_Click(object sender, RoutedEventArgs e)
         {
-
         }
-
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
             AddCity window = new AddCity();
             window.ShowDialog();
         }
-
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
         }
-
         private void dataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-
         }
     }
 }
