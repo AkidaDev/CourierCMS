@@ -129,7 +129,8 @@ namespace FinalUi
                     MessageBoxResult rsltMessageBox = MessageBox.Show("No city with this code is entered. Do you want to enter it now?", "", MessageBoxButton.YesNo, MessageBoxImage.Asterisk);
                     if(MessageBoxResult.Yes == rsltMessageBox)
                     {
-                        AddCity window = new AddCity(); window.ShowDialog();
+                        AddCity window = new AddCity(); 
+                        window.Show();
                     }
                 }
                 if(DestinationPin.Text == "" || DestinationPin.Text == null)

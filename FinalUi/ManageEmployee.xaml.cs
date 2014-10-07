@@ -41,20 +41,24 @@ namespace FinalUi
         private void Update_Click(object sender, RoutedEventArgs e)
         {
             AddEmployee window = new AddEmployee((Employee)this.mangaEmployeegrid.SelectedItem);
-            window.ShowDialog();
+            window.Show();
             window.Closed += reloadgrid;
+            window.Owner = this;
         }
         private void reloadgrid(object sender, EventArgs e)
         {
-            var db = new BillingDataDataContext();
-            view.Source = db.Employees;
+            BillingDataDataContext db = new BillingDataDataContext();
+            this.employees = db.Employees.ToList();
+            this.mangaEmployeegrid.Items.Refresh();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             AddEmployee window = new AddEmployee();
             window.ShowDialog();
+            window.Closed +=  reloadgrid;
         }
+
         private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {
             DragMove();

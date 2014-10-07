@@ -68,7 +68,6 @@ namespace FinalUi
         {
             if (ClientList.SelectedValue != null && ToDate.SelectedDate != null && FromDate.SelectedDate != null)
             {
-
                 DataGridSource.Source = dataGridSource.Where(x => x.CustCode == ((Client)ClientList.SelectedValue).CLCODE && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
             }
         }
@@ -76,7 +75,6 @@ namespace FinalUi
         {
             RefreshDataGridSource();
         }
-
         private void ClientList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             TaxBox.Text = ((Client)ClientList.SelectedItem).FUEL.ToString();
@@ -122,9 +120,9 @@ namespace FinalUi
             }
             #endregion
             BillingDataDataContext db = new BillingDataDataContext();
-           source = dataGridSource.Where(x => x.CustCode == ((Client)ClientList.SelectedItem).CLCODE && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
+            List<RuntimeCityView> source = db.RuntimeCityViews.Where(x => x.CustCode == ((Client)ClientList.SelectedItem).CLCODE && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
             rs.Value = source;
-            
+
             if (client == null)
                 clc = db.Clients.SingleOrDefault(x => x.CLCODE == ((Client)ClientList.SelectedItem).CLCODE);
             else
@@ -169,7 +167,8 @@ namespace FinalUi
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            printObj();
+            Client clc = (Client)ClientList.SelectedItem;
+            printObj(clc);
         }
 
         private void SaveInvoiceButton_Click(object sender, RoutedEventArgs e)
@@ -177,13 +176,13 @@ namespace FinalUi
             if (source == null || source.Count == 0)
                 return;
             MessageBoxResult result = MessageBox.Show("Do you want to save this invoice? ", "Confirm", MessageBoxButton.YesNo);
-            int count = source.Where(x => x.TransactionId==null || x.TransactionId==Guid.Empty).Count();
-            if(count >0)
+            int count = source.Where(x => x.TransactionId == null || x.TransactionId == Guid.Empty).Count();
+            if (count > 0)
             {
                 MessageBox.Show("Selected transactions set contains records that are not yet saved in the database. This bill cannot be saved.");
                 return;
             }
-            if(result == MessageBoxResult.Yes)
+            if (result == MessageBoxResult.Yes)
             {
                 BillingDataDataContext db = new BillingDataDataContext();
                 Invoice invoice = new Invoice();
@@ -197,7 +196,7 @@ namespace FinalUi
                 invoice.STax = double.Parse(ServiceTaxBox.Text);
                 invoice.TotalAmount = totalAmount;
                 db.Invoices.InsertOnSubmit(invoice);
-                foreach(var item in source)
+                foreach (var item in source)
                 {
                     InvoiceAssignment assign = new InvoiceAssignment();
                     assign.BillId = invoice.BillId;
