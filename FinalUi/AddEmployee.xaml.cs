@@ -168,6 +168,8 @@ namespace FinalUi
             {
                 permission.Remove((Permission)this.PermisstionToset.SelectedItem);
                 userPermission.Add((Permission)this.PermisstionToset.SelectedItem);
+                this.PermisstionToset.SelectedItem = null;
+                this.UserPermisstionToset.SelectedItem = null;
                 this.PermisstionToset.Items.Refresh();
                 this.UserPermisstionToset.Items.Refresh();
             }
@@ -180,6 +182,8 @@ namespace FinalUi
             {
                 permission.Add((Permission)this.UserPermisstionToset.SelectedItem);
                 userPermission.Remove((Permission)this.UserPermisstionToset.SelectedItem);
+                this.PermisstionToset.SelectedItem = null;
+                this.UserPermisstionToset.SelectedItem = null;
                 this.PermisstionToset.Items.Refresh();
                 this.UserPermisstionToset.Items.Refresh();
             }

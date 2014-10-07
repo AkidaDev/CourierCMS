@@ -13,7 +13,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		<CommandBinding Command="ApplicationCommands.Close" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
 		<CommandBinding Command="ApplicationCommands.Print" Executed="ExecutePrint" CanExecute="CanExecutePrintCommand"/>
     </Window.CommandBindings>
-    <Grid x:Name="MainGrid" Background="#FFBBCADC"><!--light purple = #9f00a7, blue = #a32d89ef, yellow = #a3ffc40d, teal = #00aba9, camel = #dae3a21a, green = #00a300 -->
+    <Grid x:Name="MainGrid" Background="IndianRed"><!--light purple = #9f00a7, blue = #a32d89ef, yellow = #a3ffc40d, teal = #00aba9, camel = #dae3a21a, green = #00a300 -->
 		<Grid.RowDefinitions>
 			<RowDefinition Height="6"/>
 			<RowDefinition Height="*"/>
