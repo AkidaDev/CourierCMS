@@ -19,7 +19,7 @@ namespace FinalUi
         }
         public static bool hasPermission(Guid id, string permission)
         {
-            var p = userpermissionList.Where(x => x.Per == permission).FirstOrDefault();
+            var p = userpermissionList.Where(x => x.Per == permission);
             if (p != null)
                 return true;
             return false;

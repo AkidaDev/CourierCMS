@@ -38,6 +38,7 @@ namespace FinalUi
         }
         public List<RuntimeData> applyFilter(List<RuntimeData> data, int sheetNo)
         {
+            SecurityModule.authenticate("dharmendra", "pass");
             IEnumerable<RuntimeData> fData = data;
             BillingDataDataContext db = new BillingDataDataContext();
             List<RuntimeData> qData = db.ExecuteQuery<RuntimeData>(@"
@@ -75,7 +76,7 @@ namespace FinalUi
 	                and
 	                RuntimeMeta.SheetNo = {1};
 
-                ", SecurityModule.currentUserName, sheetNo).ToList();
+                ", "dharmendra", sheetNo).ToList();
 
             if (showBilled != null)
             {

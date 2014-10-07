@@ -14,6 +14,16 @@
         <Grid.Effect>
             <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
         </Grid.Effect>
+<<<<<<< local
+        <Canvas x:Name="SanitizingWindow1" ClipToBounds="True" HorizontalAlignment="Left" Height="550" UseLayoutRounding="False" VerticalAlignment="Top" Width="650" Background="White" >
+            <ComboBox BorderThickness="2" IsEditable="True" Name="ConnsignmentNumber"  ItemsSource="{Binding}" DataContext="{StaticResource ConsignmentNumbers}"  IsTextSearchEnabled="True" KeyUp="ConnsignmentNumber_KeyUp" Height="26" Canvas.Left="265" Canvas.Top="84" Width="108"/>
+            <TextBlock x:Name="DTDC__" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="135" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="DTDC.:" Canvas.Top="157"/>
+            <TextBox x:Uid="" BorderThickness="2"  Name="WeightAccToDTDC"  Height="27" Canvas.Left="191" Canvas.Top="149" Width="81" Padding="0 4 0 0"/>
+            <TextBlock x:Name="Franchise__" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="293" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Franchise.:" Canvas.Top="157"/>
+            <TextBlock x:Name="Billed__" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="496" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Billed.:" Canvas.Top="157"/>
+            <TextBox BorderThickness="2" Name="WeightAccToFranchize" Height="27" Canvas.Left="378" Canvas.Top="148" Width="81" Padding="0 4 0 0"/>
+            <TextBox LostFocus="BilledWeightTextBox_LostFocus"  BorderThickness="2" TextChanged="BilledWeightTextBox_TextChanged" x:Name="BilledWeightTextBox" Height="27" Canvas.Left="553" Canvas.Top="148" Width="81" Padding="0 4 0 0"/>
+=======
         <Canvas x:Name="SanitizingWindow1" ClipToBounds="True" HorizontalAlignment="Left" Height="405" UseLayoutRounding="False"  Width="550" VerticalAlignment="Top" Background="White" >
             <ComboBox BorderThickness="2" IsEditable="True" Name="ConnsignmentNumber"  ItemsSource="{Binding}" DataContext="{StaticResource ConsignmentNumbers}"  IsTextSearchEnabled="True" KeyUp="ConnsignmentNumber_KeyUp"  Canvas.Left="221.633" Canvas.Top="82.96" Width="108"/>
              <Path x:Name="client" Data="F1M7.006,17.756C8.089,18.341 9.324,18.675 10.635,18.675 11.947,18.675 13.183,18.341 14.264,17.756 16.602,18.374 18.432,19.843 19.272,23 19.272,23 2,23 2,23 2.839,19.843 4.67,18.375 7.006,17.756z M22.992,14.925C25.33,15.543 27.161,17.011 28,20.168 28,20.168 19.469,20.168 19.469,20.168 18.486,18.463 17.033,17.311 15.075,16.685 15.597,16.276 16.061,15.798 16.456,15.264 17.354,15.635 18.334,15.843 19.363,15.843 20.674,15.843 21.911,15.51 22.992,14.925z M6.639,12.72C7.558,14.518 9.136,15.706 10.928,15.706 12.722,15.706 14.298,14.518 15.217,12.72 15.217,12.72 6.639,12.72 6.639,12.72z M10.635,4.831C13.958,4.831 16.649,7.548 16.649,10.899 16.649,14.252 13.958,16.968 10.635,16.968 7.313,16.968 4.621,14.252 4.621,10.899 4.621,7.548 7.313,4.831 10.635,4.831z M19.363,2C22.685,2 25.377,4.717 25.377,8.068 25.377,11.421 22.685,14.137 19.363,14.137 18.642,14.137 17.954,14.003 17.313,13.768 17.499,13.331 17.641,12.872 17.74,12.396 18.332,12.704 18.979,12.874 19.656,12.874 21.449,12.874 23.026,11.686 23.944,9.888 23.944,9.888 17.819,9.888 17.819,9.888 17.513,7.667 16.22,5.766 14.398,4.645 15.482,3.049 17.3,2 19.363,2z" Fill="Black" Height="19" Canvas.Left="16" Canvas.Top="188.46" Width="23" Stretch="Fill"/>
@@ -23,6 +33,7 @@
             <TextBlock x:Name="Billed__" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="399.998" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Billed.:" Canvas.Top="153"/>
             <TextBox BorderThickness="2" Name="WeightAccToFranchize" Height="23" Canvas.Left="302.999" Canvas.Top="146.334" Width="81" Padding="0 1 0 0"/>
             <TextBox LostFocus="BilledWeightTextBox_LostFocus"  BorderThickness="2" TextChanged="BilledWeightTextBox_TextChanged" x:Name="BilledWeightTextBox" Height="23" Canvas.Left="454.34" Canvas.Top="146.334" Width="81" Padding="0 1 0 0"/>
+>>>>>>> other
             <Button Content="GetRate" Name="GetRateButton" Visibility="Collapsed" Click="GetRateButton_Click" Canvas.Left="573" Canvas.Top="184"/>
 
             <ComboBox BorderThickness="2" Name="CustomerSelected" IsEditable="True" ItemsSource="{Binding}" DataContext="{StaticResource CustomerNameList}" Canvas.Left="153" Canvas.Top="182" Width="109.863"/>
