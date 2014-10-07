@@ -131,6 +131,8 @@ namespace FinalUi
                     ((List<Client>)clientListToAdd.Source).Remove(item);
                     ((List<Client>)clientListToSet.Source).Add(item);
                 }
+                ClientsToSet.SelectedItem = null;
+                ClientsToAdd.SelectedItem = null;
                 ClientsToSet.Items.Refresh();
                 ClientsToAdd.Items.Refresh();
             }
@@ -145,6 +147,8 @@ namespace FinalUi
                     ((List<Client>)clientListToSet.Source).Remove(item);
                     ((List<Client>)clientListToAdd.Source).Add(item);
                 }
+                ClientsToSet.SelectedItem = null;
+                ClientsToAdd.SelectedItem = null;
                 ClientsToSet.Items.Refresh();
                 ClientsToAdd.Items.Refresh();
             }

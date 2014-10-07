@@ -100,7 +100,8 @@ namespace FinalUi
             data.Weight = Double.Parse(WeightAccToDTDC.Text);
             data.FrWeight = Double.Parse(WeightAccToFranchize.Text);
             data.Amount = Decimal.Parse(Cost.Text);
-            data.Destination = Destination.Text;
+            var c1 = db.Cities.Where(x => x.CITY_DESC == Destination.Text).Select(y => y.CITY_CODE).FirstOrDefault();
+            data.Destination = c1;
             DestinationPin.Text = DestinationPin.Text ?? "";
             data.CustCode = CustomerSelected.Text;
             data.Mode = MODE.Text;
@@ -302,9 +303,7 @@ namespace FinalUi
             }
         }
         private void Validate_Form()
-        { 
-
-
+        {
         }
         private void BilledWeightTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
