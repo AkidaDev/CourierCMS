@@ -55,10 +55,19 @@ namespace FinalUi
         }
         private void AssignButton_Click(object sender, RoutedEventArgs e)
         {
-            assignment.ClientCode = ComboBoxClient.Text;
-            assignment.ZoneCode = ComboBoxZone.Text;
-            assignment.ServiceCode = ComboBoxService.Text;
-            isEdited = true;
+            BillingDataDataContext db = new BillingDataDataContext();
+            Assignment ass = db.Assignments.Where(x => x.ClientCode == ComboBoxClient.Text && x.ZoneCode == ComboBoxZone.Text && x.ServiceCode == ComboBoxService.Text).FirstOrDefault();
+            if (ass != null)
+            {
+                assignment.ClientCode = ComboBoxClient.Text;
+                assignment.ZoneCode = ComboBoxZone.Text;
+                assignment.ServiceCode = ComboBoxService.Text;
+                isEdited = true;
+            }
+            else {
+                MessageBox.Show(" Error: Rate already assigned");
+            }
+            
             this.Close();
         }
 		private void Button_Click_Close(object sender, RoutedEventArgs e)
