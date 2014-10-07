@@ -26,8 +26,6 @@ namespace FinalUi
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            LoadResources l = new LoadResources();
-            l.DynamicLoadStyles();
         }
     }
 }

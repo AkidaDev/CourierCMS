@@ -21,7 +21,7 @@ namespace FinalUi
         public TestingPermisstion()
         {
             InitializeComponent();
-            if (SecurityModule.hasPermission(Login.userid, "read"))
+            if (SecurityModule.hasPermission(SecurityModule.employee.Id, "read"))
             {
                 MessageBox.Show("Ha ha ha ha it worked");
             }

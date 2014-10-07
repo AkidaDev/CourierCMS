@@ -15,7 +15,6 @@ using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfAnimatedGif;
-
 namespace FinalUi
 {
     /// <summary>
@@ -26,12 +25,10 @@ namespace FinalUi
     public partial class Login : Window
     {
         bool loginFlag;
-        public static Guid userid;
         public Login()
         {
             InitializeComponent();
             CommandBinding command = new CommandBinding();
-            userid = new Guid();
         }
         MainWindow window;
         private void Grid_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
@@ -70,7 +67,6 @@ namespace FinalUi
                     if (SecurityModule.authenticate(userName, passWord))
                     {
                         BillingDataDataContext db = new BillingDataDataContext();
-                        userid = db.Employees.Where(x => x.UserName == userName).Select(y => y.Id).FirstOrDefault();
                         window = new MainWindow();
                         window.Show();
                         this.Close();

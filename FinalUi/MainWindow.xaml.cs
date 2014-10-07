@@ -271,15 +271,22 @@ namespace FinalUi
         #region LoadCommand
         private void OpenCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            if (LoadWorker != null)
+            if (SecurityModule.hasPermission(SecurityModule.employee.Id, "LoadData"))
             {
-                if (LoadWorker.IsBusy == true)
-                    e.CanExecute = false;
+                if (LoadWorker != null)
+                {
+                    if (LoadWorker.IsBusy == true)
+                        e.CanExecute = false;
+                    else
+                        e.CanExecute = true;
+                }
                 else
-                    e.CanExecute = true;
+                    e.CanExecute = false;
             }
             else
+            {
                 e.CanExecute = false;
+            }
         }
         #endregion
         #region deleteCommand
@@ -329,7 +336,6 @@ namespace FinalUi
             this.Effect = blur;
             loadData.Show();
         }
-
         private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
