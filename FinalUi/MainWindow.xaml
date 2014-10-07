@@ -4,27 +4,26 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:ee="http://schemas.microsoft.com/expression/2010/effects" x:Class="FinalUi.MainWindow"
 		Icon="Images/logo.png"
 		Title="Vortex" 
-		ResizeMode="CanResizeWithGrip"  BorderBrush="Transparent" AllowsTransparency="True" WindowStartupLocation="CenterScreen" WindowState="Normal" Width="1024" Height="700" WindowStyle="None">
+		 BorderBrush="Transparent" AllowsTransparency="True" WindowStartupLocation="CenterScreen" WindowState="Normal" Width="1024" Height="700" WindowStyle="None">
     <Window.Resources>
 		<CollectionViewSource x:Key="ClientCodeList" CollectionViewType="{x:Type ListCollectionView}"/>
 		<CollectionViewSource x:Key="DataGridDataContext" CollectionViewType="{x:Type ListCollectionView}"/>
-		<ImageBrush ImageSource="Images/search.png" x:Key="Searchbarcontent"/>
 	</Window.Resources>
     <Window.CommandBindings>
 		<CommandBinding Command="ApplicationCommands.Open" Executed="Open_Executed" CanExecute="OpenCommand_CanExecute"/>
 		<CommandBinding Command="ApplicationCommands.Close" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
 		<CommandBinding Command="ApplicationCommands.Print" Executed="ExecutePrint" CanExecute="CanExecutePrintCommand"/>
     </Window.CommandBindings>
-    <Grid x:Name="MainGrid" Background="#FFBBCADC"><!--light purple = #9f00a7, blue = #a32d89ef, yellow = #a3ffc40d, teal = #00aba9, camel = #e3a21a, green = #00a300 -->
+    <Grid x:Name="MainGrid" Background="#FFBBCADC"><!--light purple = #9f00a7, blue = #a32d89ef, yellow = #a3ffc40d, teal = #00aba9, camel = #dae3a21a, green = #00a300 -->
 		<Grid.RowDefinitions>
 			<RowDefinition Height="3"/>
 			<RowDefinition Height="*"/>
-			<RowDefinition Height="4"/>
+			<RowDefinition Height="5"/>
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="4"/>
+			<ColumnDefinition Width="5"/>
 			<ColumnDefinition Width="*"/>
-			<ColumnDefinition Width="4"/>
+			<ColumnDefinition Width="5"/>
 		</Grid.ColumnDefinitions>
 		<StackPanel Grid.Row="1" Grid.Column="1" >
 			<Grid Background="Transparent" Height="26.62" >
@@ -38,39 +37,41 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     <MenuItem ToolTip="Open advanced options"  Header="View" Margin="10 0 0 0">
                         <MenuItem Header="Managment">
                             <MenuItem Header="Add City" Click="MenuItem_Click_1" />
-                            <MenuItem Header="Clients" x:Name="ManageClient" Click="ManageClient_Click"/>
+                            <MenuItem Header="Clients" x:Name="ManageClient" Click="ManageClient_Click"/>	
                             <MenuItem Header="Employees" x:Name="ManageEmployee" Click="ManageEmployee_Click"/>
                         </MenuItem>
                         <MenuItem Header="Payment Entry"  Name="PaymentEntryMenuItem" Click="PaymentEntry_Click"/>
                         <MenuItem Header="Payment Recived"  Name="PaymentRecievedMenuItem"  Click="PaymentRecieved_Click"/>
-                        <MenuItem Header="Stock   Entry"  Name="StockEntryMenuItem" Click="StockEntry_Click"/>
+                        <MenuItem Header="Stock Entry"  Name="StockEntryMenuItem" Click="StockEntry_Click"/>
                         <MenuItem Header="Edit Rates" x:Name="RateWindowMenu" Click="RateWindowMenu_Click"/>
+                        <MenuItem Header="Client Report" x:Name="ClientReport" Click="ClientReport_Click"/>
                     </MenuItem>
                     <MenuItem ToolTip="Know more" Header="Help" Margin="10 0 0 0">
                         <MenuItem Header="About" x:Name="AboutMenuItem" Click="AboutMenuItem_Click"/>
                     </MenuItem>
                 </Menu>
-                <TextBlock  FontSize="20" Height="24" TextAlignment="Center" Text="Vortex" Width="100" FontFamily="Copperplate Gothic Light" FontWeight="Bold"/>
-			<Canvas Margin="160,0,113,0">
+                <TextBlock Foreground="Black" FontSize="20" TextAlignment="Center"  IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="26" TextWrapping="Wrap" Text="ORTEX" Margin="38,2,0,0"/>
+        		<TextBlock Foreground="Black" FontSize="28" TextAlignment="Center"  IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="26" TextWrapping="Wrap" Text="V" FontWeight="Bold" Margin="-38,2,0,0"/>
+        	<Canvas Margin="160,0,113,0">
 				<Button MouseDoubleClick="NormalMaximize_Click" Style="{StaticResource window}">
 				<Path MouseDown="Grid_MouseDown" x:Name="Memu_bar" Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26.62" Canvas.Left="0" Canvas.Top="0" Stretch="Fill" Width="1920" />
 				</Button>
 			</Canvas>
 			<WrapPanel HorizontalAlignment="Right" Margin="0,0,0,9">
-				<Button ToolTip="Minimize" Style="{StaticResource all}" x:Name="MinimizeButton" Click="MinimizeButton_Click" Width="25">
+				<Button ToolTip="Minimize" Style="{StaticResource 1}" x:Name="MinimizeButton" Click="MinimizeButton_Click" Width="25">
 					<Path x:Name="minimize" Data="F1M2,4C2,4 2,2 2,2 2,2 14,2 14,2 14,2 14,4 14,4 14,4 2,4 2,4z" Fill="Black" Height="5" Width="12" Margin="-1,0,0,-7"/>
 				</Button>
-				<Button ToolTip="Maximize" Style="{StaticResource all}" x:Name="NormalMaximize" Click="NormalMaximize_Click"  Width="30" Margin="1,0">
+				<Button ToolTip="Maximize" Style="{StaticResource 1}" x:Name="NormalMaximize" Click="NormalMaximize_Click"  Width="30" Margin="1,0">
 					<Path x:Name="normal" Data="F1M3.222,5L3.222,6.702C3.222,9.071 3.222,11.778 3.222,11.778 3.222,11.778 11.778,11.778 11.778,11.778 11.778,11.778 11.778,9.071 11.778,6.702L11.778,5 11.281,5C9.219,5,5.781,5,3.719,5z M3.222,2C3.222,2 11.778,2 11.778,2 12.114,2 12.42,2.138 12.641,2.359L12.908,3 13,3C13,3,13,3.25,13,3.222L13,3.5 13,3.59 13,3.844C13,3.938 13,4 13,4 13,4 13,4.25 13,4.5L13,4.559 13,5 13,6.702C13,9.071 13,11.778 13,11.778 13,12.45 12.45,13 11.778,13 11.778,13 3.222,13 3.222,13 2.55,13 2,12.45 2,11.778 2,11.778 2,8.436 2,5.929L2,5 2,4.559C2,5,2,4.75,2,4.5L2,4C2,3.757 2,3.222 2,3.222 2,2.55 2.55,2 3.222,2z" Fill="Black" Height="14" Width="14" Margin="0,0,0,-1"/>
 				</Button>
 				<Rectangle Height="18" Stroke="#00832A2A" Width="50" Fill="#FFB65F5F" Margin="0,0,-50,0"/>
-				<Button ToolTip="Close" Style="{StaticResource all}" x:Name="CloseButton" Click="CloseButton_Click" Width="50" Height="18">
+				<Button ToolTip="Close" Style="{StaticResource 1}" x:Name="CloseButton" Click="CloseButton_Click" Width="50" Height="18">
 					<Path ToolTip="Close" x:Name="close1" Data="F1M14.987,13.789C14.987,13.789 13.622,15.154 13.622,15.154 13.622,15.154 8.16,9.692 8.16,9.692 8.16,9.692 2.699,15.154 2.699,15.154 2.699,15.154 1.333,13.789 1.333,13.789 1.333,13.789 6.795,8.327 6.795,8.327 6.795,8.327 1.333,2.865 1.333,2.865 1.333,2.865 2.699,1.5 2.699,1.5 2.699,1.5 8.16,6.962 8.16,6.962 8.16,6.962 13.622,1.5 13.622,1.5 13.622,1.5 14.987,2.865 14.987,2.865 14.987,2.865 9.526,8.327 9.526,8.327 9.526,8.327 14.987,13.789 14.987,13.789z" Fill="Black" Height="13"  Width="14"  Stretch="Fill" Margin="0,1,0,0"/>
 				</Button>
 			</WrapPanel>
 			</Grid>
 			<DockPanel Background="Transparent" Height="32" Margin="0,-1,0,0">
-				<Button HorizontalAlignment="Left" Style="{StaticResource all}" x:Name="LoadDataButton" Width="150" Foreground="White" Margin="5,3" Command="ApplicationCommands.Open" FontSize="16"><WrapPanel Margin="7,0,5,0">
+				<Button HorizontalAlignment="Left" Style="{StaticResource 1}" x:Name="LoadDataButton" Width="150" Foreground="White" Margin="5,3" Command="ApplicationCommands.Open" FontSize="16"><WrapPanel Margin="7,0,5,0">
 					<Path x:Name="folder" Data="F1M20.664,6.138C20.664,6.138 4.336,6.138 4.336,6.138 4.336,6.138 2.668,11.569 2.668,11.569 2.668,11.569 2.053,11.043 2.053,11.043 2.053,11.043 3.546,5.349 3.546,5.349 3.546,5.349 20.664,5.349 20.664,5.349 20.664,5.349 20.664,4.036 20.664,4.036 20.664,4.036 9.547,4.036 9.547,4.036 9.547,4.036 7.906,1 7.906,1 7.906,1 1,1 1,1 1,1 1,17 1,17 1,17 20.664,17 20.664,17 20.664,17 24,6.138 24,6.138 24,6.138 20.664,6.138 20.664,6.138z" Fill="White" Height="18" Width="26"/>
 					<TextBlock ToolTip="Load new files " Text="Open File" Margin="8 -4 1 1" FontSize="16" Padding="1 3 1 0.5"/></WrapPanel>
 				</Button>
@@ -115,14 +116,10 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		</DockPanel>
             <Grid >
                 <Grid.ColumnDefinitions>
-                    <!--<ColumnDefinition Width="225"/>-->
+                   <!-- <ColumnDefinition Width="225"/>-->
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="150"/>
-                </Grid.RowDefinitions>
-                <!--<StackPanel Background="AliceBlue" Grid.Column="0" Margin="0,4,0,0">
+              <!--  <StackPanel Background="AliceBlue" Grid.Column="0" Margin="0,4,0,0" Grid.RowSpan="3">
 				<WrapPanel Margin="0,20,0,0" >
                         <TreeView BorderBrush="Transparent" BorderThickness="0" Background="AliceBlue">
 					<TreeViewItem BorderBrush="Transparent" BorderThickness="0">
@@ -200,10 +197,8 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 				<Path Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Black" Height="4" HorizontalAlignment="Left" Margin="15,6,0,0"  Width="194"/>
 			</StackPanel>-->
 
-                <StackPanel Grid.Column="1" Grid.Row="0">
-			
-				<DockPanel x:Name="DataGridStackPanel" LastChildFill="True" VerticalAlignment="Top">
-                        <DockPanel.Resources>
+			<StackPanel x:Name="DataGridStackPanel" VerticalAlignment="Top" Grid.Column="1">
+						<StackPanel.Resources>
                             <Style TargetType="{x:Type DataGridCell}">
                                 <Setter Property="BorderThickness" Value="0"/>
                                 <Setter Property="Height" Value="25"/>
@@ -216,9 +211,8 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
-                        </DockPanel.Resources>
-				<ScrollViewer VerticalScrollBarVisibility="Auto" Height="Auto" HorizontalScrollBarVisibility="Disabled">
-                            <DataGrid RowHeaderWidth="0" IsReadOnly="True" x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False"  ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True"  Height="478" >
+                        </StackPanel.Resources>
+				            <DataGrid RowHeaderWidth="0" IsReadOnly="True" x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False"  ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True"  Height="478" >
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ConnsignmentNo" Binding="{Binding ConsignmentNo}"/>
                                     <DataGridTextColumn Header="Weight" Binding="{Binding Weight}"/>
@@ -253,12 +247,9 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                                     </DataTemplate>
                                 </DataGrid.RowDetailsTemplate>
                             </DataGrid>
-				</ScrollViewer>
-                    </DockPanel>
-                </StackPanel>
-                <StackPanel Grid.Column="1" Grid.Row="1">
-                    <DockPanel x:Name="DataGridOptionpanel" Background="Transparent">
-				<WrapPanel x:Name="buttontabcanvaswrap" Margin="13,0,0,0" />
+                    
+				<DockPanel x:Name="DataGridOptionpanel" Background="Transparent" VerticalAlignment="Bottom">
+				<WrapPanel x:Name="buttontabcanvaswrap" Margin="9,0,0,0" />
 				<WrapPanel HorizontalAlignment="Right">
 					<Button ToolTip="First Page" Style="{StaticResource smallbutton}" x:Name="DataGridFirstPage" Margin="2,2,5,2" Click="DataGridFirstPage_Click" >
 						<Path x:Name="way_back" Data="F1M10.721,7C10.721,7 10.721,10.625 10.721,10.625 10.721,10.625 15,7 15,7 15,7 15,15 15,15 15,15 10.721,11.375 10.721,11.375 10.721,11.375 10.721,15 10.721,15 10.721,15 6,11 6,11 6,11 10.721,7 10.721,7z M11,3C6.6,3 3,6.6 3,11 3,15.4 6.6,19 11,19 15.4,19 19,15.4 19,11 19,6.6 15.4,3 11,3z M11,1C16.5,1 21,5.5 21,11 21,16.5 16.5,21 11,21 5.5,21 1,16.5 1,11 1,5.5 5.5,1 11,1z" Fill="#FF40445F" Height="22" Width="22"/>
@@ -281,13 +272,14 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 					<TextBox ToolTip="No. of Rows" x:Name="DataGridNumOfRows" Width="30" Margin="3,0,11,0" Height="20" Text="{Binding rowsPerPage, Mode=TwoWay}" FontFamily="Segoe UI Semibold" TextAlignment="Center" BorderBrush="#FF7676FF"/>
 				</WrapPanel>
 			</DockPanel>
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="132" HorizontalScrollBarVisibility="Disabled" >
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="131" HorizontalScrollBarVisibility="Disabled">
 				<TextBlock Text="Log..." x:Name="MessageBlock" Background="White" Margin="0,0,0,0" />
             </ScrollViewer>
-			</StackPanel>
+		</StackPanel>
 		</Grid>
 	</StackPanel>
-			<Rectangle  x:Name="Rec_Top" Fill="Transparent"  Grid.Row="0" Grid.Column="1" MouseMove="Rec_MouseMove"  MouseDown="ResizeRectangle_PreviewMouseDown"/>
+			<Rectangle  x:Name="Rec_Top" Fill="Transparent"  Grid.Row="0" Grid.Column="1" MouseMove="Rec_MouseMove"  MouseDown="ResizeRectangle_PreviewMouseDown" />
 			<Rectangle  x:Name="Rec_Top_Left" Fill="Transparent"  Grid.Row="0" Grid.Column="0" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>
 			<Rectangle  x:Name="Rec_Top_Right" Fill="Transparent"  Grid.Row="0" Grid.Column="2" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown" />
 			<Rectangle  x:Name="Rec_Left" Fill="Transparent"  Grid.Row="1" Grid.Column="0" MouseMove="Rec_MouseMove"  MouseDown="ResizeRectangle_PreviewMouseDown"/>

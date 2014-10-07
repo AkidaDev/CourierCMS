@@ -20,21 +20,21 @@ namespace FinalUi
     /// <summary>
     /// Interaction logic for TestingReporting.xaml
     /// </summary>
-    public partial class TestingReporting : Window
+    public partial class AccountStatementReportingWindow : Window
     {
         Microsoft.Reporting.WinForms.ReportDataSource rs;
         CollectionViewSource ClientListSource;
         CollectionViewSource DataGridSource;
         List<Client> clientList;
-        List<Invoice> invoice;
-        public TestingReporting()
+        List<AccountStatement> invoice;
+        public AccountStatementReportingWindow()
         {
             InitializeComponent();
             BillingDataDataContext db = new BillingDataDataContext();
             ClientListSource = (CollectionViewSource)FindResource("ClientList");
             ClientListSource.Source = db.Clients.ToList();
             rs = new Microsoft.Reporting.WinForms.ReportDataSource();
-            rs.Name = "InvoiceDataSet";
+            rs.Name = "InvoiceDataSet1";
             AccountStatementViewer.LocalReport.ReportPath = "AccountStatementReport.rdlc";
         }
 
@@ -48,7 +48,7 @@ namespace FinalUi
 
             BillingDataDataContext db = new BillingDataDataContext();
             var c  =  (Client) this.ClientListCombo.SelectedItem;
-            invoice = db.Invoices.Where(x=> x.ClientCode == c.CLCODE).ToList();
+            invoice = db.AccountStatements.Where(x=> x.ClientCode == c.CLCODE).OrderBy(y => y.TransactionDate).ToList();
             rs.Value = invoice;
             AccountStatementViewer.LocalReport.DataSources.Clear();
             AccountStatementViewer.LocalReport.DataSources.Add(rs);
@@ -58,10 +58,10 @@ namespace FinalUi
             repParams.Add(new ReportParameter("CompanyAddress", Configs.Default.CompanyAddress));
             repParams.Add(new ReportParameter("CompanyEmail", Configs.Default.CompanyEmail));
             repParams.Add(new ReportParameter("CompanyFax", Configs.Default.CompanyFax));
-            string basicsum = this.invoice.Select(y => y.Basic).Sum().ToString() ?? "";
-            string totalsum = this.invoice.Select(y => y.TotalAmount).Sum().ToString() ?? "";
-            repParams.Add(new ReportParameter("BasicTotal", basicsum));
-            repParams.Add(new ReportParameter("TotalSum", basicsum));
+            double? billedamountsum =  this.invoice.Select(y => y.PayAmount).Sum();
+            double? amountRecivedsum = this.invoice.Select(y => y.RecievedAmount).Sum();
+            double? TotalSum = billedamountsum - amountRecivedsum;
+            repParams.Add(new ReportParameter("TotalSum", TotalSum.ToString()));
             repParams.Add(new ReportParameter("ClientName", c.CLNAME));
             repParams.Add(new ReportParameter("ClientAddress", c.ADDRESS));
             repParams.Add(new ReportParameter("ClientPhoneNo", c.CONTACTNO));

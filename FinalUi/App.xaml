@@ -3,6 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="Login.xaml">
     <Application.Resources>
+
+        <ImageBrush ImageSource="Images/search.png" x:Key="search"/>
+        <ImageBrush ImageSource="Images/button.png" x:Key="button"/>
+        <ImageBrush ImageSource="Images/button1.png" x:Key="button1"/>
         <Style x:Key="saveme" TargetType="Path">
             <Setter Property="Fill" Value="Yellow"></Setter>
         </Style>
@@ -17,6 +21,43 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border Name="Border" CornerRadius="0" BorderThickness="0"
+						Background="{DynamicResource button}"
+						BorderBrush="Transparent">
+                            <ContentPresenter Margin="0" 
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center" 
+                                 RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter TargetName="Border" Property="BorderBrush" Value="#202020"/>
+                            </Trigger>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter TargetName="Border" Property="BorderBrush" Value="#202020"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="Border" Property="Background" Value="{DynamicResource search}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter TargetName="Border" Property="Background" Value="{DynamicResource button1}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter TargetName="Border" Property="Background" Value="#28000000"/>
+                                <Setter TargetName="Border" Property="BorderBrush" Value="#AAAAAA"/>
+                                <Setter Property="Foreground" Value="#FFFFFF"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="side">
+            <Setter Property="SnapsToDevicePixels" Value="true"/>
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Name="Border" CornerRadius="8" BorderThickness="0"
 						Background="Transparent"
 						BorderBrush="Transparent">
                             <ContentPresenter Margin="0" 
@@ -39,8 +80,7 @@
                                 <Setter TargetName="Border" Property="BorderBrush" Value="#606060"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
-                                <Setter TargetName="Border" Property="Background" Value="#28000000"/>
-                                <Setter TargetName="Border" Property="BorderBrush" Value="#AAAAAA"/>
+                                <Setter Property="Opacity" Value="0.6" />
                                 <Setter Property="Foreground" Value="#FFFFFF"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -48,13 +88,13 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style TargetType="{x:Type Button}" x:Key="side">
+        <Style TargetType="{x:Type Button}" x:Key="1">
             <Setter Property="SnapsToDevicePixels" Value="true"/>
             <Setter Property="OverridesDefaultStyle" Value="true"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Name="Border" CornerRadius="8" BorderThickness="0"
+                        <Border Name="Border" CornerRadius="0" BorderThickness="0"
 						Background="Transparent"
 						BorderBrush="Transparent">
                             <ContentPresenter Margin="0" 

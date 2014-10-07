@@ -144,9 +144,6 @@
     <Compile Include="BillReportWindow.xaml.cs">
       <DependentUpon>BillReportWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CityWindow.xaml.cs">
-      <DependentUpon>CityWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ClientReport.xaml.cs">
       <DependentUpon>ClientReport.xaml</DependentUpon>
     </Compile>
@@ -218,9 +215,6 @@
     <Compile Include="TestingPermisstion.xaml.cs">
       <DependentUpon>TestingPermisstion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TestingReporting.xaml.cs">
-      <DependentUpon>TestingReporting.xaml</DependentUpon>
-    </Compile>
     <Compile Include="testtheme.xaml.cs">
       <DependentUpon>testtheme.xaml</DependentUpon>
     </Compile>
@@ -271,10 +265,6 @@
     <Page Include="Blue.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="CityWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ClientReport.xaml">
       <SubType>Designer</SubType>
@@ -394,10 +384,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TestingReporting.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="testtheme.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -492,6 +478,8 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\button.png" />
+    <Resource Include="Images\button1.png" />
     <Resource Include="Images\logo.png" />
     <Resource Include="Images\search.png" />
     <Resource Include="Images\Shape 21 copy.png" />
