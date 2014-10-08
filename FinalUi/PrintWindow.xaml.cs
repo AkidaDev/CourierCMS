@@ -61,10 +61,7 @@ namespace FinalUi
 
         }
 
-        void BillViewer_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
-        {
-            BillViewer.RefreshReport();
-        }
+        c
         public void RefreshDataGridSource()
         {
             if (ClientList.SelectedValue != null && ToDate.SelectedDate != null && FromDate.SelectedDate != null)
@@ -172,6 +169,11 @@ namespace FinalUi
             printObj();
         }
 
+        private void Preview_Click(object sender, RoutedEventArgs e)
+        {
+            PrintView window = new PrintView();
+            window.ShowDialog();
+        }
         private void SaveInvoiceButton_Click(object sender, RoutedEventArgs e)
         {
             if (source == null || source.Count == 0)
