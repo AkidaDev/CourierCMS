@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BillingDatabase" Class="BillingDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=SYSTEM;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Assignment" Member="Assignments">
     <Type Name="Assignment">
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -236,7 +237,7 @@
       <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="StockStart" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="StockEnd" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="[desc]" Member="desc" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="[desc]" Member="desc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
       <Column Name="cost" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Association Name="Employee_Stock" Member="Employee" ThisKey="UserId" OtherKey="Id" Type="Employee" IsForeignKey="true" />
     </Type>
@@ -356,8 +357,8 @@
     <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_TransferTransactionDetails" Method="sp_TransferTransactionDetails" IsComposable="true">
-    <Return Type="object" />
+  <Function Name="dbo.sp_TransferTransactionDetails" Method="sp_TransferTransactionDetails">
+    <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.sp_getRateReportingObject" Method="sp_getRateReportingObject">
     <Parameter Name="ClientCode" Parameter="clientCode" Type="System.String" DbType="VarChar(50)" />
@@ -371,8 +372,8 @@
       <Column Name="StepWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.sp_ImportZoneData" Method="sp_ImportZoneData" IsComposable="true">
-    <Return Type="object" />
+  <Function Name="dbo.sp_ImportZoneData" Method="sp_ImportZoneData">
+    <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.sp_LoadToRuntimeFromDate" Method="sp_LoadToRuntimeFromDate">
     <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
@@ -386,22 +387,25 @@
     <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_TransferClients" Method="sp_TransferClients" IsComposable="true">
-    <Return Type="object" />
+  <Function Name="dbo.sp_TransferClients" Method="sp_TransferClients">
+    <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail" Method="sp_TransferMInvoiceDetailToBInvoiceDetail" IsComposable="true">
-    <Return Type="object" />
+  <Function Name="dbo.sp_TransferFRWRDRAsService" Method="sp_TransferFRWRDRAsService">
+    <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_TransferMInvoiceToBInvoice" Method="sp_TransferMInvoiceToBInvoice" IsComposable="true">
-    <Return Type="object" />
+  <Function Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail" Method="sp_TransferMInvoiceDetailToBInvoiceDetail">
+    <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_TransferPaymentDetails" Method="sp_TransferPaymentDetails" IsComposable="true">
-    <Return Type="object" />
+  <Function Name="dbo.sp_TransferMInvoiceToBInvoice" Method="sp_TransferMInvoiceToBInvoice">
+    <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_TransferRatespart1" Method="sp_TransferRatespart1" IsComposable="true">
-    <Return Type="object" />
+  <Function Name="dbo.sp_TransferPaymentDetails" Method="sp_TransferPaymentDetails">
+    <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_TransferRatespart2" Method="sp_TransferRatespart2" IsComposable="true">
-    <Return Type="object" />
+  <Function Name="dbo.sp_TransferRatespart1" Method="sp_TransferRatespart1">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_TransferRatespart2" Method="sp_TransferRatespart2">
+    <Return Type="System.Int32" />
   </Function>
 </Database>

@@ -13,7 +13,7 @@ namespace FinalUi
     {
         public static string getConString()
         {
-            string con = "Data Source=" + System.Environment.MachineName + ";Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa;Password=Alver!22";
+            string con = "Data Source=" + "System" + ";Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa;Password=Alver!22";
             return con;
         }
     }

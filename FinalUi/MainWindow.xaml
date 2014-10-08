@@ -41,6 +41,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                             <MenuItem Header="Zones" x:Name="ManageZone" Click="ManageZone_Click"/>
                         </MenuItem>
                         <MenuItem Header="Payment Entry"  Name="PaymentEntryMenuItem" Click="PaymentEntry_Click"/>
+                        <MenuItem Header="Account Statement"  Name="AccountStatementMenuItem" Click="AccountStatementMenuItem_Click"/>
                         <MenuItem Header="Payment Received"  Name="PaymentRecievedMenuItem"  Click="PaymentRecieved_Click"/>
                         <MenuItem Header="Stock Entry"  Name="StockEntryMenuItem" Click="StockEntry_Click"/>
                         <MenuItem Header="Edit Rates" x:Name="RateWindowMenu" Click="RateWindowMenu_Click"/>

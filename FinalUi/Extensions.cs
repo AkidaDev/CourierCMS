@@ -7,6 +7,10 @@ namespace FinalUi
 {
     class Extensions
     {
+        public Rate rate { get; set; }
+        public List<RateDetail> rateDetails {get; set;}
+        public Client client { get; set; }
+      
     }
     public partial class Client
     {

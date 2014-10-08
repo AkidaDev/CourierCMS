@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -256,15 +257,16 @@ namespace FinalUi
 
         private void ExecutePrint(object sender, ExecutedRoutedEventArgs e)
         {
+            
             List<RuntimeData> cData = dataGridHelper.getCurrentDataStack;
             PrintWindow win = new PrintWindow(cData, cData.Select(x => x.BookingDate).Max(), cData.Select(x => x.BookingDate).Min());
            win.Show();
         }
         private void CanExecutePrintCommand(object sender, CanExecuteRoutedEventArgs e)
         {
-            if (dataGridHelper != null)
+            if (dataGridHelper != null && dataGridHelper.areSheetsPresent && dataGridHelper.getCurrentDataStack.Count > 0)
             {
-                e.CanExecute = dataGridHelper.areSheetsPresent;
+                e.CanExecute = true;
             }
         }
         #endregion
@@ -844,6 +846,12 @@ namespace FinalUi
         {
             ZoneAssignment zone = new ZoneAssignment();
             zone.ShowDialog();
+        }
+
+        private void AccountStatementMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            AccountStatementReportingWindow window = new AccountStatementReportingWindow(); window.WindowState = WindowState.Maximized; window.Show();
+            
         }
     }
 }

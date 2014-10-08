@@ -7,6 +7,43 @@ namespace FinalUi
 {
     public class UtilityClass
     {
+        #region Convert runtime data to runtime view data
+        public static List<RuntimeCityView> convertToRuntimeVIew(List<RuntimeData> data)
+        {
+            BillingDataDataContext db = new BillingDataDataContext();
+            List<City> cities = db.Cities.ToList();
+            List<RuntimeCityView> rcvd = new List<RuntimeCityView>();
+            foreach (var dataObj in data)
+            {
+                RuntimeCityView cityObj = new RuntimeCityView();
+                cityObj.Amount = dataObj.Amount;
+                cityObj.BilledWeight = dataObj.BilledWeight;
+                cityObj.BookingDate = dataObj.BookingDate;
+                cityObj.CITY_DESC = cities.SingleOrDefault(x => x.CITY_CODE == dataObj.Destination).CITY_DESC;
+                cityObj.ConsignmentNo = dataObj.ConsignmentNo;
+                cityObj.CustCode = dataObj.CustCode;
+                cityObj.Destination = dataObj.Destination;
+                cityObj.DestinationPin = dataObj.DestinationPin;
+                cityObj.DOX = dataObj.DOX;
+                cityObj.EmpId = dataObj.EmpId;
+                cityObj.FrAmount = dataObj.FrAmount;
+                cityObj.FrWeight = dataObj.FrWeight;
+                cityObj.Id = dataObj.Id;
+                cityObj.InvoiceDate = dataObj.InvoiceDate;
+                cityObj.InvoiceNo = dataObj.InvoiceNo;
+                cityObj.Mode = dataObj.Mode;
+                cityObj.ServiceTax = dataObj.ServiceTax;
+                cityObj.SplDisc = dataObj.SplDisc;
+                cityObj.TransactionId = dataObj.TransactionId;
+                cityObj.TransMF_No = dataObj.TransMF_No;
+                cityObj.Type = dataObj.Type;
+                cityObj.Weight = dataObj.Weight;
+                rcvd.Add(cityObj);
+            }
+            return rcvd;
+
+        }
+        #endregion
         #region converting transaction to runtime data
         static public List<RuntimeData> convertTransListToRuntimeList(List<Transaction> transList)
         {

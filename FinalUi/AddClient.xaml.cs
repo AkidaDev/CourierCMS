@@ -57,7 +57,7 @@ namespace FinalUi
                 db.SubmitChanges();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); return; }
-            if (MessageBox.Show("Do you Want Assgin Rate to this client right now ?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            if (MessageBox.Show("Do you Want Assgin Rate to this client right now ?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 RateWindow window = new RateWindow();
                 window.ShowDialog();
@@ -68,12 +68,12 @@ namespace FinalUi
         {
             var db = new BillingDataDataContext();
             var data = db.Clients.Single(x => x.CLCODE == client.CLCODE);
-            data.CLCODE = ClientCode.Text;
-            data.CLNAME = ClientName.Text;
-            data.ADDRESS = ClientAddress.Text;
-            data.EMAILID = CLientEmailAddress.Text;
-            data.CONTACTNO = ClientPhoneNo.Text;
-            data.FUEL = double.Parse(ClientFuel.Text);
+            data.CLCODE = ClientCode.Text ?? "";
+            data.CLNAME = ClientName.Text ?? "";
+            data.ADDRESS = ClientAddress.Text ?? "";
+            data.EMAILID = CLientEmailAddress.Text ?? "";
+            data.CONTACTNO = ClientPhoneNo.Text ?? "";
+            data.FUEL = double.Parse(ClientFuel.Text ?? "");
             try
             {
                 db.SubmitChanges();

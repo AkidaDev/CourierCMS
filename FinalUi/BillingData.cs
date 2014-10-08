@@ -11,13 +11,35 @@ namespace FinalUi
         {
             throw new System.NotImplementedException();
         }
-        partial void InsertRuntimeData(RuntimeData instance)
+        partial void UpdateClient(Client instance)
         {
             string msg = "";
+            if (instance.CLCODE == "" || instance.CLCODE == null || instance.CLCODE.Length < 3)
+                msg += "Client Code must be at least three charaters \n";
+            if(instance.CITY_NAME == "" || instance.CITY_NAME == null )
+                msg +="City name cannot be empty \n";
+            if (instance.CONTACTNO == "" || instance.CONTACTNO == null || instance.CONTACTNO.Length < 8)
+                msg += "Enter correct contact number \n";
+            if (instance.CLNAME == "" || instance.CLNAME == null)
+                msg += "Client name cannot be empty";
+            if (instance.ADDRESS == "" || instance.ADDRESS == null)
+                msg += "Client address cannot be empty";
+            if (msg != "")
+            {
+                throw new System.Exception(msg);
+            }
+            this.ExecuteDynamicUpdate(instance);
+
+        }
+        partial void InsertRuntimeData(RuntimeData instance)
+        {
+            this.ExecuteDynamicInsert(instance);
+            
         }
         partial void UpdateRuntimeData(RuntimeData instance)
         {
             string msg = "";
+            this.ExecuteDynamicUpdate(instance);
         }
         partial void InsertEmployee(Employee instance)
         {
@@ -34,6 +56,7 @@ namespace FinalUi
             {
                 throw new System.Exception(msg);
             }
+            this.ExecuteDynamicInsert(instance);
         }
         partial void InsertStock(Stock instance)
         {
@@ -53,13 +76,12 @@ namespace FinalUi
             {
                 throw new System.Exception(msg);
             }
+            this.ExecuteDynamicUpdate(instance);
         }
-        partial void InsertCity(City instance)
+        partial void InsertCity(FinalUi.City instance)
         {
-            throw new System.NotImplementedException();
+            this.ExecuteDynamicInsert(instance);
         }
-        partial void InsertZONE(ZONE instance)
-        {
-        }
+        
     }
 }

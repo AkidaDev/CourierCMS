@@ -23,7 +23,7 @@ namespace FinalUi
         {
             InitializeComponent();
             BillingDataDataContext db = new BillingDataDataContext();
-   //         MessageBox.Show(LoadResources.getConString());
+            MessageBox.Show(LoadResources.getConString());
         }
 
         private void login_Click(object sender, RoutedEventArgs e)

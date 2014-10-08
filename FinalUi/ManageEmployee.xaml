@@ -40,7 +40,7 @@
                 </Button.Content>
 				</Button>  
             </WrapPanel>
-            <DataGrid RowHeaderWidth="0" BorderBrush="Gray" BorderThickness="1" Canvas.Top="100" Canvas.Left="39" Width="470" Height="275" x:Name="mangaEmployeegrid" ItemsSource="{Binding}" DataContext="{StaticResource EmployeeTable }"   CellEditEnding="mangaEmployeegrid_CellEditEnding"  AutoGenerateColumns="False" >
+            <DataGrid RowHeaderWidth="0" IsReadOnly="True" BorderBrush="Gray" BorderThickness="1" Canvas.Top="100" Canvas.Left="39" Width="470" Height="275" x:Name="mangaEmployeegrid" ItemsSource="{Binding}" DataContext="{StaticResource EmployeeTable }"   CellEditEnding="mangaEmployeegrid_CellEditEnding"  AutoGenerateColumns="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="Gender" Binding="{Binding Gender , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -48,10 +48,7 @@
                 <DataGridTextColumn Header="EmpCode" Binding="{Binding EMPCode,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
-        
-
-
-			<Path Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="#FFCBCBCB" Height="26" Canvas.Left="0" Canvas.Top="0" Width="550" Stretch="Fill" Stroke="Black" />
+        	<Path Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="#FFCBCBCB" Height="26" Canvas.Left="0" Canvas.Top="0" Width="550" Stretch="Fill" Stroke="Black" />
             <TextBlock FontSize="16" Height="25" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="0" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Manage Employee" Canvas.Top="6" Width="548" FontFamily="Arial"/>
             <Path MouseDown="DragthisWindow" x:Name="Memu_bar" Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26" Canvas.Left="0" Canvas.Top="0" Width="550" Stretch="Fill"/>
             <Button ToolTip="Close" Height="18" Canvas.Left="510" Click="Button_Click_Close" Canvas.Top="4" Width="35" Style="{StaticResource 1}">
