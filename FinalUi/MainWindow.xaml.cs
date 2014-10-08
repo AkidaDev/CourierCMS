@@ -453,9 +453,7 @@ namespace FinalUi
                     toDate_loadDataWin = dataWind.toDate;
                     fromDate_loadDataWin = dataWind.fromDate;
                 }
-                
-               LoadWorker.RunWorkerAsync(dataWind.data);
-               
+                LoadWorker.RunWorkerAsync(dataWind.data);
             }
         }
 
