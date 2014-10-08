@@ -83,14 +83,21 @@ namespace FinalUi
 
         private void AddUpdate_Click(object sender, RoutedEventArgs e)
         {
+            bool isdone = false;
             getfield();
             BillingDataDataContext db = new BillingDataDataContext();
             db.Cities.InsertOnSubmit(this.city);
             try
             {
                 db.SubmitChanges();
+                isdone = true;
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); return; }
+            catch (Exception ex) { MessageBox.Show(ex.Message); isdone = false; return; }
+            if (isdone)
+            {
+                MessageBox.Show("City Added");
+                this.Close();
+            }
         }
     }
 }
