@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FinalUi" GeneratedClassName="Configs">
   <Profiles />
   <Settings>
-    <Setting Name="ConnString" Type="System.String" Scope="User">
+    <Setting Name="BillingDatabaseConnectionString" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="CompanyName" Type="System.String" Scope="User">
@@ -26,6 +26,9 @@
     </Setting>
     <Setting Name="ServiceTax" Type="System.String" Scope="User">
       <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="IsFirst" Type="System.String" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>
