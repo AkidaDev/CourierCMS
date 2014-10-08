@@ -3706,7 +3706,7 @@ SELECT CITY_CODE, CITY_DESC, CITY_STATE, CITY_STATUS, CITY_STATE_DESC, MOD_DATE,
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString7;
+            this._connection.ConnectionString = global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4614,7 +4614,7 @@ SELECT Id, ConsignmentNo, Weight, Type, Destination, Mode, DestinationPin, Booki
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString7;
+            this._connection.ConnectionString = global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5696,7 +5696,7 @@ SELECT ID, AmountPayed, AmountCharged, ConnsignmentNo, Weight, WeightByFranchize
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString7;
+            this._connection.ConnectionString = global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

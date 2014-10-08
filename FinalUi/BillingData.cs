@@ -2,6 +2,11 @@ namespace FinalUi
 {
     partial class BillingDataDataContext
     {
+        public BillingDataDataContext() :
+            base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString, mappingSource)
+        {
+            OnCreated();
+        }
         partial void InsertEmployee(Employee instance)
         {
             string msg = "";
