@@ -43,6 +43,7 @@ namespace FinalUi
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
+            bool isdone = false;
             PaymentEntry paymentEntry = new PaymentEntry();
             string errorMessage = "";
             paymentEntry.Id = PaymentRefNoBox.Text;
@@ -74,15 +75,19 @@ namespace FinalUi
                 try
                 {
                     db.SubmitChanges();
+                    isdone = true;
                 }
-                catch (Exception ex) { MessageBox.Show(ex.Message); return; }
+                catch (Exception ex) { MessageBox.Show(ex.Message); isdone = false; return; }
             }
             else
             {
                 MessageBox.Show("Please correct the following errors: \n" + errorMessage);
             }
-
-            
+            if (isdone)
+            {
+                MessageBox.Show("Payment Recived\n Reference no is "+paymentEntry.Id);
+                this.Close();
+            }
         }
 		private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {

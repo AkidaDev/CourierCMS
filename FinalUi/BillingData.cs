@@ -58,9 +58,6 @@ namespace FinalUi
         {
             throw new System.NotImplementedException();
         }
-        partial void UpdateRuntimeData(RuntimeData instance)
-        {
-        }
         partial void InsertZONE(ZONE instance)
         {
         }

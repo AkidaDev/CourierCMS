@@ -57,7 +57,7 @@ namespace FinalUi
         {
             BillingDataDataContext db = new BillingDataDataContext();
             Assignment ass = db.Assignments.Where(x => x.ClientCode == ComboBoxClient.Text && x.ZoneCode == ComboBoxZone.Text && x.ServiceCode == ComboBoxService.Text).FirstOrDefault();
-            if (ass != null)
+            if (ass == null)
             {
                 assignment.ClientCode = ComboBoxClient.Text;
                 assignment.ZoneCode = ComboBoxZone.Text;
@@ -65,7 +65,8 @@ namespace FinalUi
                 isEdited = true;
             }
             else {
-                MessageBox.Show(" Error: Rate already assigned");
+                MessageBox.Show(" Error: Rate already assigned to rate code: " + ass.RateCode);
+                return;
             }
             
             this.Close();

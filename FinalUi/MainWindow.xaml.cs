@@ -40,7 +40,7 @@ namespace FinalUi
         #endregion
         public MainWindow()
         {
-			SecurityModule.authenticate("dharmendra", "pass");
+			SecurityModule.authenticate("purushottam", "1234");
             #region setupCode
             PreviewMouseMove += OnPreviewMouseMove;
             #endregion
@@ -762,7 +762,7 @@ namespace FinalUi
 
         private void ManageClient_Click(object sender, RoutedEventArgs e)
         {
-            ManageClient window = new ManageClient(); window.ShowDialog();
+            ManageClient window = new ManageClient(); window.Show();
         }
 
         private void ManageEmployee_Click(object sender, RoutedEventArgs e)
@@ -795,7 +795,7 @@ namespace FinalUi
         }
         private void StockEntry_Click(object sender, RoutedEventArgs e)
         {
-            StockWindow window = new StockWindow(); window.ShowDialog();
+            StockWindow window = new StockWindow(); window.Show();
         }
 		private void ClientReport_Click(object sender, RoutedEventArgs e)
         {
@@ -838,6 +838,12 @@ namespace FinalUi
         }
         private void dataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
+        }
+
+        private void ManageZone_Click(object sender, RoutedEventArgs e)
+        {
+            ZoneAssignment zone = new ZoneAssignment();
+            zone.ShowDialog();
         }
     }
 }

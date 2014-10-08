@@ -34,10 +34,32 @@ namespace FinalUi
         }
         private void AddZoneButton_Click(object sender, RoutedEventArgs e)
         {
+            string errorMsg = "";
             BillingDataDataContext db = new BillingDataDataContext();
-            db.Log = Console.Out;
+            
+            if(Zonecodebox.Text == "")
+            {
+                errorMsg = errorMsg + "Please enter a proper zone code. \n";
+            }
+            else
+            {
+                List<ZONE> zones = db.ZONEs.Where(x => x.zcode == Zonecodebox.Text).ToList();
+                if (zones.Count > 0)
+                    errorMsg = errorMsg + "A zone with this code already exists. \n";
+            }
+            if(ZoneNameTextBox.Text == "")
+            {
+                errorMsg = errorMsg + "Please enter a proper zone name. \n";
+            }
+            if(errorMsg != "")
+            {
+                MessageBox.Show("Please correct the following errors: \n" + errorMsg);
+                return;
+            }
             ZONE z = new ZONE();
             bool a;
+            z.Id = Guid.NewGuid();
+            z.Mode = 'A';
             z.Zone_name = this.ZoneNameTextBox.Text;
             z.zcode = this.Zonecodebox.Text;
             db.ZONEs.InsertOnSubmit(z);
@@ -50,8 +72,7 @@ namespace FinalUi
                 MessageBox.Show(ex.Message);
                 a = false;
             }
-            if (!a) MessageBox.Show("error error");
-            else { this.Close(); }
+            this.Close();
         }
         private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {

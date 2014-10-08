@@ -41,7 +41,7 @@ namespace FinalUi
         {
             AddClient window = new AddClient();
             window.Closed += AddClient_close;
-            window.ShowDialog();
+            window.Show();
 
 
 
