@@ -26,6 +26,7 @@ namespace FinalUi
         CollectionViewSource DataGridSource;
         List<RuntimeData> dataGridSource;
         Microsoft.Reporting.WinForms.ReportDataSource rs;
+        
         public PrintWindow(List<RuntimeData> data, Client client, DateTime toDate, DateTime fromDate, double tax, double previousDue)
             : this(data, toDate, fromDate)
         {
@@ -39,7 +40,7 @@ namespace FinalUi
             PreviousDueTextBox.Text = previousDue.ToString();
             PreviousDueTextBox.IsEnabled = false;
             MiscBox.Text = "0";
-            printObj();
+            printObj(client);
         }
         public PrintWindow(List<RuntimeData> data, DateTime toDate, DateTime fromDate)
         {
@@ -122,7 +123,7 @@ namespace FinalUi
             }
             #endregion
             BillingDataDataContext db = new BillingDataDataContext();
-           var source = db.RuntimeCityViews.Where(x => x.CustCode == ((Client)ClientList.SelectedItem).CLCODE && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
+           var source = UtilityClass.convertToRuntimeVIew(dataGridSource).Where(x => x.CustCode == ((Client)ClientList.SelectedItem).CLCODE && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
             rs.Value = source;
             if (client == null)
                 clc = db.Clients.SingleOrDefault(x => x.CLCODE == ((Client)ClientList.SelectedItem).CLCODE);
