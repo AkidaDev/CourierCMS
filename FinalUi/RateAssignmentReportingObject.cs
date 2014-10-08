@@ -5,21 +5,12 @@ using System.Text;
 
 namespace FinalUi
 {
-    class Extensions
+    public class RateAssignmentReportingObject
     {
         public Rate rate { get; set; }
         public List<RateDetail> rateDetails {get; set;}
         public Client client { get; set; }
-      
-    }
-    public partial class Client
-    {
-        public string NameAndCode
-        {
-            get
-            {
-                return "<" + this.CLCODE + ">" + this.CLNAME; 
-            }
-        }
+        public RateAssignmentReportingObject()
+        { }
     }
 }
