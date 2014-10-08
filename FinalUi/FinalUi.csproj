@@ -273,9 +273,6 @@
       <DependentUpon>UserControlGallery.xaml</DependentUpon>
     </Compile>
     <Compile Include="Validator.cs" />
-    <Compile Include="PrintView.xaml.cs">
-      <DependentUpon>PrintView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ZoneAssignment.xaml.cs">
       <DependentUpon>ZoneAssignment.xaml</DependentUpon>
     </Compile>
@@ -456,10 +453,6 @@
     <Page Include="UserControlGallery.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="PrintView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ZoneAssignment.xaml">
       <Generator>MSBuild:Compile</Generator>

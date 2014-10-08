@@ -61,7 +61,7 @@ namespace FinalUi
 
         }
 
-        c
+        
         public void RefreshDataGridSource()
         {
             if (ClientList.SelectedValue != null && ToDate.SelectedDate != null && FromDate.SelectedDate != null)
@@ -80,7 +80,6 @@ namespace FinalUi
             TaxBox.Text = ((Client)ClientList.SelectedItem).FUEL.ToString();
             RefreshDataGridSource();
         }
-        List<RuntimeData> source;
         string dateString;
         Client clc;
         string descriptionString;
@@ -90,6 +89,7 @@ namespace FinalUi
         double totalAmount;
         string totalAmountinWordString;
         string invoiceNo;
+        List<RuntimeCityView> source;
         private void printObj(Client client = null)
         {
             #region temp
@@ -120,7 +120,7 @@ namespace FinalUi
             }
             #endregion
             BillingDataDataContext db = new BillingDataDataContext();
-           var source = UtilityClass.convertToRuntimeVIew(dataGridSource).Where(x => x.CustCode == ((Client)ClientList.SelectedItem).CLCODE && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
+            source = UtilityClass.convertToRuntimeVIew(dataGridSource).Where(x => x.CustCode == ((Client)ClientList.SelectedItem).CLCODE && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
             rs.Value = source;
             if (client == null)
                 clc = db.Clients.SingleOrDefault(x => x.CLCODE == ((Client)ClientList.SelectedItem).CLCODE);
@@ -169,11 +169,6 @@ namespace FinalUi
             printObj();
         }
 
-        private void Preview_Click(object sender, RoutedEventArgs e)
-        {
-            PrintView window = new PrintView();
-            window.ShowDialog();
-        }
         private void SaveInvoiceButton_Click(object sender, RoutedEventArgs e)
         {
             if (source == null || source.Count == 0)
@@ -216,14 +211,6 @@ namespace FinalUi
                     MessageBox.Show(ex.Message);
                 }
             }
-        }
-        private void DragthisWindow(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
-        private void Button_Click_Close(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }

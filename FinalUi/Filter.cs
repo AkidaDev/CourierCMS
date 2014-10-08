@@ -31,7 +31,7 @@ namespace FinalUi
             BillingDataDataContext db = new BillingDataDataContext();
             selectedClientList = db.Clients.ToList();
             toDate = DateTime.Now;
-            fromDate = DateTime.MinValue;
+            fromDate = new DateTime(2009,5,1);
             showBilled = null;
             this.startConnNo = "";
             this.endConnNo = "";

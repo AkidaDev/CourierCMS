@@ -558,6 +558,7 @@ namespace FinalUi
 
         void window_Closed(object sender, EventArgs e)
         {
+            dataGridHelper.currentDataSheet.applyFilter();
             dataGridHelper.refreshCurrentPage();
 
         }
