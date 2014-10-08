@@ -3,9 +3,13 @@ namespace FinalUi
     partial class BillingDataDataContext
     {
         public BillingDataDataContext() :
-            base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString, mappingSource)
+            base(LoadResources.getConString(), mappingSource)
         {
             OnCreated();
+        }
+        partial void DeleteAssignment(Assignment instance)
+        {
+            throw new System.NotImplementedException();
         }
         partial void InsertEmployee(Employee instance)
         {

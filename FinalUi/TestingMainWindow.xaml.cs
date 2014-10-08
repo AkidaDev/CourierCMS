@@ -23,6 +23,7 @@ namespace FinalUi
         public TestingMainWindow()
         {
             InitializeComponent();
+            BillingDataDataContext db = new BillingDataDataContext();
         }
 
         private void login_Click(object sender, RoutedEventArgs e)
