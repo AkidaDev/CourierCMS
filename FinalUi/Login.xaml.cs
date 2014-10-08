@@ -27,6 +27,13 @@ namespace FinalUi
         bool loginFlag;
         public Login()
         {
+           // if (Configs.Default.IsFirst == "True")
+           // {
+                PreferenceWindow window = new PreferenceWindow();
+                window.Show();
+                Configs.Default.IsFirst = "False";
+              //  Configs.Default.Save();
+        //    }
             InitializeComponent();
             CommandBinding command = new CommandBinding();
         }

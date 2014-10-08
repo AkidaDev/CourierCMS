@@ -33,11 +33,10 @@ namespace FinalUi
         }
         public void FillDetails()
         {
-            this.serviceTaxBox.Text = Configs.Default.ServiceTax;
         }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            Configs.Default.ServiceTax = this.serviceTaxBox.Text;
+            Configs.Default.BillingDatabaseConnectionString = this.ConnectionStringBox.Text;
             Configs.Default.Save();
             this.Close();
         }

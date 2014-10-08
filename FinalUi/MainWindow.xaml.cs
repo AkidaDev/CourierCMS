@@ -105,6 +105,14 @@ namespace FinalUi
             DeleteSheetWorker = new BackgroundWorker();
             DeleteSheetWorker.DoWork += DeleteWorker_DoWork;
             DeleteSheetWorker.RunWorkerCompleted += DeleteWorker_RunWorkerCompleted;
+            if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "ManageEmployee"))
+                this.ManageEmployeeMenuItem.Visibility = Visibility.Collapsed;
+            if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "ManageClient"))
+                this.ManageClient.Visibility = Visibility.Collapsed;
+            if(!SecurityModule.hasPermission(SecurityModule.employee.Id, "Print"))
+            {
+                this.PrintButton.Visibility = this.PrintMenuItem.Visibility = this.AfterPrint.Visibility = Visibility.Collapsed;
+            }
         }
         #region backGround Worker Functions
         #region LoadWorker
@@ -195,7 +203,8 @@ namespace FinalUi
             {
                 e.CanExecute = false;
             }
-            else {
+            else 
+            {
                 e.CanExecute = true;
             }
             
