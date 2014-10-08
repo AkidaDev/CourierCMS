@@ -18,6 +18,7 @@ namespace FinalUi
                 db.sp_LoadToRuntimeFromDate(SecurityModule.currentUserName, sheetNo, toDate, fromDate);
                 return;
             }
+           
             List<RuntimeMeta> MetaData = new List<RuntimeMeta>();
             foreach(var runData in data)
             {
@@ -26,10 +27,11 @@ namespace FinalUi
                 metaData.RuntimeDataID = runData.Id;
                 metaData.SheetNo = sheetNo;
                 metaData.UserName = SecurityModule.currentUserName;
-                MetaData.Add(metaData);
+                db.RuntimeDatas.InsertOnSubmit(runData);
+                db.SubmitChanges();
+                db.RuntimeMetas.InsertOnSubmit(metaData);
+                db.SubmitChanges();
             }
-            db.RuntimeDatas.InsertAllOnSubmit(data);
-            db.RuntimeMetas.InsertAllOnSubmit(MetaData);
             db.SubmitChanges();
         }
         public void deleteRuntimeData(int sheetNo)

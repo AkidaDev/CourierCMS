@@ -198,7 +198,7 @@ namespace FinalUi
                             inextLimit = (int)(nextLimit * 1000);
                             while (icurrentW < inextLimit && icurrentW < iWeight)
                             {
-                                price = price + (double)(isDox == 'D' ? rateD.DoxRate : rateD.NonDoxRate);
+                                price = price + (double)(Char.ToUpper(isDox) == 'D' ? rateD.DoxRate : rateD.NonDoxRate);
                                 icurrentW = icurrentW + iStepWeight;
                             }
                         }

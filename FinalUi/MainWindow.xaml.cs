@@ -451,9 +451,9 @@ namespace FinalUi
                     toDate_loadDataWin = dataWind.toDate;
                     fromDate_loadDataWin = dataWind.fromDate;
                 }
-                
-               LoadWorker.RunWorkerAsync(dataWind.data);
-               
+                DBHelper help = new DBHelper();
+                help.insertRuntimeData(dataWind.data, dataGridHelper.currentSheetNumber, isLoadedFromFile, toDate_loadDataWin, fromDate_loadDataWin);
+                MessageBox.Show("Data Loading Successful");
             }
         }
 
