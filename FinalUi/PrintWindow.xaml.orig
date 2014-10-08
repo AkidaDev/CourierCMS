@@ -10,11 +10,23 @@
         <CollectionViewSource x:Key="DataGridDataSource" CollectionViewType="ListCollectionView"></CollectionViewSource>
     </Window.Resources>
 
+<<<<<<< local
    
     <Grid  Height="290" UseLayoutRounding="False"  Width="550">
+=======
+    <Grid >
+>>>>>>> other
         <Grid.Effect>
             <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
         </Grid.Effect>
+<<<<<<< local
+=======
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Canvas Grid.Row="0" ClipToBounds="True" Height="150" HorizontalAlignment="Left" UseLayoutRounding="False" VerticalAlignment="Top" Width="1024" Background="White" Margin="0,10,0,-10">
+>>>>>>> other
 
         <Canvas x:Name="RateWindow1" ClipToBounds="True" HorizontalAlignment="Left" Height="290" UseLayoutRounding="False" VerticalAlignment="Top" Width="550" Background="White">
             <Path x:Name="Vertical_line" Data="F1M2,3C2,3 2,2 2,2 2,2 331,2 331,2 331,2 331,3 331,3 331,3 2,3 2,3" Fill="Black" Height="4" Canvas.Left="108" Canvas.Top="56" Width="332"/>
@@ -54,12 +66,27 @@
                         <Path Margin="0 0 3 0" x:Name="print" Data="F1M8.9,14.833C8.9,14.833 8.9,20.667 8.9,20.667 8.9,20.667 18.1,20.667 18.1,20.667 18.1,20.667 18.1,14.833 18.1,14.833 18.1,14.833 8.9,14.833 8.9,14.833z M21.55,10.167C20.86,10.167 20.4,10.633 20.4,11.333 20.4,12.033 20.86,12.5 21.55,12.5 22.24,12.5 22.7,12.033 22.7,11.333 22.7,10.633 22.24,10.167 21.55,10.167z M5.45,7.833C5.45,7.833 21.55,7.833 21.55,7.833 23.505,7.833 25,9.35 25,11.333 25,11.333 25,18.333 25,18.333 25,18.333 20.4,18.333 20.4,18.333 20.4,18.333 20.4,23 20.4,23 20.4,23 6.6,23 6.6,23 6.6,23 6.6,18.333 6.6,18.333 6.6,18.333 2,18.333 2,18.333 2,18.333 2,11.333 2,11.333 2,9.35 3.495,7.833 5.45,7.833z M6.6,2C6.6,2 20.4,2 20.4,2 20.4,2 20.4,6.667 20.4,6.667 20.4,6.667 6.6,6.667 6.6,6.667 6.6,6.667 6.6,2 6.6,2z" Fill="Black" Height="24" Width="26"/>
                         <TextBlock x:Name="Previous" FontWeight="Bold" FontSize="24" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="413" LineHeight="24" TextAlignment="Left" TextWrapping="Wrap" Text="Print Preview" Canvas.Top="363.88" Height="20" />
                 </WrapPanel>
+<<<<<<< local
             </Button>
                 <Button  Click="Button_Click" Canvas.Left="174" Canvas.Top="355" Style="{StaticResource all}" >
                 <WrapPanel Margin="6,3,6,3">
                     <Path x:Name="next" Data="F1M24.383,14.132C24.383,14.132 32.794,22.624 32.794,22.624 32.794,22.624 24.383,31.117 24.383,31.117 24.383,31.117 24.383,25.809 24.383,25.809 24.383,25.809 11.765,25.809 11.765,25.809 11.765,25.809 11.765,19.44 11.765,19.44 11.765,19.44 24.383,19.44 24.383,19.44 24.383,19.44 24.383,14.132 24.383,14.132z M22.25,6.05C13.34,6.05 6.05,13.34 6.05,22.25 6.05,31.16 13.34,38.45 22.25,38.45 31.16,38.45 38.45,31.16 38.45,22.25 38.45,13.34 31.16,6.05 22.25,6.05z M22.25,2C33.387,2 42.5,11.112 42.5,22.25 42.5,33.387 33.387,42.5 22.25,42.5 11.112,42.5 2,33.387 2,22.25 2,11.112 11.112,2 22.25,2z" Fill="Black" Height="23" Width="23" Stretch="Fill" Margin="0,0,3,0"/>
                     <TextBlock x:Name="SubmitNext" FontWeight="Bold" FontSize="24" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="413" LineHeight="24" TextAlignment="Left" TextWrapping="Wrap" Text="Print" Height="20" />
+=======
+                <WrapPanel Margin="0,10,0,0" >
+                    <TextBlock  FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Previous Due .:" Margin="0,5,5,0"/>
+                    <TextBox x:Name="PreviousDueTextBox" Width="50"/>
+                    <TextBlock  FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Fuel(in %) .:" Margin="30,5,5,0"/>
+                    <TextBox x:Name="TaxBox" Width="50"/>
+                    <TextBlock  FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Service Tax(in %) .:" Margin="30,5,5,0"/>
+                    <TextBox x:Name="ServiceTaxBox" Width="50"/>
+                    <TextBlock  FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Miscellaneous Charges .:" Margin="30,5,5,0"/>
+                    <TextBox x:Name="MiscBox" Width="50"/>
+                    <Button HorizontalAlignment="Right" Content="Print" Click="Button_Click"/>
+                    <Button Name="SaveInvoiceButton" Click="SaveInvoiceButton_Click" Content="Save this invoice" Margin="2 0 0 0"/>
+>>>>>>> other
                 </WrapPanel>
+<<<<<<< local
             </Button>
             <Button Name="SaveInvoiceButton" Click="SaveInvoiceButton_Click"  Canvas.Left="432" Canvas.Top="245" Style="{StaticResource all}" Margin="50,0,0,0">
                 <Button.Content>
@@ -78,10 +105,22 @@
             <TextBlock FontSize="16" Height="25" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="0" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Print Window" Canvas.Top="6" Width="548" FontFamily="Arial"/>
             <Path MouseDown="DragthisWindow" x:Name="Memu_bar" Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26" Canvas.Left="0" Canvas.Top="0" Width="550" Stretch="Fill"/>
             <Button ToolTip="Close" Height="18" Canvas.Left="510" Click="Button_Click_Close" Canvas.Top="4" Width="35" Style="{StaticResource 1}">
+=======
+            </StackPanel>
+            <Path Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="#FFCBCBCB" Height="26" Canvas.Left="0" Canvas.Top="0" Width="1024" Stretch="Fill" Stroke="Black" />
+            <TextBlock FontSize="16" Height="25" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="0" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Print Window" Canvas.Top="6" Width="1022" FontFamily="Arial"/>
+            <Path MouseDown="DragthisWindow" x:Name="Memu_bar" Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26" Canvas.Left="0" Canvas.Top="0" Width="1024" Stretch="Fill"/>
+            <Button ToolTip="Close" Height="18" Canvas.Left="984" Click="Button_Click_Close" Canvas.Top="4" Width="35" Style="{StaticResource 1}">
+>>>>>>> other
                 <Path x:Name="close" Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,
                   12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,
                   3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" Width="15" Height="15"/>
             </Button>
+
         </Canvas>
+
+        <WindowsFormsHost Grid.Row="1">
+            <rv:ReportViewer x:Name="BillViewer" ShowContextMenu="True" ShowExportButton="True" ></rv:ReportViewer>
+        </WindowsFormsHost>
     </Grid>
 </Window>
