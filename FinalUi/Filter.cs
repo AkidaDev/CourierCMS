@@ -75,7 +75,7 @@ namespace FinalUi
 	                and
 	                RuntimeMeta.SheetNo = {1};
 
-                ", SecurityModule.currentUserName, sheetNo).ToList();
+                ", "dharmendra", sheetNo).ToList();
 
             if (showBilled != null)
             {
@@ -91,7 +91,7 @@ namespace FinalUi
                     fData = fData.Where(x => !qData.Select(y => y.ConsignmentNo).Contains(x.ConsignmentNo));
                 }
             }
-            bool areNullAllowed = selectedClientList.Select(x => x.CLCODE).Contains("<NONE>");
+            bool areNullAllowed = selectedClientList.Select(x => x.CLCODE).Contains("NONE");
             fData = fData.Where(x => selectedClientList.Select(y => y.CLCODE).Contains(x.CustCode) || (x.CustCode == null && areNullAllowed));
             fData = fData.Where(x => x.BookingDate <= toDate && x.BookingDate >= fromDate);
             if (startConnNo != "" && endConnNo != "")

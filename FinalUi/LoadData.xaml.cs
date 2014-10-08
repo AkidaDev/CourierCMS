@@ -11,7 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 namespace FinalUi
 {
     /// <summary>
@@ -23,6 +22,7 @@ namespace FinalUi
         {
             isNewSheet = true;
             InitializeComponent();
+            
             isLoadedFromFile = false;
         }
         public bool dataLoaded { get; set; }
@@ -56,7 +56,6 @@ namespace FinalUi
                 this.selected_Circle.Visibility = Visibility.Visible;
                 this.selected1_Circle.Visibility = Visibility.Hidden;
         }
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             if (filename1 != null)
@@ -74,7 +73,6 @@ namespace FinalUi
                 MessageBox.Show("file not selected", "warning", button, icon);
             }
         }
-
         private void addData_CheckedUnChecked(object sender, RoutedEventArgs e)
         {
             if (this.checkbox_selected.Visibility == Visibility.Hidden)
@@ -88,9 +86,7 @@ namespace FinalUi
                 this.checkbox_unselected.Visibility = Visibility.Visible;
                 isNewSheet = true;
             }
-      
         }
-
         public void loaddata(object sender, RoutedEventArgs e)
         { 
             if(this.selected_Circle.Visibility  == Visibility.Visible)
@@ -131,16 +127,13 @@ namespace FinalUi
                 this.selected1_Circle.Visibility = Visibility.Visible;
             }
         }
-
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
         private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
-
     }
 }

@@ -29,9 +29,9 @@
             <TextBlock Name="RateDescription" FontSize="14" Padding="5,2,0,0"  Height="26" Canvas.Left="183" Canvas.Top="71" Width="277" />
             <Path x:Name="Rectangle_1_copy_2" Data="F1M1,1C1,1 276,1 276,1 276,1 276,25 276,25 276,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26" Canvas.Left="183" Canvas.Top="71" Width="277" StrokeThickness=".5" Stroke="Black"/>
 			<Path x:Name="line" Data="F1M1.986,3C1.986,3 1.986,1.786 1.986,1.786 1.986,1.786 501.982,1.786 501.982,1.786 501.982,1.786 501.982,3 501.982,3 501.982,3 1.986,3 1.986,3" Fill="Black" Height="4" Canvas.Left="22" Canvas.Top="98" Width="503"/>
-			<DataGrid BorderThickness="1" BorderBrush="Gray" RowHeaderWidth="0" IsReadOnly="True" Background="White" SelectionMode="Single" MouseDoubleClick="Type1DG_MouseDoubleClick" DockPanel.Dock="Left" HorizontalAlignment="Left" AutoGenerateColumns="False" ItemsSource="{Binding}" DataContext="{StaticResource Type1DGSource}" Name="Type1DG"  Height="111" Canvas.Left="22" Canvas.Top="108" Width="254">
+			<DataGrid BorderThickness="1"  LostFocus="Type1DG_LostFocus" CurrentCellChanged="Type1DG_CurrentCellChanged" BorderBrush="Gray" RowHeaderWidth="0" IsReadOnly="True" Background="White" SelectionMode="Single" MouseDoubleClick="Type1DG_MouseDoubleClick" DockPanel.Dock="Left" HorizontalAlignment="Left" AutoGenerateColumns="False" ItemsSource="{Binding}" DataContext="{StaticResource Type1DGSource}" Name="Type1DG"  Height="111" Canvas.Left="22" Canvas.Top="108" Width="254">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="     Weight" Binding="{Binding Path=Weight}" Width="84"></DataGridTextColumn>
+                    <DataGridTextColumn Header="     Weight" Binding="{Binding Path=Weight}" Width="84" ></DataGridTextColumn>
                     <DataGridTextColumn Header="     Dox Rate" Binding="{Binding Path=DoxRate}" Width="84"></DataGridTextColumn>
                     <DataGridTextColumn Header="NonDox Rate" Binding="{Binding Path=NonDoxRate}" Width="84"></DataGridTextColumn>
                 </DataGrid.Columns>
@@ -52,8 +52,8 @@
             <TextBlock x:Name="Price______" FontWeight="Bold" FontSize="14" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="341" LineHeight="14" TextAlignment="Left" TextWrapping="Wrap" Text="Price    .:" Canvas.Top="174.68"/>
             <TextBox  Height="20" Canvas.Left="398" Canvas.Top="168" Width="80"/>
 			<TextBlock Name="TestPrice" Height="20" Canvas.Left="398" Canvas.Top="167" Width="80" Padding="3 2 0 0"/>
-			
-			<DataGrid BorderThickness="1" BorderBrush="Gray"  RowHeaderWidth="0" Background="White" DockPanel.Dock="Left" DataContext="{StaticResource Type2DGSource}" MouseDoubleClick="Type1DG_MouseDoubleClick" ItemsSource="{Binding}" IsReadOnly="True" SelectionMode="Single" Name="Type2DG" AutoGenerateColumns="False" VerticalAlignment="Top" Height="106" Canvas.Left="302" Canvas.Top="219" Width="223">
+
+            <DataGrid BorderThickness="1" LostFocus="Type1DG_LostFocus" BorderBrush="Gray"  RowHeaderWidth="0" Background="White" DockPanel.Dock="Left" DataContext="{StaticResource Type2DGSource}" MouseDoubleClick="Type1DG_MouseDoubleClick" ItemsSource="{Binding}" IsReadOnly="True" SelectionMode="Single" Name="Type2DG" AutoGenerateColumns="False" VerticalAlignment="Top" Height="106" Canvas.Left="302" Canvas.Top="219" Width="223">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Weight" Binding="{Binding Path=Weight}" Width="49" ></DataGridTextColumn>
                     <DataGridTextColumn Header=" Dox" Binding="{Binding Path=DoxRate}" Width="37"></DataGridTextColumn>
@@ -68,7 +68,7 @@
                 <Path x:Name="delete_copy_2" Data="F1M1.915,8.555C2.485,9.144 4.768,9.241 7.499,9.241 10.23,9.241 12.515,9.144 13.082,8.555 13.153,8.629 13.2,8.705 13.212,8.784 13.212,8.784 13.22,8.784 13.22,8.784 13.22,8.784 13.216,8.826 13.216,8.826 13.216,8.831 13.22,8.836 13.22,8.841 13.22,8.852 13.216,8.863 13.216,8.873 13.216,8.873 12.771,18.169 12.771,18.169 12.771,18.169 12.767,18.169 12.767,18.169 12.729,18.898 11.911,20 7.499,20 3.088,20 2.27,18.898 2.23,18.169 2.23,18.169 2.229,18.169 2.229,18.169 2.229,18.169 1.785,8.873 1.785,8.873 1.783,8.863 1.78,8.852 1.78,8.841 1.78,8.836 1.782,8.831 1.782,8.826 1.782,8.826 1.78,8.784 1.78,8.784 1.78,8.784 1.785,8.784 1.785,8.784 1.801,8.705 1.845,8.629 1.915,8.555z M5.845,2.207C5.78,2.207 5.726,2.532 5.726,2.93 5.726,2.93 5.726,3.839 5.726,3.839 5.726,3.839 5.905,3.828 5.905,3.828 6.414,3.798 6.949,3.782 7.499,3.782 8.03,3.782 8.543,3.798 9.036,3.824 9.036,3.824 9.036,2.93 9.036,2.93 9.036,2.532 8.983,2.207 8.917,2.207 8.852,2.207 8.479,2.207 8.091,2.207 8.091,2.207 6.672,2.207 6.672,2.207 6.283,2.207 5.911,2.207 5.845,2.207z M5.252,1C5.252,1 9.509,1 9.509,1 9.899,1 10.217,1.327 10.217,1.724 10.217,1.724 10.217,3.919 10.217,3.919 12.448,4.151 14,4.66 14,5.252 14,5.252 14,6.337 14,6.337 14,6.559 13.777,6.771 13.383,6.962 12.344,7.46 10.101,7.805 7.499,7.805 4.899,7.805 2.655,7.46 1.617,6.962 1.221,6.771 1,6.559 1,6.337 1,6.337 1,5.252 1,5.252 1,4.68 2.441,4.187 4.545,3.944 4.545,3.944 4.545,1.724 4.545,1.724 4.545,1.327 4.864,1 5.252,1z" Fill="Black" Height="20" Width="13" Stretch="Fill"/>
             </Button>
 			<TextBlock x:Name="This_Rate_is_also_Assigned_to__" FontWeight="Bold" FontSize="14" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="43" LineHeight="14" TextAlignment="Left" TextWrapping="Wrap" Text="This Rate is also Assigned to .:" Canvas.Top="253.68"/>
-			<DataGrid Name="DGRateAssignment"  RowHeaderWidth="0" BorderThickness="1" BorderBrush="Gray" Background="White" IsReadOnly="True" MouseDoubleClick="DGRateAssignment_MouseDoubleClick" DockPanel.Dock="Left" DataContext="{StaticResource RateAssignmentDGSource}" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" Height="111" Canvas.Left="22" Canvas.Top="267" Width="254">
+            <DataGrid Name="DGRateAssignment" LostFocus="Type1DG_LostFocus" RowHeaderWidth="0" BorderThickness="1" BorderBrush="Gray" Background="White" IsReadOnly="True" MouseDoubleClick="DGRateAssignment_MouseDoubleClick" DockPanel.Dock="Left" DataContext="{StaticResource RateAssignmentDGSource}" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" Height="111" Canvas.Left="22" Canvas.Top="267" Width="254">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header=" ServiceCode" Binding="{Binding Path=ServiceCode}" Width="84" ></DataGridTextColumn>
                     <DataGridTextColumn Header="  ClientCode" Binding="{Binding Path=ClientCode}" Width="84"></DataGridTextColumn>
@@ -85,7 +85,7 @@
             <Path Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="#FFCBCBCB" Height="26" Canvas.Left="0" Canvas.Top="0" Width="550" Stretch="Fill" Stroke="Black" />
             <TextBlock FontSize="16" Height="25" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="0" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Rate Window" Canvas.Top="6" Width="548" FontFamily="Arial"/>
             <Path MouseDown="DragthisWindow" x:Name="Memu_bar" Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26" Canvas.Left="0" Canvas.Top="0" Width="550" Stretch="Fill"/>
-            <Button ToolTip="Close" Height="18" Canvas.Left="510" Click="Button_Click_Close" Canvas.Top="4" Width="35" Style="{StaticResource all}">
+            <Button ToolTip="Close" Height="18" Canvas.Left="510" Click="Button_Click_Close" Canvas.Top="4" Width="35" Style="{StaticResource 1}">
                 <Path x:Name="close" Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,
                   12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,
                   3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" Width="15" Height="15"/>

@@ -67,24 +67,22 @@ namespace FinalUi
         }
         private void AddstockLabel_Click(object sender, RoutedEventArgs e)
         {
-            bool flag = true;
+            bool flag = false;
             if (getdetails())
             {
                 BillingDataDataContext db = new BillingDataDataContext();
                 db.Stocks.InsertOnSubmit(this.s);
                 try
                 {
-                    if (Validator.StockV(this.s))
-                    {
-                        try
+                    try
                         {
                             db.SubmitChanges();
+                            flag = true;
                         }
-                        catch (Exception ex) { MessageBox.Show(ex.Message); return; }
-                    }
-                    flag = false;
+                    catch (Exception ex) { MessageBox.Show(ex.Message); flag = false; return; }
+                    
                 }
-                catch (Exception d) { flag = false; }
+                catch (Exception d) { flag = false; MessageBox.Show(d.Message); return; }
                 if (flag)
                 {
                     MessageBox.Show("Stock added");

@@ -50,6 +50,7 @@ namespace FinalUi
                 {
                     rowData.InvoiceDate = dateTimeObj;
                 }
+                rowData.CustCode = "NONE";
                 data.Add(rowData);
 
             }

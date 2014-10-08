@@ -37,7 +37,6 @@ namespace FinalUi
             NonDoxRateBox.Text = retD.NonDoxRate.ToString();
             DoxRateTextBox.Text = retD.DoxRate.ToString();
         }
-
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             retD.DoxRate = double.Parse(DoxRateTextBox.Text);
@@ -55,7 +54,6 @@ namespace FinalUi
         {
             this.Close();
         }
-
         private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {
             DragMove();

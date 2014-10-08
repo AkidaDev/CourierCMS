@@ -27,9 +27,9 @@ namespace FinalUi
         List<RuntimeData> dataGridSource;
         Microsoft.Reporting.WinForms.ReportDataSource rs;
         public PrintWindow(List<RuntimeData> data, Client client, DateTime toDate, DateTime fromDate, double tax, double previousDue)
-            : this(data,toDate,fromDate)
+            : this(data, toDate, fromDate)
         {
-           
+
             ToDate.IsEnabled = false;
             FromDate.IsEnabled = false;
             ClientList.SelectedItem = client.CLCODE;
@@ -41,13 +41,13 @@ namespace FinalUi
             MiscBox.Text = "0";
             printObj();
         }
-        public PrintWindow(List<RuntimeData> data,DateTime toDate, DateTime fromDate)
+        public PrintWindow(List<RuntimeData> data, DateTime toDate, DateTime fromDate)
         {
             InitializeComponent();
             ToDate.SelectedDate = toDate.Date;
             FromDate.SelectedDate = fromDate.Date;
             TaxBox.Text = Configs.Default.ServiceTax;
-            
+
             ClientListSource = (CollectionViewSource)FindResource("ClientList");
             DataGridSource = (CollectionViewSource)FindResource("DataGridDataSource");
             dataGridSource = data;
@@ -79,11 +79,22 @@ namespace FinalUi
 
         private void ClientList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            TaxBox.Text = ((Client)ClientList.SelectedItem).FUEL.ToString() ;
+            TaxBox.Text = ((Client)ClientList.SelectedItem).FUEL.ToString();
             RefreshDataGridSource();
         }
+        List<RuntimeData> source;
+        string dateString;
+        Client clc;
+        string descriptionString;
+        string mainAmount;
+        double tax;
+        double taxamount;
+        double totalAmount;
+        string totalAmountinWordString;
+        string invoiceNo;
         private void printObj(Client client = null)
         {
+            #region temp
             string errorMsg = "";
             if (ToDate.SelectedDate == null || FromDate.SelectedDate == null || ToDate.SelectedDate < FromDate.SelectedDate)
                 errorMsg += "Please set the date properly. \n";
@@ -109,10 +120,10 @@ namespace FinalUi
                 MessageBox.Show(errorMsg);
                 return;
             }
+            #endregion
             BillingDataDataContext db = new BillingDataDataContext();
-            List<RuntimeData> source = dataGridSource.Where(x => x.CustCode == ((Client)ClientList.SelectedItem).CLCODE && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
+           var source = db.RuntimeCityViews.Where(x => x.CustCode == ((Client)ClientList.SelectedItem).CLCODE && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
             rs.Value = source;
-            Client clc;
             if (client == null)
                 clc = db.Clients.SingleOrDefault(x => x.CLCODE == ((Client)ClientList.SelectedItem).CLCODE);
             else
@@ -121,23 +132,23 @@ namespace FinalUi
             BillViewer.LocalReport.DataSources.Add(rs);
             List<ReportParameter> repParams = new List<ReportParameter>();
             BillViewer.LocalReport.SetParameters(repParams);
-            string dateString = FromDate.DisplayDate.ToString() + " to " + ToDate.DisplayDate.ToString();
+            dateString = FromDate.DisplayDate.ToString() + " to " + ToDate.DisplayDate.ToString();
             repParams.Add(new ReportParameter("DateString", dateString));
-            string descriptionString = "";
+            descriptionString = "";
             descriptionString = "Total Connsignments: " + source.Count;
             repParams.Add(new ReportParameter("DescriptionString", descriptionString));
-            string mainAmount = source.Sum(x => x.FrAmount).ToString();
+            mainAmount = source.Sum(x => x.FrAmount).ToString();
             repParams.Add(new ReportParameter("MainAmountString", mainAmount));
             repParams.Add(new ReportParameter("FuelString", TaxBox.Text));
             repParams.Add(new ReportParameter("ServiceTaxString", ServiceTaxBox.Text));
-            double tax = double.Parse(TaxBox.Text) + double.Parse(ServiceTaxBox.Text);
+            tax = double.Parse(TaxBox.Text) + double.Parse(ServiceTaxBox.Text);
             repParams.Add(new ReportParameter("TaxPercentageString", tax.ToString()));
-            double taxamount = tax * double.Parse(mainAmount) / 100;
+            taxamount = tax * double.Parse(mainAmount) / 100;
             repParams.Add(new ReportParameter("TaxAmountString", taxamount.ToString()));
             repParams.Add(new ReportParameter("MiscellaneousAmountString", MiscBox.Text));
-            double totalAmount = double.Parse(mainAmount) + taxamount + double.Parse(MiscBox.Text) + double.Parse(PreviousDueTextBox.Text);
+            totalAmount = double.Parse(mainAmount) + taxamount + double.Parse(MiscBox.Text) + double.Parse(PreviousDueTextBox.Text);
             repParams.Add(new ReportParameter("TotalAmountString", totalAmount.ToString()));
-            string totalAmountinWordString = UtilityClass.NumbersToWords((int)totalAmount);
+            totalAmountinWordString = UtilityClass.NumbersToWords((int)totalAmount);
             repParams.Add(new ReportParameter("TotalAmountInWordString", totalAmountinWordString));
             repParams.Add(new ReportParameter("PreviousDueString", PreviousDueTextBox.Text));
             repParams.Add(new ReportParameter("CompanyName", Configs.Default.CompanyName));
@@ -148,8 +159,8 @@ namespace FinalUi
             repParams.Add(new ReportParameter("ClientName", clc.CLNAME));
             repParams.Add(new ReportParameter("ClientAddress", clc.ADDRESS));
             repParams.Add(new ReportParameter("ClientPhoneNo", clc.CONTACTNO));
-
-            repParams.Add(new ReportParameter("InvoiceNumber", DateTime.Now.ToString("yyyyMMddhhmm")));
+            invoiceNo = DateTime.Now.ToString("yyyyMMddhhmm");
+            repParams.Add(new ReportParameter("InvoiceNumber", invoiceNo));
             BillViewer.LocalReport.SetParameters(repParams);
             BillViewer.ShowExportButton = true;
 
@@ -158,6 +169,50 @@ namespace FinalUi
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             printObj();
+        }
+
+        private void SaveInvoiceButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (source == null || source.Count == 0)
+                return;
+            MessageBoxResult result = MessageBox.Show("Do you want to save this invoice? ", "Confirm", MessageBoxButton.YesNo);
+            int count = source.Where(x => x.TransactionId==null || x.TransactionId==Guid.Empty).Count();
+            if(count >0)
+            {
+                MessageBox.Show("Selected transactions set contains records that are not yet saved in the database. This bill cannot be saved.");
+                return;
+            }
+            if(result == MessageBoxResult.Yes)
+            {
+                BillingDataDataContext db = new BillingDataDataContext();
+                Invoice invoice = new Invoice();
+                invoice.Basic = double.Parse(mainAmount);
+                invoice.BillId = invoiceNo;
+                invoice.ClientCode = clc.CLCODE;
+                invoice.Date = DateTime.Today;
+                invoice.Fuel = double.Parse(TaxBox.Text);
+                invoice.PreviousDue = double.Parse(PreviousDueTextBox.Text);
+                invoice.Remarks = RemarkBox.Text;
+                invoice.STax = double.Parse(ServiceTaxBox.Text);
+                invoice.TotalAmount = totalAmount;
+                db.Invoices.InsertOnSubmit(invoice);
+                foreach(var item in source)
+                {
+                    InvoiceAssignment assign = new InvoiceAssignment();
+                    assign.BillId = invoice.BillId;
+                    assign.Id = Guid.NewGuid();
+                    assign.TransactionId = (Guid)item.TransactionId;
+                    db.InvoiceAssignments.InsertOnSubmit(assign);
+                }
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }

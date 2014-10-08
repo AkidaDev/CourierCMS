@@ -1,5 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BillingDatabase" Class="BillingDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=SYSTEM;Initial Catalog=BillingDatabase;User ID=sa" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString7" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Assignment" Member="Assignments">
     <Type Name="Assignment">
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -66,9 +65,18 @@
       <Column Name="BOYCD" Type="System.String" DbType="Char(10)" CanBeNull="true" />
       <Column Name="BOYNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="APPTRF" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="CASTATUS" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="Client_Assignment" Member="Assignments" ThisKey="CLCODE" OtherKey="ClientCode" Type="Assignment" />
       <Association Name="Client_PaymentEntry" Member="PaymentEntries" ThisKey="CLCODE" OtherKey="ClientCode" Type="PaymentEntry" />
       <Association Name="Client_Transaction" Member="Transactions" ThisKey="CLCODE" OtherKey="CustCode" Type="Transaction" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Country" Member="Countries">
+    <Type Name="Country">
+      <Column Name="cc_fips" Type="System.String" DbType="NVarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="cc_iso" Type="System.String" DbType="NVarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="tld" Type="System.String" DbType="NVarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="country_name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.Employee" Member="Employees">
@@ -144,6 +152,7 @@
       <Column Name="NonDoxRate" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="StepWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Mode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Association Name="Rate_RateDetail" Member="Rate" ThisKey="RateCode" OtherKey="RateCode" Type="Rate" IsForeignKey="true" />
     </Type>
   </Table>
@@ -270,6 +279,64 @@
       <Association Name="Permission_User_permission" Member="Permission" ThisKey="per_id" OtherKey="id" Type="Permission" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.world_cities_free" Member="world_cities_frees">
+    <Type Name="world_cities_free">
+      <Column Name="cc_fips" Type="System.String" DbType="NVarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="full_name_nd" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccountStatement" Member="AccountStatements">
+    <Type Name="AccountStatement">
+      <Column Name="Id" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TransactionDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="ClientCode" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
+      <Column Name="RecievedAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PayAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RuntimeCityView" Member="RuntimeCityViews">
+    <Type Name="RuntimeCityView">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ConsignmentNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="Destination" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Mode" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="DestinationPin" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="BookingDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="DOX" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ServiceTax" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SplDisc" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="InvoiceNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="EmpId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="FrAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="FrWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TransactionId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CustCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TransMF_No" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BilledWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CITY_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BalanceView" Member="BalanceViews">
+    <Type Name="BalanceView">
+      <Column Name="PC" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentRecieved" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="AmountBilled" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NetBalance" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PROFITVIEW" Member="PROFITVIEWs">
+    <Type Name="PROFITVIEW">
+      <Column Name="TotalPayed" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
+      <Column Name="TotalChargedAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CustCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="netProfit" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FUEL" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.RateAssignmentReportingView" Member="RateAssignmentReportingViews">
     <Type Name="RateAssignmentReportingView">
       <Column Name="ClCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
@@ -289,11 +356,23 @@
     <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_TransferPaymentDetails" Method="sp_TransferPaymentDetails">
-    <Return Type="System.Int32" />
+  <Function Name="dbo.sp_TransferTransactionDetails" Method="sp_TransferTransactionDetails" IsComposable="true">
+    <Return Type="object" />
   </Function>
-  <Function Name="dbo.sp_ImportZoneData" Method="sp_ImportZoneData">
-    <Return Type="System.Int32" />
+  <Function Name="dbo.sp_getRateReportingObject" Method="sp_getRateReportingObject">
+    <Parameter Name="ClientCode" Parameter="clientCode" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="sp_getRateReportingObjectResult">
+      <Column Name="RateCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DoxRate" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="NonDoxRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StepWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_ImportZoneData" Method="sp_ImportZoneData" IsComposable="true">
+    <Return Type="object" />
   </Function>
   <Function Name="dbo.sp_LoadToRuntimeFromDate" Method="sp_LoadToRuntimeFromDate">
     <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
@@ -307,10 +386,22 @@
     <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail" Method="sp_TransferMInvoiceDetailToBInvoiceDetail">
-    <Return Type="System.Int32" />
+  <Function Name="dbo.sp_TransferClients" Method="sp_TransferClients" IsComposable="true">
+    <Return Type="object" />
   </Function>
-  <Function Name="dbo.sp_TransferMInvoiceToBInvoice" Method="sp_TransferMInvoiceToBInvoice">
-    <Return Type="System.Int32" />
+  <Function Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail" Method="sp_TransferMInvoiceDetailToBInvoiceDetail" IsComposable="true">
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.sp_TransferMInvoiceToBInvoice" Method="sp_TransferMInvoiceToBInvoice" IsComposable="true">
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.sp_TransferPaymentDetails" Method="sp_TransferPaymentDetails" IsComposable="true">
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.sp_TransferRatespart1" Method="sp_TransferRatespart1" IsComposable="true">
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.sp_TransferRatespart2" Method="sp_TransferRatespart2" IsComposable="true">
+    <Return Type="object" />
   </Function>
 </Database>

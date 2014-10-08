@@ -53,8 +53,6 @@ namespace FinalUi
                 this.dataContext = dataContext;
             if (dg.ItemsSource != null)
                 dataListContext = (ListCollectionView)dg.ItemsSource;
-
-
             conssNumbers = (CollectionViewSource)FindResource("ConsignmentNumbers");
             conssNumbers.Source = (from id in dataContext
                                    orderby id.BookingDate, id.ConsignmentNo
@@ -81,7 +79,6 @@ namespace FinalUi
             {
                 BilledAmount.Text = "0";
             }
-
             bool isDataInContext = true;
             RuntimeData data;
             data = dataContext.SingleOrDefault(x => x.ConsignmentNo == ConnsignmentNumber.Text);
@@ -103,7 +100,8 @@ namespace FinalUi
             data.Weight = Double.Parse(WeightAccToDTDC.Text);
             data.FrWeight = Double.Parse(WeightAccToFranchize.Text);
             data.Amount = Decimal.Parse(Cost.Text);
-            data.Destination = Destination.Text;
+            var c1 = db.Cities.Where(x => x.CITY_DESC == Destination.Text).Select(y => y.CITY_CODE).FirstOrDefault();
+            data.Destination = c1;
             DestinationPin.Text = DestinationPin.Text ?? "";
             data.CustCode = CustomerSelected.Text;
             data.Mode = MODE.Text;
@@ -129,7 +127,8 @@ namespace FinalUi
                     MessageBoxResult rsltMessageBox = MessageBox.Show("No city with this code is entered. Do you want to enter it now?", "", MessageBoxButton.YesNo, MessageBoxImage.Asterisk);
                     if(MessageBoxResult.Yes == rsltMessageBox)
                     {
-                        CityWindow window = new CityWindow(); window.ShowDialog();
+                        AddCity window = new AddCity(); 
+                        window.Show();
                     }
                 }
                 if(DestinationPin.Text == "" || DestinationPin.Text == null)
@@ -215,12 +214,12 @@ namespace FinalUi
         }
         void clearDetails()
         {
-            WeightAccToDTDC.Text = "";
-            Cost.Text = "";
-            Destination.Text = "";
-            DestinationPin.Text = "";
-            WeightAccToFranchize.Text = "";
-            BilledAmount.Text = "";
+            this.WeightAccToDTDC.Text = "";
+            this.Cost.Text = "";
+            this.Destination.Text = "";
+            this.DestinationPin.Text = "";
+            this.WeightAccToFranchize.Text = "";
+            this.BilledAmount.Text = "";
         }
         public void fillDetails(RuntimeData data)
         {
@@ -302,6 +301,9 @@ namespace FinalUi
             {
                 this.BilledAmount.Text = "0";
             }
+        }
+        private void Validate_Form()
+        {
         }
         private void BilledWeightTextBox_LostFocus(object sender, RoutedEventArgs e)
         {

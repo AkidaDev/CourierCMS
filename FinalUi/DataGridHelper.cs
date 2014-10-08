@@ -13,11 +13,12 @@ namespace FinalUi
   
     class DataSheet
     {
+        List<RuntimeData> filteredData;
         public List<RuntimeData> dataStack
         {
             get
             {
-                return filterObj.applyFilter(_dataStack,int.Parse(name.Last().ToString()));
+                return filteredData;
             }
             set
             {
@@ -36,6 +37,12 @@ namespace FinalUi
             dataStack = value;
             filterObj = new Filter();
             this.name = name;
+            if (filteredData == null)
+                applyFilter();
+        }
+        public void applyFilter()
+        {
+            filteredData = filterObj.applyFilter(_dataStack, int.Parse(name.Last().ToString()));
         }
         public void addData(List<RuntimeData> value)
         {
@@ -137,6 +144,15 @@ namespace FinalUi
             sheets.Add(key, sheet);
             setActiveSheet(key);
             return key;
+        }
+        public int currentSheetCount
+        {
+            get
+            {
+                if (sheets == null)
+                    return 0;
+                return sheets.Count;
+            }
         }
         public void addDataToCurrentSheet(List<RuntimeData> data)
         {
@@ -318,7 +334,13 @@ namespace FinalUi
             this.notifyPropertyChanged("rowsPerPage");
             refreshCurrentPage();
         }
-
+        public int CurrentNumberOfSheets
+        {
+            get
+            {
+                return dataSheetManager.currentSheetCount;
+            }
+        }
         #region pageNavigationMethods
         public List<RuntimeData> getDataForPage(int pageNo, int rows)
         {

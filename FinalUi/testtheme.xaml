@@ -107,8 +107,6 @@
             <Button Style="{DynamicResource browsebutton}" Content="panda" Height="32"/>
             <Button Style="{DynamicResource addfilterbutton}" Height="30" Margin="133,0,55,0" RenderTransformOrigin="0.5,0.5">
             </Button>
-
         </StackPanel>
-
     </Grid>
 </Window>

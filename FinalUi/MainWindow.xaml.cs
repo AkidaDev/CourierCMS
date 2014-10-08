@@ -29,7 +29,7 @@ namespace FinalUi
 
         #endregion
         #region Global Objects
-        DataGridHelper dataGridHelper;
+		DataGridHelper dataGridHelper;
         CollectionViewSource dataGridSource;
         Dictionary<Button, int> buttonList;
         Button activeButton;
@@ -40,7 +40,7 @@ namespace FinalUi
         #endregion
         public MainWindow()
         {
-            SecurityModule.authenticate("dharmendra", "pass");
+			SecurityModule.authenticate("purushottam", "1234");
             #region setupCode
             PreviewMouseMove += OnPreviewMouseMove;
             #endregion
@@ -57,7 +57,6 @@ namespace FinalUi
             InitializeComponent();
             CollectionViewSource clientCodeList = (CollectionViewSource)FindResource("ClientCodeList");
             clientCodeList.Source = db.Clients.Select(c => c.CLCODE);
-
             #region DataGrid Code Lines
             dataGridSource = (CollectionViewSource)FindResource("DataGridDataContext");
             dataGridHelper = new DataGridHelper(dataGridSource);
@@ -65,7 +64,6 @@ namespace FinalUi
             DataGridPageNum.DataContext = dataGridHelper;
             DataGridNumOfRows.DataContext = dataGridHelper;
             #endregion
-
             #region Command Bindings
             CommandBinding SanitizingCommandBinding = new CommandBinding(SanitizingCommand, ExecuteSanitizingCommand, CanExecuteSanitizingCommand);
             this.CommandBindings.Add(SanitizingCommandBinding);
@@ -81,8 +79,11 @@ namespace FinalUi
 
             CommandBinding DeleteCommandBinding = new CommandBinding(DeleteCommand, DeleteCommandExecuted, DeleteCommand_CanExecute);
             this.CommandBindings.Add(DeleteCommandBinding);
+            CommandBinding NewSheetCommandBinding = new CommandBinding(NewSheetCommand, NewSheetCommandExecuted, NewSheetCommand_CanExecute );
+            NewSheetCommand.InputGestures.Add(new KeyGesture(Key.N, ModifierKeys.Control));
+            NewSheetButton.Command = NewSheetMenuItem.Command = NewSheetCommand;
+            this.CommandBindings.Add(NewSheetCommandBinding);
             #endregion
-
             #region loading initial pages
             List<int> sheets = db.RuntimeMetas.Where(y => y.UserName == SecurityModule.currentUserName).Select(x => x.SheetNo).Distinct().ToList();
             foreach (int sheet in sheets)
@@ -92,7 +93,6 @@ namespace FinalUi
                 addingNewPage(sheet);
             }
             #endregion
-
             SaveWorker = new BackgroundWorker();
             SaveWorker.DoWork += SaveWorker_DoWork;
             SaveWorker.ProgressChanged += SaveWorker_ProgressChanged;
@@ -104,7 +104,6 @@ namespace FinalUi
             DeleteSheetWorker = new BackgroundWorker();
             DeleteSheetWorker.DoWork += DeleteWorker_DoWork;
             DeleteSheetWorker.RunWorkerCompleted += DeleteWorker_RunWorkerCompleted;
-
         }
         #region backGround Worker Functions
         #region LoadWorker
@@ -182,6 +181,25 @@ namespace FinalUi
             else
                 e.CanExecute = false;
         }
+        #region NewSheetCommands
+        RoutedCommand NewSheetCommand = new RoutedCommand();
+        private void NewSheetCommandExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            int key = this.dataGridHelper.addNewSheet(new List<RuntimeData>(),"");
+            addingNewPage(key);
+        }
+        private void NewSheetCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (this.buttonList.Count >= 6)
+            {
+                e.CanExecute = false;
+            }
+            else {
+                e.CanExecute = true;
+            }
+            
+        }
+#endregion
         #region SanitizingCommand
         public RoutedCommand SanitizingCommand = new RoutedCommand();
         private void CanExecuteSanitizingCommand(object sender, CanExecuteRoutedEventArgs e)
@@ -207,10 +225,8 @@ namespace FinalUi
         RoutedCommand PowerEntryCommand = new RoutedCommand();
         private void PowerEntryCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-
             PowerEntry powerWin = new PowerEntry(dataGridHelper.getCurrentDataStack, db.Clients.Select(c => c.CLCODE.ToString()).ToList(), db);
             powerWin.Show();
-
         }
         #endregion
         #region SaveCommand
@@ -255,15 +271,22 @@ namespace FinalUi
         #region LoadCommand
         private void OpenCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            if (LoadWorker != null)
+            if (SecurityModule.hasPermission(SecurityModule.employee.Id, "LoadData"))
             {
-                if (LoadWorker.IsBusy == true)
-                    e.CanExecute = false;
+                if (LoadWorker != null)
+                {
+                    if (LoadWorker.IsBusy == true)
+                        e.CanExecute = false;
+                    else
+                        e.CanExecute = true;
+                }
                 else
-                    e.CanExecute = true;
+                    e.CanExecute = false;
             }
             else
+            {
                 e.CanExecute = false;
+            }
         }
         #endregion
         #region deleteCommand
@@ -302,7 +325,6 @@ namespace FinalUi
         }
         #endregion
         #endregion
-
         #region CommandFunctions
         private void Open_Executed(object sender, ExecutedRoutedEventArgs e)
         {
@@ -314,7 +336,6 @@ namespace FinalUi
             this.Effect = blur;
             loadData.Show();
         }
-
         private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
@@ -414,7 +435,7 @@ namespace FinalUi
             string name = "";
             if (dataWind.dataLoaded)
             {
-                if (dataWind.isNewSheet)
+                if (dataWind.isNewSheet || dataGridHelper.CurrentNumberOfSheets <= 0)
                 {
                     int key = dataGridHelper.addNewSheet(dataWind.data, name);
                     addingNewPage(key);
@@ -431,18 +452,7 @@ namespace FinalUi
                     fromDate_loadDataWin = dataWind.fromDate;
                 }
                 
-             //   LoadWorker.RunWorkerAsync(dataWind.data);
-                DBHelper help = new DBHelper();
-                string response;
-              //  try
-                {
-                    help.insertRuntimeData(dataWind.data, dataGridHelper.currentSheetNumber, isLoadedFromFile, toDate_loadDataWin, fromDate_loadDataWin);
-                    response = "Data Loading Successful";
-                }
-                /*catch (Exception ex)
-                {
-                    response = ex.Message;
-                }*/
+               LoadWorker.RunWorkerAsync(dataWind.data);
                
             }
         }
@@ -537,7 +547,6 @@ namespace FinalUi
 
         #endregion DataGrid Sheet Methods Ends
         #endregion DataGrid Methods Ends
-
         #region filter functions
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)
@@ -553,7 +562,6 @@ namespace FinalUi
 
         }
         #endregion
-
         #region Handling Resizing
         private void SwitchWindowState()
         {
@@ -608,7 +616,6 @@ namespace FinalUi
             this.Close();
         }
         #endregion
-
         #region custom window resize
         protected void OnPreviewMouseMove(object sender, MouseEventArgs e)
         {
@@ -747,7 +754,6 @@ namespace FinalUi
         }
 
         #endregion
-
         #region menuItem
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -756,7 +762,7 @@ namespace FinalUi
 
         private void ManageClient_Click(object sender, RoutedEventArgs e)
         {
-            ManageClient window = new ManageClient(); window.ShowDialog();
+            ManageClient window = new ManageClient(); window.Show();
         }
 
         private void ManageEmployee_Click(object sender, RoutedEventArgs e)
@@ -766,7 +772,7 @@ namespace FinalUi
 
         private void RateWindowMenu_Click(object sender, RoutedEventArgs e)
         {
-            RateWindow window = new RateWindow(); window.ShowDialog();
+            RateWindow window = new RateWindow(); window.Show();
         }
 
         private void AboutMenuItem_Click(object sender, RoutedEventArgs e)
@@ -774,71 +780,70 @@ namespace FinalUi
             About window = new About(); window.ShowDialog();
         }
         #endregion
-
         private void BillAnalysis_Click(object sender, RoutedEventArgs e)
         {
             BillReportWindow win = new BillReportWindow();
             win.ShowDialog();
         }
-
         private void PaymentEntry_Click(object sender, RoutedEventArgs e)
         {
             PaymentDetailsWindow window = new PaymentDetailsWindow(); window.ShowDialog();
         }
-
         private void PaymentRecieved_Click(object sender, RoutedEventArgs e)
         {
             PaymentRecieved window = new PaymentRecieved(); window.ShowDialog();
         }
-
         private void StockEntry_Click(object sender, RoutedEventArgs e)
         {
-            StockWindow window = new StockWindow(); window.ShowDialog();
+            StockWindow window = new StockWindow(); window.Show();
         }
-
+		private void ClientReport_Click(object sender, RoutedEventArgs e)
+        {
+            ClientReportWindow window = new ClientReportWindow(); window.ShowDialog();
+        }
         private void servicetaxtreeviewitembutton_Click(object sender, RoutedEventArgs e)
         {
-
         }
-
         private void forwardertarifftreeviewitembutton_Click(object sender, RoutedEventArgs e)
         {
-
         }
-
         private void clienttarifftreeviewitembutton_Click(object sender, RoutedEventArgs e)
         {
-
         }
-
         private void clienttreeviewitembutton_Click(object sender, RoutedEventArgs e)
         {
-
         }
-
         private void citytreeviewitembutton_Click(object sender, RoutedEventArgs e)
         {
-
         }
-
         private void zonetreeviewitembutton_Click(object sender, RoutedEventArgs e)
         {
-
         }
-
         private void countrytreeviewitembutton_Click(object sender, RoutedEventArgs e)
         {
-
         }
-
         private void zonetreeitembutton_Click(object sender, RoutedEventArgs e)
         {
-
         }
-
         private void countrytreeitembutton_Click(object sender, RoutedEventArgs e)
         {
+        }
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            AddCity window = new AddCity();
+            window.ShowDialog();
+        }
+        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+        }
+        private void dataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+        }
 
+        private void ManageZone_Click(object sender, RoutedEventArgs e)
+        {
+            ZoneAssignment zone = new ZoneAssignment();
+            zone.ShowDialog();
         }
     }
 }

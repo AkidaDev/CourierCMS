@@ -7,7 +7,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -23,6 +22,8 @@ namespace FinalUi
         public TestingMainWindow()
         {
             InitializeComponent();
+            BillingDataDataContext db = new BillingDataDataContext();
+   //         MessageBox.Show(LoadResources.getConString());
         }
 
         private void login_Click(object sender, RoutedEventArgs e)
@@ -30,13 +31,11 @@ namespace FinalUi
             Login window = new Login();
             window.ShowDialog();
         }
-
         private void mainwindow_Click(object sender, RoutedEventArgs e)
         {
             MainWindow window = new MainWindow();
             window.Show();
         }
-
         private void manageclient_Click(object sender, RoutedEventArgs e)
         {
             ManageClient window = new ManageClient();
@@ -58,7 +57,7 @@ namespace FinalUi
         private void stockwindow_Click(object sender, RoutedEventArgs e)
         {
             ManageCity window = new ManageCity();
-            window.ShowDialog();
+            window.Show();
         }
 
 
@@ -107,12 +106,19 @@ namespace FinalUi
 
         private void AccountStatement_Click(object sender, RoutedEventArgs e)
         {
-            TestingReporting window = new TestingReporting(); window.Show();
+           // AccountStatementReportingWindow window = new AccountStatementReportingWindow(); window.Show();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             ClientReport window = new ClientReport(); window.Show();
         }
+
+        private void TestingPermisstion_Click(object sender, RoutedEventArgs e)
+        {
+            TestingPermisstion window = new TestingPermisstion();
+            window.Show();
+        }
+
     }
 }

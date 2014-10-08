@@ -9,26 +9,12 @@ using System.Windows.Markup;
 
 namespace FinalUi
 {
-    class LoadResources
+    static class LoadResources
     {
-        public  void DynamicLoadStyles()
+        public static string getConString()
         {
-            string fileName =   "Blue.xaml";
-                    if (File.Exists(fileName))
-                    {
-                        using (FileStream fs = new FileStream(fileName, FileMode.Open))
-                        {
-                            // Read in ResourceDictionary File
-                            var asq = (ResourceDictionary)XamlReader.Load(fs); 
-                            ResourceDictionary dic = asq;
-                            // Clear any previous dictionaries loaded
-                            Application.Current.Resources.MergedDictionaries.Clear();
-                            // Add in newly loaded Resource Dictionary
-                            Application.Current.Resources.MergedDictionaries.Add(asq);
-                        }
-                    }
-                    else
-                        MessageBox.Show("File: " + fileName + " does not exist. Please re-enter the name.");
+            string con = "Data Source=" + System.Environment.MachineName + ";Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa;Password=Alver!22";
+            return con;
         }
     }
 }

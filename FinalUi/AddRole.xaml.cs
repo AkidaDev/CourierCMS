@@ -21,22 +21,22 @@ namespace FinalUi
     {
         public AddRole()
         {
-          //  DbHelper DbHelper = new DbHelper();
-            var permissionList = Enum.GetNames(typeof(SecurityModule.Permissions));
-            InitializeComponent();
-            foreach (var permission in permissionList)
-            {
-                WrapPanel panel = new WrapPanel();
-                Label permissionLabel = new Label();
-                permissionLabel.Content = permission;
-                CheckBox permissionCheckbox = new CheckBox();
-                permissionCheckbox.Name = permission;
-                panel.Children.Add(permissionLabel);
-                panel.Children.Add(permissionCheckbox);
-                PermissionPanel.Children.Add(panel);
-                RegisterName(permission, permissionCheckbox);
-            }
-        }
+        //  //  DbHelper DbHelper = new DbHelper();
+        //    var permissionList = Enum.GetNames(typeof(SecurityModule.Permissions));
+        //    InitializeComponent();
+        //    foreach (var permission in permissionList)
+        //    {
+        //        WrapPanel panel = new WrapPanel();
+        //        Label permissionLabel = new Label();
+        //        permissionLabel.Content = permission;
+        //        CheckBox permissionCheckbox = new CheckBox();
+        //        permissionCheckbox.Name = permission;
+        //        panel.Children.Add(permissionLabel);
+        //        panel.Children.Add(permissionCheckbox);
+        //        PermissionPanel.Children.Add(panel);
+        //        RegisterName(permission, permissionCheckbox);
+        //    }
+       }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
            
