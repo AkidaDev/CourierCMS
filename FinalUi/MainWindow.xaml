@@ -14,8 +14,8 @@
 		<CommandBinding Command="ApplicationCommands.Close" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
 		<CommandBinding Command="ApplicationCommands.Print" Executed="ExecutePrint" CanExecute="CanExecutePrintCommand"/>
     </Window.CommandBindings>
-
-        <Grid Background="LawnGreen">
+    
+    <Grid x:Name="MainGrid" Background="#FFBBCADC"><!--light purple = #9f00a7, blue = #a32d89ef, yellow = #a3ffc40d, teal = #00aba9, camel = #dae3a21a, green = #00a300 -->
             <Grid.RowDefinitions>
                 <RowDefinition Height="6"/>
                 <RowDefinition Height="*"/>
@@ -148,7 +148,7 @@
                         <ColumnDefinition Width="770*"/>
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel Background="SeaShell" Grid.Column="0" Margin="0,-33,0,0" Grid.RowSpan="3" Width="Auto" MaxWidth="260">
+                    <StackPanel Background="AliceBlue" Grid.Column="0" Margin="0,-33,0,0" Grid.RowSpan="3" Width="Auto" MaxWidth="260">
                         <WrapPanel Margin="0,20,0,0" >
                             <TreeView Background="Transparent" BorderThickness="0" >
                                 <TreeViewItem Background="Transparent" BorderThickness="0">
