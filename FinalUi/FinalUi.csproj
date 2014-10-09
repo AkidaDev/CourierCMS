@@ -70,7 +70,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
@@ -268,10 +268,11 @@
     <Compile Include="testtheme.xaml.cs">
       <DependentUpon>testtheme.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UtilityClass.cs" />
     <Compile Include="UserControlGallery.xaml.cs">
       <DependentUpon>UserControlGallery.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UtilityClass.cs" />
     <Compile Include="Validator.cs" />
     <Compile Include="ZoneAssignment.xaml.cs">
       <DependentUpon>ZoneAssignment.xaml</DependentUpon>
@@ -451,8 +452,8 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControlGallery.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ZoneAssignment.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -543,12 +544,10 @@
   <ItemGroup>
     <Resource Include="Images\button.png" />
     <Resource Include="Images\button1.png" />
-    <Resource Include="Images\logo.png" />
+    <Resource Include="Images\logo.ico" />
     <Resource Include="Images\search.png" />
     <Resource Include="Images\Shape 21 copy.png" />
     <Resource Include="Images\Shape 21.png" />
-    <Resource Include="LoadData_Images\import files.png" />
-    <Resource Include="LoadData_Images\Layer 0.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Data\NF037_DSR_TABLE.TXT" />

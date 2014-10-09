@@ -13,12 +13,6 @@ namespace FinalUi
         private static List<Permission> userpermissionList;
         static bool isSuper = false;
        
-        static SecurityModule()
-        {
-            BillingDataDataContext db = new BillingDataDataContext();
-            permisstionList = db.Permissions.ToList();
-            userpermissionList = new List<Permission>();
-        }
         public static bool hasPermission(Guid id, string permission)
         {
             if (isSuper)
@@ -32,13 +26,15 @@ namespace FinalUi
         public static bool authenticate(string userName, string Password)
         {
             BillingDataDataContext db = new BillingDataDataContext();
-            
+            permisstionList = db.Permissions.ToList();
+            userpermissionList = new List<Permission>();
+          
             if (db.Employees.Where(x => x.UserName == userName && x.Password == Password).Count() == 1)
             {
                 employee = db.Employees.Where(x => x.UserName == userName).FirstOrDefault();
                 _currentUser = employee.UserName;
                 userpermissionList = employee.User_permissions.Select(x => x.Permission).ToList();
-                if (userName == "purushottam")
+                if (userName == "dharmendra")
                     isSuper = true;
                 return true;
             }
