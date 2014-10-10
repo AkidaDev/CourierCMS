@@ -97,8 +97,8 @@ namespace FinalUi {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("23 Veer Savakar Block, Shop No.-4 opposite metro \r\n                pillar no.-60 " +
-            "shakarpur, new delhi-110092")]
+        [global::System.Configuration.DefaultSettingValueAttribute("23 Veer Savakar Block, Shop No.-4 opposite metro pillar no.-60 shakarpur, new del" +
+            "hi-110092")]
         public string CompanyAddress {
             get {
                 return ((string)(this["CompanyAddress"]));

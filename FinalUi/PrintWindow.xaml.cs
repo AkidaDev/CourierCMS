@@ -168,7 +168,11 @@ namespace FinalUi
         {
             printObj();
         }
-
+		
+		private void Preview_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
         private void SaveInvoiceButton_Click(object sender, RoutedEventArgs e)
         {
             if (source == null || source.Count == 0)
@@ -211,6 +215,14 @@ namespace FinalUi
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+        private void DragthisWindow(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+        private void Button_Click_Close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

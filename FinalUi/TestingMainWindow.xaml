@@ -1,7 +1,8 @@
 ﻿<Window x:Class="FinalUi.TestingMainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="TestingMainWindow" Height="300" Width="300">
+        Icon="Images/logo.ico"
+		Title="TestingMainWindow" Height="300" Width="300">
     <Window.Resources>
 
     </Window.Resources>

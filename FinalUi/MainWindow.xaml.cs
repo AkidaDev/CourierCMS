@@ -386,8 +386,8 @@ namespace FinalUi
 
             Path pathsquare = new Path();
             pathsquare.Data = Geometry.Parse(@"F1M2,1.644C2,1.644 2,20 2,20 2,20 77.831,20 77.831,20 77.831,20 91.619,1.644 91.619,1.644 91.619,1.644 2,1.644 2,1.644z");
-            pathsquare.Fill = Brushes.RoyalBlue;
-            pathsquare.Height = 20;
+            pathsquare.Fill = Brushes.Black;
+            pathsquare.Height = 22;
             pathsquare.Width = 88.5;
             pathsquare.Stretch = Stretch.Fill;
             Button buttonsquare = new Button();
@@ -480,7 +480,7 @@ namespace FinalUi
                         if (p.Name == "_pathsquare")
                         {
                             var b = (Path)p.Content;
-                            b.Fill = Brushes.RoyalBlue;
+                            b.Fill = Brushes.Black;
                         }
                     }
                     if (u is TextBlock)
