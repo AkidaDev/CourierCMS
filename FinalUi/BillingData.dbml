@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BillingDatabase" Class="BillingDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=SYSTEM;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=SYSTEM;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString2" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Assignment" Member="Assignments">
     <Type Name="Assignment">
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -112,6 +112,8 @@
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="BillId" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
       <Column Name="TransactionId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="BilledAmount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="BilledWeight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Association Name="Invoice_InvoiceAssignment" Member="Invoice" ThisKey="BillId" OtherKey="BillId" Type="Invoice" IsForeignKey="true" />
       <Association Name="Transaction_InvoiceAssignment" Member="Transaction" ThisKey="TransactionId" OtherKey="ID" Type="Transaction" IsForeignKey="true" />
     </Type>
@@ -180,16 +182,11 @@
       <Column Name="CustCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="TransMF_No" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="BilledWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Association Name="RuntimeData_RuntimeMeta" Member="RuntimeMetas" ThisKey="Id" OtherKey="RuntimeDataID" Type="RuntimeMeta" />
-    </Type>
-  </Table>
-  <Table Name="dbo.RuntimeMeta" Member="RuntimeMetas">
-    <Type Name="RuntimeMeta">
-      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="RuntimeDataID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="UserName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="SheetNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="RuntimeData_RuntimeMeta" Member="RuntimeData" ThisKey="RuntimeDataID" OtherKey="Id" Type="RuntimeData" IsForeignKey="true" />
+      <Column Name="UserId" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="City_Desc" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Service_Desc" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Client_Desc" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Service" Member="Services">
@@ -237,6 +234,7 @@
       <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="StockStart" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="StockEnd" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BookNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="[desc]" Member="desc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
       <Column Name="cost" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Association Name="Employee_Stock" Member="Employee" ThisKey="UserId" OtherKey="Id" Type="Employee" IsForeignKey="true" />
@@ -352,25 +350,26 @@
       <Column Name="StepWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
     </Type>
   </Table>
-  <Function Name="dbo.sp_deleteSheetFromRuntime" Method="sp_deleteSheetFromRuntime">
-    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
+  <Function Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail" Method="sp_TransferMInvoiceDetailToBInvoiceDetail">
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.sp_TransferTransactionDetails" Method="sp_TransferTransactionDetails">
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_getRateReportingObject" Method="sp_getRateReportingObject">
-    <Parameter Name="ClientCode" Parameter="clientCode" Type="System.String" DbType="VarChar(50)" />
-    <ElementType Name="sp_getRateReportingObjectResult">
-      <Column Name="RateCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="DoxRate" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="NonDoxRate" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="StepWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </ElementType>
+  <Function Name="dbo.sp_TransferMInvoiceToBInvoice" Method="sp_TransferMInvoiceToBInvoice">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_TransferPaymentDetails" Method="sp_TransferPaymentDetails">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_TransferRatespart1" Method="sp_TransferRatespart1">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_TransferRatespart2" Method="sp_TransferRatespart2">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_TransferFRWRDRAsService" Method="sp_TransferFRWRDRAsService">
+    <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.sp_ImportZoneData" Method="sp_ImportZoneData">
     <Return Type="System.Int32" />
@@ -390,22 +389,21 @@
   <Function Name="dbo.sp_TransferClients" Method="sp_TransferClients">
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_TransferFRWRDRAsService" Method="sp_TransferFRWRDRAsService">
-    <Return Type="System.Int32" />
+  <Function Name="dbo.sp_getRateReportingObject" Method="sp_getRateReportingObject">
+    <Parameter Name="ClientCode" Parameter="clientCode" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="sp_getRateReportingObjectResult">
+      <Column Name="RateCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DoxRate" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="NonDoxRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StepWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
   </Function>
-  <Function Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail" Method="sp_TransferMInvoiceDetailToBInvoiceDetail">
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.sp_TransferMInvoiceToBInvoice" Method="sp_TransferMInvoiceToBInvoice">
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.sp_TransferPaymentDetails" Method="sp_TransferPaymentDetails">
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.sp_TransferRatespart1" Method="sp_TransferRatespart1">
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.sp_TransferRatespart2" Method="sp_TransferRatespart2">
+  <Function Name="dbo.sp_deleteSheetFromRuntime" Method="sp_deleteSheetFromRuntime">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

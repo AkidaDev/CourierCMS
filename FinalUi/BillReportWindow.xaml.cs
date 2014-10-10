@@ -111,7 +111,7 @@ namespace FinalUi
                         runtimeData.Amount = decimal.Parse(terms[index + 6]);
                         matchedRecs.Add(runtimeData);
                     }
-                    catch (Exception e)
+                    catch (Exception )
                     {
                         discrepantRecords.Add(string.Join(",", terms.Where((y, i) => i <= index + 6)));
                     }
@@ -124,7 +124,7 @@ namespace FinalUi
                             else
                                 break;
                         }
-                        City city;
+                    
                         double temp;
 
                         runtimeData = new RuntimeData();

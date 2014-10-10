@@ -57,7 +57,7 @@ namespace FinalUi
                 return;
             }
             ZONE z = new ZONE();
-            bool a;
+          
             z.Id = Guid.NewGuid();
             z.Mode = 'A';
             z.Zone_name = this.ZoneNameTextBox.Text;
@@ -66,11 +66,11 @@ namespace FinalUi
             try
             {
                 db.SubmitChanges();
-                a = true;
+               
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
-                a = false;
+               
             }
             this.Close();
         }

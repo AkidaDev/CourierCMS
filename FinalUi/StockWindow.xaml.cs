@@ -61,7 +61,7 @@ namespace FinalUi
             {
                 this.s.cost = float.Parse(this.CostBox.Text);
             }
-            catch (Exception d) { MessageBox.Show("cost should be number"); return false; }
+            catch (Exception) { MessageBox.Show("cost should be number"); return false; }
 
             return true;
         }

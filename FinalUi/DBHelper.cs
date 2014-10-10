@@ -19,17 +19,11 @@ namespace FinalUi
                 return;
             }
            
-            List<RuntimeMeta> MetaData = new List<RuntimeMeta>();
             foreach(var runData in data)
             {
-                RuntimeMeta metaData = new RuntimeMeta();
-                metaData.Id = Guid.NewGuid();
-                metaData.RuntimeDataID = runData.Id;
-                metaData.SheetNo = sheetNo;
-                metaData.UserName = SecurityModule.currentUserName;
+                runData.UserId = SecurityModule.currentUserName;
+                runData.SheetNo = sheetNo;
                 db.RuntimeDatas.InsertOnSubmit(runData);
-                db.SubmitChanges();
-                db.RuntimeMetas.InsertOnSubmit(metaData);
                 db.SubmitChanges();
             }
             db.SubmitChanges();

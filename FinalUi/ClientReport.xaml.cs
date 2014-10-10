@@ -23,7 +23,6 @@ namespace FinalUi
     {
         Microsoft.Reporting.WinForms.ReportDataSource rs;
         CollectionViewSource ClientListSource;
-        List<Client> clientList;
         public ClientReport()
         {
             InitializeComponent();

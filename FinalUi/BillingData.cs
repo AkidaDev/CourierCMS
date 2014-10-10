@@ -2,11 +2,7 @@ namespace FinalUi
 {
     partial class BillingDataDataContext
     {
-        public BillingDataDataContext() :
-            base(LoadResources.getConString(), mappingSource)
-        {
-            OnCreated();
-        }
+     
         partial void DeleteAssignment(Assignment instance)
         {
             throw new System.NotImplementedException();
@@ -38,7 +34,7 @@ namespace FinalUi
         }
         partial void UpdateRuntimeData(RuntimeData instance)
         {
-            string msg = "";
+           
             this.ExecuteDynamicUpdate(instance);
         }
         partial void InsertEmployee(Employee instance)

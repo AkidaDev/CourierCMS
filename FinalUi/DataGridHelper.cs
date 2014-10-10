@@ -160,7 +160,7 @@ namespace FinalUi
             {
                 _currentDataSheet.addData(data);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 MessageBox.Show("booga booga");
             }

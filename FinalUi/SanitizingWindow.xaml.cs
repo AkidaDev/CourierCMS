@@ -21,8 +21,6 @@ namespace FinalUi
     /// </summary>
     public partial class SanitizingWindow : Window
     {
-        bool isnew = false;
-        bool changeamount = false;
         public SanitizingWindow()
         {
             InitializeComponent();
@@ -158,13 +156,10 @@ namespace FinalUi
 
             else
             {
+                
+                data.SheetNo = sheetNo;
+                data.UserId = SecurityModule.currentUserName;
                 db.RuntimeDatas.InsertOnSubmit(data);
-                RuntimeMeta metaData = new RuntimeMeta();
-                metaData.Id = Guid.NewGuid();
-                metaData.RuntimeDataID = data.Id;
-                metaData.SheetNo = sheetNo;
-                metaData.UserName = SecurityModule.currentUserName;
-                db.RuntimeMetas.InsertOnSubmit(metaData);
                 dataListContext.AddNewItem(data);
             }
 

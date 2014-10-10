@@ -86,10 +86,10 @@ namespace FinalUi
             this.CommandBindings.Add(NewSheetCommandBinding);
             #endregion
             #region loading initial pages
-            List<int> sheets = db.RuntimeMetas.Where(y => y.UserName == SecurityModule.currentUserName).Select(x => x.SheetNo).Distinct().ToList();
+            List<int> sheets = db.RuntimeDatas.Where(y => y.UserId == SecurityModule.currentUserName).Select(x => x.SheetNo).Distinct().ToList();
             foreach (int sheet in sheets)
             {
-                List<RuntimeData> runtimeData = (db.RuntimeMetas.Where(x => x.SheetNo == sheet && x.UserName == SecurityModule.currentUserName).Select(y => y.RuntimeData)).OrderBy(x => x.BookingDate).ThenBy(z => z.ConsignmentNo).ToList(); ;
+                List<RuntimeData> runtimeData = db.RuntimeDatas.Where(x=>x.UserId == SecurityModule.currentUserName && x.SheetNo == sheet).OrderBy(x => x.BookingDate).ThenBy(z => z.ConsignmentNo).ToList(); ;
                 dataGridHelper.addNewSheet(runtimeData, "sheet " + sheet.ToString());
                 addingNewPage(sheet);
             }

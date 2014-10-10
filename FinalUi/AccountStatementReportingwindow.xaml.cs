@@ -24,8 +24,6 @@ namespace FinalUi
     {
         Microsoft.Reporting.WinForms.ReportDataSource rs;
         CollectionViewSource ClientListSource;
-        CollectionViewSource DataGridSource;
-        List<Client> clientList;
         List<AccountStatement> invoice;
         public AccountStatementReportingWindow()
         {
