@@ -279,6 +279,9 @@
     </Compile>
     <Compile Include="UtilityClass.cs" />
     <Compile Include="Validator.cs" />
+    <Compile Include="AddRule.xaml.cs">
+      <DependentUpon>AddRule.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ZoneAssignment.xaml.cs">
       <DependentUpon>ZoneAssignment.xaml</DependentUpon>
     </Compile>
@@ -457,6 +460,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControlGallery.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddRule.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
