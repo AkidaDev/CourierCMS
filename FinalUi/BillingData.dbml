@@ -70,6 +70,7 @@
       <Association Name="Client_Assignment" Member="Assignments" ThisKey="CLCODE" OtherKey="ClientCode" Type="Assignment" />
       <Association Name="Client_PaymentEntry" Member="PaymentEntries" ThisKey="CLCODE" OtherKey="ClientCode" Type="PaymentEntry" />
       <Association Name="Client_Transaction" Member="Transactions" ThisKey="CLCODE" OtherKey="CustCode" Type="Transaction" />
+      <Association Name="Client_Quotation" Member="Quotations" ThisKey="CLCODE" OtherKey="CLCODE" Type="Quotation" />
     </Type>
   </Table>
   <Table Name="dbo.Country" Member="Countries">
@@ -348,6 +349,26 @@
       <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="StepWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Rule]" Member="Rules">
+    <Type Name="Rule">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="QID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Remark" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Properties" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="Quotation_Rule" Member="Quotation" ThisKey="ID" OtherKey="Id" Type="Quotation" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Quotation" Member="Quotations">
+    <Type Name="Quotation">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CLCODE" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Association Name="Quotation_Rule" Member="Rule" ThisKey="Id" OtherKey="ID" Type="Rule" Cardinality="One" />
+      <Association Name="Client_Quotation" Member="Client" ThisKey="CLCODE" OtherKey="CLCODE" Type="Client" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail" Method="sp_TransferMInvoiceDetailToBInvoiceDetail">

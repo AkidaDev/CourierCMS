@@ -62,20 +62,19 @@ namespace FinalUi
 	                RuntimeData.TransactionId,
 	                RuntimeData.CustCode,
 	                RuntimeData.TransMF_No,
-	                RuntimeData.BilledWeight
+	                RuntimeData.BilledWeight,
+                    RuntimeData.UserId,
+                    RuntimeData.SheetNo
                 from
-	                RuntimeData join RuntimeMeta
-                on
-	                RuntimeData.Id = RuntimeMeta.RuntimeDataID
-	                join InvoiceAssignment
+	                RuntimeData join InvoiceAssignment
                 on
 	                RuntimeData.TransactionId = InvoiceAssignment.TransactionId
                 where
-	                RuntimeMeta.UserName = '{0}' 
+	                RuntimeData.UserId = '{0}' 
 	                and
-	                RuntimeMeta.SheetNo = {1};
+	                RuntimeData.SheetNo = {1};
 
-                ", "dharmendra", sheetNo).ToList();
+                ", SecurityModule.currentUserName, sheetNo).ToList();
 
             if (showBilled != null)
             {

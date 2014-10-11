@@ -203,6 +203,7 @@
       <DependentUpon>ClientReportWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Configs.cs" />
+    <Compile Include="CostingRule.cs" />
     <Compile Include="CountryAssignment.xaml.cs">
       <DependentUpon>CountryAssignment.xaml</DependentUpon>
     </Compile>
@@ -222,6 +223,7 @@
     <Compile Include="InvoiceReport.xaml.cs">
       <DependentUpon>InvoiceReport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="IRule.cs" />
     <Compile Include="LoadResources.cs" />
     <Compile Include="ManageCity.xaml.cs">
       <DependentUpon>ManageCity.xaml</DependentUpon>
