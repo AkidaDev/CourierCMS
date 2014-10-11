@@ -30,7 +30,7 @@ namespace FinalUi
            // if (Configs.Default.IsFirst == "True")
            // {
                 PreferenceWindow window = new PreferenceWindow();
-                window.Show();
+                //window.Show();
                 Configs.Default.IsFirst = "False";
               //  Configs.Default.Save();
         //    }
