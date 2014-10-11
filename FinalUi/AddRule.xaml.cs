@@ -21,6 +21,12 @@ namespace FinalUi
         public AddRule()
         {
             InitializeComponent();
+
+            ServiceTwinBox.AllListSource = (DataSources.ServicesCopy);
+            ServiceTwinBox.SelectedListSource = new List<Service>();
+            ServiceTwinBox.DisplayValuePath = "SER_CODE";
+
+
         }
         private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {
