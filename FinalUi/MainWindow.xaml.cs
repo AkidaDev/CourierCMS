@@ -28,6 +28,8 @@ namespace FinalUi
     {
         #region initScripts
 
+        CollectionViewSource dueDataGridSource;
+        CollectionViewSource profitDataGridSource;
         #endregion
         #region Global Objects
 		DataGridHelper dataGridHelper;
@@ -41,17 +43,25 @@ namespace FinalUi
         #endregion
         public MainWindow()
         {
-			SecurityModule.authenticate("purushottam", "1234");
+
+            SecurityModule.authenticate("purushottam", "1234");
+            InitializeComponent();
+            dueDataGridSource = (CollectionViewSource)FindResource("DueGridDataSource");
+            profitDataGridSource = (CollectionViewSource)FindResource("ProfitabilityGridDataSource");
+            BillingDataDataContext db = new BillingDataDataContext();
+            dueDataGridSource.Source = db.BalanceViews;
+            profitDataGridSource.Source = db.PROFITVIEWs;
             #region setupCode
             PreviewMouseMove += OnPreviewMouseMove;
             #endregion
             #region WindowDimensionsCode
-            this.Width = System.Windows.SystemParameters.WorkArea.Width;
-            this.Height = System.Windows.SystemParameters.WorkArea.Height;
             this.Left = 0;
             this.Top = 0;
-            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+            //this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             this.WindowState = WindowState.Normal;
+            this.MainGrid.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Configs.Default.Background));
+            this.MaxHeight = System.Windows.SystemParameters.MaximizedPrimaryScreenHeight;
+            this.MaxWidth = System.Windows.SystemParameters.MaximizedPrimaryScreenWidth;
             #endregion
             db = new BillingDataDataContext();
             ResourceDictionary dict = this.Resources;
@@ -860,6 +870,11 @@ namespace FinalUi
         {
             AccountStatementReportingWindow window = new AccountStatementReportingWindow(); window.WindowState = WindowState.Maximized; window.Show();
             
+        }
+
+        private void ClientDueGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

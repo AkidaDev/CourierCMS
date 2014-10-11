@@ -37,6 +37,7 @@ namespace FinalUi
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             Configs.Default.BillingDatabaseConnectionString = this.ConnectionStringBox.Text;
+            Configs.Default.Background = "#" + this.BackgroundColorCombo.Text;
             Configs.Default.Save();
             this.Close();
         }
