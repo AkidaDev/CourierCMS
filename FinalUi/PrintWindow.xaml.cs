@@ -57,8 +57,7 @@ namespace FinalUi
             rs = new Microsoft.Reporting.WinForms.ReportDataSource();
             rs.Name = "DataSet1";
             rs.Value = dataGridSource;
-            BillViewer.LocalReport.ReportPath = "Report1.rdlc";
-
+         
         }
 
         
@@ -126,10 +125,7 @@ namespace FinalUi
                 clc = db.Clients.SingleOrDefault(x => x.CLCODE == ((Client)ClientList.SelectedItem).CLCODE);
             else
                 clc = client;
-            BillViewer.LocalReport.DataSources.Clear();
-            BillViewer.LocalReport.DataSources.Add(rs);
             List<ReportParameter> repParams = new List<ReportParameter>();
-            BillViewer.LocalReport.SetParameters(repParams);
             dateString = FromDate.DisplayDate.ToString() + " to " + ToDate.DisplayDate.ToString();
             repParams.Add(new ReportParameter("DateString", dateString));
             descriptionString = "";
@@ -159,11 +155,9 @@ namespace FinalUi
             repParams.Add(new ReportParameter("ClientPhoneNo", clc.CONTACTNO));
             invoiceNo = DateTime.Now.ToString("yyyyMMddhhmm");
             repParams.Add(new ReportParameter("InvoiceNumber", invoiceNo));
-            BillViewer.LocalReport.SetParameters(repParams);
-            BillViewer.ShowExportButton = true;
-
-            BillViewer.RefreshReport();
-        }
+            PrintMainWindow win = new PrintMainWindow(rs, repParams);
+            win.Show();
+          }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             printObj();

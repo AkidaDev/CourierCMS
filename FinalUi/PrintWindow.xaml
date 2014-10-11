@@ -72,9 +72,7 @@
                 </Button>
             </WrapPanel>
             </Canvas>
-            <WindowsFormsHost>
-                <rv:ReportViewer x:Name="BillViewer" ShowContextMenu="True" ShowExportButton="True" ></rv:ReportViewer>
-            </WindowsFormsHost>
+            
             <Path Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="#FFCBCBCB" Height="26" Canvas.Left="0" Canvas.Top="0" Width="550" Stretch="Fill" Stroke="Black" />
             <TextBlock FontSize="16" Height="25" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="0" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Print Window" Canvas.Top="6" Width="548" FontFamily="Arial"/>
             <Path MouseDown="DragthisWindow" x:Name="Memu_bar" Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26" Canvas.Left="0" Canvas.Top="0" Width="550" Stretch="Fill"/>
