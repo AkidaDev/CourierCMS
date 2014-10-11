@@ -22,4 +22,8 @@ namespace FinalUi
             }
         }
     }
+    public partial class Rule
+    {
+       
+    }
 }
