@@ -1,0 +1,133 @@
+Table --> Quotation : Name and description of set of rules for a single client
+		/			\
+	Rules			Client
+_______|_______________
+|	       |    	  |
+Costing	 Service	 Invoice
+
+
+
+
+---------------
+rules
+id
+client
+type = 1 or 2
+desc = "range=0.1:0.5;ser=sa,ae,cas,sad,asd,sad;mode=ar"
+
+refresh()
+refresh(object)
+refresh(List<object>)
+refreshAll(typeOf(Object))
+reload()
+reload(con)
+
+--------------
+Sanitize Window
+> Increase the god-dam size of the window.
+> Pricing should be the last field.
+> Weight should be second last field.
+
+
+>--------Order of things in sanitizing window-----------<
+
+1.Consignment Number
+2.Date
+3.
+
+
+
+
+-----------------------------
+Rate Structure
+
+					|- Rule1 - -|	 | -> Remark (varchar(MAX))
+					|- Rule2	|	 |
+Client -> Quotation |- Rule3	|	 |		    	
+					|- Rule4	| -> | -> Type (Int)
+					.  .		.	 |		   							| -> When to apply? -> | - Service
+					.  .		.	 |									|					   |
+					|- RuleN - -|	 | -> Properties (varchar(MAX))  -> |					   | - Zones
+																		|					   |
+																		|					   | - Cities
+																		|					   |
+																		|					   | - Weight					   
+																		|
+																		|
+																		|
+																		| -> What to apply? -> | -> Costing -> Set Billed Amount
+																		                       |
+																							   |
+																							   | -> Service -> Modify Billed Amount 
+																							   |
+																							   |
+																							   | -> Invoice -> Modify Invoice Amount
+
+																							   
+																							 
+Database Rule Structure:
+1) ID (Int) (primary key)
+2) Remark (varchar(MAX))
+3) Properties (varchar(MAX))
+4) QuotationId (Int) --belongs to--> Quotation with ID(this)
+
+Properties Structure:
+
+Costing=>
+"When=?;What=?;"
+	  |		 | -> Type=R/{S, StepWeight=value(float}?}-| 
+	  |		 |										   | => What={{DoxAmount=value(float)},
+	  |		 | -> DoxAmount=value{float}               |		  {NonDoxAmount=value(float)},  
+	  |		 |										   |		  {Type={R/{S,StepWeight={value},DoxStartValue={value},NonDoxStartValue={value}}}}
+	  |		 | -> NDoxAmount=value{float}--------------|		 }
+	  |		 
+	  |		
+	  | -> ServiceIs={S1,S2,S3...SN}-------------------|
+	  |												   |
+	  | -> ZoneIs={Z1,Z2,....ZN}					   |
+	  |												   | => When={{ServiceIs={S1,S2,..SN}},{ZoneIs={}},{CityIs={}},{Weight={From={},To={}}}}
+	  | -> CityIs={C1,C2,C3...CN}					   |
+	  |												   |
+	  | -> StateIs={St1,St2,St3...StN}		           |			   |
+	  |												   |
+	  | -> Weight={From=value(float),To=value(float)}--|
+	  
+Special Service = DTDL,DTDX,PTP10,PTP12,PTP14,ALL
+Special Zone = AllNational,AllInternational,ALL
+Special To Weight = 9999
+
+When={Service={ALL},ZoneIs={NRT,ROI},CityIs={CHN},Weight={From={0.5},To={1}}};What={15}
+When={Service={ALL},ZoneIs={ROI},CityIs={},Weight={From={0.5},To={1}}};What={16}
+
+Service=>
+"When=?;What=?;"
+	  |		 | -> Mode={P/V}---------------------------| 
+	  |		 |										   | => What={Mode={},Change={},Value={}}
+	  |		 | -> Change={Inc/Dec}                     |	
+	  |      |										   |	
+	  |      | -> Step={A/{N,StepValue=value}}         |
+	  |      |                                         |
+	  |		 | -> Type={Compound/Simple}			   |							   |
+	  |		 |										   |		  
+	  |		 | -> Value={value}------------------------|		 
+	  |		 
+	  |		
+	  | -> ServiceIs={S1,S2,S3...SN}-------------------|
+	  |												   |
+	  | -> ZoneIs={Z1,Z2,....ZN}					   |
+	  |												   | => When={{ServiceIs={S1,S2,..SN}},{ZoneIs={}},{CityIs={}},{Weight={From={},To={}}}}
+	  | -> CityIs={C1,C2,C3...CN}					   |
+	  |												   |
+	  | -> StateIs={St1,St2,St3...StN}		           |			   |
+	  |												   |
+	  | -> Weight={From=value(float),To=value(float)}--|
+	  
+Special Service = DTDL,DTDX,PTP10,PTP12,PTP14,ALL
+Special Zone = AllNational,AllInternational,ALL
+Special To Weight = 9999
+
+
+
+
+When={Service={AR1},Weight={From=5,To=25},Zone={MET},City={};What={DoxAmount={80},NonDoxAmount={80},Type={R}}
+What={Service
