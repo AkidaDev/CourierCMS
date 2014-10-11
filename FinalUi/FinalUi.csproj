@@ -217,6 +217,7 @@
     <Compile Include="FilterSelectWindow.xaml.cs">
       <DependentUpon>FilterSelectWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="INotifyPropertyChange.cs" />
     <Compile Include="InvoiceReport.xaml.cs">
       <DependentUpon>InvoiceReport.xaml</DependentUpon>
     </Compile>

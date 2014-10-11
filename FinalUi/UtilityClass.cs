@@ -335,5 +335,15 @@ namespace FinalUi
             return "";
         }
         #endregion
+
+        internal static State getStateFromCity(string p)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static ZONE getZoneFromCityCode(string p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
