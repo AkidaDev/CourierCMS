@@ -113,5 +113,10 @@ namespace FinalUi
             string serialized = js.Serialize(RuleCR);
             MessageBox.Show(serialized);
         }
+
+        private void Previous_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

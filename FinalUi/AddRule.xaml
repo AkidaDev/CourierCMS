@@ -64,8 +64,6 @@
                     <cstmcntrl:TwinListBox Width="500" Height="150" Name="ServiceTwinBox"/>
                 </ContentControl>
             </Canvas>
-
-
             <Canvas Canvas.Top="-155" Canvas.Left="120" Visibility="Collapsed">
                 <Path Data="" Fill="Black" Height="19" Canvas.Left="31.333" Canvas.Top="222.365" Width="23" Stretch="Fill"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="59.482" Text="Add Zone .:" Canvas.Top="227.079"/>
@@ -73,7 +71,6 @@
                     <cstmcntrl:TwinListBox Name="ZoneTwinBox" Width="500" Height="150"/>
                 </ContentControl>
             </Canvas>
-
 
             <Canvas Canvas.Top="-155" Canvas.Left="120" Visibility="Collapsed">
                 <Path Data="" Fill="Black" Height="19" Canvas.Left="31.333" Canvas.Top="222.365" Width="23" Stretch="Fill"/>
@@ -91,7 +88,7 @@
                     <cstmcntrl:TwinListBox Name="StateTwinBox" Width="500" Height="150"/>
                 </ContentControl>
             </Canvas>
-            <Button Click="Previous_Click" Canvas.Right="175" Canvas.Bottom="15" Style="{StaticResource all}" >
+            <Button Click="Previous_Click" Name="Previous" Canvas.Right="175" Canvas.Bottom="15" Style="{StaticResource all}" >
                 <WrapPanel Margin="8,6">
                     <Path x:Name="PreviousPath" Data="F1M24.383,14.132C24.383,14.132 32.794,22.624 32.794,22.624 32.794,22.624 24.383,31.117 24.383,31.117 24.383,31.117 24.383,25.809 24.383,25.809 24.383,25.809 11.765,25.809 11.765,25.809 11.765,25.809 11.765,19.44 11.765,19.44 11.765,19.44 24.383,19.44 24.383,19.44 24.383,19.44 24.383,14.132 24.383,14.132z M22.25,6.05C13.34,6.05 6.05,13.34 6.05,22.25 6.05,31.16 13.34,38.45 22.25,38.45 31.16,38.45 38.45,31.16 38.45,22.25 38.45,13.34 31.16,6.05 22.25,6.05z M22.25,2C33.387,2 42.5,11.112 42.5,22.25 42.5,33.387 33.387,42.5 22.25,42.5 11.112,42.5 2,33.387 2,22.25 2,11.112 11.112,2 22.25,2z" Fill="Black" Height="23" Width="23" Stretch="Fill" Margin="0,0,3,0" RenderTransformOrigin="0.5,0.5">
                         <Path.RenderTransform>
@@ -103,7 +100,7 @@
                             </TransformGroup>
                         </Path.RenderTransform>
                     </Path>
-                    <TextBlock x:Name="Previous" FontWeight="Bold" FontSize="24" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="413" LineHeight="24" TextAlignment="Left" TextWrapping="Wrap" Text="Previous" Canvas.Top="363.88" Height="20" />
+                    <TextBlock  FontWeight="Bold" FontSize="24" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="413" LineHeight="24" TextAlignment="Left" TextWrapping="Wrap" Text="Previous" Canvas.Top="363.88" Height="20" />
                 </WrapPanel>
             </Button>
             <Button Canvas.Right="15" Canvas.Bottom="15" Style="{StaticResource all}" Canvas.Left="667" Canvas.Top="261">

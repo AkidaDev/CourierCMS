@@ -7,8 +7,8 @@ namespace FinalUi
 {
     interface IRule
     {
-        virtual void applyRule(Object obj);
-        public void encodeString();
-        public void decodeString();
+         void applyRule(Object obj);
+         void encodeString();
+        void decodeString();
     }
 }
