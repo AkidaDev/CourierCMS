@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FinalUi
 {
-    public partial class Quotation
+    public partial class RuleContainer: Quotation
     {
         List<Rule> rulesList;
         List<CostingRule> costingRules;
@@ -15,7 +15,7 @@ namespace FinalUi
         Rule lastInvoiceRuleApplied;
         
         public void applyCostingRulesOnTransaction(RuntimeData trans)
-        {
+        {   
             if(costingRules == null)
             {
                 initializeRules();
@@ -62,9 +62,7 @@ namespace FinalUi
 
         }
         public void applyServiceRulesOnTransaction(Transaction trans)
-        { 
-
-        }
+        {}
     }
     class Extensions
     {
@@ -123,9 +121,5 @@ namespace FinalUi
             }
         }
     }
-    public partial class Rule
-    {
-       public virtual void applyRule(Object obj)
-        {  }
-    }
+    
 }

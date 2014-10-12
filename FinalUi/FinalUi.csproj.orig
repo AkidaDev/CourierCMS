@@ -179,6 +179,9 @@
     <Compile Include="AddNewRateWindow.xaml.cs">
       <DependentUpon>AddNewRateWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddRole.xaml.cs">
+      <DependentUpon>AddRole.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddZone.xaml.cs">
       <DependentUpon>AddZone.xaml</DependentUpon>
     </Compile>
@@ -225,7 +228,6 @@
     <Compile Include="InvoiceReport.xaml.cs">
       <DependentUpon>InvoiceReport.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InvoiceRule.cs" />
     <Compile Include="IRule.cs" />
     <Compile Include="LoadResources.cs" />
     <Compile Include="ManageCity.xaml.cs">
@@ -259,8 +261,6 @@
     <Compile Include="RateWindow.xaml.cs">
       <DependentUpon>RateWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Rule.cs" />
-    <Compile Include="RuleContainer.cs" />
     <Compile Include="SanitizingWindow.xaml.cs">
       <DependentUpon>SanitizingWindow.xaml</DependentUpon>
     </Compile>
@@ -323,6 +323,10 @@
     <Page Include="AddNewRateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddRole.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="AddZone.xaml">
       <SubType>Designer</SubType>
