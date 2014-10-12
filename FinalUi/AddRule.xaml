@@ -27,10 +27,10 @@
                 <Canvas Canvas.Top="20" Canvas.Left="-110">
                     <Canvas Canvas.Left="220" Canvas.Top="0">
                         <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="255" Text="Step .:" Canvas.Top="82"/>
-                        <TextBox Name="StepBlockBox" BorderThickness="2" Height="26" Canvas.Left="305" Canvas.Top="77" Width="81" Padding="3 3 0 0"/>
+                        <TextBox Cursor="IBeam" Name="StepBlockBox" BorderThickness="2" Height="26" Canvas.Left="305" Canvas.Top="77" Width="81" Padding="3 3 0 0"/>
                         <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Canvas.Left="392" Canvas.Top="113" Width="3"/>
                         <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="158" Text="Start Value NDOX .:" Canvas.Top="122"/>
-                        <TextBox Name="NDoxStartValueBox" BorderThickness="2" Height="26" Canvas.Left="305" Canvas.Top="116" Width="81" Padding="3 3 0 0"/>
+                        <TextBox Cursor="Pen" Name="NDoxStartValueBox" BorderThickness="2" Height="26" Canvas.Left="305" Canvas.Top="116" Width="81" Padding="3 3 0 0"/>
                         <TextBlock Name="DoxStartValue" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="413" Text="Start Value DOX .:" Canvas.Top="122"/>
                         <TextBox Name="DoxStartValueBox" BorderThickness="2" Height="26" Canvas.Left="552" Canvas.Top="116" Width="81" Padding="3 3 0 0" TextChanged="TextBox_TextChanged"/>
                     </Canvas>

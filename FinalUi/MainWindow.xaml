@@ -149,7 +149,7 @@
                     <ColumnDefinition Width="770*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Background="#A9FFFFF3" Grid.Column="0" Margin="0,-33,0,0" Grid.RowSpan="3" Width="Auto" MaxWidth="260">
-                    <WrapPanel Margin="0,20,0,0" >
+                    <DockPanel Margin="0,20,0,0" >
                         <TreeView Background="Transparent" BorderThickness="0">
                             <TreeViewItem Background="Transparent" BorderThickness="0">
                                 <TreeViewItem.Header>
@@ -165,8 +165,8 @@
                                 </TreeViewItem>
                             </TreeViewItem>
                         </TreeView>
-                    </WrapPanel>
-                    <WrapPanel Margin="0,10,0,0" >
+                    </DockPanel>
+                    <DockPanel Margin="0,10,0,0" >
                         <TreeView Background="Transparent" BorderThickness="0" >
                             <TreeViewItem >
                                 <TreeViewItem.Header>
@@ -181,8 +181,8 @@
                                 </TreeViewItem>
                             </TreeViewItem>
                         </TreeView>
-                    </WrapPanel>
-                    <WrapPanel Margin="0,10,0,0" >
+                    </DockPanel>
+                    <DockPanel Margin="0,10,0,0" >
                         <TreeView BorderThickness="0" Background="Transparent"  >
                             <TreeViewItem BorderBrush="Transparent" BorderThickness="0">
                                 <TreeViewItem.Header>
@@ -239,7 +239,7 @@
                                 </TreeViewItem>
                             </TreeViewItem>
                         </TreeView>
-                    </WrapPanel>
+                    </DockPanel>
 
                     <Path Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Black" Height="4" HorizontalAlignment="Left" Margin="15,6,0,0"  Width="194"/>
                 </StackPanel>

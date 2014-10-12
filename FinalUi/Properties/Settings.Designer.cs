@@ -77,5 +77,16 @@ namespace FinalUi.Properties {
                 return ((string)(this["BillingDatabaseConnectionString4"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=PANKAJ\\SQLEXPRESS;Initial Catalog=BillingDatabase;Persist Security In" +
+            "fo=True;User ID=sa;Password=9811010024")]
+        public string BillingDatabaseConnectionString5 {
+            get {
+                return ((string)(this["BillingDatabaseConnectionString5"]));
+            }
+        }
     }
 }
