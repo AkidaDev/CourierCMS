@@ -4,7 +4,6 @@
 	x:Class="FinalUi.MainWindow"
 	Icon="Images/logo.ico"
 	Title="Vortex" BorderBrush="Transparent" AllowsTransparency="True" WindowStartupLocation="CenterScreen" WindowState="Normal" Width="1024" Height="700" MinHeight="600" MinWidth="900" WindowStyle="None">
-
     <Window.Resources>
         <CollectionViewSource x:Key="DueGridDataSource" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="ProfitabilityGridDataSource" CollectionViewType="ListCollectionView"/>
@@ -16,7 +15,6 @@
         <CommandBinding Command="ApplicationCommands.Close" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
         <CommandBinding Command="ApplicationCommands.Print" Executed="ExecutePrint" CanExecute="CanExecutePrintCommand"/>
     </Window.CommandBindings>
-
     <Grid x:Name="MainGrid" Background="#AAE3A21A">
         <!--light purple = #9f00a7, Cyan=#FFBBCADC, blue = #a32d89ef, yellow = #a3ffc40d, teal = #00aba9, camel = #AAE3A21A, green = #00a300 -->
         <Grid.RowDefinitions>
@@ -36,7 +34,6 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="286*"/>
             </Grid.RowDefinitions>
-
             <Grid Grid.Row="0" Height="26">
                 <Menu  Background="Transparent" FontSize="14" >
                     <MenuItem ToolTip="Open new document" Header="File" Margin="10 0 0 0">
@@ -90,19 +87,15 @@
                     </Button>
                 </WrapPanel>
             </Grid>
-
-
             <DockPanel Grid.Row="1" Height="26">
                 <!-- Empty space for future implementation-->
             </DockPanel>
-
             <DockPanel Grid.Row="2" Height="34">
                 <Grid Margin="0,1,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="235*" MaxWidth="260" MinWidth="235"/>
                         <ColumnDefinition Width="770*"/>
                     </Grid.ColumnDefinitions>
-
                     <Grid Grid.Column="1" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -150,14 +143,11 @@
                     </Grid>
                 </Grid>
             </DockPanel>
-
-
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="235*" MaxWidth="260" MinWidth="235"/>
                     <ColumnDefinition Width="770*"/>
                 </Grid.ColumnDefinitions>
-
                 <StackPanel Background="#A9FFFFF3" Grid.Column="0" Margin="0,-33,0,0" Grid.RowSpan="3" Width="Auto" MaxWidth="260">
                     <WrapPanel Margin="0,20,0,0" >
                         <TreeView Background="Transparent" BorderThickness="0" >
@@ -235,15 +225,13 @@
                     </WrapPanel>
                     <Path Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Black" Height="4" HorizontalAlignment="Left" Margin="15,6,0,0"  Width="194"/>
                 </StackPanel>
-
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="211*"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="70*"/>
                     </Grid.RowDefinitions>
-
-                    <Grid Grid.Row="0" Margin="6 0 0 0">
+                    <Grid Grid.Row="0" Margin="6 0 0 0" Name="ClientReportGrid" Visibility="Collapsed">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="200*"/>
@@ -253,7 +241,7 @@
                         <Grid Grid.Row="0" Margin="0 3"  Background="#A9FFFFF3">
                             <TextBlock Foreground="#FF5B5B5B" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Client Due List .:"/>
                         </Grid>
-                        <DataGrid Grid.Row="1" IsReadOnly="True" RowHeaderWidth="0" BorderThickness="0" Name="ClientDueGrid" AutoGenerateColumns="False" DataContext="{StaticResource DueGridDataSource}" ItemsSource="{Binding}">
+                        <DataGrid Grid.Row="1" IsReadOnly="True"  RowHeaderWidth="0" BorderThickness="0" Name="ClientDueGrid" AutoGenerateColumns="False" DataContext="{StaticResource DueGridDataSource}" ItemsSource="{Binding}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="CustomerCode" Binding="{Binding PC}"/>
                                 <DataGridTextColumn Header="BilledAmount" Binding="{Binding AmountBilled}"/>
@@ -273,8 +261,7 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
-
-                    <Grid Grid.Row="0" Margin="6 0 0 0" Visibility="Collapsed">
+                    <Grid Grid.Row="0" Margin="6 0 0 0"  Name="RuleGrid" Visibility="Collapsed">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="188*"/>
@@ -305,9 +292,7 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
-
-
-                    <DockPanel x:Name="DataGridStackPanel" Grid.Row="0" Margin="6 0 0 0" Visibility="Collapsed">
+                    <DockPanel Grid.Row="0" Margin="6 0 0 0" Name="DataDockPanel" Visibility="Visible">
                         <DockPanel.Resources>
                             <Style TargetType="{x:Type DataGridCell}">
                                 <Setter Property="BorderThickness" Value="0"/>
@@ -322,7 +307,7 @@
                                 </Style.Triggers>
                             </Style>
                         </DockPanel.Resources>
-                        <DataGrid RowHeaderWidth="0" IsReadOnly="True" x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False"  ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True"  >
+                        <DataGrid DockPanel.Dock="Top" RowHeaderWidth="0" IsReadOnly="True" x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False"  ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True"  >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ConnsignmentNo" Binding="{Binding ConsignmentNo}"/>
                                 <DataGridTextColumn Header="Weight" Binding="{Binding Weight}"/>
@@ -358,8 +343,6 @@
                             </DataGrid.RowDetailsTemplate>
                         </DataGrid>
                     </DockPanel>
-
-
                     <DockPanel x:Name="DataGridOptionpanel" Grid.Row="1" Margin="6 0 0 0" Height="29">
                         <WrapPanel x:Name="buttontabcanvaswrap" Margin="9,1,0,0" />
                         <WrapPanel HorizontalAlignment="Right">
@@ -384,14 +367,11 @@
                             <TextBox ToolTip="No. of Rows" x:Name="DataGridNumOfRows" Width="30" Margin="3,0,11,0" Height="20" Text="{Binding rowsPerPage, Mode=TwoWay}" FontFamily="Segoe UI Semibold" TextAlignment="Center" BorderBrush="#FF7676FF"/>
                         </WrapPanel>
                     </DockPanel>
-
-
                     <DockPanel Grid.Row="3" Margin="6 0 0 0">
                         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                             <TextBlock Text="Log..." x:Name="MessageBlock" Background="White" Margin="0,0,0,0" />
                         </ScrollViewer>
                     </DockPanel>
-
                 </Grid>
             </Grid>
         </Grid>
@@ -403,6 +383,5 @@
         <Rectangle  x:Name="Rec_Bottom" Fill="Transparent"  Grid.Row="2" Grid.Column="1" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>
         <Rectangle  x:Name="Rec_Bottom_Left" Fill="Transparent"  Grid.Row="2" Grid.Column="0" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>
         <Rectangle  x:Name="Rec_Bottom_Right" Fill="Transparent"  Grid.Row="2" Grid.Column="2" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>
-
     </Grid>
 </Window>

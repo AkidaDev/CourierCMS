@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FinalUi
 {
-    interface Rule
+    class Rule
     {
     }
 }

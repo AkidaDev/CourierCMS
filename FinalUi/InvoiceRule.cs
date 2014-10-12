@@ -5,10 +5,7 @@ using System.Text;
 
 namespace FinalUi
 {
-    interface IRule
+    class InvoiceRule: Rule, IRule
     {
-         void applyRule(Object obj);
-         void encodeString();
-         void decodeString();
     }
 }
