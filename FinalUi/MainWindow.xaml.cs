@@ -853,13 +853,7 @@ namespace FinalUi
             AddCity window = new AddCity();
             window.ShowDialog();
         }
-        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-        }
-        private void dataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-        }
-
+        
         private void ManageZone_Click(object sender, RoutedEventArgs e)
         {
             ZoneAssignment zone = new ZoneAssignment();
@@ -872,30 +866,41 @@ namespace FinalUi
             
         }
 
-        private void ClientDueGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+       private void cloakAll()
         {
-
+            ProfitGrid.Visibility = Visibility.Collapsed;
+            RuleGrid.Visibility = Visibility.Collapsed;
+            DataDockPanel.Visibility = Visibility.Collapsed;
+            buttontabcanvaswrap.Visibility = Visibility.Collapsed;
+            NavigationBar.Visibility = Visibility.Collapsed;
+            ClientReportOptionPanel.Visibility = Visibility.Collapsed;
+            QuotationoptionPanel.Visibility = Visibility.Collapsed;
+            DataEntryOptionPanel.Visibility = Visibility.Collapsed;
         }
-
-        private void ClientsReportTreeView_Selected(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void ClientsReportTreeView_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void ClientQuotationTreeView_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
+      
         private void AddRuleButton_Click(object sender, RoutedEventArgs e)
         {
             AddRule window = new AddRule(new BillingDataDataContext().Quotations.Where(x =>x.CLCODE == ((Client)this.ClientCombo.SelectedItem).CLCODE).FirstOrDefault());
             window.Show();
+        }
+
+        private void DataGrid_SelectionChanged_2(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ClientQuotationTreeView_Selected(object sender, RoutedEventArgs e)
+        {
+            cloakAll();
+            QuotationoptionPanel.Visibility = Visibility.Visible;
+            RuleGrid.Visibility = Visibility.Visible;
+        }
+
+        private void ClientsReportTreeView_Selected(object sender, RoutedEventArgs e)
+        {
+            cloakAll();
+            ProfitGrid.Visibility = Visibility.Visible;
+            ClientReportOptionPanel.Visibility = Visibility.Visible;
         }
     }
 }

@@ -179,6 +179,9 @@
     <Compile Include="AddNewRateWindow.xaml.cs">
       <DependentUpon>AddNewRateWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddServiceRule.xaml.cs">
+      <DependentUpon>AddServiceRule.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddZone.xaml.cs">
       <DependentUpon>AddZone.xaml</DependentUpon>
     </Compile>
@@ -322,6 +325,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="AddNewRateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddServiceRule.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
