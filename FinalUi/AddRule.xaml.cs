@@ -21,9 +21,13 @@ namespace FinalUi
     /// </summary>
     public partial class AddRule : Window
     {
+        int currentCanvas = 1;
+        Canvas currentCanvasObj;
         public AddRule()
         {
             InitializeComponent();
+            currentCanvasObj = Step1Canvas;
+            currentCanvasObj.Visibility = Visibility.Visible;
 
             ServiceTwinBox.AllListSource = (DataSources.ServicesCopy);
             ServiceTwinBox.SelectedListSource = new List<Service>();
@@ -49,13 +53,19 @@ namespace FinalUi
 
         private void GetFilter_Click(object sender, RoutedEventArgs e)
         {
+
         }
+
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+
         }
+
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
+
         }
+
         private void AddRuleButton_Click(object sender, RoutedEventArgs e)
         {
             double startW = 0,endW = 0;
@@ -108,9 +118,99 @@ namespace FinalUi
             MessageBox.Show(serialized);
         }
 
+        private void Next_Click(object sender, RoutedEventArgs e)
+        {
+              switch (currentCanvas)
+                { 
+                    case 1 :
+                        currentCanvas = 2;
+                        currentCanvasObj.Visibility = Visibility.Collapsed;
+                        currentCanvasObj = Step2Canvas;
+                        currentCanvasObj.Visibility = Visibility.Visible;
+                        StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
+                        break;
+                    case 2:
+                        currentCanvas = 3;
+                        currentCanvasObj.Visibility = Visibility.Collapsed;
+                        currentCanvasObj = Step3Canvas;
+                        currentCanvasObj.Visibility = Visibility.Visible;
+                        StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
+                        break;
+                    case 3:
+                        currentCanvas = 4;
+                        currentCanvasObj.Visibility = Visibility.Collapsed;
+                        currentCanvasObj = Step4Canvas;
+                        currentCanvasObj.Visibility = Visibility.Visible;
+                        StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
+                        break;
+                    case 4:
+                        currentCanvas = 5;
+                        currentCanvasObj.Visibility = Visibility.Collapsed;
+                        currentCanvasObj = Step5Canvas;
+                        currentCanvasObj.Visibility = Visibility.Visible;
+                        StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
+                        break;
+
+
+                }
+              if (currentCanvas == 5)
+              {
+                  Next.Visibility = Visibility.Collapsed;
+                  AddRuleButton.Visibility = Visibility.Visible;
+              }
+              else
+              {
+                  Next.Visibility = Visibility.Visible;
+                  AddRuleButton.Visibility = Visibility.Collapsed;
+              }
+            
+        }
+
         private void Previous_Click(object sender, RoutedEventArgs e)
         {
+            switch (currentCanvas)
+            {
+                case 5:
+                    currentCanvas = 4;
+                    currentCanvasObj.Visibility = Visibility.Collapsed;
+                    currentCanvasObj = Step4Canvas;
+                    currentCanvasObj.Visibility = Visibility.Visible;
+                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
+                    break;
+                case 4:
+                    currentCanvas = 3;
+                    currentCanvasObj.Visibility = Visibility.Collapsed;
+                    currentCanvasObj = Step3Canvas;
+                    currentCanvasObj.Visibility = Visibility.Visible;
+                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
+                    break;
+                case 3:
+                    currentCanvas = 2;
+                    currentCanvasObj.Visibility = Visibility.Collapsed;
+                    currentCanvasObj = Step2Canvas;
+                    currentCanvasObj.Visibility = Visibility.Visible;
+                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
+                    break;
+                case 2:
+                    currentCanvas = 1;
+                    currentCanvasObj.Visibility = Visibility.Collapsed;
+                    currentCanvasObj = Step1Canvas;
+                    currentCanvasObj.Visibility = Visibility.Visible;
+                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
+                    break;
 
+
+            }
+            if (currentCanvas == 5)
+            {
+                Next.Visibility = Visibility.Collapsed;
+                AddRuleButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Next.Visibility = Visibility.Visible;
+                AddRuleButton.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

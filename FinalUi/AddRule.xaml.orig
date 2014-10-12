@@ -19,7 +19,7 @@
                 <TextBlock Text="dfg" Name="RateCodeNameBox" Height="24" Canvas.Left="480" Canvas.Top="34" Width="120" Padding="5 0 0 0" FontSize="16"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="602" Text=":. Rule ID" Canvas.Top="35"/>
             </Canvas>
-            <Canvas  Visibility="Collapsed">
+            <Canvas Name="Step1Canvas" Visibility="Collapsed">
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="80" Text="Type .:" Canvas.Top="90"/>
                 <RadioButton Name="StepTypeRadio" GroupName="TypeRadioGroup" IsChecked="True" Content="Step" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="135" Canvas.Top="95" Padding="5 -5 0 0" Checked="RadioButton_Checked" />
                 <RadioButton Name="RangeTypeRadio" GroupName="TypeRadioGroup" Content="Range" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="135" Canvas.Top="114" Padding="5 -5 0 0" Margin=" 0 3 0 0"/>
@@ -55,14 +55,16 @@
             </Canvas>
 
 
-            <Canvas Canvas.Top="-160" Canvas.Left="120" Visibility="Collapsed">
+            <Canvas  Name="Step2Canvas" Canvas.Top="-160" Canvas.Left="120" Visibility="Collapsed">
                 <Path x:Name="client" Data="" Fill="Black" Height="19" Canvas.Left="31.333" Canvas.Top="222.365" Width="23" Stretch="Fill"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="59.482" Text="Add Service .:" Canvas.Top="232.079"/>
                 <ContentControl Canvas.Left="31.333" Canvas.Top="255">
                     <cstmcntrl:TwinListBox Width="500" Height="150" Name="ServiceTwinBox"/>
                 </ContentControl>
             </Canvas>
-            <Canvas Canvas.Top="-155" Canvas.Left="120" Visibility="Collapsed">
+
+
+            <Canvas Name="Step3Canvas" Canvas.Top="-155" Canvas.Left="120" Visibility="Collapsed">
                 <Path Data="" Fill="Black" Height="19" Canvas.Left="31.333" Canvas.Top="222.365" Width="23" Stretch="Fill"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="59.482" Text="Add Zone .:" Canvas.Top="227.079"/>
                 <ContentControl Canvas.Left="31.333" Canvas.Top="250">
@@ -70,7 +72,8 @@
                 </ContentControl>
             </Canvas>
 
-            <Canvas Canvas.Top="-155" Canvas.Left="120" Visibility="Collapsed">
+
+            <Canvas Name="Step4Canvas" Canvas.Top="-155" Canvas.Left="120" Visibility="Collapsed">
                 <Path Data="" Fill="Black" Height="19" Canvas.Left="31.333" Canvas.Top="222.365" Width="23" Stretch="Fill"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="59.482" Text="Add City .:" Canvas.Top="227.079"/>
                 <ContentControl Canvas.Left="31.333" Canvas.Top="250">
@@ -79,18 +82,14 @@
             </Canvas>
 
 
-            <Canvas Canvas.Top="-150" Canvas.Left="120" Visibility="Collapsed">
+            <Canvas Name="Step5Canvas" Canvas.Top="-150" Canvas.Left="120" Visibility="Collapsed">
                 <Path Data="" Fill="Black" Height="19" Canvas.Left="31.333" Canvas.Top="222.365" Width="23" Stretch="Fill"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="59.482" Text="Add State .:" Canvas.Top="222"/>
                 <ContentControl Canvas.Left="31.333" Canvas.Top="245">
                     <cstmcntrl:TwinListBox Name="StateTwinBox" Width="500" Height="150"/>
                 </ContentControl>
             </Canvas>
-<<<<<<< local
-            <Button Click="Previous_Click" Name="Previous" Canvas.Right="175" Canvas.Bottom="15" Style="{StaticResource all}" >
-=======
-            <Button Canvas.Right="175" Canvas.Bottom="15" Style="{StaticResource all}" Canvas.Left="520" Canvas.Top="261" >
->>>>>>> other
+            <Button Name="Previous" Canvas.Right="175" Canvas.Bottom="15" Style="{StaticResource all}" Canvas.Left="520" Canvas.Top="261" Click="Previous_Click" >
                 <WrapPanel Margin="8,6">
                     <Path x:Name="PreviousPath" Data="F1M24.383,14.132C24.383,14.132 32.794,22.624 32.794,22.624 32.794,22.624 24.383,31.117 24.383,31.117 24.383,31.117 24.383,25.809 24.383,25.809 24.383,25.809 11.765,25.809 11.765,25.809 11.765,25.809 11.765,19.44 11.765,19.44 11.765,19.44 24.383,19.44 24.383,19.44 24.383,19.44 24.383,14.132 24.383,14.132z M22.25,6.05C13.34,6.05 6.05,13.34 6.05,22.25 6.05,31.16 13.34,38.45 22.25,38.45 31.16,38.45 38.45,31.16 38.45,22.25 38.45,13.34 31.16,6.05 22.25,6.05z M22.25,2C33.387,2 42.5,11.112 42.5,22.25 42.5,33.387 33.387,42.5 22.25,42.5 11.112,42.5 2,33.387 2,22.25 2,11.112 11.112,2 22.25,2z" Fill="Black" Height="23" Width="23" Stretch="Fill" Margin="0,0,3,0" RenderTransformOrigin="0.5,0.5">
                         <Path.RenderTransform>
@@ -102,14 +101,22 @@
                             </TransformGroup>
                         </Path.RenderTransform>
                     </Path>
-                    <TextBlock  FontWeight="Bold" FontSize="24" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="413" LineHeight="24" TextAlignment="Left" TextWrapping="Wrap" Text="Previous" Canvas.Top="363.88" Height="20" />
+                    <TextBlock FontWeight="Bold" FontSize="24" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="413" LineHeight="24" TextAlignment="Left" TextWrapping="Wrap" Text="Previous" Canvas.Top="363.88" Height="20" />
                 </WrapPanel>
             </Button>
-            <Button Canvas.Right="15" Canvas.Bottom="15" Style="{StaticResource all}" Canvas.Left="685" Canvas.Top="261">
+            <Button  Name="Next" Canvas.Right="15" Canvas.Bottom="15" Style="{StaticResource all}" Canvas.Left="685" Canvas.Top="261" Click="Next_Click">
                 <Button.Content>
                     <WrapPanel Margin="8,6">
                         <Path x:Name="next" Data="F1M24.383,14.132C24.383,14.132 32.794,22.624 32.794,22.624 32.794,22.624 24.383,31.117 24.383,31.117 24.383,31.117 24.383,25.809 24.383,25.809 24.383,25.809 11.765,25.809 11.765,25.809 11.765,25.809 11.765,19.44 11.765,19.44 11.765,19.44 24.383,19.44 24.383,19.44 24.383,19.44 24.383,14.132 24.383,14.132z M22.25,6.05C13.34,6.05 6.05,13.34 6.05,22.25 6.05,31.16 13.34,38.45 22.25,38.45 31.16,38.45 38.45,31.16 38.45,22.25 38.45,13.34 31.16,6.05 22.25,6.05z M22.25,2C33.387,2 42.5,11.112 42.5,22.25 42.5,33.387 33.387,42.5 22.25,42.5 11.112,42.5 2,33.387 2,22.25 2,11.112 11.112,2 22.25,2z" Fill="Black" Height="23" Width="23" Stretch="Fill" Margin="0,0,3,0"/>
                         <TextBlock FontWeight="Bold" FontSize="24" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="413" LineHeight="24" TextAlignment="Left" TextWrapping="Wrap" Text="Next" Canvas.Top="363.88" Height="20" />
+                    </WrapPanel>
+                </Button.Content>
+            </Button>
+            <Button Canvas.Bottom="15" Canvas.Right="15" Name="AddRuleButton" Click="AddRuleButton_Click" Style="{StaticResource all}" Visibility="Collapsed">
+                <Button.Content>
+                    <WrapPanel Margin="8,6">
+                        <Path  Data="F1M13.455,5.818C13.455,5.818 13.455,9.636 13.455,9.636 13.455,9.636 9.636,9.636 9.636,9.636 9.636,9.636 9.636,11.545 9.636,11.545 9.636,11.545 13.455,11.545 13.455,11.545 13.455,11.545 13.455,15.364 13.455,15.364 13.455,15.364 15.364,15.364 15.364,15.364 15.364,15.364 15.364,11.545 15.364,11.545 15.364,11.545 19.182,11.545 19.182,11.545 19.182,11.545 19.182,9.636 19.182,9.636 19.182,9.636 15.364,9.636 15.364,9.636 15.364,9.636 15.364,5.818 15.364,5.818 15.364,5.818 13.455,5.818 13.455,5.818z M2,5.818C2,5.818 3.909,5.818 3.909,5.818 3.909,5.818 3.909,21.091 3.909,21.091 3.909,21.091 19.182,21.091 19.182,21.091 19.182,21.091 19.182,23 19.182,23 19.182,23 3.909,23 3.909,23 2.859,23 2,22.141 2,21.091 2,21.091 2,5.818 2,5.818z M7.727,2C7.727,2 21.091,2 21.091,2 22.141,2 23,2.859 23,3.909 23,3.909 23,17.273 23,17.273 23,18.323 22.141,19.182 21.091,19.182 21.091,19.182 7.727,19.182 7.727,19.182 6.677,19.182 5.818,18.323 5.818,17.273 5.818,17.273 5.818,3.909 5.818,3.909 5.818,2.859 6.677,2 7.727,2z" Fill="Black" Height="24" Width="24"/>
+                        <TextBlock FontWeight="Bold" FontSize="24" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="413" LineHeight="24" TextAlignment="Left" TextWrapping="Wrap" Text="Add Rule" Canvas.Top="363.88" Height="20" />
                     </WrapPanel>
                 </Button.Content>
             </Button>
@@ -129,7 +136,7 @@
                     </WrapPanel>
                 </Button.Content>
             </Button>
-            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="43" Text="Step 1 of 5" Canvas.Top="275"/>
+            <TextBlock Name="StepBlock" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="43" Text="Step 1 of 5" Canvas.Top="275"/>
         </Canvas>
     </Grid>
 </Window>
