@@ -52,19 +52,20 @@ namespace FinalUi
         {
             this.Properties = propertyString;
         }
-        public CostingRule(List<string> ServiceList, List<string> ZoneList, List<string> CityList, double startW, double endW, char type, double doxAmount, double ndoxAmount)
+        public CostingRule(List<string> ServiceList, List<string> ZoneList, List<string> CityList,List<string> StateList, double startW, double endW, char type, double doxAmount, double ndoxAmount)
         {
             this.ServiceList = ServiceList;
             this.ZoneList = ZoneList;
             this.CityList = CityList;
+            this.StateList = StateList;
             this.startW = startW;
             this.endW = endW;
             this.type = type;
             this.doxAmount = doxAmount;
             this.ndoxAmount = ndoxAmount;
         }
-        public CostingRule(List<string> ServiceList, List<string> ZoneList, List<string> CityList, double startW, double endW, char type, double doxAmount, double ndoxAmount, double stepWeight, double ndStartValue, double dStartValue)
-            : this(ServiceList, ZoneList, CityList, startW, endW, type, doxAmount, ndoxAmount)
+        public CostingRule(List<string> ServiceList, List<string> ZoneList, List<string> CityList,List<string> StateList, double startW, double endW, char type, double doxAmount, double ndoxAmount, double stepWeight, double ndStartValue, double dStartValue)
+            : this(ServiceList, ZoneList, CityList,StateList, startW, endW, type, doxAmount, ndoxAmount)
         {
             this.stepWeight = stepWeight;
             this.dStartValue = dStartValue;
