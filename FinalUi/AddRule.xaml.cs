@@ -30,7 +30,6 @@ namespace FinalUi
             InitializeComponent();
             currentCanvasObj = Step1Canvas;
             currentCanvasObj.Visibility = Visibility.Visible;
-
             ServiceTwinBox.AllListSource = (DataSources.ServicesCopy);
             ServiceTwinBox.SelectedListSource = new List<Service>();
             ServiceTwinBox.DisplayValuePath = "NameAndCOde";
