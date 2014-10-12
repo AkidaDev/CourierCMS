@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FinalUi
 {
-    class Rule
+    partial class  Rule
     {
         public virtual void applyRule(Object obj)
         { }

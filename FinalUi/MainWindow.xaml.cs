@@ -879,6 +879,8 @@ namespace FinalUi
 
         private void ClientsReportTreeView_Selected(object sender, RoutedEventArgs e)
         {
+            AddRule window = new AddRule();
+            window.Show();
         }
 
         private void ClientsReportTreeView_MouseDown(object sender, MouseButtonEventArgs e)
@@ -887,6 +889,11 @@ namespace FinalUi
         }
 
         private void ClientQuotationTreeView_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void AddRuleButton_Click(object sender, RoutedEventArgs e)
         {
 
         }

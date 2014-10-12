@@ -285,13 +285,12 @@
                             <RowDefinition Height="188*"/>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0" Height="70" Background="#A9FFFFF3" Margin="0 0 0 6" >
-                            <WrapPanel VerticalAlignment="Center">
+                            <WrapPanel VerticalAlignment="Center" Margin="-4,24,4,24">
                                 <TextBlock Foreground="#FF5B5B5B" Text=" Select Type of RULE  .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="8 0 0 0" TextDecorations="Underline"/>
                                 <RadioButton Foreground="#FF5B5B5B" IsChecked="True" Content="Costing Rule" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
                                 <RadioButton Foreground="#FF5B5B5B" Content="Service Rule" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
                                 <RadioButton Foreground="#FF5B5B5B" Content="Invoice Rule" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
-
-                            </WrapPanel>
+                                <Button Content="AddRule" Name="AddRuleButton" Click="AddRuleButton_Click"/>                            </WrapPanel>
                         </Grid>
                         <DataGrid Grid.Row="1" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
                                   AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True"  >

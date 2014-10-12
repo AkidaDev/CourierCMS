@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FinalUi
 {
-    class RuleContainer : Quotation
+    partial class RuleContainer : Quotation
     {
 
     }
