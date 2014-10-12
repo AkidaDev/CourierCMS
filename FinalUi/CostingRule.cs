@@ -10,7 +10,7 @@ namespace FinalUi
     /// PropertyString = {"What":{"DoxAmount":value(float),"NonDoxAmount"=value(float),"Type":R/S,"StepWeight":value,"DoxStartValue":value,"NonDoxStartValue":value}},
     /// };When={{ServiceIs={S1,S2,..SN}},{ZoneIs={}},{CityIs={}},{Weight={From={},To={}}}}
     /// </summary>
-    class CostingRule : Rule
+    class CostingRule : Rule,IRule
     {
         public void decodeString()
         {
@@ -18,14 +18,10 @@ namespace FinalUi
             string what = WhatAndWhen[0];
             string when = WhatAndWhen[1];
             string[] whatParams;
-
+            bool isDecoded = false;
         }
 
-
-
-
         #region State
-        bool isDecoded = false;
         #endregion
 
         #region When to apply
