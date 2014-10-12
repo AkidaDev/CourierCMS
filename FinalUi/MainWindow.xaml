@@ -57,7 +57,7 @@
                         <MenuItem Header="Edit Rates" x:Name="RateWindowMenu" Click="RateWindowMenu_Click"/>
                         <MenuItem Header="Client Report" x:Name="ClientReport" Click="ClientReport_Click"/>
                     </MenuItem>
-					<MenuItem ToolTip="Editing Tools" Header="Tools" Margin="10 0 0 0">
+                    <MenuItem ToolTip="Editing Tools" Header="Tools" Margin="10 0 0 0">
                         <MenuItem Header="Filter &amp; Select"  />
                         <MenuItem Header="Data Entry" />
                         <MenuItem Header="Add Rate Rule" />
@@ -96,7 +96,13 @@
                         <ColumnDefinition Width="235*" MaxWidth="260" MinWidth="235"/>
                         <ColumnDefinition Width="770*"/>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="1" >
+                    <Grid Visibility="Collapsed" Name="ClientReportOptionPanel" Grid.Column="1">
+                        <!-- Client Report Option Panel -->
+                    </Grid>
+                    <Grid Visibility="Collapsed" Name="QuotationoptionPanel" Grid.Column="1">
+                        <!-- Quotation Option Panel --> 
+                    </Grid>
+                    <Grid Visibility="Visible" Name="DataEntryOptionPanel" Grid.Column="1" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
@@ -149,107 +155,103 @@
                     <ColumnDefinition Width="770*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Background="#A9FFFFF3" Grid.Column="0" Margin="0,-33,0,0" Grid.RowSpan="3" Width="Auto" MaxWidth="260">
-                    <DockPanel Margin="0,20,0,0" >
-                        <TreeView Background="Transparent" BorderThickness="0">
-                            <TreeViewItem Background="Transparent" BorderThickness="0">
-                                <TreeViewItem.Header>
-                                    <TextBlock Text="Client Tree" FontSize="16" FontWeight="Bold"  Padding="0 1 0 4" Foreground="#FF5B5B5B" FontFamily="Calibri"></TextBlock>
+                    <TreeView Background="Transparent" BorderThickness="0" Margin="0,20,0,0">
+                        <TreeViewItem Background="Transparent" BorderThickness="0">
+                            <TreeViewItem.Header>
+                                <TextBlock Text="Client Tree" FontSize="16" FontWeight="Bold"  Padding="0 1 0 4" Foreground="#FF5B5B5B" FontFamily="Calibri"></TextBlock>
+                            </TreeViewItem.Header>
+                            <TreeViewItem Name="ClientsReportTreeView" Selected="ClientsReportTreeView_Selected">
+                                <TreeViewItem.Header >
+                                    <TextBlock Text="Clients Report" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
                                 </TreeViewItem.Header>
-                                <TreeViewItem Name="ClientsReportTreeView" MouseDown="ClientsReportTreeView_MouseDown">
-                                    <TreeViewItem.Header >
-                                        <TextBlock Text="Clients Report" ></TextBlock></TreeViewItem.Header>
-                                </TreeViewItem>
-                                <TreeViewItem Name="ClientQuotationTreeView" MouseDown="ClientQuotationTreeView_MouseDown">
-                                    <TreeViewItem.Header>
-                                        <TextBlock Text="ClientQuotation"></TextBlock></TreeViewItem.Header>
-                                </TreeViewItem>
                             </TreeViewItem>
-                        </TreeView>
-                    </DockPanel>
-                    <DockPanel Margin="0,10,0,0" >
-                        <TreeView Background="Transparent" BorderThickness="0" >
-                            <TreeViewItem >
+                            <TreeViewItem Name="ClientQuotationTreeView" Selected="ClientQuotationTreeView_Selected">
                                 <TreeViewItem.Header>
-                                    <TextBlock Text="My Assignments" FontSize="16" FontWeight="Bold"  Padding="0 1 0 4" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                    <TextBlock  Text="Client Quotation" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
                                 </TreeViewItem.Header>
-                                <TreeViewItem>
-                                    <TreeViewItem.Header>
-                                        <Button Style="{StaticResource 1}" x:Name="BillAnalysis" Click="BillAnalysis_Click">
-                                            <TextBlock Text="Bill Analysis" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                                        </Button>
-                                    </TreeViewItem.Header>
-                                </TreeViewItem>
                             </TreeViewItem>
-                        </TreeView>
-                    </DockPanel>
-                    <DockPanel Margin="0,10,0,0" >
-                        <TreeView BorderThickness="0" Background="Transparent"  >
-                            <TreeViewItem BorderBrush="Transparent" BorderThickness="0">
+                        </TreeViewItem>
+                    </TreeView>
+                    <TreeView Background="Transparent" BorderThickness="0">
+                        <TreeViewItem >
+                            <TreeViewItem.Header>
+                                <TextBlock Text="My Assignments" FontSize="16" FontWeight="Bold"  Padding="0 1 0 4" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                            </TreeViewItem.Header>
+                            <TreeViewItem>
                                 <TreeViewItem.Header>
-                                    <TextBlock Text="Master" FontSize="16" FontWeight="Bold"   Padding="0 1 0 4" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                    <Button Style="{StaticResource 1}" x:Name="BillAnalysis" Click="BillAnalysis_Click">
+                                        <TextBlock Text="Bill Analysis" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                    </Button>
                                 </TreeViewItem.Header>
-                                <TreeViewItem Margin="0,2,0,2">
-                                    <TreeViewItem.Header>
-                                        <Button Style="{StaticResource 1}"  Name="countrytreeitembutton" Click="countrytreeitembutton_Click" >
-                                            <TextBlock Text="Country" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                                        </Button>
-                                    </TreeViewItem.Header>
-                                </TreeViewItem>
-                                <TreeViewItem Margin="0,2,0,2">
-                                    <TreeViewItem.Header>
-                                        <Button Style="{StaticResource 1}"  Name="zonetreeitembutton" Click="zonetreeitembutton_Click" >
-                                            <TextBlock Text="Zone" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                                        </Button>
-                                    </TreeViewItem.Header>
-                                </TreeViewItem>
-                                <TreeViewItem Margin="0,2,0,2">
-                                    <TreeViewItem.Header>
-                                        <Button Style="{StaticResource 1}"  Name="citytreeviewitembutton" Click="citytreeviewitembutton_Click">
-                                            <TextBlock Text="City" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                                        </Button>
-                                    </TreeViewItem.Header>
-                                </TreeViewItem>
-                                <TreeViewItem Margin="0,2,0,2">
-                                    <TreeViewItem.Header>
-                                        <Button Style="{StaticResource 1}" Name="clienttreeviewitembutton" Click="clienttreeviewitembutton_Click">
-                                            <TextBlock Text="Client" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                                        </Button>
-                                    </TreeViewItem.Header>
-                                </TreeViewItem>
-                                <TreeViewItem Margin="0,2,0,2">
-                                    <TreeViewItem.Header>
-                                        <Button Style="{StaticResource 1}" Name="clienttarifftreeviewitembutton" Click="clienttarifftreeviewitembutton_Click">
-                                            <TextBlock Text="Client Tariff" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                                        </Button>
-                                    </TreeViewItem.Header>
-                                </TreeViewItem>
-                                <TreeViewItem Margin="0,2,0,2">
-                                    <TreeViewItem.Header>
-                                        <Button Style="{StaticResource 1}" Name="forwardertarifftreeviewitembutton" Click="forwardertarifftreeviewitembutton_Click">
-                                            <TextBlock Text="Forwarder Tariff" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                                        </Button>
-                                    </TreeViewItem.Header>
-                                </TreeViewItem>
-                                <TreeViewItem Margin="0,2,0,2">
-                                    <TreeViewItem.Header>
-                                        <Button Style="{StaticResource 1}" Name="servicetaxtreeviewitembutton" Click="servicetaxtreeviewitembutton_Click">
-                                            <TextBlock Text="Service Tax" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                                        </Button>
-                                    </TreeViewItem.Header>
-                                </TreeViewItem>
                             </TreeViewItem>
-                        </TreeView>
-                    </DockPanel>
+                        </TreeViewItem>
+                    </TreeView>
+                    <TreeView BorderThickness="0" Background="Transparent"  >
+                        <TreeViewItem BorderBrush="Transparent" BorderThickness="0">
+                            <TreeViewItem.Header>
+                                <TextBlock Text="Master" FontSize="16" FontWeight="Bold"   Padding="0 1 0 4" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                            </TreeViewItem.Header>
+                            <TreeViewItem Margin="0,2,0,2">
+                                <TreeViewItem.Header>
+                                    <Button Style="{StaticResource 1}"  Name="countrytreeitembutton" Click="countrytreeitembutton_Click" >
+                                        <TextBlock Text="Country" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                    </Button>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem Margin="0,2,0,2">
+                                <TreeViewItem.Header>
+                                    <Button Style="{StaticResource 1}"  Name="zonetreeitembutton" Click="zonetreeitembutton_Click" >
+                                        <TextBlock Text="Zone" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                    </Button>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem Margin="0,2,0,2">
+                                <TreeViewItem.Header>
+                                    <Button Style="{StaticResource 1}"  Name="citytreeviewitembutton" Click="citytreeviewitembutton_Click">
+                                        <TextBlock Text="City" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                    </Button>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem Margin="0,2,0,2">
+                                <TreeViewItem.Header>
+                                    <Button Style="{StaticResource 1}" Name="clienttreeviewitembutton" Click="clienttreeviewitembutton_Click">
+                                        <TextBlock Text="Client" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                    </Button>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem Margin="0,2,0,2">
+                                <TreeViewItem.Header>
+                                    <Button Style="{StaticResource 1}" Name="clienttarifftreeviewitembutton" Click="clienttarifftreeviewitembutton_Click">
+                                        <TextBlock Text="Client Tariff" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                    </Button>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem Margin="0,2,0,2">
+                                <TreeViewItem.Header>
+                                    <Button Style="{StaticResource 1}" Name="forwardertarifftreeviewitembutton" Click="forwardertarifftreeviewitembutton_Click">
+                                        <TextBlock Text="Forwarder Tariff" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                    </Button>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem Margin="0,2,0,2">
+                                <TreeViewItem.Header>
+                                    <Button Style="{StaticResource 1}" Name="servicetaxtreeviewitembutton" Click="servicetaxtreeviewitembutton_Click">
+                                        <TextBlock Text="Service Tax" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                    </Button>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                        </TreeViewItem>
+                    </TreeView>
 
                     <Path Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Black" Height="4" HorizontalAlignment="Left" Margin="15,6,0,0"  Width="194"/>
                 </StackPanel>
-                <Grid Grid.Column="1">
+                <Grid Grid.Column="1"  Name="ClientReportGrid">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="211*"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="70*"/>
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" Margin="6 0 0 0" Name="ClientReportGrid" Visibility="Collapsed">
+                    <Grid Grid.Row="0" Name="ProfitGrid" Margin="6 0 0 0" Visibility="Collapsed">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="200*"/>
@@ -279,7 +281,7 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
-                    <Grid Grid.Row="0" Margin="6 0 0 0"  Name="RuleGrid" Visibility="Visible">
+                    <Grid Grid.Row="0" Margin="6 0 0 0"  Name="RuleGrid" Visibility="Collapsed">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="188*"/>
@@ -290,10 +292,11 @@
                                 <RadioButton Foreground="#FF5B5B5B" IsChecked="True" Content="Costing Rule" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
                                 <RadioButton Foreground="#FF5B5B5B" Content="Service Rule" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
                                 <RadioButton Foreground="#FF5B5B5B" Content="Invoice Rule" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
-                                <Button Content="AddRule" Name="AddRuleButton" Click="AddRuleButton_Click"/>                            </WrapPanel>
+                                <Button Content="AddRule" Name="AddRuleButton" Click="AddRuleButton_Click" Margin="40 0 0 0"/>
+                            </WrapPanel>
                         </Grid>
-                        <DataGrid Grid.Row="1" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
-                                  AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True"  >
+                        <DataGrid  Name="QuotationDataGrid" Grid.Row="1" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
+                                  AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2"  >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Dox/NonDox"/>
                                 <DataGridTextColumn Header="Zone"/>
@@ -309,7 +312,7 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
-                    <DockPanel Grid.Row="0" Margin="6 0 0 0" Name="DataDockPanel" Visibility="Collapsed">
+                    <DockPanel Grid.Row="0" Margin="6 0 0 0" Name="DataDockPanel">
                         <DockPanel.Resources>
                             <Style TargetType="{x:Type DataGridCell}">
                                 <Setter Property="BorderThickness" Value="0"/>
@@ -362,7 +365,7 @@
                     </DockPanel>
                     <DockPanel x:Name="DataGridOptionpanel" Grid.Row="1" Margin="6 0 0 0" Height="29">
                         <WrapPanel x:Name="buttontabcanvaswrap" Margin="9,1,0,0" />
-                        <WrapPanel HorizontalAlignment="Right">
+                        <WrapPanel Name="NavigationBar" HorizontalAlignment="Right">
                             <Button ToolTip="First Page" Style="{StaticResource smallbutton}" x:Name="DataGridFirstPage" Margin="2,2,5,2" Click="DataGridFirstPage_Click" >
                                 <Path x:Name="way_back" Data="F1M10.721,7C10.721,7 10.721,10.625 10.721,10.625 10.721,10.625 15,7 15,7 15,7 15,15 15,15 15,15 10.721,11.375 10.721,11.375 10.721,11.375 10.721,15 10.721,15 10.721,15 6,11 6,11 6,11 10.721,7 10.721,7z M11,3C6.6,3 3,6.6 3,11 3,15.4 6.6,19 11,19 15.4,19 19,15.4 19,11 19,6.6 15.4,3 11,3z M11,1C16.5,1 21,5.5 21,11 21,16.5 16.5,21 11,21 5.5,21 1,16.5 1,11 1,5.5 5.5,1 11,1z" Fill="#FF40445F" Height="22" Width="22"/>
                             </Button>

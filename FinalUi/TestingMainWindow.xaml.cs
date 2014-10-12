@@ -122,7 +122,7 @@ namespace FinalUi
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            AddRule window = new AddRule(); window.Show();
+            AddServiceRule window = new AddServiceRule(); window.Show();
         }
 
     }
