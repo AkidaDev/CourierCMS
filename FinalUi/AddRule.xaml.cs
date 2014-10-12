@@ -23,8 +23,10 @@ namespace FinalUi
     {
         int currentCanvas = 1;
         Canvas currentCanvasObj;
-        public AddRule()
+        Quotation quoation;
+        public AddRule(Quotation quoation)
         {
+            this.quoation = quoation;
             InitializeComponent();
             currentCanvasObj = Step1Canvas;
             currentCanvasObj.Visibility = Visibility.Visible;
@@ -68,101 +70,130 @@ namespace FinalUi
 
         private void AddRuleButton_Click(object sender, RoutedEventArgs e)
         {
-            double startW = 0,endW = 0;
-            string errorMsg ="";
+            BillingDataDataContext db = new BillingDataDataContext();
+            double startW = 0, endW = 0;
+            string errorMsg = "";
             double temp;
-            if(double.TryParse(FromWeightBox.Text,out temp))
+            if (double.TryParse(FromWeightBox.Text, out temp))
             {
                 startW = temp;
             }
             else
                 errorMsg = errorMsg + "Enter From Weight Properly \n";
-            if(double.TryParse(ToWeightBox.Text,out temp))
+            if (double.TryParse(ToWeightBox.Text, out temp))
                 endW = temp;
             else
                 errorMsg = errorMsg + "Enter To Weight Properly \n";
-            if(startW > endW)
+            if (startW > endW)
                 errorMsg += "Starting weight cannot be greater than ending weight. \n";
             char type;
-            if(RangeTypeRadio.IsChecked == true)
+            if (RangeTypeRadio.IsChecked == true)
             {
                 type = 'R';
             }
             else
                 type = 'S';
             double doxAmount = 0, ndoxAmount = 0;
-            if(!double.TryParse(DOXAmountBox.Text, out doxAmount))
+            if (!double.TryParse(DOXAmountBox.Text, out doxAmount))
                 errorMsg += "Enter dox amount properly \n";
-            if(!double.TryParse(NDoxAmountBox.Text, out ndoxAmount))
+            if (!double.TryParse(NDoxAmountBox.Text, out ndoxAmount))
                 errorMsg += "Enter non dox amount properly \n";
             double doxStartValue = 0, ndoxStartValue = 0;
-            if(!double.TryParse(DoxStartValueBox.Text,out doxStartValue) && StepTypeRadio.IsChecked==true)
+            if (!double.TryParse(DoxStartValueBox.Text, out doxStartValue) && StepTypeRadio.IsChecked == true)
                 errorMsg += "Enter Dox start value properly \n";
-            if(!Double.TryParse(NDoxStartValueBox.Text,out ndoxStartValue) && StepTypeRadio.IsChecked==true)
+            if (!Double.TryParse(NDoxStartValueBox.Text, out ndoxStartValue) && StepTypeRadio.IsChecked == true)
                 errorMsg += "Enter Non Dox start value properly \n";
             double stepweight = 0;
-            if(!double.TryParse(StepBlockBox.Text,out stepweight) && StepTypeRadio.IsChecked==true)
-                errorMsg += "Enter Step Weight Properly \n"; 
-            if(errorMsg != "")
+            if (!double.TryParse(StepBlockBox.Text, out stepweight) && StepTypeRadio.IsChecked == true)
+                errorMsg += "Enter Step Weight Properly \n";
+            if (errorMsg != "")
             {
                 MessageBox.Show("Please correct following errors: " + errorMsg);
                 return;
             }
-            List<string> selectedServiceList = ServiceTwinBox.SelectedListSource.Cast<Service>().Select(x=>x.SER_CODE).ToList();
-            List<string> selectedZoneList = ZoneTwinBox.SelectedListSource.Cast<ZONE>().Select(x=>x.zcode).ToList();
-            List<String> selectedCityList = CitiesTwinBox.SelectedListSource.Cast<City>().Select(x=>x.CITY_CODE).ToList();
-            List<string> selectedStateList = StateTwinBox.SelectedListSource.Cast<State>().Select(x=>x.STATE_CODE).ToList();
-            CostingRule RuleCR = new CostingRule(selectedServiceList, selectedZoneList, selectedCityList, selectedStateList, startW, endW, type, doxAmount, ndoxAmount,stepweight,ndoxStartValue,doxStartValue);
+            List<string> selectedServiceList = ServiceTwinBox.SelectedListSource.Cast<Service>().Select(x => x.SER_CODE).ToList();
+            List<string> selectedZoneList = ZoneTwinBox.SelectedListSource.Cast<ZONE>().Select(x => x.zcode).ToList();
+            List<String> selectedCityList = CitiesTwinBox.SelectedListSource.Cast<City>().Select(x => x.CITY_CODE).ToList();
+            List<string> selectedStateList = StateTwinBox.SelectedListSource.Cast<State>().Select(x => x.STATE_CODE).ToList();
+            CostingRule RuleCR = new CostingRule(selectedServiceList, selectedZoneList, selectedCityList, selectedStateList, startW, endW, type, doxAmount, ndoxAmount, stepweight, ndoxStartValue, doxStartValue);
             JavaScriptSerializer js = new JavaScriptSerializer();
             string serialized = js.Serialize(RuleCR);
-            CostingRule cr = js.Deserialize<CostingRule>(serialized);
+            Rule r = new Rule();
+            r.Type = 1;
+            r.Properties = serialized;
+            r.QID = quoation.Id;
+            r.Remark = "hello";
+            db.Rules.InsertOnSubmit(r);
+            bool isdone = false;
+            if (validate())
+            {
+                try
+                {
+                    db.SubmitChanges();
+                    isdone = true;
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); return; }
+                if(isdone)
+                {
+                    MessageBox.Show("Rule Added Now Party");
+                    this.Close();
+                }
+            }
+        }
+        private bool validate()
+        {
+            if (this.StateTwinBox.SelectedListR.Items.Count > 0 || this.ZoneTwinBox.SelectedListR.Items.Count > 0 || this.CitiesTwinBox.SelectedListR.Items.Count > 0 && this.ServiceTwinBox.SelectedListR.Items.Count > 0)
+                return true;
+            else
+            {
+                MessageBox.Show("Must add at least one service and at least one from any zone or city or state ");
+            }
+            return false;
         }
         private void Next_Click(object sender, RoutedEventArgs e)
         {
-              switch (currentCanvas)
-                { 
-                    case 1 :
-                        currentCanvas = 2;
-                        currentCanvasObj.Visibility = Visibility.Collapsed;
-                        currentCanvasObj = Step2Canvas;
-                        currentCanvasObj.Visibility = Visibility.Visible;
-                        StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
-                        break;
-                    case 2:
-                        currentCanvas = 3;
-                        currentCanvasObj.Visibility = Visibility.Collapsed;
-                        currentCanvasObj = Step3Canvas;
-                        currentCanvasObj.Visibility = Visibility.Visible;
-                        StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
-                        break;
-                    case 3:
-                        currentCanvas = 4;
-                        currentCanvasObj.Visibility = Visibility.Collapsed;
-                        currentCanvasObj = Step4Canvas;
-                        currentCanvasObj.Visibility = Visibility.Visible;
-                        StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
-                        break;
-                    case 4:
-                        currentCanvas = 5;
-                        currentCanvasObj.Visibility = Visibility.Collapsed;
-                        currentCanvasObj = Step5Canvas;
-                        currentCanvasObj.Visibility = Visibility.Visible;
-                        StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
-                        break;
+            switch (currentCanvas)
+            {
+                case 1:
+                    currentCanvas = 2;
+                    currentCanvasObj.Visibility = Visibility.Collapsed;
+                    currentCanvasObj = Step2Canvas;
+                    currentCanvasObj.Visibility = Visibility.Visible;
+                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
+                    break;
+                case 2:
+                    currentCanvas = 3;
+                    currentCanvasObj.Visibility = Visibility.Collapsed;
+                    currentCanvasObj = Step3Canvas;
+                    currentCanvasObj.Visibility = Visibility.Visible;
+                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
+                    break;
+                case 3:
+                    currentCanvas = 4;
+                    currentCanvasObj.Visibility = Visibility.Collapsed;
+                    currentCanvasObj = Step4Canvas;
+                    currentCanvasObj.Visibility = Visibility.Visible;
+                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
+                    break;
+                case 4:
+                    currentCanvas = 5;
+                    currentCanvasObj.Visibility = Visibility.Collapsed;
+                    currentCanvasObj = Step5Canvas;
+                    currentCanvasObj.Visibility = Visibility.Visible;
+                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
+                    break;
+            }
+            if (currentCanvas == 5)
+            {
+                Next.Visibility = Visibility.Collapsed;
+                AddRuleButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Next.Visibility = Visibility.Visible;
+                AddRuleButton.Visibility = Visibility.Collapsed;
+            }
 
-
-                }
-              if (currentCanvas == 5)
-              {
-                  Next.Visibility = Visibility.Collapsed;
-                  AddRuleButton.Visibility = Visibility.Visible;
-              }
-              else
-              {
-                  Next.Visibility = Visibility.Visible;
-                  AddRuleButton.Visibility = Visibility.Collapsed;
-              }
-            
         }
 
         private void Previous_Click(object sender, RoutedEventArgs e)

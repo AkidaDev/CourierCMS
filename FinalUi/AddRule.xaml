@@ -56,7 +56,7 @@
 
 
             <Canvas  Name="Step2Canvas" Canvas.Top="-160" Canvas.Left="120" Visibility="Collapsed">
-                <Path x:Name="client" Data="" Fill="Black" Height="19" Canvas.Left="31.333" Canvas.Top="222.365" Width="23" Stretch="Fill"/>
+                <Path x:Name="ClientPath" Data="" Fill="Black" Height="19" Canvas.Left="31.333" Canvas.Top="222.365" Width="23" Stretch="Fill"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="59.482" Text="Add Service .:" Canvas.Top="232.079"/>
                 <ContentControl Canvas.Left="31.333" Canvas.Top="255">
                     <cstmcntrl:TwinListBox Width="500" Height="150" Name="ServiceTwinBox"/>

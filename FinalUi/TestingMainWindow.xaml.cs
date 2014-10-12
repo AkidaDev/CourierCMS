@@ -122,7 +122,7 @@ namespace FinalUi
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            AddRule window = new AddRule(); window.Show();
+            AddRule window = new AddRule(new BillingDataDataContext().Quotations.Where(x => x.CLCODE == "123").First()); window.Show();
         }
 
     }

@@ -290,7 +290,22 @@
                                 <RadioButton Foreground="#FF5B5B5B" IsChecked="True" Content="Costing Rule" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
                                 <RadioButton Foreground="#FF5B5B5B" Content="Service Rule" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
                                 <RadioButton Foreground="#FF5B5B5B" Content="Invoice Rule" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
-                                <Button Content="AddRule" Name="AddRuleButton" Click="AddRuleButton_Click"/>                            </WrapPanel>
+                                <Button Content="AddRule" Name="AddRuleButton" Click="AddRuleButton_Click"/>
+                                <ComboBox Name="ClientCombo" Width="50" ItemsSource="{Binding}" DataContext="{StaticResource ClientCodeList}" >
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock>
+                                                <TextBlock.Text>
+                                                    <MultiBinding StringFormat="{}{0} ({1})">
+                                                        <Binding Path="CLNAME" />
+                                                        <Binding Path="CLCODE" />
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                            </TextBlock>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </WrapPanel>
                         </Grid>
                         <DataGrid Grid.Row="1" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
                                   AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True"  >

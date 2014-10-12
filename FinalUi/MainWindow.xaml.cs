@@ -67,7 +67,7 @@ namespace FinalUi
             ResourceDictionary dict = this.Resources;
             InitializeComponent();
             CollectionViewSource clientCodeList = (CollectionViewSource)FindResource("ClientCodeList");
-            clientCodeList.Source = db.Clients.Select(c => c.CLCODE);
+            clientCodeList.Source = db.Clients;
             #region DataGrid Code Lines
             dataGridSource = (CollectionViewSource)FindResource("DataGridDataContext");
             dataGridHelper = new DataGridHelper(dataGridSource);
@@ -894,7 +894,7 @@ namespace FinalUi
 
         private void AddRuleButton_Click(object sender, RoutedEventArgs e)
         {
-            AddRule window = new AddRule();
+            AddRule window = new AddRule(new BillingDataDataContext().Quotations.Where(x =>x.CLCODE == ((Client)this.ClientCombo.SelectedItem).CLCODE).FirstOrDefault());
             window.Show();
         }
     }
