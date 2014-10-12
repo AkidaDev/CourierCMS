@@ -17,7 +17,7 @@
         <CommandBinding Command="ApplicationCommands.Print" Executed="ExecutePrint" CanExecute="CanExecutePrintCommand"/>
     </Window.CommandBindings>
 
-    <Grid x:Name="MainGrid" Background="#AAE3A21A">
+    <Grid x:Name="MainGrid" Background="LawnGreen">
         <!--light purple = #9f00a7, Cyan=#FFBBCADC, blue = #a32d89ef, yellow = #a3ffc40d, teal = #00aba9, camel = #AAE3A21A, green = #00a300 -->
         <Grid.RowDefinitions>
             <RowDefinition Height="6"/>
