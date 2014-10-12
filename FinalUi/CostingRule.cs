@@ -29,14 +29,16 @@ namespace FinalUi
 
         #region What to apply
         char type;
-        double doxAmount;
-        double ndoxAmount;
-        double stepWeight;
-        double dStartValue;
+        public double doxAmount;
+        public double ndoxAmount;
+        public double stepWeight;
+        public double dStartValue;
         double ndStartValue;
         #endregion
 
-        #region Constructors
+        #region Constructorss
+        public CostingRule() :base()
+        { }
         public CostingRule(string propertyString)
             : base()
         {
@@ -62,7 +64,6 @@ namespace FinalUi
             this.ndStartValue = ndStartValue;
         }
         #endregion
-
         public override void applyRule(object obj)
         {
             base.applyRule(obj);

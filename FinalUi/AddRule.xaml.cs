@@ -115,9 +115,8 @@ namespace FinalUi
             CostingRule RuleCR = new CostingRule(selectedServiceList, selectedZoneList, selectedCityList, selectedStateList, startW, endW, type, doxAmount, ndoxAmount,stepweight,ndoxStartValue,doxStartValue);
             JavaScriptSerializer js = new JavaScriptSerializer();
             string serialized = js.Serialize(RuleCR);
-            MessageBox.Show(serialized);
+            CostingRule cr = js.Deserialize<CostingRule>(serialized);
         }
-
         private void Next_Click(object sender, RoutedEventArgs e)
         {
               switch (currentCanvas)
@@ -198,8 +197,6 @@ namespace FinalUi
                     currentCanvasObj.Visibility = Visibility.Visible;
                     StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
                     break;
-
-
             }
             if (currentCanvas == 5)
             {
