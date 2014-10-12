@@ -17,7 +17,7 @@
         <CommandBinding Command="ApplicationCommands.Print" Executed="ExecutePrint" CanExecute="CanExecutePrintCommand"/>
     </Window.CommandBindings>
 
-    <Grid x:Name="MainGrid" Background="#Aae3a21a">
+    <Grid x:Name="MainGrid" Background="#AAE3A21A">
         <!--light purple = #9f00a7, Cyan=#FFBBCADC, blue = #a32d89ef, yellow = #a3ffc40d, teal = #00aba9, camel = #AAE3A21A, green = #00a300 -->
         <Grid.RowDefinitions>
             <RowDefinition Height="6"/>
@@ -42,6 +42,7 @@
                     <MenuItem ToolTip="Open new document" Header="File" Margin="10 0 0 0">
                         <MenuItem Header="New Sheet" Name="NewSheetMenuItem" />
                         <MenuItem Header="Import Data" x:Name="ImportDataMenuItem" Command="ApplicationCommands.Open"/>
+                        <MenuItem Header="Save Data" />
                         <MenuItem Header="Print" x:Name="PrintMenuItem" Command="ApplicationCommands.Print"/>
                         <MenuItem Header="Close" Click="MenuItem_Click"/>
                     </MenuItem>
@@ -58,6 +59,12 @@
                         <MenuItem Header="Stock Entry"  Name="StockEntryMenuItem" Click="StockEntry_Click"/>
                         <MenuItem Header="Edit Rates" x:Name="RateWindowMenu" Click="RateWindowMenu_Click"/>
                         <MenuItem Header="Client Report" x:Name="ClientReport" Click="ClientReport_Click"/>
+                    </MenuItem>
+					<MenuItem ToolTip="Editing Tools" Header="Tools" Margin="10 0 0 0">
+                        <MenuItem Header="Filter &amp; Select"  />
+                        <MenuItem Header="Data Entry" />
+                        <MenuItem Header="Add Rate Rule" />
+                        <MenuItem Header="Peferences" />
                     </MenuItem>
                     <MenuItem ToolTip="Know more" Header="Help" Margin="10 0 0 0">
                         <MenuItem Header="About" x:Name="AboutMenuItem" Click="AboutMenuItem_Click"/>
@@ -128,7 +135,7 @@
                         <Button ToolTip="Filter &amp; Select" Style="{StaticResource side}"  Click="FilterButton_Click" Grid.Row="0" Width="45" Height="30" Grid.Column="4">
                             <Path Data="F1M2.118,1C2.881,1 16.282,1 16.809,1 17.492,1 18,1.384 17.6,1.763 17.36,1.991 13.667,5.465 11.603,7.406L11,7.973 11,9.797C11,13.312 11,18 11,18 11,18 8,20 8,20 8,20 8,19 8,18L8,17.792 8,17.213 8,17C8,17.5,8,17,8,16.625L8,16.527C8,16.438,8,16.281,8,16.172L8,16C8,16.227,8,15.797,8,15.281L8,15.217 8,13.52 8,12.562 8,11.5 8,9.797 8,9.48 8,8.026 7.423,7.484C5.405,5.591 1.669,2.078 1.331,1.747 1,1.424 1.365,1 2.118,1z" Fill="#FF2D6356" Height="21" Width="20" Stretch="Fill"/>
                         </Button>
-                        <Button ToolTip="Sanitize data" Style="{StaticResource side}"  x:Name="SanitizingButton" Grid.Row="0" Width="45" Height="30" Grid.Column="5">
+                        <Button ToolTip="Data Entry" Style="{StaticResource side}"  x:Name="SanitizingButton" Grid.Row="0" Width="45" Height="30" Grid.Column="5">
                             <Path x:Name="sanitize" Data="F1M1,12.667C1,12.667 8,12.667 8,12.667 8,12.667 8,15 8,15 8,15 1,15 1,15 1,15 1,12.667 1,12.667z M1,6.833C1,6.833 15,6.833 15,6.833 15,     6.833 15,9.167 15,9.167 15,9.167 1,9.167 1,9.167 1,9.167 1,6.833 1,6.833z M1,1C1,1 22,1 22,1 22,1 22,3.333 22,3.333 22,3.333 1,3.333 1,3.333 1,3.333 1,1 1,1z" Fill="White" Height="16" Width="23"/>
                         </Button>
                         <Button ToolTip="Print" Name="PrintButton" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="6" Command="ApplicationCommands.Print">

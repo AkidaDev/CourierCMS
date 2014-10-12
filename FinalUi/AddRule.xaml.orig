@@ -23,6 +23,8 @@
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="80" Text="Type .:" Canvas.Top="90"/>
                 <RadioButton Name="StepTypeRadio" GroupName="TypeRadioGroup" IsChecked="True" Content="Step" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="135" Canvas.Top="95" Padding="5 -5 0 0" Checked="RadioButton_Checked" />
                 <RadioButton Name="RangeTypeRadio" GroupName="TypeRadioGroup" Content="Range" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="135" Canvas.Top="114" Padding="5 -5 0 0" Margin=" 0 3 0 0"/>
+<<<<<<< local
+=======
 
                 <Canvas Canvas.Top="10" Canvas.Left="-110">
                     <Canvas Canvas.Left="220" Canvas.Top="0">
@@ -54,9 +56,27 @@
                         <TextBox Name="AmountBox" BorderThickness="2" Height="26" Canvas.Left="215" Canvas.Top="155" Width="81" Padding="3 3 0 0"/>
                     </Canvas>
                 </Canvas>
+>>>>>>> other
             </Canvas>
 
 
+<<<<<<< local
+            <Canvas Canvas.Top="10">
+                <Canvas Canvas.Left="220" Canvas.Top="0">
+                    <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Canvas.Left="392" Canvas.Top="113" Width="3"/>
+                    <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="158" Text="Start Value NDOX .:" Canvas.Top="122"/>
+                    <TextBox Name="NDoxStartValueBox" BorderThickness="2" Height="26" Canvas.Left="305" Canvas.Top="116" Width="81" Padding="3 3 0 0"/>
+                    <TextBlock  FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="413" Text="Start Value DOX .:" Canvas.Top="122"/>
+                    <TextBox Name="DoxStartValueBox" BorderThickness="2" Height="26" Canvas.Left="552" Canvas.Top="116" Width="81" Padding="3 3 0 0" TextChanged="TextBox_TextChanged"/>
+                </Canvas>
+                <Canvas Canvas.Left="220" Canvas.Top="40">
+                    <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Canvas.Left="392" Canvas.Top="113" Width="3"/>
+                    <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="191" Text="DOX Amount .:" Canvas.Top="122"/>
+                    <TextBox Name="DOXAmountBox" BorderThickness="2" Height="26" Canvas.Left="305" Canvas.Top="116" Width="81" Padding="3 3 0 0"/>
+                    <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="411" Text="NonDox Amount .:" Canvas.Top="122"/>
+                    <TextBox Name="NDoxAmountBox" BorderThickness="2" Height="26" Canvas.Left="552" Canvas.Top="116" Width="81" Padding="3 3 0 0" TextChanged="TextBox_TextChanged"/>
+                </Canvas>
+=======
             <Canvas Canvas.Top="-160" Canvas.Left="120" Visibility="Collapsed">
                 <Path x:Name="client" Data="" Fill="Black" Height="19" Canvas.Left="31.333" Canvas.Top="222.365" Width="23" Stretch="Fill"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="59.482" Text="Add Service .:" Canvas.Top="232.079"/>
@@ -64,6 +84,7 @@
                     <cstmcntrl:TwinListBox Width="500" Height="150" Name="ServiceTwinBox"/>
                 </ContentControl>
             </Canvas>
+>>>>>>> other
 
             
             <Canvas Canvas.Top="-155" Canvas.Left="120" Visibility="Collapsed">
@@ -91,7 +112,11 @@
                     <cstmcntrl:TwinListBox Name="StateTwinBox" Width="500" Height="150"/>
                 </ContentControl>
             </Canvas>
+<<<<<<< local
+            <Button Name="AddRuleButton" Click="AddRuleButton_Click" Canvas.Right="15" Canvas.Bottom="15" Style="{StaticResource all}" Canvas.Left="870" Canvas.Top="750">
+=======
             <Button Canvas.Right="15" Canvas.Bottom="15" Style="{StaticResource all}" Canvas.Left="667" Canvas.Top="261">
+>>>>>>> other
                 <Button.Content>
                     <WrapPanel Margin="8,6">
                         <Path x:Name="next" Data="F1M24.383,14.132C24.383,14.132 32.794,22.624 32.794,22.624 32.794,22.624 24.383,31.117 24.383,31.117 24.383,31.117 24.383,25.809 24.383,25.809 24.383,25.809 11.765,25.809 11.765,25.809 11.765,25.809 11.765,19.44 11.765,19.44 11.765,19.44 24.383,19.44 24.383,19.44 24.383,19.44 24.383,14.132 24.383,14.132z M22.25,6.05C13.34,6.05 6.05,13.34 6.05,22.25 6.05,31.16 13.34,38.45 22.25,38.45 31.16,38.45 38.45,31.16 38.45,22.25 38.45,13.34 31.16,6.05 22.25,6.05z M22.25,2C33.387,2 42.5,11.112 42.5,22.25 42.5,33.387 33.387,42.5 22.25,42.5 11.112,42.5 2,33.387 2,22.25 2,11.112 11.112,2 22.25,2z" Fill="Black" Height="23" Width="23" Stretch="Fill" Margin="0,0,3,0"/>
