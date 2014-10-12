@@ -14,11 +14,7 @@ namespace FinalUi
     {
         public void decodeString()
         {
-            string[] WhatAndWhen = this.Properties.Split(';');
-            string what = WhatAndWhen[0];
-            string when = WhatAndWhen[1];
-            string[] whatParams;
-            bool isDecoded = false;
+
         }
 
         #region State

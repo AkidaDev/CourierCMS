@@ -876,5 +876,19 @@ namespace FinalUi
         {
 
         }
+
+        private void ClientsReportTreeView_Selected(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void ClientsReportTreeView_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void ClientQuotationTreeView_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

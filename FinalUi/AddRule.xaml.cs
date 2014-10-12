@@ -49,19 +49,13 @@ namespace FinalUi
 
         private void GetFilter_Click(object sender, RoutedEventArgs e)
         {
-
         }
-
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
         }
-
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-
         }
-
         private void AddRuleButton_Click(object sender, RoutedEventArgs e)
         {
             double startW = 0,endW = 0;
