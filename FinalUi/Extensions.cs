@@ -83,6 +83,46 @@ namespace FinalUi
             }
         }
     }
+    public partial class Service
+    {
+        public string NameAndCOde
+        {
+            get
+            {
+                return this.SER_CODE + ":" + this.SER_DESC;
+            }
+        }
+    }
+    public partial class ZONE
+    {
+        public string NameAndCode
+        {
+            get
+            {
+                return this.zcode + ":" + this.Zone_name;
+            }
+        }
+    }
+    public partial class State
+    {
+        public string NameAndCode
+        {
+            get
+            {
+                return this.STATE_CODE + ":" + this.STATE_DESC;
+            }
+        }
+    }
+    public partial class City
+    {
+        public string NameAndCode
+        {
+            get
+            {
+                return this.CITY_CODE + ":" + this.CITY_DESC;
+            }
+        }
+    }
     public partial class Rule
     {
        public virtual void applyRule(Object obj)

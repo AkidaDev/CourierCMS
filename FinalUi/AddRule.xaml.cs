@@ -24,9 +24,16 @@ namespace FinalUi
 
             ServiceTwinBox.AllListSource = (DataSources.ServicesCopy);
             ServiceTwinBox.SelectedListSource = new List<Service>();
-            ServiceTwinBox.DisplayValuePath = "SER_CODE";
-
-
+            ServiceTwinBox.DisplayValuePath = "NameAndCOde";
+            ZoneTwinBox.AllListSource = (DataSources.ZoneCopy);
+            ZoneTwinBox.SelectedListSource = new List<ZONE>();
+            ZoneTwinBox.DisplayValuePath = "NameAndCode";
+            StateTwinBox.AllListSource = DataSources.StateCopy;
+            StateTwinBox.SelectedListSource = new List<State>();
+            StateTwinBox.DisplayValuePath = "NameAndCode";
+            CitiesTwinBox.AllListSource = DataSources.CityCopy;
+            CitiesTwinBox.SelectedListSource = new List<City>();
+            CitiesTwinBox.DisplayValuePath = "NameAndCode";
         }
         private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {
