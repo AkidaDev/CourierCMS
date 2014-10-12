@@ -10,12 +10,10 @@ namespace FinalUi
     /// PropertyString = {"What":{"DoxAmount":value(float),"NonDoxAmount"=value(float),"Type":R/S,"StepWeight":value,"DoxStartValue":value,"NonDoxStartValue":value}},
     /// };When={{ServiceIs={S1,S2,..SN}},{ZoneIs={}},{CityIs={}},{Weight={From={},To={}}}}
     /// </summary>
-    class CostingRule : Rule,IRule
+    class CostingRule:Rule,IRule
     {
         public void decodeString()
-        {
-
-        }
+        {}
 
         #region State
         #endregion
@@ -86,12 +84,9 @@ namespace FinalUi
                     trans.FrAmount = (decimal)(ndStartValue + ((trans.BilledWeight - startW) / stepWeight) * ndoxAmount);
             }
         }
-       
         public void encodeString()
-        {
-        }
+        {}
         #region whereRules
         #endregion
-
     }
 }

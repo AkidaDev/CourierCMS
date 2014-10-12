@@ -121,9 +121,5 @@ namespace FinalUi
             }
         }
     }
-    public partial class Rule
-    {
-       public virtual void applyRule(Object obj)
-        {  }
-    }
+    
 }

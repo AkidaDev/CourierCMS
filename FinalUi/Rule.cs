@@ -7,5 +7,7 @@ namespace FinalUi
 {
     class Rule
     {
+        public virtual void applyRule(Object obj)
+        { }
     }
 }
