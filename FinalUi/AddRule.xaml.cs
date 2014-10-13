@@ -25,9 +25,55 @@ namespace FinalUi
         Canvas currentCanvasObj;
         Quotation quoation;
         CostingRule RuleCR;
+        BillingDataDataContext db;
+        public AddRule(int ruleId)
+        {
+            db = new BillingDataDataContext();
+            Rule rule = db.Rules.SingleOrDefault(x => x.ID == ruleId);
+            if(rule == null)
+            {
+                MessageBox.Show("Invalid Rule.");
+                return;
+            }
+            InitializeComponent();
+            RuleCR = (new JavaScriptSerializer()).Deserialize<CostingRule>(rule.Properties);
+            List<Service> serviceListr =  DataSources.ServicesCopy.Where(x => !RuleCR.ServiceList.Contains(x.SER_CODE)).ToList();
+            ServiceTwinBox.AllListSource = serviceListr;
+            ServiceTwinBox.SelectedListSource = DataSources.ServicesCopy.Except<Service>(serviceListr).ToList();
+            List<City> cityList = DataSources.CityCopy.Where(x => !RuleCR.CityList.Contains(x.CITY_CODE)).ToList();
+            CitiesTwinBox.AllListSource = cityList;
+            CitiesTwinBox.SelectedListSource = DataSources.CityCopy.Except<City>(cityList).ToList();
+            List<State> stateList = DataSources.StateCopy.Where(x => !RuleCR.StateList.Contains(x.STATE_CODE)).ToList();
+            StateTwinBox.AllListSource = stateList;
+            StateTwinBox.SelectedListSource = DataSources.StateCopy.Except<State>(stateList).ToList() ;
+            List<ZONE> zoneList = DataSources.ZoneCopy.Where(x => !RuleCR.ZoneList.Contains(x.zcode)).ToList();
+            ZoneTwinBox.AllListSource = zoneList;
+            ZoneTwinBox.SelectedListSource = DataSources.ZoneCopy.Except<ZONE>(zoneList).ToList();
+            FromWeightBox.Text = RuleCR.startW.ToString();
+            ToWeightBox.Text = RuleCR.endW.ToString();
+            DOXAmountBox.Text = RuleCR.doxAmount.ToString();
+            NDoxAmountBox.Text = RuleCR.ndoxAmount.ToString();
+            if (RuleCR.Type == 'R')
+            {
+                RangeTypeRadio.IsChecked = true;
+                StepTypeRadio.IsChecked = false;
+            }
+            else
+            {
+                RangeTypeRadio.IsChecked = false;
+                StepTypeRadio.IsChecked = true;
+            }
+            StepBlockBox.Text = RuleCR.stepWeight.ToString() ;
+            DoxStartValueBox.Text = RuleCR.dStartValue.ToString();
+            NDoxStartValueBox.Text = RuleCR.ndStartValue.ToString();
+
+
+        }
         public AddRule(Quotation quoation)
         {
             this.quoation = quoation;
+            RuleCR = new CostingRule();
+            db = new BillingDataDataContext();
             InitializeComponent();
             currentCanvasObj = Step1Canvas;
             currentCanvasObj.Visibility = Visibility.Visible;
@@ -70,7 +116,7 @@ namespace FinalUi
 
         private void AddRuleButton_Click(object sender, RoutedEventArgs e)
         {
-            BillingDataDataContext db = new BillingDataDataContext();
+            
             double startW = 0, endW = 0;
             string errorMsg = "";
             double temp;
@@ -115,7 +161,6 @@ namespace FinalUi
             List<string> selectedZoneList = ZoneTwinBox.SelectedListSource.Cast<ZONE>().Select(x => x.zcode).ToList();
             List<String> selectedCityList = CitiesTwinBox.SelectedListSource.Cast<City>().Select(x => x.CITY_CODE).ToList();
             List<string> selectedStateList = StateTwinBox.SelectedListSource.Cast<State>().Select(x => x.STATE_CODE).ToList();
-            RuleCR = new CostingRule();
             RuleCR.ServiceList = selectedServiceList;
             RuleCR.ZoneList = selectedZoneList;
             RuleCR.CityList = selectedCityList;
