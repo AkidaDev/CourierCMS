@@ -5,16 +5,22 @@ using System.Text;
 
 namespace FinalUi
 {
-    public partial class RuleContainer: Quotation
+    public partial class Quotation
     {
         List<Rule> rulesList;
         List<CostingRule> costingRules;
         
         Rule lastCostingRuleApplied;
-        Rule lastServiceRuleApplied;
-        Rule lastInvoiceRuleApplied;
-        
-        public void applyCostingRulesOnTransaction(RuntimeData trans)
+        public double applyCostingRulesOnTransaction(double billedWeight, string destination, string serviceCode, char DOX)
+        {
+            RuntimeData dt = new RuntimeData();
+            dt.BilledWeight = billedWeight;
+            dt.Destination = destination;
+            dt.Type = serviceCode;
+            dt.DOX = DOX;
+            return applyCostingRulesOnTransaction(dt);
+        }
+        public double applyCostingRulesOnTransaction(RuntimeData trans)
         {   
             if(costingRules == null)
             {
@@ -51,7 +57,7 @@ namespace FinalUi
                     lastCostingRuleApplied = x;
                 }
             });
-            trans.FrAmount = price;
+            return Convert.ToDouble(price) ;
         }
 
         private void initializeRules()

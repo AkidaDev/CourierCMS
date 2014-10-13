@@ -71,7 +71,6 @@ namespace FinalUi
                 var cs = (from m in db.Cities select m).ToList();
                 for (int i = startCOnnNoIndex; i <= endConnNoIndex; i++)
                 {
-                    Debug.WriteLine("inside do work");
                     RuntimeData data = DataStack.ElementAt(i);
                     data.CustCode = clientCodeSelectedValue;
                    
@@ -81,8 +80,7 @@ namespace FinalUi
                         c = db.Cities.SingleOrDefault(x => x.CITY_CODE == "DEL");
                     data.CustCode = clientCodeSelectedValue;
                     data.BilledWeight = data.Weight;
-                    Debug.WriteLine("inside do work");
-                    data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination,(double)data.BilledWeight, c.ZONE, data.Type, (char)data.DOX);
+                    data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, (double)data.BilledWeight, data.Destination, data.Type,(char) data.DOX);
                     try
                     {
                         db.SubmitChanges();
@@ -92,7 +90,6 @@ namespace FinalUi
                         errorNos = errorNos + "\n " + data.ConsignmentNo;
                     }
                     worker.ReportProgress((((i-startCOnnNoIndex+1)*100)/total));
-                    Debug.WriteLine("inside do work");
                 }
             }
            

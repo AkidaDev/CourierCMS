@@ -95,7 +95,7 @@ namespace FinalUi
         #endregion
         public void refreshTestPrice()
         {
-            char dox = 'd';
+     /*       char dox = 'd';
             if (TestDox.SelectedItem != null)
             {
                 if (TestDox.SelectedItem.ToString() != "Dox")
@@ -107,6 +107,7 @@ namespace FinalUi
             }
             catch (Exception)
             { }
+      * */
 
         }
         private void TestWeight_KeyUp(object sender, KeyEventArgs e)
