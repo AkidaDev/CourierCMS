@@ -38,7 +38,7 @@ namespace FinalUi
             employeeToEdit.Add((Employee)e.Row.DataContext);
         }
 
-        private void Update_Click(object sender, RoutedEventArgs e)
+        private void UpdateEmployee_Click(object sender, RoutedEventArgs e)
         {
             AddEmployee window = new AddEmployee((Employee)this.mangaEmployeegrid.SelectedItem);
             window.Show();
