@@ -33,6 +33,9 @@ namespace FinalUi
     partial void InsertAssignment(Assignment instance);
     partial void UpdateAssignment(Assignment instance);
     partial void DeleteAssignment(Assignment instance);
+    partial void InsertZONE(ZONE instance);
+    partial void UpdateZONE(ZONE instance);
+    partial void DeleteZONE(ZONE instance);
     partial void InsertCity(City instance);
     partial void UpdateCity(City instance);
     partial void DeleteCity(City instance);
@@ -84,13 +87,10 @@ namespace FinalUi
     partial void InsertUser_permission(User_permission instance);
     partial void UpdateUser_permission(User_permission instance);
     partial void DeleteUser_permission(User_permission instance);
-    partial void InsertZONE(ZONE instance);
-    partial void UpdateZONE(ZONE instance);
-    partial void DeleteZONE(ZONE instance);
     #endregion
 		
 		public BillingDataDataContext() : 
-				base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString2, mappingSource)
+				base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString5, mappingSource)
 		{
 			OnCreated();
 		}
@@ -124,6 +124,14 @@ namespace FinalUi
 			get
 			{
 				return this.GetTable<Assignment>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ZONE> ZONEs
+		{
+			get
+			{
+				return this.GetTable<ZONE>();
 			}
 		}
 		
@@ -279,19 +287,19 @@ namespace FinalUi
 			}
 		}
 		
-		public System.Data.Linq.Table<ZONE> ZONEs
-		{
-			get
-			{
-				return this.GetTable<ZONE>();
-			}
-		}
-		
 		public System.Data.Linq.Table<AccountStatement> AccountStatements
 		{
 			get
 			{
 				return this.GetTable<AccountStatement>();
+			}
+		}
+		
+		public System.Data.Linq.Table<RuntimeCityView> RuntimeCityViews
+		{
+			get
+			{
+				return this.GetTable<RuntimeCityView>();
 			}
 		}
 		
@@ -319,14 +327,6 @@ namespace FinalUi
 			}
 		}
 		
-		public System.Data.Linq.Table<RuntimeCityView> RuntimeCityViews
-		{
-			get
-			{
-				return this.GetTable<RuntimeCityView>();
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_deleteSheetFromRuntime")]
 		public void sp_deleteSheetFromRuntime([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserName", DbType="VarChar(50)")] string userName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SheetNo", DbType="Int")] System.Nullable<int> sheetNo)
 		{
@@ -334,10 +334,9 @@ namespace FinalUi
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferTransactionDetails")]
-		public int sp_TransferTransactionDetails()
+		public void sp_TransferTransactionDetails()
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((int)(result.ReturnValue));
+			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_getRateReportingObject")]
@@ -348,10 +347,9 @@ namespace FinalUi
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_ImportZoneData")]
-		public int sp_ImportZoneData()
+		public void sp_ImportZoneData()
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((int)(result.ReturnValue));
+			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_LoadToRuntimeFromDate")]
@@ -367,17 +365,15 @@ namespace FinalUi
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferClients")]
-		public int sp_TransferClients()
+		public void sp_TransferClients()
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((int)(result.ReturnValue));
+			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferFRWRDRAsService")]
-		public int sp_TransferFRWRDRAsService()
+		public void sp_TransferFRWRDRAsService()
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((int)(result.ReturnValue));
+			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail")]
@@ -387,31 +383,27 @@ namespace FinalUi
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferMInvoiceToBInvoice")]
-		public int sp_TransferMInvoiceToBInvoice()
+		public void sp_TransferMInvoiceToBInvoice()
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((int)(result.ReturnValue));
+			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferPaymentDetails")]
-		public int sp_TransferPaymentDetails()
+		public void sp_TransferPaymentDetails()
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((int)(result.ReturnValue));
+			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferRatespart1")]
-		public int sp_TransferRatespart1()
+		public void sp_TransferRatespart1()
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((int)(result.ReturnValue));
+			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferRatespart2")]
-		public int sp_TransferRatespart2()
+		public void sp_TransferRatespart2()
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((int)(result.ReturnValue));
+			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 		}
 	}
 	
@@ -431,13 +423,13 @@ namespace FinalUi
 		
 		private string _RateCode;
 		
+		private EntityRef<ZONE> _ZONE;
+		
 		private EntityRef<Client> _Client;
 		
 		private EntityRef<Rate> _Rate;
 		
 		private EntityRef<Service> _Service;
-		
-		private EntityRef<ZONE> _ZONE;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -457,10 +449,10 @@ namespace FinalUi
 		
 		public Assignment()
 		{
+			this._ZONE = default(EntityRef<ZONE>);
 			this._Client = default(EntityRef<Client>);
 			this._Rate = default(EntityRef<Rate>);
 			this._Service = default(EntityRef<Service>);
-			this._ZONE = default(EntityRef<ZONE>);
 			OnCreated();
 		}
 		
@@ -580,6 +572,40 @@ namespace FinalUi
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ZONE_Assignment", Storage="_ZONE", ThisKey="ZoneCode", OtherKey="zcode", IsForeignKey=true)]
+		public ZONE ZONE
+		{
+			get
+			{
+				return this._ZONE.Entity;
+			}
+			set
+			{
+				ZONE previousValue = this._ZONE.Entity;
+				if (((previousValue != value) 
+							|| (this._ZONE.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ZONE.Entity = null;
+						previousValue.Assignments.Remove(this);
+					}
+					this._ZONE.Entity = value;
+					if ((value != null))
+					{
+						value.Assignments.Add(this);
+						this._ZoneCode = value.zcode;
+					}
+					else
+					{
+						this._ZoneCode = default(string);
+					}
+					this.SendPropertyChanged("ZONE");
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Client_Assignment", Storage="_Client", ThisKey="ClientCode", OtherKey="CLCODE", IsForeignKey=true)]
 		public Client Client
 		{
@@ -682,37 +708,169 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ZONE_Assignment", Storage="_ZONE", ThisKey="ZoneCode", OtherKey="zcode", IsForeignKey=true)]
-		public ZONE ZONE
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ZONE")]
+	public partial class ZONE : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _Id;
+		
+		private string _zcode;
+		
+		private string _Zone_name;
+		
+		private System.Nullable<char> _Mode;
+		
+		private EntitySet<Assignment> _Assignments;
+		
+		private EntitySet<City> _Cities;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(System.Guid value);
+    partial void OnIdChanged();
+    partial void OnzcodeChanging(string value);
+    partial void OnzcodeChanged();
+    partial void OnZone_nameChanging(string value);
+    partial void OnZone_nameChanged();
+    partial void OnModeChanging(System.Nullable<char> value);
+    partial void OnModeChanged();
+    #endregion
+		
+		public ZONE()
+		{
+			this._Assignments = new EntitySet<Assignment>(new Action<Assignment>(this.attach_Assignments), new Action<Assignment>(this.detach_Assignments));
+			this._Cities = new EntitySet<City>(new Action<City>(this.attach_Cities), new Action<City>(this.detach_Cities));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid Id
 		{
 			get
 			{
-				return this._ZONE.Entity;
+				return this._Id;
 			}
 			set
 			{
-				ZONE previousValue = this._ZONE.Entity;
-				if (((previousValue != value) 
-							|| (this._ZONE.HasLoadedOrAssignedValue == false)))
+				if ((this._Id != value))
 				{
+					this.OnIdChanging(value);
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ZONE.Entity = null;
-						previousValue.Assignments.Remove(this);
-					}
-					this._ZONE.Entity = value;
-					if ((value != null))
-					{
-						value.Assignments.Add(this);
-						this._ZoneCode = value.zcode;
-					}
-					else
-					{
-						this._ZoneCode = default(string);
-					}
-					this.SendPropertyChanged("ZONE");
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_zcode", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string zcode
+		{
+			get
+			{
+				return this._zcode;
+			}
+			set
+			{
+				if ((this._zcode != value))
+				{
+					this.OnzcodeChanging(value);
+					this.SendPropertyChanging();
+					this._zcode = value;
+					this.SendPropertyChanged("zcode");
+					this.OnzcodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Zone_name", DbType="VarChar(20)")]
+		public string Zone_name
+		{
+			get
+			{
+				return this._Zone_name;
+			}
+			set
+			{
+				if ((this._Zone_name != value))
+				{
+					this.OnZone_nameChanging(value);
+					this.SendPropertyChanging();
+					this._Zone_name = value;
+					this.SendPropertyChanged("Zone_name");
+					this.OnZone_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mode", DbType="Char(1)")]
+		public System.Nullable<char> Mode
+		{
+			get
+			{
+				return this._Mode;
+			}
+			set
+			{
+				if ((this._Mode != value))
+				{
+					this.OnModeChanging(value);
+					this.SendPropertyChanging();
+					this._Mode = value;
+					this.SendPropertyChanged("Mode");
+					this.OnModeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ZONE_Assignment", Storage="_Assignments", ThisKey="zcode", OtherKey="ZoneCode")]
+		public EntitySet<Assignment> Assignments
+		{
+			get
+			{
+				return this._Assignments;
+			}
+			set
+			{
+				this._Assignments.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ZONE_City", Storage="_Cities", ThisKey="zcode", OtherKey="ZONE")]
+		public EntitySet<City> Cities
+		{
+			get
+			{
+				return this._Cities;
+			}
+			set
+			{
+				this._Cities.Assign(value);
 			}
 		}
 		
@@ -734,6 +892,30 @@ namespace FinalUi
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Assignments(Assignment entity)
+		{
+			this.SendPropertyChanging();
+			entity.ZONE = this;
+		}
+		
+		private void detach_Assignments(Assignment entity)
+		{
+			this.SendPropertyChanging();
+			entity.ZONE = null;
+		}
+		
+		private void attach_Cities(City entity)
+		{
+			this.SendPropertyChanging();
+			entity.ZONE1 = this;
+		}
+		
+		private void detach_Cities(City entity)
+		{
+			this.SendPropertyChanging();
+			entity.ZONE1 = null;
 		}
 	}
 	
@@ -771,9 +953,9 @@ namespace FinalUi
 		
 		private string _ZONE;
 		
-		private EntityRef<State> _State;
-		
 		private EntityRef<ZONE> _ZONE1;
+		
+		private EntityRef<State> _State;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -811,8 +993,8 @@ namespace FinalUi
 		
 		public City()
 		{
-			this._State = default(EntityRef<State>);
 			this._ZONE1 = default(EntityRef<ZONE>);
+			this._State = default(EntityRef<State>);
 			OnCreated();
 		}
 		
@@ -1104,40 +1286,6 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="State_City", Storage="_State", ThisKey="CITY_STATE", OtherKey="STATE_CODE", IsForeignKey=true)]
-		public State State
-		{
-			get
-			{
-				return this._State.Entity;
-			}
-			set
-			{
-				State previousValue = this._State.Entity;
-				if (((previousValue != value) 
-							|| (this._State.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._State.Entity = null;
-						previousValue.Cities.Remove(this);
-					}
-					this._State.Entity = value;
-					if ((value != null))
-					{
-						value.Cities.Add(this);
-						this._CITY_STATE = value.STATE_CODE;
-					}
-					else
-					{
-						this._CITY_STATE = default(string);
-					}
-					this.SendPropertyChanged("State");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ZONE_City", Storage="_ZONE1", ThisKey="ZONE", OtherKey="zcode", IsForeignKey=true)]
 		public ZONE ZONE1
 		{
@@ -1168,6 +1316,40 @@ namespace FinalUi
 						this._ZONE = default(string);
 					}
 					this.SendPropertyChanged("ZONE1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="State_City", Storage="_State", ThisKey="CITY_STATE", OtherKey="STATE_CODE", IsForeignKey=true)]
+		public State State
+		{
+			get
+			{
+				return this._State.Entity;
+			}
+			set
+			{
+				State previousValue = this._State.Entity;
+				if (((previousValue != value) 
+							|| (this._State.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._State.Entity = null;
+						previousValue.Cities.Remove(this);
+					}
+					this._State.Entity = value;
+					if ((value != null))
+					{
+						value.Cities.Add(this);
+						this._CITY_STATE = value.STATE_CODE;
+					}
+					else
+					{
+						this._CITY_STATE = default(string);
+					}
+					this.SendPropertyChanged("State");
 				}
 			}
 		}
@@ -6590,196 +6772,6 @@ namespace FinalUi
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ZONE")]
-	public partial class ZONE : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private System.Guid _Id;
-		
-		private string _zcode;
-		
-		private string _Zone_name;
-		
-		private System.Nullable<char> _Mode;
-		
-		private EntitySet<Assignment> _Assignments;
-		
-		private EntitySet<City> _Cities;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(System.Guid value);
-    partial void OnIdChanged();
-    partial void OnzcodeChanging(string value);
-    partial void OnzcodeChanged();
-    partial void OnZone_nameChanging(string value);
-    partial void OnZone_nameChanged();
-    partial void OnModeChanging(System.Nullable<char> value);
-    partial void OnModeChanged();
-    #endregion
-		
-		public ZONE()
-		{
-			this._Assignments = new EntitySet<Assignment>(new Action<Assignment>(this.attach_Assignments), new Action<Assignment>(this.detach_Assignments));
-			this._Cities = new EntitySet<City>(new Action<City>(this.attach_Cities), new Action<City>(this.detach_Cities));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_zcode", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string zcode
-		{
-			get
-			{
-				return this._zcode;
-			}
-			set
-			{
-				if ((this._zcode != value))
-				{
-					this.OnzcodeChanging(value);
-					this.SendPropertyChanging();
-					this._zcode = value;
-					this.SendPropertyChanged("zcode");
-					this.OnzcodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Zone_name", DbType="VarChar(20)")]
-		public string Zone_name
-		{
-			get
-			{
-				return this._Zone_name;
-			}
-			set
-			{
-				if ((this._Zone_name != value))
-				{
-					this.OnZone_nameChanging(value);
-					this.SendPropertyChanging();
-					this._Zone_name = value;
-					this.SendPropertyChanged("Zone_name");
-					this.OnZone_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mode", DbType="Char(1)")]
-		public System.Nullable<char> Mode
-		{
-			get
-			{
-				return this._Mode;
-			}
-			set
-			{
-				if ((this._Mode != value))
-				{
-					this.OnModeChanging(value);
-					this.SendPropertyChanging();
-					this._Mode = value;
-					this.SendPropertyChanged("Mode");
-					this.OnModeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ZONE_Assignment", Storage="_Assignments", ThisKey="zcode", OtherKey="ZoneCode")]
-		public EntitySet<Assignment> Assignments
-		{
-			get
-			{
-				return this._Assignments;
-			}
-			set
-			{
-				this._Assignments.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ZONE_City", Storage="_Cities", ThisKey="zcode", OtherKey="ZONE")]
-		public EntitySet<City> Cities
-		{
-			get
-			{
-				return this._Cities;
-			}
-			set
-			{
-				this._Cities.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Assignments(Assignment entity)
-		{
-			this.SendPropertyChanging();
-			entity.ZONE = this;
-		}
-		
-		private void detach_Assignments(Assignment entity)
-		{
-			this.SendPropertyChanging();
-			entity.ZONE = null;
-		}
-		
-		private void attach_Cities(City entity)
-		{
-			this.SendPropertyChanging();
-			entity.ZONE1 = this;
-		}
-		
-		private void detach_Cities(City entity)
-		{
-			this.SendPropertyChanging();
-			entity.ZONE1 = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AccountStatement")]
 	public partial class AccountStatement
 	{
@@ -6874,375 +6866,6 @@ namespace FinalUi
 				if ((this._PayAmount != value))
 				{
 					this._PayAmount = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BalanceView")]
-	public partial class BalanceView
-	{
-		
-		private string _PC;
-		
-		private System.Nullable<double> _PaymentRecieved;
-		
-		private System.Nullable<double> _AmountBilled;
-		
-		private System.Nullable<double> _NetBalance;
-		
-		public BalanceView()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PC", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
-		public string PC
-		{
-			get
-			{
-				return this._PC;
-			}
-			set
-			{
-				if ((this._PC != value))
-				{
-					this._PC = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentRecieved", DbType="Float")]
-		public System.Nullable<double> PaymentRecieved
-		{
-			get
-			{
-				return this._PaymentRecieved;
-			}
-			set
-			{
-				if ((this._PaymentRecieved != value))
-				{
-					this._PaymentRecieved = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AmountBilled", DbType="Float")]
-		public System.Nullable<double> AmountBilled
-		{
-			get
-			{
-				return this._AmountBilled;
-			}
-			set
-			{
-				if ((this._AmountBilled != value))
-				{
-					this._AmountBilled = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NetBalance", DbType="Float")]
-		public System.Nullable<double> NetBalance
-		{
-			get
-			{
-				return this._NetBalance;
-			}
-			set
-			{
-				if ((this._NetBalance != value))
-				{
-					this._NetBalance = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PROFITVIEW")]
-	public partial class PROFITVIEW
-	{
-		
-		private System.Nullable<decimal> _TotalPayed;
-		
-		private System.Nullable<double> _TotalChargedAmount;
-		
-		private string _CustCode;
-		
-		private System.Nullable<double> _netProfit;
-		
-		private System.Nullable<double> _FUEL;
-		
-		public PROFITVIEW()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalPayed", DbType="Decimal(38,2)")]
-		public System.Nullable<decimal> TotalPayed
-		{
-			get
-			{
-				return this._TotalPayed;
-			}
-			set
-			{
-				if ((this._TotalPayed != value))
-				{
-					this._TotalPayed = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalChargedAmount", DbType="Float")]
-		public System.Nullable<double> TotalChargedAmount
-		{
-			get
-			{
-				return this._TotalChargedAmount;
-			}
-			set
-			{
-				if ((this._TotalChargedAmount != value))
-				{
-					this._TotalChargedAmount = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustCode", DbType="VarChar(6)")]
-		public string CustCode
-		{
-			get
-			{
-				return this._CustCode;
-			}
-			set
-			{
-				if ((this._CustCode != value))
-				{
-					this._CustCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_netProfit", DbType="Float")]
-		public System.Nullable<double> netProfit
-		{
-			get
-			{
-				return this._netProfit;
-			}
-			set
-			{
-				if ((this._netProfit != value))
-				{
-					this._netProfit = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FUEL", DbType="Float")]
-		public System.Nullable<double> FUEL
-		{
-			get
-			{
-				return this._FUEL;
-			}
-			set
-			{
-				if ((this._FUEL != value))
-				{
-					this._FUEL = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.RateAssignmentReportingView")]
-	public partial class RateAssignmentReportingView
-	{
-		
-		private string _ClCode;
-		
-		private string _ServiceCode;
-		
-		private string _ZoneCode;
-		
-		private string _RateCode;
-		
-		private string _Description;
-		
-		private double _DoxRate;
-		
-		private System.Nullable<double> _NonDoxRate;
-		
-		private double _Weight;
-		
-		private int _Type;
-		
-		private System.Nullable<double> _StepWeight;
-		
-		public RateAssignmentReportingView()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClCode", DbType="VarChar(6)")]
-		public string ClCode
-		{
-			get
-			{
-				return this._ClCode;
-			}
-			set
-			{
-				if ((this._ClCode != value))
-				{
-					this._ClCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceCode", DbType="NVarChar(255)")]
-		public string ServiceCode
-		{
-			get
-			{
-				return this._ServiceCode;
-			}
-			set
-			{
-				if ((this._ServiceCode != value))
-				{
-					this._ServiceCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZoneCode", DbType="VarChar(30)")]
-		public string ZoneCode
-		{
-			get
-			{
-				return this._ZoneCode;
-			}
-			set
-			{
-				if ((this._ZoneCode != value))
-				{
-					this._ZoneCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RateCode", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string RateCode
-		{
-			get
-			{
-				return this._RateCode;
-			}
-			set
-			{
-				if ((this._RateCode != value))
-				{
-					this._RateCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(MAX)")]
-		public string Description
-		{
-			get
-			{
-				return this._Description;
-			}
-			set
-			{
-				if ((this._Description != value))
-				{
-					this._Description = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DoxRate", DbType="Float NOT NULL")]
-		public double DoxRate
-		{
-			get
-			{
-				return this._DoxRate;
-			}
-			set
-			{
-				if ((this._DoxRate != value))
-				{
-					this._DoxRate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NonDoxRate", DbType="Float")]
-		public System.Nullable<double> NonDoxRate
-		{
-			get
-			{
-				return this._NonDoxRate;
-			}
-			set
-			{
-				if ((this._NonDoxRate != value))
-				{
-					this._NonDoxRate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Weight", DbType="Float NOT NULL")]
-		public double Weight
-		{
-			get
-			{
-				return this._Weight;
-			}
-			set
-			{
-				if ((this._Weight != value))
-				{
-					this._Weight = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="Int NOT NULL")]
-		public int Type
-		{
-			get
-			{
-				return this._Type;
-			}
-			set
-			{
-				if ((this._Type != value))
-				{
-					this._Type = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StepWeight", DbType="Float")]
-		public System.Nullable<double> StepWeight
-		{
-			get
-			{
-				return this._StepWeight;
-			}
-			set
-			{
-				if ((this._StepWeight != value))
-				{
-					this._StepWeight = value;
 				}
 			}
 		}
@@ -7648,6 +7271,375 @@ namespace FinalUi
 				if ((this._CITY_DESC != value))
 				{
 					this._CITY_DESC = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BalanceView")]
+	public partial class BalanceView
+	{
+		
+		private string _PC;
+		
+		private System.Nullable<double> _PaymentRecieved;
+		
+		private System.Nullable<double> _AmountBilled;
+		
+		private System.Nullable<double> _NetBalance;
+		
+		public BalanceView()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PC", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
+		public string PC
+		{
+			get
+			{
+				return this._PC;
+			}
+			set
+			{
+				if ((this._PC != value))
+				{
+					this._PC = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentRecieved", DbType="Float")]
+		public System.Nullable<double> PaymentRecieved
+		{
+			get
+			{
+				return this._PaymentRecieved;
+			}
+			set
+			{
+				if ((this._PaymentRecieved != value))
+				{
+					this._PaymentRecieved = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AmountBilled", DbType="Float")]
+		public System.Nullable<double> AmountBilled
+		{
+			get
+			{
+				return this._AmountBilled;
+			}
+			set
+			{
+				if ((this._AmountBilled != value))
+				{
+					this._AmountBilled = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NetBalance", DbType="Float")]
+		public System.Nullable<double> NetBalance
+		{
+			get
+			{
+				return this._NetBalance;
+			}
+			set
+			{
+				if ((this._NetBalance != value))
+				{
+					this._NetBalance = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PROFITVIEW")]
+	public partial class PROFITVIEW
+	{
+		
+		private System.Nullable<decimal> _TotalPayed;
+		
+		private System.Nullable<double> _TotalChargedAmount;
+		
+		private string _CustCode;
+		
+		private System.Nullable<double> _netProfit;
+		
+		private System.Nullable<double> _FUEL;
+		
+		public PROFITVIEW()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalPayed", DbType="Decimal(38,2)")]
+		public System.Nullable<decimal> TotalPayed
+		{
+			get
+			{
+				return this._TotalPayed;
+			}
+			set
+			{
+				if ((this._TotalPayed != value))
+				{
+					this._TotalPayed = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalChargedAmount", DbType="Float")]
+		public System.Nullable<double> TotalChargedAmount
+		{
+			get
+			{
+				return this._TotalChargedAmount;
+			}
+			set
+			{
+				if ((this._TotalChargedAmount != value))
+				{
+					this._TotalChargedAmount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustCode", DbType="VarChar(6)")]
+		public string CustCode
+		{
+			get
+			{
+				return this._CustCode;
+			}
+			set
+			{
+				if ((this._CustCode != value))
+				{
+					this._CustCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_netProfit", DbType="Float")]
+		public System.Nullable<double> netProfit
+		{
+			get
+			{
+				return this._netProfit;
+			}
+			set
+			{
+				if ((this._netProfit != value))
+				{
+					this._netProfit = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FUEL", DbType="Float")]
+		public System.Nullable<double> FUEL
+		{
+			get
+			{
+				return this._FUEL;
+			}
+			set
+			{
+				if ((this._FUEL != value))
+				{
+					this._FUEL = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.RateAssignmentReportingView")]
+	public partial class RateAssignmentReportingView
+	{
+		
+		private string _ClCode;
+		
+		private string _ServiceCode;
+		
+		private string _ZoneCode;
+		
+		private string _RateCode;
+		
+		private string _Description;
+		
+		private double _DoxRate;
+		
+		private System.Nullable<double> _NonDoxRate;
+		
+		private double _Weight;
+		
+		private int _Type;
+		
+		private System.Nullable<double> _StepWeight;
+		
+		public RateAssignmentReportingView()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClCode", DbType="VarChar(6)")]
+		public string ClCode
+		{
+			get
+			{
+				return this._ClCode;
+			}
+			set
+			{
+				if ((this._ClCode != value))
+				{
+					this._ClCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceCode", DbType="NVarChar(255)")]
+		public string ServiceCode
+		{
+			get
+			{
+				return this._ServiceCode;
+			}
+			set
+			{
+				if ((this._ServiceCode != value))
+				{
+					this._ServiceCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZoneCode", DbType="VarChar(30)")]
+		public string ZoneCode
+		{
+			get
+			{
+				return this._ZoneCode;
+			}
+			set
+			{
+				if ((this._ZoneCode != value))
+				{
+					this._ZoneCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RateCode", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string RateCode
+		{
+			get
+			{
+				return this._RateCode;
+			}
+			set
+			{
+				if ((this._RateCode != value))
+				{
+					this._RateCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(MAX)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this._Description = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DoxRate", DbType="Float NOT NULL")]
+		public double DoxRate
+		{
+			get
+			{
+				return this._DoxRate;
+			}
+			set
+			{
+				if ((this._DoxRate != value))
+				{
+					this._DoxRate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NonDoxRate", DbType="Float")]
+		public System.Nullable<double> NonDoxRate
+		{
+			get
+			{
+				return this._NonDoxRate;
+			}
+			set
+			{
+				if ((this._NonDoxRate != value))
+				{
+					this._NonDoxRate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Weight", DbType="Float NOT NULL")]
+		public double Weight
+		{
+			get
+			{
+				return this._Weight;
+			}
+			set
+			{
+				if ((this._Weight != value))
+				{
+					this._Weight = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="Int NOT NULL")]
+		public int Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this._Type = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StepWeight", DbType="Float")]
+		public System.Nullable<double> StepWeight
+		{
+			get
+			{
+				return this._StepWeight;
+			}
+			set
+			{
+				if ((this._StepWeight != value))
+				{
+					this._StepWeight = value;
 				}
 			}
 		}

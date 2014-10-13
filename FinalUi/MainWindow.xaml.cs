@@ -26,6 +26,25 @@ namespace FinalUi
     /// 
     public partial class MainWindow : Window
     {
+
+        // Zone listing data import procedure
+        CollectionViewSource ZoneTableSource;
+        // Zone listing data import procedure
+
+        // Employee listing data import procedure
+        public List<Employee> employeeToEdit;
+        public List<Employee> employees;
+        private CollectionViewSource view;
+        // Employee listing data import procedure
+
+        // Client listing data import procedure
+        List<Client> clients;
+        CollectionViewSource viewsource;
+        List<Client> clientToEdit;
+        Client client;
+        // Client listing data import procedure
+
+
         #region initScripts
 
         CollectionViewSource dueDataGridSource;
@@ -40,12 +59,40 @@ namespace FinalUi
         BackgroundWorker SaveWorker;
         BackgroundWorker DeleteSheetWorker;
         BillingDataDataContext db;
+
         #endregion
         public MainWindow()
         {
 
             SecurityModule.authenticate("purushottam", "1234");
             InitializeComponent();
+
+
+            // Zone listing data import procedure
+            ZoneTableSource = (CollectionViewSource)FindResource("zoneTable");
+            BillingDataDataContext db3 = new BillingDataDataContext();
+            ZoneTableSource.Source = db3.ZONEs;
+            // Zone listing data import procedure
+
+            // Client listing data import procedure
+            BillingDataDataContext db2 = new BillingDataDataContext();
+            clientToEdit = new List<Client>();
+            clients = (from client in db2.Clients
+                       select client).ToList();
+            viewsource = (CollectionViewSource)FindResource("ClienTable");
+            viewsource.Source = clients;
+            // Client listing data import procedure
+
+            // Employee listing data import procedure
+            employeeToEdit = new List<Employee>();
+            BillingDataDataContext db1 = new BillingDataDataContext();
+            employees = (from employee in db1.Employees
+                         select employee).ToList();
+            view = (CollectionViewSource)FindResource("EmployeeTable");
+            view.Source = employees;
+            // Employee listing data import procedure
+
+
             dueDataGridSource = (CollectionViewSource)FindResource("DueGridDataSource");
             profitDataGridSource = (CollectionViewSource)FindResource("ProfitabilityGridDataSource");
             BillingDataDataContext db = new BillingDataDataContext();
@@ -821,33 +868,6 @@ namespace FinalUi
         {
             ClientReportWindow window = new ClientReportWindow(); window.ShowDialog();
         }
-        private void servicetaxtreeviewitembutton_Click(object sender, RoutedEventArgs e)
-        {
-        }
-        private void forwardertarifftreeviewitembutton_Click(object sender, RoutedEventArgs e)
-        {
-        }
-        private void clienttarifftreeviewitembutton_Click(object sender, RoutedEventArgs e)
-        {
-        }
-        private void clienttreeviewitembutton_Click(object sender, RoutedEventArgs e)
-        {
-        }
-        private void citytreeviewitembutton_Click(object sender, RoutedEventArgs e)
-        {
-        }
-        private void zonetreeviewitembutton_Click(object sender, RoutedEventArgs e)
-        {
-        }
-        private void countrytreeviewitembutton_Click(object sender, RoutedEventArgs e)
-        {
-        }
-        private void zonetreeitembutton_Click(object sender, RoutedEventArgs e)
-        {
-        }
-        private void countrytreeitembutton_Click(object sender, RoutedEventArgs e)
-        {
-        }
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
             AddCity window = new AddCity();
@@ -865,6 +885,10 @@ namespace FinalUi
             AccountStatementReportingWindow window = new AccountStatementReportingWindow(); window.WindowState = WindowState.Maximized; window.Show();
             
         }
+        private void mangaEmployeegrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            employeeToEdit.Add((Employee)e.Row.DataContext);
+        }
 
        private void cloakAll()
         {
@@ -876,6 +900,16 @@ namespace FinalUi
             ClientReportOptionPanel.Visibility = Visibility.Collapsed;
             QuotationoptionPanel.Visibility = Visibility.Collapsed;
             DataEntryOptionPanel.Visibility = Visibility.Collapsed;
+            ManageClientDatagridPanel.Visibility = Visibility.Collapsed;
+            ClientOptionPanel.Visibility = Visibility.Collapsed;
+            ManageEmployeeDatagridPanel.Visibility = Visibility.Collapsed;
+            EmployeeOptionPanel.Visibility = Visibility.Collapsed;
+            ManageCityDatagridPanel.Visibility = Visibility.Collapsed;
+            CityOptionPanel.Visibility = Visibility.Collapsed;
+            ManageZoneDatagridPanel.Visibility = Visibility.Collapsed;
+            ZoneOptionPanel.Visibility = Visibility.Collapsed;
+            ManageCountryDatagridPanel.Visibility = Visibility.Collapsed;
+            CountryOptionPanel.Visibility = Visibility.Collapsed;
         }
       
         private void AddRuleButton_Click(object sender, RoutedEventArgs e)
@@ -910,7 +944,46 @@ namespace FinalUi
             DataEntryOptionPanel.Visibility = Visibility.Visible;
             buttontabcanvaswrap.Visibility = Visibility.Visible;
             NavigationBar.Visibility = Visibility.Visible;
-            
+
+        }
+        private void servicetaxtreeviewitembutton_Click(object sender, RoutedEventArgs e)
+        {
+        }
+        private void forwardertarifftreeviewitembutton_Click(object sender, RoutedEventArgs e)
+        {
+        }
+        private void clienttarifftreeviewitembutton_Click(object sender, RoutedEventArgs e)
+        {
+        }
+        private void clienttreeviewitembutton_Click(object sender, RoutedEventArgs e)
+        {
+            cloakAll();
+            ManageClientDatagridPanel.Visibility = Visibility.Visible;
+            ClientOptionPanel.Visibility = Visibility.Visible;
+        }
+        private void Employeetreeviewitembutton_Click(object sender, RoutedEventArgs e)
+        {
+            cloakAll();
+            ManageEmployeeDatagridPanel.Visibility = Visibility.Visible;
+            EmployeeOptionPanel.Visibility = Visibility.Visible;
+        }
+        private void citytreeviewitembutton_Click(object sender, RoutedEventArgs e)
+        {
+            cloakAll();
+            ManageCityDatagridPanel.Visibility = Visibility.Visible;
+            CityOptionPanel.Visibility = Visibility.Visible;
+        }
+        private void zonetreeitembutton_Click(object sender, RoutedEventArgs e)
+        {
+            cloakAll();
+            ManageZoneDatagridPanel.Visibility = Visibility.Visible;
+            ZoneOptionPanel.Visibility = Visibility.Visible;
+        }
+        private void countrytreeitembutton_Click(object sender, RoutedEventArgs e)
+        {
+            cloakAll();
+            ManageCountryDatagridPanel.Visibility = Visibility.Visible;
+            CountryOptionPanel.Visibility = Visibility.Visible;
         }
     }
 }
