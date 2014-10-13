@@ -179,8 +179,8 @@
     <Compile Include="AddNewRateWindow.xaml.cs">
       <DependentUpon>AddNewRateWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddRole.xaml.cs">
-      <DependentUpon>AddRole.xaml</DependentUpon>
+    <Compile Include="AddServiceRule.xaml.cs">
+      <DependentUpon>AddServiceRule.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddZone.xaml.cs">
       <DependentUpon>AddZone.xaml</DependentUpon>
@@ -228,6 +228,7 @@
     <Compile Include="InvoiceReport.xaml.cs">
       <DependentUpon>InvoiceReport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="InvoiceRule.cs" />
     <Compile Include="IRule.cs" />
     <Compile Include="LoadResources.cs" />
     <Compile Include="ManageCity.xaml.cs">
@@ -261,6 +262,8 @@
     <Compile Include="RateWindow.xaml.cs">
       <DependentUpon>RateWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Rule.cs" />
+    <Compile Include="RuleContainer.cs" />
     <Compile Include="SanitizingWindow.xaml.cs">
       <DependentUpon>SanitizingWindow.xaml</DependentUpon>
     </Compile>
@@ -268,6 +271,7 @@
     <Compile Include="ServiceFinder.xaml.cs">
       <DependentUpon>ServiceFinder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ServiceRule.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="StockWindow.xaml.cs">
       <DependentUpon>StockWindow.xaml</DependentUpon>
@@ -277,9 +281,6 @@
     </Compile>
     <Compile Include="TestingPermisstion.xaml.cs">
       <DependentUpon>TestingPermisstion.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="testtheme.xaml.cs">
-      <DependentUpon>testtheme.xaml</DependentUpon>
     </Compile>
     <Compile Include="TwinListBox.xaml.cs">
       <DependentUpon>TwinListBox.xaml</DependentUpon>
@@ -324,9 +325,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddRole.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="AddServiceRule.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddZone.xaml">
       <SubType>Designer</SubType>
@@ -466,10 +467,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="testtheme.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="theme\Red.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -552,9 +549,6 @@
       <DependentUpon>DataSet2.xsd</DependentUpon>
     </None>
     <None Include="Data\VORTEX_ALPHA_TEST_REPORT.xlsx" />
-    <Fakes Include="Fakes\CustomControls.fakes" />
-    <None Include="FinalUi_1_TemporaryKey.pfx" />
-    <None Include="FinalUi_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\Assignment.datasource" />

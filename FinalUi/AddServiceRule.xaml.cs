@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Web.Script.Serialization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,21 +11,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-
-
 namespace FinalUi
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for AddServiceRule.xaml
     /// </summary>
-    public partial class AddRule : Window
+    public partial class AddServiceRule : Window
     {
         int currentCanvas = 1;
         Canvas currentCanvasObj;
-        Quotation quoation;
-        public AddRule(Quotation quoation)
+        public AddServiceRule()
         {
-            this.quoation = quoation;
             InitializeComponent();
             currentCanvasObj = Step1Canvas;
             currentCanvasObj.Visibility = Visibility.Visible;
@@ -42,6 +37,8 @@ namespace FinalUi
             CitiesTwinBox.AllListSource = DataSources.CityCopy;
             CitiesTwinBox.SelectedListSource = new List<City>();
             CitiesTwinBox.DisplayValuePath = "NameAndCode";
+
+            
         }
         private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {
@@ -69,86 +66,8 @@ namespace FinalUi
 
         private void AddRuleButton_Click(object sender, RoutedEventArgs e)
         {
-            BillingDataDataContext db = new BillingDataDataContext();
-            double startW = 0, endW = 0;
-            string errorMsg = "";
-            double temp;
-            if (double.TryParse(FromWeightBox.Text, out temp))
-            {
-                startW = temp;
-            }
-            else
-                errorMsg = errorMsg + "Enter From Weight Properly \n";
-            if (double.TryParse(ToWeightBox.Text, out temp))
-                endW = temp;
-            else
-                errorMsg = errorMsg + "Enter To Weight Properly \n";
-            if (startW > endW)
-                errorMsg += "Starting weight cannot be greater than ending weight. \n";
-            char type;
-            if (RangeTypeRadio.IsChecked == true)
-            {
-                type = 'R';
-            }
-            else
-                type = 'S';
-            double doxAmount = 0, ndoxAmount = 0;
-            if (!double.TryParse(DOXAmountBox.Text, out doxAmount))
-                errorMsg += "Enter dox amount properly \n";
-            if (!double.TryParse(NDoxAmountBox.Text, out ndoxAmount))
-                errorMsg += "Enter non dox amount properly \n";
-            double doxStartValue = 0, ndoxStartValue = 0;
-            if (!double.TryParse(DoxStartValueBox.Text, out doxStartValue) && StepTypeRadio.IsChecked == true)
-                errorMsg += "Enter Dox start value properly \n";
-            if (!Double.TryParse(NDoxStartValueBox.Text, out ndoxStartValue) && StepTypeRadio.IsChecked == true)
-                errorMsg += "Enter Non Dox start value properly \n";
-            double stepweight = 0;
-            if (!double.TryParse(StepBlockBox.Text, out stepweight) && StepTypeRadio.IsChecked == true)
-                errorMsg += "Enter Step Weight Properly \n";
-            if (errorMsg != "")
-            {
-                MessageBox.Show("Please correct following errors: " + errorMsg);
-                return;
-            }
-            List<string> selectedServiceList = ServiceTwinBox.SelectedListSource.Cast<Service>().Select(x => x.SER_CODE).ToList();
-            List<string> selectedZoneList = ZoneTwinBox.SelectedListSource.Cast<ZONE>().Select(x => x.zcode).ToList();
-            List<String> selectedCityList = CitiesTwinBox.SelectedListSource.Cast<City>().Select(x => x.CITY_CODE).ToList();
-            List<string> selectedStateList = StateTwinBox.SelectedListSource.Cast<State>().Select(x => x.STATE_CODE).ToList();
-            CostingRule RuleCR = new CostingRule(selectedServiceList, selectedZoneList, selectedCityList, selectedStateList, startW, endW, type, doxAmount, ndoxAmount, stepweight, ndoxStartValue, doxStartValue);
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            string serialized = js.Serialize(RuleCR);
-            Rule r = new Rule();
-            r.Type = 1;
-            r.Properties = serialized;
-            r.QID = quoation.Id;
-            r.Remark = "hello";
-            db.Rules.InsertOnSubmit(r);
-            bool isdone = false;
-            if (validate())
-            {
-                try
-                {
-                    db.SubmitChanges();
-                    isdone = true;
-                }
-                catch (Exception ex) { MessageBox.Show(ex.Message); return; }
-                if(isdone)
-                {
-                    MessageBox.Show("Rule Added Now Party");
-                    this.Close();
-                }
-            }
         }
-        private bool validate()
-        {
-            if (this.StateTwinBox.SelectedListR.Items.Count > 0 || this.ZoneTwinBox.SelectedListR.Items.Count > 0 || this.CitiesTwinBox.SelectedListR.Items.Count > 0 && this.ServiceTwinBox.SelectedListR.Items.Count > 0)
-                return true;
-            else
-            {
-                MessageBox.Show("Must add at least one service and at least one from any zone or city or state ");
-            }
-            return false;
-        }
+
         private void Next_Click(object sender, RoutedEventArgs e)
         {
             switch (currentCanvas)
@@ -181,6 +100,8 @@ namespace FinalUi
                     currentCanvasObj.Visibility = Visibility.Visible;
                     StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
                     break;
+
+
             }
             if (currentCanvas == 5)
             {
@@ -227,6 +148,8 @@ namespace FinalUi
                     currentCanvasObj.Visibility = Visibility.Visible;
                     StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
                     break;
+
+
             }
             if (currentCanvas == 5)
             {
@@ -238,6 +161,16 @@ namespace FinalUi
                 Next.Visibility = Visibility.Visible;
                 AddRuleButton.Visibility = Visibility.Collapsed;
             }
+        }
+
+        private void FromWeightBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

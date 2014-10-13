@@ -192,78 +192,16 @@ namespace FinalUi
         }
         #endregion
         #region Cost calculating
-        public static double getPriceFromRateCode(string rateCode, double weight, char isDox)
+        
+
+        public static double getCost(string clientCode, double wieght, string cityCode, string serviceCode, char dox)
         {
             BillingDataDataContext db = new BillingDataDataContext();
-            Rate rate = db.Rates.SingleOrDefault(x => x.RateCode == rateCode);
-            if (rateCode != null)
-            {
-                List<RateDetail> rateDetails = rate.RateDetails.OrderBy(x => x.Type.ToString() + x.Weight.ToString()).ToList();
-                double lastRangeWeight = 0;
-                double price = 0;
-                int i = 0;
-                double nextLimit = 99999;
-                foreach (RateDetail rateD in rateDetails)
-                {
-                    if (rateDetails.ElementAtOrDefault(i + 1) != null)
-                        nextLimit = rateDetails.ElementAt(i + 1).Weight;
-                    else
-                        nextLimit = 99999;
-                    if (rateD.Type == 1)
-                    {
-                        if (rateD.Weight > weight)
-                            return (double)(Char.ToUpper(isDox) == 'D' ? rateD.DoxRate : rateD.NonDoxRate);
-                        else
-                        {
-                            price = (double)(Char.ToUpper(isDox) == 'D' ? rateD.DoxRate : rateD.NonDoxRate);
-                            lastRangeWeight = (double)rateD.Weight;
-                        }
-                    }
-                    if (rateD.Type == 2 || rateD.Type == 3)
-                    {
-                        int icurrentW, iWeight, iStepWeight;
-                        iWeight = (int)(weight * 1000);
-                        iStepWeight = (int)(rateD.StepWeight * 1000);
-                        int inextLimit;
-                        double currentW = rateD.Weight;
-                        icurrentW = (int)(rateD.Weight * 1000);
-                        if (weight <= currentW)
-                            return price;
-                        else
-                        {
-                            nextLimit = rateDetails.ElementAtOrDefault(i + 1) != null ? rateDetails.ElementAtOrDefault(i + 1).Weight : 999;
-                            inextLimit = (int)(nextLimit * 1000);
-                            while (icurrentW < inextLimit && icurrentW < iWeight)
-                            {
-                                price = price + (double)(Char.ToUpper(isDox) == 'D' ? rateD.DoxRate : rateD.NonDoxRate);
-                                icurrentW = icurrentW + iStepWeight;
-                            }
-                        }
-                    }
-                    i++;
-                }
-                return price;
-            }
-            return -1;
-        }
-        public static double getCost(string clientCode, string destinationCode, double wieght, string zoneCode, string serviceCode, char dox)
-        {
-            Assignment ab;
-            BillingDataDataContext db = new BillingDataDataContext();
-            ab = db.Assignments.FirstOrDefault(x => x.ServiceCode == serviceCode && x.ClientCode == clientCode && x.ZoneCode == zoneCode);
-            if (ab == null)
-            {
-                ab = db.Assignments.FirstOrDefault(x => x.ServiceCode == "DEFAULT" && x.ClientCode == clientCode && x.ZoneCode == zoneCode);
-                if (ab == null)
-                {
-                    ab = db.Assignments.FirstOrDefault(x => x.ServiceCode == "DEFAULT" && x.ClientCode == clientCode && x.ZoneCode == "DEF");
-                    if (ab == null)
-                    {
-                        ab = db.Assignments.FirstOrDefault(x => x.ServiceCode == "DEFAULT" && x.ClientCode == "DEF" && x.ZoneCode == "DEF");
-                    }
-                }
-            }
-            return getPriceFromRateCode(ab.RateCode, wieght, dox);
+            Quotation qt = db.Quotations.SingleOrDefault(x => x.CLCODE == clientCode);
+            if (qt == null)
+                return -1;
+            double cost = qt.applyCostingRulesOnTransaction(wieght, cityCode, serviceCode, dox);
+            return cost;
         }
         #endregion
         #region Miscellaneous Utilities

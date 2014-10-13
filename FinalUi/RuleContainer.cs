@@ -5,10 +5,8 @@ using System.Text;
 
 namespace FinalUi
 {
-    interface IRule
+    partial class RuleContainer : Quotation
     {
-         void applyRule(Object obj);
-         void encodeString();
-         void decodeString();
+
     }
 }

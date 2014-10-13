@@ -5,10 +5,9 @@ using System.Text;
 
 namespace FinalUi
 {
-    interface IRule
+    partial class  Rule
     {
-         void applyRule(Object obj);
-         void encodeString();
-         void decodeString();
+        public virtual void applyRule(Object obj)
+        { }
     }
 }

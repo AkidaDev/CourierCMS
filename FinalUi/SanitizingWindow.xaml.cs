@@ -168,7 +168,7 @@ namespace FinalUi
                 var c = db.Cities.Where(x => x.CITY_CODE == data.Destination && x.CITY_STATUS == "A").FirstOrDefault();
                 if (c == null)
                     c = db.Cities.SingleOrDefault(x => x.CITY_CODE == "DEL");
-                data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, data.Destination, (double)data.BilledWeight, c.ZONE, data.Type, (char)data.DOX);
+                data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, (double)data.BilledWeight, data.Destination, data.Type, (char)data.DOX);
             }
             try
             {
@@ -307,7 +307,7 @@ namespace FinalUi
                 double cost;
                 if (d != null)
                 {
-                    cost = UtilityClass.getCost(data.CustCode, d.CITY_CODE, double.Parse(this.BilledWeightTextBox.Text), c.ZONE, data.Type, (char)data.DOX);
+                    cost =  UtilityClass.getCost(data.CustCode, (double)data.BilledWeight, data.Destination, data.Type, (char)data.DOX);
                     this.BilledAmount.Text = cost.ToString();
                 }
             }

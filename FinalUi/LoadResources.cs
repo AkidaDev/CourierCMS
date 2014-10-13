@@ -15,7 +15,7 @@ namespace FinalUi
         {
             string con = "Data Source=" + "System" + ";Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa;Password=Alver!22";
              con = Configs.Default.BillingDatabaseConnectionString;
-            // MessageBox.Show(con);
+            MessageBox.Show(con);
             return con;
         }
     }
