@@ -25,19 +25,28 @@ namespace FinalUi
     public partial class Login : Window
     {
         bool loginFlag;
+        Storyboard myStoryboard;
+        MainWindow window;
         public Login()
         {
-           // if (Configs.Default.IsFirst == "True")
-           // {
-                PreferenceWindow window = new PreferenceWindow();
-                //window.Show();
-                Configs.Default.IsFirst = "False";
-              //  Configs.Default.Save();
-        //    }
             InitializeComponent();
             CommandBinding command = new CommandBinding();
+
+
+            DoubleAnimation myDoubleAnimation = new DoubleAnimation();
+            myDoubleAnimation.From = 1.0;
+            myDoubleAnimation.To = 0.0;
+            myDoubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(0.2));
+            myDoubleAnimation.AutoReverse = true;
+            myDoubleAnimation.RepeatBehavior = new RepeatBehavior(2);
+
+            myStoryboard = new Storyboard();
+            myStoryboard.Children.Add(myDoubleAnimation);
+            Storyboard.SetTargetName(myDoubleAnimation, MainGrid.Name);
+            Storyboard.SetTargetProperty(myDoubleAnimation, new PropertyPath(Grid.OpacityProperty));
+            // Use the Loaded event to start the Storyboard.
         }
-        MainWindow window;
+        
         private void Grid_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
             DragMove();
@@ -52,7 +61,7 @@ namespace FinalUi
         {
             this.WindowState = WindowState.Minimized;
         }
-        private void loginfail()
+        private void loginfail(object sender, RoutedEventArgs e)
         {
             DropShadowEffect shadow = new DropShadowEffect();
             this.Blue.Visibility = Visibility.Hidden;
@@ -62,6 +71,7 @@ namespace FinalUi
             shadow.Color = Colors.Red;
             shadow.ShadowDepth = 0;
             this.MainGrid.Effect = shadow;
+            myStoryboard.Begin(this);
         }
         private void MainGrid_KeyUp(object sender, KeyEventArgs e)
         {
@@ -81,12 +91,10 @@ namespace FinalUi
                     }
                     else
                     {
-                        loginfail();
+                        loginfail(null, new RoutedEventArgs());
                     }
                 }
             }
         }
-
-
     }
 }

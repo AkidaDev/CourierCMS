@@ -83,7 +83,8 @@ namespace FinalUi
             }
         }
         public void encodeString()
-        {}
+        {
+        }
         #region whereRules
         #endregion
     }

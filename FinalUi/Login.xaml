@@ -5,8 +5,9 @@
 		Icon="Images/logo.ico"
         Title="Login" Height="350" Width="650" Background="Transparent"
         WindowStyle="None" WindowStartupLocation="CenterScreen" BorderBrush="Transparent" AllowsTransparency="True" Padding="20">
-
+    
     <Grid Name="MainGrid" Height="300" Width="600" MouseLeftButtonDown="Grid_MouseLeftButtonDown_1"  KeyDown="MainGrid_KeyUp">
+        
         <Grid.Effect>
             <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
         </Grid.Effect>

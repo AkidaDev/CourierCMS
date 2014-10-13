@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -26,25 +25,20 @@ namespace FinalUi
     /// 
     public partial class MainWindow : Window
     {
-
         // Zone listing data import procedure
         CollectionViewSource ZoneTableSource;
         // Zone listing data import procedure
-
         // Employee listing data import procedure
         public List<Employee> employeeToEdit;
         public List<Employee> employees;
         private CollectionViewSource view;
         // Employee listing data import procedure
-
         // Client listing data import procedure
         List<Client> clients;
         CollectionViewSource viewsource;
         List<Client> clientToEdit;
         Client client;
         // Client listing data import procedure
-
-
         #region initScripts
 
         CollectionViewSource dueDataGridSource;
@@ -63,17 +57,13 @@ namespace FinalUi
         #endregion
         public MainWindow()
         {
-
             SecurityModule.authenticate("purushottam", "1234");
             InitializeComponent();
-
-
             // Zone listing data import procedure
             ZoneTableSource = (CollectionViewSource)FindResource("zoneTable");
             BillingDataDataContext db3 = new BillingDataDataContext();
             ZoneTableSource.Source = db3.ZONEs;
             // Zone listing data import procedure
-
             // Client listing data import procedure
             BillingDataDataContext db2 = new BillingDataDataContext();
             clientToEdit = new List<Client>();
@@ -82,7 +72,6 @@ namespace FinalUi
             viewsource = (CollectionViewSource)FindResource("ClienTable");
             viewsource.Source = clients;
             // Client listing data import procedure
-
             // Employee listing data import procedure
             employeeToEdit = new List<Employee>();
             BillingDataDataContext db1 = new BillingDataDataContext();
@@ -91,8 +80,6 @@ namespace FinalUi
             view = (CollectionViewSource)FindResource("EmployeeTable");
             view.Source = employees;
             // Employee listing data import procedure
-
-
             dueDataGridSource = (CollectionViewSource)FindResource("DueGridDataSource");
             profitDataGridSource = (CollectionViewSource)FindResource("ProfitabilityGridDataSource");
             BillingDataDataContext db = new BillingDataDataContext();
@@ -879,17 +866,14 @@ namespace FinalUi
             AddCity window = new AddCity();
             window.ShowDialog();
         }
-        
         private void ManageZone_Click(object sender, RoutedEventArgs e)
         {
             ZoneAssignment zone = new ZoneAssignment();
             zone.ShowDialog();
         }
-
         private void AccountStatementMenuItem_Click(object sender, RoutedEventArgs e)
         {
             AccountStatementReportingWindow window = new AccountStatementReportingWindow(); window.WindowState = WindowState.Maximized; window.Show();
-            
         }
         private void mangaEmployeegrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
@@ -901,7 +885,6 @@ namespace FinalUi
             window.Closed += AddClient_close;
             window.Show();
         }
-
         private void updateClient_Click(object sender, RoutedEventArgs e)
         {
             client = (Client)this.mangaclientgrid.SelectedItem;
@@ -947,23 +930,19 @@ namespace FinalUi
 
         private void DataGrid_SelectionChanged_2(object sender, SelectionChangedEventArgs e)
         {
-
         }
-
         private void ClientQuotationTreeView_Selected(object sender, RoutedEventArgs e)
         {
             cloakAll();
             QuotationoptionPanel.Visibility = Visibility.Visible;
             RuleGrid.Visibility = Visibility.Visible;
         }
-
         private void ClientsReportTreeView_Selected(object sender, RoutedEventArgs e)
         {
             cloakAll();
             ProfitGrid.Visibility = Visibility.Visible;
             ClientReportOptionPanel.Visibility = Visibility.Visible;
         }
-
         private void DataDockPanelTreeView_Selected(object sender, RoutedEventArgs e)
         {
             cloakAll();
@@ -1011,6 +990,14 @@ namespace FinalUi
             cloakAll();
             ManageCountryDatagridPanel.Visibility = Visibility.Visible;
             CountryOptionPanel.Visibility = Visibility.Visible;
+        }
+        private void ClientManageTreeView_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void CostingRuleRadio_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
