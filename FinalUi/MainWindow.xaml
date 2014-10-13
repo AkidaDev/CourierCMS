@@ -173,7 +173,7 @@
                         </TreeViewItem>
                     </TreeView>
                     <TreeView Background="Transparent" BorderThickness="0">
-                        <TreeViewItem >
+                        <TreeViewItem>
                             <TreeViewItem.Header>
                                 <TextBlock Text="My Assignments" FontSize="16" FontWeight="Bold"  Padding="0 1 0 4" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
                             </TreeViewItem.Header>
@@ -181,6 +181,13 @@
                                 <TreeViewItem.Header>
                                     <Button Style="{StaticResource 1}" x:Name="BillAnalysis" Click="BillAnalysis_Click">
                                         <TextBlock Text="Bill Analysis" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                    </Button>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <Button Style="{StaticResource 1}" Name="DataDockPanelTreeView" Click="DataDockPanelTreeView_Selected">
+                                        <TextBlock Text="Data Entry Table" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
                                     </Button>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
@@ -326,6 +333,8 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
+                    
+                    
                     <DockPanel Grid.Row="0" Margin="6 0 0 0" Name="DataDockPanel">
                         <DockPanel.Resources>
                             <Style TargetType="{x:Type DataGridCell}">

@@ -281,9 +281,6 @@
     <Compile Include="TestingPermisstion.xaml.cs">
       <DependentUpon>TestingPermisstion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="testtheme.xaml.cs">
-      <DependentUpon>testtheme.xaml</DependentUpon>
-    </Compile>
     <Compile Include="TwinListBox.xaml.cs">
       <DependentUpon>TwinListBox.xaml</DependentUpon>
     </Compile>
@@ -468,10 +465,6 @@
     <Page Include="TestingPermisstion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="testtheme.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="theme\Red.xaml">
       <Generator>MSBuild:Compile</Generator>

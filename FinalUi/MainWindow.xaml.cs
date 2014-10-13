@@ -902,5 +902,15 @@ namespace FinalUi
             ProfitGrid.Visibility = Visibility.Visible;
             ClientReportOptionPanel.Visibility = Visibility.Visible;
         }
+
+        private void DataDockPanelTreeView_Selected(object sender, RoutedEventArgs e)
+        {
+            cloakAll();
+            DataDockPanel.Visibility = Visibility.Visible;
+            DataEntryOptionPanel.Visibility = Visibility.Visible;
+            buttontabcanvaswrap.Visibility = Visibility.Visible;
+            NavigationBar.Visibility = Visibility.Visible;
+            
+        }
     }
 }
