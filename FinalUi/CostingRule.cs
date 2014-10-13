@@ -15,9 +15,6 @@ namespace FinalUi
         public void decodeString()
         {}
 
-        #region State
-        #endregion
-
         #region When to apply
         public List<string> ServiceList;
         public List<string> ZoneList;
@@ -33,7 +30,7 @@ namespace FinalUi
         public double ndoxAmount;
         public double stepWeight;
         public double dStartValue;
-        double ndStartValue;
+        public double ndStartValue;
         #endregion
 
         #region Constructorss

@@ -23,6 +23,7 @@ namespace FinalUi
         {
             InitializeComponent();
             BillingDataDataContext db = new BillingDataDataContext();
+            SecurityModule.authenticate("purushottam", "1234");
           //  MessageBox.Show(LoadResources.getConString());
         }
 

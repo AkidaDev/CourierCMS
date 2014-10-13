@@ -24,6 +24,7 @@ namespace FinalUi
         int currentCanvas = 1;
         Canvas currentCanvasObj;
         Quotation quoation;
+        CostingRule RuleCR;
         public AddRule(Quotation quoation)
         {
             this.quoation = quoation;
@@ -114,7 +115,19 @@ namespace FinalUi
             List<string> selectedZoneList = ZoneTwinBox.SelectedListSource.Cast<ZONE>().Select(x => x.zcode).ToList();
             List<String> selectedCityList = CitiesTwinBox.SelectedListSource.Cast<City>().Select(x => x.CITY_CODE).ToList();
             List<string> selectedStateList = StateTwinBox.SelectedListSource.Cast<State>().Select(x => x.STATE_CODE).ToList();
-            CostingRule RuleCR = new CostingRule(selectedServiceList, selectedZoneList, selectedCityList, selectedStateList, startW, endW, type, doxAmount, ndoxAmount, stepweight, ndoxStartValue, doxStartValue);
+            RuleCR = new CostingRule();
+            RuleCR.ServiceList = selectedServiceList;
+            RuleCR.ZoneList = selectedZoneList;
+            RuleCR.CityList = selectedCityList;
+            RuleCR.StateList = selectedStateList;
+            RuleCR.startW = startW;
+            RuleCR.endW = endW;
+            RuleCR.Type = type;
+            RuleCR.doxAmount = doxAmount;
+            RuleCR.ndoxAmount = ndoxAmount;
+            RuleCR.stepWeight = stepweight;
+            RuleCR.dStartValue = doxStartValue;
+            RuleCR.ndStartValue = ndoxStartValue;
             JavaScriptSerializer js = new JavaScriptSerializer();
             string serialized = js.Serialize(RuleCR);
             Rule r = new Rule();

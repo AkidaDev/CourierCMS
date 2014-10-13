@@ -253,6 +253,12 @@ namespace FinalUi
         {
             int key = this.dataGridHelper.addNewSheet(new List<RuntimeData>(),"");
             addingNewPage(key);
+            cloakAll();
+            DataDockPanel.Visibility = Visibility.Visible;
+            DataEntryOptionPanel.Visibility = Visibility.Visible;
+            buttontabcanvaswrap.Visibility = Visibility.Visible;
+            NavigationBar.Visibility = Visibility.Visible;
+
         }
         private void NewSheetCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -889,7 +895,28 @@ namespace FinalUi
         {
             employeeToEdit.Add((Employee)e.Row.DataContext);
         }
+        private void AddClient_Click(object sender, RoutedEventArgs e)
+        {
+            AddClient window = new AddClient();
+            window.Closed += AddClient_close;
+            window.Show();
+        }
 
+        private void updateClient_Click(object sender, RoutedEventArgs e)
+        {
+            client = (Client)this.mangaclientgrid.SelectedItem;
+            AddClient add = new AddClient(client);
+            add.Closed += AddClient_close;
+            add.ShowDialog();
+        }
+        private void AddClient_close(object sender, EventArgs e)
+        {
+            BillingDataDataContext db = new BillingDataDataContext();
+            var clients = (from client in db.Clients
+                           select client).ToList();
+            viewsource = (CollectionViewSource)FindResource("ClienTable");
+            viewsource.Source = clients;
+        }
        private void cloakAll()
         {
             ProfitGrid.Visibility = Visibility.Collapsed;
