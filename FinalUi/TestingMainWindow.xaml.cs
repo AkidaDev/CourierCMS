@@ -30,7 +30,7 @@ namespace FinalUi
         private void login_Click(object sender, RoutedEventArgs e)
         {
             Login window = new Login();
-            window.ShowDialog();
+            window.Show();
         }
         private void mainwindow_Click(object sender, RoutedEventArgs e)
         {

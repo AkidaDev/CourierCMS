@@ -1002,6 +1002,7 @@ namespace FinalUi
         }
         #endregion
         #endregion
+        #region QuotationFunctions
         private void ClientManageTreeView_Click(object sender, RoutedEventArgs e)
         {
         }
@@ -1061,26 +1062,115 @@ namespace FinalUi
             cloakAllGrid();
             InvoiceRuleGrid.Visibility = Visibility.Visible;
         }
+        #endregion
         #region Employee Grid Buttons
         private void ReloadEmployeeGrid_Click(object sender, RoutedEventArgs e)
         {
-            
+            DataSources.refreshEmployeeList();
+            employees = DataSources.EmployeeCopy;
         }
 
         private void EditEmployeeGrid_Click(object sender, RoutedEventArgs e)
         {
+            if (mangaEmployeegrid.SelectedItems.Count != 1)
+            {
+                MessageBox.Show("Select one employee to edit");
+                return;
+            }
+            AddEmployee addEmpWin = new AddEmployee((Employee)mangaEmployeegrid.SelectedItem);
+            addEmpWin.Closed += addEmpWin_Closed;
+            addEmpWin.ShowDialog();
+        }
 
+        void addEmpWin_Closed(object sender, EventArgs e)
+        {
+            ReloadEmployeeGrid_Click(null, null);
         }
 
         private void AddEmployeeGrid_Click(object sender, RoutedEventArgs e)
         {
-
+            AddEmployee addEmpWin = new AddEmployee();
+            addEmpWin.Closed +=addEmpWin_Closed;
+            addEmpWin.ShowDialog();
         }
 
         private void DeleteEmployeeGrid_Click(object sender, RoutedEventArgs e)
         {
-
+            if(mangaEmployeegrid.SelectedItems.Count != 1)
+            {
+                MessageBox.Show("Select 1 employee to delete");
+                return;
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this employee?","Confirm",MessageBoxButton.YesNo);
+                if(result == MessageBoxResult.Yes)
+                {
+                    BillingDataDataContext db = new BillingDataDataContext();
+                    Employee emp = db.Employees.SingleOrDefault(x=>x.EMPCode == ((Employee)mangaEmployeegrid.SelectedItem).EMPCode);
+                    db.Employees.DeleteOnSubmit(emp);
+                    db.SubmitChanges();
+                    ReloadEmployeeGrid_Click(null,null);
+                }
+            }
         }
+        #endregion
+        #region Client Grid Buttons
+        private void ReloadClientGridButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataSources.refreshClientList();
+            clients = DataSources.ClientCopy;
+        }
+
+        private void UpdateClientGridButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(mangaclientgrid.SelectedItems.Count != 1)
+            {
+                MessageBox.Show("Please select 1 client to edit.");
+                return;
+            }
+            AddClient addClientWin = new AddClient((Client)mangaclientgrid.SelectedItem);
+            addClientWin.Closed += addClientWin_Closed;
+            addClientWin.ShowDialog();
+        }
+
+        void addClientWin_Closed(object sender, EventArgs e)
+        {
+            ReloadClientGridButton_Click(null, null);
+        }
+
+        private void AddClientButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddClient addClientWin = new AddClient();
+            addClientWin.Closed +=addClientWin_Closed;
+            addClientWin.ShowDialog();
+        }
+
+        private void DeleteClientGridButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(mangaclientgrid.SelectedItems.Count != 1)
+            {
+                MessageBox.Show("Please select 1 client to delete");
+                return;
+            }
+            MessageBoxResult result = MessageBox.Show("Are you sure want to delete this client?","Confirm",MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                if (db == null)
+                    db = new BillingDataDataContext();
+                Client client = db.Clients.SingleOrDefault(x=>x.CLCODE == ((Client)mangaclientgrid.SelectedItem).CLCODE);
+                if(client == null)
+                {
+                    MessageBox.Show("No such client");
+                    return;
+                }
+                db.Clients.DeleteOnSubmit(client);
+                db.SubmitChanges();
+            }
+            ReloadClientGridButton_Click(null, null);
+        }
+        #endregion
+        #region City Grid Button
         #endregion
     }
 }

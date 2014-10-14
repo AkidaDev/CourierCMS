@@ -57,11 +57,6 @@ namespace FinalUi
                 db.SubmitChanges();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); return; }
-            if (MessageBox.Show("Do you Want Assgin Rate to this client right now ?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
-            {
-                RateWindow window = new RateWindow();
-                window.ShowDialog();
-            }
             this.Close();
         }
         public void update()
@@ -79,6 +74,7 @@ namespace FinalUi
                 db.SubmitChanges();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); return; }
+            this.Close();
         }
         public void FillField()
         {

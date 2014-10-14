@@ -12,8 +12,6 @@ namespace FinalUi
             string msg = "";
             if (instance.CLCODE == "" || instance.CLCODE == null || instance.CLCODE.Length < 3)
                 msg += "Client Code must be at least three charaters \n";
-            if(instance.CITY_NAME == "" || instance.CITY_NAME == null )
-                msg +="City name cannot be empty \n";
             if (instance.CONTACTNO == "" || instance.CONTACTNO == null || instance.CONTACTNO.Length < 8)
                 msg += "Enter correct contact number \n";
             if (instance.CLNAME == "" || instance.CLNAME == null)
