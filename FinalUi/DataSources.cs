@@ -11,6 +11,8 @@ namespace FinalUi
         static List<ZONE> _Zones;
         static List<City> _Cities;
         static List<State> _States;
+        static List<Client> _Client;
+        static List<Employee> _Employee;
         public static List<Service> ServicesCopy
         {
             get
@@ -55,6 +57,30 @@ namespace FinalUi
                 return StatesCopy;
             }
         }
+        public static List<Client> ClientCopy
+        {
+            get
+            {
+                if (_Client == null)
+                    initialize();
+                List<Client> ClientCopy = new List<Client>();
+                ClientCopy.AddRange(_Client);
+                return ClientCopy;
+            }
+        }
+        public static List<Employee> EmployeeCopy
+        {
+            get
+            {
+                if(_Employee == null)
+                {
+                    initialize();
+                }
+                List<Employee> empCopy = new List<Employee>();
+                empCopy.AddRange(_Employee);
+                return empCopy;
+            }
+        }
         public static void initialize()
         {
             BillingDataDataContext db = new BillingDataDataContext();
@@ -62,6 +88,8 @@ namespace FinalUi
             _Zones = db.ZONEs.ToList();
             _Cities = db.Cities.ToList();
             _States = db.States.ToList();
+            _Client = db.Clients.ToList();
+            _Employee = db.Employees.ToList();
         }
     }
 }

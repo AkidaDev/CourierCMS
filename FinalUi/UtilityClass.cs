@@ -276,12 +276,14 @@ namespace FinalUi
 
         internal static State getStateFromCity(string p)
         {
-            throw new NotImplementedException();
+            City city = DataSources.CityCopy.SingleOrDefault(x=>x.CITY_CODE == p);
+            return city != null ? city.State : null;
         }
 
         internal static ZONE getZoneFromCityCode(string p)
         {
-            throw new NotImplementedException();
+            City city = DataSources.CityCopy.SingleOrDefault(x => x.CITY_CODE == p);
+            return city != null ? city.ZONE1 : null;
         }
     }
 }

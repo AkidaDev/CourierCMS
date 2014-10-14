@@ -64,22 +64,17 @@ namespace FinalUi
             InitializeComponent();
             // Zone listing data import procedure
             ZoneTableSource = (CollectionViewSource)FindResource("zoneTable");
-            BillingDataDataContext db3 = new BillingDataDataContext();
-            ZoneTableSource.Source = db3.ZONEs;
+            ZoneTableSource.Source = DataSources.ZoneCopy;
             // Zone listing data import procedure
             // Client listing data import procedure
-            BillingDataDataContext db2 = new BillingDataDataContext();
             clientToEdit = new List<Client>();
-            clients = (from client in db2.Clients
-                       select client).ToList();
+            clients = DataSources.ClientCopy;
             viewsource = (CollectionViewSource)FindResource("ClienTable");
             viewsource.Source = clients;
             // Client listing data import procedure
             // Employee listing data import procedure
             employeeToEdit = new List<Employee>();
-            BillingDataDataContext db1 = new BillingDataDataContext();
-            employees = (from employee in db1.Employees
-                         select employee).ToList();
+            employees = DataSources.EmployeeCopy;
             view = (CollectionViewSource)FindResource("EmployeeTable");
             view.Source = employees;
             // Employee listing data import procedure
@@ -104,7 +99,7 @@ namespace FinalUi
             ResourceDictionary dict = this.Resources;
             InitializeComponent();
             CollectionViewSource clientCodeList = (CollectionViewSource)FindResource("ClientCodeList");
-            clientCodeList.Source = db.Clients;
+            clientCodeList.Source = DataSources.ClientCopy;
             #region DataGrid Code Lines
             dataGridSource = (CollectionViewSource)FindResource("DataGridDataContext");
             dataGridHelper = new DataGridHelper(dataGridSource);
@@ -1066,5 +1061,26 @@ namespace FinalUi
             cloakAllGrid();
             InvoiceRuleGrid.Visibility = Visibility.Visible;
         }
+        #region Employee Grid Buttons
+        private void ReloadEmployeeGrid_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void EditEmployeeGrid_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddEmployeeGrid_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteEmployeeGrid_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        #endregion
     }
 }
