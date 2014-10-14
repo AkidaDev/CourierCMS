@@ -933,7 +933,7 @@ namespace FinalUi
         private void AddRuleButton_Click(object sender, RoutedEventArgs e)
         {
             AddRule window = new AddRule(new BillingDataDataContext().Quotations.Where(x => x.CLCODE == ((Client)this.ClientCombo.SelectedItem).CLCODE).FirstOrDefault());
-            window.Closed +=addRulwWindow_Closed;
+            window.Closed += addRulwWindow_Closed;
             window.Show();
         }
 
@@ -1005,7 +1005,7 @@ namespace FinalUi
             ManageCountryDatagridPanel.Visibility = Visibility.Visible;
             CountryOptionPanel.Visibility = Visibility.Visible;
         }
-#endregion
+        #endregion
         #endregion
         private void ClientManageTreeView_Click(object sender, RoutedEventArgs e)
         {
@@ -1015,7 +1015,7 @@ namespace FinalUi
         {
 
         }
-        
+
         private void ClientCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             BillingDataDataContext db = new BillingDataDataContext();
@@ -1031,7 +1031,7 @@ namespace FinalUi
         }
         void loadQuotation(Quotation qutObj)
         {
-            if(CostingRulesSource == null)
+            if (CostingRulesSource == null)
             {
                 CostingRulesSource = (CollectionViewSource)FindResource("CostingRuleList");
             }
@@ -1040,21 +1040,31 @@ namespace FinalUi
         }
         private void cloakAllGrid()
         {
-
+            CostingRuleGrid.Visibility = Visibility.Collapsed;
+            InvoiceRuleGrid.Visibility = Visibility.Collapsed;
+            ServiceRuleGrid.Visibility = Visibility.Collapsed;
         }
         private void CostingRuleRadio_Checked_1(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                cloakAllGrid();
+                CostingRuleGrid.Visibility = Visibility.Visible;
+            }
+            catch(NullReferenceException ex)
+            { }
         }
 
         private void ServiceRuleRadio_Checked(object sender, RoutedEventArgs e)
         {
-
+            cloakAllGrid();
+            ServiceRuleGrid.Visibility = Visibility.Visible;
         }
 
         private void InvoiceRuleRadio_Checked(object sender, RoutedEventArgs e)
         {
-
+            cloakAllGrid();
+            InvoiceRuleGrid.Visibility = Visibility.Visible;
         }
     }
 }
