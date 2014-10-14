@@ -934,7 +934,7 @@ namespace FinalUi
 
         private void addRulwWindow_Closed(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+          //  throw new NotImplementedException();
         }
 
         private void DataGrid_SelectionChanged_2(object sender, SelectionChangedEventArgs e)
