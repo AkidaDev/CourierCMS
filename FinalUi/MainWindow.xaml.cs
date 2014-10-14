@@ -36,10 +36,12 @@ namespace FinalUi
         private Quotation qutObj;
         // Employee listing data import procedure
         // Client listing data import procedure
-        List<Client> clients;
         CollectionViewSource viewsource;
         List<Client> clientToEdit;
         Client client;
+        CollectionViewSource clientViewSource;
+        CollectionViewSource cityViewSource;
+
         // Client listing data import procedure
         #region initScripts
 
@@ -68,9 +70,10 @@ namespace FinalUi
             // Zone listing data import procedure
             // Client listing data import procedure
             clientToEdit = new List<Client>();
-            clients = DataSources.ClientCopy;
-            viewsource = (CollectionViewSource)FindResource("ClienTable");
-            viewsource.Source = clients;
+            clientViewSource = (CollectionViewSource)FindResource("ClienTable");
+            clientViewSource.Source = DataSources.ClientCopy;
+            cityViewSource = (CollectionViewSource)FindResource("CityTable");
+            cityViewSource.Source = DataSources.CityCopy;
             // Client listing data import procedure
             // Employee listing data import procedure
             employeeToEdit = new List<Employee>();
@@ -622,7 +625,7 @@ namespace FinalUi
 
         }
         #endregion
-        #endregion
+        #endregion*-
         #region WindowResizingMenuAndUtilities
         #region Handling Resizing
         private void SwitchWindowState()
@@ -1119,7 +1122,7 @@ namespace FinalUi
         private void ReloadClientGridButton_Click(object sender, RoutedEventArgs e)
         {
             DataSources.refreshClientList();
-            clients = DataSources.ClientCopy;
+            clientViewSource.Source = DataSources.ClientCopy;
         }
 
         private void UpdateClientGridButton_Click(object sender, RoutedEventArgs e)
@@ -1170,7 +1173,62 @@ namespace FinalUi
             ReloadClientGridButton_Click(null, null);
         }
         #endregion
+
+        private void ReloadCityButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataSources.refreshCityList();
+            cityViewSource.Source = DataSources.CityCopy;
+        }
+
+        private void EditCityButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(CityDataGrid.SelectedItems.Count != 1)
+            {
+                MessageBox.Show("Select 1 city to edit");
+                return;
+            }
+            AddCity addCityWin = new AddCity(((City)CityDataGrid.SelectedItem).CITY_CODE);
+            addCityWin.Closed += addCityWin_Closed;
+            addCityWin.ShowDialog();
+        }
+
+        void addCityWin_Closed(object sender, EventArgs e)
+        {
+            ReloadCityButton_Click(null, null);
+        }
+
+        private void AddCityButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddCity addCityWin = new AddCity();
+            addCityWin.Closed += addCityWin_Closed;
+            addCityWin.ShowDialog();
+        }
+
+        private void DeleteCityButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(CityDataGrid.SelectedItems.Count != 1)
+            {
+                MessageBox.Show("Select 1 city to delete");
+                return;
+            }
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this city?", "Confirm", MessageBoxButton.YesNo);
+            if(result == MessageBoxResult.Yes)
+            {
+                if (db == null)
+                    db = new BillingDataDataContext();
+                City city = db.Cities.SingleOrDefault(x => x.CITY_CODE == ((City)CityDataGrid.SelectedItem).CITY_CODE);
+                if(city == null)
+                {
+                    MessageBox.Show("No such city exists.");
+                    return;
+                }
+                db.Cities.DeleteOnSubmit(city);
+                db.SubmitChanges();
+            }
+            ReloadCityButton_Click(null, null);
+        }
         #region City Grid Button
+
         #endregion
     }
 }

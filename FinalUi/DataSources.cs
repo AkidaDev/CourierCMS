@@ -99,6 +99,11 @@ namespace FinalUi
 
             _Client = db.Clients.ToList();
         }
+        public static void refreshCityList()
+        {
+            BillingDataDataContext db = new BillingDataDataContext();
+            _Cities = db.Cities.ToList();
+        }
         #endregion
         public static void initialize()
         {
