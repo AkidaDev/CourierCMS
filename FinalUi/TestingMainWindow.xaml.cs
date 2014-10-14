@@ -123,7 +123,7 @@ namespace FinalUi
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            AddServiceRule window = new AddServiceRule(); window.Show();
+            AddServiceRule window = new AddServiceRule(new BillingDataDataContext().Quotations.Where(x => x.CLCODE == "123").FirstOrDefault()); window.Show();
         }
 
     }

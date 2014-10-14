@@ -13,6 +13,9 @@
         <CollectionViewSource x:Key="ProfitabilityGridDataSource" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="ClientCodeList" CollectionViewType="{x:Type ListCollectionView}"/>
         <CollectionViewSource x:Key="DataGridDataContext" CollectionViewType="{x:Type ListCollectionView}"/>
+        <CollectionViewSource x:Key="ServiceRuleList" CollectionViewType="{x:Type ListCollectionView}"/>
+        <CollectionViewSource x:Key="CostingRuleList" CollectionViewType="{x:Type ListCollectionView}" />
+        <CollectionViewSource x:Key="InvoiceRuleList" CollectionViewType="{x:Type ListCollectionView}" />
     </Window.Resources>
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Open" Executed="Open_Executed" CanExecute="OpenCommand_CanExecute"/>
@@ -386,6 +389,13 @@
                             </TreeViewItem>
                             <TreeViewItem>
                                 <TreeViewItem.Header>
+                                    <Button Style="{StaticResource 1}" Name="ManageClientsTreeView" Click="ClientManageTreeView_Click">
+                                        <TextBlock Text="Manage Clients" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri" Width="195"/>
+                                    </Button>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
                                     <Button Style="{StaticResource 1}" Name="ClientQuotationTreeView" Click="ClientQuotationTreeView_Selected">
                                         <TextBlock  Text="Client Quotation" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri" Width="195"/>
                                     </Button>
@@ -430,27 +440,6 @@
                                 <TreeViewItem.Header>
                                     <Button Style="{StaticResource 1}" Name="clienttreeviewitembutton" Click="clienttreeviewitembutton_Click">
                                         <TextBlock Text="Client" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri" Width="195"/>
-                                    </Button>
-                                </TreeViewItem.Header>
-                            </TreeViewItem>
-                            <TreeViewItem Margin="0,2,0,2">
-                                <TreeViewItem.Header>
-                                    <Button Style="{StaticResource 1}" Name="clienttarifftreeviewitembutton" Click="clienttarifftreeviewitembutton_Click">
-                                        <TextBlock Text="Client Tariff" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri" Width="195"/>
-                                    </Button>
-                                </TreeViewItem.Header>
-                            </TreeViewItem>
-                            <TreeViewItem Margin="0,2,0,2">
-                                <TreeViewItem.Header>
-                                    <Button Style="{StaticResource 1}" Name="forwardertarifftreeviewitembutton" Click="forwardertarifftreeviewitembutton_Click">
-                                        <TextBlock Text="Forwarder Tariff" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri" Width="195"/>
-                                    </Button>
-                                </TreeViewItem.Header>
-                            </TreeViewItem>
-                            <TreeViewItem Margin="0,2,0,2">
-                                <TreeViewItem.Header>
-                                    <Button Style="{StaticResource 1}" Name="servicetaxtreeviewitembutton" Click="servicetaxtreeviewitembutton_Click">
-                                        <TextBlock Text="Service Tax" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri" Width="195"/>
                                     </Button>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
@@ -585,9 +574,9 @@
                         <Grid Grid.Row="0" Height="70" Background="#A9FFFFF3" Margin="0 0 0 6" >
                             <WrapPanel VerticalAlignment="Center" Margin="-4,24,4,24">
                                 <TextBlock Foreground="#FF5B5B5B" Text=" Select Type of RULE  .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="8 0 0 0" TextDecorations="Underline"/>
-                                <RadioButton Foreground="#FF5B5B5B" IsChecked="True" Content="Costing Rule" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
-                                <RadioButton Foreground="#FF5B5B5B" Content="Service Rule" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
-                                <RadioButton Foreground="#FF5B5B5B" Content="Invoice Rule" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
+                                <RadioButton Foreground="#FF5B5B5B" IsChecked="True" Name="CostingRuleRadio"  Content="Costing Rule" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
+                                <RadioButton Foreground="#FF5B5B5B" Content="Service Rule" Name="ServiceRuleRadio"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
+                                <RadioButton Foreground="#FF5B5B5B" Content="Invoice Rule" Name="InvoiceRuleRadio" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
                                 <Button Content="AddRule" Name="AddRuleButton" Click="AddRuleButton_Click" Margin="40 0 0 0"/>                                
                             </WrapPanel>
                         </Grid>
@@ -596,6 +585,7 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Dox/NonDox"/>
                                 <DataGridTextColumn Header="Zone"/>
+                                <DataGridTextColumn Header="x"/>
                                 <DataGridTextColumn Header=""/>
                                 <DataGridTextColumn Header=""/>
                                 <DataGridTextColumn Header=""/>
@@ -623,7 +613,7 @@
                                 <DataGridTextColumn Header=""/>
                             </DataGrid.Columns>
                         </DataGrid>
-                        <DataGrid  Name="InvoiceRuleGrid" Grid.Row="1" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
+                        <DataGrid  Name="InvoiceRuleGrid" Grid.Row="1" ItemsSource="{Binding}" DataContext="{StaticResource InvoiceRuleList}" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
                                   AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2"  >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="StartWieght"/>
