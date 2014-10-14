@@ -33,6 +33,7 @@
                     <RadioButton Name="WholeRadio" IsChecked="True" Content="Whole" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
                     <RadioButton IsChecked="True" Name="StepRadio"  Content="Step" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 37 0"/>
                     <TextBox BorderThickness="2" Name="StepBox"  Visibility="Visible" Height="26" Width="81" Padding="3 3 0 0" />
+                    <TextBox BorderThickness="2" Name="AmountBox"  Visibility="Visible" Height="26" Width="81" Padding="3 3 0 0" />
                 </WrapPanel>
                 <WrapPanel Canvas.Left="150" Canvas.Top="165">
                     <TextBlock Text=" Change  .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="8 0 0 0"/>
@@ -46,7 +47,7 @@
                 </WrapPanel>
                 <WrapPanel Canvas.Left="150" Canvas.Top="230">
                     <TextBlock Text=" Applicable On  .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="8 0 0 0"/>
-                    <RadioButton IsChecked="True" Content="Compound " FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
+                    <RadioButton IsChecked="True" Name="CompoundRadio" Content="Compound " FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
                     <RadioButton Content="Original Amount " FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
                 </WrapPanel>
             </Canvas>

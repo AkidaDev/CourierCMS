@@ -89,12 +89,14 @@ namespace FinalUi
             dt.Destination = destination;
             dt.Type = serviceCode;
             dt.DOX = DOX;
+            dt.FrAmount = cost;
             return applyServiceRulesOnTransaction(dt);
         }
         public double applyServiceRulesOnTransaction(RuntimeData trans)
         {
             double price = 0;
             List<ServiceRule> RulesApplied = serviceRules.Where(x => x.startW <= trans.BilledWeight && x.endW >= trans.BilledWeight).ToList();
+
             if (RulesApplied.Where(x => x.CityList.Contains(trans.Destination)).Count() > 0)
             {
                 RulesApplied = RulesApplied.Where(x => x.CityList.Contains(trans.Destination)).ToList();
@@ -115,6 +117,13 @@ namespace FinalUi
                     }
                 }
             }
+            RulesApplied.Where(x => x.applicable == 'o').ToList().ForEach((x) =>
+                { 
+                    if(x.type == 's')
+                    {
+
+                    }
+                });
             return price;
         }
     }
