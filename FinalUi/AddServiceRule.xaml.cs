@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 namespace FinalUi
 {
     /// <summary>
-    /// Interaction logic for AddServiceRule.xaml
+    /// Interaction logic for AddServiceRule.xamleee
     /// </summary>
     public partial class AddServiceRule : Window
     {
@@ -103,6 +103,15 @@ namespace FinalUi
             {
                 mode = 'P';
             }else mode = 'A';
+            char applicable;
+            if (CompoundRadio.IsChecked == true)
+            {
+                applicable = 'C';
+            }
+            else
+            {
+                applicable =  'O';
+            }
             
             if (errorMsg != "")
             {
@@ -124,6 +133,7 @@ namespace FinalUi
             RuleSR.change = change;
             RuleSR.mode = mode;
             RuleSR.step = stepweight;
+            RuleSR.applicable = applicable;
             JavaScriptSerializer js = new JavaScriptSerializer();
             string serialized = js.Serialize(RuleSR);
             Rule r = new Rule();
