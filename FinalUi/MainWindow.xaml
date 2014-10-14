@@ -626,14 +626,14 @@
                         <DataGrid  Name="InvoiceRuleGrid" Grid.Row="1" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
                                   AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2"  >
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Dox/NonDox"/>
-                                <DataGridTextColumn Header="Zone"/>
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header=""/>
+                                <DataGridTextColumn Header="StartWieght"/>
+                                <DataGridTextColumn Header="EndWeight"/>
+                                <DataGridTextColumn Header="DOX"/>
+                                <DataGridTextColumn Header="NDOX"/>
+                                <DataGridTextColumn Header="Type"/>
+                                <DataGridTextColumn Header="StepWeight"/>
+                                <DataGridTextColumn Header="NStart"/>
+                                <DataGridTextColumn Header="DStart"/>
                                 <DataGridTextColumn Header=""/>
                                 <DataGridTextColumn Header=""/>
                                 <DataGridTextColumn Header=""/>
