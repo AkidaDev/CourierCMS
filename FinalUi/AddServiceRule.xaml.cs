@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 namespace FinalUi
 {
     /// <summary>
-    /// Interaction logic for AddServiceRule.xaml
+    /// Interaction logic for AddServiceRule.xamleee
     /// </summary>
     public partial class AddServiceRule : Window
     {
