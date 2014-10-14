@@ -53,7 +53,7 @@ namespace FinalUi
             ToWeightBox.Text = RuleCR.endW.ToString();
             DOXAmountBox.Text = RuleCR.doxAmount.ToString();
             NDoxAmountBox.Text = RuleCR.ndoxAmount.ToString();
-            if (RuleCR.Type == 'R')
+            if (RuleCR.type == 'R')
             {
                 RangeTypeRadio.IsChecked = true;
                 StepTypeRadio.IsChecked = false;
@@ -167,7 +167,7 @@ namespace FinalUi
             RuleCR.StateList = selectedStateList;
             RuleCR.startW = startW;
             RuleCR.endW = endW;
-            RuleCR.Type = type;
+            RuleCR.type = type;
             RuleCR.doxAmount = doxAmount;
             RuleCR.ndoxAmount = ndoxAmount;
             RuleCR.stepWeight = stepweight;
@@ -296,6 +296,35 @@ namespace FinalUi
                 Next.Visibility = Visibility.Visible;
                 AddRuleButton.Visibility = Visibility.Collapsed;
             }
+        }
+    
+        private void StepTypeRadio_Checked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                StepWeightBlock.Visibility = Visibility.Visible;
+                StepBlockBox.Visibility = Visibility.Visible;
+                NDoxStartValueBox.Visibility = Visibility.Visible;
+                DoxStartValue.Visibility = Visibility.Visible;
+                DoxStartValueBox.Visibility = Visibility.Visible;
+                NDoxStartValue.Visibility = Visibility.Visible;
+            }
+            catch(NullReferenceException ex)
+            {
+                
+            }
+        }
+
+        private void RangeTypeRadio_Checked(object sender, RoutedEventArgs e)
+        {
+
+            StepWeightBlock.Visibility = Visibility.Collapsed;
+            StepBlockBox.Visibility = Visibility.Collapsed;
+            NDoxStartValueBox.Visibility = Visibility.Collapsed;
+            DoxStartValue.Visibility = Visibility.Collapsed;
+            DoxStartValueBox.Visibility = Visibility.Collapsed;
+            NDoxStartValue.Visibility = Visibility.Collapsed;
         }
     }
 }

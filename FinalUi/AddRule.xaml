@@ -30,25 +30,25 @@
                 </Canvas>
                 <Canvas Canvas.Left="10" Canvas.Top="15">
                     <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Canvas.Left="392" Canvas.Top="113" Width="3"/>
-                    <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="191" Text="DOX Amount .:" Canvas.Top="122"/>
+                    <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="189" Text="DOX Amount .:" Canvas.Top="122"/>
                     <TextBox Name="DOXAmountBox" BorderThickness="2" Height="26" Canvas.Left="305" Canvas.Top="116" Width="81" Padding="3 3 0 0"/>
                     <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="411" Text="NonDox Amount .:" Canvas.Top="122"/>
                     <TextBox Name="NDoxAmountBox" BorderThickness="2" Height="26" Canvas.Left="552" Canvas.Top="116" Width="81" Padding="3 3 0 0" TextChanged="TextBox_TextChanged"/>
                 </Canvas>
                 <Canvas Canvas.Top="75" Canvas.Left="180">
                     <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="80" Text="Type .:" Canvas.Top="90"/>
-                    <RadioButton Name="StepTypeRadio" GroupName="TypeRadioGroup" IsChecked="True" Content="Step" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="135" Canvas.Top="95" Padding="5 -5 0 0" Checked="RadioButton_Checked" />
-                    <RadioButton Name="RangeTypeRadio" GroupName="TypeRadioGroup" Content="Range" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="135" Canvas.Top="114" Padding="5 -5 0 0" Margin=" 0 3 0 0"/>
-                    <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="255" Text="Step .:" Canvas.Top="100"/>
+                    <RadioButton Checked="StepTypeRadio_Checked" Name="StepTypeRadio" GroupName="TypeRadioGroup" IsChecked="True" Content="Step" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="135" Canvas.Top="95" Padding="5 -5 0 0"  />
+                    <RadioButton Checked="RangeTypeRadio_Checked" Name="RangeTypeRadio" GroupName="TypeRadioGroup" Content="Range" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="135" Canvas.Top="114" Padding="5 -5 0 0" Margin=" 0 3 0 0"/>
+                    <TextBlock Name="StepWeightBlock" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="255" Text="Step .:" Canvas.Top="100"/>
                     <TextBox Name="StepBlockBox" BorderThickness="2" Height="26" Canvas.Left="305" Canvas.Top="95" Width="81" Padding="3 3 0 0"/>
                 </Canvas>
                 <Canvas Canvas.Left="10" Canvas.Top="100">
                     <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Canvas.Left="392" Canvas.Top="113" Width="3"/>
-                    <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="158" Text="Start Value NDOX .:" Canvas.Top="122"/>
-                    <TextBox Name="NDoxStartValueBox" BorderThickness="2" Height="26" Canvas.Left="305" Canvas.Top="116" Width="81" Padding="3 3 0 0"/>
-                    <TextBlock Name="DoxStartValue" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="413" Text="Start Value DOX .:" Canvas.Top="122"/>
-                    <TextBox Name="DoxStartValueBox" BorderThickness="2" Height="26" Canvas.Left="548" Canvas.Top="116" Width="81" Padding="3 3 0 0" TextChanged="TextBox_TextChanged"/>
-                </Canvas>
+                    <TextBlock Name="NDoxStartValue" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="168" Text="Start Value DOX .:" Canvas.Top="122"/>
+                    <TextBox Name="DoxStartValueBox" BorderThickness="2" Height="26" Canvas.Left="305" Canvas.Top="116" Width="81" Padding="3 3 0 0" TextChanged="TextBox_TextChanged"/>
+                    <TextBox Name="NDoxStartValueBox" BorderThickness="2" Height="26" Canvas.Left="562" Canvas.Top="116" Width="81" Padding="3 3 0 0"/>
+                    <TextBlock Name="DoxStartValue" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="413" Text="Start Value NDOX .:" Canvas.Top="122"/>
+                    </Canvas>
             </Canvas>
 
 

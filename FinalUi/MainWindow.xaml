@@ -11,11 +11,11 @@
         <CollectionViewSource x:Key="CityTable" CollectionViewType="ListCollectionView" />
         <CollectionViewSource x:Key="DueGridDataSource" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="ProfitabilityGridDataSource" CollectionViewType="ListCollectionView"/>
-        <CollectionViewSource x:Key="ClientCodeList" CollectionViewType="{x:Type ListCollectionView}"/>
-        <CollectionViewSource x:Key="DataGridDataContext" CollectionViewType="{x:Type ListCollectionView}"/>
-        <CollectionViewSource x:Key="ServiceRuleList" CollectionViewType="{x:Type ListCollectionView}"/>
-        <CollectionViewSource x:Key="CostingRuleList" CollectionViewType="{x:Type ListCollectionView}" />
-        <CollectionViewSource x:Key="InvoiceRuleList" CollectionViewType="{x:Type ListCollectionView}" />
+        <CollectionViewSource x:Key="ClientCodeList" CollectionViewType="ListCollectionView"/>
+        <CollectionViewSource x:Key="DataGridDataContext" CollectionViewType="ListCollectionView"/>
+        <CollectionViewSource x:Key="ServiceRuleList" CollectionViewType="ListCollectionView"/>
+        <CollectionViewSource x:Key="CostingRuleList" CollectionViewType="ListCollectionView" />
+        <CollectionViewSource x:Key="InvoiceRuleList" CollectionViewType="ListCollectionView" />
     </Window.Resources>
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Open" Executed="Open_Executed" CanExecute="OpenCommand_CanExecute"/>
@@ -94,11 +94,11 @@
                     </Button>
                 </WrapPanel>
             </Grid>
-            
+
             <DockPanel Grid.Row="1" Height="26">
                 <!-- Empty space for future implementation-->
             </DockPanel>
-            
+
             <DockPanel Grid.Row="2" Height="34">
                 <Grid Margin="0,1,0,0">
                     <Grid.ColumnDefinitions>
@@ -169,7 +169,7 @@
                         <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
                         <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
                     </Grid>
-                    
+
                     <Grid Visibility="Collapsed" Name="CityOptionPanel" Grid.Column="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -202,7 +202,7 @@
                         <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
                         <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
                     </Grid>
-                    
+
                     <Grid Visibility="Collapsed" Name="ZoneOptionPanel" Grid.Column="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -235,7 +235,7 @@
                         <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
                         <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
                     </Grid>
-                    
+
                     <Grid Visibility="Collapsed" Name="CountryOptionPanel" Grid.Column="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -268,8 +268,8 @@
                         <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
                         <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
                     </Grid>
-                    
-                    
+
+
                     <Grid Visibility="Collapsed" Name="ClientReportOptionPanel" Grid.Column="1">
                         <!-- Client Report Option Panel -->
                     </Grid>
@@ -289,7 +289,7 @@
                             <Path Margin="6 0 0 0" Data="F1M7.006,17.756C8.089,18.341 9.324,18.675 10.635,18.675 11.947,18.675 13.183,18.341 14.264,17.756 16.602,18.374 18.432,19.843 19.272,23 19.272,23 2,23 2,23 2.839,19.843 4.67,18.375 7.006,17.756z M22.992,14.925C25.33,15.543 27.161,17.011 28,20.168 28,20.168 19.469,20.168 19.469,20.168 18.486,18.463 17.033,17.311 15.075,16.685 15.597,16.276 16.061,15.798 16.456,15.264 17.354,15.635 18.334,15.843 19.363,15.843 20.674,15.843 21.911,15.51 22.992,14.925z M6.639,12.72C7.558,14.518 9.136,15.706 10.928,15.706 12.722,15.706 14.298,14.518 15.217,12.72 15.217,12.72 6.639,12.72 6.639,12.72z M10.635,4.831C13.958,4.831 16.649,7.548 16.649,10.899 16.649,14.252 13.958,16.968 10.635,16.968 7.313,16.968 4.621,14.252 4.621,10.899 4.621,7.548 7.313,4.831 10.635,4.831z M19.363,2C22.685,2 25.377,4.717 25.377,8.068 25.377,11.421 22.685,14.137 19.363,14.137 18.642,14.137 17.954,14.003 17.313,13.768 17.499,13.331 17.641,12.872 17.74,12.396 18.332,12.704 18.979,12.874 19.656,12.874 21.449,12.874 23.026,11.686 23.944,9.888 23.944,9.888 17.819,9.888 17.819,9.888 17.513,7.667 16.22,5.766 14.398,4.645 15.482,3.049 17.3,2 19.363,2z" Fill="Black" Height="19" Canvas.Left="16" Canvas.Top="188.46" Width="23" Stretch="Fill"/>
                             <TextBlock Text="Client Quotation" Margin="8 0 6 0" FontSize="16" Padding="1 3 1 0.5"/>
                         </WrapPanel>
-                        <ComboBox FontSize="14" Margin="10 0 0 0" MinWidth="200" Name="ClientCombo" Height="27" MaxWidth="400" Grid.Row="0" Grid.Column="1" ItemsSource="{Binding}" DataContext="{StaticResource ClientCodeList}" >
+                        <ComboBox FontSize="14" Margin="10 0 0 0" MinWidth="200" Name="ClientCombo" Height="27" MaxWidth="400" Grid.Row="0" Grid.Column="1" ItemsSource="{Binding}" DataContext="{StaticResource ClientCodeList}" SelectionChanged="ClientCombo_SelectionChanged" >
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock>
@@ -320,8 +320,8 @@
                         <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
                         <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="5" HorizontalAlignment="Right"/>
                     </Grid>
-                    
-                    
+
+
                     <Grid Visibility="Collapsed" Name="DataEntryOptionPanel" Grid.Column="1" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -468,7 +468,7 @@
                     </TreeView>
                     <Path Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Black" Height="4" HorizontalAlignment="Left" Margin="15,6,0,0"  Width="194"/>
                 </StackPanel>
-                
+
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="211*"/>
@@ -533,8 +533,8 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
-                    
-               <Grid Grid.Row="0" Name="ProfitGrid" Margin="6 0 0 0" Visibility="Collapsed">
+
+                    <Grid Grid.Row="0" Name="ProfitGrid" Margin="6 0 0 0" Visibility="Collapsed">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="200*"/>
@@ -564,8 +564,8 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
-                    
-                    
+
+
                     <Grid Grid.Row="0" Margin="6 0 0 0"  Name="RuleGrid" Visibility="Visible">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -574,18 +574,35 @@
                         <Grid Grid.Row="0" Height="70" Background="#A9FFFFF3" Margin="0 0 0 6" >
                             <WrapPanel VerticalAlignment="Center" Margin="-4,24,4,24">
                                 <TextBlock Foreground="#FF5B5B5B" Text=" Select Type of RULE  .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="8 0 0 0" TextDecorations="Underline"/>
-                                <RadioButton Foreground="#FF5B5B5B" IsChecked="True" Name="CostingRuleRadio"  Content="Costing Rule" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
-                                <RadioButton Foreground="#FF5B5B5B" Content="Service Rule" Name="ServiceRuleRadio"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
-                                <RadioButton Foreground="#FF5B5B5B" Content="Invoice Rule" Name="InvoiceRuleRadio" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
-                                <Button Content="AddRule" Name="AddRuleButton" Click="AddRuleButton_Click" Margin="40 0 0 0"/>                                
+                                <RadioButton Foreground="#FF5B5B5B" IsChecked="True" Name="CostingRuleRadio"  Content="Costing Rule" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0" Checked="CostingRuleRadio_Checked_1"/>
+                                <RadioButton Checked="ServiceRuleRadio_Checked" Foreground="#FF5B5B5B" Content="Service Rule" Name="ServiceRuleRadio"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
+                                <RadioButton Checked="InvoiceRuleRadio_Checked" Foreground="#FF5B5B5B" Content="Invoice Rule" Name="InvoiceRuleRadio" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
+                                <Button Content="AddRule" Name="AddRuleButton" Click="AddRuleButton_Click" Margin="40 0 0 0"/>
                             </WrapPanel>
                         </Grid>
-                        <DataGrid  Name="CostingRuleGrid" Grid.Row="1" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
+                        <DataGrid  
+                            DataContext="{StaticResource CostingRuleList}" ItemsSource="{Binding}"
+                            Name="CostingRuleGrid" Grid.Row="1" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
+                                  AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2"  >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Range(Kg)" Binding="{Binding range}"/>
+                                <DataGridTextColumn Header="Dox(Rs)" Binding="{Binding doxAmount}"/>
+                                <DataGridTextColumn Header="NDox(Rs)" Binding="{Binding ndoxAmount}"/>
+                                <DataGridTextColumn Header="Type" Binding="{Binding type}"/>
+                                <DataGridTextColumn Header="Step(Kg)" Binding="{Binding StepS}"/>
+                                <DataGridTextColumn Header="DStart(Rs)" Binding="{Binding DoxStartS}"/>
+                                <DataGridTextColumn Header="NStart(Rs)" Binding="{Binding nDoxStartS}"/>
+                                <DataGridTextColumn Header="Services" Binding="{Binding serviceCount}"/>
+                                <DataGridTextColumn Header="Cities" Binding="{Binding CityCount}"/>
+                                <DataGridTextColumn Header="States" Binding="{Binding StateCount}"/>
+                                <DataGridTextColumn Header="Zones" Binding="{Binding zoneCount}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <DataGrid Visibility="Collapsed" Name="ServiceRuleGrid" Grid.Row="1" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
                                   AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2"  >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Dox/NonDox"/>
                                 <DataGridTextColumn Header="Zone"/>
-                                <DataGridTextColumn Header="x"/>
                                 <DataGridTextColumn Header=""/>
                                 <DataGridTextColumn Header=""/>
                                 <DataGridTextColumn Header=""/>
@@ -597,23 +614,7 @@
                                 <DataGridTextColumn Header=""/>
                             </DataGrid.Columns>
                         </DataGrid>
-                        <DataGrid  Name="ServiceRuleGrid" Grid.Row="1" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
-                                  AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2"  >
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Dox/NonDox"/>
-                                <DataGridTextColumn Header="Zone"/>
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header=""/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                        <DataGrid  Name="InvoiceRuleGrid" Grid.Row="1" ItemsSource="{Binding}" DataContext="{StaticResource InvoiceRuleList}" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
+                        <DataGrid Visibility="Collapsed" Name="InvoiceRuleGrid" Grid.Row="1" ItemsSource="{Binding}" DataContext="{StaticResource InvoiceRuleList}" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
                                   AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2"  >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="StartWieght"/>
@@ -630,9 +631,9 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
-                    
-                    
-                    <DockPanel Grid.Row="0" Margin="6 0 0 0" Name="DataDockPanel">
+
+
+                    <DockPanel Grid.Row="0" Margin="6 0 0 0" Name="DataDockPanel" Visibility="Collapsed">
                         <DockPanel.Resources>
                             <Style TargetType="{x:Type DataGridCell}">
                                 <Setter Property="BorderThickness" Value="0"/>
@@ -647,7 +648,7 @@
                                 </Style.Triggers>
                             </Style>
                         </DockPanel.Resources>
-                        <DataGrid Visibility="Collapsed" DockPanel.Dock="Top" RowHeaderWidth="0" IsReadOnly="True" x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False"  ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True"  >
+                        <DataGrid DockPanel.Dock="Top" RowHeaderWidth="0" IsReadOnly="True" x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False"  ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True"  >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ConnsignmentNo" Binding="{Binding ConsignmentNo}"/>
                                 <DataGridTextColumn Header="Weight" Binding="{Binding Weight}"/>
@@ -683,11 +684,11 @@
                             </DataGrid.RowDetailsTemplate>
                         </DataGrid>
                     </DockPanel>
-                    
-                    
-                    <DockPanel Visibility="Collapsed" x:Name="DataGridOptionpanel" Grid.Row="1" Margin="6 0 0 0" Height="29">
-                        <WrapPanel x:Name="buttontabcanvaswrap" Margin="9,1,0,0" />
-                        <WrapPanel Name="NavigationBar" HorizontalAlignment="Right">
+
+
+                    <DockPanel x:Name="DataGridOptionpanel" Grid.Row="1" Margin="6 0 0 0" Height="29">
+                        <WrapPanel Visibility="Collapsed" x:Name="buttontabcanvaswrap" Margin="9,1,0,0" />
+                        <WrapPanel Visibility="Collapsed" Name="NavigationBar" HorizontalAlignment="Right">
                             <Button ToolTip="First Page" Style="{StaticResource smallbutton}" x:Name="DataGridFirstPage" Margin="2,2,5,2" Click="DataGridFirstPage_Click" >
                                 <Path x:Name="way_back" Data="F1M10.721,7C10.721,7 10.721,10.625 10.721,10.625 10.721,10.625 15,7 15,7 15,7 15,15 15,15 15,15 10.721,11.375 10.721,11.375 10.721,11.375 10.721,15 10.721,15 10.721,15 6,11 6,11 6,11 10.721,7 10.721,7z M11,3C6.6,3 3,6.6 3,11 3,15.4 6.6,19 11,19 15.4,19 19,15.4 19,11 19,6.6 15.4,3 11,3z M11,1C16.5,1 21,5.5 21,11 21,16.5 16.5,21 11,21 5.5,21 1,16.5 1,11 1,5.5 5.5,1 11,1z" Fill="#FF40445F" Height="22" Width="22"/>
                             </Button>
@@ -709,8 +710,8 @@
                             <TextBox ToolTip="No. of Rows" x:Name="DataGridNumOfRows" Width="30" Margin="3,0,11,0" Height="20" Text="{Binding rowsPerPage, Mode=TwoWay}" FontFamily="Segoe UI Semibold" TextAlignment="Center" BorderBrush="#FF7676FF"/>
                         </WrapPanel>
                     </DockPanel>
-                    
-                    
+
+
                     <DockPanel Grid.Row="3" Margin="6 0 0 0">
                         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                             <TextBlock Text="Log..." x:Name="MessageBlock" Background="White" Margin="0,0,0,0" />

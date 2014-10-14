@@ -32,6 +32,8 @@ namespace FinalUi
         public List<Employee> employeeToEdit;
         public List<Employee> employees;
         private CollectionViewSource view;
+        private List<CostingRule> costingRules;
+        private Quotation qutObj;
         // Employee listing data import procedure
         // Client listing data import procedure
         List<Client> clients;
@@ -45,7 +47,7 @@ namespace FinalUi
         CollectionViewSource profitDataGridSource;
         #endregion
         #region Global Objects
-		DataGridHelper dataGridHelper;
+        DataGridHelper dataGridHelper;
         CollectionViewSource dataGridSource;
         Dictionary<Button, int> buttonList;
         Button activeButton;
@@ -53,6 +55,7 @@ namespace FinalUi
         BackgroundWorker SaveWorker;
         BackgroundWorker DeleteSheetWorker;
         BillingDataDataContext db;
+        CollectionViewSource CostingRulesSource;
 
         #endregion
         public MainWindow()
@@ -124,7 +127,7 @@ namespace FinalUi
 
             CommandBinding DeleteCommandBinding = new CommandBinding(DeleteCommand, DeleteCommandExecuted, DeleteCommand_CanExecute);
             this.CommandBindings.Add(DeleteCommandBinding);
-            CommandBinding NewSheetCommandBinding = new CommandBinding(NewSheetCommand, NewSheetCommandExecuted, NewSheetCommand_CanExecute );
+            CommandBinding NewSheetCommandBinding = new CommandBinding(NewSheetCommand, NewSheetCommandExecuted, NewSheetCommand_CanExecute);
             NewSheetCommand.InputGestures.Add(new KeyGesture(Key.N, ModifierKeys.Control));
             NewSheetButton.Command = NewSheetMenuItem.Command = NewSheetCommand;
             this.CommandBindings.Add(NewSheetCommandBinding);
@@ -133,7 +136,7 @@ namespace FinalUi
             List<int> sheets = db.RuntimeDatas.Where(y => y.UserId == SecurityModule.currentUserName).Select(x => x.SheetNo).Distinct().ToList();
             foreach (int sheet in sheets)
             {
-                List<RuntimeData> runtimeData = db.RuntimeDatas.Where(x=>x.UserId == SecurityModule.currentUserName && x.SheetNo == sheet).OrderBy(x => x.BookingDate).ThenBy(z => z.ConsignmentNo).ToList(); ;
+                List<RuntimeData> runtimeData = db.RuntimeDatas.Where(x => x.UserId == SecurityModule.currentUserName && x.SheetNo == sheet).OrderBy(x => x.BookingDate).ThenBy(z => z.ConsignmentNo).ToList(); ;
                 dataGridHelper.addNewSheet(runtimeData, "sheet " + sheet.ToString());
                 addingNewPage(sheet);
             }
@@ -153,11 +156,13 @@ namespace FinalUi
                 this.ManageEmployeeMenuItem.Visibility = Visibility.Collapsed;
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "ManageClient"))
                 this.ManageClient.Visibility = Visibility.Collapsed;
-            if(!SecurityModule.hasPermission(SecurityModule.employee.Id, "Print"))
+            if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "Print"))
             {
                 this.PrintButton.Visibility = this.PrintMenuItem.Visibility = this.AfterPrint.Visibility = Visibility.Collapsed;
             }
+            costingRules = new List<CostingRule>();
         }
+        #region DataEntrySection
         #region backGround Worker Functions
         #region LoadWorker
         void LoadWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -238,7 +243,7 @@ namespace FinalUi
         RoutedCommand NewSheetCommand = new RoutedCommand();
         private void NewSheetCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            int key = this.dataGridHelper.addNewSheet(new List<RuntimeData>(),"");
+            int key = this.dataGridHelper.addNewSheet(new List<RuntimeData>(), "");
             addingNewPage(key);
             cloakAll();
             DataDockPanel.Visibility = Visibility.Visible;
@@ -253,13 +258,13 @@ namespace FinalUi
             {
                 e.CanExecute = false;
             }
-            else 
+            else
             {
                 e.CanExecute = true;
             }
-            
+
         }
-#endregion
+        #endregion
         #region SanitizingCommand
         public RoutedCommand SanitizingCommand = new RoutedCommand();
         private void CanExecuteSanitizingCommand(object sender, CanExecuteRoutedEventArgs e)
@@ -316,10 +321,10 @@ namespace FinalUi
 
         private void ExecutePrint(object sender, ExecutedRoutedEventArgs e)
         {
-            
+
             List<RuntimeData> cData = dataGridHelper.getCurrentDataStack;
             PrintWindow win = new PrintWindow(cData, cData.Select(x => x.BookingDate).Max(), cData.Select(x => x.BookingDate).Min());
-           win.Show();
+            win.Show();
         }
         private void CanExecutePrintCommand(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -622,6 +627,8 @@ namespace FinalUi
 
         }
         #endregion
+        #endregion
+        #region WindowResizingMenuAndUtilities
         #region Handling Resizing
         private void SwitchWindowState()
         {
@@ -857,7 +864,7 @@ namespace FinalUi
         {
             StockWindow window = new StockWindow(); window.Show();
         }
-		private void ClientReport_Click(object sender, RoutedEventArgs e)
+        private void ClientReport_Click(object sender, RoutedEventArgs e)
         {
             ClientReportWindow window = new ClientReportWindow(); window.ShowDialog();
         }
@@ -900,7 +907,8 @@ namespace FinalUi
             viewsource = (CollectionViewSource)FindResource("ClienTable");
             viewsource.Source = clients;
         }
-       private void cloakAll()
+        #region sidepanel
+        private void cloakAll()
         {
             ProfitGrid.Visibility = Visibility.Collapsed;
             RuleGrid.Visibility = Visibility.Collapsed;
@@ -921,11 +929,17 @@ namespace FinalUi
             ManageCountryDatagridPanel.Visibility = Visibility.Collapsed;
             CountryOptionPanel.Visibility = Visibility.Collapsed;
         }
-      
+
         private void AddRuleButton_Click(object sender, RoutedEventArgs e)
         {
-            AddRule window = new AddRule(new BillingDataDataContext().Quotations.Where(x =>x.CLCODE == ((Client)this.ClientCombo.SelectedItem).CLCODE).FirstOrDefault());
+            AddRule window = new AddRule(new BillingDataDataContext().Quotations.Where(x => x.CLCODE == ((Client)this.ClientCombo.SelectedItem).CLCODE).FirstOrDefault());
+            window.Closed +=addRulwWindow_Closed;
             window.Show();
+        }
+
+        private void addRulwWindow_Closed(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void DataGrid_SelectionChanged_2(object sender, SelectionChangedEventArgs e)
@@ -991,11 +1005,54 @@ namespace FinalUi
             ManageCountryDatagridPanel.Visibility = Visibility.Visible;
             CountryOptionPanel.Visibility = Visibility.Visible;
         }
+#endregion
+        #endregion
         private void ClientManageTreeView_Click(object sender, RoutedEventArgs e)
         {
         }
 
         private void CostingRuleRadio_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+        
+        private void ClientCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            BillingDataDataContext db = new BillingDataDataContext();
+            qutObj = db.Quotations.SingleOrDefault(x => x.CLCODE == ((Client)((ComboBox)sender).SelectedItem).CLCODE);
+            if (qutObj == null)
+            {
+                MessageBox.Show("No quotation associated with this client");
+            }
+            else
+            {
+                loadQuotation(qutObj);
+            }
+        }
+        void loadQuotation(Quotation qutObj)
+        {
+            if(CostingRulesSource == null)
+            {
+                CostingRulesSource = (CollectionViewSource)FindResource("CostingRuleList");
+            }
+            CostingRulesSource.Source = qutObj.CostingRules;
+
+        }
+        private void cloakAllGrid()
+        {
+
+        }
+        private void CostingRuleRadio_Checked_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ServiceRuleRadio_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void InvoiceRuleRadio_Checked(object sender, RoutedEventArgs e)
         {
 
         }

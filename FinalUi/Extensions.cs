@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web.Script.Serialization;
 
 namespace FinalUi
 {
@@ -54,17 +55,27 @@ namespace FinalUi
                 if (price < trans.FrAmount)
                 {
                     price = (decimal)trans.FrAmount;
-                    lastCostingRuleApplied = x;
+                    lastCostingRuleApplied = null;
                 }
             });
             return Convert.ToDouble(price) ;
         }
-
+        public List<CostingRule> CostingRules
+        {
+            get
+            {
+                if(costingRules == null)
+                {
+                    initializeRules();
+                }
+                return costingRules;
+            }
+        }
         private void initializeRules()
         {
             BillingDataDataContext db = new BillingDataDataContext();
             rulesList = db.Rules.Where(x => x.QID == this.Id).ToList() ;
-            costingRules = rulesList.Where(x => x.Type == 1).Cast<CostingRule>().ToList();
+            costingRules = rulesList.Where(x => x.Type == 1).Select(y=>((new JavaScriptSerializer()).Deserialize<CostingRule>(y.Properties))).ToList();
 
         }
         public void applyServiceRulesOnTransaction(Transaction trans)
