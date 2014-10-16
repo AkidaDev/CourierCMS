@@ -583,6 +583,15 @@
                             DataContext="{StaticResource CostingRuleList}" ItemsSource="{Binding}"
                             Name="CostingRuleGrid" Grid.Row="1" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
                                   AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2"  >
+                            <DataGrid.RowDetailsTemplate>
+                                <DataTemplate>
+                                    <WrapPanel>
+                                        
+                                        <ListBox Width="50" DataContext="{Binding}" ItemsSource="{Binding ZoneList}" Height="50"></ListBox>
+                                        <ListBox Width="50" DataContext="{Binding}" ItemsSource="{Binding ServiceList}" Height="50"></ListBox>
+                                    </WrapPanel>
+                                </DataTemplate>
+                            </DataGrid.RowDetailsTemplate>
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Range(Kg)" Binding="{Binding range}"/>
                                 <DataGridTextColumn Header="Dox(Rs)" Binding="{Binding doxAmount}"/>
