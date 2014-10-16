@@ -503,7 +503,7 @@
 
 
                     <Grid Grid.Row="0" Name="ManageZoneDatagridPanel" Margin="6 0 0 0" Visibility="Collapsed">
-                        <DataGrid x:Name="ZoneDataGrid" RowHeaderWidth="0" BorderThickness="0" ItemsSource="{Binding}" DataContext="{StaticResource zoneTable}">
+                        <DataGrid x:Name="ZoneDataGrid" AutoGenerateColumns="False" RowHeaderWidth="0" BorderThickness="0" ItemsSource="{Binding}" DataContext="{StaticResource zoneTable}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Zone Code" IsReadOnly="True" Binding="{Binding zcode}" />
                                 <DataGridTextColumn Header="Description" IsReadOnly="True" Binding="{Binding Zone_name}"/>
@@ -525,7 +525,7 @@
 
 
                     <Grid Grid.Row="0" Name="ManageCountryDatagridPanel" Margin="6 0 0 0" Visibility="Collapsed">
-                        <DataGrid RowHeaderWidth="0" BorderThickness="0">
+                        <DataGrid RowHeaderWidth="0" BorderThickness="0" AutoGenerateColumns="False">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Country Code" IsReadOnly="True"/>
                                 <DataGridTextColumn Header="Description" IsReadOnly="True"/>
