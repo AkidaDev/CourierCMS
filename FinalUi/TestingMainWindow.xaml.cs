@@ -25,6 +25,7 @@ namespace FinalUi
             BillingDataDataContext db = new BillingDataDataContext();
             SecurityModule.authenticate("purushottam", "1234");
           //  MessageBox.Show(LoadResources.getConString());
+            LoadResources.hey = 3;
         }
 
         private void login_Click(object sender, RoutedEventArgs e)

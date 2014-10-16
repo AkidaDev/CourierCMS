@@ -118,8 +118,8 @@ namespace FinalUi
                 }
             }
             RulesApplied.Where(x => x.applicable == 'o').ToList().ForEach((x) =>
-                { 
-                    if(x.type == 's')
+                {
+                    if (x.type == 's')
                     {
 
                     }

@@ -13,8 +13,7 @@ namespace FinalUi
     /// </summary>
     public class CostingRule : IRule
     {
-        public void decodeString()
-        { }
+        public int Id;
 
         #region When to apply
         public List<string> ServiceList { get; set; }
@@ -37,7 +36,9 @@ namespace FinalUi
         #region Constructorss
         public CostingRule()
             : base()
-        { }
+        {
+            BillingDataDataContext db = new BillingDataDataContext();
+        }
         public CostingRule(string propertyString)
             : base()
         {
@@ -54,7 +55,9 @@ namespace FinalUi
             this.stepWeight = rule.stepWeight;
             this.type = rule.type;
             this.ZoneList = rule.ZoneList;
-
+        }
+        public void decodeString()
+        { 
         }
         public CostingRule(List<string> ServiceList, List<string> ZoneList, List<string> CityList, List<string> StateList, double startW, double endW, char type, double doxAmount, double ndoxAmount)
         {

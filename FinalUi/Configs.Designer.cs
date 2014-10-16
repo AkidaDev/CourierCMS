@@ -143,5 +143,17 @@ namespace FinalUi {
                 this["Background"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool IsFreshOrReset {
+            get {
+                return ((bool)(this["IsFreshOrReset"]));
+            }
+            set {
+                this["IsFreshOrReset"] = value;
+            }
+        }
     }
 }

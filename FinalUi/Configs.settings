@@ -32,5 +32,8 @@
     <Setting Name="Background" Type="System.String" Scope="User">
       <Value Profile="(Default)">#fff</Value>
     </Setting>
+    <Setting Name="IsFreshOrReset" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

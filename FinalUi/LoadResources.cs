@@ -9,8 +9,18 @@ using System.Windows.Markup;
 
 namespace FinalUi
 {
-    static class LoadResources
+  static class LoadResources
     {
+      public  static int hey;
+      static LoadResources()
+        {
+            hey = 0;
+            if(Configs.Default.IsFreshOrReset == true)
+            {
+                Setup window = new Setup();
+                window.ShowDialog();
+            }
+        }
         public static string getConString()
         {
             string con = "Data Source=" + "System" + ";Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa;Password=Alver!22";
