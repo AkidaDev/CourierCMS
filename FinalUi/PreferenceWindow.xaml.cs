@@ -11,6 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data.Sql;
+using System.Data;
+using System.Data.SqlClient;
+using System.ComponentModel;
 namespace FinalUi
 {
     /// <summary>
@@ -18,33 +22,49 @@ namespace FinalUi
     /// </summary>
     public partial class PreferenceWindow : Window
     {
-        enum themes
-        {
-            Blue,
-            Gray,
-        };
-        enum dataFormat
-        {
-        };
+        BackgroundWorker sqlInstanceGetVersion;
+        DataTable table;
         public PreferenceWindow()
         {
             InitializeComponent();
-            FillDetails();
+            ThemeColorPicker.SelectedColor = (Color)ColorConverter.ConvertFromString(Configs.Default.Background);
+            ConnectionStringCombo.Items.Add("Still loading please wait...");
+            sqlInstanceGetVersion = new BackgroundWorker();
+            sqlInstanceGetVersion.DoWork += sqlInstanceGetVersion_DoWork;
+            sqlInstanceGetVersion.RunWorkerCompleted += sqlInstanceGetVersion_RunWorkerCompleted;
+            sqlInstanceGetVersion.RunWorkerAsync();
         }
-        public void FillDetails()
+
+        void sqlInstanceGetVersion_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            ConnectionStringCombo.Items.Clear();
+            foreach(DataRow row in table.Rows)
+            {
+                ConnectionStringCombo.Items.Add(row[0]);
+            }
+        }
+
+        void sqlInstanceGetVersion_DoWork(object sender, DoWorkEventArgs e)
+        {
+           table = SqlDataSourceEnumerator.Instance.GetDataSources();
+ 
         }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            Configs.Default.BillingDatabaseConnectionString = this.ConnectionStringBox.Text;
-            Configs.Default.Background = "#" + this.BackgroundColorCombo.Text;
+            SqlConnectionStringBuilder bd = new SqlConnectionStringBuilder();
+            bd.DataSource = ConnectionStringCombo.Text;
+            bd.UserID = "sa";
+            bd.Password = "Alver!22";
+            Configs.Default.BillingDatabaseConnectionString = bd.ConnectionString;
+            Configs.Default.Background = ThemeColorPicker.SelectedColorText;
             Configs.Default.Save();
             this.Close();
         }
         private void DefaultButton_Click(object sender, RoutedEventArgs e)
         {
-            Configs.Default.Reset();
+     /*       Configs.Default.Reset();
             FillDetails();
+      * */
         }
     }
 }
