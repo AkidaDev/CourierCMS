@@ -941,7 +941,7 @@ namespace FinalUi
 
         private void addRulwWindow_Closed(object sender, EventArgs e)
         {
-          //  throw new NotImplementedException();
+            this.CostingRuleGrid.Items.Refresh();
         }
 
         private void DataGrid_SelectionChanged_2(object sender, SelectionChangedEventArgs e)
