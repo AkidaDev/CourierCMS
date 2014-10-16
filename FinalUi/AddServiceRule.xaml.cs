@@ -87,11 +87,16 @@ namespace FinalUi
              if (!double.TryParse(StepBox.Text, out stepweight) && StepRadio.IsChecked == true)
                 errorMsg += "Enter Step Weight Properly \n";
             char type;
+            double stepamount = 0;
             if(WholeRadio.IsChecked == true)
             {
                 type = 'W';
             }
-            else { type = 'S'; }
+            else { 
+                type = 'S'; 
+             if (!double.TryParse(StepBox.Text, out stepamount) && StepRadio.IsChecked == true)
+                errorMsg += "Enter Step Weight Properly \n";
+            }
             char change;
             if(IncRadio.IsChecked == true)
             {
@@ -132,7 +137,8 @@ namespace FinalUi
             RuleSR.Type = type;
             RuleSR.change = change;
             RuleSR.mode = mode;
-            RuleSR.step = stepweight;
+            RuleSR.stepamount = stepamount;
+            RuleSR.stepweight = stepweight;
             RuleSR.applicable = applicable;
             JavaScriptSerializer js = new JavaScriptSerializer();
             string serialized = js.Serialize(RuleSR);

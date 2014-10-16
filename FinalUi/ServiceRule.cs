@@ -7,6 +7,7 @@ namespace FinalUi
 {
     class ServiceRule:Rule,IRule
     {
+        public int Id;
         public List<string> ServiceList;
         public List<string> ZoneList;
         public List<string> CityList;
@@ -18,7 +19,7 @@ namespace FinalUi
         public double stepamount;
         public double startW;
         public double endW;
-        public double step;
+        public double stepweight;
         public void applyRule(Object obj)
         {}
         public void encodeString()
