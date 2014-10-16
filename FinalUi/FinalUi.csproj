@@ -273,6 +273,9 @@
     </Compile>
     <Compile Include="ServiceRule.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="Setup.xaml.cs">
+      <DependentUpon>Setup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StockWindow.xaml.cs">
       <DependentUpon>StockWindow.xaml</DependentUpon>
     </Compile>
@@ -290,7 +293,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="UtilityClass.cs" />
-    <Compile Include="Validator.cs" />
     <Compile Include="AddRule.xaml.cs">
       <DependentUpon>AddRule.xaml</DependentUpon>
     </Compile>
@@ -454,6 +456,10 @@
     <Page Include="ServiceFinder.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Setup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StockWindow.xaml">
       <SubType>Designer</SubType>

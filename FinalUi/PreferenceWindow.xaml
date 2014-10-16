@@ -5,21 +5,22 @@
         Height="Auto" Width="Auto" ResizeMode="NoResize"  WindowStartupLocation="CenterScreen" Background="SlateGray" WindowState="Normal"  >
     <Grid >
         <StackPanel Grid.Column="1" Grid.Row="0" Background="#FFF9F9F9" Height="139" Margin="5,0,10,0" VerticalAlignment="Top" >
-
             <WrapPanel >
                 <TextBlock Text="Connection String"/>
                 <ComboBox Name="ConnectionStringCombo"  Width="302" Height="23"/>
             </WrapPanel>
-
             <WrapPanel >
                 <TextBlock Text="BackgroundColor"/>
                 <xctk:ColorPicker Name="ThemeColorPicker"></xctk:ColorPicker>
             </WrapPanel>
             <WrapPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right">
-                <Button Content="Save" Click="SaveButton_Click" Width="47"/>
                 <Button Content="Reset" Click="DefaultButton_Click"/>
+                <Button Content="Save" Click="SaveButton_Click" Width="47"/>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Service Tax" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox Name="ServiceTax"  Width="100" Height="26"/>
             </WrapPanel>
         </StackPanel>
-
     </Grid>
 </Window>

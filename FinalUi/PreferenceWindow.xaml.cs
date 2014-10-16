@@ -27,7 +27,7 @@ namespace FinalUi
         public PreferenceWindow()
         {
             InitializeComponent();
-            ThemeColorPicker.SelectedColor = (Color)ColorConverter.ConvertFromString(Configs.Default.Background);
+            FillDetails();
             ConnectionStringCombo.Items.Add("Still loading please wait...");
             sqlInstanceGetVersion = new BackgroundWorker();
             sqlInstanceGetVersion.DoWork += sqlInstanceGetVersion_DoWork;
@@ -38,7 +38,7 @@ namespace FinalUi
         void sqlInstanceGetVersion_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             ConnectionStringCombo.Items.Clear();
-            foreach(DataRow row in table.Rows)
+            foreach (DataRow row in table.Rows)
             {
                 ConnectionStringCombo.Items.Add(row[0]);
             }
@@ -46,8 +46,8 @@ namespace FinalUi
 
         void sqlInstanceGetVersion_DoWork(object sender, DoWorkEventArgs e)
         {
-           table = SqlDataSourceEnumerator.Instance.GetDataSources();
- 
+            table = SqlDataSourceEnumerator.Instance.GetDataSources();
+
         }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
@@ -62,9 +62,20 @@ namespace FinalUi
         }
         private void DefaultButton_Click(object sender, RoutedEventArgs e)
         {
-     /*       Configs.Default.Reset();
-            FillDetails();
-      * */
+            if (MessageBox.Show("Do you realy want to reset setting to default", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                if(MessageBox.Show(" Application will restart for Rest to Factory settings \n Unsaved Changes will be lost","",MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                {
+                    Configs.Default.Reset();
+                    System.Windows.Forms.Application.Restart();
+                }
+            }
+            else { return; }
+        }
+        private void FillDetails()
+        {
+            ThemeColorPicker.SelectedColor = (Color)ColorConverter.ConvertFromString(Configs.Default.Background);
+            this.ServiceTax.Text = Configs.Default.ServiceTax;
         }
     }
 }

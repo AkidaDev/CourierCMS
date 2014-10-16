@@ -139,6 +139,9 @@ namespace FinalUi
                 addingNewPage(sheet);
             }
             #endregion
+            #region LoadConfigs
+            Configs.Default.PropertyChanged += Default_PropertyChanged;
+            #endregion
             SaveWorker = new BackgroundWorker();
             SaveWorker.DoWork += SaveWorker_DoWork;
             SaveWorker.ProgressChanged += SaveWorker_ProgressChanged;
@@ -160,6 +163,7 @@ namespace FinalUi
             }
             costingRules = new List<CostingRule>();
         }
+
         #region DataEntrySection
         #region backGround Worker Functions
         #region LoadWorker
@@ -908,24 +912,24 @@ namespace FinalUi
         #region sidepanel
         private void cloakAll()
         {
-            ProfitGrid.Visibility = Visibility.Collapsed;
-            RuleGrid.Visibility = Visibility.Collapsed;
-            DataDockPanel.Visibility = Visibility.Collapsed;
-            buttontabcanvaswrap.Visibility = Visibility.Collapsed;
-            NavigationBar.Visibility = Visibility.Collapsed;
-            ClientReportOptionPanel.Visibility = Visibility.Collapsed;
-            QuotationoptionPanel.Visibility = Visibility.Collapsed;
-            DataEntryOptionPanel.Visibility = Visibility.Collapsed;
-            ManageClientDatagridPanel.Visibility = Visibility.Collapsed;
-            ClientOptionPanel.Visibility = Visibility.Collapsed;
-            ManageEmployeeDatagridPanel.Visibility = Visibility.Collapsed;
-            EmployeeOptionPanel.Visibility = Visibility.Collapsed;
-            ManageCityDatagridPanel.Visibility = Visibility.Collapsed;
-            CityOptionPanel.Visibility = Visibility.Collapsed;
-            ManageZoneDatagridPanel.Visibility = Visibility.Collapsed;
-            ZoneOptionPanel.Visibility = Visibility.Collapsed;
-            ManageCountryDatagridPanel.Visibility = Visibility.Collapsed;
-            CountryOptionPanel.Visibility = Visibility.Collapsed;
+            this.ProfitGrid.Visibility = Visibility.Collapsed;
+            this.RuleGrid.Visibility = Visibility.Collapsed;
+            this.DataDockPanel.Visibility = Visibility.Collapsed;
+            this.buttontabcanvaswrap.Visibility = Visibility.Collapsed;
+            this.NavigationBar.Visibility = Visibility.Collapsed;
+            this.ClientReportOptionPanel.Visibility = Visibility.Collapsed;
+            this.QuotationoptionPanel.Visibility = Visibility.Collapsed;
+            this.DataEntryOptionPanel.Visibility = Visibility.Collapsed;
+            this.ManageClientDatagridPanel.Visibility = Visibility.Collapsed;
+            this.ClientOptionPanel.Visibility = Visibility.Collapsed;
+            this.ManageEmployeeDatagridPanel.Visibility = Visibility.Collapsed;
+            this.EmployeeOptionPanel.Visibility = Visibility.Collapsed;
+            this.ManageCityDatagridPanel.Visibility = Visibility.Collapsed;
+            this.CityOptionPanel.Visibility = Visibility.Collapsed;
+            this.ManageZoneDatagridPanel.Visibility = Visibility.Collapsed;
+            this.ZoneOptionPanel.Visibility = Visibility.Collapsed;
+            this.ManageCountryDatagridPanel.Visibility = Visibility.Collapsed;
+            this.CountryOptionPanel.Visibility = Visibility.Collapsed;
         }
 
         private void AddRuleButton_Click(object sender, RoutedEventArgs e)
@@ -937,7 +941,7 @@ namespace FinalUi
 
         private void addRulwWindow_Closed(object sender, EventArgs e)
         {
-          //  throw new NotImplementedException();
+            this.CostingRuleGrid.Items.Refresh();
         }
 
         private void DataGrid_SelectionChanged_2(object sender, SelectionChangedEventArgs e)
@@ -1230,5 +1234,29 @@ namespace FinalUi
         #region City Grid Button
 
         #endregion
+
+        #region Config Load
+        void Default_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            this.MainGrid.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Configs.Default.Background));
+        }
+        #endregion
+        private void Peferences_Click(object sender, RoutedEventArgs e)
+        {
+            PreferenceWindow window = new PreferenceWindow();
+            window.Show();
+        }
+        private void DeleteRule_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Do you Want delete this Rule", "", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+            {
+                CostingRule dcr = (CostingRule)CostingRuleGrid.SelectedItem;
+                BillingDataDataContext db = new BillingDataDataContext();
+                Rule dr = db.Rules.Where(x=> x.ID == dcr.Id).FirstOrDefault();
+                db.Rules.DeleteOnSubmit(dr);
+                db.SubmitChanges();
+                CostingRuleGrid.Items.Refresh();
+            }
+        }
     }
 }

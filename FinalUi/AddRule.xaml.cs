@@ -116,7 +116,7 @@ namespace FinalUi
 
         private void AddRuleButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            BillingDataDataContext db = new BillingDataDataContext();
             double startW = 0, endW = 0;
             string errorMsg = "";
             double temp;
@@ -166,6 +166,8 @@ namespace FinalUi
             RuleCR.CityList = selectedCityList;
             RuleCR.StateList = selectedStateList;
             RuleCR.startW = startW;
+            int id = db.ExecuteQuery<int>("Select  Max([ID]) FROM [BillingDatabase].[dbo].[Rule];").FirstOrDefault();
+            RuleCR.Id = id + 1;
             RuleCR.endW = endW;
             RuleCR.type = type;
             RuleCR.doxAmount = doxAmount;
@@ -250,9 +252,7 @@ namespace FinalUi
                 Next.Visibility = Visibility.Visible;
                 AddRuleButton.Visibility = Visibility.Collapsed;
             }
-
         }
-
         private void Previous_Click(object sender, RoutedEventArgs e)
         {
             switch (currentCanvas)
