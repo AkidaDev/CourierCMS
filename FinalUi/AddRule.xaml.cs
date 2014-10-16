@@ -206,6 +206,7 @@ namespace FinalUi
             else
             {
                 MessageBox.Show("Must add at least one service and at least one from any zone or city or state ");
+                return false;
             }
             return false;
         }

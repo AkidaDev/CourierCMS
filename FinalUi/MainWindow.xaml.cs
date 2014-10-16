@@ -162,6 +162,24 @@ namespace FinalUi
                 this.PrintButton.Visibility = this.PrintMenuItem.Visibility = this.AfterPrint.Visibility = Visibility.Collapsed;
             }
             costingRules = new List<CostingRule>();
+            AppDomain currentDomain = AppDomain.CurrentDomain;
+            currentDomain.UnhandledException += new UnhandledExceptionEventHandler(MyHandler);
+
+            try
+            {
+                throw new Exception("1");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Catch clause caught : {0} \n", e.Message);
+            }
+        }
+
+        static void MyHandler(object sender, UnhandledExceptionEventArgs args)
+        {
+            Exception e = (Exception)args.ExceptionObject;
+            MessageBox.Show("MyHandler caught : " + e.Message);
+            MessageBox.Show("Runtime terminating:"+args.IsTerminating);
         }
 
         #region DataEntrySection
@@ -931,7 +949,6 @@ namespace FinalUi
             this.ManageCountryDatagridPanel.Visibility = Visibility.Collapsed;
             this.CountryOptionPanel.Visibility = Visibility.Collapsed;
         }
-
         private void AddRuleButton_Click(object sender, RoutedEventArgs e)
         {
             AddRule window = new AddRule(new BillingDataDataContext().Quotations.Where(x => x.CLCODE == ((Client)this.ClientCombo.SelectedItem).CLCODE).FirstOrDefault());
@@ -941,6 +958,7 @@ namespace FinalUi
 
         private void addRulwWindow_Closed(object sender, EventArgs e)
         {
+            LoadClientRules();
             this.CostingRuleGrid.Items.Refresh();
         }
 
@@ -1021,8 +1039,13 @@ namespace FinalUi
 
         private void ClientCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            BillingDataDataContext db = new BillingDataDataContext();
-            qutObj = db.Quotations.SingleOrDefault(x => x.CLCODE == ((Client)((ComboBox)sender).SelectedItem).CLCODE);
+            LoadClientRules();
+        }
+
+        private void  LoadClientRules()
+        {
+        BillingDataDataContext db = new BillingDataDataContext();
+        qutObj = db.Quotations.SingleOrDefault(x => x.CLCODE == ((Client)ClientCombo.SelectedItem).CLCODE);
             if (qutObj == null)
             {
                 MessageBox.Show("No quotation associated with this client");
@@ -1031,6 +1054,7 @@ namespace FinalUi
             {
                 loadQuotation(qutObj);
             }
+    
         }
         void loadQuotation(Quotation qutObj)
         {
@@ -1093,14 +1117,12 @@ namespace FinalUi
         {
             ReloadEmployeeGrid_Click(null, null);
         }
-
         private void AddEmployeeGrid_Click(object sender, RoutedEventArgs e)
         {
             AddEmployee addEmpWin = new AddEmployee();
             addEmpWin.Closed +=addEmpWin_Closed;
             addEmpWin.ShowDialog();
         }
-
         private void DeleteEmployeeGrid_Click(object sender, RoutedEventArgs e)
         {
             if(mangaEmployeegrid.SelectedItems.Count != 1)
@@ -1128,7 +1150,6 @@ namespace FinalUi
             DataSources.refreshClientList();
             clientViewSource.Source = DataSources.ClientCopy;
         }
-
         private void UpdateClientGridButton_Click(object sender, RoutedEventArgs e)
         {
             if(mangaclientgrid.SelectedItems.Count != 1)
@@ -1140,19 +1161,16 @@ namespace FinalUi
             addClientWin.Closed += addClientWin_Closed;
             addClientWin.ShowDialog();
         }
-
         void addClientWin_Closed(object sender, EventArgs e)
         {
             ReloadClientGridButton_Click(null, null);
         }
-
         private void AddClientButton_Click(object sender, RoutedEventArgs e)
         {
             AddClient addClientWin = new AddClient();
             addClientWin.Closed +=addClientWin_Closed;
             addClientWin.ShowDialog();
         }
-
         private void DeleteClientGridButton_Click(object sender, RoutedEventArgs e)
         {
             if(mangaclientgrid.SelectedItems.Count != 1)
@@ -1177,13 +1195,11 @@ namespace FinalUi
             ReloadClientGridButton_Click(null, null);
         }
         #endregion
-
         private void ReloadCityButton_Click(object sender, RoutedEventArgs e)
         {
             DataSources.refreshCityList();
             cityViewSource.Source = DataSources.CityCopy;
         }
-
         private void EditCityButton_Click(object sender, RoutedEventArgs e)
         {
             if(CityDataGrid.SelectedItems.Count != 1)
@@ -1195,7 +1211,6 @@ namespace FinalUi
             addCityWin.Closed += addCityWin_Closed;
             addCityWin.ShowDialog();
         }
-
         void addCityWin_Closed(object sender, EventArgs e)
         {
             ReloadCityButton_Click(null, null);
@@ -1255,7 +1270,8 @@ namespace FinalUi
                 Rule dr = db.Rules.Where(x=> x.ID == dcr.Id).FirstOrDefault();
                 db.Rules.DeleteOnSubmit(dr);
                 db.SubmitChanges();
-                CostingRuleGrid.Items.Refresh();
+                LoadClientRules();
+                this.CostingRuleGrid.Items.Refresh();
             }
         }
     }
