@@ -43,7 +43,7 @@
                     <TextBox Name="StepBlockBox" BorderThickness="2" Height="26" Canvas.Left="305" Canvas.Top="95" Width="81" Padding="3 3 0 0"/>
                 </Canvas>
                 <Canvas Canvas.Left="10" Canvas.Top="100">
-                    <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Canvas.Left="392" Canvas.Top="113" Width="3"/>
+                    <Path Name="vertical_line" Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Canvas.Left="392" Canvas.Top="113" Width="3"/>
                     <TextBlock Name="NDoxStartValue" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="168" Text="Start Value DOX .:" Canvas.Top="122"/>
                     <TextBox Name="DoxStartValueBox" BorderThickness="2" Height="26" Canvas.Left="305" Canvas.Top="116" Width="81" Padding="3 3 0 0" TextChanged="TextBox_TextChanged"/>
                     <TextBox Name="NDoxStartValueBox" BorderThickness="2" Height="26" Canvas.Left="562" Canvas.Top="116" Width="81" Padding="3 3 0 0"/>
@@ -85,6 +85,12 @@
                 <ContentControl Canvas.Left="31.333" Canvas.Top="250">
                     <cstmcntrl:TwinListBox Name="ZoneTwinBox" Width="500" Height="150"/>
                 </ContentControl>
+            </Canvas>
+            <Canvas Name="Step6Canvas" Visibility="Collapsed">
+                <TextBlock Foreground="Black" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="60" Text="Details of Rules .:" Canvas.Top="97"/>
+                <TextBox BorderThickness="2" Height="100" Canvas.Left="194" Canvas.Top="93" Width="528" Padding="3 3 0 0"/>
+                <TextBlock Foreground="Black" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="118" Text="Remark .:" Canvas.Top="219"/>
+                <TextBox BorderThickness="2" Height="26" Canvas.Left="194" Canvas.Top="215" Width="528" Padding="3 3 0 0"/>
             </Canvas>
             <Button Name="Previous" Canvas.Right="200" Canvas.Bottom="15" Style="{StaticResource all}"  Click="Previous_Click" >
                 <WrapPanel Margin="8,6">
@@ -134,7 +140,7 @@
                     </WrapPanel>
                 </Button.Content>
             </Button>
-            <TextBlock Name="StepBlock" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="43" Text="Step 1 of 5" Canvas.Top="275"/>
+            <TextBlock Name="StepBlock" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="43" Text="Step 1 of 6" Canvas.Top="275"/>
         </Canvas>
     </Grid>
 </Window>

@@ -31,9 +31,10 @@
                 <WrapPanel Canvas.Left="150" Canvas.Top="130">
                     <TextBlock Text=" Type  .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="8 0 0 0"/>
                     <RadioButton Name="WholeRadio" IsChecked="True" Content="Whole" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
-                    <RadioButton IsChecked="True" Name="StepRadio"  Content="Step" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 37 0"/>
-                    <TextBox BorderThickness="2" Name="StepBox"  Visibility="Visible" Height="26" Width="81" Padding="3 3 0 0" />
-                    <TextBox BorderThickness="2" Name="StepAmountBox"  Visibility="Visible" Height="26" Width="81" Padding="3 3 0 0" />
+                    <RadioButton IsChecked="True" Name="StepRadio"  Content="Step .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 3 0"/>
+                    <TextBox BorderThickness="2" Name="StepBox"  Visibility="Visible" Width="50" />
+                    <TextBlock Text="Step Amount .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="20 0 3 0"/>
+                    <TextBox BorderThickness="2" Name="StepAmountBox"  Visibility="Visible" Width="50" />
                 </WrapPanel>
                 <WrapPanel Canvas.Left="150" Canvas.Top="165">
                     <TextBlock Text=" Change  .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="8 0 0 0"/>
@@ -78,6 +79,12 @@
                 <ContentControl Canvas.Left="31.333" Canvas.Top="250">
                     <cstmcntrl:TwinListBox Name="ZoneTwinBox" Width="500" Height="150"/>
                 </ContentControl>
+            </Canvas>
+            <Canvas Name="Step6Canvas" Visibility="Collapsed">
+                <TextBlock Foreground="Black" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="60" Text="Details of Rules .:" Canvas.Top="97"/>
+                <TextBox BorderThickness="2" Height="100" Canvas.Left="194" Canvas.Top="93" Width="528" Padding="3 3 0 0"/>
+                <TextBlock Foreground="Black" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="118" Text="Remark .:" Canvas.Top="219"/>
+                <TextBox BorderThickness="2" Height="26" Canvas.Left="194" Canvas.Top="215" Width="528" Padding="3 3 0 0"/>
             </Canvas>
             <Button Name="Previous" Canvas.Right="200" Canvas.Bottom="15" Style="{StaticResource all}"  Click="Previous_Click" >
                 <WrapPanel Margin="8,6">
@@ -126,7 +133,7 @@
                     </WrapPanel>
                 </Button.Content>
             </Button>
-            <TextBlock Name="StepBlock" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="43" Text="Step 1 of 5" Canvas.Top="275"/>
+            <TextBlock Name="StepBlock" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="43" Text="Step 1 of 6" Canvas.Top="275"/>
         </Canvas>
     </Grid>
 </Window>
