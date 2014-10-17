@@ -91,18 +91,18 @@ namespace FinalUi
         {
             BillingDataDataContext db = new BillingDataDataContext();
           
-            _Employee = db.Employees.ToList();
+            _Employee = db.Employees.Where(x=>x.Status == 'A').ToList();
         }
         public static void refreshClientList()
         {
             BillingDataDataContext db = new BillingDataDataContext();
 
-            _Client = db.Clients.ToList();
+            _Client = db.Clients.Where(x=>x.Status == 'A').ToList();
         }
         public static void refreshCityList()
         {
             BillingDataDataContext db = new BillingDataDataContext();
-            _Cities = db.Cities.ToList();
+            _Cities = db.Cities.Where(x=>x.Status == 'A').ToList();
         }
         #endregion
         public static void initialize()
@@ -110,10 +110,10 @@ namespace FinalUi
             db = new BillingDataDataContext();
             _Services = db.Services.ToList();
             _Zones = db.ZONEs.ToList();
-            _Cities = db.Cities.ToList();
             _States = db.States.ToList();
-            _Client = db.Clients.ToList();
-            _Employee = db.Employees.ToList();
+            refreshCityList();
+            refreshClientList();
+            refreshEmployeeList();
         }
     }
 }
