@@ -183,31 +183,38 @@ namespace FinalUi
                     currentCanvasObj.Visibility = Visibility.Collapsed;
                     currentCanvasObj = Step2Canvas;
                     currentCanvasObj.Visibility = Visibility.Visible;
-                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
+                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
                     break;
                 case 2:
                     currentCanvas = 3;
                     currentCanvasObj.Visibility = Visibility.Collapsed;
                     currentCanvasObj = Step3Canvas;
                     currentCanvasObj.Visibility = Visibility.Visible;
-                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
+                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
                     break;
                 case 3:
                     currentCanvas = 4;
                     currentCanvasObj.Visibility = Visibility.Collapsed;
                     currentCanvasObj = Step4Canvas;
                     currentCanvasObj.Visibility = Visibility.Visible;
-                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
+                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
                     break;
                 case 4:
                     currentCanvas = 5;
                     currentCanvasObj.Visibility = Visibility.Collapsed;
                     currentCanvasObj = Step5Canvas;
                     currentCanvasObj.Visibility = Visibility.Visible;
-                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
+                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
+                    break;
+                case 5:
+                    currentCanvas = 6;
+                    currentCanvasObj.Visibility = Visibility.Collapsed;
+                    currentCanvasObj = Step6Canvas;
+                    currentCanvasObj.Visibility = Visibility.Visible;
+                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
                     break;
             }
-            if (currentCanvas == 5)
+            if (currentCanvas == 6)
             {
                 Next.Visibility = Visibility.Collapsed;
                 AddRuleButton.Visibility = Visibility.Visible;
@@ -222,38 +229,45 @@ namespace FinalUi
         {
             switch (currentCanvas)
             {
+                case 6:
+                    currentCanvas = 5;
+                    currentCanvasObj.Visibility = Visibility.Collapsed;
+                    currentCanvasObj = Step5Canvas;
+                    currentCanvasObj.Visibility = Visibility.Visible;
+                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
+                    break;
                 case 5:
                     currentCanvas = 4;
                     currentCanvasObj.Visibility = Visibility.Collapsed;
                     currentCanvasObj = Step4Canvas;
                     currentCanvasObj.Visibility = Visibility.Visible;
-                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
+                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
                     break;
                 case 4:
                     currentCanvas = 3;
                     currentCanvasObj.Visibility = Visibility.Collapsed;
                     currentCanvasObj = Step3Canvas;
                     currentCanvasObj.Visibility = Visibility.Visible;
-                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
+                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
                     break;
                 case 3:
                     currentCanvas = 2;
                     currentCanvasObj.Visibility = Visibility.Collapsed;
                     currentCanvasObj = Step2Canvas;
                     currentCanvasObj.Visibility = Visibility.Visible;
-                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
+                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
                     break;
                 case 2:
                     currentCanvas = 1;
                     currentCanvasObj.Visibility = Visibility.Collapsed;
                     currentCanvasObj = Step1Canvas;
                     currentCanvasObj.Visibility = Visibility.Visible;
-                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 5";
+                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
                     break;
 
 
             }
-            if (currentCanvas == 5)
+            if (currentCanvas == 6)
             {
                 Next.Visibility = Visibility.Collapsed;
                 AddRuleButton.Visibility = Visibility.Visible;
