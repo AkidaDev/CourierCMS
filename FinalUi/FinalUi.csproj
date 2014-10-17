@@ -216,6 +216,11 @@
       <DependentUpon>DataSet2.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSources.cs" />
+    <Compile Include="Default.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Default.settings</DependentUpon>
+    </Compile>
     <Compile Include="EditRateDetailsWindow.xaml.cs">
       <DependentUpon>EditRateDetailsWindow.xaml</DependentUpon>
     </Compile>
@@ -555,6 +560,10 @@
       <DependentUpon>DataSet2.xsd</DependentUpon>
     </None>
     <None Include="Data\VORTEX_ALPHA_TEST_REPORT.xlsx" />
+    <None Include="Default.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Default.Designer.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\Assignment.datasource" />

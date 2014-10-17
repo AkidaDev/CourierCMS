@@ -79,7 +79,7 @@ namespace FinalUi
             BillingDataDataContext db = new BillingDataDataContext();
             rulesList = db.Rules.Where(x => x.QID == this.Id).ToList();
             costingRules = rulesList.Where(x => x.Type == 1).Select(y => ((new JavaScriptSerializer()).Deserialize<CostingRule>(y.Properties))).ToList();
-            //serviceRules = rulesList.Where(x => x.Type == 1).Select(y => ((new JavaScriptSerializer()).Deserialize<ServiceRule>(y.Properties))).ToList();
+            serviceRules = rulesList.Where(x => x.Type == 1).Select(y => ((new JavaScriptSerializer()).Deserialize<ServiceRule>(y.Properties))).ToList();
             //invoiceRule = rulesList.Where(x => x.Type == 3).Select(y => ((new JavaScriptSerializer()).Deserialize<InvoiceRule>(y.Properties))).ToList();
         }
         public double applyServiceRulesOnTransaction(double billedWeight, string destination, string serviceCode, char DOX, char cost)
@@ -117,11 +117,22 @@ namespace FinalUi
                     }
                 }
             }
+
             RulesApplied.Where(x => x.applicable == 'o').ToList().ForEach((x) =>
                 {
                     if (x.type == 's')
                     {
-
+                        /*
+                         * work to be done not all fields are available right now
+                         * */
+                    }
+                    if(x.type == 'w')
+                    {
+                     /*
+                      * 
+                      * work to be done not all feilds are available 
+                      * 
+                      * */
                     }
                 });
             return price;
