@@ -21,7 +21,8 @@ namespace FinalUi
         public double endW;
         public double stepweight;
         public void applyRule(Object obj)
-        {}
+        {
+        }
         public void encodeString()
         {}
         public void decodeString()

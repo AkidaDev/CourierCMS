@@ -20,9 +20,11 @@ namespace FinalUi
     {
         int currentCanvas = 1;
         Canvas currentCanvasObj;
-        public AddInvoiceRule()
+        Quotation quoation;
+        public AddInvoiceRule(Quotation quoation)
         {
             InitializeComponent();
+            this.quoation = quoation;
             currentCanvasObj = Step1Canvas;
             currentCanvasObj.Visibility = Visibility.Visible;
             ServiceTwinBox.AllListSource = (DataSources.ServicesCopy);
