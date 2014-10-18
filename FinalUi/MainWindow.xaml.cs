@@ -42,6 +42,8 @@ namespace FinalUi
         CollectionViewSource clientViewSource;
         CollectionViewSource cityViewSource;
 
+        Button currentaddrulebutton;
+
         // Client listing data import procedure
         #region initScripts
 
@@ -78,6 +80,7 @@ namespace FinalUi
             // Employee listing data import procedure
             employeeToEdit = new List<Employee>();
             employees = DataSources.EmployeeCopy;
+            currentaddrulebutton = AddCostingRuleButton;
             view = (CollectionViewSource)FindResource("EmployeeTable");
             view.Source = employees;
             // Employee listing data import procedure
@@ -1077,6 +1080,10 @@ namespace FinalUi
             {
                 cloakAllGrid();
                 CostingRuleGrid.Visibility = Visibility.Visible;
+
+                currentaddrulebutton.Visibility = Visibility.Hidden;
+                AddCostingRuleButton.Visibility = Visibility.Visible;
+                currentaddrulebutton = AddCostingRuleButton;
             }
             catch(NullReferenceException ex)
             { }
@@ -1086,12 +1093,16 @@ namespace FinalUi
         {
             cloakAllGrid();
             ServiceRuleGrid.Visibility = Visibility.Visible;
+            currentaddrulebutton.Visibility = Visibility.Hidden;
+            AddServiceRuleButton.Visibility = Visibility.Visible;
         }
 
         private void InvoiceRuleRadio_Checked(object sender, RoutedEventArgs e)
         {
             cloakAllGrid();
             InvoiceRuleGrid.Visibility = Visibility.Visible;
+            currentaddrulebutton.Visibility = Visibility.Hidden;
+            AddInvoiceRuleButton.Visibility = Visibility.Visible;
         }
         #endregion
         #region Employee Grid Buttons
@@ -1273,6 +1284,18 @@ namespace FinalUi
                 LoadClientRules();
                 this.CostingRuleGrid.Items.Refresh();
             }
+        }
+
+        private void AddServiceRuleButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddServiceRule window = new AddServiceRule(new BillingDataDataContext().Quotations.Where(x => x.CLCODE == ((Client)this.ClientCombo.SelectedItem).CLCODE).FirstOrDefault());
+            window.Show();
+        }
+
+        private void AddInvoiceRuleButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddInvoiceRule window = new AddInvoiceRule(new BillingDataDataContext().Quotations.Where(x => x.CLCODE == ((Client)this.ClientCombo.SelectedItem).CLCODE).FirstOrDefault());
+            window.Show();
         }
     }
 }

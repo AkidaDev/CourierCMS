@@ -22,5 +22,8 @@ namespace FinalUi
         {
             InitializeComponent();
         }
+        public void SetDefaultSetting()
+        { 
+        }
     }
 }
