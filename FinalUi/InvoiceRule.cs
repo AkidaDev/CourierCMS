@@ -5,15 +5,15 @@ using System.Text;
 
 namespace FinalUi
 {
-    class InvoiceRule: Rule, IRule
+    class InvoiceRule : Rule, IRule
     {
         public override void applyRule(object obj)
         {
             base.applyRule(obj);
         }
-      public  void encodeString(){}
-      public  void decodeString()
-    {}
+        public void encodeString() { }
+        public void decodeString()
+        { }
 
     }
 }
