@@ -1081,7 +1081,7 @@ namespace FinalUi
                 cloakAllGrid();
                 CostingRuleGrid.Visibility = Visibility.Visible;
 
-                currentaddrulebutton.Visibility = Visibility.Hidden;
+                currentaddrulebutton.Visibility = Visibility.Collapsed;
                 AddCostingRuleButton.Visibility = Visibility.Visible;
                 currentaddrulebutton = AddCostingRuleButton;
             }
@@ -1093,16 +1093,18 @@ namespace FinalUi
         {
             cloakAllGrid();
             ServiceRuleGrid.Visibility = Visibility.Visible;
-            currentaddrulebutton.Visibility = Visibility.Hidden;
+            currentaddrulebutton.Visibility = Visibility.Collapsed;
             AddServiceRuleButton.Visibility = Visibility.Visible;
+            currentaddrulebutton = AddServiceRuleButton;
         }
 
         private void InvoiceRuleRadio_Checked(object sender, RoutedEventArgs e)
         {
             cloakAllGrid();
             InvoiceRuleGrid.Visibility = Visibility.Visible;
-            currentaddrulebutton.Visibility = Visibility.Hidden;
+            currentaddrulebutton.Visibility = Visibility.Collapsed;
             AddInvoiceRuleButton.Visibility = Visibility.Visible;
+            currentaddrulebutton = AddInvoiceRuleButton;
         }
         #endregion
         #region Employee Grid Buttons

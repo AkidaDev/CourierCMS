@@ -128,7 +128,7 @@ namespace FinalUi
         }
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
-            AddInvoiceRule window = new AddInvoiceRule(); window.Show();
+            AddInvoiceRule window = new AddInvoiceRule(new BillingDataDataContext().Quotations.Where(x => x.CLCODE == "123").FirstOrDefault()); window.Show();
         }
 
     }

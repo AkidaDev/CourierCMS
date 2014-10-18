@@ -33,8 +33,7 @@
                     <RadioButton Name="WholeRadio" IsChecked="True" Content="Whole" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
                     <RadioButton IsChecked="True" Name="StepRadio"  Content="Step .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 3 0"/>
                     <TextBox BorderThickness="2" Name="StepBox"  Visibility="Visible" Width="50" />
-                    <TextBlock Text="Step Amount .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="20 0 3 0"/>
-                    <TextBox BorderThickness="2" Name="StepAmountBox"  Visibility="Visible" Width="50" />
+                    
                 </WrapPanel>
                 <WrapPanel Canvas.Left="150" Canvas.Top="165">
                     <TextBlock Text=" Change  .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="8 0 0 0"/>
@@ -44,7 +43,16 @@
                 <WrapPanel Canvas.Left="150" Canvas.Top="200">
                     <TextBlock Text=" Mode .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="8 0 0 0"/>
                     <RadioButton  Name="PerRadio" IsChecked="True" Content="Percentage % " FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
-                    <RadioButton Content="Amount " FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
+                    <RadioButton Content="Amount " FontWeight="Bold" FontSize="18" Name="AmountRadio"  FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
+
+                    <WrapPanel Name="PercentageWrap" Visibility="Collapsed">
+                        <TextBlock Text=" % .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="20 0 3 0"/>
+                        <TextBox BorderThickness="2" Name="PersentageBox"  Visibility="Visible" Width="50" />
+                    </WrapPanel>
+                    <WrapPanel Name="AmountWrap" Visibility="Collapsed">
+                <TextBlock Text=" Amount .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="20 0 3 0"/>
+                    <TextBox BorderThickness="2" Name="AmountBox"  Visibility="Visible" Width="50" />
+                </WrapPanel>
                 </WrapPanel>
                 <WrapPanel Canvas.Left="150" Canvas.Top="230">
                     <TextBlock Text=" Applicable On  .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="8 0 0 0"/>

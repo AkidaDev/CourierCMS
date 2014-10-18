@@ -587,8 +587,8 @@
                                 <RadioButton Checked="ServiceRuleRadio_Checked" Foreground="#FF5B5B5B" Content="Service Rule" Name="ServiceRuleRadio"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
                                 <RadioButton Checked="InvoiceRuleRadio_Checked" Foreground="#FF5B5B5B" Content="Invoice Rule" Name="InvoiceRuleRadio" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
                                 <Button Content="Add Costing Rule" Name="AddCostingRuleButton" Click="AddRuleButton_Click"  Margin="40 0 0 0" Visibility="Visible"/>
-                                <Button Content="Add Costing Rule" Name="AddServiceRuleButton" Click="AddServiceRuleButton_Click" Margin="40 0 0 0" Visibility="Collapsed"/>
-                                <Button Content="Add Costing Rule" Name="AddInvoiceRuleButton" Click="AddInvoiceRuleButton_Click" Margin="40 0 0 0" Visibility="Collapsed"/>
+                                <Button Content="Add Service Rule" Name="AddServiceRuleButton" Click="AddServiceRuleButton_Click" Margin="40 0 0 0" Visibility="Collapsed"/>
+                                <Button Content="Add Invoice Rule" Name="AddInvoiceRuleButton" Click="AddInvoiceRuleButton_Click" Margin="40 0 0 0" Visibility="Collapsed"/>
                             </WrapPanel>
                         </Grid>
                         <Grid Grid.Row="1">

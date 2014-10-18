@@ -134,7 +134,7 @@ namespace FinalUi {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#fff")]
+        [global::System.Configuration.DefaultSettingValueAttribute("#FF1E90FF")]
         public string Background {
             get {
                 return ((string)(this["Background"]));

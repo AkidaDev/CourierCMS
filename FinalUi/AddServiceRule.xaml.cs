@@ -25,8 +25,8 @@ namespace FinalUi
         Quotation quotation;
         public AddServiceRule(Quotation quoation)
         {
-            this.quotation = quoation;
             InitializeComponent();
+            this.quotation = quoation;
             this.WholeRadio.Checked += WholeRadio_Checked;
             this.StepRadio.Checked += RadioButton_Checked_1;
             currentCanvasObj = Step1Canvas;
@@ -43,6 +43,10 @@ namespace FinalUi
             CitiesTwinBox.AllListSource = DataSources.CityCopy;
             CitiesTwinBox.SelectedListSource = new List<City>();
             CitiesTwinBox.DisplayValuePath = "NameAndCode";
+            PerRadio.IsChecked = true;
+             PercentageWrap.Visibility = Visibility.Visible;
+            PerRadio.Checked += PerRadio_Checked;
+            AmountRadio.Checked += AmountRadio_Checked;
         }
         private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {
@@ -84,30 +88,32 @@ namespace FinalUi
             if (startW > endW)
                 errorMsg += "Starting weight cannot be greater than ending weight. \n";
             double stepweight = 0;
-             if (!double.TryParse(StepBox.Text, out stepweight) && StepRadio.IsChecked == true)
+            if (!double.TryParse(StepBox.Text, out stepweight) && StepRadio.IsChecked == true)
                 errorMsg += "Enter Step Weight Properly \n";
             char type;
             double stepamount = 0;
-            if(WholeRadio.IsChecked == true)
+            if (WholeRadio.IsChecked == true)
             {
                 type = 'W';
             }
-            else { 
-                type = 'S'; 
-             if (!double.TryParse(StepBox.Text, out stepamount) && StepRadio.IsChecked == true)
-                errorMsg += "Enter Step Weight Properly \n";
+            else
+            {
+                type = 'S';
+                if (!double.TryParse(StepBox.Text, out stepamount) && StepRadio.IsChecked == true)
+                    errorMsg += "Enter Step Weight Properly \n";
             }
             char change;
-            if(IncRadio.IsChecked == true)
+            if (IncRadio.IsChecked == true)
             {
                 change = 'I';
             }
             else { change = 'D'; }
             char mode;
-            if(PerRadio.IsChecked == true)
+            if (PerRadio.IsChecked == true)
             {
                 mode = 'P';
-            }else mode = 'A';
+            }
+            else mode = 'A';
             char applicable;
             if (CompoundRadio.IsChecked == true)
             {
@@ -115,9 +121,10 @@ namespace FinalUi
             }
             else
             {
-                applicable =  'O';
+                applicable = 'O';
+
             }
-            
+
             if (errorMsg != "")
             {
                 MessageBox.Show("Please correct following errors: " + errorMsg);
@@ -264,8 +271,6 @@ namespace FinalUi
                     currentCanvasObj.Visibility = Visibility.Visible;
                     StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
                     break;
-
-
             }
             if (currentCanvas == 6)
             {
@@ -291,6 +296,18 @@ namespace FinalUi
         private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
         {
             StepBox.Visibility = Visibility.Visible;
+        }
+
+        private void PerRadio_Checked(object sender, RoutedEventArgs e)
+        {
+            AmountWrap.Visibility = Visibility.Collapsed;
+            PercentageWrap.Visibility = Visibility.Visible;
+        }
+
+        private void AmountRadio_Checked(object sender, RoutedEventArgs e)
+        {
+            AmountWrap.Visibility = Visibility.Visible;
+            PercentageWrap.Visibility = Visibility.Collapsed;
         }
     }
 }

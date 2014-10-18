@@ -91,18 +91,22 @@ namespace FinalUi
         {
             BillingDataDataContext db = new BillingDataDataContext();
           
-            _Employee = db.Employees.Where(x=>x.Status == 'A').ToList();
+           // _Employee = db.Employees.Where(x=>x.Status == 'A').ToList();
+            _Employee = db.Employees.ToList();
         }
         public static void refreshClientList()
         {
             BillingDataDataContext db = new BillingDataDataContext();
 
-            _Client = db.Clients.Where(x=>x.Status == 'A').ToList();
+           // _Client = db.Clients.Where(x=>x.Status == 'A').ToList();
+            _Client = db.Clients.ToList();
         }
         public static void refreshCityList()
         {
             BillingDataDataContext db = new BillingDataDataContext();
-            _Cities = db.Cities.Where(x=>x.Status == 'A').ToList();
+          //  _Cities = db.Cities.Where(x=>x.Status == 'A').ToList();
+            _Cities = db.Cities.ToList();
+
         }
         #endregion
         public static void initialize()
