@@ -176,6 +176,9 @@
     <Compile Include="AddEmployee.xaml.cs">
       <DependentUpon>AddEmployee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddInvoiceRule.xaml.cs">
+      <DependentUpon>AddInvoiceRule.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddNewRateWindow.xaml.cs">
       <DependentUpon>AddNewRateWindow.xaml</DependentUpon>
     </Compile>
@@ -320,6 +323,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="AddEmployee.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AddInvoiceRule.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -576,7 +583,6 @@
   <ItemGroup>
     <Resource Include="Images\button.png" />
     <Resource Include="Images\button1.png" />
-    <Resource Include="Images\logo.ico" />
     <Resource Include="Images\search.png" />
     <Resource Include="Images\Shape 21 copy.png" />
     <Resource Include="Images\Shape 21.png" />
@@ -612,9 +618,6 @@
       <ProductName>Windows Installer 4.5</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="logo.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="rates.txt" />
