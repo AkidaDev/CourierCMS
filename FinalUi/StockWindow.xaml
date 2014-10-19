@@ -16,14 +16,11 @@
     		<Path x:Name="detail" Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Black" Height="24" Canvas.Left="19" Canvas.Top="32" Width="24"/>
     		<TextBlock x:Name="Enter_Details___" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="47" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Enter Details .:" Canvas.Top="38.16"/>
     		<TextBlock Canvas.Left="22.33" Canvas.Top="85.292" />
+			<TextBlock Name="FromLabel" Text="From  .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="25.293" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Canvas.Top="80.16"/>
+            <TextBox Name="FromBox"  Canvas.Left="85.852" Canvas.Top="73.954" Width="80" Height="22" />
 			<TextBlock Name="ToLabel" Text="To .:"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="187.301" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Canvas.Top="80.16"/>
     		<TextBox Name="ToBox" Canvas.Left="221.253" Canvas.Top="73.954" Width="80" Height="22"/>
-			<TextBlock Name="FromLabel" Text="From  .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="25.293" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Canvas.Top="80.16"/>
-    		<TextBlock  Canvas.Left="23.266" Canvas.Top="106.252" />
-			<TextBox Name="FromBox"  Canvas.Left="85.852" Canvas.Top="73.954" Width="80" Height="22" />
-			<TextBlock  Name="CostLabel" Text="Cost .:"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="171.911" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap"  Canvas.Top="112.212"/>
-    		<TextBox Name="CostBox" Canvas.Left="221.253"   Width="80" Height="22" Canvas.Top="107.551" />
-			<TextBlock Name="AssignLabel" Text="Assign .:" Canvas.Left="19.687" Canvas.Top="112.212"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap"/>
+            <TextBlock Name="AssignLabel" Text="Assign .:" Canvas.Left="19.687" Canvas.Top="112.212"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap"/>
 			<ComboBox Name="AssignCombo"  Width="80" Height="22" ItemsSource="{Binding}" DataContext="{StaticResource EmpList}"  IsEditable="False" Canvas.Left="85.852" Canvas.Top="107.551" >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -38,6 +35,8 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
 			</ComboBox>	
+			<TextBlock  Name="CostLabel" Text="Cost .:"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="171.911" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap"  Canvas.Top="112.212"/>
+    		<TextBox Name="CostBox" Canvas.Left="221.253"   Width="80" Height="22" Canvas.Top="107.551" />
 			<TextBlock Name="DescriptionLabel" Text="Description .:" Canvas.Left="26.453" Canvas.Top="150.648"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap"/>
 			<TextBox Name="DescriptionBox" Canvas.Left="130.733" Canvas.Top="146.163" Width="150" Height="22"/>
             <Button Name="AddstockLabel"  Click="AddstockLabel_Click" Canvas.Left="201" Canvas.Top="175" Style="{StaticResource all}">
