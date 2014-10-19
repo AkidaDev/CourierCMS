@@ -16,7 +16,7 @@ namespace FinalUi
         public char mode;
         public char change;
         public char applicable;
-        public double stepamount;
+        public double amount;
         public double startW;
         public double endW;
         public double stepweight;
