@@ -75,10 +75,11 @@
                 </Menu>
                 <TextBlock Foreground="Black" FontSize="20" TextAlignment="Center"  IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="26" TextWrapping="Wrap" Text="ORTEX" Margin="38,2,0,0" Width="100"/>
                 <TextBlock Foreground="Black" FontSize="28" TextAlignment="Center"  IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="26" TextWrapping="Wrap" Text="V" FontWeight="Bold" Margin="-38,2,0,0" Width="30"/>
-
-                <Button MouseDoubleClick="NormalMaximize_Click" Margin="210,0,113,0" Style="{StaticResource window}">
-                    <Canvas MouseDown="Grid_MouseDown"/>
-                </Button>
+                <Canvas Margin="210,0,113,0">
+                    <Button MouseDoubleClick="NormalMaximize_Click" Style="{StaticResource window}">
+                        <Path MouseDown="Grid_MouseDown" x:Name="Memu_bar" Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="25" Canvas.Left="0" Canvas.Top="0" Stretch="Fill" Width="1920" />
+                    </Button>
+                </Canvas>
                 <WrapPanel HorizontalAlignment="Right" >
                     <Button ToolTip="Minimize" Style="{StaticResource 1}" x:Name="MinimizeButton" Click="MinimizeButton_Click" Width="25">
                         <Path x:Name="minimize" Data="F1M2,4C2,4 2,2 2,2 2,2 14,2 14,2 14,2 14,4 14,4 14,4 2,4 2,4z" Fill="Black" Height="5" Width="12" Margin="-1,0,0,-7"/>
@@ -406,7 +407,7 @@
                     <StackPanel.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="#19000000" Offset="0"/>
-                            <GradientStop Color="#99FFFFFF" Offset="1"/>
+                            <GradientStop Color="#69FFFFFF" Offset="1"/>
                         </LinearGradientBrush>
                     </StackPanel.Background>
                     <TreeView Background="Transparent" BorderThickness="0" Margin=" 0 20 0 0">
@@ -584,7 +585,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="188*"/>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0" Background="#A9FFFFF3" Margin="0,1,0,5" >
+                            <Grid Grid.Row="0" Background="#A9FFFFF3" Margin="0,1,0,5" >
                             <WrapPanel VerticalAlignment="Center" Margin="-4,24,4,24">
                                 <TextBlock Foreground="#FF5B5B5B" Text=" Select Type of RULE  .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="8 0 0 0" TextDecorations="Underline"/>
                                 <RadioButton Foreground="#FF5B5B5B" IsChecked="True" Name="CostingRuleRadio"  Content="Costing Rule" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0" Checked="CostingRuleRadio_Checked_1"/>
@@ -735,7 +736,7 @@
 
                     <Grid Grid.Row="3" Margin="6 0 0 0">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="24"/>
+                            <RowDefinition Height="20"/>
                             <RowDefinition Height="119*"/>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0" Background="#FFE8E8E8">
@@ -749,10 +750,10 @@
                             <TextBlock Text="  Despcription  " Grid.Column="1" VerticalAlignment="Center" Background="LightGray" />
                             <TextBlock Text="  Help  " Grid.Column="2" VerticalAlignment="Center" Background="LightGray"/>
                             <TextBlock Text="  Feedback  " Grid.Column="3" VerticalAlignment="Center" Background="LightGray"/>
-                            <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="0"  HorizontalAlignment="Right"/>
-                            <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
-                            <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2" HorizontalAlignment="Right"/>
-                            <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
+                            <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="20" Margin="0" Stroke="Gray" Grid.Column="0"  HorizontalAlignment="Right"/>
+                            <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="20" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
+                            <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="20" Margin="0" Stroke="Gray" Grid.Column="2" HorizontalAlignment="Right"/>
+                            <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="20" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
                         </Grid>
                         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
                             <TextBlock Text="Log..." x:Name="MessageBlock" Background="White" Margin="0,0,0,0" />
