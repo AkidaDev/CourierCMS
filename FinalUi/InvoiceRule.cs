@@ -5,11 +5,11 @@ using System.Text;
 
 namespace FinalUi
 {
-    class InvoiceRule : Rule, IRule
+    class InvoiceRule :IRule
     {
-        public override void applyRule(object obj)
+        public int Id { get; set; }
+        public  void applyRule(object obj)
         {
-            base.applyRule(obj);
         }
         public void encodeString() { }
         public void decodeString()

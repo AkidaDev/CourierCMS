@@ -181,8 +181,7 @@ namespace FinalUi
         static void MyHandler(object sender, UnhandledExceptionEventArgs args)
         {
             Exception e = (Exception)args.ExceptionObject;
-            MessageBox.Show("MyHandler caught : " + e.Message);
-            MessageBox.Show("Runtime terminating:"+args.IsTerminating);
+            MessageBox.Show("Sorry vortex Crashed and  we know this is very terible for you. But you can help us by contacting with message mentioned under \n Error Message: " + e.Message + "\n Application is termination now", "oops!!");
         }
 
         #region DataEntrySection
@@ -989,15 +988,7 @@ namespace FinalUi
             NavigationBar.Visibility = Visibility.Visible;
 
         }
-        private void servicetaxtreeviewitembutton_Click(object sender, RoutedEventArgs e)
-        {
-        }
-        private void forwardertarifftreeviewitembutton_Click(object sender, RoutedEventArgs e)
-        {
-        }
-        private void clienttarifftreeviewitembutton_Click(object sender, RoutedEventArgs e)
-        {
-        }
+      
         private void clienttreeviewitembutton_Click(object sender, RoutedEventArgs e)
         {
             cloakAll();
@@ -1031,24 +1022,17 @@ namespace FinalUi
         #endregion
         #endregion
         #region QuotationFunctions
-        private void ClientManageTreeView_Click(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void CostingRuleRadio_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
 
         private void ClientCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             LoadClientRules();
         }
 
-        private void  LoadClientRules()
+        private void LoadClientRules()
         {
-        BillingDataDataContext db = new BillingDataDataContext();
-        qutObj = db.Quotations.SingleOrDefault(x => x.CLCODE == ((Client)ClientCombo.SelectedItem).CLCODE);
+            BillingDataDataContext db = new BillingDataDataContext();
+            qutObj = db.Quotations.SingleOrDefault(x => x.CLCODE == ((Client)ClientCombo.SelectedItem).CLCODE);
             if (qutObj == null)
             {
                 MessageBox.Show("No quotation associated with this client");
@@ -1057,7 +1041,7 @@ namespace FinalUi
             {
                 loadQuotation(qutObj);
             }
-    
+
         }
         void loadQuotation(Quotation qutObj)
         {
@@ -1085,7 +1069,7 @@ namespace FinalUi
                 AddCostingRuleButton.Visibility = Visibility.Visible;
                 currentaddrulebutton = AddCostingRuleButton;
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException ex)
             { }
         }
 
@@ -1113,7 +1097,6 @@ namespace FinalUi
             DataSources.refreshEmployeeList();
             employees = DataSources.EmployeeCopy;
         }
-
         private void EditEmployeeGrid_Click(object sender, RoutedEventArgs e)
         {
             if (mangaEmployeegrid.SelectedItems.Count != 1)
@@ -1133,26 +1116,26 @@ namespace FinalUi
         private void AddEmployeeGrid_Click(object sender, RoutedEventArgs e)
         {
             AddEmployee addEmpWin = new AddEmployee();
-            addEmpWin.Closed +=addEmpWin_Closed;
+            addEmpWin.Closed += addEmpWin_Closed;
             addEmpWin.ShowDialog();
         }
         private void DeleteEmployeeGrid_Click(object sender, RoutedEventArgs e)
         {
-            if(mangaEmployeegrid.SelectedItems.Count != 1)
+            if (mangaEmployeegrid.SelectedItems.Count != 1)
             {
                 MessageBox.Show("Select 1 employee to delete");
                 return;
             }
             else
             {
-                MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this employee?","Confirm",MessageBoxButton.YesNo);
-                if(result == MessageBoxResult.Yes)
+                MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this employee?", "Confirm", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
                 {
                     BillingDataDataContext db = new BillingDataDataContext();
-                    Employee emp = db.Employees.SingleOrDefault(x=>x.EMPCode == ((Employee)mangaEmployeegrid.SelectedItem).EMPCode);
+                    Employee emp = db.Employees.SingleOrDefault(x => x.EMPCode == ((Employee)mangaEmployeegrid.SelectedItem).EMPCode);
                     db.Employees.DeleteOnSubmit(emp);
                     db.SubmitChanges();
-                    ReloadEmployeeGrid_Click(null,null);
+                    ReloadEmployeeGrid_Click(null, null);
                 }
             }
         }
@@ -1165,7 +1148,7 @@ namespace FinalUi
         }
         private void UpdateClientGridButton_Click(object sender, RoutedEventArgs e)
         {
-            if(mangaclientgrid.SelectedItems.Count != 1)
+            if (mangaclientgrid.SelectedItems.Count != 1)
             {
                 MessageBox.Show("Please select 1 client to edit.");
                 return;
@@ -1181,23 +1164,23 @@ namespace FinalUi
         private void AddClientButton_Click(object sender, RoutedEventArgs e)
         {
             AddClient addClientWin = new AddClient();
-            addClientWin.Closed +=addClientWin_Closed;
+            addClientWin.Closed += addClientWin_Closed;
             addClientWin.ShowDialog();
         }
         private void DeleteClientGridButton_Click(object sender, RoutedEventArgs e)
         {
-            if(mangaclientgrid.SelectedItems.Count != 1)
+            if (mangaclientgrid.SelectedItems.Count != 1)
             {
                 MessageBox.Show("Please select 1 client to delete");
                 return;
             }
-            MessageBoxResult result = MessageBox.Show("Are you sure want to delete this client?","Confirm",MessageBoxButton.YesNo);
+            MessageBoxResult result = MessageBox.Show("Are you sure want to delete this client?", "Confirm", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
                 if (db == null)
                     db = new BillingDataDataContext();
-                Client client = db.Clients.SingleOrDefault(x=>x.CLCODE == ((Client)mangaclientgrid.SelectedItem).CLCODE);
-                if(client == null)
+                Client client = db.Clients.SingleOrDefault(x => x.CLCODE == ((Client)mangaclientgrid.SelectedItem).CLCODE);
+                if (client == null)
                 {
                     MessageBox.Show("No such client");
                     return;
@@ -1215,7 +1198,7 @@ namespace FinalUi
         }
         private void EditCityButton_Click(object sender, RoutedEventArgs e)
         {
-            if(CityDataGrid.SelectedItems.Count != 1)
+            if (CityDataGrid.SelectedItems.Count != 1)
             {
                 MessageBox.Show("Select 1 city to edit");
                 return;
@@ -1238,18 +1221,18 @@ namespace FinalUi
 
         private void DeleteCityButton_Click(object sender, RoutedEventArgs e)
         {
-            if(CityDataGrid.SelectedItems.Count != 1)
+            if (CityDataGrid.SelectedItems.Count != 1)
             {
                 MessageBox.Show("Select 1 city to delete");
                 return;
             }
             MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this city?", "Confirm", MessageBoxButton.YesNo);
-            if(result == MessageBoxResult.Yes)
+            if (result == MessageBoxResult.Yes)
             {
                 if (db == null)
                     db = new BillingDataDataContext();
                 City city = db.Cities.SingleOrDefault(x => x.CITY_CODE == ((City)CityDataGrid.SelectedItem).CITY_CODE);
-                if(city == null)
+                if (city == null)
                 {
                     MessageBox.Show("No such city exists.");
                     return;
@@ -1276,24 +1259,47 @@ namespace FinalUi
         }
         private void DeleteRule_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Do you Want delete this Rule", "", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+            BillingDataDataContext db = new BillingDataDataContext();
+            if (CostingRuleGrid.Visibility == Visibility.Visible && CostingRuleGrid.SelectedItem != null)
             {
-                CostingRule dcr = (CostingRule)CostingRuleGrid.SelectedItem;
-                BillingDataDataContext db = new BillingDataDataContext();
-                Rule dr = db.Rules.Where(x=> x.ID == dcr.Id).FirstOrDefault();
-                db.Rules.DeleteOnSubmit(dr);
-                db.SubmitChanges();
-                LoadClientRules();
-                this.CostingRuleGrid.Items.Refresh();
+                if (MessageBox.Show("Do you Want delete this Rule", "", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                {
+                    CostingRule dcr = (CostingRule)CostingRuleGrid.SelectedItem;
+                    CostingRuleGrid.SelectedItem = null;
+                    Rule dr = db.Rules.Where(x => x.ID == dcr.Id).FirstOrDefault();
+                    db.Rules.DeleteOnSubmit(dr);
+                }
             }
+            if (ServiceRuleGrid.Visibility == Visibility.Visible && ServiceRuleGrid.SelectedItem != null)
+            {
+                if (MessageBox.Show("Do you Want delete this Rule", "", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                {
+                    ServiceRule dcr = (ServiceRule)InvoiceRuleGrid.SelectedItem;
+                    Rule dr = db.Rules.Where(x => x.ID == dcr.Id).FirstOrDefault();
+                    ServiceRuleGrid.SelectedItem = null;
+                    db.Rules.DeleteOnSubmit(dr);
+                }
+            }
+            if (InvoiceRuleGrid.Visibility == Visibility.Visible && InvoiceRuleGrid.SelectedItem != null)
+            {
+                if (MessageBox.Show("Do you Want delete this Rule", "", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                {
+                    InvoiceRule dcr = (InvoiceRule)InvoiceRuleGrid.SelectedItem;
+                    Rule dr = db.Rules.Where(x => x.ID == dcr.Id).FirstOrDefault();
+                    db.Rules.DeleteOnSubmit(dr);
+                }
+            }
+            db.SubmitChanges();
+            LoadClientRules();
+            this.CostingRuleGrid.Items.Refresh();
+            this.ServiceRuleGrid.Items.Refresh();
+            this.InvoiceRuleGrid.Items.Refresh();
         }
-
         private void AddServiceRuleButton_Click(object sender, RoutedEventArgs e)
         {
             AddServiceRule window = new AddServiceRule(new BillingDataDataContext().Quotations.Where(x => x.CLCODE == ((Client)this.ClientCombo.SelectedItem).CLCODE).FirstOrDefault());
             window.Show();
         }
-
         private void AddInvoiceRuleButton_Click(object sender, RoutedEventArgs e)
         {
             AddInvoiceRule window = new AddInvoiceRule(new BillingDataDataContext().Quotations.Where(x => x.CLCODE == ((Client)this.ClientCombo.SelectedItem).CLCODE).FirstOrDefault());

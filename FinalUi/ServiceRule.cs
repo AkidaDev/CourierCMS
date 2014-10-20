@@ -5,9 +5,9 @@ using System.Text;
 
 namespace FinalUi
 {
-    class ServiceRule:Rule,IRule
+    class ServiceRule:IRule
     {
-        public int Id;
+        public int Id { get; set; }
         public List<string> ServiceList;
         public List<string> ZoneList;
         public List<string> CityList;
