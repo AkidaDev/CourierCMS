@@ -79,7 +79,6 @@ namespace FinalUi
             this.ndStartValue = ndStartValue;
         }
         #endregion
-
         #region Reporting properties
         public int serviceCount
         {

@@ -15,9 +15,8 @@
                 <Path x:Name="detail" Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Black" Height="24" Canvas.Left="181" Canvas.Top="35" Width="24"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="209" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text=" Enter Details for SERVICE RULE .:" Canvas.Top="41.16"/>
                 <Path x:Name="Rectangle_2" Data="F1M1,1C1,1 87,1 87,1 87,1 87,18 87,18 87,18 1,18 1,18 1,18 1,1 1,1z" Fill="Transparent" Stroke="Gray"  Height="23" Canvas.Left="480" Canvas.Top="33" Width="120" Stretch="Fill"/>
-                <TextBlock Text="dfg" Name="RateCodeNameBox" Height="24" Canvas.Left="480" Canvas.Top="34" Width="120" Padding="5 0 0 0" FontSize="16"/>
-                <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="602" Text=":. Rule ID" Canvas.Top="35"/>
-            </Canvas>
+                <TextBlock  Name="RateCodeNameBox" Height="24" Canvas.Left="480" Canvas.Top="34" Width="120" Padding="5 0 0 0" FontSize="16"/>
+                </Canvas>
             <Canvas Name="Step1Canvas" Canvas.Left="30">
                 <Canvas Canvas.Left="100" Canvas.Top="-25">
                     <Path Data="F1M13.502,2.907C10.599,2.907 10.599,3.75 10.599,4.243 10.599,4.243 16.405,4.243 16.405,4.243 16.405,3.75 16.405,2.907 13.502,2.907z M13.502,1C15.895,1 18.341,1.286 18.341,4.243 18.341,4.243 22.791,4.243 22.791,4.243 22.791,4.243 22.792,4.243 22.792,4.243 24.074,4.243 25,5.721 25,6.985 25,6.985 25,19.194 25,19.194 25,20.458 24.075,21 22.792,21 22.792,21 3.437,21 3.437,21 2.154,21 1,20.458 1,19.194 1,19.194 1,6.985 1,6.985 1,5.72 2.154,4.243 3.437,4.243 3.437,4.243 8.663,4.243 8.663,4.243 8.663,1.286 11.109,1 13.502,1z" Fill="Black" Height="22" Canvas.Left="3" Canvas.Top="120.867" Width="26"/>
@@ -47,7 +46,7 @@
 
                     <WrapPanel Name="PercentageWrap" Visibility="Collapsed">
                         <TextBlock Text=" % .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="20 0 3 0"/>
-                        <TextBox BorderThickness="2" Name="PersentageBox"  Visibility="Visible" Width="50" />
+                        <TextBox BorderThickness="2" Name="PercentageBox"  Visibility="Visible" Width="50" />
                     </WrapPanel>
                     <WrapPanel Name="AmountWrap" Visibility="Collapsed">
                 <TextBlock Text=" Amount .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="20 0 3 0"/>
@@ -92,7 +91,7 @@
                 <TextBlock Foreground="Black" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="60" Text="Details of Rules .:" Canvas.Top="97"/>
                 <TextBox BorderThickness="2" Height="100" Canvas.Left="194" Canvas.Top="93" Width="528" Padding="3 3 0 0"/>
                 <TextBlock Foreground="Black" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="118" Text="Remark .:" Canvas.Top="219"/>
-                <TextBox BorderThickness="2" Height="26" Canvas.Left="194" Canvas.Top="215" Width="528" Padding="3 3 0 0"/>
+                <TextBox Name="RemarkBox" BorderThickness="2" Height="26" Canvas.Left="194" Canvas.Top="215" Width="528" Padding="3 3 0 0"/>
             </Canvas>
             <Button Name="Previous" Canvas.Right="200" Canvas.Bottom="15" Style="{StaticResource all}"  Click="Previous_Click" >
                 <WrapPanel Margin="8,6">

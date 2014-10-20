@@ -122,9 +122,15 @@ namespace FinalUi
             else
             {
                 applicable = 'O';
-
             }
-
+            float per = 0;
+            if (PercentageWrap.Visibility == Visibility.Visible)
+            {
+                if (PercentageBox.Text != "" && !float.TryParse(PercentageBox.Text, out per))
+                {
+                    errorMsg += "Enter Percentage Properly\n";
+                }
+            }
             if (errorMsg != "")
             {
                 MessageBox.Show("Please correct following errors: " + errorMsg);
@@ -141,9 +147,10 @@ namespace FinalUi
             RuleSR.StateList = selectedStateList;
             RuleSR.startW = startW;
             RuleSR.endW = endW;
-            RuleSR.Type = type;
+            RuleSR.type = type;
             RuleSR.change = change;
             RuleSR.mode = mode;
+            RuleSR.per = per;
             RuleSR.amount = amount;
             RuleSR.stepweight = stepweight;
             RuleSR.applicable = applicable;
@@ -153,7 +160,7 @@ namespace FinalUi
             r.Type = 2;
             r.Properties = serialized;
             r.QID = quotation.Id;
-            r.Remark = "Remark Not Added";
+            r.Remark = this.RemarkBox.Text;
             db.Rules.InsertOnSubmit(r);
             bool isdone = false;
             if (validate())
@@ -166,7 +173,7 @@ namespace FinalUi
                 catch (Exception ex) { MessageBox.Show(ex.Message); return; }
                 if (isdone)
                 {
-                    MessageBox.Show("New Service Rule Added");
+                    MessageBox.Show("Rule Added Now Party");
                     this.Close();
                 }
             }

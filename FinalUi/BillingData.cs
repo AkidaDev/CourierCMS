@@ -2,7 +2,6 @@ namespace FinalUi
 {
     partial class BillingDataDataContext
     {
-     
         partial void DeleteAssignment(Assignment instance)
         {
             throw new System.NotImplementedException();

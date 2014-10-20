@@ -181,7 +181,7 @@ namespace FinalUi
             r.Type = 1;
             r.Properties = serialized;
             r.QID = quoation.Id;
-            r.Remark = "hello";
+            r.Remark = this.RemarkBox.Text ?? " ";
             db.Rules.InsertOnSubmit(r);
             bool isdone = false;
             if (validate())
@@ -208,7 +208,6 @@ namespace FinalUi
                 MessageBox.Show("Must add at least one service and at least one from any zone or city or state ");
                 return false;
             }
-            return false;
         }
         private void Next_Click(object sender, RoutedEventArgs e)
         {
