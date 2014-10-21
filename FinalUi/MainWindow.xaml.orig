@@ -504,7 +504,7 @@
 
 
                     <Grid Grid.Row="0" x:Name="ManageEmployeeDatagridPanel" Visibility="Collapsed">
-                        <DataGrid RowHeaderWidth="0" IsReadOnly="True" BorderThickness="0" x:Name="mangaEmployeegrid" ItemsSource="{Binding}" DataContext="{StaticResource EmployeeTable}"  AutoGenerateColumns="False" >
+                        <DataGrid RowHeaderWidth="0" IsReadOnly="True" BorderThickness="0" x:Name="mangaEmployeegrid" ItemsSource="{Binding}" DataContext="{StaticResource EmployeeTable}"   CellEditEnding="mangaEmployeegrid_CellEditEnding"  AutoGenerateColumns="False" >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Name" Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                 <DataGridTextColumn Header="Gender" Binding="{Binding Gender, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -597,7 +597,14 @@
                         </Grid>
                         <DataGrid Grid.Row="1" DataContext="{StaticResource CostingRuleList}" ItemsSource="{Binding}" x:Name="CostingRuleGrid" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
 							AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2">
-                           
+                            <DataGrid.RowDetailsTemplate>
+                                <DataTemplate>
+                                    <DockPanel>
+                                        <ListBox DataContext="{Binding}" ItemsSource="{Binding ZoneList}"/>
+                                        <ListBox DataContext="{Binding}" ItemsSource="{Binding ServiceList}"/>
+                                    </DockPanel>
+                                </DataTemplate>
+                            </DataGrid.RowDetailsTemplate>
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Range(Kg)" Binding="{Binding range}"/>
                                 <DataGridTextColumn Header="Dox(Rs)" Binding="{Binding doxAmount}"/>

@@ -10,6 +10,6 @@
         <RadioButton IsChecked="True" Content="dd" Height="100" Width="100" Margin="353,138,563,431"/>
         <RadioButton  Content="dd2" Height="100" Width="100" Margin="458,138,458,431"/>
         <RadioButton Content="dd3" Height="100" Width="100" Margin="557,138,359,431"/>
-        <RadioButton Content="dd4" Height="100" Width="100" Margin="657,138,259,431"/>
+        <RadioButton Content="dd4" Height="100" Width="100" Margin="657,138,259,431"/><!---->
     </Grid>
 </Window>

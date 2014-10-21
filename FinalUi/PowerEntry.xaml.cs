@@ -26,16 +26,16 @@ namespace FinalUi
         int startCOnnNoIndex;
         int endConnNoIndex;
         string clientCodeSelectedValue;
-        public PowerEntry(List<RuntimeData> DataStack, List<String> ClientCodes, BillingDataDataContext db)
+        public PowerEntry(List<RuntimeData> DataStack)
             : this()
         {
             DataStack = DataStack.OrderBy(x => x.BookingDate).ThenBy(y => y.ConsignmentNo).ToList();
             List<string> connList = DataStack.Select(c => c.ConsignmentNo).ToList();
             startConnNo.DataContext = connList;
             endConnNo.DataContext = connList;
-            clientCode.DataContext = ClientCodes;
+            clientCode.DataContext = DataSources.ClientCopy.Select(x => x.CLCODE);
             this.DataStack = DataStack;
-            this.db = db;
+            this.db = new BillingDataDataContext();
             worker = new BackgroundWorker();
             worker.DoWork += worker_DoWork;
             worker.RunWorkerCompleted += worker_RunWorkerCompleted;
@@ -46,14 +46,15 @@ namespace FinalUi
         void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             Debug.WriteLine("Progress is " + e.ProgressPercentage);
-            progressbar.Value = ((double)e.ProgressPercentage); 
+            progressbar.Value = ((double)e.ProgressPercentage);
         }
         void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-          //  MessageBox.Show(e.Error.Message);
+            if (e.Error.Message != "")
+                MessageBox.Show(e.Error.Message);
             SubmitRecords.IsEnabled = true;
-            if(errorNos != "")
-            MessageBox.Show("Error calculating records: " + errorNos);
+            if (errorNos != "")
+                MessageBox.Show("Error calculating records: " + errorNos);
             Debug.WriteLine(e.Error.Message);
             startCOnnNoIndex = -1;
             endConnNoIndex = -1;
@@ -62,7 +63,7 @@ namespace FinalUi
         string errorNos;
         void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            
+
             errorNos = "";
             Debug.WriteLine("inside do work");
             if (startCOnnNoIndex <= endConnNoIndex && startCOnnNoIndex != -1 && endConnNoIndex != -1)
@@ -73,26 +74,34 @@ namespace FinalUi
                 {
                     RuntimeData data = DataStack.ElementAt(i);
                     data.CustCode = clientCodeSelectedValue;
-                   
+
                     data = db.RuntimeDatas.Single(x => x.Id == data.Id);
                     var c = cs.Where(x => x.CITY_CODE == data.Destination && x.CITY_STATUS == "A").FirstOrDefault();
                     if (c == null)
                         c = db.Cities.SingleOrDefault(x => x.CITY_CODE == "DEL");
                     data.CustCode = clientCodeSelectedValue;
                     data.BilledWeight = data.Weight;
-                    data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, (double)data.BilledWeight, data.Destination, data.Type,(char) data.DOX);
+                    try
+                    {
+                        data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, (double)data.BilledWeight, data.Destination, data.Type, (char)data.DOX);
+                    }
+                    catch(Exception ex)
+                    {
+                        Debug.WriteLine(ex.Message + ": Occured in " + data.ConsignmentNo);
+                        data.FrAmount = -1;
+                    }
                     try
                     {
                         db.SubmitChanges();
                     }
-                    catch(Exception)
+                    catch (Exception)
                     {
                         errorNos = errorNos + "\n " + data.ConsignmentNo;
                     }
-                    worker.ReportProgress((((i-startCOnnNoIndex+1)*100)/total));
+                    worker.ReportProgress((((i - startCOnnNoIndex + 1) * 100) / total));
                 }
             }
-           
+
             SubmitRecords.IsEnabled = true;
         }
         PowerEntry()
@@ -108,7 +117,7 @@ namespace FinalUi
                 endConnNoIndex = endConnNo.SelectedIndex;
                 if (clientCode.Text == "")
                     return;
-                clientCodeSelectedValue = clientCode.SelectedValue.ToString(); 
+                clientCodeSelectedValue = clientCode.SelectedValue.ToString();
                 worker.RunWorkerAsync();
             }
             else
