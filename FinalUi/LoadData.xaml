@@ -93,7 +93,7 @@
 			18 3.778,18 3.778,18 2.8,18 2,17.2 2,16.222 2,16.222 2,3.778 2,3.778 2,2.8 2.8,2 3.778,2z" Fill="Black" Height="19" Width="19" Visibility="Hidden" />
                 </Canvas>
             </Button>
-			<TextBlock x:Name="ADD_Data_in_Current_Sheet" FontWeight="Bold" FontSize="14" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="94.5" LineHeight="14" TextAlignment="Left" TextWrapping="Wrap" Text="ADD Data in Current Sheet" Canvas.Top="92.178"/>
+            <TextBlock MouseDown="addData_CheckedUnChecked" x:Name="ADD_Data_in_Current_Sheet" FontWeight="Bold" FontSize="14" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="94.5" LineHeight="14" TextAlignment="Left" TextWrapping="Wrap" Text="ADD Data in Current Sheet" Canvas.Top="92.178"/>
         	<TextBox Name="filename"   Height="25" Canvas.Left="123.5" Canvas.Top="49" Width="171" Padding="0 4 0 0" BorderBrush="Black" BorderThickness="1.5"/>
 			<Path Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="#FFCBCBCB" Height="26" Canvas.Left="0" Canvas.Top="0" Width="322" Stretch="Fill" Stroke="Black" />
             <TextBlock FontSize="16" Height="24" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="0" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Load Data" Canvas.Top="4.666" Width="320" FontFamily="Arial"/>

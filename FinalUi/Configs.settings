@@ -27,13 +27,13 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="IsFirst" Type="System.String" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">false</Value>
     </Setting>
     <Setting Name="Background" Type="System.String" Scope="User">
       <Value Profile="(Default)">#FF1E90FF</Value>
     </Setting>
     <Setting Name="IsFreshOrReset" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>
