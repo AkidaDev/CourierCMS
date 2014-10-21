@@ -49,7 +49,7 @@ namespace FinalUi
                     }
                 }
             }
-            RulesApplied = RulesApplied.Where(x => x.ServiceList.Contains(trans.Type)).ToList();
+            RulesApplied = RulesApplied.Where(x => x.ServiceList.Contains(trans.Type.Trim())).ToList();
             decimal price = 0;
             RulesApplied.ForEach((x) =>
             {

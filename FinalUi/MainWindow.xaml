@@ -619,7 +619,8 @@
                                 <DataGridTextColumn Header="Zones" Binding="{Binding zoneCount}"/>
                             </DataGrid.Columns>
                         </DataGrid>
-                        <DataGrid Visibility="Collapsed" Name="ServiceRuleGrid" Grid.Row="1" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
+                        <DataGrid DataContext="{StaticResource ServiceRuleList}" ItemsSource="{Binding}"
+                            Visibility="Collapsed" Name="ServiceRuleGrid" Grid.Row="1" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
                                   AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Dox/NonDox"/>
@@ -635,7 +636,7 @@
                                 <DataGridTextColumn Header=""/>
                             </DataGrid.Columns>
                         </DataGrid>
-                        <DataGrid Visibility="Collapsed" Name="InvoiceRuleGrid" Grid.Row="1" ItemsSource="{Binding}" DataContext="{StaticResource InvoiceRuleList}" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
+                        <DataGrid DataContext="{StaticResource InvoiceRuleList}" ItemsSource="{Binding}" Visibility="Collapsed" Name="InvoiceRuleGrid" Grid.Row="1" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
                                   AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="StartWieght"/>

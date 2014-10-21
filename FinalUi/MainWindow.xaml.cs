@@ -313,7 +313,7 @@ namespace FinalUi
         RoutedCommand PowerEntryCommand = new RoutedCommand();
         private void PowerEntryCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            PowerEntry powerWin = new PowerEntry(dataGridHelper.getCurrentDataStack, db.Clients.Select(c => c.CLCODE.ToString()).ToList(), db);
+            PowerEntry powerWin = new PowerEntry(dataGridHelper.getCurrentDataStack);
             powerWin.Show();
         }
         #endregion
