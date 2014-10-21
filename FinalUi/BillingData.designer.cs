@@ -90,7 +90,7 @@ namespace FinalUi
     #endregion
 		
 		public BillingDataDataContext() : 
-				base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString5, mappingSource)
+				base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString2, mappingSource)
 		{
 			OnCreated();
 		}
@@ -342,18 +342,18 @@ namespace FinalUi
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_getRateReportingObject")]
-		public ISingleResult<sp_getRateReportingObjectResult> sp_getRateReportingObject([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ClientCode", DbType="VarChar(50)")] string clientCode)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), clientCode);
-			return ((ISingleResult<sp_getRateReportingObjectResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferTransactionDetails")]
 		public int sp_TransferTransactionDetails()
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_getRateReportingObject")]
+		public ISingleResult<sp_getRateReportingObjectResult> sp_getRateReportingObject([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ClientCode", DbType="VarChar(50)")] string clientCode)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), clientCode);
+			return ((ISingleResult<sp_getRateReportingObjectResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_ImportZoneData")]
@@ -391,10 +391,10 @@ namespace FinalUi
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail", IsComposable=true)]
-		public object sp_TransferMInvoiceDetailToBInvoiceDetail()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail")]
+		public void sp_TransferMInvoiceDetailToBInvoiceDetail()
 		{
-			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod()))).ReturnValue));
+			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferMInvoiceToBInvoice")]

@@ -690,10 +690,14 @@
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock FontSize="12" Text="Booking Date: " VerticalAlignment="Center" />
                                                 <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding BookingDate}" VerticalAlignment="Center" />
+                                                <TextBlock FontSize="12" Text="    Destination: " VerticalAlignment="Center"/>
+                                                <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding City_Desc}"/>
                                             </StackPanel>
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock FontSize="12" Text="TransMfNo: " VerticalAlignment="Center" />
                                                 <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding TransMF_No}" VerticalAlignment="Center" />
+                                                <TextBlock FontSize="12" Text="     Service Used: " VerticalAlignment="Center"/>
+                                                <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Service_Desc}"/>
                                             </StackPanel>
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock FontSize="12" Text="Invoice No " VerticalAlignment="Center" />

@@ -99,15 +99,15 @@ namespace FinalUi
             data.Weight = Double.Parse(WeightAccToDTDC.Text);
             data.FrWeight = Double.Parse(WeightAccToFranchize.Text);
             double tmpD;
-            if (Cost.Text == "" || !double.TryParse(Cost.Text,out tmpD))
+            if (Cost.Text == "" || !double.TryParse(Cost.Text, out tmpD))
                 Cost.Text = "0";
             data.Amount = Decimal.Parse(Cost.Text);
             var c1 = db.Cities.Where(x => x.CITY_DESC == Destination.Text).Select(y => y.CITY_CODE).FirstOrDefault();
             data.Destination = c1;
             DestinationPin.Text = DestinationPin.Text ?? "";
             data.CustCode = CustomerSelected.Text;
-            if(MODE.Text == "")
-            data.Mode = MODE.Text;
+            if (MODE.Text == "")
+                data.Mode = MODE.Text;
             data.Type = TypeComboBox.Text;
             data.BookingDate = (DateTime)InsertionDate.SelectedDate;
             data.FrAmount = Decimal.Parse(BilledAmount.Text);
@@ -156,7 +156,7 @@ namespace FinalUi
 
             else
             {
-                
+
                 data.SheetNo = sheetNo;
                 data.UserId = SecurityModule.currentUserName;
                 db.RuntimeDatas.InsertOnSubmit(data);
@@ -300,21 +300,24 @@ namespace FinalUi
             {
                 RuntimeData data = null;
                 data = fillData(data);
-                var c = db.Cities.Where(x => x.CITY_CODE == data.Destination && x.CITY_STATUS == "A").FirstOrDefault();
-                if (c == null)
-                    c = db.Cities.SingleOrDefault(x => x.CITY_CODE == "DEL");
-                var d = (City)this.Destination.SelectedItem;
-                double cost;
-                if (d != null)
+                var d = DataSources.CityCopy.Where(x => x.CITY_CODE == ((City)Destination.SelectedItem).CITY_CODE).SingleOrDefault();
+                if (d == null)
                 {
-                    cost =  UtilityClass.getCost(data.CustCode, (double)data.BilledWeight, data.Destination, data.Type, (char)data.DOX);
+                    MessageBox.Show("Destination not found in database.");
+                    return;
+                }
+                double cost;
+
+                double temp;
+                if (double.TryParse(BilledWeightTextBox.Text, out temp))
+                {
+                    cost = UtilityClass.getCost(CustomerSelected.Text, temp, d.CITY_CODE, ((Service)TypeComboBox.SelectedItem).SER_CODE, (char)data.DOX);
                     this.BilledAmount.Text = cost.ToString();
                 }
+
+
             }
-            else
-            {
-                this.BilledAmount.Text = "0";
-            }
+
         }
         private void Validate_Form()
         {

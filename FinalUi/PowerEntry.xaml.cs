@@ -81,7 +81,15 @@ namespace FinalUi
                         c = db.Cities.SingleOrDefault(x => x.CITY_CODE == "DEL");
                     data.CustCode = clientCodeSelectedValue;
                     data.BilledWeight = data.Weight;
-                    data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, (double)data.BilledWeight, data.Destination, data.Type, (char)data.DOX);
+                    try
+                    {
+                        data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, (double)data.BilledWeight, data.Destination, data.Type, (char)data.DOX);
+                    }
+                    catch(Exception ex)
+                    {
+                        Debug.WriteLine(ex.Message + ": Occured in " + data.ConsignmentNo);
+                        data.FrAmount = -1;
+                    }
                     try
                     {
                         db.SubmitChanges();
