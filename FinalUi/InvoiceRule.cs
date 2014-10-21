@@ -7,6 +7,9 @@ namespace FinalUi
 {
     class InvoiceRule : Rule, IRule
     {
+        public float serviceTax;
+        public float fuleSurcharge;
+        public float discount;
         public override void applyRule(object obj)
         {
             base.applyRule(obj);
