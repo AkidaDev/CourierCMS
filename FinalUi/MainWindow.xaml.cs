@@ -465,7 +465,7 @@ namespace FinalUi
             Path pathsquare = new Path();
             pathsquare.Data = Geometry.Parse(@"F1M2,1.644C2,1.644 2,20 2,20 2,20 77.831,20 77.831,20 77.831,20 91.619,1.644 91.619,1.644 91.619,1.644 2,1.644 2,1.644z");
             pathsquare.Fill = Brushes.Black;
-            pathsquare.Height = 22;
+            pathsquare.Height = 20;
             pathsquare.Width = 88.5;
             pathsquare.Stretch = Stretch.Fill;
             Button buttonsquare = new Button();
@@ -1033,8 +1033,9 @@ namespace FinalUi
         #endregion
         #endregion
         #region QuotationFunctions
-        private void ClientManageTreeView_Click(object sender, RoutedEventArgs e)
+        private void CloseTableTreeView_Selected(object sender, RoutedEventArgs e)
         {
+            cloakAll();
         }
 
         private void CostingRuleRadio_Checked(object sender, RoutedEventArgs e)
@@ -1300,6 +1301,18 @@ namespace FinalUi
         {
             AddInvoiceRule window = new AddInvoiceRule(new BillingDataDataContext().Quotations.Where(x => x.CLCODE == ((Client)this.ClientCombo.SelectedItem).CLCODE).FirstOrDefault());
             window.Show();
+        }
+
+        private void MenuItem_hideimage(object sender, RoutedEventArgs e)
+        {
+            if(backgroundimage.Visibility != Visibility.Collapsed)
+            { 
+            backgroundimage.Visibility = Visibility.Collapsed;
+            }
+            else 
+            {
+                backgroundimage.Visibility = Visibility.Visible;
+            }
         }
     }
 }

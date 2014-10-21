@@ -3,8 +3,9 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	x:Class="FinalUi.MainWindow"
 	Icon="Images/logo.ico"
-	Title="Vortex" BorderBrush="Transparent" AllowsTransparency="True" WindowStartupLocation="CenterScreen" WindowState="Normal" Width="1024" Height="700" MinHeight="600" MinWidth="1024" WindowStyle="None">
+	Title="Vortex" BorderBrush="Transparent" AllowsTransparency="True" WindowStartupLocation="CenterScreen" WindowState="Normal" Width="1080" Height="700" MinHeight="600" MinWidth="1024" WindowStyle="None">
     <Window.Resources>
+        <ImageBrush ImageSource="Images/apples.jpg" x:Key="image"/>
         <CollectionViewSource x:Key="EmployeeTable" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="ClienTable" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="zoneTable" CollectionViewType="ListCollectionView" />
@@ -22,7 +23,7 @@
         <CommandBinding Command="ApplicationCommands.Close" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
         <CommandBinding Command="ApplicationCommands.Print" Executed="ExecutePrint" CanExecute="CanExecutePrintCommand"/>
     </Window.CommandBindings>
-    <Grid x:Name="MainGrid" Background="#a32d89ef">
+    <Grid x:Name="MainGrid" Background="White" >
         <Grid.RowDefinitions>
             <RowDefinition Height="6"/>
             <RowDefinition Height="*"/>
@@ -68,6 +69,7 @@
                         <MenuItem Header="Data Entry" />
                         <MenuItem Header="Add Rate Rule" />
                         <MenuItem Header="Peferences" Name="Peferences" Click="Peferences_Click" />
+                        <MenuItem Header="Hide/Show Image" Click="MenuItem_hideimage" />
                     </MenuItem>
                     <MenuItem ToolTip="Know more" Header="Help" Margin="10 0 0 0">
                         <MenuItem Header="About" x:Name="AboutMenuItem" Click="AboutMenuItem_Click"/>
@@ -105,6 +107,7 @@
                         <ColumnDefinition Width="235*" MaxWidth="260" MinWidth="235"/>
                         <ColumnDefinition Width="770*"/>
                     </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="1" Margin="6 0 0 3" Background="#19000000"/>
                     <Grid Name="EmployeeOptionPanel" Grid.Column="1" Visibility="Collapsed">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -116,7 +119,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <WrapPanel Margin="6,2,5,2" Background="#A9FFFFF3" >
+                        <WrapPanel Margin="7,2,5,2" Background="#A9FFFFF3" >
                             <Path Margin="6 0 0 0" Data="F1M7.006,17.756C8.089,18.341 9.324,18.675 10.635,18.675 11.947,18.675 13.183,18.341 14.264,17.756 16.602,18.374 18.432,19.843 19.272,23 19.272,23 2,23 2,23 2.839,19.843 4.67,18.375 7.006,17.756z M22.992,14.925C25.33,15.543 27.161,17.011 28,20.168 28,20.168 19.469,20.168 19.469,20.168 18.486,18.463 17.033,17.311 15.075,16.685 15.597,16.276 16.061,15.798 16.456,15.264 17.354,15.635 18.334,15.843 19.363,15.843 20.674,15.843 21.911,15.51 22.992,14.925z M6.639,12.72C7.558,14.518 9.136,15.706 10.928,15.706 12.722,15.706 14.298,14.518 15.217,12.72 15.217,12.72 6.639,12.72 6.639,12.72z M10.635,4.831C13.958,4.831 16.649,7.548 16.649,10.899 16.649,14.252 13.958,16.968 10.635,16.968 7.313,16.968 4.621,14.252 4.621,10.899 4.621,7.548 7.313,4.831 10.635,4.831z M19.363,2C22.685,2 25.377,4.717 25.377,8.068 25.377,11.421 22.685,14.137 19.363,14.137 18.642,14.137 17.954,14.003 17.313,13.768 17.499,13.331 17.641,12.872 17.74,12.396 18.332,12.704 18.979,12.874 19.656,12.874 21.449,12.874 23.026,11.686 23.944,9.888 23.944,9.888 17.819,9.888 17.819,9.888 17.513,7.667 16.22,5.766 14.398,4.645 15.482,3.049 17.3,2 19.363,2z" Fill="Black" Height="19" Canvas.Left="16" Canvas.Top="188.46" Width="23" Stretch="Fill"/>
                             <TextBlock Text="Manage Employee" Margin="8 0 6 0" FontSize="16" Padding="1 3 1 0.5"/>
                         </WrapPanel>
@@ -148,7 +151,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <WrapPanel Margin="6,2,5,2" Background="#A9FFFFF3" >
+                        <WrapPanel Margin="7,2,5,2" Background="#A9FFFFF3" >
                             <Path Margin="6 0 0 0" Data="F1M7.006,17.756C8.089,18.341 9.324,18.675 10.635,18.675 11.947,18.675 13.183,18.341 14.264,17.756 16.602,18.374 18.432,19.843 19.272,23 19.272,23 2,23 2,23 2.839,19.843 4.67,18.375 7.006,17.756z M22.992,14.925C25.33,15.543 27.161,17.011 28,20.168 28,20.168 19.469,20.168 19.469,20.168 18.486,18.463 17.033,17.311 15.075,16.685 15.597,16.276 16.061,15.798 16.456,15.264 17.354,15.635 18.334,15.843 19.363,15.843 20.674,15.843 21.911,15.51 22.992,14.925z M6.639,12.72C7.558,14.518 9.136,15.706 10.928,15.706 12.722,15.706 14.298,14.518 15.217,12.72 15.217,12.72 6.639,12.72 6.639,12.72z M10.635,4.831C13.958,4.831 16.649,7.548 16.649,10.899 16.649,14.252 13.958,16.968 10.635,16.968 7.313,16.968 4.621,14.252 4.621,10.899 4.621,7.548 7.313,4.831 10.635,4.831z M19.363,2C22.685,2 25.377,4.717 25.377,8.068 25.377,11.421 22.685,14.137 19.363,14.137 18.642,14.137 17.954,14.003 17.313,13.768 17.499,13.331 17.641,12.872 17.74,12.396 18.332,12.704 18.979,12.874 19.656,12.874 21.449,12.874 23.026,11.686 23.944,9.888 23.944,9.888 17.819,9.888 17.819,9.888 17.513,7.667 16.22,5.766 14.398,4.645 15.482,3.049 17.3,2 19.363,2z" Fill="Black" Height="19" Canvas.Left="16" Canvas.Top="188.46" Width="23" Stretch="Fill"/>
                             <TextBlock Text="Manage Client" Margin="8 0 6 0" FontSize="16" Padding="1 3 1 0.5"/>
                         </WrapPanel>
@@ -181,7 +184,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <WrapPanel Margin="6,2,5,2" Background="#A9FFFFF3" >
+                        <WrapPanel Margin="7,2,5,2" Background="#A9FFFFF3" >
                             <Path Margin="6 0 0 0" Data="F1M8.5,4.833C10.571,4.833 12.25,6.55 12.25,8.667 12.25,10.784 10.571,12.5 8.5,12.5 6.429,12.5 4.75,10.784 4.75,8.667 4.75,6.55 6.429,4.833 8.5,4.833z M8.5,3.3C5.6,3.3 3.25,5.703 3.25,8.667 3.25,11.631 5.6,14.033 8.5,14.033 11.399,14.033 13.75,11.631 13.75,8.667 13.75,5.703 11.399,3.3 8.5,3.3z M8.5,1C12.642,1 16,4.432 16,8.667 16,12.901 8.5,24 8.5,24 8.5,24 1,12.901 1,8.667 1,4.432 4.358,1 8.5,1z" Fill="Black" Height="25" Canvas.Left="351.667" Canvas.Top="77.333" Width="17"/>
                             <TextBlock Text="Manage City" Margin="8 0 6 0" FontSize="16" Padding="1 3 1 0.5"/>
                         </WrapPanel>
@@ -214,7 +217,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <WrapPanel Margin="6,2,5,2" Background="#A9FFFFF3" >
+                        <WrapPanel Margin="7,2,5,2" Background="#A9FFFFF3" >
                             <Path Margin="6 0 0 0" Data="F1M8.5,4.833C10.571,4.833 12.25,6.55 12.25,8.667 12.25,10.784 10.571,12.5 8.5,12.5 6.429,12.5 4.75,10.784 4.75,8.667 4.75,6.55 6.429,4.833 8.5,4.833z M8.5,3.3C5.6,3.3 3.25,5.703 3.25,8.667 3.25,11.631 5.6,14.033 8.5,14.033 11.399,14.033 13.75,11.631 13.75,8.667 13.75,5.703 11.399,3.3 8.5,3.3z M8.5,1C12.642,1 16,4.432 16,8.667 16,12.901 8.5,24 8.5,24 8.5,24 1,12.901 1,8.667 1,4.432 4.358,1 8.5,1z" Fill="Black" Height="25" Canvas.Left="351.667" Canvas.Top="77.333" Width="17"/>
                             <TextBlock Text="Manage Zone" Margin="8 0 6 0" FontSize="16" Padding="1 3 1 0.5"/>
                         </WrapPanel>
@@ -247,7 +250,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <WrapPanel Margin="6,2,5,2" Background="#A9FFFFF3" >
+                        <WrapPanel Margin="7,2,5,2" Background="#A9FFFFF3" >
                             <Path Margin="6 0 0 0" Data="F1M8.5,4.833C10.571,4.833 12.25,6.55 12.25,8.667 12.25,10.784 10.571,12.5 8.5,12.5 6.429,12.5 4.75,10.784 4.75,8.667 4.75,6.55 6.429,4.833 8.5,4.833z M8.5,3.3C5.6,3.3 3.25,5.703 3.25,8.667 3.25,11.631 5.6,14.033 8.5,14.033 11.399,14.033 13.75,11.631 13.75,8.667 13.75,5.703 11.399,3.3 8.5,3.3z M8.5,1C12.642,1 16,4.432 16,8.667 16,12.901 8.5,24 8.5,24 8.5,24 1,12.901 1,8.667 1,4.432 4.358,1 8.5,1z" Fill="Black" Height="25" Canvas.Left="351.667" Canvas.Top="77.333" Width="17"/>
                             <TextBlock Text="Manage Country" Margin="8 0 6 0" FontSize="16" Padding="1 3 1 0.5"/>
                         </WrapPanel>
@@ -281,7 +284,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <WrapPanel Margin="6,2,5,2" Background="#A9FFFFF3" >
+                        <WrapPanel Margin="7,2,5,2" Background="#A9FFFFF3" >
                             <Path Margin="6 2 0 0" Data="F1M8.199,17.196C8.199,17.196 15.002,17.196 15.002,17.196 15.002,17.196 15.002,17.807 15.002,17.807 15.002,17.807 8.199,17.807 8.199,17.807 8.199,17.807 8.199,17.196 8.199,17.196z M8.199,15.36C8.199,15.36 12.2,15.36 12.2,15.36 12.2,15.36 12.2,15.971 12.2,15.971 12.2,15.971 8.199,15.971 8.199,15.971 8.199,15.971 8.199,15.36 8.199,15.36z M8.199,13.527C8.199,13.527 13.4,13.527 13.4,13.527 13.4,13.527 13.4,14.138 13.4,14.138 13.4,14.138 8.199,14.138 8.199,14.138 8.199,14.138 8.199,13.527 8.199,13.527z M8.199,11.695C8.199,11.695 15.401,11.695 15.401,11.695 15.401,11.695 15.401,12.305 15.401,12.305 15.401,12.305 8.199,12.305 8.199,12.305 8.199,12.305 8.199,11.695 8.199,11.695z M8.199,9.862C8.199,9.862 12.2,9.862 12.2,9.862 12.2,9.862 12.2,10.473 12.2,10.473 12.2,10.473 8.199,10.473 8.199,10.473 8.199,10.473 8.199,9.862 8.199,9.862z M6.399,6.501C6.399,6.501 6.399,21.167 6.399,21.167 6.399,21.167 17.2,21.167 17.2,21.167 17.2,21.167 17.2,6.501 17.2,6.501 17.2,6.501 6.399,6.501 6.399,6.501z M4.599,4.666C4.599,4.666 19,4.666 19,4.666 19,4.666 19,23 19,23 19,23 4.599,23 4.599,23 4.599,23 4.599,4.666 4.599,4.666z M1,1C1,1 15.401,1 15.401,1 15.401,1 15.401,2.833 15.401,2.833 15.401,2.833 15.401,3.749 15.401,3.749 15.401,3.749 13.601,3.749 13.601,3.749 13.601,3.749 13.601,2.833 13.601,2.833 13.601,2.833 2.8,2.833 2.8,2.833 2.8,2.833 2.8,17.501 2.8,17.501 2.8,17.501 3.7,17.501 3.7,17.501 3.7,17.501 3.7,19.334 3.7,19.334 3.7,19.334 2.8,19.334 2.8,19.334 2.8,19.334 1,19.334 1,19.334 1,19.334 1,1 1,1z" Fill="Black" Height="24" Canvas.Left="410" Canvas.Top="6" Width="20"/>
                             <TextBlock Text="Client Analytic Report" Margin="8 0 6 0" FontSize="16" Padding="1 3 1 0.5"/>
                         </WrapPanel>
@@ -303,7 +306,7 @@
                         <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
                     </Grid>
 
-                    <Grid Visibility="Visible" Name="QuotationoptionPanel" Grid.Column="1">
+                    <Grid Visibility="Collapsed" Name="QuotationoptionPanel" Grid.Column="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
@@ -315,7 +318,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <WrapPanel Margin="6,2,5,2" Background="#A9FFFFF3" >
+                        <WrapPanel Margin="7,2,5,2" Background="#A9FFFFF3" >
                             <Path Margin="6 0 0 0" Data="F1M7.006,17.756C8.089,18.341 9.324,18.675 10.635,18.675 11.947,18.675 13.183,18.341 14.264,17.756 16.602,18.374 18.432,19.843 19.272,23 19.272,23 2,23 2,23 2.839,19.843 4.67,18.375 7.006,17.756z M22.992,14.925C25.33,15.543 27.161,17.011 28,20.168 28,20.168 19.469,20.168 19.469,20.168 18.486,18.463 17.033,17.311 15.075,16.685 15.597,16.276 16.061,15.798 16.456,15.264 17.354,15.635 18.334,15.843 19.363,15.843 20.674,15.843 21.911,15.51 22.992,14.925z M6.639,12.72C7.558,14.518 9.136,15.706 10.928,15.706 12.722,15.706 14.298,14.518 15.217,12.72 15.217,12.72 6.639,12.72 6.639,12.72z M10.635,4.831C13.958,4.831 16.649,7.548 16.649,10.899 16.649,14.252 13.958,16.968 10.635,16.968 7.313,16.968 4.621,14.252 4.621,10.899 4.621,7.548 7.313,4.831 10.635,4.831z M19.363,2C22.685,2 25.377,4.717 25.377,8.068 25.377,11.421 22.685,14.137 19.363,14.137 18.642,14.137 17.954,14.003 17.313,13.768 17.499,13.331 17.641,12.872 17.74,12.396 18.332,12.704 18.979,12.874 19.656,12.874 21.449,12.874 23.026,11.686 23.944,9.888 23.944,9.888 17.819,9.888 17.819,9.888 17.513,7.667 16.22,5.766 14.398,4.645 15.482,3.049 17.3,2 19.363,2z" Fill="Black" Height="19" Canvas.Left="16" Canvas.Top="188.46" Width="23" Stretch="Fill"/>
                             <TextBlock Text="Client Quotation" Margin="8 0 6 0" FontSize="16" Padding="1 3 1 0.5"/>
                         </WrapPanel>
@@ -418,14 +421,14 @@
                             </TreeViewItem.Header>
                             <TreeViewItem Name="DataDockPanelTreeView">
                                 <TreeViewItem.Header>
-                                    <TextBlock Text="Data Entry Table" FontSize="16" Foreground="White" FontFamily="Calibri" MouseDown="DataDockPanelTreeView_Selected"/>
+                                    <TextBlock Text="  Data Entry Table  " FontSize="16" Foreground="White" FontFamily="Calibri" MouseDown="DataDockPanelTreeView_Selected"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
-                            <!-- <TreeViewItem  x:Name="BillAnalysis">
+                            <TreeViewItem Name="CloseTableTreeView">
                                 <TreeViewItem.Header>
-                                    <TextBlock Text="Bill Analysis" FontSize="16" Foreground="White" FontFamily="Calibri" MouseDown="BillAnalysis_Click"/>
+                                    <TextBlock Text="  Close all Table  " FontSize="16" Foreground="White" FontFamily="Calibri" MouseDown="CloseTableTreeView_Selected"/>
                                 </TreeViewItem.Header>
-                            </TreeViewItem>-->
+                            </TreeViewItem>
                         </TreeViewItem>
                     </TreeView>
                     <TreeView Background="Transparent" BorderThickness="0" Margin="0,5,0,0">
@@ -435,17 +438,12 @@
                             </TreeViewItem.Header>
                             <TreeViewItem Name="ClientsReportTreeView">
                                 <TreeViewItem.Header>
-                                    <TextBlock Text="Clients Report" FontSize="16" Foreground="White" FontFamily="Calibri" MouseDown="ClientsReportTreeView_Selected"/>
+                                    <TextBlock Text="  Clients Report  " FontSize="16" Foreground="White" FontFamily="Calibri" MouseDown="ClientsReportTreeView_Selected"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
-                            <!--<TreeViewItem Name="ManageClientsTreeView">
-                                <TreeViewItem.Header>
-                                    <TextBlock Text="Manage Clients" FontSize="16" Foreground="White" FontFamily="Calibri" MouseDown="ClientManageTreeView_Click"/>
-                                </TreeViewItem.Header>
-                            </TreeViewItem>-->
                             <TreeViewItem  Name="ClientQuotationTreeView">
                                 <TreeViewItem.Header>
-                                    <TextBlock  Text="Client Quotation" FontSize="16" Foreground="White" FontFamily="Calibri" MouseDown="ClientQuotationTreeView_Selected"/>
+                                    <TextBlock  Text="  Client Quotation  " FontSize="16" Foreground="White" FontFamily="Calibri" MouseDown="ClientQuotationTreeView_Selected"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
                         </TreeViewItem>
@@ -457,42 +455,41 @@
                             </TreeViewItem.Header>
                             <TreeViewItem Name="Employeetreeviewitembutton">
                                 <TreeViewItem.Header>
-                                    <TextBlock Text="Employee" FontSize="16" Foreground="White" FontFamily="Calibri" MouseDown="Employeetreeviewitembutton_Click"/>
+                                    <TextBlock Text="  Employee  " FontSize="16" Foreground="White" FontFamily="Calibri" MouseDown="Employeetreeviewitembutton_Click"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
                             <TreeViewItem Name="clienttreeviewitembutton">
                                 <TreeViewItem.Header>
-                                    <TextBlock Text="Client" FontSize="16" Foreground="White" FontFamily="Calibri" MouseDown="clienttreeviewitembutton_Click"/>
+                                    <TextBlock Text="  Client  " FontSize="16" Foreground="White" FontFamily="Calibri" MouseDown="clienttreeviewitembutton_Click"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
                             <TreeViewItem Name="zonetreeitembutton">
                                 <TreeViewItem.Header>
-                                    <TextBlock Text="Zone" FontSize="16" Foreground="White" FontFamily="Calibri" MouseDown="zonetreeitembutton_Click"/>
+                                    <TextBlock Text="  Zone  " FontSize="16" Foreground="White" FontFamily="Calibri" MouseDown="zonetreeitembutton_Click"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
                             <TreeViewItem Name="citytreeviewitembutton">
                                 <TreeViewItem.Header>
-                                    <TextBlock Text="City" FontSize="16" Foreground="White" FontFamily="Calibri" MouseDown="citytreeviewitembutton_Click"/>
+                                    <TextBlock Text="  City  " FontSize="16" Foreground="White" FontFamily="Calibri" MouseDown="citytreeviewitembutton_Click"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
                             <TreeViewItem Name="countrytreeitembutton">
                                 <TreeViewItem.Header>
-                                    <TextBlock Text="Country" FontSize="16" Foreground="White" FontFamily="Calibri" MouseDown="countrytreeitembutton_Click"/>
+                                    <TextBlock Text="  Country  " FontSize="16" Foreground="White" FontFamily="Calibri" MouseDown="countrytreeitembutton_Click"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
                         </TreeViewItem>
                     </TreeView>
                     <Path Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Black" Height="4" HorizontalAlignment="Left" Margin="15,6,0,0"  Width="194"/>
                 </StackPanel>
-
-                <Grid Grid.Column="1">
+                <Grid Grid.Column="1" Margin="6 0 0 0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="211*"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="70*"/>
                     </Grid.RowDefinitions>
-
-                    <Grid Grid.Row="0" Name="ManageClientDatagridPanel" Margin="6 0 0 0" Visibility="Collapsed">
+                    <Grid Name="backgroundimage" Background="{StaticResource image}" Margin="0 0 0 -29 " Visibility="Visible"/>
+                    <Grid Grid.Row="0" Name="ManageClientDatagridPanel" Visibility="Collapsed">
                         <DataGrid RowHeaderWidth="0" BorderThickness="0" x:Name="mangaclientgrid" ItemsSource="{Binding}" DataContext="{StaticResource ClienTable }"  SelectionMode="Single" AutoGenerateColumns="False" >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Name" Binding="{Binding CLNAME , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
@@ -505,7 +502,7 @@
                     </Grid>
 
 
-                    <Grid Grid.Row="0" Name="ManageEmployeeDatagridPanel" Margin="6 0 0 0" Visibility="Collapsed">
+                    <Grid Grid.Row="0" Name="ManageEmployeeDatagridPanel" Visibility="Collapsed">
                         <DataGrid RowHeaderWidth="0" IsReadOnly="True" BorderThickness="0" x:Name="mangaEmployeegrid" ItemsSource="{Binding}" DataContext="{StaticResource EmployeeTable }"   CellEditEnding="mangaEmployeegrid_CellEditEnding"  AutoGenerateColumns="False" >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Name" Binding="{Binding Name , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -518,7 +515,7 @@
 
 
 
-                    <Grid Grid.Row="0" Name="ManageZoneDatagridPanel" Margin="6 0 0 0" Visibility="Collapsed">
+                    <Grid Grid.Row="0" Name="ManageZoneDatagridPanel" Visibility="Collapsed">
                         <DataGrid x:Name="ZoneDataGrid" AutoGenerateColumns="False" RowHeaderWidth="0" BorderThickness="0" ItemsSource="{Binding}" DataContext="{StaticResource zoneTable}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Zone Code" IsReadOnly="True" Binding="{Binding zcode}" />
@@ -528,7 +525,7 @@
                     </Grid>
 
 
-                    <Grid Grid.Row="0" Name="ManageCityDatagridPanel" Margin="6 0 0 0" Visibility="Collapsed">
+                    <Grid Grid.Row="0" Name="ManageCityDatagridPanel" Visibility="Collapsed">
                         <DataGrid AutoGenerateColumns="False" Name="CityDataGrid" RowHeaderWidth="0" BorderThickness="0" DataContext="{StaticResource CityTable}" ItemsSource="{Binding}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="City Code" IsReadOnly="True" Binding="{Binding CITY_CODE}"/>
@@ -540,7 +537,7 @@
                     </Grid>
 
 
-                    <Grid Grid.Row="0" Name="ManageCountryDatagridPanel" Margin="6 0 0 0" Visibility="Collapsed">
+                    <Grid Grid.Row="0" Name="ManageCountryDatagridPanel" Visibility="Collapsed">
                         <DataGrid RowHeaderWidth="0" BorderThickness="0" AutoGenerateColumns="False">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Country Code" IsReadOnly="True"/>
@@ -549,7 +546,7 @@
                         </DataGrid>
                     </Grid>
 
-                    <Grid Grid.Row="0" Name="ProfitGrid" Margin="6 0 0 0" Visibility="Collapsed">
+                    <Grid Grid.Row="0" Name="ProfitGrid" Visibility="Collapsed">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="200*"/>
@@ -581,7 +578,7 @@
                     </Grid>
 
 
-                    <Grid Grid.Row="0" Margin="6 0 0 0" Name="RuleGrid" Visibility="Visible">
+                    <Grid Grid.Row="0" Name="RuleGrid" Visibility="Collapsed">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="188*"/>
@@ -656,7 +653,7 @@
                     </Grid>
 
 
-                    <DockPanel Grid.Row="0" Margin="6 0 0 0" Name="DataDockPanel" Visibility="Collapsed">
+                    <DockPanel Grid.Row="0" Name="DataDockPanel" Visibility="Collapsed" Margin="-1 0 0 0">
                         <DockPanel.Resources>
                             <Style TargetType="{x:Type DataGridCell}">
                                 <Setter Property="BorderThickness" Value="0"/>
@@ -709,7 +706,7 @@
                     </DockPanel>
 
 
-                    <DockPanel x:Name="DataGridOptionpanel" Grid.Row="1" Margin="6 0 0 0" Height="29">
+                    <DockPanel x:Name="DataGridOptionpanel" Grid.Row="1" Height="26" Background="#A9FFFFF3">
                         <WrapPanel Visibility="Collapsed" x:Name="buttontabcanvaswrap" Margin="9,1,0,0" />
                         <WrapPanel Visibility="Collapsed" Name="NavigationBar" HorizontalAlignment="Right">
                             <Button ToolTip="First Page" Style="{StaticResource smallbutton}" x:Name="DataGridFirstPage" Margin="2,2,5,2" Click="DataGridFirstPage_Click" >
@@ -735,7 +732,7 @@
                     </DockPanel>
 
 
-                    <Grid Grid.Row="3" Margin="6 0 0 0">
+                    <Grid Grid.Row="3">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="24"/>
                             <RowDefinition Height="119*"/>
@@ -751,13 +748,14 @@
                             <TextBlock Text="  Despcription  " Grid.Column="1" VerticalAlignment="Center" Background="LightGray" />
                             <TextBlock Text="  Help  " Grid.Column="2" VerticalAlignment="Center" Background="LightGray"/>
                             <TextBlock Text="  Feedback  " Grid.Column="3" VerticalAlignment="Center" Background="LightGray"/>
+                            <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="0"  HorizontalAlignment="Left"/>
                             <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="0"  HorizontalAlignment="Right"/>
                             <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
                             <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2" HorizontalAlignment="Right"/>
                             <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
                         </Grid>
                         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
-                            <TextBlock Text="Log..." x:Name="MessageBlock" Background="White" Margin="0,0,0,0" />
+                            <TextBlock Text="Log..." x:Name="MessageBlock" Background="#FFF7F3F3" Margin="0,0,0,0" />
                         </ScrollViewer>
                     </Grid>
                 </Grid>
