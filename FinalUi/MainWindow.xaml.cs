@@ -313,7 +313,7 @@ namespace FinalUi
         RoutedCommand PowerEntryCommand = new RoutedCommand();
         private void PowerEntryCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            PowerEntry powerWin = new PowerEntry(dataGridHelper.getCurrentDataStack, db.Clients.Select(c => c.CLCODE.ToString()).ToList(), db);
+            PowerEntry powerWin = new PowerEntry(dataGridHelper.getCurrentDataStack);
             powerWin.Show();
         }
         #endregion
@@ -1115,6 +1115,7 @@ namespace FinalUi
         {
             DataSources.refreshEmployeeList();
             employees = DataSources.EmployeeCopy;
+            mangaEmployeegrid.Items.Refresh();
         }
 
         private void EditEmployeeGrid_Click(object sender, RoutedEventArgs e)
@@ -1165,6 +1166,7 @@ namespace FinalUi
         {
             DataSources.refreshClientList();
             clientViewSource.Source = DataSources.ClientCopy;
+            mangaclientgrid.Items.Refresh();
         }
         private void UpdateClientGridButton_Click(object sender, RoutedEventArgs e)
         {

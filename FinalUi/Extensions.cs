@@ -49,7 +49,7 @@ namespace FinalUi
                     }
                 }
             }
-            RulesApplied = RulesApplied.Where(x => x.ServiceList.Contains(trans.Type)).ToList();
+            RulesApplied = RulesApplied.Where(x => x.ServiceList.Contains(trans.Type.Trim())).ToList();
             decimal price = 0;
             RulesApplied.ForEach((x) =>
             {
@@ -150,7 +150,7 @@ namespace FinalUi
         {
             get
             {
-                return "<" + this.CLCODE + ">" + this.CLNAME;
+                return this.CLNAME + "(" + this.CLCODE + ")";
             }
         }
     }
@@ -160,7 +160,7 @@ namespace FinalUi
         {
             get
             {
-                return this.SER_CODE + ":" + this.SER_DESC;
+                return this.SER_DESC + "(" + this.SER_CODE + ")";
             }
         }
     }
@@ -170,7 +170,7 @@ namespace FinalUi
         {
             get
             {
-                return this.zcode + ":" + this.Zone_name;
+                return  this.Zone_name + "(" + this.zcode + ")";
             }
         }
     }
@@ -180,7 +180,7 @@ namespace FinalUi
         {
             get
             {
-                return this.STATE_CODE + ":" + this.STATE_DESC;
+                return this.STATE_DESC + "(" + this.STATE_CODE +")";
             }
         }
     }
@@ -190,7 +190,7 @@ namespace FinalUi
         {
             get
             {
-                return this.CITY_CODE + ":" + this.CITY_DESC;
+                return this.CITY_DESC + "(" + this.CITY_CODE + ")";
             }
         }
     }
