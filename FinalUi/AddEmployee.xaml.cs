@@ -63,9 +63,9 @@ namespace FinalUi
             if (Password.Password == ConfirmPass.Password && Password.Password != "" && Password.Password != null)
             {
                 setEmpFromFields();
+                emp.Status = 'A';
                 BillingDataDataContext db = new BillingDataDataContext();
                 db.Employees.InsertOnSubmit(emp);
-
                 Debug.WriteLine("Type is" + UserPermisstionToset.ItemsSource.GetType().ToString());
                 db.User_permissions.InsertAllOnSubmit(returnUserPermissionList((List<Permission>)(viewsourceUserPermission.Source)));
                 try

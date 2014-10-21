@@ -32,12 +32,10 @@ namespace FinalUi
             view = (CollectionViewSource)FindResource("EmployeeTable");
             view.Source = employees;
         }
-
         private void mangaEmployeegrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             employeeToEdit.Add((Employee)e.Row.DataContext);
         }
-
         private void UpdateEmployee_Click(object sender, RoutedEventArgs e)
         {
             AddEmployee window = new AddEmployee((Employee)this.mangaEmployeegrid.SelectedItem);
@@ -51,14 +49,12 @@ namespace FinalUi
             this.employees = db.Employees.ToList();
             this.mangaEmployeegrid.Items.Refresh();
         }
-
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             AddEmployee window = new AddEmployee();
             window.ShowDialog();
             window.Closed +=  reloadgrid;
         }
-
         private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {
             DragMove();
@@ -67,6 +63,5 @@ namespace FinalUi
         {
             this.Close();
         }
-
     }
 }

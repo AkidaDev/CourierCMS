@@ -504,7 +504,7 @@
 
 
                     <Grid Grid.Row="0" x:Name="ManageEmployeeDatagridPanel" Visibility="Collapsed">
-                        <DataGrid RowHeaderWidth="0" IsReadOnly="True" BorderThickness="0" x:Name="mangaEmployeegrid" ItemsSource="{Binding}" DataContext="{StaticResource EmployeeTable}"   CellEditEnding="mangaEmployeegrid_CellEditEnding"  AutoGenerateColumns="False" >
+                        <DataGrid RowHeaderWidth="0" IsReadOnly="True" BorderThickness="0" x:Name="mangaEmployeegrid" ItemsSource="{Binding}" DataContext="{StaticResource EmployeeTable}"  AutoGenerateColumns="False" >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Name" Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                 <DataGridTextColumn Header="Gender" Binding="{Binding Gender, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>

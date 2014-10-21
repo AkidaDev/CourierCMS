@@ -44,6 +44,7 @@ namespace FinalUi
         public void add()
         {
             client.CLNAME = ClientName.Text;
+            client.Status = 'A';
             client.ADDRESS = ClientAddress.Text;
             client.CONTACTNO = ClientPhoneNo.Text;
             client.EMAILID = CLientEmailAddress.Text;
