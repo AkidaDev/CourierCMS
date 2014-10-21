@@ -91,7 +91,9 @@ namespace FinalUi
         {
             BillingDataDataContext db = new BillingDataDataContext();
           
-            _Employee = db.Employees.Where(x=>x.Status == 'A').ToList();
+           // _Employee = db.Employees.Where(x=>x.Status == 'A').ToList();
+            _Employee = db.Employees.ToList();
+
         }
         public static void refreshClientList()
         {

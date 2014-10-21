@@ -65,13 +65,14 @@ namespace FinalUi
                 setEmpFromFields();
                 BillingDataDataContext db = new BillingDataDataContext();
                 db.Employees.InsertOnSubmit(emp);
+
                 Debug.WriteLine("Type is" + UserPermisstionToset.ItemsSource.GetType().ToString());
                 db.User_permissions.InsertAllOnSubmit(returnUserPermissionList((List<Permission>)(viewsourceUserPermission.Source)));
                 try
                 {
                     db.SubmitChanges();
                 }
-                catch (Exception ex) { MessageBox.Show(ex.Message); return; }
+                catch (Exception ex) { MessageBox.Show(ex.Message); return;}
                 this.Close();
             }
             else
