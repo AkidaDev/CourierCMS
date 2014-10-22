@@ -25,7 +25,7 @@ namespace FinalUi
 		}
 		private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AddCountry window = new AddCountry(); window.ShowDialog();
+           // AddCountry window = new AddCountry(); window.ShowDialog();
         }
         private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {
