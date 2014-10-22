@@ -622,17 +622,16 @@
                             Visibility="Collapsed" Name="ServiceRuleGrid" Grid.Row="1" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
                                   AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Dox/NonDox"/>
-                                <DataGridTextColumn Header="Zone"/>
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header=""/>
+                                <DataGridTextColumn Header="Range" Binding="{Binding RangeWeight}"/>
+                                <DataGridTextColumn Header="Type" Binding="{Binding type}"/>
+                                <DataGridTextColumn Header="Mode" Binding="{Binding mode}"/>
+                                <DataGridTextColumn Header="Change" Binding="{Binding change}"/>
+                                <DataGridTextColumn Header="Applicable" Binding="{Binding applicable}"/>
+                                <DataGridTextColumn Header="ServiceCount" Binding="{Binding servCount}"/>
+                                <DataGridTextColumn Header="ZoneCount" Binding="{Binding zoneCount}"/>
+                                <DataGridTextColumn Header="CityCount" Binding="{Binding cityCount}"/>
+                                <DataGridTextColumn Header="StateCount" Binding="{Binding stateCOunt}"/>
+                                <DataGridTextColumn Header="StepWeight" Binding="{Binding stepweight}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                         <DataGrid DataContext="{StaticResource InvoiceRuleList}" ItemsSource="{Binding}" Visibility="Collapsed" Name="InvoiceRuleGrid" Grid.Row="1" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"

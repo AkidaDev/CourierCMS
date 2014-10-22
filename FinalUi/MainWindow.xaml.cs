@@ -33,6 +33,9 @@ namespace FinalUi
         public List<Employee> employees;
         private CollectionViewSource view;
         private List<CostingRule> costingRules;
+        private CollectionViewSource serviceRulesView;
+        private List<ServiceRule> serviceRules;
+
         private Quotation qutObj;
         // Employee listing data import procedure
         // Client listing data import procedure
@@ -165,6 +168,7 @@ namespace FinalUi
                 this.PrintButton.Visibility = this.PrintMenuItem.Visibility = this.AfterPrint.Visibility = Visibility.Collapsed;
             }
             costingRules = new List<CostingRule>();
+
             AppDomain currentDomain = AppDomain.CurrentDomain;
             currentDomain.UnhandledException += new UnhandledExceptionEventHandler(MyHandler);
 
@@ -1068,7 +1072,12 @@ namespace FinalUi
             {
                 CostingRulesSource = (CollectionViewSource)FindResource("CostingRuleList");
             }
+            if(serviceRulesView == null)
+            {
+                serviceRulesView = (CollectionViewSource)FindResource("ServiceRuleList");
+            }
             CostingRulesSource.Source = qutObj.CostingRules;
+            serviceRulesView.Source = qutObj.ServiceRules;
 
         }
         private void cloakAllGrid()
