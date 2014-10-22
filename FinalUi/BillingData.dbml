@@ -300,12 +300,6 @@
       <Association Name="Permission_User_permission" Member="Permission" ThisKey="per_id" OtherKey="id" Type="Permission" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.world_cities_free" Member="world_cities_frees">
-    <Type Name="world_cities_free">
-      <Column Name="cc_fips" Type="System.String" DbType="NVarChar(2) NOT NULL" CanBeNull="false" />
-      <Column Name="full_name_nd" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.AccountStatement" Member="AccountStatements">
     <Type Name="AccountStatement">
       <Column Name="Id" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />

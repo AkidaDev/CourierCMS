@@ -279,14 +279,6 @@ namespace FinalUi
 			}
 		}
 		
-		public System.Data.Linq.Table<world_cities_free> world_cities_frees
-		{
-			get
-			{
-				return this.GetTable<world_cities_free>();
-			}
-		}
-		
 		public System.Data.Linq.Table<AccountStatement> AccountStatements
 		{
 			get
@@ -6745,51 +6737,6 @@ namespace FinalUi
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.world_cities_free")]
-	public partial class world_cities_free
-	{
-		
-		private string _cc_fips;
-		
-		private string _full_name_nd;
-		
-		public world_cities_free()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cc_fips", DbType="NVarChar(2) NOT NULL", CanBeNull=false)]
-		public string cc_fips
-		{
-			get
-			{
-				return this._cc_fips;
-			}
-			set
-			{
-				if ((this._cc_fips != value))
-				{
-					this._cc_fips = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_full_name_nd", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
-		public string full_name_nd
-		{
-			get
-			{
-				return this._full_name_nd;
-			}
-			set
-			{
-				if ((this._full_name_nd != value))
-				{
-					this._full_name_nd = value;
-				}
 			}
 		}
 	}

@@ -977,6 +977,7 @@ namespace FinalUi
             DataEntryOptionPanel.Visibility = Visibility.Visible;
             buttontabcanvaswrap.Visibility = Visibility.Visible;
             NavigationBar.Visibility = Visibility.Visible;
+        }
       
 
         private void clienttreeviewitembutton_Click(object sender, RoutedEventArgs e)
@@ -1013,7 +1014,9 @@ namespace FinalUi
         #endregion
         #region QuotationFunctions
         private void CloseTableTreeView_Selected(object sender, RoutedEventArgs e)
+        {
             cloakAll();
+        }
         
 
         private void ClientCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
