@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 namespace FinalUi
 {
     class DataSources
@@ -90,13 +89,11 @@ namespace FinalUi
         public static void refreshEmployeeList()
         {
             BillingDataDataContext db = new BillingDataDataContext();
-          
             _Employee = db.Employees.Where(x=>x.Status == 'A').ToList();
         }
         public static void refreshClientList()
         {
             BillingDataDataContext db = new BillingDataDataContext();
-
             _Client = db.Clients.Where(x=>x.Status == 'A').ToList();
         }
         public static void refreshCityList()

@@ -31,7 +31,7 @@ namespace FinalUi
         // Employee listing data import procedure
         public List<Employee> employeeToEdit;
         public List<Employee> employees;
-        private CollectionViewSource view;
+        private CollectionViewSource employeeview;
         private List<CostingRule> costingRules;
         private CollectionViewSource serviceRulesView;
         private List<ServiceRule> serviceRules;
@@ -44,9 +44,7 @@ namespace FinalUi
         Client client;
         CollectionViewSource clientViewSource;
         CollectionViewSource cityViewSource;
-
         Button currentaddrulebutton;
-
         // Client listing data import procedure
         #region initScripts
 
@@ -79,13 +77,12 @@ namespace FinalUi
             clientViewSource.Source = DataSources.ClientCopy;
             cityViewSource = (CollectionViewSource)FindResource("CityTable");
             cityViewSource.Source = DataSources.CityCopy;
-            // Client listing data import procedure
             // Employee listing data import procedure
             employeeToEdit = new List<Employee>();
-            employees = DataSources.EmployeeCopy;
+            this.employees = DataSources.EmployeeCopy;
             currentaddrulebutton = AddCostingRuleButton;
-            view = (CollectionViewSource)FindResource("EmployeeTable");
-            view.Source = employees;
+            employeeview = (CollectionViewSource)FindResource("EmployeeTable");
+            employeeview.Source = this.employees;
             // Employee listing data import procedure
             dueDataGridSource = (CollectionViewSource)FindResource("DueGridDataSource");
             profitDataGridSource = (CollectionViewSource)FindResource("ProfitabilityGridDataSource");
@@ -101,8 +98,8 @@ namespace FinalUi
             //this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             this.WindowState = WindowState.Normal;
             this.MainGrid.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Configs.Default.Background));
-            this.MaxHeight = System.Windows.SystemParameters.MaximizedPrimaryScreenHeight-8;
-            this.MaxWidth = System.Windows.SystemParameters.MaximizedPrimaryScreenWidth-6;
+            this.MaxHeight = System.Windows.SystemParameters.MaximizedPrimaryScreenHeight - 8;
+            this.MaxWidth = System.Windows.SystemParameters.MaximizedPrimaryScreenWidth - 6;
             #endregion
             db = new BillingDataDataContext();
             ResourceDictionary dict = this.Resources;
@@ -171,7 +168,6 @@ namespace FinalUi
 
             AppDomain currentDomain = AppDomain.CurrentDomain;
             currentDomain.UnhandledException += new UnhandledExceptionEventHandler(MyHandler);
-
             try
             {
                 throw new Exception("1");
@@ -181,14 +177,12 @@ namespace FinalUi
                 Console.WriteLine("Catch clause caught : {0} \n", e.Message);
             }
         }
-
         static void MyHandler(object sender, UnhandledExceptionEventArgs args)
         {
             Exception e = (Exception)args.ExceptionObject;
             MessageBox.Show("MyHandler caught : " + e.Message);
-            MessageBox.Show("Runtime terminating:"+args.IsTerminating);
+            MessageBox.Show("Runtime terminating:" + args.IsTerminating);
         }
-
         #region DataEntrySection
         #region backGround Worker Functions
         #region LoadWorker
@@ -651,7 +645,6 @@ namespace FinalUi
         {
             dataGridHelper.currentDataSheet.applyFilter();
             dataGridHelper.refreshCurrentPage();
-
         }
         #endregion
         #endregion*-
@@ -674,7 +667,7 @@ namespace FinalUi
                         path.Fill = Brushes.Black;
                         StackPanel panel = new StackPanel();
                         panel.Children.Add(path);
-                        this.minimax.Margin = new Thickness(0,1.5,0,0);
+                        this.minimax.Margin = new Thickness(0, 1.5, 0, 0);
                         this.NormalMaximize.Content = panel;
                         this.NormalMaximize.ToolTip = "Restore Down";
                         break;
@@ -855,12 +848,10 @@ namespace FinalUi
         {
             Application.Current.Shutdown();
         }
-
         private void ManageClient_Click(object sender, RoutedEventArgs e)
         {
             ManageClient window = new ManageClient(); window.Show();
         }
-
         private void ManageEmployee_Click(object sender, RoutedEventArgs e)
         {
             ManageEmployee window = new ManageEmployee(); window.ShowDialog();
@@ -930,11 +921,9 @@ namespace FinalUi
         }
         private void AddClient_close(object sender, EventArgs e)
         {
-            BillingDataDataContext db = new BillingDataDataContext();
-            var clients = (from client in db.Clients
-                           select client).ToList();
-            viewsource = (CollectionViewSource)FindResource("ClienTable");
-            viewsource.Source = clients;
+            DataSources.refreshClientList();
+            clientViewSource.Source = DataSources.ClientCopy;
+            mangaclientgrid.Items.Refresh();
         }
         #region sidepanel
         private void cloakAll()
@@ -993,17 +982,8 @@ namespace FinalUi
             DataEntryOptionPanel.Visibility = Visibility.Visible;
             buttontabcanvaswrap.Visibility = Visibility.Visible;
             NavigationBar.Visibility = Visibility.Visible;
+        }
 
-        }
-        private void servicetaxtreeviewitembutton_Click(object sender, RoutedEventArgs e)
-        {
-        }
-        private void forwardertarifftreeviewitembutton_Click(object sender, RoutedEventArgs e)
-        {
-        }
-        private void clienttarifftreeviewitembutton_Click(object sender, RoutedEventArgs e)
-        {
-        }
         private void clienttreeviewitembutton_Click(object sender, RoutedEventArgs e)
         {
             cloakAll();
@@ -1052,10 +1032,10 @@ namespace FinalUi
             LoadClientRules();
         }
 
-        private void  LoadClientRules()
+        private void LoadClientRules()
         {
-        BillingDataDataContext db = new BillingDataDataContext();
-        qutObj = db.Quotations.SingleOrDefault(x => x.CLCODE == ((Client)ClientCombo.SelectedItem).CLCODE);
+            BillingDataDataContext db = new BillingDataDataContext();
+            qutObj = db.Quotations.SingleOrDefault(x => x.CLCODE == ((Client)ClientCombo.SelectedItem).CLCODE);
             if (qutObj == null)
             {
                 MessageBox.Show("No quotation associated with this client");
@@ -1064,7 +1044,7 @@ namespace FinalUi
             {
                 loadQuotation(qutObj);
             }
-    
+
         }
         void loadQuotation(Quotation qutObj)
         {
@@ -1097,7 +1077,7 @@ namespace FinalUi
                 AddCostingRuleButton.Visibility = Visibility.Visible;
                 currentaddrulebutton = AddCostingRuleButton;
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException ex)
             { }
         }
 
@@ -1123,7 +1103,8 @@ namespace FinalUi
         private void ReloadEmployeeGrid_Click(object sender, RoutedEventArgs e)
         {
             DataSources.refreshEmployeeList();
-            employees = DataSources.EmployeeCopy;
+            this.employees = DataSources.EmployeeCopy;
+            employeeview.Source = this.employees;
             mangaEmployeegrid.Items.Refresh();
         }
 
@@ -1146,26 +1127,26 @@ namespace FinalUi
         private void AddEmployeeGrid_Click(object sender, RoutedEventArgs e)
         {
             AddEmployee addEmpWin = new AddEmployee();
-            addEmpWin.Closed +=addEmpWin_Closed;
+            addEmpWin.Closed += addEmpWin_Closed;
             addEmpWin.ShowDialog();
         }
         private void DeleteEmployeeGrid_Click(object sender, RoutedEventArgs e)
         {
-            if(mangaEmployeegrid.SelectedItems.Count != 1)
+            if (mangaEmployeegrid.SelectedItems.Count != 1)
             {
                 MessageBox.Show("Select 1 employee to delete");
                 return;
             }
             else
             {
-                MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this employee?","Confirm",MessageBoxButton.YesNo);
-                if(result == MessageBoxResult.Yes)
+                MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this employee?", "Confirm", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
                 {
                     BillingDataDataContext db = new BillingDataDataContext();
-                    Employee emp = db.Employees.SingleOrDefault(x=>x.EMPCode == ((Employee)mangaEmployeegrid.SelectedItem).EMPCode);
+                    Employee emp = db.Employees.SingleOrDefault(x => x.EMPCode == ((Employee)mangaEmployeegrid.SelectedItem).EMPCode);
                     db.Employees.DeleteOnSubmit(emp);
                     db.SubmitChanges();
-                    ReloadEmployeeGrid_Click(null,null);
+                    ReloadEmployeeGrid_Click(null, null);
                 }
             }
         }
@@ -1179,7 +1160,7 @@ namespace FinalUi
         }
         private void UpdateClientGridButton_Click(object sender, RoutedEventArgs e)
         {
-            if(mangaclientgrid.SelectedItems.Count != 1)
+            if (mangaclientgrid.SelectedItems.Count != 1)
             {
                 MessageBox.Show("Please select 1 client to edit.");
                 return;
@@ -1195,23 +1176,23 @@ namespace FinalUi
         private void AddClientButton_Click(object sender, RoutedEventArgs e)
         {
             AddClient addClientWin = new AddClient();
-            addClientWin.Closed +=addClientWin_Closed;
+            addClientWin.Closed += addClientWin_Closed;
             addClientWin.ShowDialog();
         }
         private void DeleteClientGridButton_Click(object sender, RoutedEventArgs e)
         {
-            if(mangaclientgrid.SelectedItems.Count != 1)
+            if (mangaclientgrid.SelectedItems.Count != 1)
             {
                 MessageBox.Show("Please select 1 client to delete");
                 return;
             }
-            MessageBoxResult result = MessageBox.Show("Are you sure want to delete this client?","Confirm",MessageBoxButton.YesNo);
+            MessageBoxResult result = MessageBox.Show("Are you sure want to delete this client?", "Confirm", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
                 if (db == null)
                     db = new BillingDataDataContext();
-                Client client = db.Clients.SingleOrDefault(x=>x.CLCODE == ((Client)mangaclientgrid.SelectedItem).CLCODE);
-                if(client == null)
+                Client client = db.Clients.SingleOrDefault(x => x.CLCODE == ((Client)mangaclientgrid.SelectedItem).CLCODE);
+                if (client == null)
                 {
                     MessageBox.Show("No such client");
                     return;
@@ -1226,10 +1207,11 @@ namespace FinalUi
         {
             DataSources.refreshCityList();
             cityViewSource.Source = DataSources.CityCopy;
+            CityDataGrid.Items.Refresh();
         }
         private void EditCityButton_Click(object sender, RoutedEventArgs e)
         {
-            if(CityDataGrid.SelectedItems.Count != 1)
+            if (CityDataGrid.SelectedItems.Count != 1)
             {
                 MessageBox.Show("Select 1 city to edit");
                 return;
@@ -1242,28 +1224,26 @@ namespace FinalUi
         {
             ReloadCityButton_Click(null, null);
         }
-
         private void AddCityButton_Click(object sender, RoutedEventArgs e)
         {
             AddCity addCityWin = new AddCity();
             addCityWin.Closed += addCityWin_Closed;
             addCityWin.ShowDialog();
         }
-
         private void DeleteCityButton_Click(object sender, RoutedEventArgs e)
         {
-            if(CityDataGrid.SelectedItems.Count != 1)
+            if (CityDataGrid.SelectedItems.Count != 1)
             {
                 MessageBox.Show("Select 1 city to delete");
                 return;
             }
             MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this city?", "Confirm", MessageBoxButton.YesNo);
-            if(result == MessageBoxResult.Yes)
+            if (result == MessageBoxResult.Yes)
             {
                 if (db == null)
                     db = new BillingDataDataContext();
                 City city = db.Cities.SingleOrDefault(x => x.CITY_CODE == ((City)CityDataGrid.SelectedItem).CITY_CODE);
-                if(city == null)
+                if (city == null)
                 {
                     MessageBox.Show("No such city exists.");
                     return;
@@ -1276,7 +1256,6 @@ namespace FinalUi
         #region City Grid Button
 
         #endregion
-
         #region Config Load
         void Default_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -1294,20 +1273,18 @@ namespace FinalUi
             {
                 CostingRule dcr = (CostingRule)CostingRuleGrid.SelectedItem;
                 BillingDataDataContext db = new BillingDataDataContext();
-                Rule dr = db.Rules.Where(x=> x.ID == dcr.Id).FirstOrDefault();
+                Rule dr = db.Rules.Where(x => x.ID == dcr.Id).FirstOrDefault();
                 db.Rules.DeleteOnSubmit(dr);
                 db.SubmitChanges();
                 LoadClientRules();
                 this.CostingRuleGrid.Items.Refresh();
             }
         }
-
         private void AddServiceRuleButton_Click(object sender, RoutedEventArgs e)
         {
             AddServiceRule window = new AddServiceRule(new BillingDataDataContext().Quotations.Where(x => x.CLCODE == ((Client)this.ClientCombo.SelectedItem).CLCODE).FirstOrDefault());
             window.Show();
         }
-
         private void AddInvoiceRuleButton_Click(object sender, RoutedEventArgs e)
         {
             AddInvoiceRule window = new AddInvoiceRule(new BillingDataDataContext().Quotations.Where(x => x.CLCODE == ((Client)this.ClientCombo.SelectedItem).CLCODE).FirstOrDefault());
@@ -1316,11 +1293,11 @@ namespace FinalUi
 
         private void MenuItem_hideimage(object sender, RoutedEventArgs e)
         {
-            if(backgroundimage.Visibility != Visibility.Collapsed)
-            { 
-            backgroundimage.Visibility = Visibility.Collapsed;
+            if (backgroundimage.Visibility != Visibility.Collapsed)
+            {
+                backgroundimage.Visibility = Visibility.Collapsed;
             }
-            else 
+            else
             {
                 backgroundimage.Visibility = Visibility.Visible;
             }

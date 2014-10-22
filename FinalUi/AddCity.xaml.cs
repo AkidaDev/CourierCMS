@@ -68,10 +68,10 @@ namespace FinalUi
         private void getfield()
         {
             this.city.CITY_CODE = this.CityCodeBox.Text;
-            var s = stateList.SingleOrDefault(x => x.STATE_CODE == StateCombo.Text);
+            var s = stateList.SingleOrDefault(x => x.STATE_DESC == StateCombo.Text);
             if (s != null)
                 this.city.CITY_STATE = s.STATE_CODE;
-            var z = zoneList.SingleOrDefault(x => x.zcode == ZoneCombo.Text);
+            var z = zoneList.SingleOrDefault(x => x.Zone_name == ZoneCombo.Text);
             if (z != null)
                 this.city.ZONE = z.zcode;
             this.city.CITY_DESC = this.CityDscBox.Text;
@@ -113,7 +113,10 @@ namespace FinalUi
                 }
             }
             if (!isupdate)
+            {
+                city.Status = 'A';
                 db.Cities.InsertOnSubmit(this.city);
+            }
             try
             {
                 
