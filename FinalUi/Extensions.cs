@@ -167,7 +167,7 @@ namespace FinalUi
     }
     public partial class Service
     {
-        public string NameAndCOde
+        public string NameAndCode
         {
             get
             {

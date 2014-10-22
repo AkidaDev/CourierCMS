@@ -22,17 +22,6 @@ namespace FinalUi
                 throw new System.Exception(msg);
             }
             this.ExecuteDynamicUpdate(instance);
-
-        }
-        partial void InsertRuntimeData(RuntimeData instance)
-        {
-            this.ExecuteDynamicInsert(instance);
-            
-        }
-        partial void UpdateRuntimeData(RuntimeData instance)
-        {
-           
-            this.ExecuteDynamicUpdate(instance);
         }
         partial void InsertEmployee(Employee instance)
         {
@@ -75,6 +64,5 @@ namespace FinalUi
         {
             this.ExecuteDynamicInsert(instance);
         }
-        
     }
 }
