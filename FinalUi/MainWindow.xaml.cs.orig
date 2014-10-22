@@ -33,6 +33,9 @@ namespace FinalUi
         public List<Employee> employees;
         private CollectionViewSource employeeview;
         private List<CostingRule> costingRules;
+        private CollectionViewSource serviceRulesView;
+        private List<ServiceRule> serviceRules;
+
         private Quotation qutObj;
         // Employee listing data import procedure
         // Client listing data import procedure
@@ -162,6 +165,7 @@ namespace FinalUi
                 this.PrintButton.Visibility = this.PrintMenuItem.Visibility = this.AfterPrint.Visibility = Visibility.Collapsed;
             }
             costingRules = new List<CostingRule>();
+
             AppDomain currentDomain = AppDomain.CurrentDomain;
             currentDomain.UnhandledException += new UnhandledExceptionEventHandler(MyHandler);
             try
@@ -176,12 +180,7 @@ namespace FinalUi
         static void MyHandler(object sender, UnhandledExceptionEventArgs args)
         {
             Exception e = (Exception)args.ExceptionObject;
-<<<<<<< local
             MessageBox.Show("Sorry vortex Crashed and  we know this is very terible for you. But you can help us by contacting with message mentioned under \n Error Message: " + e.Message + "\n Application is termination now", "oops!!");
-=======
-            MessageBox.Show("MyHandler caught : " + e.Message);
-            MessageBox.Show("Runtime terminating:" + args.IsTerminating);
->>>>>>> other
         }
         #region DataEntrySection
         #region backGround Worker Functions
@@ -667,7 +666,7 @@ namespace FinalUi
                         path.Fill = Brushes.Black;
                         StackPanel panel = new StackPanel();
                         panel.Children.Add(path);
-                        this.minimax.Margin = new Thickness(0, 1.5, 0, 0);
+                        this.minimax.Margin = new Thickness(0, 6, 6, 0);
                         this.NormalMaximize.Content = panel;
                         this.NormalMaximize.ToolTip = "Restore Down";
                         break;
@@ -685,7 +684,7 @@ namespace FinalUi
                         path.Fill = Brushes.Black;
                         StackPanel panel = new StackPanel();
                         panel.Children.Add(path);
-                        this.minimax.Margin = new Thickness(0, -6, 0, 0);
+                        this.minimax.Margin = new Thickness(0, 0, 6, 0);
                         this.NormalMaximize.Content = panel;
                         this.NormalMaximize.ToolTip = "Maximize";
                         break;
@@ -983,12 +982,8 @@ namespace FinalUi
             buttontabcanvaswrap.Visibility = Visibility.Visible;
             NavigationBar.Visibility = Visibility.Visible;
         }
-
-<<<<<<< local
-        }
       
-=======
->>>>>>> other
+
         private void clienttreeviewitembutton_Click(object sender, RoutedEventArgs e)
         {
             cloakAll();
@@ -1022,19 +1017,11 @@ namespace FinalUi
         #endregion
         #endregion
         #region QuotationFunctions
-<<<<<<< local
-        
-=======
         private void CloseTableTreeView_Selected(object sender, RoutedEventArgs e)
         {
             cloakAll();
         }
-
-        private void CostingRuleRadio_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
->>>>>>> other
+        
 
         private void ClientCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -1061,7 +1048,12 @@ namespace FinalUi
             {
                 CostingRulesSource = (CollectionViewSource)FindResource("CostingRuleList");
             }
+            if(serviceRulesView == null)
+            {
+                serviceRulesView = (CollectionViewSource)FindResource("ServiceRuleList");
+            }
             CostingRulesSource.Source = qutObj.CostingRules;
+            serviceRulesView.Source = qutObj.ServiceRules;
 
         }
         private void cloakAllGrid()
@@ -1275,23 +1267,13 @@ namespace FinalUi
             BillingDataDataContext db = new BillingDataDataContext();
             if (CostingRuleGrid.Visibility == Visibility.Visible && CostingRuleGrid.SelectedItem != null)
             {
-<<<<<<< local
                 if (MessageBox.Show("Do you Want delete this Rule", "", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
                     CostingRule dcr = (CostingRule)CostingRuleGrid.SelectedItem;
                     CostingRuleGrid.SelectedItem = null;
-                    Rule dr = db.Rules.Where(x => x.ID == dcr.Id).FirstOrDefault();
+                Rule dr = db.Rules.Where(x => x.ID == dcr.Id).FirstOrDefault();
                     db.Rules.DeleteOnSubmit(dr);
                 }
-=======
-                CostingRule dcr = (CostingRule)CostingRuleGrid.SelectedItem;
-                BillingDataDataContext db = new BillingDataDataContext();
-                Rule dr = db.Rules.Where(x => x.ID == dcr.Id).FirstOrDefault();
-                db.Rules.DeleteOnSubmit(dr);
-                db.SubmitChanges();
-                LoadClientRules();
-                this.CostingRuleGrid.Items.Refresh();
->>>>>>> other
             }
             if (ServiceRuleGrid.Visibility == Visibility.Visible && ServiceRuleGrid.SelectedItem != null)
             {

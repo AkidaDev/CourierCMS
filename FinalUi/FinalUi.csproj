@@ -173,9 +173,6 @@
     <Compile Include="AddClient.xaml.cs">
       <DependentUpon>AddClient.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddCountry.xaml.cs">
-      <DependentUpon>AddCountry.xaml</DependentUpon>
-    </Compile>
     <Compile Include="AddEmployee.xaml.cs">
       <DependentUpon>AddEmployee.xaml</DependentUpon>
     </Compile>
@@ -269,7 +266,6 @@
       <DependentUpon>RateWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Rule.cs" />
-    <Compile Include="RuleContainer.cs" />
     <Compile Include="SanitizingWindow.xaml.cs">
       <DependentUpon>SanitizingWindow.xaml</DependentUpon>
     </Compile>
@@ -318,10 +314,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="AddClient.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="AddCountry.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -587,8 +579,10 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\background.png" />
     <Resource Include="Images\button.png" />
     <Resource Include="Images\button1.png" />
+    <Resource Include="Images\menu.png" />
     <Resource Include="Images\search.png" />
     <Resource Include="Images\Shape 21 copy.png" />
     <Resource Include="Images\Shape 21.png" />
@@ -626,6 +620,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\sidepanel.png" />
     <Resource Include="rates.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -639,6 +634,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\apples.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\apples.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

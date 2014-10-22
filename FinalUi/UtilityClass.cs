@@ -279,7 +279,6 @@ namespace FinalUi
             City city = DataSources.CityCopy.SingleOrDefault(x=>x.CITY_CODE == p);
             return city != null ? city.State : null;
         }
-
         internal static ZONE getZoneFromCityCode(string p)
         {
             City city = DataSources.CityCopy.SingleOrDefault(x => x.CITY_CODE == p);

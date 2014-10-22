@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace FinalUi
             InitializeComponent();
             db = new BillingDataDataContext();
             viewSource = (CollectionViewSource)FindResource("CustomerNameList");
-            viewSource.Source = DataSources.ClientCopy;
+            viewSource.Source = DataSources.ClientCopy.ToList();
             cityList = (CollectionViewSource)FindResource("CityList");
             cityList.Source = db.Cities.ToList();
             ServiceListSource = (CollectionViewSource)FindResource("ServiceList");
@@ -101,16 +102,13 @@ namespace FinalUi
             if (Cost.Text == "" || !double.TryParse(Cost.Text, out tmpD))
                 Cost.Text = "0";
             data.Amount = Decimal.Parse(Cost.Text);
-            if (this.Destination.SelectedItem != null)
-            data.Destination = ((City)this.Destination.SelectedItem).CITY_CODE; else data.Destination = "";
+            var c1 = DataSources.CityCopy.Where(x => x.NameAndCode == Destination.Text).Select(y => y.CITY_CODE).FirstOrDefault();
+            data.Destination = c1;
             DestinationPin.Text = DestinationPin.Text ?? "";
-            if (CustomerSelected.SelectedItem != null)
-                data.CustCode = ((Client)CustomerSelected.SelectedItem).CLCODE;
-            else
-                data.CustCode = "";
+            data.CustCode = DataSources.ClientCopy.Where(x => x.NameAndCode == CustomerSelected.Text).Select(y => y.CLCODE).FirstOrDefault();
             if (MODE.Text == "")
                 data.Mode = MODE.Text;
-            data.Type = TypeComboBox.Text;
+            data.Type = DataSources.ServicesCopy.Where(x => x.NameAndCode == TypeComboBox.Text).Select(y => y.SER_CODE).FirstOrDefault();
             data.BookingDate = (DateTime)InsertionDate.SelectedDate;
             data.FrAmount = Decimal.Parse(BilledAmount.Text);
             if (DoxCombobox.Text == "")
@@ -118,7 +116,7 @@ namespace FinalUi
             data.DOX = DoxCombobox.Text.ElementAt(0);
             float tempValue;
             if (float.TryParse(BilledWeightTextBox.Text, out tempValue))
-                data.BilledWeight = tempValue;
+               data.BilledWeight = double.Parse(BilledWeightTextBox.Text,CultureInfo.InvariantCulture);
             else
                 BilledWeightTextBox.Text = "";
             if (isDataInContext)
@@ -128,9 +126,7 @@ namespace FinalUi
                 data.FrWeight = Double.Parse(WeightAccToFranchize.Text);
                 data.Amount = Decimal.Parse(Cost.Text);
                 data.FrAmount = Decimal.Parse(BilledAmount.Text);
-                if (this.Destination.SelectedItem != null)
-                    data.Destination = ((City)this.Destination.SelectedItem).CITY_CODE;
-                else data.Destination = "";
+                data.Destination = DataSources.CityCopy.Where(x => x.NameAndCode == Destination.Text).Select(y => y.CITY_CODE).FirstOrDefault();
                 if (data.Destination == null)
                 {
                     MessageBoxResult rsltMessageBox = MessageBox.Show("No city with this code is entered. Do you want to enter it now?", "", MessageBoxButton.YesNo, MessageBoxImage.Asterisk);
@@ -144,12 +140,22 @@ namespace FinalUi
                     data.DestinationPin = null;
                 else
                     data.DestinationPin = Decimal.Parse(DestinationPin.Text);
-                if (this.Destination.SelectedItem != null)
-                    data.Destination = ((City)this.Destination.SelectedItem).CITY_CODE;
-                else data.Destination = "";
-                data.BilledWeight = float.Parse(this.BilledWeightTextBox.Text);
+                data.CustCode = DataSources.ClientCopy.Where(x => x.NameAndCode == CustomerSelected.Text).Select(y => y.CLCODE).FirstOrDefault();
+                if (this.BilledWeightTextBox.Text == "" || this.BilledWeightTextBox.Text == null)
+                {
+                    if (this.WeightAccToFranchize.Text == "" || this.WeightAccToFranchize == null)
+                        data.BilledWeight = 0;
+                    else
+                        data.BilledWeight = data.FrWeight;
+                }
+                else
+                {
+                    if (float.TryParse(BilledWeightTextBox.Text, out tempValue))
+                        data.BilledWeight = double.Parse(BilledWeightTextBox.Text, CultureInfo.InvariantCulture);
+                }
             }
             return data;
+
         }
         public void SaveData()
         {
@@ -158,13 +164,16 @@ namespace FinalUi
             if (dataContext.Where(x => x.ConsignmentNo == data.ConsignmentNo).Count() > 0)
             {
             }
+
             else
             {
+
                 data.SheetNo = sheetNo;
                 data.UserId = SecurityModule.currentUserName;
                 db.RuntimeDatas.InsertOnSubmit(data);
                 dataListContext.AddNewItem(data);
             }
+
             if (data.FrAmount == null)
             {
                 var c = db.Cities.Where(x => x.CITY_CODE == data.Destination && x.CITY_STATUS == "A").FirstOrDefault();
@@ -248,9 +257,9 @@ namespace FinalUi
                 DoxCombobox.Text = "Dox";
             if (data.BookingDate != null)
                 InsertionDate.SelectedDate = data.BookingDate;
-            Destination.SelectedItem = db.Cities.Where(x => x.CITY_CODE == data.Destination).Select(y => y.CITY_DESC).FirstOrDefault();
+            Destination.Text = db.Cities.Where(x => x.CITY_CODE == data.Destination).Select(y => y.NameAndCode).FirstOrDefault();
             if (data.CustCode != "" && data.CustCode != null)
-                CustomerSelected.Text = data.CustCode;
+                CustomerSelected.Text = DataSources.ClientCopy.Where(x => x.CLCODE == data.CustCode).Select(y => y.NameAndCode).FirstOrDefault();
             else
                 CustomerSelected.Text = "<NONE>";
             DestinationPin.Text = data.DestinationPin.ToString();
@@ -267,8 +276,8 @@ namespace FinalUi
             else
                 this.BilledWeightTextBox.Text = "";
             if (data.Type != "" && data.Type != null)
-                TypeComboBox.Text = data.Type.Trim();
-            if (data.Mode != "")
+                TypeComboBox.Text = DataSources.ServicesCopy.Where(x => x.SER_CODE == data.Type.Trim()).Select(y => y.NameAndCode).FirstOrDefault();
+            if (data.Mode != "" && data.Mode != null)
                 MODE.Text = data.Mode.Trim();
         }
         private void Button_Click_Close(object sender, RoutedEventArgs e)
@@ -302,22 +311,21 @@ namespace FinalUi
             {
                 RuntimeData data = null;
                 data = fillData(data);
-                var d = DataSources.CityCopy.Where(x => x.CITY_CODE == ((City)Destination.SelectedItem).CITY_CODE).SingleOrDefault();
-                if (d == null)
-                {
-                    MessageBox.Show("Destination not found in database.");
-                    return;
-                }
+                var c = db.Cities.Where(x => x.CITY_CODE == data.Destination && x.CITY_STATUS == "A").FirstOrDefault();
+                if (c == null)
+                    c = db.Cities.SingleOrDefault(x => x.CITY_CODE == "DEL");
+                var d = (City)this.Destination.SelectedItem;
                 double cost;
-
-                double temp;
-                if (double.TryParse(BilledWeightTextBox.Text, out temp))
+                if (d != null)
                 {
-                    cost = UtilityClass.getCost(CustomerSelected.Text, temp, d.CITY_CODE, ((Service)TypeComboBox.SelectedItem).SER_CODE, (char)data.DOX);
+                    cost = UtilityClass.getCost(data.CustCode, (double)data.BilledWeight, data.Destination, data.Type, (char)data.DOX);
                     this.BilledAmount.Text = cost.ToString();
                 }
             }
-
+            else
+            {
+                this.BilledAmount.Text = "0";
+            }
         }
         private void Validate_Form()
         {
@@ -332,14 +340,17 @@ namespace FinalUi
 
         private void CustomerSelected_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
         }
 
         private void MODE_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
         }
 
         private void TypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
         }
     }
 }
