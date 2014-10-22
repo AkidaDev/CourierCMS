@@ -667,7 +667,7 @@ namespace FinalUi
                         path.Fill = Brushes.Black;
                         StackPanel panel = new StackPanel();
                         panel.Children.Add(path);
-                        this.minimax.Margin = new Thickness(0, 1.5, 0, 0);
+                        this.minimax.Margin = new Thickness(0, 6, 6, 0);
                         this.NormalMaximize.Content = panel;
                         this.NormalMaximize.ToolTip = "Restore Down";
                         break;
@@ -685,7 +685,7 @@ namespace FinalUi
                         path.Fill = Brushes.Black;
                         StackPanel panel = new StackPanel();
                         panel.Children.Add(path);
-                        this.minimax.Margin = new Thickness(0, -6, 0, 0);
+                        this.minimax.Margin = new Thickness(0, 0, 6, 0);
                         this.NormalMaximize.Content = panel;
                         this.NormalMaximize.ToolTip = "Maximize";
                         break;
