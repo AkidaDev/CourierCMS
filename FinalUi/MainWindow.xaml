@@ -45,8 +45,8 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="286*"/>
             </Grid.RowDefinitions>
-            <!-- <Grid Grid.Row="0" Height="28" Background="{DynamicResource menu}" Margin="-6 -6 -6 0">-->
-            <Grid Grid.Row="0" Height="26" Margin="-6 -6 -6 0">
+            <!--   <Grid Grid.Row="0" Height="28" Background="{DynamicResource menu}" Margin="-6 -6 -6 0">-->
+          <Grid Grid.Row="0" Height="26" Margin="-6 -6 -6 0">
                 <Menu  Background="Transparent" FontSize="14" Margin="6 6 6 0">
                     <MenuItem ToolTip="Open new document" Header="File" Margin="10 0 0 0">
                         <MenuItem Header="New Sheet" x:Name="NewSheetMenuItem" />
@@ -102,13 +102,14 @@
             </Grid>
 
             <Grid Grid.Row="1" Height="20">
-                <!-- Empty space for future implementation-->
+              <!--   <Rectangle Height="1" Fill="Black" Margin="-6 0" VerticalAlignment="Top"/>
+                Empty space for future implementation-->
             </Grid>
 
             <DockPanel Grid.Row="2" Height="32">
                 <Grid >
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="235*" MaxWidth="260" MinWidth="235"/>
+                        <ColumnDefinition Width="220*" MaxWidth="240" MinWidth="210"/>
                         <ColumnDefinition Width="770*"/>
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="1" Margin="3 0 -3 1" Background="#19000000"/>
@@ -413,7 +414,7 @@
             </DockPanel>
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="235*" MaxWidth="260" MinWidth="235"/>
+                    <ColumnDefinition Width="220*" MaxWidth="240" MinWidth="210"/>
                     <ColumnDefinition Width="770*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Margin="-3,-32,0,-3" Grid.RowSpan="3" Width="Auto">
@@ -461,7 +462,9 @@
                     <TreeView BorderThickness="0" Background="Transparent"  >
                         <TreeViewItem BorderBrush="Transparent" BorderThickness="0" Margin="6 5 0 0">
                             <TreeViewItem.Header>
-                                <TextBlock Text="  Manager" FontSize="16" FontWeight="Bold" Padding="0 1 0 4" Foreground="White" FontFamily="Calibri" Width="200" Background="#223f3f46"/>
+                                <TextBlock FontSize="16" FontWeight="Bold" Padding="0 1 0 4" Foreground="White" FontFamily="Calibri" Width="200" Background="#223f3f46"><Run Text="  Manager"/><InlineUIContainer>
+                                		<Custom:RibbonControlGroup/>
+                                	</InlineUIContainer></TextBlock>
                             </TreeViewItem.Header>
                             <TreeViewItem x:Name="Employeetreeviewitembutton">
                                 <TreeViewItem.Header>
@@ -498,7 +501,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="70*"/>
                     </Grid.RowDefinitions>
-                    <Image Source="Images/apples.jpg" Height="768" Width="1366"  Stretch="Fill" x:Name="backgroundimage" Visibility="Visible" Grid.RowSpan="3"/>
+                    <Image Source="Images/apples.jpg" Height="768" Width="1366" Grid.Row="0" Margin="0 0 0 -25" Stretch="Uniform" x:Name="backgroundimage" Visibility="Visible"/>
                     <Grid Grid.Row="0" x:Name="ManageClientDatagridPanel" Visibility="Collapsed">
                         <DataGrid RowHeaderWidth="0" BorderThickness="0" x:Name="mangaclientgrid" ItemsSource="{Binding}" DataContext="{StaticResource ClienTable}"  SelectionMode="Single" AutoGenerateColumns="False" >
                             <DataGrid.Columns>
@@ -732,9 +735,7 @@
                             <TextBox ToolTip="No. of Rows" x:Name="DataGridNumOfRows" Width="30" Margin="3,0,11,0" Height="20" Text="{Binding rowsPerPage, Mode=TwoWay}" FontFamily="Segoe UI Semibold" TextAlignment="Center" BorderBrush="#FF7676FF"/>
                         </WrapPanel>
                     </DockPanel>
-
-
-                    <Grid Grid.Row="3">
+                    <Grid Grid.Row="3" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="24"/>
                             <RowDefinition Height="119*"/>
@@ -746,21 +747,29 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="  General  " Grid.Column="0" VerticalAlignment="Center" Background="LightGray"/>
-                            <TextBlock Text="  Despcription  " Grid.Column="1" VerticalAlignment="Center" Background="LightGray" />
-                            <TextBlock Text="  Help  " Grid.Column="2" VerticalAlignment="Center" Background="LightGray"/>
-                            <TextBlock Text="  Feedback  " Grid.Column="3" VerticalAlignment="Center" Background="LightGray"/>
-                            <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="0"  HorizontalAlignment="Left"/>
-                            <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="0"  HorizontalAlignment="Right"/>
-                            <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
-                            <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2" HorizontalAlignment="Right"/>
-                            <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
+                            <Button Content="  General  " Height="24" Grid.Column="0" VerticalAlignment="Center" Background="White" BorderThickness="0" Name="GeneralRibbon" Click="General_Ribbon" />
+                            <Button Content="  Despcription  " Grid.Column="1" VerticalAlignment="Center" Background="LightGray" BorderThickness="0" Name="DescriptionRibbon" Click="Description_Ribbon"/>
+                            <Button Content="  Help  " Grid.Column="2" VerticalAlignment="Center" Background="LightGray" BorderThickness="0" Name="HelpRibbon" Click="Help_Ribbon"/>
+                            <Button Content="  Feedback  " Grid.Column="3" VerticalAlignment="Center" Background="LightGray" BorderThickness="0" Name="FeedbackRibbon" Click="Feedback_Ribbon"/>
+                        <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="0" HorizontalAlignment="Left"/>
+                        <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="0" HorizontalAlignment="Right"/>
+                        <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
+                        <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
+                        <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
                         </Grid>
-                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
-                            <TextBlock Text="Log..." x:Name="MessageBlock" Background="#FFF7F3F3" Padding="4,4,0,0" />
+                        <ScrollViewer Name="GeneralRibbonTab" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
+                            <TextBlock Text="Log..." x:Name="MessageBlock" Background="White" Padding="4,4,0,0" />
+                        </ScrollViewer>
+                        <ScrollViewer Name="DescriptionRibbonTab" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="1" Visibility="Collapsed">
+                            <TextBlock Text="what are you lookin at fuckin bitch this is description Block" Background="White" Padding="4,4,0,0" />
+                        </ScrollViewer>
+                        <ScrollViewer Name="HelpRibbonTab" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="1" Visibility="Collapsed">
+                            <TextBlock Text="'Help will be Given to those who will ask for it' - DUMBLEDOR " Background="White" Padding="4,4,0,0" />
+                        </ScrollViewer>
+                        <ScrollViewer Name="FeedbackRibbonTab" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="1" Visibility="Collapsed">
+                            <TextBlock Text="We dont Take FeedBack From Bitches but HAAAAAAAAPY DIWALI" Background="White" Padding="4,4,0,0" />
                         </ScrollViewer>
                     </Grid>
-
                 </Grid>
             </Grid>
         </Grid>
