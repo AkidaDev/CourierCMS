@@ -139,10 +139,10 @@ namespace FinalUi
                     }
                     if(x.type == 'W')
                     {
-                        if (x.mode == 'A')
-                            price += x.amount;
-                        else
-                            price += (price * 0);
+                       // if (x.mode == 'A')
+                           // price += x.amount;
+                       // else
+                           // price += (price * 0);
                     }
                 });
             return price;

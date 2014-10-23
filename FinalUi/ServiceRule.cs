@@ -64,6 +64,9 @@ namespace FinalUi
                     return 0;
             }
         }
+        public void applyRule(object obj)
+        { 
+        }
         public void applyRule(Object obj, double origAmount)
         {
             RuntimeData runData = (RuntimeData)obj;
