@@ -201,6 +201,7 @@ namespace FinalUi
             if (qt == null)
                 return -1;
             double cost = qt.applyCostingRulesOnTransaction(wieght, cityCode, serviceCode, dox);
+            cost = qt.applyServiceRulesOnTransaction(wieght, cityCode, serviceCode, dox, (decimal)cost);
             return cost;
         }
         #endregion

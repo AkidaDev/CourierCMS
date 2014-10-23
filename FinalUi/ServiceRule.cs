@@ -84,12 +84,21 @@ namespace FinalUi
             else
             {
                 int steps = (int)((runData.BilledWeight - startW) / step);
-                if(mode == 'P')
+                per = per * steps;
+                if (mode == 'P')
                 {
-
+                    amount = amount * per / 100;
                 }
+                else
+                    amount = per;
 
             }
+            if (change == 'I')
+            {
+                runData.FrAmount = (decimal)((double)runData.FrAmount + amount);
+            }
+            else
+                runData.FrAmount = (decimal)((double)runData.FrAmount - amount);
         }
         public void encodeString()
         {}
