@@ -2,10 +2,7 @@ namespace FinalUi
 {
     partial class BillingDataDataContext
     {
-        partial void DeleteAssignment(Assignment instance)
-        {
-            throw new System.NotImplementedException();
-        }
+        
         partial void UpdateClient(Client instance)
         {
             string msg = "";
@@ -39,9 +36,6 @@ namespace FinalUi
                 throw new System.Exception(msg);
             }
             this.ExecuteDynamicInsert(instance);
-        }
-        partial void InsertStock(Stock instance)
-        {
         }
         partial void UpdateEmployee(Employee instance)
         {

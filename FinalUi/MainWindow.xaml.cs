@@ -406,7 +406,6 @@ namespace FinalUi
                 changeSheetButton(activeButton, b);
                 buttonList.Remove(activeButton);
                 activeButton = b;
-
             }
         }
         #endregion
@@ -855,12 +854,10 @@ namespace FinalUi
         {
             ManageEmployee window = new ManageEmployee(); window.ShowDialog();
         }
-
         private void RateWindowMenu_Click(object sender, RoutedEventArgs e)
         {
             RateWindow window = new RateWindow(); window.Show();
         }
-
         private void AboutMenuItem_Click(object sender, RoutedEventArgs e)
         {
             About window = new About(); window.ShowDialog();
