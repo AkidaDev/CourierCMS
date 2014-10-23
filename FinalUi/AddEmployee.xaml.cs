@@ -156,7 +156,6 @@ namespace FinalUi
             emp.EMPCode = EmployeeCode.Text;
             emp.UserName = UserName.Text;
         }
-
         private void CreateEmployee_Click(object sender, RoutedEventArgs e)
         {
             if (isupdate)
@@ -164,7 +163,6 @@ namespace FinalUi
             else
                 AddNewEmployee();
         }
-
         private void AddPermisstion_Click(object sender, RoutedEventArgs e)
         {
             if (this.PermisstionToset.SelectedItem != null)
