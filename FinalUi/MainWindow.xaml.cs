@@ -1021,17 +1021,12 @@ namespace FinalUi
         {
             cloakAll();
         }
-
         private void CostingRuleRadio_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        {}
         private void ClientCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             LoadClientRules();
         }
-
         private void LoadClientRules()
         {
             BillingDataDataContext db = new BillingDataDataContext();
