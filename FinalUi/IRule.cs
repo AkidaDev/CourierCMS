@@ -7,7 +7,6 @@ namespace FinalUi
 {
     interface IRule
     {
-         void applyRule(Object obj);
          void encodeString();
          void decodeString();
     }

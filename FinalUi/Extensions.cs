@@ -93,7 +93,7 @@ namespace FinalUi
            serviceRules = rulesList.Where(x => x.Type == 2).Select(y => ((new JavaScriptSerializer()).Deserialize<ServiceRule>(y.Properties))).ToList();
             //invoiceRule = rulesList.Where(x => x.Type == 3).Select(y => ((new JavaScriptSerializer()).Deserialize<InvoiceRule>(y.Properties))).ToList();
         }
-        public double applyServiceRulesOnTransaction(double billedWeight, string destination, string serviceCode, char DOX, char cost)
+        public double applyServiceRulesOnTransaction(double billedWeight, string destination, string serviceCode, char DOX, decimal cost)
         {
             RuntimeData dt = new RuntimeData();
             dt.BilledWeight = billedWeight;
@@ -105,7 +105,7 @@ namespace FinalUi
         }
         public double applyServiceRulesOnTransaction(RuntimeData trans)
         {
-            double price = 0;
+            double price = (double)trans.FrAmount ;
             List<ServiceRule> RulesApplied = serviceRules.Where(x => x.startW <= trans.BilledWeight && x.endW >= trans.BilledWeight).ToList();
 
             if (RulesApplied.Where(x => x.CityList.Contains(trans.Destination)).Count() > 0)
@@ -131,21 +131,9 @@ namespace FinalUi
 
             RulesApplied.Where(x => x.applicable == 'O').ToList().ForEach((x) =>
                 {
-                    if (x.type == 'S')
-                    {
-                        /*
-                         * work to be done not all fields are available right now
-                         * */
-                    }
-                    if(x.type == 'W')
-                    {
-                       // if (x.mode == 'A')
-                           // price += x.amount;
-                       // else
-                           // price += (price * 0);
-                    }
+                    x.applyRule(trans, price);
                 });
-            return price;
+            return (double)trans.FrAmount;
         }
     }
     class Extensions
