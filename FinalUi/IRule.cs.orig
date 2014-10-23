@@ -7,6 +7,11 @@ namespace FinalUi
 {
     interface IRule
     {
+<<<<<<< local
+        int Id { get; set; }
+         void applyRule(Object obj);
+=======
+>>>>>>> other
          void encodeString();
          void decodeString();
     }

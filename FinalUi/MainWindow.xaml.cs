@@ -1034,13 +1034,20 @@ namespace FinalUi
             qutObj = db.Quotations.SingleOrDefault(x => x.CLCODE == ((Client)ClientCombo.SelectedItem).CLCODE);
             if (qutObj == null)
             {
-                MessageBox.Show("No quotation associated with this client");
+                MessageBox.Show("No quotation associated with this client /n Default Rates will be applied");
+                unLoadQuotation();
             }
             else
             {
                 loadQuotation(qutObj);
             }
-
+        }
+        void unLoadQuotation()
+        {
+            CostingRulesSource.Source = null;
+            serviceRulesView.Source = null;
+            CostingRuleGrid.Items.Refresh();
+            ServiceRuleGrid.Items.Refresh();
         }
         void loadQuotation(Quotation qutObj)
         {

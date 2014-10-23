@@ -87,7 +87,7 @@ namespace FinalUi
             if (!double.TryParse(StepBox.Text, out stepweight) && StepRadio.IsChecked == true)
                 errorMsg += "Enter Step Weight Properly \n";
             char type;
-            double amount = 0;
+            double step = 0;
             if (WholeRadio.IsChecked == true)
             {
                 type = 'W';
@@ -95,7 +95,7 @@ namespace FinalUi
             else
             {
                 type = 'S';
-                if (!double.TryParse(StepBox.Text, out amount) && StepRadio.IsChecked == true)
+                if (!double.TryParse(StepBox.Text, out step) && StepRadio.IsChecked == true)
                     errorMsg += "Enter Step Weight Properly \n";
             }
             char change;
@@ -120,13 +120,11 @@ namespace FinalUi
                 applicable = 'O';
             }
             float per = 0;
-            if (PercentageWrap.Visibility == Visibility.Visible)
-            {
-                if (PercentageBox.Text != "" && !float.TryParse(PercentageBox.Text, out per))
+             if (!float.TryParse(PercentageBox.Text, out per))
                 {
                     errorMsg += "Enter Percentage Properly\n";
                 }
-            }
+           
             if (errorMsg != "")
             {
                 MessageBox.Show("Please correct following errors: " + errorMsg);
@@ -147,7 +145,7 @@ namespace FinalUi
             RuleSR.change = change;
             RuleSR.mode = mode;
             RuleSR.per = per;
-            RuleSR.amount = amount;
+            RuleSR.step = step;
             RuleSR.stepweight = stepweight;
             RuleSR.applicable = applicable;
             JavaScriptSerializer js = new JavaScriptSerializer();

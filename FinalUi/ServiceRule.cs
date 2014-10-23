@@ -16,7 +16,7 @@ namespace FinalUi
         public char mode { get; set; }
         public char change { get; set; }
         public char applicable { get; set; }
-        public double amount { get; set; }
+        public double step { get; set; }
         public float per { get; set; }
         public double startW { get; set; }
         public double endW { get; set; }
@@ -64,8 +64,44 @@ namespace FinalUi
                     return 0;
             }
         }
-        public void applyRule(Object obj)
+        public void applyRule(object obj)
+        { 
+        }
+        public void applyRule(Object obj, double origAmount)
         {
+            RuntimeData runData = (RuntimeData)obj;
+            double amount;
+            if (applicable == 'O')
+                amount = origAmount;
+            else
+                amount = (double)runData.FrAmount;
+            if(type == 'W')
+            {
+                if (mode == 'P')
+                {
+                    amount = amount * per / 100;
+                }
+                else
+                    amount = per;
+            }
+            else
+            {
+                int steps = (int)((runData.BilledWeight - startW) / step);
+                per = per * steps;
+                if (mode == 'P')
+                {
+                    amount = amount * per / 100;
+                }
+                else
+                    amount = per;
+
+            }
+            if (change == 'I')
+            {
+                runData.FrAmount = (decimal)((double)runData.FrAmount + amount);
+            }
+            else
+                runData.FrAmount = (decimal)((double)runData.FrAmount - amount);
         }
         public void encodeString()
         {}
