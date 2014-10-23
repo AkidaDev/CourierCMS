@@ -1326,5 +1326,69 @@ namespace FinalUi
                 backgroundimage.Visibility = Visibility.Visible;
             }
         }
+
+        private void General_Ribbon(object sender, RoutedEventArgs e)
+        {
+            this.GeneralRibbon.Height = 24;
+            this.DescriptionRibbon.Height = 18;
+            this.HelpRibbon.Height = 18;
+            this.FeedbackRibbon.Height = 18;
+            this.GeneralRibbon.Background = Brushes.White;
+            this.DescriptionRibbon.Background = Brushes.LightGray;
+            this.HelpRibbon.Background = Brushes.LightGray;
+            this.FeedbackRibbon.Background = Brushes.LightGray;
+            GeneralRibbonTab.Visibility = Visibility.Visible;
+            DescriptionRibbonTab.Visibility = Visibility.Collapsed;
+            HelpRibbonTab.Visibility = Visibility.Collapsed;
+            FeedbackRibbonTab.Visibility = Visibility.Collapsed;
+        }
+
+        private void Description_Ribbon(object sender, RoutedEventArgs e)
+        {
+            this.GeneralRibbon.Height = 18;
+            this.DescriptionRibbon.Height = 24;
+            this.HelpRibbon.Height = 18;
+            this.FeedbackRibbon.Height = 18;
+            this.GeneralRibbon.Background = Brushes.LightGray;
+            this.DescriptionRibbon.Background = Brushes.White;
+            this.HelpRibbon.Background = Brushes.LightGray;
+            this.FeedbackRibbon.Background = Brushes.LightGray;
+            GeneralRibbonTab.Visibility = Visibility.Collapsed;
+            DescriptionRibbonTab.Visibility = Visibility.Visible;
+            HelpRibbonTab.Visibility = Visibility.Collapsed;
+            FeedbackRibbonTab.Visibility = Visibility.Collapsed;
+        }
+
+        private void Help_Ribbon(object sender, RoutedEventArgs e)
+        {
+            this.GeneralRibbon.Height = 18;
+            this.DescriptionRibbon.Height = 18;
+            this.HelpRibbon.Height = 24;
+            this.FeedbackRibbon.Height = 18;
+            this.GeneralRibbon.Background = Brushes.LightGray;
+            this.DescriptionRibbon.Background = Brushes.LightGray;
+            this.HelpRibbon.Background = Brushes.White;
+            this.FeedbackRibbon.Background = Brushes.LightGray;
+            GeneralRibbonTab.Visibility = Visibility.Collapsed;
+            DescriptionRibbonTab.Visibility = Visibility.Collapsed;
+            HelpRibbonTab.Visibility = Visibility.Visible;
+            FeedbackRibbonTab.Visibility = Visibility.Collapsed;
+        }
+
+        private void Feedback_Ribbon(object sender, RoutedEventArgs e)
+        {
+            this.GeneralRibbon.Height = 18;
+            this.DescriptionRibbon.Height = 18;
+            this.HelpRibbon.Height = 18;
+            this.FeedbackRibbon.Height = 24;
+            this.GeneralRibbon.Background = Brushes.LightGray;
+            this.DescriptionRibbon.Background = Brushes.LightGray;
+            this.HelpRibbon.Background = Brushes.LightGray;
+            this.FeedbackRibbon.Background = Brushes.White;
+            GeneralRibbonTab.Visibility = Visibility.Collapsed;
+            DescriptionRibbonTab.Visibility = Visibility.Collapsed;
+            HelpRibbonTab.Visibility = Visibility.Collapsed;
+            FeedbackRibbonTab.Visibility = Visibility.Visible;
+        }
     }
 }
