@@ -1302,5 +1302,37 @@ namespace FinalUi
                 backgroundimage.Visibility = Visibility.Visible;
             }
         }
+
+        private void General_Ribbon(object sender, RoutedEventArgs e)
+        {
+            GeneralRibbonTab.Visibility = Visibility.Visible;
+            DescriptionRibbonTab.Visibility = Visibility.Collapsed;
+            HelpRibbonTab.Visibility = Visibility.Collapsed;
+            FeedbackRibbonTab.Visibility = Visibility.Collapsed;
+        }
+
+        private void Description_Ribbon(object sender, RoutedEventArgs e)
+        {
+            GeneralRibbonTab.Visibility = Visibility.Collapsed;
+            DescriptionRibbonTab.Visibility = Visibility.Visible;
+            HelpRibbonTab.Visibility = Visibility.Collapsed;
+            FeedbackRibbonTab.Visibility = Visibility.Collapsed;
+        }
+
+        private void Help_Ribbon(object sender, RoutedEventArgs e)
+        {
+            GeneralRibbonTab.Visibility = Visibility.Collapsed;
+            DescriptionRibbonTab.Visibility = Visibility.Collapsed;
+            HelpRibbonTab.Visibility = Visibility.Visible;
+            FeedbackRibbonTab.Visibility = Visibility.Collapsed;
+        }
+
+        private void Feedback_Ribbon(object sender, RoutedEventArgs e)
+        {
+            GeneralRibbonTab.Visibility = Visibility.Collapsed;
+            DescriptionRibbonTab.Visibility = Visibility.Collapsed;
+            HelpRibbonTab.Visibility = Visibility.Collapsed;
+            FeedbackRibbonTab.Visibility = Visibility.Visible;
+        }
     }
 }
