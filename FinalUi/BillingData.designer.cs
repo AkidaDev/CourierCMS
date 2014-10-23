@@ -75,9 +75,6 @@ namespace FinalUi
     partial void InsertService(Service instance);
     partial void UpdateService(Service instance);
     partial void DeleteService(Service instance);
-    partial void InsertState(State instance);
-    partial void UpdateState(State instance);
-    partial void DeleteState(State instance);
     partial void InsertStock(Stock instance);
     partial void UpdateStock(Stock instance);
     partial void DeleteStock(Stock instance);
@@ -87,6 +84,9 @@ namespace FinalUi
     partial void InsertUser_permission(User_permission instance);
     partial void UpdateUser_permission(User_permission instance);
     partial void DeleteUser_permission(User_permission instance);
+    partial void InsertState(State instance);
+    partial void UpdateState(State instance);
+    partial void DeleteState(State instance);
     #endregion
 		
 		public BillingDataDataContext() : 
@@ -295,14 +295,6 @@ namespace FinalUi
 			}
 		}
 		
-		public System.Data.Linq.Table<State> States
-		{
-			get
-			{
-				return this.GetTable<State>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Stock> Stocks
 		{
 			get
@@ -332,6 +324,14 @@ namespace FinalUi
 			get
 			{
 				return this.GetTable<world_cities_free>();
+			}
+		}
+		
+		public System.Data.Linq.Table<State> States
+		{
+			get
+			{
+				return this.GetTable<State>();
 			}
 		}
 		
@@ -6516,456 +6516,6 @@ namespace FinalUi
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.State")]
-	public partial class State : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _STATE_CODE;
-		
-		private string _STATE_DESC;
-		
-		private string _STATE_COUNTRY;
-		
-		private string _STATE_CAPITAL;
-		
-		private string _STATE_MAP;
-		
-		private System.Nullable<double> _STATE_POPULATION;
-		
-		private string _STATE_IMP_AREA;
-		
-		private string _STATE_INDUSTRIES;
-		
-		private string _STATE_ZO;
-		
-		private string _STATE_STATUS;
-		
-		private System.Nullable<System.DateTime> _MOD_DATE;
-		
-		private System.Nullable<double> _MOD_TIME;
-		
-		private string _NODEID;
-		
-		private string _USERID;
-		
-		private string _TRANS_STATUS;
-		
-		private string _STATE_RO;
-		
-		private EntitySet<City> _Cities;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnSTATE_CODEChanging(string value);
-    partial void OnSTATE_CODEChanged();
-    partial void OnSTATE_DESCChanging(string value);
-    partial void OnSTATE_DESCChanged();
-    partial void OnSTATE_COUNTRYChanging(string value);
-    partial void OnSTATE_COUNTRYChanged();
-    partial void OnSTATE_CAPITALChanging(string value);
-    partial void OnSTATE_CAPITALChanged();
-    partial void OnSTATE_MAPChanging(string value);
-    partial void OnSTATE_MAPChanged();
-    partial void OnSTATE_POPULATIONChanging(System.Nullable<double> value);
-    partial void OnSTATE_POPULATIONChanged();
-    partial void OnSTATE_IMP_AREAChanging(string value);
-    partial void OnSTATE_IMP_AREAChanged();
-    partial void OnSTATE_INDUSTRIESChanging(string value);
-    partial void OnSTATE_INDUSTRIESChanged();
-    partial void OnSTATE_ZOChanging(string value);
-    partial void OnSTATE_ZOChanged();
-    partial void OnSTATE_STATUSChanging(string value);
-    partial void OnSTATE_STATUSChanged();
-    partial void OnMOD_DATEChanging(System.Nullable<System.DateTime> value);
-    partial void OnMOD_DATEChanged();
-    partial void OnMOD_TIMEChanging(System.Nullable<double> value);
-    partial void OnMOD_TIMEChanged();
-    partial void OnNODEIDChanging(string value);
-    partial void OnNODEIDChanged();
-    partial void OnUSERIDChanging(string value);
-    partial void OnUSERIDChanged();
-    partial void OnTRANS_STATUSChanging(string value);
-    partial void OnTRANS_STATUSChanged();
-    partial void OnSTATE_ROChanging(string value);
-    partial void OnSTATE_ROChanged();
-    #endregion
-		
-		public State()
-		{
-			this._Cities = new EntitySet<City>(new Action<City>(this.attach_Cities), new Action<City>(this.detach_Cities));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_CODE", DbType="NVarChar(255) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string STATE_CODE
-		{
-			get
-			{
-				return this._STATE_CODE;
-			}
-			set
-			{
-				if ((this._STATE_CODE != value))
-				{
-					this.OnSTATE_CODEChanging(value);
-					this.SendPropertyChanging();
-					this._STATE_CODE = value;
-					this.SendPropertyChanged("STATE_CODE");
-					this.OnSTATE_CODEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_DESC", DbType="NVarChar(255)")]
-		public string STATE_DESC
-		{
-			get
-			{
-				return this._STATE_DESC;
-			}
-			set
-			{
-				if ((this._STATE_DESC != value))
-				{
-					this.OnSTATE_DESCChanging(value);
-					this.SendPropertyChanging();
-					this._STATE_DESC = value;
-					this.SendPropertyChanged("STATE_DESC");
-					this.OnSTATE_DESCChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_COUNTRY", DbType="NVarChar(255)")]
-		public string STATE_COUNTRY
-		{
-			get
-			{
-				return this._STATE_COUNTRY;
-			}
-			set
-			{
-				if ((this._STATE_COUNTRY != value))
-				{
-					this.OnSTATE_COUNTRYChanging(value);
-					this.SendPropertyChanging();
-					this._STATE_COUNTRY = value;
-					this.SendPropertyChanged("STATE_COUNTRY");
-					this.OnSTATE_COUNTRYChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_CAPITAL", DbType="NVarChar(255)")]
-		public string STATE_CAPITAL
-		{
-			get
-			{
-				return this._STATE_CAPITAL;
-			}
-			set
-			{
-				if ((this._STATE_CAPITAL != value))
-				{
-					this.OnSTATE_CAPITALChanging(value);
-					this.SendPropertyChanging();
-					this._STATE_CAPITAL = value;
-					this.SendPropertyChanged("STATE_CAPITAL");
-					this.OnSTATE_CAPITALChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_MAP", DbType="NVarChar(255)")]
-		public string STATE_MAP
-		{
-			get
-			{
-				return this._STATE_MAP;
-			}
-			set
-			{
-				if ((this._STATE_MAP != value))
-				{
-					this.OnSTATE_MAPChanging(value);
-					this.SendPropertyChanging();
-					this._STATE_MAP = value;
-					this.SendPropertyChanged("STATE_MAP");
-					this.OnSTATE_MAPChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_POPULATION", DbType="Float")]
-		public System.Nullable<double> STATE_POPULATION
-		{
-			get
-			{
-				return this._STATE_POPULATION;
-			}
-			set
-			{
-				if ((this._STATE_POPULATION != value))
-				{
-					this.OnSTATE_POPULATIONChanging(value);
-					this.SendPropertyChanging();
-					this._STATE_POPULATION = value;
-					this.SendPropertyChanged("STATE_POPULATION");
-					this.OnSTATE_POPULATIONChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_IMP_AREA", DbType="NVarChar(255)")]
-		public string STATE_IMP_AREA
-		{
-			get
-			{
-				return this._STATE_IMP_AREA;
-			}
-			set
-			{
-				if ((this._STATE_IMP_AREA != value))
-				{
-					this.OnSTATE_IMP_AREAChanging(value);
-					this.SendPropertyChanging();
-					this._STATE_IMP_AREA = value;
-					this.SendPropertyChanged("STATE_IMP_AREA");
-					this.OnSTATE_IMP_AREAChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_INDUSTRIES", DbType="NVarChar(255)")]
-		public string STATE_INDUSTRIES
-		{
-			get
-			{
-				return this._STATE_INDUSTRIES;
-			}
-			set
-			{
-				if ((this._STATE_INDUSTRIES != value))
-				{
-					this.OnSTATE_INDUSTRIESChanging(value);
-					this.SendPropertyChanging();
-					this._STATE_INDUSTRIES = value;
-					this.SendPropertyChanged("STATE_INDUSTRIES");
-					this.OnSTATE_INDUSTRIESChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_ZO", DbType="NVarChar(255)")]
-		public string STATE_ZO
-		{
-			get
-			{
-				return this._STATE_ZO;
-			}
-			set
-			{
-				if ((this._STATE_ZO != value))
-				{
-					this.OnSTATE_ZOChanging(value);
-					this.SendPropertyChanging();
-					this._STATE_ZO = value;
-					this.SendPropertyChanged("STATE_ZO");
-					this.OnSTATE_ZOChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_STATUS", DbType="NVarChar(255)")]
-		public string STATE_STATUS
-		{
-			get
-			{
-				return this._STATE_STATUS;
-			}
-			set
-			{
-				if ((this._STATE_STATUS != value))
-				{
-					this.OnSTATE_STATUSChanging(value);
-					this.SendPropertyChanging();
-					this._STATE_STATUS = value;
-					this.SendPropertyChanged("STATE_STATUS");
-					this.OnSTATE_STATUSChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MOD_DATE", DbType="DateTime")]
-		public System.Nullable<System.DateTime> MOD_DATE
-		{
-			get
-			{
-				return this._MOD_DATE;
-			}
-			set
-			{
-				if ((this._MOD_DATE != value))
-				{
-					this.OnMOD_DATEChanging(value);
-					this.SendPropertyChanging();
-					this._MOD_DATE = value;
-					this.SendPropertyChanged("MOD_DATE");
-					this.OnMOD_DATEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MOD_TIME", DbType="Float")]
-		public System.Nullable<double> MOD_TIME
-		{
-			get
-			{
-				return this._MOD_TIME;
-			}
-			set
-			{
-				if ((this._MOD_TIME != value))
-				{
-					this.OnMOD_TIMEChanging(value);
-					this.SendPropertyChanging();
-					this._MOD_TIME = value;
-					this.SendPropertyChanged("MOD_TIME");
-					this.OnMOD_TIMEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NODEID", DbType="NVarChar(255)")]
-		public string NODEID
-		{
-			get
-			{
-				return this._NODEID;
-			}
-			set
-			{
-				if ((this._NODEID != value))
-				{
-					this.OnNODEIDChanging(value);
-					this.SendPropertyChanging();
-					this._NODEID = value;
-					this.SendPropertyChanged("NODEID");
-					this.OnNODEIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USERID", DbType="NVarChar(255)")]
-		public string USERID
-		{
-			get
-			{
-				return this._USERID;
-			}
-			set
-			{
-				if ((this._USERID != value))
-				{
-					this.OnUSERIDChanging(value);
-					this.SendPropertyChanging();
-					this._USERID = value;
-					this.SendPropertyChanged("USERID");
-					this.OnUSERIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TRANS_STATUS", DbType="NVarChar(255)")]
-		public string TRANS_STATUS
-		{
-			get
-			{
-				return this._TRANS_STATUS;
-			}
-			set
-			{
-				if ((this._TRANS_STATUS != value))
-				{
-					this.OnTRANS_STATUSChanging(value);
-					this.SendPropertyChanging();
-					this._TRANS_STATUS = value;
-					this.SendPropertyChanged("TRANS_STATUS");
-					this.OnTRANS_STATUSChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_RO", DbType="NVarChar(255)")]
-		public string STATE_RO
-		{
-			get
-			{
-				return this._STATE_RO;
-			}
-			set
-			{
-				if ((this._STATE_RO != value))
-				{
-					this.OnSTATE_ROChanging(value);
-					this.SendPropertyChanging();
-					this._STATE_RO = value;
-					this.SendPropertyChanged("STATE_RO");
-					this.OnSTATE_ROChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="State_City", Storage="_Cities", ThisKey="STATE_CODE", OtherKey="CITY_STATE")]
-		public EntitySet<City> Cities
-		{
-			get
-			{
-				return this._Cities;
-			}
-			set
-			{
-				this._Cities.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Cities(City entity)
-		{
-			this.SendPropertyChanging();
-			entity.State = this;
-		}
-		
-		private void detach_Cities(City entity)
-		{
-			this.SendPropertyChanging();
-			entity.State = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Stock")]
 	public partial class Stock : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -8123,6 +7673,480 @@ namespace FinalUi
 					this._full_name_nd = value;
 				}
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.State")]
+	public partial class State : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _STATE_CODE;
+		
+		private string _STATE_DESC;
+		
+		private string _STATE_COUNTRY;
+		
+		private string _STATE_CAPITAL;
+		
+		private string _STATE_MAP;
+		
+		private System.Nullable<double> _STATE_POPULATION;
+		
+		private string _STATE_IMP_AREA;
+		
+		private string _STATE_INDUSTRIES;
+		
+		private string _STATE_ZO;
+		
+		private string _STATE_STATUS;
+		
+		private System.Nullable<System.DateTime> _MOD_DATE;
+		
+		private System.Nullable<double> _MOD_TIME;
+		
+		private string _NODEID;
+		
+		private string _USERID;
+		
+		private string _TRANS_STATUS;
+		
+		private string _STATE_RO;
+		
+		private string _STATE_ZONE;
+		
+		private EntitySet<City> _Cities;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSTATE_CODEChanging(string value);
+    partial void OnSTATE_CODEChanged();
+    partial void OnSTATE_DESCChanging(string value);
+    partial void OnSTATE_DESCChanged();
+    partial void OnSTATE_COUNTRYChanging(string value);
+    partial void OnSTATE_COUNTRYChanged();
+    partial void OnSTATE_CAPITALChanging(string value);
+    partial void OnSTATE_CAPITALChanged();
+    partial void OnSTATE_MAPChanging(string value);
+    partial void OnSTATE_MAPChanged();
+    partial void OnSTATE_POPULATIONChanging(System.Nullable<double> value);
+    partial void OnSTATE_POPULATIONChanged();
+    partial void OnSTATE_IMP_AREAChanging(string value);
+    partial void OnSTATE_IMP_AREAChanged();
+    partial void OnSTATE_INDUSTRIESChanging(string value);
+    partial void OnSTATE_INDUSTRIESChanged();
+    partial void OnSTATE_ZOChanging(string value);
+    partial void OnSTATE_ZOChanged();
+    partial void OnSTATE_STATUSChanging(string value);
+    partial void OnSTATE_STATUSChanged();
+    partial void OnMOD_DATEChanging(System.Nullable<System.DateTime> value);
+    partial void OnMOD_DATEChanged();
+    partial void OnMOD_TIMEChanging(System.Nullable<double> value);
+    partial void OnMOD_TIMEChanged();
+    partial void OnNODEIDChanging(string value);
+    partial void OnNODEIDChanged();
+    partial void OnUSERIDChanging(string value);
+    partial void OnUSERIDChanged();
+    partial void OnTRANS_STATUSChanging(string value);
+    partial void OnTRANS_STATUSChanged();
+    partial void OnSTATE_ROChanging(string value);
+    partial void OnSTATE_ROChanged();
+    partial void OnSTATE_ZONEChanging(string value);
+    partial void OnSTATE_ZONEChanged();
+    #endregion
+		
+		public State()
+		{
+			this._Cities = new EntitySet<City>(new Action<City>(this.attach_Cities), new Action<City>(this.detach_Cities));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_CODE", DbType="NVarChar(255) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string STATE_CODE
+		{
+			get
+			{
+				return this._STATE_CODE;
+			}
+			set
+			{
+				if ((this._STATE_CODE != value))
+				{
+					this.OnSTATE_CODEChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_CODE = value;
+					this.SendPropertyChanged("STATE_CODE");
+					this.OnSTATE_CODEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_DESC", DbType="NVarChar(255)")]
+		public string STATE_DESC
+		{
+			get
+			{
+				return this._STATE_DESC;
+			}
+			set
+			{
+				if ((this._STATE_DESC != value))
+				{
+					this.OnSTATE_DESCChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_DESC = value;
+					this.SendPropertyChanged("STATE_DESC");
+					this.OnSTATE_DESCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_COUNTRY", DbType="NVarChar(255)")]
+		public string STATE_COUNTRY
+		{
+			get
+			{
+				return this._STATE_COUNTRY;
+			}
+			set
+			{
+				if ((this._STATE_COUNTRY != value))
+				{
+					this.OnSTATE_COUNTRYChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_COUNTRY = value;
+					this.SendPropertyChanged("STATE_COUNTRY");
+					this.OnSTATE_COUNTRYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_CAPITAL", DbType="NVarChar(255)")]
+		public string STATE_CAPITAL
+		{
+			get
+			{
+				return this._STATE_CAPITAL;
+			}
+			set
+			{
+				if ((this._STATE_CAPITAL != value))
+				{
+					this.OnSTATE_CAPITALChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_CAPITAL = value;
+					this.SendPropertyChanged("STATE_CAPITAL");
+					this.OnSTATE_CAPITALChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_MAP", DbType="NVarChar(255)")]
+		public string STATE_MAP
+		{
+			get
+			{
+				return this._STATE_MAP;
+			}
+			set
+			{
+				if ((this._STATE_MAP != value))
+				{
+					this.OnSTATE_MAPChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_MAP = value;
+					this.SendPropertyChanged("STATE_MAP");
+					this.OnSTATE_MAPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_POPULATION", DbType="Float")]
+		public System.Nullable<double> STATE_POPULATION
+		{
+			get
+			{
+				return this._STATE_POPULATION;
+			}
+			set
+			{
+				if ((this._STATE_POPULATION != value))
+				{
+					this.OnSTATE_POPULATIONChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_POPULATION = value;
+					this.SendPropertyChanged("STATE_POPULATION");
+					this.OnSTATE_POPULATIONChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_IMP_AREA", DbType="NVarChar(255)")]
+		public string STATE_IMP_AREA
+		{
+			get
+			{
+				return this._STATE_IMP_AREA;
+			}
+			set
+			{
+				if ((this._STATE_IMP_AREA != value))
+				{
+					this.OnSTATE_IMP_AREAChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_IMP_AREA = value;
+					this.SendPropertyChanged("STATE_IMP_AREA");
+					this.OnSTATE_IMP_AREAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_INDUSTRIES", DbType="NVarChar(255)")]
+		public string STATE_INDUSTRIES
+		{
+			get
+			{
+				return this._STATE_INDUSTRIES;
+			}
+			set
+			{
+				if ((this._STATE_INDUSTRIES != value))
+				{
+					this.OnSTATE_INDUSTRIESChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_INDUSTRIES = value;
+					this.SendPropertyChanged("STATE_INDUSTRIES");
+					this.OnSTATE_INDUSTRIESChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_ZO", DbType="NVarChar(255)")]
+		public string STATE_ZO
+		{
+			get
+			{
+				return this._STATE_ZO;
+			}
+			set
+			{
+				if ((this._STATE_ZO != value))
+				{
+					this.OnSTATE_ZOChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_ZO = value;
+					this.SendPropertyChanged("STATE_ZO");
+					this.OnSTATE_ZOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_STATUS", DbType="NVarChar(255)")]
+		public string STATE_STATUS
+		{
+			get
+			{
+				return this._STATE_STATUS;
+			}
+			set
+			{
+				if ((this._STATE_STATUS != value))
+				{
+					this.OnSTATE_STATUSChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_STATUS = value;
+					this.SendPropertyChanged("STATE_STATUS");
+					this.OnSTATE_STATUSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MOD_DATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> MOD_DATE
+		{
+			get
+			{
+				return this._MOD_DATE;
+			}
+			set
+			{
+				if ((this._MOD_DATE != value))
+				{
+					this.OnMOD_DATEChanging(value);
+					this.SendPropertyChanging();
+					this._MOD_DATE = value;
+					this.SendPropertyChanged("MOD_DATE");
+					this.OnMOD_DATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MOD_TIME", DbType="Float")]
+		public System.Nullable<double> MOD_TIME
+		{
+			get
+			{
+				return this._MOD_TIME;
+			}
+			set
+			{
+				if ((this._MOD_TIME != value))
+				{
+					this.OnMOD_TIMEChanging(value);
+					this.SendPropertyChanging();
+					this._MOD_TIME = value;
+					this.SendPropertyChanged("MOD_TIME");
+					this.OnMOD_TIMEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NODEID", DbType="NVarChar(255)")]
+		public string NODEID
+		{
+			get
+			{
+				return this._NODEID;
+			}
+			set
+			{
+				if ((this._NODEID != value))
+				{
+					this.OnNODEIDChanging(value);
+					this.SendPropertyChanging();
+					this._NODEID = value;
+					this.SendPropertyChanged("NODEID");
+					this.OnNODEIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USERID", DbType="NVarChar(255)")]
+		public string USERID
+		{
+			get
+			{
+				return this._USERID;
+			}
+			set
+			{
+				if ((this._USERID != value))
+				{
+					this.OnUSERIDChanging(value);
+					this.SendPropertyChanging();
+					this._USERID = value;
+					this.SendPropertyChanged("USERID");
+					this.OnUSERIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TRANS_STATUS", DbType="NVarChar(255)")]
+		public string TRANS_STATUS
+		{
+			get
+			{
+				return this._TRANS_STATUS;
+			}
+			set
+			{
+				if ((this._TRANS_STATUS != value))
+				{
+					this.OnTRANS_STATUSChanging(value);
+					this.SendPropertyChanging();
+					this._TRANS_STATUS = value;
+					this.SendPropertyChanged("TRANS_STATUS");
+					this.OnTRANS_STATUSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_RO", DbType="NVarChar(255)")]
+		public string STATE_RO
+		{
+			get
+			{
+				return this._STATE_RO;
+			}
+			set
+			{
+				if ((this._STATE_RO != value))
+				{
+					this.OnSTATE_ROChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_RO = value;
+					this.SendPropertyChanged("STATE_RO");
+					this.OnSTATE_ROChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_ZONE", DbType="VarChar(50)")]
+		public string STATE_ZONE
+		{
+			get
+			{
+				return this._STATE_ZONE;
+			}
+			set
+			{
+				if ((this._STATE_ZONE != value))
+				{
+					this.OnSTATE_ZONEChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_ZONE = value;
+					this.SendPropertyChanged("STATE_ZONE");
+					this.OnSTATE_ZONEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="State_City", Storage="_Cities", ThisKey="STATE_CODE", OtherKey="CITY_STATE")]
+		public EntitySet<City> Cities
+		{
+			get
+			{
+				return this._Cities;
+			}
+			set
+			{
+				this._Cities.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Cities(City entity)
+		{
+			this.SendPropertyChanging();
+			entity.State = this;
+		}
+		
+		private void detach_Cities(City entity)
+		{
+			this.SendPropertyChanging();
+			entity.State = null;
 		}
 	}
 	

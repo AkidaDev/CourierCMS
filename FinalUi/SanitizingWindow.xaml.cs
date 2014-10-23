@@ -155,7 +155,6 @@ namespace FinalUi
                 }
             }
             return data;
-
         }
         public void SaveData()
         {
@@ -164,16 +163,13 @@ namespace FinalUi
             if (dataContext.Where(x => x.ConsignmentNo == data.ConsignmentNo).Count() > 0)
             {
             }
-
             else
             {
-
                 data.SheetNo = sheetNo;
                 data.UserId = SecurityModule.currentUserName;
                 db.RuntimeDatas.InsertOnSubmit(data);
                 dataListContext.AddNewItem(data);
             }
-
             if (data.FrAmount == null)
             {
                 var c = db.Cities.Where(x => x.CITY_CODE == data.Destination && x.CITY_STATUS == "A").FirstOrDefault();
@@ -198,6 +194,9 @@ namespace FinalUi
                 ConnsignmentNumber.Text = (string)ConnsignmentNumber.Items.GetItemAt(index + 1);
                 fillAllElements(ConnsignmentNumber.Text);
             }
+        }
+        public void setdata(RuntimeData dbdata, RuntimeData data)
+        {
         }
         public void setPreviousData()
         {
@@ -337,20 +336,14 @@ namespace FinalUi
                 getrate();
             }
         }
-
         private void CustomerSelected_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
         }
-
         private void MODE_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
         }
-
         private void TypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
         }
     }
 }

@@ -631,14 +631,12 @@ namespace FinalUi
         #endregion DataGrid Sheet Methods Ends
         #endregion DataGrid Methods Ends
         #region filter functions
-
         private void FilterButton_Click(object sender, RoutedEventArgs e)
         {
             FilterSelectWindow window = new FilterSelectWindow(dataGridHelper.currentDataSheet.filterObj, dataGridHelper.currentConnNosNoFilter);
             window.Closed += window_Closed;
             window.Show();
         }
-
         void window_Closed(object sender, EventArgs e)
         {
             dataGridHelper.currentDataSheet.applyFilter();
@@ -979,7 +977,7 @@ namespace FinalUi
             buttontabcanvaswrap.Visibility = Visibility.Visible;
             NavigationBar.Visibility = Visibility.Visible;
         }
-      
+
 
         private void clienttreeviewitembutton_Click(object sender, RoutedEventArgs e)
         {
@@ -1018,20 +1016,24 @@ namespace FinalUi
         {
             cloakAll();
         }
-        
-
         private void ClientCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             LoadClientRules();
         }
-
         private void LoadClientRules()
         {
+            if (CostingRulesSource == null)
+            {
+                CostingRulesSource = (CollectionViewSource)FindResource("CostingRuleList");
+            }
+            if (serviceRulesView == null)
+            {
+                serviceRulesView = (CollectionViewSource)FindResource("ServiceRuleList");
+            }
             BillingDataDataContext db = new BillingDataDataContext();
             qutObj = db.Quotations.SingleOrDefault(x => x.CLCODE == ((Client)ClientCombo.SelectedItem).CLCODE);
             if (qutObj == null)
             {
-                MessageBox.Show("No quotation associated with this client /n Default Rates will be applied");
                 unLoadQuotation();
             }
             else
@@ -1048,17 +1050,8 @@ namespace FinalUi
         }
         void loadQuotation(Quotation qutObj)
         {
-            if (CostingRulesSource == null)
-            {
-                CostingRulesSource = (CollectionViewSource)FindResource("CostingRuleList");
-            }
-            if(serviceRulesView == null)
-            {
-                serviceRulesView = (CollectionViewSource)FindResource("ServiceRuleList");
-            }
             CostingRulesSource.Source = qutObj.CostingRules;
             serviceRulesView.Source = qutObj.ServiceRules;
-
         }
         private void cloakAllGrid()
         {
@@ -1275,7 +1268,7 @@ namespace FinalUi
                 {
                     CostingRule dcr = (CostingRule)CostingRuleGrid.SelectedItem;
                     CostingRuleGrid.SelectedItem = null;
-                Rule dr = db.Rules.Where(x => x.ID == dcr.Id).FirstOrDefault();
+                    Rule dr = db.Rules.Where(x => x.ID == dcr.Id).FirstOrDefault();
                     db.Rules.DeleteOnSubmit(dr);
                 }
             }

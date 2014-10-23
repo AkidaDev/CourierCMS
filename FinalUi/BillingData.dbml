@@ -324,27 +324,6 @@
       <Association Name="Service_Assignment" Member="Assignments" ThisKey="SER_CODE" OtherKey="ServiceCode" Type="Assignment" />
     </Type>
   </Table>
-  <Table Name="dbo.State" Member="States">
-    <Type Name="State">
-      <Column Name="STATE_CODE" Type="System.String" DbType="NVarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="STATE_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_COUNTRY" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_CAPITAL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_MAP" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_POPULATION" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="STATE_IMP_AREA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_INDUSTRIES" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_ZO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="MOD_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="MOD_TIME" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="NODEID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="USERID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="TRANS_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_RO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Association Name="State_City" Member="Cities" ThisKey="STATE_CODE" OtherKey="CITY_STATE" Type="City" />
-    </Type>
-  </Table>
   <Table Name="dbo.Stock" Member="Stocks">
     <Type Name="Stock">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -399,6 +378,28 @@
     <Type Name="world_cities_free">
       <Column Name="cc_fips" Type="System.String" DbType="NVarChar(2) NOT NULL" CanBeNull="false" />
       <Column Name="full_name_nd" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.State" Member="States">
+    <Type Name="State">
+      <Column Name="STATE_CODE" Type="System.String" DbType="NVarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="STATE_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="STATE_COUNTRY" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="STATE_CAPITAL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="STATE_MAP" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="STATE_POPULATION" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="STATE_IMP_AREA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="STATE_INDUSTRIES" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="STATE_ZO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="STATE_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MOD_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MOD_TIME" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NODEID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="USERID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="TRANS_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="STATE_RO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="STATE_ZONE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="State_City" Member="Cities" ThisKey="STATE_CODE" OtherKey="CITY_STATE" Type="City" />
     </Type>
   </Table>
   <Function Name="dbo.sp_deleteSheetFromRuntime" Method="sp_deleteSheetFromRuntime">

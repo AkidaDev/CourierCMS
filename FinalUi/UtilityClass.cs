@@ -282,8 +282,18 @@ namespace FinalUi
         }
         internal static ZONE getZoneFromCityCode(string p)
         {
+            ZONE zone = null;
             City city = DataSources.CityCopy.SingleOrDefault(x => x.CITY_CODE == p);
-            return DataSources.ZoneCopy.Where(x=> x.zcode == city.ZONE).FirstOrDefault();
+            if(city.ZONE == null || city.ZONE == "")
+            {
+                var state = DataSources.StateCopy.Where(x => x.STATE_CODE == city.CITY_STATE).FirstOrDefault();
+                zone = DataSources.ZoneCopy.Where(x => x.zcode == state.STATE_ZONE).FirstOrDefault();
+            }
+            else
+            {
+                zone = DataSources.ZoneCopy.Where(x => x.zcode == city.ZONE).FirstOrDefault();
+            }
+            return zone;
         }
     }
 }
