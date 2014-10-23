@@ -747,10 +747,10 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <Button Content="  General  " Grid.Column="0" VerticalAlignment="Center" Background="LightGray" BorderThickness="0" Click="General_Ribbon" />
-                            <Button Content="  Despcription  " Grid.Column="1" VerticalAlignment="Center" Background="LightGray" BorderThickness="0" Click="Description_Ribbon"/>
-                            <Button Content="  Help  " Grid.Column="2" VerticalAlignment="Center" Background="LightGray" BorderThickness="0" Click="Help_Ribbon"/>
-                            <Button Content="  Feedback  " Grid.Column="3" VerticalAlignment="Center" Background="LightGray" BorderThickness="0" Click="Feedback_Ribbon"/>
+                            <Button Content="  General  " Height="24" Grid.Column="0" VerticalAlignment="Center" Background="White" BorderThickness="0" Name="GeneralRibbon" Click="General_Ribbon" />
+                            <Button Content="  Despcription  " Grid.Column="1" VerticalAlignment="Center" Background="LightGray" BorderThickness="0" Name="DescriptionRibbon" Click="Description_Ribbon"/>
+                            <Button Content="  Help  " Grid.Column="2" VerticalAlignment="Center" Background="LightGray" BorderThickness="0" Name="HelpRibbon" Click="Help_Ribbon"/>
+                            <Button Content="  Feedback  " Grid.Column="3" VerticalAlignment="Center" Background="LightGray" BorderThickness="0" Name="FeedbackRibbon" Click="Feedback_Ribbon"/>
                         <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="0" HorizontalAlignment="Left"/>
                         <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="0" HorizontalAlignment="Right"/>
                         <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
@@ -758,16 +758,16 @@
                         <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
                         </Grid>
                         <ScrollViewer Name="GeneralRibbonTab" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
-                            <TextBlock Text="Log..." x:Name="MessageBlock" Background="#FFF7F3F3" Padding="4,4,0,0" />
+                            <TextBlock Text="Log..." x:Name="MessageBlock" Background="White" Padding="4,4,0,0" />
                         </ScrollViewer>
                         <ScrollViewer Name="DescriptionRibbonTab" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="1" Visibility="Collapsed">
-                            <TextBlock Text="what are you lookin at fuckin bitch this is description Block" Background="#FFF7F3F3" Padding="4,4,0,0" />
+                            <TextBlock Text="what are you lookin at fuckin bitch this is description Block" Background="White" Padding="4,4,0,0" />
                         </ScrollViewer>
                         <ScrollViewer Name="HelpRibbonTab" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="1" Visibility="Collapsed">
-                            <TextBlock Text="'Help will be Given to those who will ask for it' - DUMBLEDOR " Background="#FFF7F3F3" Padding="4,4,0,0" />
+                            <TextBlock Text="'Help will be Given to those who will ask for it' - DUMBLEDOR " Background="White" Padding="4,4,0,0" />
                         </ScrollViewer>
                         <ScrollViewer Name="FeedbackRibbonTab" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="1" Visibility="Collapsed">
-                            <TextBlock Text="We dont Take FeedBack From Bitches but HAAAAAAAAPY DIWALI" Background="#FFF7F3F3" Padding="4,4,0,0" />
+                            <TextBlock Text="We dont Take FeedBack From Bitches but HAAAAAAAAPY DIWALI" Background="White" Padding="4,4,0,0" />
                         </ScrollViewer>
                     </Grid>
                 </Grid>
