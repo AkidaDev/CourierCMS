@@ -44,8 +44,8 @@
                     <RadioButton  Name="PerRadio" IsChecked="True" Content="Percentage % " FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
                     <RadioButton Content="Amount " FontWeight="Bold" FontSize="18" Name="AmountRadio"  FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
 
-                    <WrapPanel Name="PercentageWrap" Visibility="Collapsed">
-                        <TextBlock Text=" % .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="20 0 3 0"/>
+                    <WrapPanel Name="PercentageWrap" Visibility="Visible">
+                        <TextBlock Text=" Value .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="20 0 3 0"/>
                         <TextBox BorderThickness="2" Name="PercentageBox"  Visibility="Visible" Width="50" />
                     </WrapPanel>
                     <WrapPanel Name="AmountWrap" Visibility="Collapsed">
