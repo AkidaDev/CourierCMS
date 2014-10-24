@@ -109,7 +109,7 @@
             <DockPanel Grid.Row="2" Height="32">
                 <Grid >
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="220*" MaxWidth="240" MinWidth="180"/>
+                        <ColumnDefinition Width="235*" MaxWidth="260" MinWidth="235"/>
                         <ColumnDefinition Width="770*"/>
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="1" Margin="3 0 -3 1" Background="#19000000"/>
@@ -299,16 +299,12 @@
                         <Button ToolTip="Filter &amp; Select" Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="2">
                             <Path Data="F1M2.118,1C2.881,1 16.282,1 16.809,1 17.492,1 18,1.384 17.6,1.763 17.36,1.991 13.667,5.465 11.603,7.406L11,7.973 11,9.797C11,13.312 11,18 11,18 11,18 8,20 8,20 8,20 8,19 8,18L8,17.792 8,17.213 8,17C8,17.5,8,17,8,16.625L8,16.527C8,16.438,8,16.281,8,16.172L8,16C8,16.227,8,15.797,8,15.281L8,15.217 8,13.52 8,12.562 8,11.5 8,9.797 8,9.48 8,8.026 7.423,7.484C5.405,5.591 1.669,2.078 1.331,1.747 1,1.424 1.365,1 2.118,1z" Fill="#FF2D6356" Height="21" Width="20" Stretch="Fill"/>
                         </Button>
-                        <Button ToolTip="Save File" Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="3">
-                            <Path Data="F1M5.707,16.89C5.707,16.89 16.879,16.89 16.879,16.89 16.879,16.89 16.879,18.13 16.879,18.13 16.879,18.13 5.707,18.13 5.707,18.13 5.707,18.13 5.707,16.89 5.707,16.89z M5.707,13.414C5.707,13.414 16.879,13.414 16.879,13.414 16.879,13.414 16.879,14.653 16.879,14.653 16.879,14.653 5.707,14.653 5.707,14.653 5.707,14.653 5.707,13.414 5.707,13.414z M4.207,10.739C4.207,10.739 4.207,20.566 4.207,20.566 4.207,20.566 18.793,20.566 18.793,20.566 18.793,20.566 18.793,10.739 18.793,10.739 18.793,10.739 4.207,10.739 4.207,10.739z M9.432,1.83C9.432,1.83 13.777,1.83 13.777,1.83 13.777,1.83 13.777,7.358 13.777,7.358 13.777,7.358 9.432,7.358 9.432,7.358 9.432,7.358 9.432,1.83 9.432,1.83z M1.626,1C1.626,1 4.207,1 4.207,1 4.207,1 4.207,8.508 4.207,8.508 4.207,8.508 15.586,8.508 15.586,8.508 15.586,8.508 15.586,1 15.586,1 15.586,1 17.711,1 17.711,1 17.711,1 22,5.246 22,5.246 22,5.246 22,21.381 22,21.381 22,21.723 21.72,22 21.374,22 21.374,22 1.626,22 1.626,22 1.28,22 1,21.723 1,21.381 1,21.381 1,1.62 1,1.62 1,1.277 1.28,1 1.626,1z" Fill="#FF484555" Height="23" Width="23"/>
-                        </Button>
-                        <Button ToolTip="Print" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="4">
+                        <Button ToolTip="Print" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="3">
                             <Path Data="F1M8.9,14.833C8.9,14.833 8.9,20.667 8.9,20.667 8.9,20.667 18.1,20.667 18.1,20.667 18.1,20.667 18.1,14.833 18.1,14.833 18.1,14.833 8.9,14.833 8.9,14.833z M21.55,10.167C20.86,10.167 20.4,10.633 20.4,11.333 20.4,12.033 20.86,12.5 21.55,12.5 22.24,12.5 22.7,12.033 22.7,11.333 22.7,10.633 22.24,10.167 21.55,10.167z M5.45,7.833C5.45,7.833 21.55,7.833 21.55,7.833 23.505,7.833 25,9.35 25,11.333 25,11.333 25,18.333 25,18.333 25,18.333 20.4,18.333 20.4,18.333 20.4,18.333 20.4,23 20.4,23 20.4,23 6.6,23 6.6,23 6.6,23 6.6,18.333 6.6,18.333 6.6,18.333 2,18.333 2,18.333 2,18.333 2,11.333 2,11.333 2,9.35 3.495,7.833 5.45,7.833z M6.6,2C6.6,2 20.4,2 20.4,2 20.4,2 20.4,6.667 20.4,6.667 20.4,6.667 6.6,6.667 6.6,6.667 6.6,6.667 6.6,2 6.6,2z" Fill="Black" Height="24" Width="26"/>
                         </Button>
                         <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1"  HorizontalAlignment="Right"/>
                         <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2" HorizontalAlignment="Right"/>
                         <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
-                        <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
                     </Grid>
 
                     <Grid Visibility="Collapsed" x:Name="QuotationoptionPanel" Grid.Column="1">
@@ -414,7 +410,7 @@
             </DockPanel>
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="220*" MaxWidth="240" MinWidth="180"/>
+                    <ColumnDefinition Width="235*" MaxWidth="260" MinWidth="235"/>
                     <ColumnDefinition Width="770*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Margin="-3,-32,0,-3" Grid.RowSpan="3" Width="Auto">
@@ -428,16 +424,16 @@
                     <TreeView Background="Transparent" BorderThickness="0" Margin=" 6 20 0 0">
                         <TreeViewItem>
                             <TreeViewItem.Header>
-                                <TextBlock Text="  My Assignments" FontSize="16" FontWeight="Bold" Padding="0 1 0 4" Width="140" Foreground="white" FontFamily="Calibri" Background="#223f3f46"/>
+                                <TextBlock Text=" My Assignments" FontSize="16" FontWeight="Bold" Padding="0 1 0 4" Foreground="white" FontFamily="Calibri"/>
                             </TreeViewItem.Header>
                             <TreeViewItem x:Name="DataDockPanelTreeView">
                                 <TreeViewItem.Header>
-                                    <TextBlock Text="  Data Entry Table  " FontSize="14" Foreground="White" MouseDown="DataDockPanelTreeView_Selected"/>
+                                    <TextBlock Text=" Data Entry Table  " FontSize="14" Width="200" Foreground="White" MouseDown="DataDockPanelTreeView_Selected"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
                             <TreeViewItem x:Name="CloseTableTreeView">
                                 <TreeViewItem.Header>
-                                    <TextBlock Text="  Close all Table  " FontSize="14" Foreground="White" MouseDown="CloseTableTreeView_Selected"/>
+                                    <TextBlock Text=" Close all Table  " FontSize="14" Width="200" Foreground="White" MouseDown="CloseTableTreeView_Selected"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
                         </TreeViewItem>
@@ -445,55 +441,55 @@
                     <TreeView Background="Transparent" BorderThickness="0" Margin="6,5,0,0">
                         <TreeViewItem Background="Transparent" BorderThickness="0">
                             <TreeViewItem.Header>
-                                <TextBlock Text="  Client Tree" FontSize="16" FontWeight="Bold"  Padding="0 1 0 4" Foreground="White" FontFamily="Calibri" Width="140" Background="#223f3f46"/>
+                                <TextBlock Text=" Client Tree" FontSize="16" FontWeight="Bold"  Padding="0 1 0 4" Foreground="White" FontFamily="Calibri"/>
                             </TreeViewItem.Header>
                             <TreeViewItem x:Name="ClientsReportTreeView">
                                 <TreeViewItem.Header>
-                                    <TextBlock Text="  Clients Report  " FontSize="14" Foreground="White" MouseDown="ClientsReportTreeView_Selected"/>
+                                    <TextBlock Text=" Clients Report  " FontSize="14"  Width="200" Foreground="White" MouseDown="ClientsReportTreeView_Selected"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
                             <TreeViewItem  x:Name="ClientQuotationTreeView">
                                 <TreeViewItem.Header>
-                                    <TextBlock  Text="  Client Quotation  " FontSize="14" Foreground="White" MouseDown="ClientQuotationTreeView_Selected"/>
+                                    <TextBlock  Text=" Client Quotation  " FontSize="14" Width="200" Foreground="White" MouseDown="ClientQuotationTreeView_Selected"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
                         </TreeViewItem>
                     </TreeView>
-                    <TreeView BorderThickness="0" Background="Transparent"  >
-                        <!--<TreeViewItem BorderBrush="Transparent" BorderThickness="0" Margin="6 5 0 0">
+                   <!--  <TreeView BorderThickness="0" Background="Transparent"  >
+                       <TreeViewItem BorderBrush="Transparent" BorderThickness="0" Margin="6 5 0 0">
                             <TreeViewItem.Header>
-                                <TextBlock FontSize="16" FontWeight="Bold" Padding="0 1 0 4" Text="  Manager" Foreground="White" Width="140" FontFamily="Calibri" Background="#223f3f46"/>
+                                <TextBlock FontSize="16" FontWeight="Bold" Padding="0 1 0 4" Text=" Manager" Foreground="White" FontFamily="Calibri"/>
                             </TreeViewItem.Header>
                             <TreeViewItem x:Name="Employeetreeviewitembutton">
                                 <TreeViewItem.Header>
-                                    <TextBlock Text="  Employee  " FontSize="14" Foreground="White" MouseDown="Employeetreeviewitembutton_Click"/>
+                                    <TextBlock Text=" Employee" FontSize="14" Width="200" Foreground="White" MouseDown="Employeetreeviewitembutton_Click"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
                             <TreeViewItem x:Name="clienttreeviewitembutton">
                                 <TreeViewItem.Header>
-                                    <TextBlock Text="  Client  " FontSize="14" Foreground="White" MouseDown="clienttreeviewitembutton_Click"/>
+                                    <TextBlock Text=" Client" FontSize="14" Width="200" Foreground="White" MouseDown="clienttreeviewitembutton_Click"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
                             <TreeViewItem x:Name="zonetreeitembutton">
                                 <TreeViewItem.Header>
-                                    <TextBlock Text="  Zone  " FontSize="14" Foreground="White" MouseDown="zonetreeitembutton_Click"/>
+                                    <TextBlock Text=" Zone" FontSize="14" Width="200" Foreground="White" MouseDown="zonetreeitembutton_Click"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
                             <TreeViewItem x:Name="citytreeviewitembutton">
                                 <TreeViewItem.Header>
-                                    <TextBlock Text="  City  " FontSize="14" Foreground="White" MouseDown="citytreeviewitembutton_Click"/>
+                                    <TextBlock Text=" City" FontSize="14" Width="200" Foreground="White" MouseDown="citytreeviewitembutton_Click"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
                             <TreeViewItem x:Name="countrytreeitembutton">
                                 <TreeViewItem.Header>
-                                    <TextBlock Text="  Country  " FontSize="14" Foreground="White" MouseDown="countrytreeitembutton_Click"/>
+                                    <TextBlock Text=" Country" FontSize="14" Width="200" Foreground="White" MouseDown="countrytreeitembutton_Click"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
-                        </TreeViewItem>-->
-                    </TreeView>
+                        </TreeViewItem>
+                    </TreeView>-->
                     <Path Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Black" Height="4" HorizontalAlignment="Left" Margin="15,6,0,0"  Width="194"/>
                 </StackPanel>
-                <Grid Grid.Column="1" Margin="3 2 -3 -3">
+                <Grid Grid.Column="2" Margin="3 2 -3 -3">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="211*"/>
                         <RowDefinition Height="Auto"/>
