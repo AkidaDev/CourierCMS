@@ -66,13 +66,9 @@
                         <MenuItem Header="Payment Entry"  x:Name="PaymentRecievedMenuItem"  Click="PaymentRecieved_Click"/>
                         <MenuItem Header="Payment Received"  x:Name="PaymentEntryMenuItem" Click="PaymentEntry_Click"/>
                         <MenuItem Header="Stock Entry"  x:Name="StockEntryMenuItem" Click="StockEntry_Click"/>
-                        <MenuItem Header="Edit Rates" x:Name="RateWindowMenu" Click="RateWindowMenu_Click"/>
                         <MenuItem Header="Client Report" x:Name="ClientReport" Click="ClientReport_Click"/>
                     </MenuItem>
                     <MenuItem ToolTip="Editing Tools" Header="Tools" Margin="10 0 0 0">
-                        <MenuItem Header="Filter &amp; Select" />
-                        <MenuItem Header="Data Entry" />
-                        <MenuItem Header="Add Rate Rule" />
                         <MenuItem Header="Peferences" x:Name="Peferences" Click="Peferences_Click" />
                         <MenuItem Header="Hide/Show Image" Click="MenuItem_hideimage" />
                     </MenuItem>
