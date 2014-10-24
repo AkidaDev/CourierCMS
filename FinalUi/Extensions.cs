@@ -90,7 +90,7 @@ namespace FinalUi
             BillingDataDataContext db = new BillingDataDataContext();
             rulesList = db.Rules.Where(x => x.QID == this.Id).ToList();
             costingRules = rulesList.Where(x => x.Type == 1).Select(y => ((new JavaScriptSerializer()).Deserialize<CostingRule>(y.Properties))).ToList();
-           serviceRules = rulesList.Where(x => x.Type == 2).Select(y => ((new JavaScriptSerializer()).Deserialize<ServiceRule>(y.Properties))).ToList();
+          serviceRules = rulesList.Where(x => x.Type == 2).Select(y => ((new JavaScriptSerializer()).Deserialize<ServiceRule>(y.Properties))).ToList();
             //invoiceRule = rulesList.Where(x => x.Type == 3).Select(y => ((new JavaScriptSerializer()).Deserialize<InvoiceRule>(y.Properties))).ToList();
         }
         public double applyServiceRulesOnTransaction(double billedWeight, string destination, string serviceCode, char DOX, decimal cost)
@@ -149,7 +149,7 @@ namespace FinalUi
         {
             get
             {
-                return this.CLNAME + "(" + this.CLCODE + ")";
+                return this.CLNAME + " (" + this.CLCODE + ")";
             }
         }
     }
@@ -159,7 +159,7 @@ namespace FinalUi
         {
             get
             {
-                return this.SER_DESC + "(" + this.SER_CODE + ")";
+                return this.SER_DESC + " (" + this.SER_CODE + ")";
             }
         }
     }
@@ -169,7 +169,7 @@ namespace FinalUi
         {
             get
             {
-                return  this.Zone_name + "(" + this.zcode + ")";
+                return  this.Zone_name + " (" + this.zcode + ")";
             }
         }
     }
@@ -179,7 +179,7 @@ namespace FinalUi
         {
             get
             {
-                return this.STATE_DESC + "(" + this.STATE_CODE +")";
+                return this.STATE_DESC + " (" + this.STATE_CODE +")";
             }
         }
     }
@@ -189,7 +189,7 @@ namespace FinalUi
         {
             get
             {
-                return this.CITY_DESC + "(" + this.CITY_CODE + ")";
+                return this.CITY_DESC + " (" + this.CITY_CODE + ")";
             }
         }
     }
