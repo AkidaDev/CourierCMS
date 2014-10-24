@@ -79,6 +79,10 @@ namespace FinalUi
             {
                 BilledAmount.Text = "0";
             }
+            if(Destination.Text == "" && Destination.Text == null)
+            {
+                MessageBox.Show("City cannot be empty");
+            }
             bool isDataInContext = true;
             data = dataContext.SingleOrDefault(x => x.ConsignmentNo == ConnsignmentNumber.Text);
             if (data == null)
@@ -306,7 +310,12 @@ namespace FinalUi
         }
         private void getrate()
         {
-            if (this.BilledWeightTextBox.Text != null && this.BilledWeightTextBox.Text != "")
+            if (Destination.Text == "" && Destination.Text == null)
+            {
+                MessageBox.Show("City cannot be empty");
+                return;
+            }
+            if (this.BilledWeightTextBox.Text != null && this.BilledWeightTextBox.Text != "" )
             {
                 RuntimeData data = null;
                 data = fillData(data);
