@@ -166,8 +166,9 @@ namespace FinalUi
             RuleCR.CityList = selectedCityList;
             RuleCR.StateList = selectedStateList;
             RuleCR.startW = startW;
-            int id = db.ExecuteQuery<int>("Select  Max([ID]) FROM [BillingDatabase].[dbo].[Rule];").FirstOrDefault();
-            RuleCR.Id = id + 1;
+            int id;
+            id = Convert.ToInt32( db.ExecuteQuery<decimal>("SELECT IDENT_CURRENT('Rule') +1;").FirstOrDefault());
+            RuleCR.Id = id;
             RuleCR.endW = endW;
             RuleCR.type = type;
             RuleCR.doxAmount = doxAmount;

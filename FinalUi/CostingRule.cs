@@ -13,7 +13,7 @@ namespace FinalUi
     /// </summary>
     public class CostingRule : IRule
     {
-        public int Id;
+        public int Id{get; set;}
 
         #region When to apply
         public List<string> ServiceList { get; set; }

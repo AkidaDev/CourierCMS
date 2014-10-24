@@ -34,7 +34,7 @@
                 <DatePicker Canvas.Top="108" Canvas.Left="393" x:Name="ToDate" CalendarClosed="ToDate_CalendarClosed" Height="26"  Width="124"  BorderThickness="0" Padding="0 4 0 0"/>
                 <Path Canvas.Top="108" Canvas.Left="392" x:Name="Rectangle" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="26"  Stroke="Black" Stretch="Fill"/>
             </Canvas>
-            <Canvas Canvas.Left="-30" Canvas.Top="8">
+            <Canvas Canvas.Left="-30" Canvas.Top="8" Visibility="Collapsed">
                 <TextBlock  Canvas.Top="170.611" Canvas.Left="60"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Previous Due .:"/>
                 <TextBox  Canvas.Top="165.333"  Canvas.Left="174.275" Height="24" x:Name="PreviousDueTextBox" Width="50" Padding="3"/>
                 <Path x:Name="line1" Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Canvas.Left="229.952" Canvas.Top="162" Width="3"/>
@@ -44,7 +44,7 @@
                 <TextBlock Canvas.Top="170.611" Canvas.Left="410" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="S.Tax(in %) .:"/>
                 <TextBox Canvas.Top="164.666" Canvas.Left="506.334" x:Name="ServiceTaxBox" Width="50" Height="24" Padding="3"/>
             </Canvas>
-        <Canvas Canvas.Top="8">
+        <Canvas Canvas.Top="8" Visibility="Visible">
             <TextBlock  Canvas.Top="213.33" Canvas.Left="60" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Miscellaneous Charges .:"/>
                 <TextBox Canvas.Top="207.327" Canvas.Left="246.093" Height="24" x:Name="MiscBox" Width="50" Padding="3"/>
             <TextBlock Canvas.Top="213.33" Canvas.Left="319.597" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Remarks .:"/>

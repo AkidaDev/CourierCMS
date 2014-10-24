@@ -1016,6 +1016,11 @@ namespace FinalUi
         {
             cloakAll();
         }
+<<<<<<< local
+        private void CostingRuleRadio_Checked(object sender, RoutedEventArgs e)
+        {}
+=======
+>>>>>>> other
         private void ClientCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             LoadClientRules();

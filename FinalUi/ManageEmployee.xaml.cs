@@ -21,16 +21,15 @@ namespace FinalUi
     {
         public List<Employee> employeeToEdit;
         public List<Employee> employees;
-        private CollectionViewSource view;
+        private CollectionViewSource employeeview;
         public ManageEmployee()
         {
             InitializeComponent();
             employeeToEdit = new List<Employee>();
             BillingDataDataContext db = new BillingDataDataContext();
-            employees = (from employee in db.Employees
-                         select employee).ToList();
-            view = (CollectionViewSource)FindResource("EmployeeTable");
-            view.Source = employees;
+            employees = DataSources.EmployeeCopy.ToList();
+            employeeview = (CollectionViewSource)FindResource("EmployeeTable");
+            employeeview.Source = employees;
         }
         private void mangaEmployeegrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
@@ -39,21 +38,22 @@ namespace FinalUi
         private void UpdateEmployee_Click(object sender, RoutedEventArgs e)
         {
             AddEmployee window = new AddEmployee((Employee)this.mangaEmployeegrid.SelectedItem);
-            window.Show();
             window.Closed += reloadgrid;
+            window.Show();
             window.Owner = this;
         }
         private void reloadgrid(object sender, EventArgs e)
         {
-            BillingDataDataContext db = new BillingDataDataContext();
-            this.employees = db.Employees.ToList();
+            DataSources.refreshEmployeeList();
+            this.employees = DataSources.EmployeeCopy.ToList();
+            employeeview.Source = this.employees;
             this.mangaEmployeegrid.Items.Refresh();
         }
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             AddEmployee window = new AddEmployee();
+            window.Closed += reloadgrid;
             window.ShowDialog();
-            window.Closed +=  reloadgrid;
         }
         private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {
@@ -62,6 +62,25 @@ namespace FinalUi
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+        private void DeleteEmployee_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            BillingDataDataContext db = new BillingDataDataContext();
+            if (mangaEmployeegrid.SelectedItem != null)
+            {
+                var emp = db.Employees.Where(x => x.Id == ((Employee)mangaEmployeegrid.SelectedItem).Id).FirstOrDefault();
+                emp.Status = 'D';
+                try
+                {
+                    db.SubmitChanges();
+                    reloadgrid(null, null);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+            }
         }
     }
 }

@@ -460,7 +460,7 @@
                         </TreeViewItem>
                     </TreeView>
                     <TreeView BorderThickness="0" Background="Transparent"  >
-                        <TreeViewItem BorderBrush="Transparent" BorderThickness="0" Margin="6 5 0 0">
+                        <!--<TreeViewItem BorderBrush="Transparent" BorderThickness="0" Margin="6 5 0 0">
                             <TreeViewItem.Header>
                                 <TextBlock FontSize="16" FontWeight="Bold" Padding="0 1 0 4" Foreground="White" FontFamily="Calibri" Width="200" Background="#223f3f46"><Run Text="  Manager"/><InlineUIContainer>
                                 		<Custom:RibbonControlGroup/>
@@ -491,7 +491,7 @@
                                     <TextBlock Text="  Country  " FontSize="14" Foreground="White" MouseDown="countrytreeitembutton_Click"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
-                        </TreeViewItem>
+                        </TreeViewItem>-->
                     </TreeView>
                     <Path Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Black" Height="4" HorizontalAlignment="Left" Margin="15,6,0,0"  Width="194"/>
                 </StackPanel>

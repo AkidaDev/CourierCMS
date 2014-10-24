@@ -27,6 +27,7 @@ namespace FinalUi
         CollectionViewSource viewsourceUserPermission;
         protected Employee emp;
         bool isupdate;
+        bool isaddinsert = false;
         public AddEmployee()
         {
             InitializeComponent();
@@ -71,13 +72,19 @@ namespace FinalUi
                 try
                 {
                     db.SubmitChanges();
+                    isaddinsert = true;
                 }
-                catch (Exception ex) { MessageBox.Show(ex.Message); return;}
+                catch (Exception ex) { MessageBox.Show(ex.Message); isaddinsert = false; return; }
                 this.Close();
             }
             else
             {
                 MessageBox.Show("Password Invalid");
+            }
+            if(isaddinsert)
+            {
+                MessageBox.Show("Employee Add");
+                this.Close();
             }
         }
         private void updateEmployee()
@@ -93,14 +100,20 @@ namespace FinalUi
                 try
                 {
                     db.SubmitChanges();
+                    isaddinsert = true;
                     SecurityModule.Reload();
                 }
-                catch (Exception ex) { MessageBox.Show(ex.Message); return; }
+                catch (Exception ex) { MessageBox.Show(ex.Message); isaddinsert = false; return; }
                 this.Close();
             }
             else
             {
                 MessageBox.Show("Password Invalid");
+            }
+            if (isaddinsert)
+            {
+                MessageBox.Show("Employee Updated");
+                this.Close();
             }
         }
         private void removeduplicatePermission()
