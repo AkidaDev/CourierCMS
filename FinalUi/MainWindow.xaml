@@ -46,7 +46,7 @@
                 <RowDefinition Height="286*"/>
             </Grid.RowDefinitions>
             <!--   <Grid Grid.Row="0" Height="28" Background="{DynamicResource menu}" Margin="-6 -6 -6 0">-->
-          <Grid Grid.Row="0" Height="26" Margin="-6 -6 -6 0">
+            <Grid Grid.Row="0" Height="26" Margin="-6 -6 -6 0">
                 <Menu  Background="Transparent" FontSize="14" Margin="6 6 6 0">
                     <MenuItem ToolTip="Open new document" Header="File" Margin="10 0 0 0">
                         <MenuItem Header="New Sheet" x:Name="NewSheetMenuItem" />
@@ -102,7 +102,7 @@
             </Grid>
 
             <Grid Grid.Row="1" Height="20">
-              <!--   <Rectangle Height="1" Fill="Black" Margin="-6 0" VerticalAlignment="Top"/>
+                <!--   <Rectangle Height="1" Fill="Black" Margin="-6 0" VerticalAlignment="Top"/>
                 Empty space for future implementation-->
             </Grid>
 
@@ -599,7 +599,7 @@
                             </TreeViewItem>
                         </TreeViewItem>
                     </TreeView>
-                   <!--  <TreeView BorderThickness="0" Background="Transparent"  >
+                    <!--  <TreeView BorderThickness="0" Background="Transparent"  >
                        <TreeViewItem BorderBrush="Transparent" BorderThickness="0" Margin="6 5 0 0">
                             <TreeViewItem.Header>
                                 <TextBlock FontSize="16" FontWeight="Bold" Padding="0 1 0 4" Text=" Manager" Foreground="White" FontFamily="Calibri"/>
@@ -729,12 +729,12 @@
                     </Grid>
 
 
-                    <Grid Grid.Row="0" x:Name="RuleGrid" Visibility="Collapsed">
+                    <Grid Grid.Row="0" x:Name="RuleGrid" Visibility="Visible">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="188*"/>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0" Background="#A9FFFFF3" Margin="0,1,0,5" >
+                        <Grid Grid.Row="0" Background="#A9FFFFF3" Margin="0,1,0,3" >
                             <WrapPanel VerticalAlignment="Center" Margin="-4,24,4,24">
                                 <TextBlock Foreground="#FF5B5B5B" Text=" Select Type of RULE  .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="8 0 0 0" TextDecorations="Underline"/>
                                 <RadioButton Foreground="#FF5B5B5B" IsChecked="True" x:Name="CostingRuleRadio"  Content="Costing Rule" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0" Checked="CostingRuleRadio_Checked_1"/>
@@ -745,56 +745,110 @@
                                 <Button Content="  Add Invoice Rule  " x:Name="AddInvoiceRuleButton" Click="AddInvoiceRuleButton_Click" Margin="34 0 0 0" Visibility="Collapsed" Style="{StaticResource all}"/>
                             </WrapPanel>
                         </Grid>
-                        <DataGrid Grid.Row="1" DataContext="{StaticResource CostingRuleList}" ItemsSource="{Binding}" x:Name="CostingRuleGrid" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="300*"/>
+                                <ColumnDefinition Width="115*"/>
+                            </Grid.ColumnDefinitions>
+                            <DataGrid DataContext="{StaticResource CostingRuleList}" ItemsSource="{Binding}" x:Name="CostingRuleGrid" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
 							AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2">
 
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Range(Kg)" Binding="{Binding range}"/>
-                                <DataGridTextColumn Header="Dox(Rs)" Binding="{Binding doxAmount}"/>
-                                <DataGridTextColumn Header="NDox(Rs)" Binding="{Binding ndoxAmount}"/>
-                                <DataGridTextColumn Header="Type" Binding="{Binding type}"/>
-                                <DataGridTextColumn Header="Step(Kg)" Binding="{Binding StepS}"/>
-                                <DataGridTextColumn Header="DStart(Rs)" Binding="{Binding DoxStartS}"/>
-                                <DataGridTextColumn Header="NStart(Rs)" Binding="{Binding nDoxStartS}"/>
-                                <DataGridTextColumn Header="Services" Binding="{Binding serviceCount}"/>
-                                <DataGridTextColumn Header="Cities" Binding="{Binding CityCount}"/>
-                                <DataGridTextColumn Header="States" Binding="{Binding StateCount}"/>
-                                <DataGridTextColumn Header="Zones" Binding="{Binding zoneCount}"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                        <DataGrid Visibility="Collapsed" x:Name="ServiceRuleGrid" Grid.Row="1" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Range(Kg)" Binding="{Binding range}"/>
+                                    <DataGridTextColumn Header="Dox(Rs)" Binding="{Binding doxAmount}"/>
+                                    <DataGridTextColumn Header="NDox(Rs)" Binding="{Binding ndoxAmount}"/>
+                                    <DataGridTextColumn Header="Type" Binding="{Binding type}"/>
+                                    <DataGridTextColumn Header="Step(Kg)" Binding="{Binding StepS}"/>
+                                    <DataGridTextColumn Header="DStart(Rs)" Binding="{Binding DoxStartS}"/>
+                                    <DataGridTextColumn Header="NStart(Rs)" Binding="{Binding nDoxStartS}"/>
+                                    <DataGridTextColumn Header="Services" Binding="{Binding serviceCount}"/>
+                                    <DataGridTextColumn Header="Cities" Binding="{Binding CityCount}"/>
+                                    <DataGridTextColumn Header="States" Binding="{Binding StateCount}"/>
+                                    <DataGridTextColumn Header="Zones" Binding="{Binding zoneCount}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <DataGrid Visibility="Collapsed" x:Name="ServiceRuleGrid" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
 							AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Range" Binding="{Binding RangeWeight}"/>
-                                <DataGridTextColumn Header="Type" Binding="{Binding type}"/>
-                                <DataGridTextColumn Header="Mode" Binding="{Binding mode}"/>
-                                <DataGridTextColumn Header="Change" Binding="{Binding change}"/>
-                                <DataGridTextColumn Header="Applicable" Binding="{Binding applicable}"/>
-                                <DataGridTextColumn Header="ServiceCount" Binding="{Binding servCount}"/>
-                                <DataGridTextColumn Header="ZoneCount" Binding="{Binding zoneCount}"/>
-                                <DataGridTextColumn Header="CityCount" Binding="{Binding cityCount}"/>
-                                <DataGridTextColumn Header="StateCount" Binding="{Binding stateCOunt}"/>
-                                <DataGridTextColumn Header="StepWeight" Binding="{Binding stepweight}"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                        <DataGrid Visibility="Collapsed" x:Name="InvoiceRuleGrid" Grid.Row="1" ItemsSource="{Binding}" DataContext="{StaticResource InvoiceRuleList}" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Range" Binding="{Binding RangeWeight}"/>
+                                    <DataGridTextColumn Header="Type" Binding="{Binding type}"/>
+                                    <DataGridTextColumn Header="Mode" Binding="{Binding mode}"/>
+                                    <DataGridTextColumn Header="Change" Binding="{Binding change}"/>
+                                    <DataGridTextColumn Header="Applicable" Binding="{Binding applicable}"/>
+                                    <DataGridTextColumn Header="ServiceCount" Binding="{Binding servCount}"/>
+                                    <DataGridTextColumn Header="ZoneCount" Binding="{Binding zoneCount}"/>
+                                    <DataGridTextColumn Header="CityCount" Binding="{Binding cityCount}"/>
+                                    <DataGridTextColumn Header="StateCount" Binding="{Binding stateCOunt}"/>
+                                    <DataGridTextColumn Header="StepWeight" Binding="{Binding stepweight}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <DataGrid Visibility="Collapsed" x:Name="InvoiceRuleGrid" ItemsSource="{Binding}" DataContext="{StaticResource InvoiceRuleList}" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
 							AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="StartWieght"/>
-                                <DataGridTextColumn Header="EndWeight"/>
-                                <DataGridTextColumn Header="DOX"/>
-                                <DataGridTextColumn Header="NDOX"/>
-                                <DataGridTextColumn Header="Type"/>
-                                <DataGridTextColumn Header="StepWeight"/>
-                                <DataGridTextColumn Header="NStart"/>
-                                <DataGridTextColumn Header="DStart"/>
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header=""/>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="StartWieght"/>
+                                    <DataGridTextColumn Header="EndWeight"/>
+                                    <DataGridTextColumn Header="DOX"/>
+                                    <DataGridTextColumn Header="NDOX"/>
+                                    <DataGridTextColumn Header="Type"/>
+                                    <DataGridTextColumn Header="StepWeight"/>
+                                    <DataGridTextColumn Header="NStart"/>
+                                    <DataGridTextColumn Header="DStart"/>
+                                    <DataGridTextColumn Header=""/>
+                                    <DataGridTextColumn Header=""/>
+                                    <DataGridTextColumn Header=""/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                            <Grid Grid.Column="1" Background="#A9FFFFF3">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="50*"/>
+                                </Grid.RowDefinitions>
+                                <StackPanel Background="#A9FFFFF3" Grid.Row="0" Margin="4 4 4 0">
+                                    <TextBlock Text="Calculator" HorizontalAlignment="Center" Height="21" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" />
+                                </StackPanel>  
+                                <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="115*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text=" Client .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="0" Grid.Column="0" Margin="4 4 0 0"/>
+                                <ComboBox Name="Client_Combo" IsEditable="True" Grid.Row="0"  Grid.Column="1" Margin="0 4 4 0"/>
+                                <TextBlock Text=" Weight .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="1" Grid.Column="0" Margin="4 4 0 0"/>
+                                <WrapPanel Grid.Row="1"  Grid.Column="1" Margin="0 4 4 0">
+                                    <TextBox Width="70" Height="22"/>
+                                    <TextBlock Text=" in Kg " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                </WrapPanel>
+                                <TextBlock Text=" City .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="2" Grid.Column="0" Margin="4 4 0 0"/>
+                                <ComboBox Name="City_Combo" IsEditable="True" Grid.Row="2"  Grid.Column="1" Margin="0 4 4 0"/>
+                                <TextBlock Text=" Service .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="3" Grid.Column="0" Margin="4 4 0 0"/>
+                                <ComboBox Name="Service_Combo" IsEditable="True" Grid.Row="3"  Grid.Column="1" Margin="0 4 4 0"/>
+                                <TextBlock Text=" Dox  .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="4" Grid.Column="0" Margin="4 4 0 0"/>
+                                <ComboBox Name="Dox_Combo" IsEditable="True" Grid.Row="4"  Grid.Column="1" Margin="0 4 4 0" Width="80" HorizontalAlignment="Left"/>
+                            </Grid>
+                                <Rectangle Grid.Row="2" VerticalAlignment="Top" Height="1" Fill="Black" Margin="5 3 5 0"/>
+                                <WrapPanel Grid.Row="2" Margin="50 15 4 0">
+                                    <TextBox Width="70" Height="22"/>
+                                    <Button Content=" Get Rate " Margin="15 0 0 0"/>
+                                </WrapPanel>
+                                <TextBlock Text=" Log Box .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="2" Grid.Column="0" Margin="4 40 4 0"/>
+
+                                <Rectangle Grid.Row="2" VerticalAlignment="Bottom" Height="1" Fill="Black" Margin="4 0"/>
+                                <ScrollViewer  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="3" Margin="4 0 4 0">
+                                    <TextBlock Text="Log..." Background="White" Padding="4,4,0,0" />
+                                </ScrollViewer>
+                            </Grid>
+                        </Grid>
                     </Grid>
-
 
                     <DockPanel Grid.Row="0" x:Name="DataDockPanel" Visibility="Collapsed" Margin="-1 0 0 0">
                         <DockPanel.Resources>
@@ -889,11 +943,11 @@
                             <Button Content="  Despcription  " Grid.Column="1" VerticalAlignment="Center" Background="LightGray" BorderThickness="0" Name="DescriptionRibbon" Click="Description_Ribbon"/>
                             <Button Content="  Help  " Grid.Column="2" VerticalAlignment="Center" Background="LightGray" BorderThickness="0" Name="HelpRibbon" Click="Help_Ribbon"/>
                             <Button Content="  Feedback  " Grid.Column="3" VerticalAlignment="Center" Background="LightGray" BorderThickness="0" Name="FeedbackRibbon" Click="Feedback_Ribbon"/>
-                        <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="0" HorizontalAlignment="Left"/>
-                        <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="0" HorizontalAlignment="Right"/>
-                        <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
-                        <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
-                        <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
+                            <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="0" HorizontalAlignment="Left"/>
+                            <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="0" HorizontalAlignment="Right"/>
+                            <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
+                            <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
+                            <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
                         </Grid>
                         <Rectangle Height="1" Grid.Row="1" VerticalAlignment="Top" Fill="Gray"/>
                         <ScrollViewer Name="GeneralRibbonTab" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
