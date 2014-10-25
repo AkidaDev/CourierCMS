@@ -9,6 +9,7 @@
             <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
         </Grid.Effect>
         <Canvas x:Name="LoadData1" ClipToBounds="True" Background="White" Height="210"  Width="322">
+            <Canvas Canvas.Top="-69">
             <DatePicker Name="StartLoadDate" Canvas.Left="38" Canvas.Top="147.5"   Height="26"  Width="124"  BorderThickness="0" Padding="0 4 0 0"/>
             <DatePicker Name="EndLoadDate" Height="26" Canvas.Left="178" Canvas.Top="147.5" Width="124"  BorderThickness="0" Padding="0 4 0 0"/>
             <Button Style="{DynamicResource window}" Click="DataBrowserRadio_Click"  Canvas.Top="119" Canvas.Left="31">
@@ -28,37 +29,23 @@
         	</WrapPanel></Button>
 			<Path x:Name="Rectangle_2" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="27" Canvas.Left="36" Canvas.Top="147" Width="98" Stroke="Black"/>
         	<Path x:Name="Rectangle_2_copy" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="27" Canvas.Left="176" Canvas.Top="147" Width="98" Stroke="Black"/>
-        	<Path x:Name="line" Data="F1M1,2C1,2 1,1 1,1 1,1 262,1 262,1 262,1 262,2 262,2 262,2 1,2 1,2" Fill="Black" Height="3" Canvas.Left="28" Canvas.Top="108.827" Width="263"/>
-
-            <Button  Click="DataBrowserRadio_Click" Name="DataBrowserRadio" Canvas.Left="8" Canvas.Top="123" Style="{StaticResource smallbutton}">
-        		<Button.Content>
-			<Canvas Height="18" Width="18">
-			<Path x:Name="selected1_Circle" Data="F1M9,5C11.24,5 13,6.76 13,9 13,11.24 11.24,13 9,13 6.76,13 5,
+             <Button  Click="DataBrowserRadio_Click" Name="DataBrowserRadio" Canvas.Left="8" Canvas.Top="123" Style="{StaticResource smallbutton}">
+                <Button.Content>
+                    <Canvas Height="18" Width="18">
+                        <Path x:Name="selected1_Circle" Data="F1M9,5C11.24,5 13,6.76 13,9 13,11.24 11.24,13 9,13 6.76,13 5,
 			11.24 5,9 5,6.76 6.76,5 9,5z M9,2.6C5.48,2.6 2.6,5.48 2.6,9 2.6,12.52 5.48,15.4 9,15.4 12.52,15.4 15.4,
 			12.52 15.4,9 15.4,5.48 12.52,2.6 9,2.6z M9,1C13.4,1 17,4.6 17,9 17,13.4 13.4,17 9,17 4.6,17 1,13.4 1,
 			9 1,4.6 4.6,1 9,1z" Fill="Black" Height="18" Width="18" Visibility="Hidden"/>
-        	<Path x:Name="unselected1_circle" Data="F1M9,2.6C5.48,2.6 2.6,5.48 2.6,9 2.6,12.52 5.48,15.4 9,
+                        <Path x:Name="unselected1_circle" Data="F1M9,2.6C5.48,2.6 2.6,5.48 2.6,9 2.6,12.52 5.48,15.4 9,
 			15.4 12.52,15.4 15.4,12.52 15.4,9 15.4,5.48 12.52,2.6 9,2.6z M9,1C13.4,1 17,4.6 17,9 17,13.4 13.4,17 9,
 			17 4.6,17 1,13.4 1,9 1,4.6 4.6,1 9,1z" Fill="Black" Height="18" Width="18" />
-        	</Canvas>
-			</Button.Content>
-			</Button>
-           
-            <Button  Click="loaddata" Canvas.Left="239.5" Canvas.Top="179" Style="{StaticResource all}" >
-        		<Button.Content>
-                    <WrapPanel  Margin="6,2,6,2">
-			<Path x:Name="start" Data="F1M13.222,1C13.222,1 21,1 21,1 21,1 21,8.778 21,8.778 21,8.778 18.778,
-			8.778 18.778,8.778 18.778,8.778 18.778,4.778 18.778,4.778 18.778,4.778 7.889,15.667 7.889,15.667 7.889,
-			15.667 6.333,14.111 6.333,14.111 6.333,14.111 17.222,3.222 17.222,3.222 17.222,3.222 13.222,3.222 13.222,
-			3.222 13.222,3.222 13.222,1 13.222,1z M3.222,1C3.222,1 11,1 11,1 11,1 11,3.222 11,3.222 11,3.222 3.222,
-			3.222 3.222,3.222 3.222,3.222 3.222,18.778 3.222,18.778 3.222,18.778 18.778,18.778 18.778,18.778 18.778,
-			18.778 18.778,11 18.778,11 18.778,11 21,11 21,11 21,11 21,18.778 21,18.778 21,20 20,21 18.778,21 18.778,
-			21 3.222,21 3.222,21 2,21 1,20 1,18.778 1,18.778 1,3.222 1,3.222 1,2 2,1 3.222,1z" Fill="Black" Height="22" Canvas.Left="242" Canvas.Top="185" Width="22"/>
-                        <TextBlock x:Name="Start" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Foreground="Black"
-			IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"  LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Start" Margin="5,5,0,0"/>
-        	</WrapPanel>
-			</Button.Content>
-			</Button>
+                    </Canvas>
+                </Button.Content>
+                </Button>
+            </Canvas>
+            <Path x:Name="line" Data="F1M1,2C1,2 1,1 1,1 1,1 262,1 262,1 262,1 262,2 262,2 262,2 1,2 1,2" Fill="Black" Height="1.5" Stretch="Fill" Canvas.Left="31" Canvas.Top="110" Width="270"/>
+            
+            <Canvas Canvas.Top="75">
 			 <Button  Click="DataBrowserRadio_Click" Name="BrowserRadio" Canvas.Left="8" Canvas.Top="54" Style="{StaticResource smallbutton}">
         		<Button.Content>
 			<Canvas Height="18" Width="18" >
@@ -95,8 +82,17 @@
                 </Canvas>
             </Button>
             <TextBlock MouseDown="addData_CheckedUnChecked" x:Name="ADD_Data_in_Current_Sheet" FontWeight="Bold" FontSize="14" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="94.5" LineHeight="14" TextAlignment="Left" TextWrapping="Wrap" Text="ADD Data in Current Sheet" Canvas.Top="92.178"/>
-        	<TextBox Name="filename"   Height="25" Canvas.Left="123.5" Canvas.Top="49" Width="171" Padding="0 4 0 0" BorderBrush="Black" BorderThickness="1.5"/>
-			<Path Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="#FFCBCBCB" Height="26" Canvas.Left="0" Canvas.Top="0" Width="322" Stretch="Fill" Stroke="Black" />
+        	<TextBox Name="filename"   Height="25" Canvas.Left="123.5" Canvas.Top="49" Width="171" Padding="0 4 0 0" BorderBrush="Gray" BorderThickness="1.5"/>
+                </Canvas>
+            <Button  Click="loaddata" Canvas.Left="239.5" Canvas.Top="179" Style="{StaticResource all}" >
+                <Button.Content>
+                    <WrapPanel  Margin="6,2,6,2">
+                        <Path x:Name="start" Data="F1M13.222,1C13.222,1 21,1 21,1 21,1 21,8.778 21,8.778 21,8.778 18.778,8.778 18.778,8.778 18.778,8.778 18.778,4.778 18.778,4.778 18.778,4.778 7.889,15.667 7.889,15.667 7.889,15.667 6.333,14.111 6.333,14.111 6.333,14.111 17.222,3.222 17.222,3.222 17.222,3.222 13.222,3.222 13.222,3.222 13.222,3.222 13.222,1 13.222,1z M3.222,1C3.222,1 11,1 11,1 11,1 11,3.222 11,3.222 11,3.222 3.222,3.222 3.222,3.222 3.222,3.222 3.222,18.778 3.222,18.778 3.222,18.778 18.778,18.778 18.778,18.778 18.778,18.778 18.778,11 18.778,11 18.778,11 21,11 21,11 21,11 21,18.778 21,18.778 21,20 20,21 18.778,21 18.778,21 3.222,21 3.222,21 2,21 1,20 1,18.778 1,18.778 1,3.222 1,3.222 1,2 2,1 3.222,1z" Fill="Black" Height="22" Canvas.Left="242" Canvas.Top="185" Width="22"/>
+                        <TextBlock x:Name="Start" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Foreground="Black" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"  LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Start" Margin="5,5,0,0"/>
+                    </WrapPanel>
+                </Button.Content>
+            </Button>
+            <Path Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="#FFCBCBCB" Height="26" Canvas.Left="0" Canvas.Top="0" Width="322" Stretch="Fill" Stroke="Black" />
             <TextBlock FontSize="16" Height="24" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="0" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Load Data" Canvas.Top="4.666" Width="320" FontFamily="Arial"/>
 			<Path MouseDown="DragthisWindow" x:Name="Memu_bar" Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26" Canvas.Left="0" Canvas.Top="0" Width="322" Stretch="Fill" />
             <Button ToolTip="Close" Height="18" Canvas.Left="283" Click="Button_Click_Close" Canvas.Top="4" Width="35" Style="{StaticResource 1}">
