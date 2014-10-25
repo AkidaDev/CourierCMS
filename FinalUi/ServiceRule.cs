@@ -8,10 +8,10 @@ namespace FinalUi
     public class ServiceRule:IRule
     {
         public int Id;
-        public List<string> ServiceList;
-        public List<string> ZoneList;
-        public List<string> CityList;
-        public List<string> StateList;
+        public List<string> ServiceList { get; set; }
+        public List<string> ZoneList { get; set; }
+        public List<string> CityList { get; set; }
+        public List<string> StateList { get; set; }
         public char type { get; set; }
         public char mode { get; set; }
         public char change { get; set; }
@@ -60,6 +60,16 @@ namespace FinalUi
                 {
                     return CityList.Count;
                 }
+                else
+                    return 0;
+            }
+        }
+        public int stateCount
+        {
+            get
+            {
+                if (StateList != null)
+                    return StateList.Count;
                 else
                     return 0;
             }

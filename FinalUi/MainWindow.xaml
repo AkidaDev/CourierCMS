@@ -801,9 +801,32 @@
                                     <DataGridTextColumn Header="ServiceCount" Binding="{Binding servCount}"/>
                                     <DataGridTextColumn Header="ZoneCount" Binding="{Binding zoneCount}"/>
                                     <DataGridTextColumn Header="CityCount" Binding="{Binding cityCount}"/>
-                                    <DataGridTextColumn Header="StateCount" Binding="{Binding stateCOunt}"/>
+                                    <DataGridTextColumn Header="StateCount" Binding="{Binding stateCount}"/>
                                     <DataGridTextColumn Header="StepWeight" Binding="{Binding stepweight}"/>
+                                    <DataGridTextColumn Header="Amount" Binding="{Binding per}"/>
                                 </DataGrid.Columns>
+                                <DataGrid.RowDetailsTemplate>
+                                    <DataTemplate>
+                                        <WrapPanel Background="LightGray">
+                                            <StackPanel Margin="3" Background="White">
+                                                <TextBlock Text="  Service List .:    " FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                                <ListBox ItemsSource="{Binding ServiceList}"  BorderThickness="0" Margin="3 3 0 0"/>
+                                            </StackPanel>
+                                            <StackPanel Margin="0 3 0 3" Background="White">
+                                                <TextBlock Text="  Zone List .:    " FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                                <ListBox ItemsSource="{Binding ZoneList}" BorderThickness="0" Margin="3 3 0 0"/>
+                                            </StackPanel>
+                                            <StackPanel Margin="3" Background="White">
+                                                <TextBlock Text="  City List .:    " FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                                <ListBox ItemsSource="{Binding CityList}" BorderThickness="0" Margin="3 3 0 0" />
+                                            </StackPanel>
+                                            <StackPanel Margin="0 3 0 3" Background="White">
+                                                <TextBlock Text="  State List .:    " FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                                <ListBox ItemsSource="{Binding StateList}" BorderThickness="0" Margin="3 3 0 0"/>
+                                            </StackPanel>
+                                        </WrapPanel>
+                                    </DataTemplate>
+                                </DataGrid.RowDetailsTemplate>
                             </DataGrid>
                             <DataGrid Visibility="Collapsed" x:Name="InvoiceRuleGrid" ItemsSource="{Binding}" DataContext="{StaticResource InvoiceRuleList}" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
 							AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2">

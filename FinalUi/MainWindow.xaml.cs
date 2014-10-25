@@ -956,6 +956,11 @@ namespace FinalUi
             LoadClientRules();
             this.CostingRuleGrid.Items.Refresh();
         }
+        private void ServiceRuleWindowClosed(object sender, EventArgs e)
+        {
+            LoadClientRules();
+            this.ServiceRuleGrid.Items.Refresh();
+        }
 
         private void DataGrid_SelectionChanged_2(object sender, SelectionChangedEventArgs e)
         {
@@ -1303,6 +1308,7 @@ namespace FinalUi
         private void AddServiceRuleButton_Click(object sender, RoutedEventArgs e)
         {
             AddServiceRule window = new AddServiceRule(new BillingDataDataContext().Quotations.Where(x => x.CLCODE == ((Client)this.ClientCombo.SelectedItem).CLCODE).FirstOrDefault());
+            window.Closed += ServiceRuleWindowClosed;
             window.Show();
         }
         private void AddInvoiceRuleButton_Click(object sender, RoutedEventArgs e)
