@@ -1,9 +1,100 @@
 ﻿<Window x:Class="FinalUi.ImportRules"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="ImportRules" Height="300" Width="400">
-    <Grid>
-        
-        
+        Icon="Images/logo.ico"
+        Title="Import Rules" Height="530" Width="720" Background="Transparent"
+		ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Normal" BorderBrush="Transparent" AllowsTransparency="True" Padding="20">
+   
+    <Grid Name="MainGrid" Height="480" UseLayoutRounding="False"  Width="670">
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
+        </Grid.Effect>
+        <Canvas x:Name="FilterSelectWindow1" ClipToBounds="True" HorizontalAlignment="Left" Height="480" UseLayoutRounding="False" VerticalAlignment="Top" Width="670" Background="White">
+            <Canvas Canvas.Left="75">
+                <Path x:Name="Vertical_line" Data="F1M2,3C2,3 2,2 2,2 2,2 331,2 331,2 331,2 331,3 331,3 331,3 2,3 2,3" Fill="Black" Height="4" Canvas.Left="108" Canvas.Top="56" Width="332"/>
+                <Path x:Name="detail" Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Black" Height="24" Canvas.Left="81" Canvas.Top="35" Width="24"/>
+                <TextBlock x:Name="Enter_Details__" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="109" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Enter Details.:" Canvas.Top="41.16"/>
+                <TextBlock  FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="RULE TYPE .:        "/>
+                <TextBlock  FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text="Copy Rules of Client .:" Canvas.Top="77"/>
+                <ComboBox IsEditable="True" Canvas.Top="73" Canvas.Left="147" Width="386"/>
+               
+                <WrapPanel Canvas.Top="110">
+                    <TextBlock  FontWeight="Bold" FontSize="16" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Select Rule .:        "/>
+                    <RadioButton IsChecked="True" Name="CostingRadio" GroupName="Stat" Content="Costing Rule      " FontWeight="Bold" FontSize="16" FontFamily="Calibri" Padding="5 -3 0 0" Margin="0,3,0,0"/>
+                    <RadioButton Name="ServiceRadio" GroupName="Stat" Content="Service Rule       " FontWeight="Bold" FontSize="16" FontFamily="Calibri" Padding="5 -3 0 0" Margin="0,3,0,0"/>
+                    <RadioButton Name="InvoiceRadio" GroupName="Stat" Content="Invoice Rule" FontWeight="Bold" FontSize="16" FontFamily="Calibri" Padding="5 -3 0 0" Margin="0,3,0,0"/>
+                </WrapPanel>
+            </Canvas>
+            
+            <!-- IMPORT RULE DATAGRIDS -->
+            <Grid Canvas.Left="20" Canvas.Top="132" Width="625" Height="300">
+            <DataGrid BorderBrush="Gray" Grid.Row="0" x:Name="CostingRuleGrid" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
+							AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="1" CanUserAddRows="True" >
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Range(Kg)" Binding="{Binding range}"/>
+                    <DataGridTextColumn Header="Dox(Rs)" Binding="{Binding doxAmount}"/>
+                    <DataGridTextColumn Header="NDox(Rs)" Binding="{Binding ndoxAmount}"/>
+                    <DataGridTextColumn Header="Type" Binding="{Binding type}"/>
+                    <DataGridTextColumn Header="Step(Kg)" Binding="{Binding StepS}"/>
+                    <DataGridTextColumn Header="DStart(Rs)" Binding="{Binding DoxStartS}"/>
+                    <DataGridTextColumn Header="NStart(Rs)" Binding="{Binding nDoxStartS}"/>
+                    <DataGridTextColumn Header="Services" Binding="{Binding serviceCount}"/>
+                    <DataGridTextColumn Header="Cities" Binding="{Binding CityCount}"/>
+                    <DataGridTextColumn Header="States" Binding="{Binding StateCount}"/>
+                    <DataGridTextColumn Header="Zones" Binding="{Binding zoneCount}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+                <DataGrid BorderBrush="Gray" Visibility="Collapsed" x:Name="ServiceRuleGrid" Grid.Row="0" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
+							AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="1" CanUserAddRows="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Range" Binding="{Binding RangeWeight}"/>
+                    <DataGridTextColumn Header="Type" Binding="{Binding type}"/>
+                    <DataGridTextColumn Header="Mode" Binding="{Binding mode}"/>
+                    <DataGridTextColumn Header="Change" Binding="{Binding change}"/>
+                    <DataGridTextColumn Header="Applicable" Binding="{Binding applicable}"/>
+                    <DataGridTextColumn Header="ServiceCount" Binding="{Binding servCount}"/>
+                    <DataGridTextColumn Header="ZoneCount" Binding="{Binding zoneCount}"/>
+                    <DataGridTextColumn Header="CityCount" Binding="{Binding cityCount}"/>
+                    <DataGridTextColumn Header="StateCount" Binding="{Binding stateCOunt}"/>
+                    <DataGridTextColumn Header="StepWeight" Binding="{Binding stepweight}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid BorderBrush="Gray" Visibility="Collapsed" x:Name="InvoiceRuleGrid" Grid.Row="0" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
+							AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" CanUserAddRows="True" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="StartWieght"/>
+                    <DataGridTextColumn Header="EndWeight"/>
+                    <DataGridTextColumn Header="DOX"/>
+                    <DataGridTextColumn Header="NDOX"/>
+                    <DataGridTextColumn Header="Type"/>
+                    <DataGridTextColumn Header="StepWeight"/>
+                    <DataGridTextColumn Header="NStart"/>
+                    <DataGridTextColumn Header="DStart"/>
+                    <DataGridTextColumn Header=""/>
+                    <DataGridTextColumn Header=""/>
+                    <DataGridTextColumn Header=""/>
+                </DataGrid.Columns>
+            </DataGrid></Grid>
+      <!-- IMPORT RULE DATAGRIDS-->
+            
+        <Button  Canvas.Left="521" Canvas.Top="441" Style="{StaticResource all}" >
+                <Button.Content>
+                    <WrapPanel  Margin="7,3,7,3">
+                        <Path x:Name="import_files" Data="F1M11.187,19.719C11.187,19.719 11.187,20.375 11.187,20.375 11.187,20.375 13.812,20.375 13.812,20.375 13.812,20.375 13.812,19.719 13.812,19.719 13.812,19.719 11.187,19.719 11.187,19.719z M9.875,17.094C9.875,17.094 9.875,17.75 9.875,17.75 9.875,17.75 15.125,17.75 15.125,17.75 15.125,17.75 15.125,17.094 15.125,17.094 15.125,17.094 9.875,17.094 9.875,17.094z M20.375,12.5C20.375,12.5 20.375,13.812 20.375,13.812 20.375,13.812 21.687,13.812 21.687,13.812 21.687,13.812 21.687,12.5 21.687,12.5 21.687,12.5 20.375,12.5 20.375,12.5z M11.187,4.625C11.187,4.625 13.812,4.625 13.812,4.625 13.812,4.625 13.812,5.937 13.812,5.937 13.812,5.937 13.812,7.25 13.812,7.25 13.812,7.25 15.781,7.25 15.781,7.25 15.781,7.25 12.5,10.531 12.5,10.531 12.5,10.531 9.219,7.25 9.219,7.25 9.219,7.25 11.187,7.25 11.187,7.25 11.187,7.25 11.187,5.937 11.187,5.937 11.187,5.937 11.187,4.625 11.187,4.625z M7.906,3.312C7.906,3.312 4.01,11.187 4.01,11.187 4.01,11.187 9.875,11.187 9.875,11.187 9.875,11.187 9.875,12.5 9.875,12.5 9.875,13.225 10.463,13.812 11.187,13.812 11.187,13.812 13.812,13.812 13.812,13.812 14.537,13.812 15.125,13.225 15.125,12.5 15.125,12.5 15.125,11.187 15.125,11.187 15.125,11.187 21.031,11.187 21.031,11.187 21.031,11.187 17.094,3.312 17.094,3.312 17.094,3.312 7.906,3.312 7.906,3.312z M7.25,2C7.25,2 17.709,2 17.709,2 17.709,2 23,11.187 23,11.187 23,11.187 23,23 23,23 23,23 2,23 2,23 2,23 2,11.187 2,11.187 2,11.187 7.25,2 7.25,2z" Fill="Black" Height="24" Width="24"/>
+                        <TextBlock x:Name="Start" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Foreground="Black" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"  LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Import Rules" Margin="5,5,0,0"/>
+                    </WrapPanel>
+                </Button.Content>
+            </Button>
+            <Path Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="#FFCBCBCB" Height="26" Canvas.Left="0" Canvas.Top="0" Width="670" Stretch="Fill" Stroke="Black" />
+            <TextBlock FontSize="16" Height="25" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="0" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Import Rule" Canvas.Top="6" Width="670" FontFamily="Arial"/>
+            <Path MouseDown="DragthisWindow" x:Name="Memu_bar" Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26" Canvas.Left="0" Canvas.Top="0" Width="670" Stretch="Fill" />
+            <Button ToolTip="Close" Height="18" Canvas.Left="630" Click="Button_Click_Close" Canvas.Top="4" Width="35" Style="{StaticResource 1}">
+                <Path x:Name="close" Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,
+                  12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,
+                  3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" Width="15" Height="15"/>
+            </Button>
+        </Canvas>
     </Grid>
 </Window>
+

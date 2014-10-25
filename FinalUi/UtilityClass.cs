@@ -287,7 +287,7 @@ namespace FinalUi
             if(city.ZONE == null || city.ZONE == "")
             {
                 var state = DataSources.StateCopy.Where(x => x.STATE_CODE == city.CITY_STATE).FirstOrDefault();
-                zone = DataSources.ZoneCopy.Where(x => x.zcode == state.STATE_ZONE).FirstOrDefault();
+              zone = DataSources.ZoneCopy.Where(x => x.zcode == state.STATE_ZONE).FirstOrDefault();
             }
             else
             {
