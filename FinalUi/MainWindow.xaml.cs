@@ -35,7 +35,7 @@ namespace FinalUi
         private List<CostingRule> costingRules;
         private CollectionViewSource serviceRulesView;
         private List<ServiceRule> serviceRules;
-
+        private CollectionViewSource ServiceTable;
         private Quotation qutObj;
         // Employee listing data import procedure
         // Client listing data import procedure
@@ -89,6 +89,8 @@ namespace FinalUi
             BillingDataDataContext db = new BillingDataDataContext();
             dueDataGridSource.Source = db.BalanceViews;
             profitDataGridSource.Source = db.PROFITVIEWs;
+            ServiceTable = (CollectionViewSource)FindResource("ServiceTable");
+            ServiceTable.Source = DataSources.ServicesCopy;
             #region setupCode
             PreviewMouseMove += OnPreviewMouseMove;
             #endregion
