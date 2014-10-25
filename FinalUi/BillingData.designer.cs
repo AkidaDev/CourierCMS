@@ -30,12 +30,12 @@ namespace FinalUi
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertAssignment(Assignment instance);
-    partial void UpdateAssignment(Assignment instance);
-    partial void DeleteAssignment(Assignment instance);
     partial void InsertCity(City instance);
     partial void UpdateCity(City instance);
     partial void DeleteCity(City instance);
+    partial void InsertZONE(ZONE instance);
+    partial void UpdateZONE(ZONE instance);
+    partial void DeleteZONE(ZONE instance);
     partial void InsertClient(Client instance);
     partial void UpdateClient(Client instance);
     partial void DeleteClient(Client instance);
@@ -57,12 +57,6 @@ namespace FinalUi
     partial void InsertQuotation(Quotation instance);
     partial void UpdateQuotation(Quotation instance);
     partial void DeleteQuotation(Quotation instance);
-    partial void InsertRate(Rate instance);
-    partial void UpdateRate(Rate instance);
-    partial void DeleteRate(Rate instance);
-    partial void InsertRateDetail(RateDetail instance);
-    partial void UpdateRateDetail(RateDetail instance);
-    partial void DeleteRateDetail(RateDetail instance);
     partial void InsertRule(Rule instance);
     partial void UpdateRule(Rule instance);
     partial void DeleteRule(Rule instance);
@@ -72,6 +66,9 @@ namespace FinalUi
     partial void InsertService(Service instance);
     partial void UpdateService(Service instance);
     partial void DeleteService(Service instance);
+    partial void InsertState(State instance);
+    partial void UpdateState(State instance);
+    partial void DeleteState(State instance);
     partial void InsertStock(Stock instance);
     partial void UpdateStock(Stock instance);
     partial void DeleteStock(Stock instance);
@@ -81,16 +78,10 @@ namespace FinalUi
     partial void InsertUser_permission(User_permission instance);
     partial void UpdateUser_permission(User_permission instance);
     partial void DeleteUser_permission(User_permission instance);
-    partial void InsertZONE(ZONE instance);
-    partial void UpdateZONE(ZONE instance);
-    partial void DeleteZONE(ZONE instance);
-    partial void InsertState(State instance);
-    partial void UpdateState(State instance);
-    partial void DeleteState(State instance);
     #endregion
 		
 		public BillingDataDataContext() : 
-				base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString2, mappingSource)
+				base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString5, mappingSource)
 		{
 			OnCreated();
 		}
@@ -119,27 +110,19 @@ namespace FinalUi
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Assignment> Assignments
-		{
-			get
-			{
-				return this.GetTable<Assignment>();
-			}
-		}
-		
-		public System.Data.Linq.Table<world_cities_free> world_cities_frees
-		{
-			get
-			{
-				return this.GetTable<world_cities_free>();
-			}
-		}
-		
 		public System.Data.Linq.Table<City> Cities
 		{
 			get
 			{
 				return this.GetTable<City>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ZONE> ZONEs
+		{
+			get
+			{
+				return this.GetTable<ZONE>();
 			}
 		}
 		
@@ -207,22 +190,6 @@ namespace FinalUi
 			}
 		}
 		
-		public System.Data.Linq.Table<Rate> Rates
-		{
-			get
-			{
-				return this.GetTable<Rate>();
-			}
-		}
-		
-		public System.Data.Linq.Table<RateDetail> RateDetails
-		{
-			get
-			{
-				return this.GetTable<RateDetail>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Rule> Rules
 		{
 			get
@@ -247,6 +214,14 @@ namespace FinalUi
 			}
 		}
 		
+		public System.Data.Linq.Table<State> States
+		{
+			get
+			{
+				return this.GetTable<State>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Stock> Stocks
 		{
 			get
@@ -268,14 +243,6 @@ namespace FinalUi
 			get
 			{
 				return this.GetTable<User_permission>();
-			}
-		}
-		
-		public System.Data.Linq.Table<ZONE> ZONEs
-		{
-			get
-			{
-				return this.GetTable<ZONE>();
 			}
 		}
 		
@@ -324,14 +291,6 @@ namespace FinalUi
 			get
 			{
 				return this.GetTable<RuntimeCityView>();
-			}
-		}
-		
-		public System.Data.Linq.Table<State> States
-		{
-			get
-			{
-				return this.GetTable<State>();
 			}
 		}
 		
@@ -391,10 +350,10 @@ namespace FinalUi
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail")]
-		public void sp_TransferMInvoiceDetailToBInvoiceDetail()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail", IsComposable=true)]
+		public object sp_TransferMInvoiceDetailToBInvoiceDetail()
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod()))).ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferMInvoiceToBInvoice")]
@@ -423,373 +382,6 @@ namespace FinalUi
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((int)(result.ReturnValue));
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Assignment")]
-	public partial class Assignment : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private System.Guid _Id;
-		
-		private string _ServiceCode;
-		
-		private string _ClientCode;
-		
-		private string _ZoneCode;
-		
-		private string _RateCode;
-		
-		private EntityRef<Client> _Client;
-		
-		private EntityRef<Rate> _Rate;
-		
-		private EntityRef<Service> _Service;
-		
-		private EntityRef<ZONE> _ZONE;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(System.Guid value);
-    partial void OnIdChanged();
-    partial void OnServiceCodeChanging(string value);
-    partial void OnServiceCodeChanged();
-    partial void OnClientCodeChanging(string value);
-    partial void OnClientCodeChanged();
-    partial void OnZoneCodeChanging(string value);
-    partial void OnZoneCodeChanged();
-    partial void OnRateCodeChanging(string value);
-    partial void OnRateCodeChanged();
-    #endregion
-		
-		public Assignment()
-		{
-			this._Client = default(EntityRef<Client>);
-			this._Rate = default(EntityRef<Rate>);
-			this._Service = default(EntityRef<Service>);
-			this._ZONE = default(EntityRef<ZONE>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceCode", DbType="NVarChar(255)")]
-		public string ServiceCode
-		{
-			get
-			{
-				return this._ServiceCode;
-			}
-			set
-			{
-				if ((this._ServiceCode != value))
-				{
-					if (this._Service.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnServiceCodeChanging(value);
-					this.SendPropertyChanging();
-					this._ServiceCode = value;
-					this.SendPropertyChanged("ServiceCode");
-					this.OnServiceCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientCode", DbType="VarChar(6)")]
-		public string ClientCode
-		{
-			get
-			{
-				return this._ClientCode;
-			}
-			set
-			{
-				if ((this._ClientCode != value))
-				{
-					if (this._Client.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnClientCodeChanging(value);
-					this.SendPropertyChanging();
-					this._ClientCode = value;
-					this.SendPropertyChanged("ClientCode");
-					this.OnClientCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZoneCode", DbType="VarChar(30)")]
-		public string ZoneCode
-		{
-			get
-			{
-				return this._ZoneCode;
-			}
-			set
-			{
-				if ((this._ZoneCode != value))
-				{
-					if (this._ZONE.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnZoneCodeChanging(value);
-					this.SendPropertyChanging();
-					this._ZoneCode = value;
-					this.SendPropertyChanged("ZoneCode");
-					this.OnZoneCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RateCode", DbType="VarChar(50)")]
-		public string RateCode
-		{
-			get
-			{
-				return this._RateCode;
-			}
-			set
-			{
-				if ((this._RateCode != value))
-				{
-					if (this._Rate.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnRateCodeChanging(value);
-					this.SendPropertyChanging();
-					this._RateCode = value;
-					this.SendPropertyChanged("RateCode");
-					this.OnRateCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Client_Assignment", Storage="_Client", ThisKey="ClientCode", OtherKey="CLCODE", IsForeignKey=true)]
-		public Client Client
-		{
-			get
-			{
-				return this._Client.Entity;
-			}
-			set
-			{
-				Client previousValue = this._Client.Entity;
-				if (((previousValue != value) 
-							|| (this._Client.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Client.Entity = null;
-						previousValue.Assignments.Remove(this);
-					}
-					this._Client.Entity = value;
-					if ((value != null))
-					{
-						value.Assignments.Add(this);
-						this._ClientCode = value.CLCODE;
-					}
-					else
-					{
-						this._ClientCode = default(string);
-					}
-					this.SendPropertyChanged("Client");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rate_Assignment", Storage="_Rate", ThisKey="RateCode", OtherKey="RateCode", IsForeignKey=true)]
-		public Rate Rate
-		{
-			get
-			{
-				return this._Rate.Entity;
-			}
-			set
-			{
-				Rate previousValue = this._Rate.Entity;
-				if (((previousValue != value) 
-							|| (this._Rate.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Rate.Entity = null;
-						previousValue.Assignments.Remove(this);
-					}
-					this._Rate.Entity = value;
-					if ((value != null))
-					{
-						value.Assignments.Add(this);
-						this._RateCode = value.RateCode;
-					}
-					else
-					{
-						this._RateCode = default(string);
-					}
-					this.SendPropertyChanged("Rate");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Service_Assignment", Storage="_Service", ThisKey="ServiceCode", OtherKey="SER_CODE", IsForeignKey=true)]
-		public Service Service
-		{
-			get
-			{
-				return this._Service.Entity;
-			}
-			set
-			{
-				Service previousValue = this._Service.Entity;
-				if (((previousValue != value) 
-							|| (this._Service.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Service.Entity = null;
-						previousValue.Assignments.Remove(this);
-					}
-					this._Service.Entity = value;
-					if ((value != null))
-					{
-						value.Assignments.Add(this);
-						this._ServiceCode = value.SER_CODE;
-					}
-					else
-					{
-						this._ServiceCode = default(string);
-					}
-					this.SendPropertyChanged("Service");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ZONE_Assignment", Storage="_ZONE", ThisKey="ZoneCode", OtherKey="zcode", IsForeignKey=true)]
-		public ZONE ZONE
-		{
-			get
-			{
-				return this._ZONE.Entity;
-			}
-			set
-			{
-				ZONE previousValue = this._ZONE.Entity;
-				if (((previousValue != value) 
-							|| (this._ZONE.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ZONE.Entity = null;
-						previousValue.Assignments.Remove(this);
-					}
-					this._ZONE.Entity = value;
-					if ((value != null))
-					{
-						value.Assignments.Add(this);
-						this._ZoneCode = value.zcode;
-					}
-					else
-					{
-						this._ZoneCode = default(string);
-					}
-					this.SendPropertyChanged("ZONE");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.world_cities_free")]
-	public partial class world_cities_free
-	{
-		
-		private string _cc_fips;
-		
-		private string _full_name_nd;
-		
-		public world_cities_free()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cc_fips", DbType="NVarChar(2) NOT NULL", CanBeNull=false)]
-		public string cc_fips
-		{
-			get
-			{
-				return this._cc_fips;
-			}
-			set
-			{
-				if ((this._cc_fips != value))
-				{
-					this._cc_fips = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_full_name_nd", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
-		public string full_name_nd
-		{
-			get
-			{
-				return this._full_name_nd;
-			}
-			set
-			{
-				if ((this._full_name_nd != value))
-				{
-					this._full_name_nd = value;
-				}
-			}
 		}
 	}
 	
@@ -1232,6 +824,140 @@ namespace FinalUi
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ZONE")]
+	public partial class ZONE : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _Id;
+		
+		private string _zcode;
+		
+		private string _Zone_name;
+		
+		private System.Nullable<char> _Mode;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(System.Guid value);
+    partial void OnIdChanged();
+    partial void OnzcodeChanging(string value);
+    partial void OnzcodeChanged();
+    partial void OnZone_nameChanging(string value);
+    partial void OnZone_nameChanged();
+    partial void OnModeChanging(System.Nullable<char> value);
+    partial void OnModeChanged();
+    #endregion
+		
+		public ZONE()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_zcode", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string zcode
+		{
+			get
+			{
+				return this._zcode;
+			}
+			set
+			{
+				if ((this._zcode != value))
+				{
+					this.OnzcodeChanging(value);
+					this.SendPropertyChanging();
+					this._zcode = value;
+					this.SendPropertyChanged("zcode");
+					this.OnzcodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Zone_name", DbType="VarChar(20)")]
+		public string Zone_name
+		{
+			get
+			{
+				return this._Zone_name;
+			}
+			set
+			{
+				if ((this._Zone_name != value))
+				{
+					this.OnZone_nameChanging(value);
+					this.SendPropertyChanging();
+					this._Zone_name = value;
+					this.SendPropertyChanged("Zone_name");
+					this.OnZone_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mode", DbType="Char(1)")]
+		public System.Nullable<char> Mode
+		{
+			get
+			{
+				return this._Mode;
+			}
+			set
+			{
+				if ((this._Mode != value))
+				{
+					this.OnModeChanging(value);
+					this.SendPropertyChanging();
+					this._Mode = value;
+					this.SendPropertyChanged("Mode");
+					this.OnModeChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Client")]
 	public partial class Client : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1283,8 +1009,6 @@ namespace FinalUi
 		private System.Nullable<bool> _CASTATUS;
 		
 		private char _Status;
-		
-		private EntitySet<Assignment> _Assignments;
 		
 		private EntitySet<PaymentEntry> _PaymentEntries;
 		
@@ -1346,7 +1070,6 @@ namespace FinalUi
 		
 		public Client()
 		{
-			this._Assignments = new EntitySet<Assignment>(new Action<Assignment>(this.attach_Assignments), new Action<Assignment>(this.detach_Assignments));
 			this._PaymentEntries = new EntitySet<PaymentEntry>(new Action<PaymentEntry>(this.attach_PaymentEntries), new Action<PaymentEntry>(this.detach_PaymentEntries));
 			this._Quotations = new EntitySet<Quotation>(new Action<Quotation>(this.attach_Quotations), new Action<Quotation>(this.detach_Quotations));
 			this._Transactions = new EntitySet<Transaction>(new Action<Transaction>(this.attach_Transactions), new Action<Transaction>(this.detach_Transactions));
@@ -1813,19 +1536,6 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Client_Assignment", Storage="_Assignments", ThisKey="CLCODE", OtherKey="ClientCode")]
-		public EntitySet<Assignment> Assignments
-		{
-			get
-			{
-				return this._Assignments;
-			}
-			set
-			{
-				this._Assignments.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Client_PaymentEntry", Storage="_PaymentEntries", ThisKey="CLCODE", OtherKey="ClientCode")]
 		public EntitySet<PaymentEntry> PaymentEntries
 		{
@@ -1883,18 +1593,6 @@ namespace FinalUi
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_Assignments(Assignment entity)
-		{
-			this.SendPropertyChanging();
-			entity.Client = this;
-		}
-		
-		private void detach_Assignments(Assignment entity)
-		{
-			this.SendPropertyChanging();
-			entity.Client = null;
 		}
 		
 		private void attach_PaymentEntries(PaymentEntry entity)
@@ -3415,419 +3113,6 @@ namespace FinalUi
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Rate")]
-	public partial class Rate : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _Description;
-		
-		private string _RateCode;
-		
-		private EntitySet<Assignment> _Assignments;
-		
-		private EntitySet<RateDetail> _RateDetails;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnDescriptionChanging(string value);
-    partial void OnDescriptionChanged();
-    partial void OnRateCodeChanging(string value);
-    partial void OnRateCodeChanged();
-    #endregion
-		
-		public Rate()
-		{
-			this._Assignments = new EntitySet<Assignment>(new Action<Assignment>(this.attach_Assignments), new Action<Assignment>(this.detach_Assignments));
-			this._RateDetails = new EntitySet<RateDetail>(new Action<RateDetail>(this.attach_RateDetails), new Action<RateDetail>(this.detach_RateDetails));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(MAX)")]
-		public string Description
-		{
-			get
-			{
-				return this._Description;
-			}
-			set
-			{
-				if ((this._Description != value))
-				{
-					this.OnDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._Description = value;
-					this.SendPropertyChanged("Description");
-					this.OnDescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RateCode", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string RateCode
-		{
-			get
-			{
-				return this._RateCode;
-			}
-			set
-			{
-				if ((this._RateCode != value))
-				{
-					this.OnRateCodeChanging(value);
-					this.SendPropertyChanging();
-					this._RateCode = value;
-					this.SendPropertyChanged("RateCode");
-					this.OnRateCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rate_Assignment", Storage="_Assignments", ThisKey="RateCode", OtherKey="RateCode")]
-		public EntitySet<Assignment> Assignments
-		{
-			get
-			{
-				return this._Assignments;
-			}
-			set
-			{
-				this._Assignments.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rate_RateDetail", Storage="_RateDetails", ThisKey="RateCode", OtherKey="RateCode")]
-		public EntitySet<RateDetail> RateDetails
-		{
-			get
-			{
-				return this._RateDetails;
-			}
-			set
-			{
-				this._RateDetails.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Assignments(Assignment entity)
-		{
-			this.SendPropertyChanging();
-			entity.Rate = this;
-		}
-		
-		private void detach_Assignments(Assignment entity)
-		{
-			this.SendPropertyChanging();
-			entity.Rate = null;
-		}
-		
-		private void attach_RateDetails(RateDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.Rate = this;
-		}
-		
-		private void detach_RateDetails(RateDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.Rate = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.RateDetails")]
-	public partial class RateDetail : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private System.Guid _ID;
-		
-		private string _RateCode;
-		
-		private double _Weight;
-		
-		private double _DoxRate;
-		
-		private System.Nullable<double> _NonDoxRate;
-		
-		private int _Type;
-		
-		private System.Nullable<double> _StepWeight;
-		
-		private string _Mode;
-		
-		private EntityRef<Rate> _Rate;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(System.Guid value);
-    partial void OnIDChanged();
-    partial void OnRateCodeChanging(string value);
-    partial void OnRateCodeChanged();
-    partial void OnWeightChanging(double value);
-    partial void OnWeightChanged();
-    partial void OnDoxRateChanging(double value);
-    partial void OnDoxRateChanged();
-    partial void OnNonDoxRateChanging(System.Nullable<double> value);
-    partial void OnNonDoxRateChanged();
-    partial void OnTypeChanging(int value);
-    partial void OnTypeChanged();
-    partial void OnStepWeightChanging(System.Nullable<double> value);
-    partial void OnStepWeightChanged();
-    partial void OnModeChanging(string value);
-    partial void OnModeChanged();
-    #endregion
-		
-		public RateDetail()
-		{
-			this._Rate = default(EntityRef<Rate>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RateCode", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string RateCode
-		{
-			get
-			{
-				return this._RateCode;
-			}
-			set
-			{
-				if ((this._RateCode != value))
-				{
-					if (this._Rate.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnRateCodeChanging(value);
-					this.SendPropertyChanging();
-					this._RateCode = value;
-					this.SendPropertyChanged("RateCode");
-					this.OnRateCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Weight", DbType="Float NOT NULL")]
-		public double Weight
-		{
-			get
-			{
-				return this._Weight;
-			}
-			set
-			{
-				if ((this._Weight != value))
-				{
-					this.OnWeightChanging(value);
-					this.SendPropertyChanging();
-					this._Weight = value;
-					this.SendPropertyChanged("Weight");
-					this.OnWeightChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DoxRate", DbType="Float NOT NULL")]
-		public double DoxRate
-		{
-			get
-			{
-				return this._DoxRate;
-			}
-			set
-			{
-				if ((this._DoxRate != value))
-				{
-					this.OnDoxRateChanging(value);
-					this.SendPropertyChanging();
-					this._DoxRate = value;
-					this.SendPropertyChanged("DoxRate");
-					this.OnDoxRateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NonDoxRate", DbType="Float")]
-		public System.Nullable<double> NonDoxRate
-		{
-			get
-			{
-				return this._NonDoxRate;
-			}
-			set
-			{
-				if ((this._NonDoxRate != value))
-				{
-					this.OnNonDoxRateChanging(value);
-					this.SendPropertyChanging();
-					this._NonDoxRate = value;
-					this.SendPropertyChanged("NonDoxRate");
-					this.OnNonDoxRateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="Int NOT NULL")]
-		public int Type
-		{
-			get
-			{
-				return this._Type;
-			}
-			set
-			{
-				if ((this._Type != value))
-				{
-					this.OnTypeChanging(value);
-					this.SendPropertyChanging();
-					this._Type = value;
-					this.SendPropertyChanged("Type");
-					this.OnTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StepWeight", DbType="Float")]
-		public System.Nullable<double> StepWeight
-		{
-			get
-			{
-				return this._StepWeight;
-			}
-			set
-			{
-				if ((this._StepWeight != value))
-				{
-					this.OnStepWeightChanging(value);
-					this.SendPropertyChanging();
-					this._StepWeight = value;
-					this.SendPropertyChanged("StepWeight");
-					this.OnStepWeightChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mode", DbType="VarChar(10)")]
-		public string Mode
-		{
-			get
-			{
-				return this._Mode;
-			}
-			set
-			{
-				if ((this._Mode != value))
-				{
-					this.OnModeChanging(value);
-					this.SendPropertyChanging();
-					this._Mode = value;
-					this.SendPropertyChanged("Mode");
-					this.OnModeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rate_RateDetail", Storage="_Rate", ThisKey="RateCode", OtherKey="RateCode", IsForeignKey=true)]
-		public Rate Rate
-		{
-			get
-			{
-				return this._Rate.Entity;
-			}
-			set
-			{
-				Rate previousValue = this._Rate.Entity;
-				if (((previousValue != value) 
-							|| (this._Rate.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Rate.Entity = null;
-						previousValue.RateDetails.Remove(this);
-					}
-					this._Rate.Entity = value;
-					if ((value != null))
-					{
-						value.RateDetails.Add(this);
-						this._RateCode = value.RateCode;
-					}
-					else
-					{
-						this._RateCode = default(string);
-					}
-					this.SendPropertyChanged("Rate");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[Rule]")]
 	public partial class Rule : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -4721,8 +4006,6 @@ namespace FinalUi
 		
 		private string _SER_HIERARCHY_ID;
 		
-		private EntitySet<Assignment> _Assignments;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -4757,7 +4040,6 @@ namespace FinalUi
 		
 		public Service()
 		{
-			this._Assignments = new EntitySet<Assignment>(new Action<Assignment>(this.attach_Assignments), new Action<Assignment>(this.detach_Assignments));
 			OnCreated();
 		}
 		
@@ -5021,16 +4303,465 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Service_Assignment", Storage="_Assignments", ThisKey="SER_CODE", OtherKey="ServiceCode")]
-		public EntitySet<Assignment> Assignments
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.State")]
+	public partial class State : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _STATE_CODE;
+		
+		private string _STATE_DESC;
+		
+		private string _STATE_COUNTRY;
+		
+		private string _STATE_CAPITAL;
+		
+		private string _STATE_MAP;
+		
+		private System.Nullable<double> _STATE_POPULATION;
+		
+		private string _STATE_IMP_AREA;
+		
+		private string _STATE_INDUSTRIES;
+		
+		private string _STATE_ZO;
+		
+		private string _STATE_STATUS;
+		
+		private System.Nullable<System.DateTime> _MOD_DATE;
+		
+		private System.Nullable<double> _MOD_TIME;
+		
+		private string _NODEID;
+		
+		private string _USERID;
+		
+		private string _TRANS_STATUS;
+		
+		private string _STATE_RO;
+		
+		private string _STATE_ZONE;
+		
+		private EntitySet<City> _Cities;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSTATE_CODEChanging(string value);
+    partial void OnSTATE_CODEChanged();
+    partial void OnSTATE_DESCChanging(string value);
+    partial void OnSTATE_DESCChanged();
+    partial void OnSTATE_COUNTRYChanging(string value);
+    partial void OnSTATE_COUNTRYChanged();
+    partial void OnSTATE_CAPITALChanging(string value);
+    partial void OnSTATE_CAPITALChanged();
+    partial void OnSTATE_MAPChanging(string value);
+    partial void OnSTATE_MAPChanged();
+    partial void OnSTATE_POPULATIONChanging(System.Nullable<double> value);
+    partial void OnSTATE_POPULATIONChanged();
+    partial void OnSTATE_IMP_AREAChanging(string value);
+    partial void OnSTATE_IMP_AREAChanged();
+    partial void OnSTATE_INDUSTRIESChanging(string value);
+    partial void OnSTATE_INDUSTRIESChanged();
+    partial void OnSTATE_ZOChanging(string value);
+    partial void OnSTATE_ZOChanged();
+    partial void OnSTATE_STATUSChanging(string value);
+    partial void OnSTATE_STATUSChanged();
+    partial void OnMOD_DATEChanging(System.Nullable<System.DateTime> value);
+    partial void OnMOD_DATEChanged();
+    partial void OnMOD_TIMEChanging(System.Nullable<double> value);
+    partial void OnMOD_TIMEChanged();
+    partial void OnNODEIDChanging(string value);
+    partial void OnNODEIDChanged();
+    partial void OnUSERIDChanging(string value);
+    partial void OnUSERIDChanged();
+    partial void OnTRANS_STATUSChanging(string value);
+    partial void OnTRANS_STATUSChanged();
+    partial void OnSTATE_ROChanging(string value);
+    partial void OnSTATE_ROChanged();
+    partial void OnSTATE_ZONEChanging(string value);
+    partial void OnSTATE_ZONEChanged();
+    #endregion
+		
+		public State()
+		{
+			this._Cities = new EntitySet<City>(new Action<City>(this.attach_Cities), new Action<City>(this.detach_Cities));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_CODE", DbType="NVarChar(255) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string STATE_CODE
 		{
 			get
 			{
-				return this._Assignments;
+				return this._STATE_CODE;
 			}
 			set
 			{
-				this._Assignments.Assign(value);
+				if ((this._STATE_CODE != value))
+				{
+					this.OnSTATE_CODEChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_CODE = value;
+					this.SendPropertyChanged("STATE_CODE");
+					this.OnSTATE_CODEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_DESC", DbType="NVarChar(255)")]
+		public string STATE_DESC
+		{
+			get
+			{
+				return this._STATE_DESC;
+			}
+			set
+			{
+				if ((this._STATE_DESC != value))
+				{
+					this.OnSTATE_DESCChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_DESC = value;
+					this.SendPropertyChanged("STATE_DESC");
+					this.OnSTATE_DESCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_COUNTRY", DbType="NVarChar(255)")]
+		public string STATE_COUNTRY
+		{
+			get
+			{
+				return this._STATE_COUNTRY;
+			}
+			set
+			{
+				if ((this._STATE_COUNTRY != value))
+				{
+					this.OnSTATE_COUNTRYChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_COUNTRY = value;
+					this.SendPropertyChanged("STATE_COUNTRY");
+					this.OnSTATE_COUNTRYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_CAPITAL", DbType="NVarChar(255)")]
+		public string STATE_CAPITAL
+		{
+			get
+			{
+				return this._STATE_CAPITAL;
+			}
+			set
+			{
+				if ((this._STATE_CAPITAL != value))
+				{
+					this.OnSTATE_CAPITALChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_CAPITAL = value;
+					this.SendPropertyChanged("STATE_CAPITAL");
+					this.OnSTATE_CAPITALChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_MAP", DbType="NVarChar(255)")]
+		public string STATE_MAP
+		{
+			get
+			{
+				return this._STATE_MAP;
+			}
+			set
+			{
+				if ((this._STATE_MAP != value))
+				{
+					this.OnSTATE_MAPChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_MAP = value;
+					this.SendPropertyChanged("STATE_MAP");
+					this.OnSTATE_MAPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_POPULATION", DbType="Float")]
+		public System.Nullable<double> STATE_POPULATION
+		{
+			get
+			{
+				return this._STATE_POPULATION;
+			}
+			set
+			{
+				if ((this._STATE_POPULATION != value))
+				{
+					this.OnSTATE_POPULATIONChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_POPULATION = value;
+					this.SendPropertyChanged("STATE_POPULATION");
+					this.OnSTATE_POPULATIONChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_IMP_AREA", DbType="NVarChar(255)")]
+		public string STATE_IMP_AREA
+		{
+			get
+			{
+				return this._STATE_IMP_AREA;
+			}
+			set
+			{
+				if ((this._STATE_IMP_AREA != value))
+				{
+					this.OnSTATE_IMP_AREAChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_IMP_AREA = value;
+					this.SendPropertyChanged("STATE_IMP_AREA");
+					this.OnSTATE_IMP_AREAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_INDUSTRIES", DbType="NVarChar(255)")]
+		public string STATE_INDUSTRIES
+		{
+			get
+			{
+				return this._STATE_INDUSTRIES;
+			}
+			set
+			{
+				if ((this._STATE_INDUSTRIES != value))
+				{
+					this.OnSTATE_INDUSTRIESChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_INDUSTRIES = value;
+					this.SendPropertyChanged("STATE_INDUSTRIES");
+					this.OnSTATE_INDUSTRIESChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_ZO", DbType="NVarChar(255)")]
+		public string STATE_ZO
+		{
+			get
+			{
+				return this._STATE_ZO;
+			}
+			set
+			{
+				if ((this._STATE_ZO != value))
+				{
+					this.OnSTATE_ZOChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_ZO = value;
+					this.SendPropertyChanged("STATE_ZO");
+					this.OnSTATE_ZOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_STATUS", DbType="NVarChar(255)")]
+		public string STATE_STATUS
+		{
+			get
+			{
+				return this._STATE_STATUS;
+			}
+			set
+			{
+				if ((this._STATE_STATUS != value))
+				{
+					this.OnSTATE_STATUSChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_STATUS = value;
+					this.SendPropertyChanged("STATE_STATUS");
+					this.OnSTATE_STATUSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MOD_DATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> MOD_DATE
+		{
+			get
+			{
+				return this._MOD_DATE;
+			}
+			set
+			{
+				if ((this._MOD_DATE != value))
+				{
+					this.OnMOD_DATEChanging(value);
+					this.SendPropertyChanging();
+					this._MOD_DATE = value;
+					this.SendPropertyChanged("MOD_DATE");
+					this.OnMOD_DATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MOD_TIME", DbType="Float")]
+		public System.Nullable<double> MOD_TIME
+		{
+			get
+			{
+				return this._MOD_TIME;
+			}
+			set
+			{
+				if ((this._MOD_TIME != value))
+				{
+					this.OnMOD_TIMEChanging(value);
+					this.SendPropertyChanging();
+					this._MOD_TIME = value;
+					this.SendPropertyChanged("MOD_TIME");
+					this.OnMOD_TIMEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NODEID", DbType="NVarChar(255)")]
+		public string NODEID
+		{
+			get
+			{
+				return this._NODEID;
+			}
+			set
+			{
+				if ((this._NODEID != value))
+				{
+					this.OnNODEIDChanging(value);
+					this.SendPropertyChanging();
+					this._NODEID = value;
+					this.SendPropertyChanged("NODEID");
+					this.OnNODEIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USERID", DbType="NVarChar(255)")]
+		public string USERID
+		{
+			get
+			{
+				return this._USERID;
+			}
+			set
+			{
+				if ((this._USERID != value))
+				{
+					this.OnUSERIDChanging(value);
+					this.SendPropertyChanging();
+					this._USERID = value;
+					this.SendPropertyChanged("USERID");
+					this.OnUSERIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TRANS_STATUS", DbType="NVarChar(255)")]
+		public string TRANS_STATUS
+		{
+			get
+			{
+				return this._TRANS_STATUS;
+			}
+			set
+			{
+				if ((this._TRANS_STATUS != value))
+				{
+					this.OnTRANS_STATUSChanging(value);
+					this.SendPropertyChanging();
+					this._TRANS_STATUS = value;
+					this.SendPropertyChanged("TRANS_STATUS");
+					this.OnTRANS_STATUSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_RO", DbType="NVarChar(255)")]
+		public string STATE_RO
+		{
+			get
+			{
+				return this._STATE_RO;
+			}
+			set
+			{
+				if ((this._STATE_RO != value))
+				{
+					this.OnSTATE_ROChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_RO = value;
+					this.SendPropertyChanged("STATE_RO");
+					this.OnSTATE_ROChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_ZONE", DbType="VarChar(50)")]
+		public string STATE_ZONE
+		{
+			get
+			{
+				return this._STATE_ZONE;
+			}
+			set
+			{
+				if ((this._STATE_ZONE != value))
+				{
+					this.OnSTATE_ZONEChanging(value);
+					this.SendPropertyChanging();
+					this._STATE_ZONE = value;
+					this.SendPropertyChanged("STATE_ZONE");
+					this.OnSTATE_ZONEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="State_City", Storage="_Cities", ThisKey="STATE_CODE", OtherKey="CITY_STATE")]
+		public EntitySet<City> Cities
+		{
+			get
+			{
+				return this._Cities;
+			}
+			set
+			{
+				this._Cities.Assign(value);
 			}
 		}
 		
@@ -5054,16 +4785,16 @@ namespace FinalUi
 			}
 		}
 		
-		private void attach_Assignments(Assignment entity)
+		private void attach_Cities(City entity)
 		{
 			this.SendPropertyChanging();
-			entity.Service = this;
+			entity.State = this;
 		}
 		
-		private void detach_Assignments(Assignment entity)
+		private void detach_Cities(City entity)
 		{
 			this.SendPropertyChanging();
-			entity.Service = null;
+			entity.State = null;
 		}
 	}
 	
@@ -6179,168 +5910,6 @@ namespace FinalUi
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ZONE")]
-	public partial class ZONE : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private System.Guid _Id;
-		
-		private string _zcode;
-		
-		private string _Zone_name;
-		
-		private System.Nullable<char> _Mode;
-		
-		private EntitySet<Assignment> _Assignments;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(System.Guid value);
-    partial void OnIdChanged();
-    partial void OnzcodeChanging(string value);
-    partial void OnzcodeChanged();
-    partial void OnZone_nameChanging(string value);
-    partial void OnZone_nameChanged();
-    partial void OnModeChanging(System.Nullable<char> value);
-    partial void OnModeChanged();
-    #endregion
-		
-		public ZONE()
-		{
-			this._Assignments = new EntitySet<Assignment>(new Action<Assignment>(this.attach_Assignments), new Action<Assignment>(this.detach_Assignments));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_zcode", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string zcode
-		{
-			get
-			{
-				return this._zcode;
-			}
-			set
-			{
-				if ((this._zcode != value))
-				{
-					this.OnzcodeChanging(value);
-					this.SendPropertyChanging();
-					this._zcode = value;
-					this.SendPropertyChanged("zcode");
-					this.OnzcodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Zone_name", DbType="VarChar(20)")]
-		public string Zone_name
-		{
-			get
-			{
-				return this._Zone_name;
-			}
-			set
-			{
-				if ((this._Zone_name != value))
-				{
-					this.OnZone_nameChanging(value);
-					this.SendPropertyChanging();
-					this._Zone_name = value;
-					this.SendPropertyChanged("Zone_name");
-					this.OnZone_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mode", DbType="Char(1)")]
-		public System.Nullable<char> Mode
-		{
-			get
-			{
-				return this._Mode;
-			}
-			set
-			{
-				if ((this._Mode != value))
-				{
-					this.OnModeChanging(value);
-					this.SendPropertyChanging();
-					this._Mode = value;
-					this.SendPropertyChanged("Mode");
-					this.OnModeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ZONE_Assignment", Storage="_Assignments", ThisKey="zcode", OtherKey="ZoneCode")]
-		public EntitySet<Assignment> Assignments
-		{
-			get
-			{
-				return this._Assignments;
-			}
-			set
-			{
-				this._Assignments.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Assignments(Assignment entity)
-		{
-			this.SendPropertyChanging();
-			entity.ZONE = this;
-		}
-		
-		private void detach_Assignments(Assignment entity)
-		{
-			this.SendPropertyChanging();
-			entity.ZONE = null;
 		}
 	}
 	
@@ -7673,480 +7242,6 @@ namespace FinalUi
 					this._CITY_DESC = value;
 				}
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.State")]
-	public partial class State : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _STATE_CODE;
-		
-		private string _STATE_DESC;
-		
-		private string _STATE_COUNTRY;
-		
-		private string _STATE_CAPITAL;
-		
-		private string _STATE_MAP;
-		
-		private System.Nullable<double> _STATE_POPULATION;
-		
-		private string _STATE_IMP_AREA;
-		
-		private string _STATE_INDUSTRIES;
-		
-		private string _STATE_ZO;
-		
-		private string _STATE_STATUS;
-		
-		private System.Nullable<System.DateTime> _MOD_DATE;
-		
-		private System.Nullable<double> _MOD_TIME;
-		
-		private string _NODEID;
-		
-		private string _USERID;
-		
-		private string _TRANS_STATUS;
-		
-		private string _STATE_RO;
-		
-		private string _STATE_ZONE;
-		
-		private EntitySet<City> _Cities;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnSTATE_CODEChanging(string value);
-    partial void OnSTATE_CODEChanged();
-    partial void OnSTATE_DESCChanging(string value);
-    partial void OnSTATE_DESCChanged();
-    partial void OnSTATE_COUNTRYChanging(string value);
-    partial void OnSTATE_COUNTRYChanged();
-    partial void OnSTATE_CAPITALChanging(string value);
-    partial void OnSTATE_CAPITALChanged();
-    partial void OnSTATE_MAPChanging(string value);
-    partial void OnSTATE_MAPChanged();
-    partial void OnSTATE_POPULATIONChanging(System.Nullable<double> value);
-    partial void OnSTATE_POPULATIONChanged();
-    partial void OnSTATE_IMP_AREAChanging(string value);
-    partial void OnSTATE_IMP_AREAChanged();
-    partial void OnSTATE_INDUSTRIESChanging(string value);
-    partial void OnSTATE_INDUSTRIESChanged();
-    partial void OnSTATE_ZOChanging(string value);
-    partial void OnSTATE_ZOChanged();
-    partial void OnSTATE_STATUSChanging(string value);
-    partial void OnSTATE_STATUSChanged();
-    partial void OnMOD_DATEChanging(System.Nullable<System.DateTime> value);
-    partial void OnMOD_DATEChanged();
-    partial void OnMOD_TIMEChanging(System.Nullable<double> value);
-    partial void OnMOD_TIMEChanged();
-    partial void OnNODEIDChanging(string value);
-    partial void OnNODEIDChanged();
-    partial void OnUSERIDChanging(string value);
-    partial void OnUSERIDChanged();
-    partial void OnTRANS_STATUSChanging(string value);
-    partial void OnTRANS_STATUSChanged();
-    partial void OnSTATE_ROChanging(string value);
-    partial void OnSTATE_ROChanged();
-    partial void OnSTATE_ZONEChanging(string value);
-    partial void OnSTATE_ZONEChanged();
-    #endregion
-		
-		public State()
-		{
-			this._Cities = new EntitySet<City>(new Action<City>(this.attach_Cities), new Action<City>(this.detach_Cities));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_CODE", DbType="NVarChar(255) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string STATE_CODE
-		{
-			get
-			{
-				return this._STATE_CODE;
-			}
-			set
-			{
-				if ((this._STATE_CODE != value))
-				{
-					this.OnSTATE_CODEChanging(value);
-					this.SendPropertyChanging();
-					this._STATE_CODE = value;
-					this.SendPropertyChanged("STATE_CODE");
-					this.OnSTATE_CODEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_DESC", DbType="NVarChar(255)")]
-		public string STATE_DESC
-		{
-			get
-			{
-				return this._STATE_DESC;
-			}
-			set
-			{
-				if ((this._STATE_DESC != value))
-				{
-					this.OnSTATE_DESCChanging(value);
-					this.SendPropertyChanging();
-					this._STATE_DESC = value;
-					this.SendPropertyChanged("STATE_DESC");
-					this.OnSTATE_DESCChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_COUNTRY", DbType="NVarChar(255)")]
-		public string STATE_COUNTRY
-		{
-			get
-			{
-				return this._STATE_COUNTRY;
-			}
-			set
-			{
-				if ((this._STATE_COUNTRY != value))
-				{
-					this.OnSTATE_COUNTRYChanging(value);
-					this.SendPropertyChanging();
-					this._STATE_COUNTRY = value;
-					this.SendPropertyChanged("STATE_COUNTRY");
-					this.OnSTATE_COUNTRYChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_CAPITAL", DbType="NVarChar(255)")]
-		public string STATE_CAPITAL
-		{
-			get
-			{
-				return this._STATE_CAPITAL;
-			}
-			set
-			{
-				if ((this._STATE_CAPITAL != value))
-				{
-					this.OnSTATE_CAPITALChanging(value);
-					this.SendPropertyChanging();
-					this._STATE_CAPITAL = value;
-					this.SendPropertyChanged("STATE_CAPITAL");
-					this.OnSTATE_CAPITALChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_MAP", DbType="NVarChar(255)")]
-		public string STATE_MAP
-		{
-			get
-			{
-				return this._STATE_MAP;
-			}
-			set
-			{
-				if ((this._STATE_MAP != value))
-				{
-					this.OnSTATE_MAPChanging(value);
-					this.SendPropertyChanging();
-					this._STATE_MAP = value;
-					this.SendPropertyChanged("STATE_MAP");
-					this.OnSTATE_MAPChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_POPULATION", DbType="Float")]
-		public System.Nullable<double> STATE_POPULATION
-		{
-			get
-			{
-				return this._STATE_POPULATION;
-			}
-			set
-			{
-				if ((this._STATE_POPULATION != value))
-				{
-					this.OnSTATE_POPULATIONChanging(value);
-					this.SendPropertyChanging();
-					this._STATE_POPULATION = value;
-					this.SendPropertyChanged("STATE_POPULATION");
-					this.OnSTATE_POPULATIONChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_IMP_AREA", DbType="NVarChar(255)")]
-		public string STATE_IMP_AREA
-		{
-			get
-			{
-				return this._STATE_IMP_AREA;
-			}
-			set
-			{
-				if ((this._STATE_IMP_AREA != value))
-				{
-					this.OnSTATE_IMP_AREAChanging(value);
-					this.SendPropertyChanging();
-					this._STATE_IMP_AREA = value;
-					this.SendPropertyChanged("STATE_IMP_AREA");
-					this.OnSTATE_IMP_AREAChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_INDUSTRIES", DbType="NVarChar(255)")]
-		public string STATE_INDUSTRIES
-		{
-			get
-			{
-				return this._STATE_INDUSTRIES;
-			}
-			set
-			{
-				if ((this._STATE_INDUSTRIES != value))
-				{
-					this.OnSTATE_INDUSTRIESChanging(value);
-					this.SendPropertyChanging();
-					this._STATE_INDUSTRIES = value;
-					this.SendPropertyChanged("STATE_INDUSTRIES");
-					this.OnSTATE_INDUSTRIESChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_ZO", DbType="NVarChar(255)")]
-		public string STATE_ZO
-		{
-			get
-			{
-				return this._STATE_ZO;
-			}
-			set
-			{
-				if ((this._STATE_ZO != value))
-				{
-					this.OnSTATE_ZOChanging(value);
-					this.SendPropertyChanging();
-					this._STATE_ZO = value;
-					this.SendPropertyChanged("STATE_ZO");
-					this.OnSTATE_ZOChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_STATUS", DbType="NVarChar(255)")]
-		public string STATE_STATUS
-		{
-			get
-			{
-				return this._STATE_STATUS;
-			}
-			set
-			{
-				if ((this._STATE_STATUS != value))
-				{
-					this.OnSTATE_STATUSChanging(value);
-					this.SendPropertyChanging();
-					this._STATE_STATUS = value;
-					this.SendPropertyChanged("STATE_STATUS");
-					this.OnSTATE_STATUSChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MOD_DATE", DbType="DateTime")]
-		public System.Nullable<System.DateTime> MOD_DATE
-		{
-			get
-			{
-				return this._MOD_DATE;
-			}
-			set
-			{
-				if ((this._MOD_DATE != value))
-				{
-					this.OnMOD_DATEChanging(value);
-					this.SendPropertyChanging();
-					this._MOD_DATE = value;
-					this.SendPropertyChanged("MOD_DATE");
-					this.OnMOD_DATEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MOD_TIME", DbType="Float")]
-		public System.Nullable<double> MOD_TIME
-		{
-			get
-			{
-				return this._MOD_TIME;
-			}
-			set
-			{
-				if ((this._MOD_TIME != value))
-				{
-					this.OnMOD_TIMEChanging(value);
-					this.SendPropertyChanging();
-					this._MOD_TIME = value;
-					this.SendPropertyChanged("MOD_TIME");
-					this.OnMOD_TIMEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NODEID", DbType="NVarChar(255)")]
-		public string NODEID
-		{
-			get
-			{
-				return this._NODEID;
-			}
-			set
-			{
-				if ((this._NODEID != value))
-				{
-					this.OnNODEIDChanging(value);
-					this.SendPropertyChanging();
-					this._NODEID = value;
-					this.SendPropertyChanged("NODEID");
-					this.OnNODEIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USERID", DbType="NVarChar(255)")]
-		public string USERID
-		{
-			get
-			{
-				return this._USERID;
-			}
-			set
-			{
-				if ((this._USERID != value))
-				{
-					this.OnUSERIDChanging(value);
-					this.SendPropertyChanging();
-					this._USERID = value;
-					this.SendPropertyChanged("USERID");
-					this.OnUSERIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TRANS_STATUS", DbType="NVarChar(255)")]
-		public string TRANS_STATUS
-		{
-			get
-			{
-				return this._TRANS_STATUS;
-			}
-			set
-			{
-				if ((this._TRANS_STATUS != value))
-				{
-					this.OnTRANS_STATUSChanging(value);
-					this.SendPropertyChanging();
-					this._TRANS_STATUS = value;
-					this.SendPropertyChanged("TRANS_STATUS");
-					this.OnTRANS_STATUSChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_RO", DbType="NVarChar(255)")]
-		public string STATE_RO
-		{
-			get
-			{
-				return this._STATE_RO;
-			}
-			set
-			{
-				if ((this._STATE_RO != value))
-				{
-					this.OnSTATE_ROChanging(value);
-					this.SendPropertyChanging();
-					this._STATE_RO = value;
-					this.SendPropertyChanged("STATE_RO");
-					this.OnSTATE_ROChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATE_ZONE", DbType="VarChar(50)")]
-		public string STATE_ZONE
-		{
-			get
-			{
-				return this._STATE_ZONE;
-			}
-			set
-			{
-				if ((this._STATE_ZONE != value))
-				{
-					this.OnSTATE_ZONEChanging(value);
-					this.SendPropertyChanging();
-					this._STATE_ZONE = value;
-					this.SendPropertyChanged("STATE_ZONE");
-					this.OnSTATE_ZONEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="State_City", Storage="_Cities", ThisKey="STATE_CODE", OtherKey="CITY_STATE")]
-		public EntitySet<City> Cities
-		{
-			get
-			{
-				return this._Cities;
-			}
-			set
-			{
-				this._Cities.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Cities(City entity)
-		{
-			this.SendPropertyChanging();
-			entity.State = this;
-		}
-		
-		private void detach_Cities(City entity)
-		{
-			this.SendPropertyChanging();
-			entity.State = null;
 		}
 	}
 	

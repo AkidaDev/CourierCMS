@@ -42,7 +42,7 @@ namespace FinalUi
         private void CreateObj()
         {
 
-            BillingDataDataContext db = new BillingDataDataContext();
+        /*    BillingDataDataContext db = new BillingDataDataContext();
             var c = (Client)this.ClientListCombo.SelectedItem;
             var source = db.Assignments.Where(x => x.ClientCode == c.CLCODE);
             rs.Value = source;
@@ -55,6 +55,7 @@ namespace FinalUi
             AccountStatementViewer.LocalReport.SetParameters(repParams);
             AccountStatementViewer.ShowExportButton = true;
             AccountStatementViewer.RefreshReport();
+         * */
         }
         private void ClientListCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

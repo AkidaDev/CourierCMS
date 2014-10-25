@@ -3,10 +3,39 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="About Vortex" Height="300" Width="400" ResizeMode="NoResize">
     <Grid>
-        <Image Source="Images/Logo.ico" Width="120" Height="120" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30"/>
-        <WrapPanel HorizontalAlignment="Center" Margin="110 50 0 0">
-            <TextBlock Foreground="Black" FontSize="70" Text="V" FontWeight="Bold"/>
-            <TextBlock Foreground="Black" FontSize="50" Text="ORTEX" Height="62" Width="155" Margin="-5 12 0 0"/>
-        </WrapPanel>
+        <Image Source="Images/Shape 21.png" Width="100" Height="100" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50 20 30 30"/>
+        <Canvas>
+            <TextBlock Foreground="#6666cc" FontSize="60" Text="V" FontWeight="SemiBold" Canvas.Left="166" Canvas.Top="42"/>
+            <TextBlock Foreground="#6666cc" FontSize="40" Text="ORTEX" Canvas.Left="198" Canvas.Top="64" />
+        </Canvas>
+        <StackPanel VerticalAlignment="Center" Margin="40 120 0 0 ">
+            <WrapPanel Margin="0 4 0 0">
+            <TextBlock Text="Version .: " FontSize="14" Foreground="Gray" FontFamily="Calibri"/>
+                <TextBlock Text="646" FontSize="14" Foreground="Gray" FontFamily="Calibri"/>
+            </WrapPanel>
+            <WrapPanel Margin="0 4 0 0">
+                <TextBlock Text="Latest Version .: " FontSize="14" Foreground="Gray" FontFamily="Calibri"/>
+                <TextBlock Text="646" FontSize="14" Foreground="Gray" FontFamily="Calibri"/>
+            </WrapPanel>
+            <WrapPanel Margin="0 4 0 0">
+                <TextBlock Text="Product ID .: " FontSize="14" Foreground="Gray" FontFamily="Calibri"/>
+                <TextBlock Text="646" FontSize="14" Foreground="Gray" FontFamily="Calibri"/>
+            </WrapPanel>
+            <WrapPanel Margin="20 10 0 0">
+                <Button Click="update_CheckedUnChecked" Style="{StaticResource 1}">
+                    <Canvas Height="19" Width="19">
+                        <Path x:Name="checkbox_unselected" Data="F1M2.778,3.778C2.778,3.778 2.778,16.222 2.778,16.222 2.778,16.222 15.222,16.222 15.222,16.222 15.222,16.222 15.222,3.778 15.222,3.778 15.222,3.778 2.778,3.778 2.778,3.778z M2.778,2C2.778,2 15.222,2 15.222,2 16.2,2 17,2.8 17,3.778 17,3.778 17,16.222 17,16.222 17,17.2 16.2,18 15.222,18 15.222,18 2.778,18 2.778,18 1.8,18 1,17.2 1,16.222 1,16.222 1,3.778 1,3.778 1,2.8 1.8,2 2.778,2z" 
+                              Fill="Gray" Height="19"  Width="19" Margin="1,0,0,0" />
+                        <Path x:Name="checkbox_selected" Data="F1M16.755,3.422C16.755,3.422 18,4.667 18,4.667 18,4.667 9.111,13.556 9.111,13.556 9.111,13.556 5.111,9.556 5.111,9.556 5.111,9.556 6.355,8.311 6.355,8.311 6.355,8.311 9.111,11.067 9.111,11.067 9.111,11.067 16.755,3.422 16.755,3.422z M3.778,2C3.778,2 12.667,2 12.667,2 12.667,2 12.667,3.778 12.667,3.778 12.667,3.778 3.778,3.778 3.778,3.778 3.778,3.778 3.778,16.222 3.778,16.222 3.778,16.222 16.222,16.222 16.222,16.222 16.222,16.222 16.222,9.111 16.222,9.111 16.222,9.111 18,9.111 18,9.111 18,9.111 18,16.222 18,16.222 18,17.2 17.2,18 16.222,18 16.222,18 3.778,18 3.778,18 2.8,18 2,17.2 2,16.222 2,16.222 2,3.778 2,3.778 2,2.8 2.8,2 3.778,2z" 
+                              Fill="Gray" Height="19" Width="19" Visibility="Hidden" />
+                    </Canvas>
+                </Button>
+                <TextBlock FontSize="14" MouseDown="update_CheckedUnChecked" Text=" Install new version automatically" Foreground="Gray" FontFamily="Calibri" Padding="3 3 0 0"/>
+            </WrapPanel>
+            <WrapPanel Margin="0 15 0 0">
+                <TextBlock FontSize="14" Text="Copyright ©2014, All Rights Reserved" Foreground="#FF416DFF" FontFamily="Calibri"/>
+            </WrapPanel>
+            <Button Click="Close" Content="Ok" FontSize="14" Width="40" HorizontalAlignment="Right" Margin="0 -20 30 0"/>
+        </StackPanel>
     </Grid>
 </Window>

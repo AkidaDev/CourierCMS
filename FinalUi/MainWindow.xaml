@@ -52,7 +52,6 @@
                     <MenuItem ToolTip="Open new document" Header="File" Margin="10 0 0 0">
                         <MenuItem Header="New Sheet" x:Name="NewSheetMenuItem" />
                         <MenuItem Header="Import Data" x:Name="ImportDataMenuItem" Command="ApplicationCommands.Open"/>
-                        <MenuItem Header="Save Data" />
                         <MenuItem Header="Print" x:Name="PrintMenuItem" Command="ApplicationCommands.Print"/>
                         <MenuItem Header="Close" Click="MenuItem_Click"/>
                     </MenuItem>
@@ -71,9 +70,6 @@
                         <MenuItem Header="Client Report" x:Name="ClientReport" Click="ClientReport_Click"/>
                     </MenuItem>
                     <MenuItem ToolTip="Editing Tools" Header="Tools" Margin="10 0 0 0">
-                        <MenuItem Header="Filter &amp; Select" />
-                        <MenuItem Header="Data Entry" />
-                        <MenuItem Header="Add Rate Rule" />
                         <MenuItem Header="Peferences" x:Name="Peferences" Click="Peferences_Click" />
                         <MenuItem Header="Hide/Show Image" Click="MenuItem_hideimage" />
                     </MenuItem>
@@ -558,31 +554,28 @@
                         </LinearGradientBrush>
                     </StackPanel.Background>
                     <!-- <StackPanel Grid.Column="0" Margin="-3,-34,0,-3" Grid.RowSpan="3" Width="Auto" Background="{DynamicResource sidebar}">-->
-                    <TreeView Background="Transparent" BorderThickness="0" Margin=" 6 20 0 0">
-                        <TreeViewItem>
+                    <TreeView Background="Transparent" BorderThickness="0" Margin="7 20 0 0">
+                        <TreeViewItem Background="Transparent" BorderThickness="0">
                             <TreeViewItem.Header>
-                                <TextBlock Text=" My Assignments" FontSize="16" FontWeight="Bold" Padding="0 1 0 4" Foreground="white" FontFamily="Calibri">
+                                <TextBlock MouseDown="DataDockPanelTreeView_Selected" Width="210" x:Name="DataDockPanelTreeView" Text="Data Entry Table" FontSize="16" FontWeight="Bold" Padding="4 1 0 4" Foreground="white" FontFamily="Calibri" >
                                     <TextBlock.Effect>
                                         <DropShadowEffect Color="#FFB0B0B0"/>
                                     </TextBlock.Effect>
                                 </TextBlock>
                             </TreeViewItem.Header>
-                            <TreeViewItem x:Name="DataDockPanelTreeView">
-                                <TreeViewItem.Header>
-                                    <TextBlock Text=" Data Entry Table  " FontSize="14" Width="200" Foreground="White" MouseDown="DataDockPanelTreeView_Selected"/>
-                                </TreeViewItem.Header>
-                            </TreeViewItem>
-                            <TreeViewItem x:Name="CloseTableTreeView">
-                                <TreeViewItem.Header>
-                                    <TextBlock Text=" Close all Table  " FontSize="14" Width="200" Foreground="White" MouseDown="CloseTableTreeView_Selected"/>
-                                </TreeViewItem.Header>
-                            </TreeViewItem>
                         </TreeViewItem>
                     </TreeView>
+                    <Canvas>
+                        <Path MouseDown="DataDockPanelTreeView_Selected" Data="F1M8.667,3.556C8.667,3.556 8.667,8.667 8.667,8.667 8.667,8.667 3.555,8.667 3.555,8.667 3.555,8.667 3.555,11.222 3.555,11.222 3.555,11.222 8.667,11.222 8.667,11.222 8.667,11.222 8.667,21.444 8.667,21.444 8.667,21.444 11.222,21.444 11.222,21.444 11.222,21.444 11.222,11.222 11.222,11.222 11.222,11.222 21.444,11.222 21.444,11.222 21.444,11.222 21.444,8.667 21.444,8.667 21.444,8.667 11.222,8.667 11.222,8.667 11.222,8.667 11.222,3.556 11.222,3.556 11.222,3.556 8.667,3.556 8.667,3.556z M3.555,1C3.555,1 21.444,1 21.444,1 22.85,1 24,2.15 24,3.556 24,3.556 24,21.444 24,21.444 24,22.85 22.85,24 21.444,24 21.444,24 3.555,24 3.555,24 2.15,24 1,22.85 1,21.444 1,21.444 1,3.556 1,3.556 1,2.15 2.15,1 3.555,1z" Fill="White" Height="17" Width="18" Stretch="Fill" Canvas.Left="7" Canvas.Top="-23" >
+                            <Path.Effect>
+                                <DropShadowEffect Color="#FFB0B0B0"/>
+                            </Path.Effect>
+                        </Path>
+                    </Canvas>
                     <TreeView Background="Transparent" BorderThickness="0" Margin="6,5,0,0">
                         <TreeViewItem Background="Transparent" BorderThickness="0">
                             <TreeViewItem.Header>
-                                <TextBlock Text=" Client Tree" FontSize="16" FontWeight="Bold"  Padding="0 1 0 4" Foreground="White" FontFamily="Calibri">
+                                <TextBlock Text="Client Tree" FontSize="16" FontWeight="Bold"  Padding="4 1 0 4" Foreground="White" FontFamily="Calibri">
                                     <TextBlock.Effect>
                                         <DropShadowEffect Color="#FFB0B0B0"/>
                                     </TextBlock.Effect>
@@ -590,48 +583,58 @@
                             </TreeViewItem.Header>
                             <TreeViewItem x:Name="ClientsReportTreeView">
                                 <TreeViewItem.Header>
-                                    <TextBlock Text=" Clients Report  " FontSize="14"  Width="200" Foreground="White" MouseDown="ClientsReportTreeView_Selected"/>
+                                    <TextBlock Text=" Clients Report  " FontSize="14"  Width="192" Foreground="White" MouseDown="ClientsReportTreeView_Selected"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
                             <TreeViewItem  x:Name="ClientQuotationTreeView">
                                 <TreeViewItem.Header>
-                                    <TextBlock  Text=" Client Quotation  " FontSize="14" Width="200" Foreground="White" MouseDown="ClientQuotationTreeView_Selected"/>
+                                    <TextBlock  Text=" Client Quotation  " FontSize="14" Width="192" Foreground="White" MouseDown="ClientQuotationTreeView_Selected"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
                         </TreeViewItem>
                     </TreeView>
-                    <!--  <TreeView BorderThickness="0" Background="Transparent"  >
+                    <!-- <TreeView BorderThickness="0" Background="Transparent"  >
                        <TreeViewItem BorderBrush="Transparent" BorderThickness="0" Margin="6 5 0 0">
                             <TreeViewItem.Header>
-                                <TextBlock FontSize="16" FontWeight="Bold" Padding="0 1 0 4" Text=" Manager" Foreground="White" FontFamily="Calibri"/>
+                                <TextBlock FontSize="16" FontWeight="Bold" Padding="4 1 0 4" Text="Manager" Foreground="White" FontFamily="Calibri">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect Color="#FFB0B0B0"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
                             </TreeViewItem.Header>
                             <TreeViewItem x:Name="Employeetreeviewitembutton">
                                 <TreeViewItem.Header>
-                                    <TextBlock Text=" Employee" FontSize="14" Width="200" Foreground="White" MouseDown="Employeetreeviewitembutton_Click"/>
+                                    <TextBlock Text=" Employee" FontSize="14" Width="192" Foreground="White" MouseDown="Employeetreeviewitembutton_Click"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
                             <TreeViewItem x:Name="clienttreeviewitembutton">
                                 <TreeViewItem.Header>
-                                    <TextBlock Text=" Client" FontSize="14" Width="200" Foreground="White" MouseDown="clienttreeviewitembutton_Click"/>
+                                    <TextBlock Text=" Client" FontSize="14" Width="192" Foreground="White" MouseDown="clienttreeviewitembutton_Click"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
                             <TreeViewItem x:Name="zonetreeitembutton">
                                 <TreeViewItem.Header>
-                                    <TextBlock Text=" Zone" FontSize="14" Width="200" Foreground="White" MouseDown="zonetreeitembutton_Click"/>
+                                    <TextBlock Text=" Zone" FontSize="14" Width="192" Foreground="White" MouseDown="zonetreeitembutton_Click"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
                             <TreeViewItem x:Name="citytreeviewitembutton">
                                 <TreeViewItem.Header>
-                                    <TextBlock Text=" City" FontSize="14" Width="200" Foreground="White" MouseDown="citytreeviewitembutton_Click"/>
+                                    <TextBlock Text=" City" FontSize="14" Width="192" Foreground="White" MouseDown="citytreeviewitembutton_Click"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
                             <TreeViewItem x:Name="countrytreeitembutton">
                                 <TreeViewItem.Header>
-                                    <TextBlock Text=" Country" FontSize="14" Width="200" Foreground="White" MouseDown="countrytreeitembutton_Click"/>
+                                    <TextBlock Text=" Country" FontSize="14" Width="192" Foreground="White" MouseDown="countrytreeitembutton_Click"/>
+                                </TreeViewItem.Header>
+                            </TreeViewItem>
+                            <TreeViewItem x:Name="CloseTableTreeView">
+                                <TreeViewItem.Header>
+                                    <TextBlock Text=" Hide all Table  " FontSize="14" Width="192" Foreground="White" MouseDown="CloseTableTreeView_Selected"/>
                                 </TreeViewItem.Header>
                             </TreeViewItem>
                         </TreeViewItem>
                     </TreeView>-->
+
                     <Path Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Black" Height="4" HorizontalAlignment="Left" Margin="15,6,0,0"  Width="194"/>
                 </StackPanel>
                 <Grid Grid.Column="2" Margin="3 2 -3 -3">
@@ -730,7 +733,7 @@
                     </Grid>
 
 
-                    <Grid Grid.Row="0" x:Name="RuleGrid" Visibility="Visible">
+                    <Grid Grid.Row="0" x:Name="RuleGrid" Visibility="Collapsed">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="188*"/>
@@ -741,7 +744,8 @@
                                 <RadioButton Foreground="#FF5B5B5B" IsChecked="True" x:Name="CostingRuleRadio"  Content="Costing Rule" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0" Checked="CostingRuleRadio_Checked_1"/>
                                 <RadioButton Checked="ServiceRuleRadio_Checked" Foreground="#FF5B5B5B" Content="Service Rule" x:Name="ServiceRuleRadio"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
                                 <!--<RadioButton Checked="InvoiceRuleRadio_Checked" Foreground="#FF5B5B5B" Content="Invoice Rule" x:Name="InvoiceRuleRadio" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
-                               --> <Button Content="  Add Costing Rule  " x:Name="AddCostingRuleButton" Click="AddRuleButton_Click"  Margin="34 0 0 0" Visibility="Visible" Style="{StaticResource all}"/>
+                               -->
+                                <Button Content="  Add Costing Rule  " x:Name="AddCostingRuleButton" Click="AddRuleButton_Click"  Margin="34 0 0 0" Visibility="Visible" Style="{StaticResource all}"/>
                                 <Button Content="  Add Service Rule  " x:Name="AddServiceRuleButton" Click="AddServiceRuleButton_Click" Margin="34 0 0 0" Visibility="Collapsed" Style="{StaticResource all}"/>
                                 <Button Content="  Add Invoice Rule  " x:Name="AddInvoiceRuleButton" Click="AddInvoiceRuleButton_Click" Margin="34 0 0 0" Visibility="Collapsed" Style="{StaticResource all}"/>
                             </WrapPanel>
