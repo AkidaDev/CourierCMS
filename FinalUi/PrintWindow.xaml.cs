@@ -198,6 +198,8 @@ namespace FinalUi
                     assign.BillId = invoice.BillId;
                     assign.Id = Guid.NewGuid();
                     assign.TransactionId = (Guid)item.TransactionId;
+                    assign.BilledAmount = (double)item.FrAmount;
+                    assign.BilledWeight = (double)item.BilledWeight;
                     db.InvoiceAssignments.InsertOnSubmit(assign);
                 }
                 try
