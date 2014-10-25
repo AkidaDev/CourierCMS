@@ -77,5 +77,13 @@ namespace FinalUi
             ThemeColorPicker.SelectedColor = (Color)ColorConverter.ConvertFromString(Configs.Default.Background);
             this.ServiceTax.Text = Configs.Default.ServiceTax;
         }
+        private void Button_Click_Close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+        private void DragthisWindow(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }
