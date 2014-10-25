@@ -921,6 +921,8 @@ namespace FinalUi
             DataSources.refreshClientList();
             clientViewSource.Source = DataSources.ClientCopy;
             mangaclientgrid.Items.Refresh();
+            ClientCombo.Items.Refresh();
+            
         }
         #region sidepanel
         private void cloakAll()

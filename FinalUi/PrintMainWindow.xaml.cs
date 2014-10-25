@@ -28,6 +28,12 @@ namespace FinalUi
             BillViewer.LocalReport.DataSources.Add(rs);
             BillViewer.LocalReport.SetParameters(repParams);
             BillViewer.RefreshReport();
+            this.Closed += PrintMainWindow_Closed;
+        }
+
+        void PrintMainWindow_Closed(object sender, EventArgs e)
+        {
+            MessageBox.Show("Dont forget to save the invoice after this window is closed... (Ignore if done already)");
         }
     }
 }
