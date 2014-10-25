@@ -13,7 +13,7 @@ namespace FinalUi
     /// </summary>
     public class CostingRule : IRule
     {
-        public int Id{get; set;}
+        public int Id { get; set; }
 
         #region When to apply
         public List<string> ServiceList { get; set; }
@@ -26,11 +26,11 @@ namespace FinalUi
 
         #region What to apply
         public char type { get; set; }
-        public double doxAmount {get; set;}
-        public double ndoxAmount{get; set;}
-        public double stepWeight {get; set;}
-        public double dStartValue{get; set;}
-        public double ndStartValue {get; set;}
+        public double doxAmount { get; set; }
+        public double ndoxAmount { get; set; }
+        public double stepWeight { get; set; }
+        public double dStartValue { get; set; }
+        public double ndStartValue { get; set; }
         #endregion
 
         #region Constructorss
@@ -57,7 +57,7 @@ namespace FinalUi
             this.ZoneList = rule.ZoneList;
         }
         public void decodeString()
-        { 
+        {
         }
         public CostingRule(List<string> ServiceList, List<string> ZoneList, List<string> CityList, List<string> StateList, double startW, double endW, char type, double doxAmount, double ndoxAmount)
         {
@@ -172,10 +172,20 @@ namespace FinalUi
             }
             else
             {
-                if (char.ToUpper((char)trans.DOX) == 'D')
-                    trans.FrAmount = (decimal)(dStartValue + ((trans.BilledWeight - startW) / stepWeight) * doxAmount);
-                else
-                    trans.FrAmount = (decimal)(ndStartValue + ((trans.BilledWeight - startW) / stepWeight) * ndoxAmount);
+                double multiAmount,startAmount;
+                if (char.ToUpper((char)trans.DOX) == 'D'){
+                    multiAmount = doxAmount;
+                    startAmount = dStartValue;
+                }
+                else{
+                    multiAmount = ndoxAmount;
+                    startAmount = ndStartValue;
+                }
+                int steps = 0;
+                double restWeight = (double)trans.BilledWeight - startW;
+                steps = (int)(restWeight / stepWeight);
+                steps++;
+                trans.FrAmount = (decimal)(startAmount + steps * multiAmount);
             }
         }
         public void encodeString()
