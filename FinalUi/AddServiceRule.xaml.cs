@@ -136,6 +136,10 @@ namespace FinalUi
             List<String> selectedCityList = CitiesTwinBox.SelectedListSource.Cast<City>().Select(x => x.CITY_CODE).ToList();
             List<string> selectedStateList = StateTwinBox.SelectedListSource.Cast<State>().Select(x => x.STATE_CODE).ToList();
             RuleSR = new ServiceRule();
+            int id;
+            id = Convert.ToInt32(db.ExecuteQuery<decimal>("SELECT IDENT_CURRENT('Rule') +1;").FirstOrDefault());
+            RuleSR.Id = id;
+           
             RuleSR.ServiceList = selectedServiceList;
             RuleSR.ZoneList = selectedZoneList;
             RuleSR.CityList = selectedCityList;

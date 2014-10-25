@@ -956,6 +956,11 @@ namespace FinalUi
             LoadClientRules();
             this.CostingRuleGrid.Items.Refresh();
         }
+        private void ServiceRuleWindowClosed(object sender, EventArgs e)
+        {
+            LoadClientRules();
+            this.ServiceRuleGrid.Items.Refresh();
+        }
 
         private void DataGrid_SelectionChanged_2(object sender, SelectionChangedEventArgs e)
         {
@@ -1279,7 +1284,7 @@ namespace FinalUi
             {
                 if (MessageBox.Show("Do you Want delete this Rule", "", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
-                    ServiceRule dcr = (ServiceRule)InvoiceRuleGrid.SelectedItem;
+                    ServiceRule dcr = (ServiceRule)ServiceRuleGrid.SelectedItem;
                     Rule dr = db.Rules.Where(x => x.ID == dcr.Id).FirstOrDefault();
                     ServiceRuleGrid.SelectedItem = null;
                     db.Rules.DeleteOnSubmit(dr);
@@ -1303,6 +1308,7 @@ namespace FinalUi
         private void AddServiceRuleButton_Click(object sender, RoutedEventArgs e)
         {
             AddServiceRule window = new AddServiceRule(new BillingDataDataContext().Quotations.Where(x => x.CLCODE == ((Client)this.ClientCombo.SelectedItem).CLCODE).FirstOrDefault());
+            window.Closed += ServiceRuleWindowClosed;
             window.Show();
         }
         private void AddInvoiceRuleButton_Click(object sender, RoutedEventArgs e)
