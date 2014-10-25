@@ -214,7 +214,10 @@ namespace FinalUi
         #region Save Worker
         void SaveWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBlock.Text = MessageBlock.Text + "\n " + "Save Completed" + e.Result;
+            if (e.Error != null)
+                MessageBlock.Text += "\n Error in saving: " + e.Error.Message;
+            else
+                MessageBlock.Text = MessageBlock.Text + "\n " + "Save Completed" + e.Result;
         }
 
         void SaveWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -225,16 +228,11 @@ namespace FinalUi
 
         void SaveWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            string response;
-            try
+            string message = UtilityClass.saveRuntimeAsTransaction(dataGridHelper.getCurrentDataStack);
+            if(message!= "")
             {
-                response = UtilityClass.saveRuntimeAsTransaction(dataGridHelper.getCurrentDataStack);
+                throw new Exception(message);
             }
-            catch (Exception ex)
-            {
-                response = ex.Message;
-            }
-            e.Result = response;
         }
 
         #endregion
