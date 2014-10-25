@@ -67,7 +67,6 @@ namespace FinalUi
             });
             return Convert.ToDouble(price);
         }
-
         public List<CostingRule> CostingRules
         {
             get

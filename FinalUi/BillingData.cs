@@ -2,7 +2,6 @@ namespace FinalUi
 {
     partial class BillingDataDataContext
     {
-        
         partial void UpdateClient(Client instance)
         {
             string msg = "";
