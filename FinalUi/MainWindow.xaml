@@ -618,7 +618,9 @@
                                 <DataGridTextColumn Header="Zones" Binding="{Binding zoneCount}"/>
                             </DataGrid.Columns>
                         </DataGrid>
-                        <DataGrid Visibility="Collapsed" x:Name="ServiceRuleGrid" Grid.Row="1" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
+                        <DataGrid Visibility="Collapsed"
+                                  DataContext="{StaticResource ServiceRuleList}" ItemsSource="{Binding}"
+                                  x:Name="ServiceRuleGrid" Grid.Row="1" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
 							AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Range" Binding="{Binding RangeWeight}"/>
