@@ -11,7 +11,6 @@
         <ImageBrush ImageSource="Images/menu.png" x:Key="menu"/>
         <ImageBrush ImageSource="Images/background.png" x:Key="background"/>
         <CollectionViewSource x:Key="EmployeeTable" CollectionViewType="{x:Type ListCollectionView}"/>
-        <CollectionViewSource x:Key="ServiceTable" CollectionViewType="{x:Type ListCollectionView}"/>
         <CollectionViewSource x:Key="ClienTable" CollectionViewType="{x:Type ListCollectionView}"/>
         <CollectionViewSource x:Key="zoneTable" CollectionViewType="{x:Type ListCollectionView}" />
         <CollectionViewSource x:Key="CityTable" CollectionViewType="{x:Type ListCollectionView}" />
@@ -768,7 +767,7 @@
                                     <DataGridTextColumn Header="Zones" Binding="{Binding zoneCount}"/>
                                 </DataGrid.Columns>
                             </DataGrid>
-                            <DataGrid Visibility="Collapsed" DataContext="{StaticResource ServiceRuleList}" ItemsSource="{Binding}" x:Name="ServiceRuleGrid" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
+                            <DataGrid Visibility="Collapsed" x:Name="ServiceRuleGrid" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
 							AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Range" Binding="{Binding RangeWeight}"/>
@@ -809,40 +808,37 @@
                                 </Grid.RowDefinitions>
                                 <StackPanel Background="#A9FFFFF3" Grid.Row="0" Margin="4 4 4 0">
                                     <TextBlock Text="Calculator" HorizontalAlignment="Center" Height="21" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" />
-                                </StackPanel>
+                                </StackPanel>  
                                 <Grid Grid.Row="1">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="115*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock Text=" Client .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="0" Grid.Column="0" Margin="4 4 0 0"/>
-                                    <ComboBox DataContext="{StaticResource ClienTable}" DisplayMemberPath="NameAndCode" ItemsSource="{Binding}" Name="Client_Combo" Grid.Row="0"  Grid.Column="1" Margin="0 4 4 0"/>
-                                    <TextBlock   Text=" Weight .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="1" Grid.Column="0" Margin="4 4 0 0"/>
-                                    <WrapPanel Grid.Row="1"  Grid.Column="1" Margin="0 4 4 0">
-                                        <TextBox Width="70" Height="22" Name="WeightRuleTextBox"/>
-                                        <TextBlock Text=" in Kg " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                                    </WrapPanel>
-                                    <TextBlock Text=" City .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="2" Grid.Column="0" Margin="4 4 0 0"/>
-                                    <ComboBox DataContext="{StaticResource CityTable}" DisplayMemberPath="NameAndCode" ItemsSource="{Binding}" Name="City_Combo" Grid.Row="2"  Grid.Column="1" Margin="0 4 4 0"/>
-                                    <TextBlock Text=" Service .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="3" Grid.Column="0" Margin="4 4 0 0"/>
-                                    <ComboBox DataContext="{StaticResource ServiceTable}" DisplayMemberPath="NameAndCode" ItemsSource="{Binding}" Name="Service_Combo" Grid.Row="3"  Grid.Column="1" Margin="0 4 4 0"/>
-                                    <TextBlock Text=" Dox  .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="4" Grid.Column="0" Margin="4 4 0 0"/>
-                                    <ComboBox SelectedIndex="0" Name="Dox_Combo" Grid.Row="4"  Grid.Column="1" Margin="0 4 4 0" Width="80" HorizontalAlignment="Left">
-                                        <ComboBoxItem Content="Dox"></ComboBoxItem>
-                                        <ComboBoxItem Content="Non-Dox"></ComboBoxItem>
-                                    </ComboBox>
-                                </Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="115*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text=" Client .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="0" Grid.Column="0" Margin="4 4 0 0"/>
+                                <ComboBox Name="Client_Combo" IsEditable="True" Grid.Row="0"  Grid.Column="1" Margin="0 4 4 0"/>
+                                <TextBlock Text=" Weight .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="1" Grid.Column="0" Margin="4 4 0 0"/>
+                                <WrapPanel Grid.Row="1"  Grid.Column="1" Margin="0 4 4 0">
+                                    <TextBox Width="70" Height="22"/>
+                                    <TextBlock Text=" in Kg " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                </WrapPanel>
+                                <TextBlock Text=" City .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="2" Grid.Column="0" Margin="4 4 0 0"/>
+                                <ComboBox Name="City_Combo" IsEditable="True" Grid.Row="2"  Grid.Column="1" Margin="0 4 4 0"/>
+                                <TextBlock Text=" Service .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="3" Grid.Column="0" Margin="4 4 0 0"/>
+                                <ComboBox Name="Service_Combo" IsEditable="True" Grid.Row="3"  Grid.Column="1" Margin="0 4 4 0"/>
+                                <TextBlock Text=" Dox  .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="4" Grid.Column="0" Margin="4 4 0 0"/>
+                                <ComboBox Name="Dox_Combo" IsEditable="True" Grid.Row="4"  Grid.Column="1" Margin="0 4 4 0" Width="80" HorizontalAlignment="Left"/>
+                            </Grid>
                                 <Rectangle Grid.Row="2" VerticalAlignment="Top" Height="1" Fill="Black" Margin="5 3 5 0"/>
                                 <WrapPanel Grid.Row="2" Margin="50 15 4 0">
-                                    <TextBox Width="70" Name="RateRuleTextBox" Height="22"/>
-                                    <Button Content=" Get Rate " Name="GetRateButton" Click="GetRateButton_Click" Margin="15 0 0 0"/>
+                                    <TextBox Width="70" Height="22"/>
+                                    <Button Content=" Get Rate " Margin="15 0 0 0"/>
                                 </WrapPanel>
                                 <TextBlock Text=" Log Box .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="2" Grid.Column="0" Margin="4 40 4 0"/>
 

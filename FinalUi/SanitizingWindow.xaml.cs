@@ -79,15 +79,13 @@ namespace FinalUi
             {
                 BilledAmount.Text = "0";
             }
-            if(Destination.Text == "" && Destination.Text == null)
+            if (Destination.Text == "" && Destination.Text == null)
             {
                 MessageBox.Show("City cannot be empty");
             }
-            bool isDataInContext = true;
             data = dataContext.SingleOrDefault(x => x.ConsignmentNo == ConnsignmentNumber.Text);
             if (data == null)
             {
-                isDataInContext = false;
                 var TData = db.Transactions.SingleOrDefault(x => x.ConnsignmentNo == ConnsignmentNumber.Text);
                 if (TData == null)
                 {
@@ -98,7 +96,7 @@ namespace FinalUi
                 else
                 {
                     data = UtilityClass.convertTransObjToRunObj(TData);
-                }
+                } 
             }
             data.Weight = Double.Parse(WeightAccToDTDC.Text);
             data.FrWeight = Double.Parse(WeightAccToFranchize.Text);
@@ -122,66 +120,80 @@ namespace FinalUi
             data.DOX = DoxCombobox.Text.ElementAt(0);
             float tempValue;
             if (float.TryParse(BilledWeightTextBox.Text, out tempValue))
-               data.BilledWeight = double.Parse(BilledWeightTextBox.Text,CultureInfo.InvariantCulture);
+                data.BilledWeight = double.Parse(BilledWeightTextBox.Text, CultureInfo.InvariantCulture);
             else
                 BilledWeightTextBox.Text = "";
-            if (isDataInContext)
+            if (data.Destination == null)
             {
-                data = db.RuntimeDatas.Single(x => x.Id == data.Id);
-                data.Weight = Double.Parse(WeightAccToDTDC.Text);
-                data.FrWeight = Double.Parse(WeightAccToFranchize.Text);
-                data.Amount = Decimal.Parse(Cost.Text);
-                data.FrAmount = Decimal.Parse(BilledAmount.Text);
-                data.Destination = DataSources.CityCopy.Where(x => x.NameAndCode == Destination.Text).Select(y => y.CITY_CODE).FirstOrDefault();
-                if (data.Destination == null)
+                MessageBoxResult rsltMessageBox = MessageBox.Show("No city with this code is entered. Do you want to enter it now?", "", MessageBoxButton.YesNo, MessageBoxImage.Asterisk);
+                if (MessageBoxResult.Yes == rsltMessageBox)
                 {
-                    MessageBoxResult rsltMessageBox = MessageBox.Show("No city with this code is entered. Do you want to enter it now?", "", MessageBoxButton.YesNo, MessageBoxImage.Asterisk);
-                    if (MessageBoxResult.Yes == rsltMessageBox)
-                    {
-                        AddCity window = new AddCity();
-                        window.Show();
-                    }
-                }
-                if (DestinationPin.Text == "" || DestinationPin.Text == null)
-                    data.DestinationPin = null;
-                else
-                    data.DestinationPin = Decimal.Parse(DestinationPin.Text);
-                data.CustCode = DataSources.ClientCopy.Where(x => x.NameAndCode == CustomerSelected.Text).Select(y => y.CLCODE).FirstOrDefault();
-                if (this.BilledWeightTextBox.Text == "" || this.BilledWeightTextBox.Text == null)
-                {
-                    if (this.WeightAccToFranchize.Text == "" || this.WeightAccToFranchize == null)
-                        data.BilledWeight = 0;
-                    else
-                        data.BilledWeight = data.FrWeight;
-                }
-                else
-                {
-                    if (float.TryParse(BilledWeightTextBox.Text, out tempValue))
-                        data.BilledWeight = double.Parse(BilledWeightTextBox.Text, CultureInfo.InvariantCulture);
+                    AddCity window = new AddCity();
+                    window.Show();
                 }
             }
+            data.CustCode = DataSources.ClientCopy.Where(x => x.NameAndCode == CustomerSelected.Text).Select(y => y.CLCODE).FirstOrDefault();
+            if (this.BilledWeightTextBox.Text == "" || this.BilledWeightTextBox.Text == null)
+            {
+                if (this.WeightAccToFranchize.Text == "" || this.WeightAccToFranchize == null)
+                    data.BilledWeight = 0;
+                else
+                    data.BilledWeight = data.FrWeight;
+            }
+            else
+            {
+                if (float.TryParse(BilledWeightTextBox.Text, out tempValue))
+                    data.BilledWeight = double.Parse(BilledWeightTextBox.Text, CultureInfo.InvariantCulture);
+            }
+
             return data;
+        }
+        public void dupliData(RuntimeData sData, RuntimeData dData)
+        {
+            dData.Amount = sData.Amount;
+            dData.BilledWeight = sData.BilledWeight;
+            dData.BookingDate = sData.BookingDate;
+            dData.City_Desc = sData.City_Desc;
+            dData.Client_Desc = sData.Client_Desc;
+            dData.ConsignmentNo = sData.ConsignmentNo;
+            dData.CustCode = sData.CustCode;
+            dData.Destination = sData.Destination;
+            dData.DestinationPin = sData.DestinationPin;
+            dData.DOX = sData.DOX;
+            dData.EmpId = sData.EmpId;
+            dData.FrAmount = sData.FrAmount;
+            dData.FrWeight = sData.FrWeight;
+            dData.InvoiceDate = sData.InvoiceDate;
+            dData.InvoiceNo = sData.InvoiceNo;
+            dData.Mode = sData.Mode;
+            dData.Service_Desc = sData.Service_Desc;
+            dData.ServiceTax = sData.ServiceTax;
+            dData.SheetNo = sData.SheetNo;
+            dData.SplDisc = sData.SplDisc;
+            dData.TransactionId = sData.TransactionId;
+            dData.TransMF_No = sData.TransMF_No;
+            dData.Type = sData.Type;
+            dData.UserId = sData.UserId;
+            dData.Weight = sData.Weight;
+            
         }
         public void SaveData()
         {
+            BillingDataDataContext db = new BillingDataDataContext();
             RuntimeData data = null;
             data = fillData(data);
+            data.SheetNo = sheetNo;
+            data.UserId = SecurityModule.currentUserName;
+               
             if (dataContext.Where(x => x.ConsignmentNo == data.ConsignmentNo).Count() > 0)
             {
+                RuntimeData origData = db.RuntimeDatas.SingleOrDefault(x => x.Id == data.Id);
+                dupliData(data, origData);
             }
             else
             {
-                data.SheetNo = sheetNo;
-                data.UserId = SecurityModule.currentUserName;
-                db.RuntimeDatas.InsertOnSubmit(data);
+                 db.RuntimeDatas.InsertOnSubmit(data);
                 dataListContext.AddNewItem(data);
-            }
-            if (data.FrAmount == null)
-            {
-                var c = DataSources.CityCopy.Where(x => x.CITY_CODE == data.Destination && x.CITY_STATUS == "A").FirstOrDefault();
-                if (c == null)
-                    c = DataSources.CityCopy.SingleOrDefault(x => x.CITY_CODE == "DEL");
-                data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, (double)data.BilledWeight, data.Destination, data.Type, (char)data.DOX);
             }
             try
             {
@@ -320,7 +332,7 @@ namespace FinalUi
                 MessageBox.Show("City cannot be empty");
                 return;
             }
-            if (this.BilledWeightTextBox.Text != null && this.BilledWeightTextBox.Text != "" )
+            if (this.BilledWeightTextBox.Text != null && this.BilledWeightTextBox.Text != "")
             {
                 RuntimeData data = null;
                 data = fillData(data);

@@ -80,6 +80,7 @@ namespace FinalUi
             runtimeDataObj.TransactionId = trans.ID;
             if (trans.Type != null)
                 runtimeDataObj.Type = trans.Type.Trim();
+            runtimeDataObj.BilledWeight = trans.BilledWeight;
             return runtimeDataObj;
         }
         static public List<RuntimeData> loadDataFromDatabase(DateTime startDate, DateTime endDate)
@@ -131,13 +132,17 @@ namespace FinalUi
             transactionData.InvoiceDate = data.InvoiceDate;
             transactionData.InvoiceNo = data.InvoiceNo;
             transactionData.Mode = data.Mode;
-            transactionData.ServiceTax = (Double)data.ServiceTax;
-            transactionData.SplDisc = (double)data.SplDisc;
+
+            if (data.ServiceTax != null)
+                transactionData.ServiceTax = (Double)data.ServiceTax;
+            if (data.SplDisc != null)
+                transactionData.SplDisc = (double)data.SplDisc;
             transactionData.Type = data.Type;
             transactionData.UserId = data.EmpId;
             transactionData.Weight = data.Weight;
             transactionData.WeightByFranchize = data.FrWeight;
             transactionData.LastModified = DateTime.Today;
+            transactionData.BilledWeight = data.BilledWeight;
             return transactionData;
 
         }
@@ -192,7 +197,7 @@ namespace FinalUi
         }
         #endregion
         #region Cost calculating
-        
+
 
         public static double getCost(string clientCode, double wieght, string cityCode, string serviceCode, char dox)
         {
@@ -277,17 +282,17 @@ namespace FinalUi
 
         internal static State getStateFromCity(string p)
         {
-            City city = DataSources.CityCopy.SingleOrDefault(x=>x.CITY_CODE == p);
+            City city = DataSources.CityCopy.SingleOrDefault(x => x.CITY_CODE == p);
             return city != null ? city.State : null;
         }
         internal static ZONE getZoneFromCityCode(string p)
         {
             ZONE zone = null;
             City city = DataSources.CityCopy.SingleOrDefault(x => x.CITY_CODE == p);
-            if(city.ZONE == null || city.ZONE == "")
+            if (city.ZONE == null || city.ZONE == "")
             {
                 var state = DataSources.StateCopy.Where(x => x.STATE_CODE == city.CITY_STATE).FirstOrDefault();
-              zone = DataSources.ZoneCopy.Where(x => x.zcode == state.STATE_ZONE).FirstOrDefault();
+                zone = DataSources.ZoneCopy.Where(x => x.zcode == state.STATE_ZONE).FirstOrDefault();
             }
             else
             {

@@ -35,7 +35,7 @@ namespace FinalUi
         private List<CostingRule> costingRules;
         private CollectionViewSource serviceRulesView;
         private List<ServiceRule> serviceRules;
-
+        private CollectionViewSource ServiceTable;
         private Quotation qutObj;
         // Employee listing data import procedure
         // Client listing data import procedure
@@ -89,6 +89,8 @@ namespace FinalUi
             BillingDataDataContext db = new BillingDataDataContext();
             dueDataGridSource.Source = db.BalanceViews;
             profitDataGridSource.Source = db.PROFITVIEWs;
+            ServiceTable = (CollectionViewSource)FindResource("ServiceTable");
+            ServiceTable.Source = DataSources.ServicesCopy;
             #region setupCode
             PreviewMouseMove += OnPreviewMouseMove;
             #endregion
@@ -214,7 +216,10 @@ namespace FinalUi
         #region Save Worker
         void SaveWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBlock.Text = MessageBlock.Text + "\n " + "Save Completed" + e.Result;
+            if (e.Error != null)
+                MessageBlock.Text += "\n Error in saving: " + e.Error.Message;
+            else
+                MessageBlock.Text = MessageBlock.Text + "\n " + "Save Completed" + e.Result;
         }
 
         void SaveWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -225,16 +230,11 @@ namespace FinalUi
 
         void SaveWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            string response;
-            try
+            string message = UtilityClass.saveRuntimeAsTransaction(dataGridHelper.getCurrentDataStack);
+            if(message!= "")
             {
-                response = UtilityClass.saveRuntimeAsTransaction(dataGridHelper.getCurrentDataStack);
+                throw new Exception(message);
             }
-            catch (Exception ex)
-            {
-                response = ex.Message;
-            }
-            e.Result = response;
         }
 
         #endregion
@@ -1390,6 +1390,22 @@ namespace FinalUi
             Client c = DataSources.ClientCopy.Where(x => x.CLCODE == "NONE").FirstOrDefault();
             ImportRules window = new ImportRules(c);
             window.Show();
+        }
+
+        private void GetRateButton_Click(object sender, RoutedEventArgs e)
+        {
+            Client client = (Client)Client_Combo.SelectedItem;
+            Service service = (Service)Service_Combo.SelectedItem;
+            char dox = Dox_Combo.Text == "Non-Dox"?'N':'D';
+            City city = (City)City_Combo.SelectedItem;
+            double weight;
+            if(!double.TryParse(WeightRuleTextBox.Text,out weight))
+            {
+                return;
+            }
+            if (client == null || service == null || dox == null || city == null)
+                return;
+            RateRuleTextBox.Text = UtilityClass.getCost(client.CLCODE, weight, city.CITY_CODE, service.SER_CODE, dox).ToString();
         }
     }
 }
