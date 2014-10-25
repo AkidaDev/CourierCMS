@@ -3,12 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="About Vortex" Height="300" Width="400" ResizeMode="NoResize">
     <Grid>
-        <Image Source="Images/Shape 21.png" Width="100" Height="100" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50 20 30 30"/>
+        <Image Source="Images/Shape 21.png" Width="120" Height="120" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40 15 30 30"/>
         <Canvas>
-            <TextBlock Foreground="#6666cc" FontSize="60" Text="V" FontWeight="SemiBold" Canvas.Left="166" Canvas.Top="42"/>
-            <TextBlock Foreground="#6666cc" FontSize="40" Text="ORTEX" Canvas.Left="198" Canvas.Top="64" />
+            <TextBlock Foreground="#6666cc" FontSize="60" Text="V" FontWeight="SemiBold" Canvas.Left="176" Canvas.Top="42"/>
+            <TextBlock Foreground="#6666cc" FontSize="40" Text="ORTEX" Canvas.Left="208" Canvas.Top="64" />
         </Canvas>
-        <StackPanel VerticalAlignment="Center" Margin="40 120 0 0 ">
+        <StackPanel VerticalAlignment="Center" Margin="40 130 0 0 ">
             <WrapPanel Margin="0 4 0 0">
             <TextBlock Text="Version .: " FontSize="14" Foreground="Gray" FontFamily="Calibri"/>
                 <TextBlock Text="646" FontSize="14" Foreground="Gray" FontFamily="Calibri"/>
@@ -32,7 +32,7 @@
                 </Button>
                 <TextBlock FontSize="14" MouseDown="update_CheckedUnChecked" Text=" Install new version automatically" Foreground="Gray" FontFamily="Calibri" Padding="3 3 0 0"/>
             </WrapPanel>
-            <WrapPanel Margin="0 15 0 0">
+            <WrapPanel Margin="0 10 0 0">
                 <TextBlock FontSize="14" Text="Copyright ©2014, All Rights Reserved" Foreground="#FF416DFF" FontFamily="Calibri"/>
             </WrapPanel>
             <Button Click="Close" Content="Ok" FontSize="14" Width="40" HorizontalAlignment="Right" Margin="0 -20 30 0"/>
