@@ -771,19 +771,19 @@
                                     <DataTemplate>
                                         <WrapPanel Background="LightGray">
                                             <StackPanel Margin="3" Background="White">
-                                                <TextBlock Text="  Service List .:    " FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                                <TextBlock Text="Service List .:" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
                                                 <ListBox ItemsSource="{Binding ServiceList}"  BorderThickness="0" Margin="3 3 0 0"/>
                                             </StackPanel>
                                             <StackPanel Margin="0 3 0 3" Background="White">
-                                                <TextBlock Text="  Zone List .:    " FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                                <TextBlock Text="Zone List .:" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
                                                 <ListBox ItemsSource="{Binding ZoneList}" BorderThickness="0" Margin="3 3 0 0"/>
                                             </StackPanel>
                                             <StackPanel Margin="3" Background="White">
-                                                <TextBlock Text="  City List .:    " FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                                <TextBlock Text="City List .:" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
                                                 <ListBox ItemsSource="{Binding CityList}" BorderThickness="0" Margin="3 3 0 0" />
                                             </StackPanel>
                                             <StackPanel Margin="0 3 0 3" Background="White">
-                                                <TextBlock Text="  State List .:    " FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                                <TextBlock Text="State List .:" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
                                                 <ListBox ItemsSource="{Binding StateList}" BorderThickness="0" Margin="3 3 0 0"/>
                                             </StackPanel>
                                         </WrapPanel>
