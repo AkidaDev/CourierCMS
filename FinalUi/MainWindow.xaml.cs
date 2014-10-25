@@ -1392,5 +1392,21 @@ namespace FinalUi
             ImportRules window = new ImportRules();
             window.Show();
         }
+
+        private void GetRateButton_Click(object sender, RoutedEventArgs e)
+        {
+            Client client = (Client)Client_Combo.SelectedItem;
+            Service service = (Service)Service_Combo.SelectedItem;
+            char dox = Dox_Combo.Text == "Non-Dox"?'N':'D';
+            City city = (City)City_Combo.SelectedItem;
+            double weight;
+            if(!double.TryParse(WeightRuleTextBox.Text,out weight))
+            {
+                return;
+            }
+            if (client == null || service == null || dox == null || city == null)
+                return;
+            RateRuleTextBox.Text = UtilityClass.getCost(client.CLCODE, weight, city.CITY_CODE, service.SER_CODE, dox).ToString();
+        }
     }
 }
