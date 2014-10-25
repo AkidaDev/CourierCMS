@@ -43,7 +43,12 @@ namespace FinalUi
                 else
                 {
                     ZONE zone = UtilityClass.getZoneFromCityCode(trans.Destination);
-                    if (RulesApplied.Where(x => x.ZoneList.Contains(zone.zcode)).Count() > 0)
+                    string zoneCode;
+                    if (zone == null)
+                        zoneCode = "DEF";
+                    else
+                        zoneCode = zone.zcode;
+                    if (RulesApplied.Where(x => x.ZoneList.Contains(zoneCode)).Count() > 0)
                     {
                         RulesApplied = RulesApplied.Where(x => x.ZoneList.Contains(zone.zcode)).ToList();
                     }

@@ -34,7 +34,7 @@ namespace FinalUi
             currentCanvasObj.Visibility = Visibility.Visible;
             ServiceTwinBox.AllListSource = (DataSources.ServicesCopy);
             ServiceTwinBox.SelectedListSource = new List<Service>();
-            ServiceTwinBox.DisplayValuePath = "NameAndCOde";
+            ServiceTwinBox.DisplayValuePath = "NameAndCode";
             ZoneTwinBox.AllListSource = (DataSources.ZoneCopy);
             ZoneTwinBox.SelectedListSource = new List<ZONE>();
             ZoneTwinBox.DisplayValuePath = "NameAndCode";
