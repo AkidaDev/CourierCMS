@@ -172,7 +172,7 @@ namespace FinalUi
                 catch (Exception ex) { MessageBox.Show(ex.Message); return; }
                 if (isdone)
                 {
-                    MessageBox.Show("Rule Added Now Party");
+                    MessageBox.Show("New Service Rule Added");
                     this.Close();
                 }
             }

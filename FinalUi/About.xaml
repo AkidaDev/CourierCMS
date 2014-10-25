@@ -1,8 +1,12 @@
 ﻿<Window x:Class="FinalUi.About"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="About" Height="300" Width="300">
+        Title="About Vortex" Height="300" Width="400" ResizeMode="NoResize">
     <Grid>
-        
+        <Image Source="Images/Logo.ico" Width="120" Height="120" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30"/>
+        <WrapPanel HorizontalAlignment="Center" Margin="110 50 0 0">
+            <TextBlock Foreground="Black" FontSize="70" Text="V" FontWeight="Bold"/>
+            <TextBlock Foreground="Black" FontSize="50" Text="ORTEX" Height="62" Width="155" Margin="-5 12 0 0"/>
+        </WrapPanel>
     </Grid>
 </Window>

@@ -740,8 +740,8 @@
                                 <TextBlock Foreground="#FF5B5B5B" Text=" Select Type of RULE  .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="8 0 0 0" TextDecorations="Underline"/>
                                 <RadioButton Foreground="#FF5B5B5B" IsChecked="True" x:Name="CostingRuleRadio"  Content="Costing Rule" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0" Checked="CostingRuleRadio_Checked_1"/>
                                 <RadioButton Checked="ServiceRuleRadio_Checked" Foreground="#FF5B5B5B" Content="Service Rule" x:Name="ServiceRuleRadio"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
-                                <RadioButton Checked="InvoiceRuleRadio_Checked" Foreground="#FF5B5B5B" Content="Invoice Rule" x:Name="InvoiceRuleRadio" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
-                                <Button Content="  Add Costing Rule  " x:Name="AddCostingRuleButton" Click="AddRuleButton_Click"  Margin="34 0 0 0" Visibility="Visible" Style="{StaticResource all}"/>
+                                <!--<RadioButton Checked="InvoiceRuleRadio_Checked" Foreground="#FF5B5B5B" Content="Invoice Rule" x:Name="InvoiceRuleRadio" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
+                               --> <Button Content="  Add Costing Rule  " x:Name="AddCostingRuleButton" Click="AddRuleButton_Click"  Margin="34 0 0 0" Visibility="Visible" Style="{StaticResource all}"/>
                                 <Button Content="  Add Service Rule  " x:Name="AddServiceRuleButton" Click="AddServiceRuleButton_Click" Margin="34 0 0 0" Visibility="Collapsed" Style="{StaticResource all}"/>
                                 <Button Content="  Add Invoice Rule  " x:Name="AddInvoiceRuleButton" Click="AddInvoiceRuleButton_Click" Margin="34 0 0 0" Visibility="Collapsed" Style="{StaticResource all}"/>
                             </WrapPanel>
@@ -807,22 +807,22 @@
                                 </DataGrid.Columns>
                                 <DataGrid.RowDetailsTemplate>
                                     <DataTemplate>
-                                        <WrapPanel Background="LightGray">
-                                            <StackPanel Margin="3" Background="White">
-                                                <TextBlock Text="  Service List .:    " FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                                                <ListBox ItemsSource="{Binding ServiceList}"  BorderThickness="0" Margin="3 3 0 0"/>
+                                        <WrapPanel Background="#223f3f46">
+                                            <StackPanel Margin="3" Background="#A9FFFFF3">
+                                                <TextBlock Text="Service List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
+                                                <ListBox ItemsSource="{Binding ServiceList}"  BorderThickness="0" Margin="3 3 0 0" Background="Transparent"/>
                                             </StackPanel>
-                                            <StackPanel Margin="0 3 0 3" Background="White">
-                                                <TextBlock Text="  Zone List .:    " FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                                                <ListBox ItemsSource="{Binding ZoneList}" BorderThickness="0" Margin="3 3 0 0"/>
+                                            <StackPanel Margin="0 3 0 3" Background="#A9FFFFF3">
+                                                <TextBlock Text="Zone List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
+                                                <ListBox ItemsSource="{Binding ZoneList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent"/>
                                             </StackPanel>
-                                            <StackPanel Margin="3" Background="White">
-                                                <TextBlock Text="  City List .:    " FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                                                <ListBox ItemsSource="{Binding CityList}" BorderThickness="0" Margin="3 3 0 0" />
+                                            <StackPanel Margin="3" Background="#A9FFFFF3">
+                                                <TextBlock Text="City List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
+                                                <ListBox ItemsSource="{Binding CityList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent"/>
                                             </StackPanel>
-                                            <StackPanel Margin="0 3 0 3" Background="White">
-                                                <TextBlock Text="  State List .:    " FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                                                <ListBox ItemsSource="{Binding StateList}" BorderThickness="0" Margin="3 3 0 0"/>
+                                            <StackPanel Margin="0 3 0 3" Background="#A9FFFFF3">
+                                                <TextBlock Text="State List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
+                                                <ListBox ItemsSource="{Binding StateList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent"/>
                                             </StackPanel>
                                         </WrapPanel>
                                     </DataTemplate>
