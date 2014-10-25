@@ -633,9 +633,12 @@ namespace FinalUi
         #region filter functions
         private void FilterButton_Click(object sender, RoutedEventArgs e)
         {
-            FilterSelectWindow window = new FilterSelectWindow(dataGridHelper.currentDataSheet.filterObj, dataGridHelper.currentConnNosNoFilter);
-            window.Closed += window_Closed;
-            window.Show();
+            if (dataGridHelper.areSheetsPresent)
+            {
+                FilterSelectWindow window = new FilterSelectWindow(dataGridHelper.currentDataSheet.filterObj, dataGridHelper.currentConnNosNoFilter);
+                window.Closed += window_Closed;
+                window.Show();
+            }
         }
         void window_Closed(object sender, EventArgs e)
         {
