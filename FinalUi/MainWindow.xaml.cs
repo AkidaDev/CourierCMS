@@ -1322,7 +1322,6 @@ namespace FinalUi
                 backgroundimage.Visibility = Visibility.Visible;
             }
         }
-
         private void General_Ribbon(object sender, RoutedEventArgs e)
         {
             this.GeneralRibbon.Height = 24;
@@ -1386,10 +1385,10 @@ namespace FinalUi
             HelpRibbonTab.Visibility = Visibility.Collapsed;
             FeedbackRibbonTab.Visibility = Visibility.Visible;
         }
-
         private void ImportRule_Click(object sender, RoutedEventArgs e)
         {
-            ImportRules window = new ImportRules();
+            Client c = DataSources.ClientCopy.Where(x => x.CLCODE == "NONE").FirstOrDefault();
+            ImportRules window = new ImportRules(c);
             window.Show();
         }
     }

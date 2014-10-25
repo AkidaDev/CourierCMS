@@ -21,21 +21,31 @@ namespace FinalUi
         Client client;
         List<Client> clientList;
         CollectionViewSource clientViewSource;
+        CollectionViewSource CostingRulesSource;
+        CollectionViewSource serviceRulesView;
         List<CostingRule> costingRuleList;
         List<ServiceRule> serviceRuleList;
         List<Rule> ruleList;
+        Quotation qutObj;
         public ImportRules()
         {
             InitializeComponent();
+            this.ClientComboBox.SelectionChanged -= ComboBox_SelectionChanged;
         }
         public ImportRules(Client client)
             : this()
         {
-            this.client = client;
-            clientViewSource = (CollectionViewSource)FindResource("ClinetViewList");
-            clientList = DataSources.ClientCopy.ToList();
-            clientViewSource.Source = clientList;
-            this.ClientBox.Text = client.NameAndCode;
+            if (client != null)
+            {
+                this.client = client;
+                clientViewSource = (CollectionViewSource)FindResource("ClinetViewList");
+                clientList = DataSources.ClientCopy.ToList();
+                clientViewSource.Source = clientList;
+                this.ClientBox.Text = client.NameAndCode;
+                this.ClientComboBox.Text = this.client.NameAndCode;
+                this.ClientComboBox.SelectionChanged += ComboBox_SelectionChanged;
+            }
+            LoadClientRules(this.client);
         }
         private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {
@@ -47,15 +57,45 @@ namespace FinalUi
         }
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Client client = (Client)ClientComboBox.SelectedItem;
+            if (client != null)
+            {
+                this.client = client;
+                LoadClientRules(client);
+            }
         }
-        private List<Rule> getRuleList(Client client)
+        private void LoadClientRules(Client client)
         {
-            return DataSources
+            if (CostingRulesSource == null)
+            {
+                CostingRulesSource = (CollectionViewSource)FindResource("CostingRuleList");
+            }
+            if (serviceRulesView == null)
+            {
+                serviceRulesView = (CollectionViewSource)FindResource("ServiceRuleList");
+            }
+            BillingDataDataContext db = new BillingDataDataContext();
+            qutObj = db.Quotations.SingleOrDefault(x => x.CLCODE == client.CLCODE);
+            if (qutObj == null)
+            {
+                unLoadQuotation();
+            }
+            else
+            {
+                loadQuotation(qutObj);
+            }
         }
-        private void reload()
-        { 
-            
+        void unLoadQuotation()
+        {
+            CostingRulesSource.Source = null;
+            serviceRulesView.Source = null;
+            CostingRuleGrid.Items.Refresh();
+            ServiceRuleGrid.Items.Refresh();
+        }
+        void loadQuotation(Quotation qutObj)
+        {
+            CostingRulesSource.Source = qutObj.CostingRules;
+            serviceRulesView.Source = qutObj.ServiceRules;
         }
     }
 }
