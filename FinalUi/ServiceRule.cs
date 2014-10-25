@@ -97,6 +97,7 @@ namespace FinalUi
             else
             {
                 int steps = (int)((runData.BilledWeight - startW) / step);
+                steps++;
                 per = per * steps;
                 if (mode == 'P')
                 {

@@ -1284,7 +1284,7 @@ namespace FinalUi
             {
                 if (MessageBox.Show("Do you Want delete this Rule", "", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
-                    ServiceRule dcr = (ServiceRule)InvoiceRuleGrid.SelectedItem;
+                    ServiceRule dcr = (ServiceRule)ServiceRuleGrid.SelectedItem;
                     Rule dr = db.Rules.Where(x => x.ID == dcr.Id).FirstOrDefault();
                     ServiceRuleGrid.SelectedItem = null;
                     db.Rules.DeleteOnSubmit(dr);
