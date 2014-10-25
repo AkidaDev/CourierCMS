@@ -1386,5 +1386,11 @@ namespace FinalUi
             HelpRibbonTab.Visibility = Visibility.Collapsed;
             FeedbackRibbonTab.Visibility = Visibility.Visible;
         }
+
+        private void ImportRule_Click(object sender, RoutedEventArgs e)
+        {
+            ImportRules window = new ImportRules();
+            window.Show();
+        }
     }
 }

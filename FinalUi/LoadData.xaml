@@ -11,7 +11,8 @@
         <Canvas x:Name="LoadData1" ClipToBounds="True" Background="White" Height="210"  Width="322">
             <DatePicker Name="StartLoadDate" Canvas.Left="38" Canvas.Top="147.5"   Height="26"  Width="124"  BorderThickness="0" Padding="0 4 0 0"/>
             <DatePicker Name="EndLoadDate" Height="26" Canvas.Left="178" Canvas.Top="147.5" Width="124"  BorderThickness="0" Padding="0 4 0 0"/>
-        	<WrapPanel  Canvas.Top="119" Canvas.Left="31">
+            <Button Style="{DynamicResource window}" Click="DataBrowserRadio_Click"  Canvas.Top="119" Canvas.Left="31">
+            <WrapPanel >
 			<Path x:Name="import_files" Height="24"  Data="F1M11.187,19.719C11.187,19.719 11.187,20.375 11.187,20.375 11.187,20.375 13.812,20.375 13.812,20.375 13.812,
 			20.375 13.812,19.719 13.812,19.719 13.812,19.719 11.187,19.719 11.187,19.719z M9.875,17.094C9.875,17.094 9.875,17.75 9.875,17.75 9.875,17.75 15.125,
 			17.75 15.125,17.75 15.125,17.75 15.125,17.094 15.125,17.094 15.125,17.094 9.875,17.094 9.875,17.094z M20.375,12.5C20.375,12.5 20.375,13.812 20.375,
@@ -23,8 +24,8 @@
 			13.225 15.125,12.5 15.125,12.5 15.125,11.187 15.125,11.187 15.125,11.187 21.031,11.187 21.031,11.187 21.031,11.187 17.094,3.312 17.094,
 			3.312 17.094,3.312 7.906,3.312 7.906,3.312z M7.25,2C7.25,2 17.709,2 17.709,2 17.709,2 23,11.187 23,11.187 23,11.187 23,23 23,23 23,23 2,23 2,23 2,
 			23 2,11.187 2,11.187 2,11.187 7.25,2 7.25,2z" Fill="Black"  Width="24"/>
-        	<TextBlock x:Name="LOAD_From_DataBase" FontWeight="Bold" FontSize="14" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="62" LineHeight="14" TextAlignment="Left" TextWrapping="Wrap" Text="LOAD From DataBase" Canvas.Top="128.68" Margin="5,7,0,0" />
-        	</WrapPanel>
+        	<TextBlock x:Name="LOAD_From_DataBase" FontWeight="Bold" FontSize="14" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="62" LineHeight="14" TextAlignment="Left" TextWrapping="Wrap" Text="LOAD From DataBase " Canvas.Top="128.68" Margin="5,7,0,0" />
+        	</WrapPanel></Button>
 			<Path x:Name="Rectangle_2" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="27" Canvas.Left="36" Canvas.Top="147" Width="98" Stroke="Black"/>
         	<Path x:Name="Rectangle_2_copy" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="27" Canvas.Left="176" Canvas.Top="147" Width="98" Stroke="Black"/>
         	<Path x:Name="line" Data="F1M1,2C1,2 1,1 1,1 1,1 262,1 262,1 262,1 262,2 262,2 262,2 1,2 1,2" Fill="Black" Height="3" Canvas.Left="28" Canvas.Top="108.827" Width="263"/>
