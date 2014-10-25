@@ -18,9 +18,24 @@ namespace FinalUi
     /// </summary>
     public partial class ImportRules : Window
     {
+        Client client;
+        List<Client> clientList;
+        CollectionViewSource clientViewSource;
+        List<CostingRule> costingRuleList;
+        List<ServiceRule> serviceRuleList;
+        List<Rule> ruleList;
         public ImportRules()
         {
             InitializeComponent();
+        }
+        public ImportRules(Client client)
+            : this()
+        {
+            this.client = client;
+            clientViewSource = (CollectionViewSource)FindResource("ClinetViewList");
+            clientList = DataSources.ClientCopy.ToList();
+            clientViewSource.Source = clientList;
+            this.ClientBox.Text = client.NameAndCode;
         }
         private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {
@@ -29,6 +44,18 @@ namespace FinalUi
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+        private List<Rule> getRuleList(Client client)
+        {
+            return DataSources
+        }
+        private void reload()
+        { 
+            
         }
     }
 }
