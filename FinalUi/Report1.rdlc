@@ -313,7 +313,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
-        <Top>25.10901cm</Top>
+        <Top>25.07373cm</Top>
         <Left>8.70625cm</Left>
         <Height>0.53868cm</Height>
         <Width>3.19955cm</Width>
@@ -962,7 +962,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
-        <Top>25.07373cm</Top>
+        <Top>25.03845cm</Top>
         <Left>1.85036cm</Left>
         <Height>0.53868cm</Height>
         <Width>3.19955cm</Width>
@@ -995,7 +995,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
-        <Top>25.07373cm</Top>
+        <Top>25.03845cm</Top>
         <Left>15.82799cm</Left>
         <Height>0.53868cm</Height>
         <Width>3.19955cm</Width>
@@ -3913,7 +3913,7 @@
       </Border>
     </Style>
   </Body>
-  <Width>7.9187in</Width>
+  <Width>7.9583in</Width>
   <Page>
     <PageHeader>
       <Height>0.90868cm</Height>
@@ -3941,9 +3941,9 @@
           </Paragraphs>
           <rd:DefaultName>Textbox21</rd:DefaultName>
           <Top>0.26458cm</Top>
-          <Left>0.04554cm</Left>
+          <Left>0.15689cm</Left>
           <Height>0.57354cm</Height>
-          <Width>19.85105cm</Width>
+          <Width>19.87302cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -3985,9 +3985,9 @@
           </Paragraphs>
           <rd:DefaultName>Textbox16</rd:DefaultName>
           <Top>0.10583cm</Top>
-          <Left>0.01793in</Left>
+          <Left>0.06177in</Left>
           <Height>0.57354cm</Height>
-          <Width>19.93435cm</Width>
+          <Width>19.87331cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -4016,9 +4016,9 @@
           </Paragraphs>
           <rd:DefaultName>Textbox17</rd:DefaultName>
           <Top>0.71462cm</Top>
-          <Left>0.01793in</Left>
+          <Left>0.06177in</Left>
           <Height>0.58236cm</Height>
-          <Width>19.93435cm</Width>
+          <Width>19.87331cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -4042,12 +4042,13 @@
     <InteractiveHeight>11.5in</InteractiveHeight>
     <InteractiveWidth>8in</InteractiveWidth>
     <LeftMargin>0.2cm</LeftMargin>
-    <RightMargin>0.2cm</RightMargin>
-    <TopMargin>0.2cm</TopMargin>
-    <BottomMargin>0.2cm</BottomMargin>
+    <RightMargin>0cm</RightMargin>
+    <TopMargin>0cm</TopMargin>
+    <BottomMargin>0cm</BottomMargin>
     <ColumnSpacing>0.13cm</ColumnSpacing>
     <Style>
       <Border>
+        <Color>White</Color>
         <Style>Double</Style>
       </Border>
     </Style>
