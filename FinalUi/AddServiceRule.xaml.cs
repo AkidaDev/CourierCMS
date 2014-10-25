@@ -26,6 +26,7 @@ namespace FinalUi
         public AddServiceRule(Quotation quoation)
         {
             InitializeComponent();
+            isdone = false;
             this.quotation = quoation;
             this.WholeRadio.Checked += WholeRadio_Checked;
             this.StepRadio.Checked += RadioButton_Checked_1;
@@ -156,7 +157,7 @@ namespace FinalUi
             r.QID = quotation.Id;
             r.Remark = this.RemarkBox.Text;
             db.Rules.InsertOnSubmit(r);
-            bool isdone = false;
+          
             if (validate())
             {
                 try
@@ -172,6 +173,7 @@ namespace FinalUi
                 }
             }
         }
+        public bool isdone;
         private bool validate()
         {
             if (this.StateTwinBox.SelectedListR.Items.Count > 0 || this.ZoneTwinBox.SelectedListR.Items.Count > 0 || this.CitiesTwinBox.SelectedListR.Items.Count > 0 && this.ServiceTwinBox.SelectedListR.Items.Count > 0)

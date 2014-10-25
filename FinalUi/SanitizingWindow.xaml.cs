@@ -108,9 +108,11 @@ namespace FinalUi
             data.Amount = Decimal.Parse(Cost.Text);
             var c1 = DataSources.CityCopy.Where(x => x.NameAndCode == Destination.Text).Select(y => y.CITY_CODE).FirstOrDefault();
             data.Destination = c1;
-            DestinationPin.Text = DestinationPin.Text ?? "";
+            decimal tempDecimal;
+            if (decimal.TryParse(DestinationPin.Text, out tempDecimal))
+                data.DestinationPin = tempDecimal;
             data.CustCode = DataSources.ClientCopy.Where(x => x.NameAndCode == CustomerSelected.Text).Select(y => y.CLCODE).FirstOrDefault();
-            if (MODE.Text == "")
+            if (MODE.Text != "")
                 data.Mode = MODE.Text;
             data.Type = DataSources.ServicesCopy.Where(x => x.NameAndCode == TypeComboBox.Text).Select(y => y.SER_CODE).FirstOrDefault();
             data.BookingDate = (DateTime)InsertionDate.SelectedDate;
@@ -176,9 +178,9 @@ namespace FinalUi
             }
             if (data.FrAmount == null)
             {
-                var c = db.Cities.Where(x => x.CITY_CODE == data.Destination && x.CITY_STATUS == "A").FirstOrDefault();
+                var c = DataSources.CityCopy.Where(x => x.CITY_CODE == data.Destination && x.CITY_STATUS == "A").FirstOrDefault();
                 if (c == null)
-                    c = db.Cities.SingleOrDefault(x => x.CITY_CODE == "DEL");
+                    c = DataSources.CityCopy.SingleOrDefault(x => x.CITY_CODE == "DEL");
                 data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, (double)data.BilledWeight, data.Destination, data.Type, (char)data.DOX);
             }
             try
@@ -189,6 +191,7 @@ namespace FinalUi
         }
         public void setNextData()
         {
+            SaveData();
             int index = ConnsignmentNumber.SelectedIndex;
             if (ConnsignmentNumber.Items.Count - 1 == index)
             {
@@ -198,12 +201,14 @@ namespace FinalUi
                 ConnsignmentNumber.Text = (string)ConnsignmentNumber.Items.GetItemAt(index + 1);
                 fillAllElements(ConnsignmentNumber.Text);
             }
+            ConnsignmentNumber.Focus();
         }
         public void setdata(RuntimeData dbdata, RuntimeData data)
         {
         }
         public void setPreviousData()
         {
+            SaveData();
             int index = ConnsignmentNumber.SelectedIndex;
             if (index == 0)
             {
