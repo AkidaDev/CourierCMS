@@ -857,7 +857,6 @@ namespace FinalUi
         }
         private void RateWindowMenu_Click(object sender, RoutedEventArgs e)
         {
-            RateWindow window = new RateWindow(); window.Show();
         }
         private void AboutMenuItem_Click(object sender, RoutedEventArgs e)
         {

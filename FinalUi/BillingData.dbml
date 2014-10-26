@@ -1,24 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BillingDatabase" Class="BillingDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=SYSTEM;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString2" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Assignment" Member="Assignments">
-    <Type Name="Assignment">
-      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ServiceCode" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="ClientCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
-      <Column Name="ZoneCode" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="RateCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Association Name="Client_Assignment" Member="Client" ThisKey="ClientCode" OtherKey="CLCODE" Type="Client" IsForeignKey="true" />
-      <Association Name="Rate_Assignment" Member="Rate" ThisKey="RateCode" OtherKey="RateCode" Type="Rate" IsForeignKey="true" />
-      <Association Name="Service_Assignment" Member="Service" ThisKey="ServiceCode" OtherKey="SER_CODE" Type="Service" IsForeignKey="true" />
-      <Association Name="ZONE_Assignment" Member="ZONE" ThisKey="ZoneCode" OtherKey="zcode" Type="ZONE" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.world_cities_free" Member="world_cities_frees">
-    <Type Name="world_cities_free">
-      <Column Name="cc_fips" Type="System.String" DbType="NVarChar(2) NOT NULL" CanBeNull="false" />
-      <Column Name="full_name_nd" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
+  <Connection Mode="AppSettings" ConnectionString="Data Source=PANKAJ\SQLEXPRESS;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString5" Provider="System.Data.SqlClient" />
   <Table Name="dbo.City" Member="Cities">
     <Type Name="City">
       <Column Name="CITY_CODE" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -37,6 +18,14 @@
       <Column Name="ZONE" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="Status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
       <Association Name="State_City" Member="State" ThisKey="CITY_STATE" OtherKey="STATE_CODE" Type="State" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ZONE" Member="ZONEs">
+    <Type Name="ZONE">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="zcode" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Zone_name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Mode" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Client" Member="Clients">
@@ -64,7 +53,6 @@
       <Column Name="APPTRF" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
       <Column Name="CASTATUS" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-      <Association Name="Client_Assignment" Member="Assignments" ThisKey="CLCODE" OtherKey="ClientCode" Type="Assignment" />
       <Association Name="Client_PaymentEntry" Member="PaymentEntries" ThisKey="CLCODE" OtherKey="ClientCode" Type="PaymentEntry" />
       <Association Name="Client_Quotation" Member="Quotations" ThisKey="CLCODE" OtherKey="CLCODE" Type="Quotation" />
       <Association Name="Client_Transaction" Member="Transactions" ThisKey="CLCODE" OtherKey="CustCode" Type="Transaction" />
@@ -147,27 +135,6 @@
       <Association Name="Client_Quotation" Member="Client" ThisKey="CLCODE" OtherKey="CLCODE" Type="Client" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Rate" Member="Rates">
-    <Type Name="Rate">
-      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="RateCode" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="Rate_Assignment" Member="Assignments" ThisKey="RateCode" OtherKey="RateCode" Type="Assignment" />
-      <Association Name="Rate_RateDetail" Member="RateDetails" ThisKey="RateCode" OtherKey="RateCode" Type="RateDetail" />
-    </Type>
-  </Table>
-  <Table Name="dbo.RateDetails" Member="RateDetails">
-    <Type Name="RateDetail">
-      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="RateCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="DoxRate" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="NonDoxRate" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="StepWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Mode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Association Name="Rate_RateDetail" Member="Rate" ThisKey="RateCode" OtherKey="RateCode" Type="Rate" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.[Rule]" Member="Rules">
     <Type Name="Rule">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -223,7 +190,28 @@
       <Column Name="SER_BILLING" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="PRODUCT_ID" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="SER_HIERARCHY_ID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Association Name="Service_Assignment" Member="Assignments" ThisKey="SER_CODE" OtherKey="ServiceCode" Type="Assignment" />
+    </Type>
+  </Table>
+  <Table Name="dbo.State" Member="States">
+    <Type Name="State">
+      <Column Name="STATE_CODE" Type="System.String" DbType="NVarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="STATE_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="STATE_COUNTRY" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="STATE_CAPITAL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="STATE_MAP" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="STATE_POPULATION" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="STATE_IMP_AREA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="STATE_INDUSTRIES" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="STATE_ZO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="STATE_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MOD_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MOD_TIME" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NODEID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="USERID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="TRANS_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="STATE_RO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="STATE_ZONE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="State_City" Member="Cities" ThisKey="STATE_CODE" OtherKey="CITY_STATE" Type="City" />
     </Type>
   </Table>
   <Table Name="dbo.Stock" Member="Stocks">
@@ -274,15 +262,6 @@
       <Column Name="per_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Employee_User_permission" Member="Employee" ThisKey="emp_id" OtherKey="Id" Type="Employee" IsForeignKey="true" />
       <Association Name="Permission_User_permission" Member="Permission" ThisKey="per_id" OtherKey="id" Type="Permission" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ZONE" Member="ZONEs">
-    <Type Name="ZONE">
-      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="zcode" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="Zone_name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="Mode" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Association Name="ZONE_Assignment" Member="Assignments" ThisKey="zcode" OtherKey="ZoneCode" Type="Assignment" />
     </Type>
   </Table>
   <Table Name="dbo.AccountStatement" Member="AccountStatements">
@@ -380,28 +359,6 @@
       <Column Name="CITY_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.State" Member="States">
-    <Type Name="State">
-      <Column Name="STATE_CODE" Type="System.String" DbType="NVarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="STATE_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_COUNTRY" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_CAPITAL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_MAP" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_POPULATION" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="STATE_IMP_AREA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_INDUSTRIES" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_ZO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="MOD_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="MOD_TIME" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="NODEID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="USERID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="TRANS_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_RO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_ZONE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Association Name="State_City" Member="Cities" ThisKey="STATE_CODE" OtherKey="CITY_STATE" Type="City" />
-    </Type>
-  </Table>
   <Function Name="dbo.sp_deleteSheetFromRuntime" Method="sp_deleteSheetFromRuntime">
     <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
@@ -443,7 +400,9 @@
   <Function Name="dbo.sp_TransferFRWRDRAsService" Method="sp_TransferFRWRDRAsService">
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail" Method="sp_TransferMInvoiceDetailToBInvoiceDetail" />
+  <Function Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail" Method="sp_TransferMInvoiceDetailToBInvoiceDetail" IsComposable="true">
+    <Return Type="object" />
+  </Function>
   <Function Name="dbo.sp_TransferMInvoiceToBInvoice" Method="sp_TransferMInvoiceToBInvoice">
     <Return Type="System.Int32" />
   </Function>

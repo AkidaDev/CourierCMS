@@ -184,9 +184,6 @@
     <Compile Include="AddInvoiceRule.xaml.cs">
       <DependentUpon>AddInvoiceRule.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddNewRateWindow.xaml.cs">
-      <DependentUpon>AddNewRateWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="AddServiceRule.xaml.cs">
       <DependentUpon>AddServiceRule.xaml</DependentUpon>
     </Compile>
@@ -224,9 +221,6 @@
       <DependentUpon>DataSet2.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSources.cs" />
-    <Compile Include="EditRateDetailsWindow.xaml.cs">
-      <DependentUpon>EditRateDetailsWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Extensions.cs" />
     <Compile Include="Filter.cs" />
     <Compile Include="FilterSelectWindow.xaml.cs">
@@ -266,12 +260,6 @@
     </Compile>
     <Compile Include="PrintWindow.xaml.cs">
       <DependentUpon>PrintWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="RateAssignment.xaml.cs">
-      <DependentUpon>RateAssignment.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="RateWindow.xaml.cs">
-      <DependentUpon>RateWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Rule.cs" />
     <Compile Include="SanitizingWindow.xaml.cs">
@@ -337,10 +325,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AddNewRateWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="AddServiceRule.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -372,10 +356,6 @@
     <Page Include="CountryAssignment.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="EditRateDetailsWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FilterSelectWindow.xaml">
       <SubType>Designer</SubType>
@@ -456,14 +436,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PrintWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="RateAssignment.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="RateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
