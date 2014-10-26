@@ -33,7 +33,7 @@ namespace FinalUi
 
         void PrintMainWindow_Closed(object sender, EventArgs e)
         {
-            MessageBox.Show("Dont forget to save the invoice after this window is closed... (Ignore if done already)");
+            MessageBox.Show("Dont forget to save the invoice... (Ignore if done already)");
         }
     }
 }
