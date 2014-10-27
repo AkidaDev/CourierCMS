@@ -26,6 +26,7 @@ namespace FinalUi
         Quotation quoation;
         CostingRule RuleCR;
         BillingDataDataContext db;
+        bool isInitialized = false;
         public AddRule(int ruleId)
         {
             db = new BillingDataDataContext();
@@ -36,6 +37,7 @@ namespace FinalUi
                 return;
             }
             InitializeComponent();
+            isInitialized = true;
             RuleCR = (new JavaScriptSerializer()).Deserialize<CostingRule>(rule.Properties);
             List<Service> serviceListr =  DataSources.ServicesCopy.Where(x => !RuleCR.ServiceList.Contains(x.SER_CODE)).ToList();
             ServiceTwinBox.AllListSource = serviceListr;
@@ -75,6 +77,7 @@ namespace FinalUi
             RuleCR = new CostingRule();
             db = new BillingDataDataContext();
             InitializeComponent();
+            isInitialized = true;
             currentCanvasObj = Step1Canvas;
             currentCanvasObj.Visibility = Visibility.Visible;
             ServiceTwinBox.AllListSource = (DataSources.ServicesCopy);
@@ -315,20 +318,23 @@ namespace FinalUi
     
         private void StepTypeRadio_Checked(object sender, RoutedEventArgs e)
         {
-            try
+            if (IsInitialized)
             {
+                try
+                {
 
-                StepWeightBlock.Visibility = Visibility.Visible;
-                StepBlockBox.Visibility = Visibility.Visible;
-                NDoxStartValueBox.Visibility = Visibility.Visible;
-                DoxStartValue.Visibility = Visibility.Visible;
-                DoxStartValueBox.Visibility = Visibility.Visible;
-                NDoxStartValue.Visibility = Visibility.Visible;
-                vertical_line.Visibility = Visibility.Visible;
-            }
-            catch(NullReferenceException ex)
-            {
-                
+                    StepWeightBlock.Visibility = Visibility.Visible;
+                    StepBlockBox.Visibility = Visibility.Visible;
+                    NDoxStartValueBox.Visibility = Visibility.Visible;
+                    DoxStartValue.Visibility = Visibility.Visible;
+                    DoxStartValueBox.Visibility = Visibility.Visible;
+                    NDoxStartValue.Visibility = Visibility.Visible;
+                    vertical_line.Visibility = Visibility.Visible;
+                }
+                catch (NullReferenceException ex)
+                {
+
+                }
             }
         }
 

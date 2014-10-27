@@ -46,7 +46,16 @@ namespace FinalUi
 
         private void updateClient_Click(object sender, RoutedEventArgs e)
         {
+            if(this.mangaclientgrid.SelectedItems.Count != 1)
+            {
+                MessageBox.Show("Select 1 client to update");
+                return;
+            }
            client = (Client)this.mangaclientgrid.SelectedItem;
+            if(client == null)
+            {
+                MessageBox.Show("Please select a client to update");
+            }
             AddClient add = new AddClient(client);
             add.Closed += AddClient_close;
             add.ShowDialog();

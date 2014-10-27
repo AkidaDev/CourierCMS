@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BillingDatabase" Class="BillingDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=PANKAJ\SQLEXPRESS;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString5" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=SYSTEM;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString2" Provider="System.Data.SqlClient" />
   <Table Name="dbo.City" Member="Cities">
     <Type Name="City">
       <Column Name="CITY_CODE" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -80,20 +80,6 @@
       <Association Name="Employee_User_permission" Member="User_permissions" ThisKey="Id" OtherKey="emp_id" Type="User_permission" />
     </Type>
   </Table>
-  <Table Name="dbo.Invoice" Member="Invoices">
-    <Type Name="Invoice">
-      <Column Name="BillId" Type="System.String" DbType="VarChar(32) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ClientCode" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="TotalAmount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Fuel" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="STax" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Basic" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Remarks" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="PreviousDue" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Association Name="Invoice_InvoiceAssignment" Member="InvoiceAssignments" ThisKey="BillId" OtherKey="BillId" Type="InvoiceAssignment" />
-    </Type>
-  </Table>
   <Table Name="dbo.InvoiceAssignment" Member="InvoiceAssignments">
     <Type Name="InvoiceAssignment">
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -101,8 +87,8 @@
       <Column Name="TransactionId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="BilledAmount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="BilledWeight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Association Name="Invoice_InvoiceAssignment" Member="Invoice" ThisKey="BillId" OtherKey="BillId" Type="Invoice" IsForeignKey="true" />
       <Association Name="Transaction_InvoiceAssignment" Member="Transaction" ThisKey="TransactionId" OtherKey="ID" Type="Transaction" IsForeignKey="true" />
+      <Association Name="Invoice_InvoiceAssignment" Member="Invoice" ThisKey="BillId" OtherKey="BillId" Type="Invoice" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.PaymentEntry" Member="PaymentEntries">
@@ -357,6 +343,21 @@
       <Column Name="TransMF_No" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="BilledWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="CITY_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Invoice" Member="Invoices">
+    <Type Name="Invoice">
+      <Column Name="BillId" Type="System.String" DbType="VarChar(32) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ClientCode" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="TotalAmount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Fuel" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="STax" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Basic" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Remarks" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PreviousDue" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Misc" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="Invoice_InvoiceAssignment" Member="InvoiceAssignments" ThisKey="BillId" OtherKey="BillId" Type="InvoiceAssignment" />
     </Type>
   </Table>
   <Function Name="dbo.sp_deleteSheetFromRuntime" Method="sp_deleteSheetFromRuntime">

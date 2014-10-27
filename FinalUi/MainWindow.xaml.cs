@@ -63,10 +63,11 @@ namespace FinalUi
         CollectionViewSource CostingRulesSource;
 
         #endregion
+        bool isInitialized = false;
         public MainWindow()
         {
-            SecurityModule.authenticate("purushottam", "1234");
             InitializeComponent();
+            isInitialized = true;
             // Zone listing data import procedure
             ZoneTableSource = (CollectionViewSource)FindResource("zoneTable");
             ZoneTableSource.Source = DataSources.ZoneCopy;
@@ -870,7 +871,7 @@ namespace FinalUi
         }
         private void PaymentEntry_Click(object sender, RoutedEventArgs e)
         {
-            PaymentDetailsWindow window = new PaymentDetailsWindow(); window.ShowDialog();
+            PaymentDetailsWindow window = new PaymentDetailsWindow(); window.Show();
         }
         private void PaymentRecieved_Click(object sender, RoutedEventArgs e)
         {
@@ -1031,23 +1032,26 @@ namespace FinalUi
         }
         private void LoadClientRules()
         {
-            if (CostingRulesSource == null)
+            if (isInitialized == true)
             {
-                CostingRulesSource = (CollectionViewSource)FindResource("CostingRuleList");
-            }
-            if (serviceRulesView == null)
-            {
-                serviceRulesView = (CollectionViewSource)FindResource("ServiceRuleList");
-            }
-            BillingDataDataContext db = new BillingDataDataContext();
-            qutObj = db.Quotations.SingleOrDefault(x => x.CLCODE == ((Client)ClientCombo.SelectedItem).CLCODE);
-            if (qutObj == null)
-            {
-                unLoadQuotation();
-            }
-            else
-            {
-                loadQuotation(qutObj);
+                if (CostingRulesSource == null)
+                {
+                    CostingRulesSource = (CollectionViewSource)FindResource("CostingRuleList");
+                }
+                if (serviceRulesView == null)
+                {
+                    serviceRulesView = (CollectionViewSource)FindResource("ServiceRuleList");
+                }
+                BillingDataDataContext db = new BillingDataDataContext();
+                qutObj = db.Quotations.SingleOrDefault(x => x.CLCODE == ((Client)ClientCombo.SelectedItem).CLCODE);
+                if (qutObj == null)
+                {
+                    unLoadQuotation();
+                }
+                else
+                {
+                    loadQuotation(qutObj);
+                }
             }
         }
         void unLoadQuotation()
@@ -1064,23 +1068,29 @@ namespace FinalUi
         }
         private void cloakAllGrid()
         {
-            CostingRuleGrid.Visibility = Visibility.Collapsed;
-            InvoiceRuleGrid.Visibility = Visibility.Collapsed;
-            ServiceRuleGrid.Visibility = Visibility.Collapsed;
+            if (CostingRuleGrid != null && InvoiceRuleGrid != null && ServiceRuleGrid != null)
+            {
+                CostingRuleGrid.Visibility = Visibility.Collapsed;
+                InvoiceRuleGrid.Visibility = Visibility.Collapsed;
+                ServiceRuleGrid.Visibility = Visibility.Collapsed;
+            }
         }
         private void CostingRuleRadio_Checked_1(object sender, RoutedEventArgs e)
         {
-            try
+            if (isInitialized == true)
             {
-                cloakAllGrid();
-                CostingRuleGrid.Visibility = Visibility.Visible;
+                try
+                {
+                    cloakAllGrid();
+                    CostingRuleGrid.Visibility = Visibility.Visible;
 
-                currentaddrulebutton.Visibility = Visibility.Collapsed;
-                AddCostingRuleButton.Visibility = Visibility.Visible;
-                currentaddrulebutton = AddCostingRuleButton;
+                    currentaddrulebutton.Visibility = Visibility.Collapsed;
+                    AddCostingRuleButton.Visibility = Visibility.Visible;
+                    currentaddrulebutton = AddCostingRuleButton;
+                }
+                catch (NullReferenceException ex)
+                { }
             }
-            catch (NullReferenceException ex)
-            { }
         }
 
         private void ServiceRuleRadio_Checked(object sender, RoutedEventArgs e)
@@ -1331,10 +1341,6 @@ namespace FinalUi
         }
         private void General_Ribbon(object sender, RoutedEventArgs e)
         {
-            this.GeneralRibbon.Height = 24;
-            this.DescriptionRibbon.Height = 18;
-            this.HelpRibbon.Height = 18;
-            this.FeedbackRibbon.Height = 18;
             this.GeneralRibbon.Background = Brushes.White;
             this.DescriptionRibbon.Background = Brushes.LightGray;
             this.HelpRibbon.Background = Brushes.LightGray;
@@ -1347,12 +1353,8 @@ namespace FinalUi
 
         private void Description_Ribbon(object sender, RoutedEventArgs e)
         {
-            this.GeneralRibbon.Height = 18;
-            this.DescriptionRibbon.Height = 24;
-            this.HelpRibbon.Height = 18;
-            this.FeedbackRibbon.Height = 18;
-            this.GeneralRibbon.Background = Brushes.LightGray;
             this.DescriptionRibbon.Background = Brushes.White;
+            this.GeneralRibbon.Background = Brushes.LightGray;
             this.HelpRibbon.Background = Brushes.LightGray;
             this.FeedbackRibbon.Background = Brushes.LightGray;
             GeneralRibbonTab.Visibility = Visibility.Collapsed;
@@ -1363,13 +1365,9 @@ namespace FinalUi
 
         private void Help_Ribbon(object sender, RoutedEventArgs e)
         {
-            this.GeneralRibbon.Height = 18;
-            this.DescriptionRibbon.Height = 18;
-            this.HelpRibbon.Height = 24;
-            this.FeedbackRibbon.Height = 18;
+            this.HelpRibbon.Background = Brushes.White;
             this.GeneralRibbon.Background = Brushes.LightGray;
             this.DescriptionRibbon.Background = Brushes.LightGray;
-            this.HelpRibbon.Background = Brushes.White;
             this.FeedbackRibbon.Background = Brushes.LightGray;
             GeneralRibbonTab.Visibility = Visibility.Collapsed;
             DescriptionRibbonTab.Visibility = Visibility.Collapsed;
@@ -1379,14 +1377,10 @@ namespace FinalUi
 
         private void Feedback_Ribbon(object sender, RoutedEventArgs e)
         {
-            this.GeneralRibbon.Height = 18;
-            this.DescriptionRibbon.Height = 18;
-            this.HelpRibbon.Height = 18;
-            this.FeedbackRibbon.Height = 24;
+            this.FeedbackRibbon.Background = Brushes.White;
             this.GeneralRibbon.Background = Brushes.LightGray;
             this.DescriptionRibbon.Background = Brushes.LightGray;
             this.HelpRibbon.Background = Brushes.LightGray;
-            this.FeedbackRibbon.Background = Brushes.White;
             GeneralRibbonTab.Visibility = Visibility.Collapsed;
             DescriptionRibbonTab.Visibility = Visibility.Collapsed;
             HelpRibbonTab.Visibility = Visibility.Collapsed;
@@ -1394,9 +1388,18 @@ namespace FinalUi
         }
         private void ImportRule_Click(object sender, RoutedEventArgs e)
         {
-            Client c = DataSources.ClientCopy.Where(x => x.CLCODE == "NONE").FirstOrDefault();
-            ImportRules window = new ImportRules(c);
-            window.Show();
+            Client c = (Client)Client_Combo.SelectedItem;
+            ImportRules importRulesWindow = new ImportRules(c);
+            importRulesWindow.Closed += importRulesWindow_Closed;
+            importRulesWindow.Show();
+        }
+
+        void importRulesWindow_Closed(object sender, EventArgs e)
+        {
+            LoadClientRules();
+            this.CostingRuleGrid.Items.Refresh();
+            this.ServiceRuleGrid.Items.Refresh();
+            this.InvoiceRuleGrid.Items.Refresh();
         }
 
         private void GetRateButton_Click(object sender, RoutedEventArgs e)
@@ -1413,6 +1416,15 @@ namespace FinalUi
             if (client == null || service == null || dox == null || city == null)
                 return;
             RateRuleTextBox.Text = UtilityClass.getCost(client.CLCODE, weight, city.CITY_CODE, service.SER_CODE, dox).ToString();
+        }
+
+        private void ClientReportReloadButton_Click(object sender, RoutedEventArgs e)
+        {
+            BillingDataDataContext db = new BillingDataDataContext();
+            dueDataGridSource.Source = db.BalanceViews;
+            profitDataGridSource.Source = db.PROFITVIEWs;
+            ClientDueGrid.Items.Refresh();
+            ClientProfitabilityGrid.Items.Refresh();
         }
     }
 }

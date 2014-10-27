@@ -42,7 +42,7 @@
                     <TextBox BorderThickness="2" Name="DestinationPin" Height="26" Canvas.Left="456.666" Canvas.Top="257.96" Width="99" Padding="3 3 0 0"/>
                     <Canvas Canvas.Top="-5">
                         <TextBlock Text="Service .:" Canvas.Left="35" Canvas.Top="317" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" />
-                        <ComboBox BorderThickness="2" Height="26" Name="TypeComboBox" Canvas.Left="107" Canvas.Top="310" DisplayMemberPath="NameAndCode" ItemsSource="{Binding}" Width="130" DataContext="{StaticResource ServiceList}" IsEditable="True" SelectionChanged="TypeComboBox_SelectionChanged" />
+                        <ComboBox BorderThickness="2" Height="26" Name="TypeComboBox" Canvas.Left="107" Canvas.Top="310" DisplayMemberPath="NameAndCode" ItemsSource="{Binding}" Width="130" DataContext="{StaticResource ServiceList}" IsEditable="False" SelectionChanged="TypeComboBox_SelectionChanged" />
                         <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Canvas.Left="354" Canvas.Top="258" Width="3"/>
                         <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Canvas.Left="242" Canvas.Top="306" Width="3"/>
                         <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Canvas.Left="385" Canvas.Top="306" Width="3"/>

@@ -67,16 +67,12 @@ namespace FinalUi
             }
             Invoice inv = (Invoice)InvoiceDatagrid.SelectedItem;
             BillingDataDataContext db = new BillingDataDataContext();
-            List<Transaction> transactions = db.InvoiceAssignments.Where(x => x.BillId == inv.BillId).Select(y => y.Transaction).ToList();
-            string fromDate = new string(inv.Remarks.TakeWhile(x => x != 't').ToArray());
-            string toDate = new string(inv.Remarks.SkipWhile(x => x != 'o').ToArray());
-            toDate = toDate.Substring(1, toDate.Length - 1);
-            fromDate = fromDate.Trim();
-            toDate = toDate.Trim();
+            /*List<Transaction> transactions = db.InvoiceAssignments.Where(x => x.BillId == inv.BillId).Select(y => y.Transaction).ToList();
             Double tax = (((inv.TotalAmount - (inv.Basic + inv.Fuel)) / (inv.TotalAmount)) * 100);
             if (inv.PreviousDue == null)
                 inv.PreviousDue = 0;
-            PrintWindow window = new PrintWindow(UtilityClass.convertTransListToRuntimeList(transactions), (Client)ClientComboBox.SelectedItem, DateTime.ParseExact(toDate, "dd/MM/yy", new CultureInfo("en-US")), DateTime.ParseExact(fromDate, "dd/MM/yy", new CultureInfo("en-US")), tax, (double)inv.PreviousDue);
+             * */
+            PrintMainWindow window = new PrintMainWindow(inv);
             window.ShowDialog();
         }
 		private void DragthisWindow(object sender, MouseButtonEventArgs e)

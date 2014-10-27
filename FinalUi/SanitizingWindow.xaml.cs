@@ -62,7 +62,18 @@ namespace FinalUi
         }
         private void SubmitSanitizingDetails_Click(object sender, RoutedEventArgs e)
         {
-            SaveData();
+            try
+            {
+                SaveData();
+            }
+            catch (Exception ex)
+            {
+                MessageBoxResult result = MessageBox.Show("Data will not be saved. Error: " + ex.Message + ". Continue?", "Error", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.No)
+                {
+                    return;
+                }
+            }
             setNextData();
         }
         public RuntimeData fillData(RuntimeData data)
@@ -96,7 +107,7 @@ namespace FinalUi
                 else
                 {
                     data = UtilityClass.convertTransObjToRunObj(TData);
-                } 
+                }
             }
             data.Weight = Double.Parse(WeightAccToDTDC.Text);
             data.FrWeight = Double.Parse(WeightAccToFranchize.Text);
@@ -125,12 +136,14 @@ namespace FinalUi
                 BilledWeightTextBox.Text = "";
             if (data.Destination == null)
             {
-                MessageBoxResult rsltMessageBox = MessageBox.Show("No city with this code is entered. Do you want to enter it now?", "", MessageBoxButton.YesNo, MessageBoxImage.Asterisk);
+                MessageBoxResult rsltMessageBox = MessageBox.Show("No city with this code is entered. Data will not be entered if city is not present. Do you want to enter it now?", "", MessageBoxButton.YesNo, MessageBoxImage.Asterisk);
                 if (MessageBoxResult.Yes == rsltMessageBox)
                 {
                     AddCity window = new AddCity();
                     window.Show();
                 }
+                else
+                    return null;
             }
             data.CustCode = DataSources.ClientCopy.Where(x => x.NameAndCode == CustomerSelected.Text).Select(y => y.CLCODE).FirstOrDefault();
             if (this.BilledWeightTextBox.Text == "" || this.BilledWeightTextBox.Text == null)
@@ -175,16 +188,19 @@ namespace FinalUi
             dData.Type = sData.Type;
             dData.UserId = sData.UserId;
             dData.Weight = sData.Weight;
-            
+
         }
         public void SaveData()
         {
+
             BillingDataDataContext db = new BillingDataDataContext();
             RuntimeData data = null;
             data = fillData(data);
+            if (data == null)
+                throw new Exception("Details not present");
             data.SheetNo = sheetNo;
             data.UserId = SecurityModule.currentUserName;
-               
+
             if (dataContext.Where(x => x.ConsignmentNo == data.ConsignmentNo).Count() > 0)
             {
                 RuntimeData origData = db.RuntimeDatas.SingleOrDefault(x => x.Id == data.Id);
@@ -192,7 +208,8 @@ namespace FinalUi
             }
             else
             {
-                 db.RuntimeDatas.InsertOnSubmit(data);
+                db.RuntimeDatas.InsertOnSubmit(data);
+                dataContext.Add(data);
                 dataListContext.AddNewItem(data);
             }
             try
@@ -200,14 +217,19 @@ namespace FinalUi
                 db.SubmitChanges();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); return; }
+
+
+
+
         }
         public void setNextData()
         {
-            SaveData();
+
             int index = ConnsignmentNumber.SelectedIndex;
             if (ConnsignmentNumber.Items.Count - 1 == index)
             {
             }
+
             else
             {
                 ConnsignmentNumber.Text = (string)ConnsignmentNumber.Items.GetItemAt(index + 1);
@@ -220,16 +242,18 @@ namespace FinalUi
         }
         public void setPreviousData()
         {
-            SaveData();
             int index = ConnsignmentNumber.SelectedIndex;
-            if (index == 0)
+            if (index == 0 || index == -1)
             {
             }
             else
             {
+                if (index - 1 > ConnsignmentNumber.Items.Count - 1)
+                    index = 1;
                 ConnsignmentNumber.Text = (string)ConnsignmentNumber.Items.GetItemAt(index - 1);
                 fillAllElements(ConnsignmentNumber.Text);
             }
+            ConnsignmentNumber.Focus();
         }
         private void ConnsignmentNumber_KeyUp(object sender, KeyEventArgs e)
         {
@@ -314,7 +338,18 @@ namespace FinalUi
         }
         private void Previous_Click(object sender, RoutedEventArgs e)
         {
-            SaveData();
+            try
+            {
+                SaveData();
+            }
+            catch (Exception ex)
+            {
+                MessageBoxResult result = MessageBox.Show("Data will not be saved. Error: " + ex.Message + ". Continue?", "Error", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.No)
+                {
+                    return;
+                }
+            }
             setPreviousData();
         }
         private void BilledWeightTextBox_TextChanged(object sender, TextChangedEventArgs e)

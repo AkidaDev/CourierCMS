@@ -39,7 +39,7 @@
                 </Button.Content>
 				</Button>  
 				</WrapPanel>
-            <DataGrid RowHeaderWidth="0" BorderBrush="Gray" BorderThickness="1" Canvas.Top="100" Canvas.Left="39" Width="470" Height="275" x:Name="mangaclientgrid" ItemsSource="{Binding}" DataContext="{StaticResource ClienTable }"  SelectionMode="Single" AutoGenerateColumns="False" >
+            <DataGrid IsReadOnly="True" RowHeaderWidth="0" BorderBrush="Gray" BorderThickness="1" Canvas.Top="100" Canvas.Left="39" Width="470" Height="275" x:Name="mangaclientgrid" ItemsSource="{Binding}" DataContext="{StaticResource ClienTable }"  SelectionMode="Single" AutoGenerateColumns="False" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Binding="{Binding CLNAME , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="Code" Binding="{Binding CLCODE , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>

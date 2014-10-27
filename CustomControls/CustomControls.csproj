@@ -48,10 +48,17 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="TwinDataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TwinListBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="TwinDataGrid.xaml.cs">
+      <DependentUpon>TwinDataGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TwinListBox.xaml.cs">
       <DependentUpon>TwinListBox.xaml</DependentUpon>
       <SubType>Code</SubType>

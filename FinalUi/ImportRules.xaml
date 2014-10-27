@@ -30,9 +30,9 @@
 
                 <WrapPanel Canvas.Top="110">
                     <TextBlock  FontWeight="Bold" FontSize="16" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Select Rule .:        "/>
-                    <RadioButton IsChecked="True" Name="CostingRadio" GroupName="Stat" Content="Costing Rule      " FontWeight="Bold" FontSize="16" FontFamily="Calibri" Padding="5 -3 0 0" Margin="0,3,0,0"/>
-                    <RadioButton Name="ServiceRadio" GroupName="Stat" Content="Service Rule       " FontWeight="Bold" FontSize="16" FontFamily="Calibri" Padding="5 -3 0 0" Margin="0,3,0,0"/>
-                    <RadioButton Name="InvoiceRadio" Visibility="Collapsed" GroupName="Stat" Content="Invoice Rule" FontWeight="Bold" FontSize="16" FontFamily="Calibri" Padding="5 -3 0 0" Margin="0,3,0,0"/>
+                    <RadioButton IsChecked="True" Checked="ServiceRadio_Checked" Name="CostingRadio" GroupName="Stat" Content="Costing Rule      " FontWeight="Bold" FontSize="16" FontFamily="Calibri" Padding="5 -3 0 0" Margin="0,3,0,0"/>
+                    <RadioButton Name="ServiceRadio" Checked="ServiceRadio_Checked" GroupName="Stat" Content="Service Rule       " FontWeight="Bold" FontSize="16" FontFamily="Calibri" Padding="5 -3 0 0" Margin="0,3,0,0"/>
+                    <RadioButton Name="InvoiceRadio"  Visibility="Collapsed" GroupName="Stat" Content="Invoice Rule" FontWeight="Bold" FontSize="16" FontFamily="Calibri" Padding="5 -3 0 0" Margin="0,3,0,0"/>
                 </WrapPanel>
             </Canvas>
 
@@ -41,6 +41,7 @@
                 <DataGrid BorderBrush="Gray" Grid.Row="0" x:Name="CostingRuleGrid" ItemsSource="{Binding}" DataContext="{StaticResource CostingRuleList}" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
 							AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="1" CanUserAddRows="True" >
                     <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                         <DataGridTextColumn Header="Range(Kg)" Binding="{Binding range}"/>
                         <DataGridTextColumn Header="Dox(Rs)" Binding="{Binding doxAmount}"/>
                         <DataGridTextColumn Header="NDox(Rs)" Binding="{Binding ndoxAmount}"/>
@@ -57,6 +58,7 @@
                 <DataGrid BorderBrush="Gray" Visibility="Collapsed" x:Name="ServiceRuleGrid" ItemsSource="{Binding}" DataContext="{StaticResource ServiceRuleList}" Grid.Row="0" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
 							AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="1" CanUserAddRows="True">
                     <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                         <DataGridTextColumn Header="Range" Binding="{Binding RangeWeight}"/>
                         <DataGridTextColumn Header="Type" Binding="{Binding type}"/>
                         <DataGridTextColumn Header="Mode" Binding="{Binding mode}"/>
@@ -88,7 +90,7 @@
             </Grid>
             <!-- IMPORT RULE DATAGRIDS-->
 
-            <Button  Canvas.Left="521" Canvas.Top="441" Style="{StaticResource all}" >
+            <Button Name="ImportRulesButton" Click="ImportRulesButton_Click" Canvas.Left="521" Canvas.Top="441" Style="{StaticResource all}" >
                 <Button.Content>
                     <WrapPanel  Margin="7,3,7,3">
                         <Path x:Name="import_files" Data="F1M11.187,19.719C11.187,19.719 11.187,20.375 11.187,20.375 11.187,20.375 13.812,20.375 13.812,20.375 13.812,20.375 13.812,19.719 13.812,19.719 13.812,19.719 11.187,19.719 11.187,19.719z M9.875,17.094C9.875,17.094 9.875,17.75 9.875,17.75 9.875,17.75 15.125,17.75 15.125,17.75 15.125,17.75 15.125,17.094 15.125,17.094 15.125,17.094 9.875,17.094 9.875,17.094z M20.375,12.5C20.375,12.5 20.375,13.812 20.375,13.812 20.375,13.812 21.687,13.812 21.687,13.812 21.687,13.812 21.687,12.5 21.687,12.5 21.687,12.5 20.375,12.5 20.375,12.5z M11.187,4.625C11.187,4.625 13.812,4.625 13.812,4.625 13.812,4.625 13.812,5.937 13.812,5.937 13.812,5.937 13.812,7.25 13.812,7.25 13.812,7.25 15.781,7.25 15.781,7.25 15.781,7.25 12.5,10.531 12.5,10.531 12.5,10.531 9.219,7.25 9.219,7.25 9.219,7.25 11.187,7.25 11.187,7.25 11.187,7.25 11.187,5.937 11.187,5.937 11.187,5.937 11.187,4.625 11.187,4.625z M7.906,3.312C7.906,3.312 4.01,11.187 4.01,11.187 4.01,11.187 9.875,11.187 9.875,11.187 9.875,11.187 9.875,12.5 9.875,12.5 9.875,13.225 10.463,13.812 11.187,13.812 11.187,13.812 13.812,13.812 13.812,13.812 14.537,13.812 15.125,13.225 15.125,12.5 15.125,12.5 15.125,11.187 15.125,11.187 15.125,11.187 21.031,11.187 21.031,11.187 21.031,11.187 17.094,3.312 17.094,3.312 17.094,3.312 7.906,3.312 7.906,3.312z M7.25,2C7.25,2 17.709,2 17.709,2 17.709,2 23,11.187 23,11.187 23,11.187 23,23 23,23 23,23 2,23 2,23 2,23 2,11.187 2,11.187 2,11.187 7.25,2 7.25,2z" Fill="Black" Height="24" Width="24"/>

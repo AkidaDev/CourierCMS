@@ -7,7 +7,7 @@ namespace FinalUi
 {
     public class ServiceRule:IRule
     {
-        public int Id;
+        public int Id {get; set;}
         public List<string> ServiceList { get; set; }
         public List<string> ZoneList { get; set; }
         public List<string> CityList { get; set; }
