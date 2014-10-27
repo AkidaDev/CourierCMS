@@ -6,10 +6,6 @@
 	Icon="Images/logo.ico"
 	Title="Vortex" BorderBrush="Transparent" AllowsTransparency="True" WindowStartupLocation="CenterScreen" WindowState="Normal" Width="1080" Height="700" MinHeight="600" MinWidth="1024" WindowStyle="None">
     <Window.Resources>
-        <ImageBrush ImageSource="Images/apples.png" x:Key="image"/>
-        <ImageBrush ImageSource="Images/sidepanel.png" x:Key="sidebar"/>
-        <ImageBrush ImageSource="Images/menu.png" x:Key="menu"/>
-        <ImageBrush ImageSource="Images/background.png" x:Key="background"/>
         <CollectionViewSource x:Key="EmployeeTable" CollectionViewType="{x:Type ListCollectionView}"/>
         <CollectionViewSource x:Key="ServiceTable" CollectionViewType="{x:Type ListCollectionView}"/>
         <CollectionViewSource x:Key="ClienTable" CollectionViewType="{x:Type ListCollectionView}"/>
