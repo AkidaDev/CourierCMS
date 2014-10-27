@@ -335,9 +335,7 @@ namespace FinalUi
         private void ExecuteSaveCommand(object sender, ExecutedRoutedEventArgs e)
         {
             MessageBlock.Text = MessageBlock.Text + "\n Saving operation started...";
-           // SaveWorker.RunWorkerAsync();
-            SaveWorker_DoWork(null, null);
-            
+            SaveWorker.RunWorkerAsync();
         }
         #endregion
         #region printCommand
