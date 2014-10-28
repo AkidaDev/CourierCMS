@@ -11,7 +11,8 @@ namespace FinalUi
     {
         public List<RuntimeData> getRuntimeDataFromCSV(string filePath, char seperator, char quotes)
         {
-
+            List<City> cityList = DataSources.CityCopy;
+            List<Service> serviceList = DataSources.ServicesCopy;
             List<RuntimeData> data = new List<RuntimeData>();
             string[] lines = File.ReadAllLines(filePath);
             foreach (string line in lines)
@@ -51,6 +52,13 @@ namespace FinalUi
                     rowData.InvoiceDate = dateTimeObj;
                 }
                 rowData.CustCode = "<NONE>";
+                Service service = serviceList.SingleOrDefault(x => x.SER_CODE == rowData.Type);
+                if (service != null)
+                    rowData.Service_Desc = service.SER_DESC;
+                City city = cityList.SingleOrDefault(x => x.CITY_CODE == rowData.Destination);
+                if (city != null)
+                    rowData.City_Desc = city.CITY_DESC;
+                
                 data.Add(rowData);
 
             }

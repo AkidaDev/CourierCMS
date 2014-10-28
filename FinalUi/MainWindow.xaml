@@ -917,8 +917,9 @@
                         <DataGrid DockPanel.Dock="Top" RowHeaderWidth="0" IsReadOnly="True" x:Name="dataGrid"  Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False"  ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True"  >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ConnsignmentNo" Binding="{Binding ConsignmentNo}"/>
-                                <DataGridTextColumn Header="Weight" Binding="{Binding Weight}"/>
-                                <DataGridTextColumn Header="ObservedWeight" Binding="{Binding BilledWeight}"/>
+                                <DataGridTextColumn Header="DTDC Weight" Binding="{Binding Weight}"/>
+                                <DataGridTextColumn Header="Observed Weight" Binding="{Binding FrWeight}"/>
+                                <DataGridTextColumn Header="BilledWeight" Binding="{Binding BilledWeight}"/>
                                 <DataGridTextColumn Header="Cost" Binding="{Binding Amount}"/>
                                 <DataGridTextColumn Header="Billed Amount" Binding="{Binding FrAmount}"/>
                                 <DataGridTextColumn Header="Client" Binding="{Binding CustCode}"/>
@@ -934,11 +935,15 @@
                                         <StackPanel Orientation="Vertical">
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock FontSize="12" Text="Booking Date: " VerticalAlignment="Center" />
-                                                <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding BookingDate}" VerticalAlignment="Center" />
+                                                <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding BookingDate.Date}" VerticalAlignment="Center" />
+                                                <TextBlock FontSize="12" Margin="10 0 0 0" Text="Destination: " VerticalAlignment="Center" />
+                                                <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding City_Desc}" VerticalAlignment="Center"/>
                                             </StackPanel>
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock FontSize="12" Text="TransMfNo: " VerticalAlignment="Center" />
                                                 <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding TransMF_No}" VerticalAlignment="Center" />
+                                                <TextBlock FontSize="12" Text="Service: " VerticalAlignment="Center" Margin="10 0 0 0"/>
+                                                <TextBlock FontSize="16" Text="{Binding Service_Desc}" VerticalAlignment="Center" Foreground="MidnightBlue"/>
                                             </StackPanel>
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock FontSize="12" Text="Invoice No " VerticalAlignment="Center" />

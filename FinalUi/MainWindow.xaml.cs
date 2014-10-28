@@ -311,7 +311,8 @@ namespace FinalUi
         RoutedCommand PowerEntryCommand = new RoutedCommand();
         private void PowerEntryCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            PowerEntry powerWin = new PowerEntry(dataGridHelper.getCurrentDataStack);
+            PowerEntry powerWin = new PowerEntry(dataGridHelper.getCurrentDataStack,dataGrid);
+            
             powerWin.Show();
         }
         #endregion
