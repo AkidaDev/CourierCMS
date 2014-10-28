@@ -48,17 +48,17 @@
                     <TextBlock Padding="2 5 0 0" Text="Invoice Number .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" />
                     <TextBox Width="127" Height="24" Margin="3,0,0,0" Padding="2"/>
                     <TextBlock Padding="15 5 0 0" Text="Debit Note .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" />
-                    <TextBox Width="87" Height="24" Margin="3,0,0,0" Padding="2" />
+                    <TextBox Width="89" Height="24" Margin="3,0,0,0" Padding="2" />
                 </WrapPanel>
                 <WrapPanel Canvas.Left="31" Canvas.Top="210" Width="465.623" >
                     <TextBlock Padding="0 5 0 0" Text="Enter Remarks    .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" />
-                    <TextBox  x:Name="RemarkBox"  Width="327" Height="24" Margin="3,0,0,0" Padding="2"/>
+                    <TextBox  x:Name="RemarkBox"  Width="329" Height="24" Margin="3,0,0,0" Padding="2"/>
                 </WrapPanel>
                 <WrapPanel Name="ChequeNumberPanel" Canvas.Left="31" Canvas.Top="240" Width="470">
                     <TextBlock Padding="0 5 0 0" Text="Cheque Number .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" />
                     <TextBox Name="ChequeNumberBox"  Width="127" Height="24" Margin="1,0,0,0" Padding="2"/>
                     <TextBlock Padding="15 5 0 0" Text="Debit Note .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" />
-                    <TextBox Width="87" Height="24" Margin="3,0,0,0" Padding="2" />
+                    <TextBox Width="89" Height="24" Margin="3,0,0,0" Padding="2" />
                     <TextBlock Padding="0 14 0 0" Text="Bank Name          .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap"/>
                     <TextBox Name="ChequeBankName" Width="127" Height="24" Margin="1,7,0,0"  Padding="2" />
                 </WrapPanel>
