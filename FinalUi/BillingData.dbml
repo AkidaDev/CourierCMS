@@ -91,6 +91,7 @@
       <Column Name="Basic" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="Remarks" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="PreviousDue" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Misc" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Association Name="Invoice_InvoiceAssignment" Member="InvoiceAssignments" ThisKey="BillId" OtherKey="BillId" Type="InvoiceAssignment" />
     </Type>
   </Table>
@@ -310,6 +311,33 @@
       <Column Name="NetBalance" Type="System.Double" DbType="Float" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.InvoiceView" Member="InvoiceViews">
+    <Type Name="InvoiceView">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="AmountPayed" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="AmountCharged" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="ConnsignmentNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="WeightByFranchize" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Destination" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DestinationPin" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="BookingDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="AddDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LastModified" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="Mode" Type="System.String" DbType="NChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="DOX" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="ServiceTax" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SplDisc" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="InvoiceNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="CustCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="TransMF_No" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BilledWeight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="BillId" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Table Name="dbo.PROFITVIEW" Member="PROFITVIEWs">
     <Type Name="PROFITVIEW">
       <Column Name="TotalPayed" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
@@ -359,14 +387,6 @@
       <Column Name="CITY_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
     </Type>
   </Table>
-  <Function Name="dbo.sp_deleteSheetFromRuntime" Method="sp_deleteSheetFromRuntime">
-    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.sp_getRateReportingObject" Method="sp_getRateReportingObject">
-    <Parameter Name="ClientCode" Parameter="clientCode" Type="System.String" DbType="VarChar(50)" />
-  </Function>
   <Function Name="dbo.sp_ImportZoneData" Method="sp_ImportZoneData" />
   <Function Name="dbo.sp_TransferTransactionDetails" Method="sp_TransferTransactionDetails" />
   <Function Name="dbo.sp_ImportZones" Method="sp_ImportZones" />
@@ -389,4 +409,12 @@
   <Function Name="dbo.sp_TransferPaymentDetails" Method="sp_TransferPaymentDetails" />
   <Function Name="dbo.sp_TransferRatespart1" Method="sp_TransferRatespart1" />
   <Function Name="dbo.sp_TransferRatespart2" Method="sp_TransferRatespart2" />
+  <Function Name="dbo.sp_deleteSheetFromRuntime" Method="sp_deleteSheetFromRuntime">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_getRateReportingObject" Method="sp_getRateReportingObject">
+    <Parameter Name="ClientCode" Parameter="clientCode" Type="System.String" DbType="VarChar(50)" />
+  </Function>
 </Database>
