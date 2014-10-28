@@ -225,7 +225,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Name="Border" CornerRadius="2" BorderThickness="1"
+                        <Border Name="Border" CornerRadius="3,3,0,0" BorderThickness="1"
 						Background="LightGray" BorderBrush="Gray">
                             <ContentPresenter Margin="0" 
                                  HorizontalAlignment="Center"
