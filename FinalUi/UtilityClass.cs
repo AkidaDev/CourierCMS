@@ -167,6 +167,7 @@ namespace FinalUi
                     }
                 }
                 removeList.ForEach(ele =>
+                
                 {
                     duplicateData.Add(ele);
                     newData.Remove(ele);
