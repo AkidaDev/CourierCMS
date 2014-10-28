@@ -97,5 +97,6 @@ namespace FinalUi
         {
             this.Close();
         }
+
     }
 }

@@ -6,10 +6,6 @@
 	Icon="Images/logo.ico"
 	Title="Vortex" BorderBrush="Transparent" AllowsTransparency="True" WindowStartupLocation="CenterScreen" WindowState="Normal" Width="1080" Height="700" MinHeight="600" MinWidth="1024" WindowStyle="None">
     <Window.Resources>
-        <ImageBrush ImageSource="Images/apples.png" x:Key="image"/>
-        <ImageBrush ImageSource="Images/sidepanel.png" x:Key="sidebar"/>
-        <ImageBrush ImageSource="Images/menu.png" x:Key="menu"/>
-        <ImageBrush ImageSource="Images/background.png" x:Key="background"/>
         <CollectionViewSource x:Key="EmployeeTable" CollectionViewType="{x:Type ListCollectionView}"/>
         <CollectionViewSource x:Key="ServiceTable" CollectionViewType="{x:Type ListCollectionView}"/>
         <CollectionViewSource x:Key="ClienTable" CollectionViewType="{x:Type ListCollectionView}"/>
@@ -997,10 +993,10 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <Button Margin="3 3 0 0" Content="  General  " Grid.Column="0" VerticalAlignment="Center" Style="{DynamicResource navi}" Name="GeneralRibbon" Click="General_Ribbon" />
-                            <Button Margin="-1 3 0 0" Content="  Despcription  " Grid.Column="1" VerticalAlignment="Center" Style="{DynamicResource navi}" Name="DescriptionRibbon" Click="Description_Ribbon"/>
-                            <Button Margin="-1 3 0 0" Content="  Help  " Grid.Column="2" VerticalAlignment="Center" Style="{DynamicResource navi}" Name="HelpRibbon" Click="Help_Ribbon"/>
-                            <Button Margin="-1 3 0 0" Content="  Feedback  " Grid.Column="3" VerticalAlignment="Center" Style="{DynamicResource navi}" Name="FeedbackRibbon" Click="Feedback_Ribbon"/>
+                            <Button Margin="3 3 0 0" Content="  General  " Grid.Column="0" VerticalAlignment="Center" BorderThickness="1" Background="LightGray" BorderBrush="Gray" Name="GeneralRibbon" Click="General_Ribbon" />
+                            <Button Margin="-1 3 0 0" Content="  Despcription  " Grid.Column="1" VerticalAlignment="Center" BorderThickness="1" Background="LightGray" BorderBrush="Gray" Name="DescriptionRibbon" Click="Description_Ribbon"/>
+                            <Button Margin="-1 3 0 0" Content="  Help  " Grid.Column="2" VerticalAlignment="Center" BorderThickness="1" Background="LightGray" BorderBrush="Gray" Name="HelpRibbon" Click="Help_Ribbon"/>
+                            <Button Margin="-1 3 0 0" Content="  Feedback  " Grid.Column="3" VerticalAlignment="Center" BorderThickness="1" Background="LightGray" BorderBrush="Gray" Name="FeedbackRibbon" Click="Feedback_Ribbon"/>
                         </Grid>
                         <Rectangle Height="1" Grid.Row="0" VerticalAlignment="Bottom" Fill="Gray"/>
                         <ScrollViewer Name="GeneralRibbonTab" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
