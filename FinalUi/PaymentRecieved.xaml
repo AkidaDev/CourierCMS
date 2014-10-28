@@ -2,26 +2,26 @@
 		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		Icon="Images/logo.ico"
-        Title="PaymentRecieved" Height="362" Width="600" Background="Transparent"
+        Title="PaymentRecieved" Height="394" Width="600" Background="Transparent"
 		ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Normal" BorderBrush="Transparent" AllowsTransparency="True" Padding="20">
 
     <Window.Resources>
         <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"></CollectionViewSource>
     </Window.Resources>
-    <Grid  Height="312" UseLayoutRounding="False"  Width="550">
+    <Grid  Height="344" UseLayoutRounding="False"  Width="550">
         <Grid.Effect>
             <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
         </Grid.Effect>
 
-        <Canvas ClipToBounds="True" HorizontalAlignment="Left" Height="312" UseLayoutRounding="False" VerticalAlignment="Top" Width="550" Background="White">
-            <TextBox Padding="5" Name="PaymentRefNoBox" Height="27" Canvas.Left="181" Canvas.Top="84" Width="148"/>
+        <Canvas ClipToBounds="True" HorizontalAlignment="Left" Height="344" UseLayoutRounding="False" VerticalAlignment="Top" Width="550" Background="White" Margin="0,0,0,-32.5">
+            <TextBox Padding="2 3 0 0" Name="PaymentRefNoBox" Height="24" Canvas.Left="181" Canvas.Top="84" Width="148"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="39" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Payment Ref No. .:" Canvas.Top="93"/>
             <TextBlock x:Name="Gender_____" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="347" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Date .:" Canvas.Top="93"/>
             <DatePicker Name="PaymentDatePicker" Canvas.Left="401" Canvas.Top="85"   Height="26"  Width="124"  BorderThickness="0" Padding="0 4 0 0"/>
             <Path x:Name="Rectangle_2" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="27" Canvas.Left="399" Canvas.Top="84" Width="98" Stroke="Black"/>
 
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="39" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Select Client .:" Canvas.Top="129"/>
-            <ComboBox IsEditable="False" DataContext="{StaticResource ClientList}" IsTextSearchEnabled="True" ItemsSource="{Binding}" Name="ClientComboBox" Height="26" Canvas.Left="149.893" Canvas.Top="120" Width="346.73">
+            <ComboBox IsEditable="False" DataContext="{StaticResource ClientList}" IsTextSearchEnabled="True" ItemsSource="{Binding}" Name="ClientComboBox" Height="24" Canvas.Left="149.893" Canvas.Top="120" Width="346.73">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <WrapPanel>
@@ -38,23 +38,32 @@
             <TextBlock Text="Payment Mode .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"  Canvas.Left="38" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap"  Canvas.Top="165" />
             <RadioButton Name="CashRadio" GroupName="PaymentOptionRadio" Content="Cash" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="172" Canvas.Top="185" Padding="5 -5 0 0"/>
             <RadioButton GroupName="PaymentOptionRadio"  IsChecked="True" Name="ChequeRadio" Content="Cheque" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="172" Canvas.Top="166" Padding="5 -5 0 0" />
-            <Path x:Name="Shape_1" Data="F1M5.375,17C5.375,17 5.375,18.667 5.375,18.667 5.375,18.667 15.5,18.667 15.5,18.667 15.5,18.667 15.5,17 15.5,17 15.5,17 5.375,17 5.375,17z M13.812,12C13.812,12 13.812,13.667 13.812,13.667 13.812,13.667 15.5,13.667 15.5,13.667 15.5,13.667 15.5,12 15.5,12 15.5,12 13.812,12 13.812,12z M5.375,12C5.375,12 5.375,13.667 5.375,13.667 5.375,13.667 12.125,13.667 12.125,13.667 12.125,13.667 12.125,12 12.125,12 12.125,12 5.375,12 5.375,12z M2,8.667C2,8.667 29,8.667 29,8.667 29,8.667 29,20.333 29,20.333 29,21.254 28.244,22 27.312,22 27.312,22 3.687,22 3.687,22 2.756,22 2,21.254 2,20.333 2,20.333 2,8.667 2,8.667z M3.687,2C3.687,2 27.312,2 27.312,2 28.244,2 29,2.746 29,3.667 29,3.667 29,5.333 29,5.333 29,5.333 2,5.333 2,5.333 2,5.333 2,3.667 2,3.667 2,2.746 2.756,2 3.687,2z" Fill="Black" Canvas.Left="281"  Canvas.Top="162"/>
+            <Path x:Name="Shape_1" Data="F1M5.375,17C5.375,17 5.375,18.667 5.375,18.667 5.375,18.667 15.5,18.667 15.5,18.667 15.5,18.667 15.5,17 15.5,17 15.5,17 5.375,17 5.375,17z M13.812,12C13.812,12 13.812,13.667 13.812,13.667 13.812,13.667 15.5,13.667 15.5,13.667 15.5,13.667 15.5,12 15.5,12 15.5,12 13.812,12 13.812,12z M5.375,12C5.375,12 5.375,13.667 5.375,13.667 5.375,13.667 12.125,13.667 12.125,13.667 12.125,13.667 12.125,12 12.125,12 12.125,12 5.375,12 5.375,12z M2,8.667C2,8.667 29,8.667 29,8.667 29,8.667 29,20.333 29,20.333 29,21.254 28.244,22 27.312,22 27.312,22 3.687,22 3.687,22 2.756,22 2,21.254 2,20.333 2,20.333 2,8.667 2,8.667z M3.687,2C3.687,2 27.312,2 27.312,2 28.244,2 29,2.746 29,3.667 29,3.667 29,5.333 29,5.333 29,5.333 2,5.333 2,5.333 2,5.333 2,3.667 2,3.667 2,2.746 2.756,2 3.687,2z" Fill="Black" Canvas.Left="281"  Canvas.Top="162.25"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="315" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Amount .:" Canvas.Top="165"/>
-            <TextBox Name="AmountTextBox" Padding="13 3 0 0" Height="27" Canvas.Left="394" Canvas.Top="156" Width="103"/>
-            <TextBlock Canvas.Left="398" Text="&#8377;" Canvas.Top="160" FontSize="15"/>
+            <TextBox Name="AmountTextBox" Padding="13 2 0 0" Height="24" Canvas.Left="394" Canvas.Top="156" Width="103" FontSize="14"/>
+            <TextBlock Canvas.Left="398" Text="&#8377;" Canvas.Top="158" FontSize="15" FontWeight="Bold"/>
             <Path x:Name="line" Data="F1M1,2C1,2 1,1 1,1 1,1 262,1 262,1 262,1 262,2 262,2 262,2 1,2 1,2" Fill="Black" Height="1" Canvas.Left="31" Canvas.Top="202" Width="245" Stretch="Fill"/>
-            <WrapPanel Canvas.Left="31" Canvas.Top="210" Width="465.623" >
-                <TextBlock Padding="0 5 0 0" Text="Enter Remarks    .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" />
-                <TextBox  x:Name="RemarkBox"  Width="327" Height="22" Margin="3,0,0,0"/>
-            </WrapPanel>
-            <WrapPanel Name="ChequeNumberPanel" Canvas.Left="31" Canvas.Top="240" Width="321">
-                <TextBlock Padding="0 5 0 0" Text="Cheque Number .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" />
-                <TextBox Name="ChequeNumberBox"  Width="161" Height="22" Margin="1,0,0,0"/>
-                <TextBlock Padding="0 14 0 0" Text="Bank Name          .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap"/>
-                <TextBox Name="ChequeBankName" Width="161" Height="22" Margin="1,7,0,0" />
-            </WrapPanel>
-
-            <Button Name="SubmitButton" Click="SubmitButton_Click" Style="{StaticResource all}" Canvas.Left="443" Canvas.Top="266">
+            <Canvas Canvas.Top="30">
+                <WrapPanel Canvas.Left="31" Canvas.Top="180"  >
+                    <TextBlock Padding="2 5 0 0" Text="Invoice Number .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" />
+                    <TextBox Width="127" Height="24" Margin="3,0,0,0" Padding="2"/>
+                    <TextBlock Padding="15 5 0 0" Text="Debit Note .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" />
+                    <TextBox Width="87" Height="24" Margin="3,0,0,0" Padding="2" />
+                </WrapPanel>
+                <WrapPanel Canvas.Left="31" Canvas.Top="210" Width="465.623" >
+                    <TextBlock Padding="0 5 0 0" Text="Enter Remarks    .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" />
+                    <TextBox  x:Name="RemarkBox"  Width="327" Height="24" Margin="3,0,0,0" Padding="2"/>
+                </WrapPanel>
+                <WrapPanel Name="ChequeNumberPanel" Canvas.Left="31" Canvas.Top="240" Width="470">
+                    <TextBlock Padding="0 5 0 0" Text="Cheque Number .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" />
+                    <TextBox Name="ChequeNumberBox"  Width="127" Height="24" Margin="1,0,0,0" Padding="2"/>
+                    <TextBlock Padding="15 5 0 0" Text="Debit Note .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" />
+                    <TextBox Width="87" Height="24" Margin="3,0,0,0" Padding="2" />
+                    <TextBlock Padding="0 14 0 0" Text="Bank Name          .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap"/>
+                    <TextBox Name="ChequeBankName" Width="127" Height="24" Margin="1,7,0,0"  Padding="2" />
+                </WrapPanel>
+            </Canvas>
+            <Button Name="SubmitButton" Click="SubmitButton_Click" Style="{StaticResource all}" Canvas.Left="444" Canvas.Top="300">
                 <WrapPanel Margin="6,2,6,2">
                     <Path x:Name="done" Data="F1M10.909,23C10.909,23 2,14.224 2,14.224 2,14.224 4.227,12.03 4.227,12.03 4.227,12.03 10.909,18.612 10.909,18.612 10.909,18.612 27.773,2 27.773,2 27.773,2 30,4.194 30,4.194 30,4.194 10.909,23 10.909,23z" Fill="Black" Height="24" Width="31"/>
                     <TextBlock x:Name="Save" FontWeight="Bold" FontSize="24" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="24" TextAlignment="Left" TextWrapping="Wrap" Text="Save" Margin="2,3,3,3" />
