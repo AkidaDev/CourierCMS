@@ -26,9 +26,11 @@ namespace FinalUi
         int startCOnnNoIndex;
         int endConnNoIndex;
         string clientCodeSelectedValue;
-        public PowerEntry(List<RuntimeData> DataStack)
+        DataGrid datagrid;
+        public PowerEntry(List<RuntimeData> DataStack , DataGrid datagrid)
             : this()
         {
+            this.datagrid = datagrid;
             DataStack = DataStack.OrderBy(x => x.BookingDate).ThenBy(y => y.ConsignmentNo).ToList();
             List<string> connList = DataStack.Select(c => c.ConsignmentNo).ToList();
             startConnNo.DataContext = connList;
@@ -50,15 +52,20 @@ namespace FinalUi
         }
         void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (e.Error.Message != "")
+            if (e.Error != null)
+            {
                 MessageBox.Show(e.Error.Message);
+                Debug.WriteLine(e.Error.Message);
+            }
             SubmitRecords.IsEnabled = true;
             if (errorNos != "")
                 MessageBox.Show("Error calculating records: " + errorNos);
-            Debug.WriteLine(e.Error.Message);
+           
             startCOnnNoIndex = -1;
             endConnNoIndex = -1;
             progressbar.Value = 0;
+            if (datagrid != null)
+                datagrid.Items.Refresh();
         }
         string errorNos;
         void worker_DoWork(object sender, DoWorkEventArgs e)
@@ -80,6 +87,7 @@ namespace FinalUi
                     if (c == null)
                         c = db.Cities.SingleOrDefault(x => x.CITY_CODE == "DEL");
                     data.CustCode = clientCodeSelectedValue;
+                    data.FrWeight = data.Weight;
                     data.BilledWeight = data.Weight;
                     try
                     {
@@ -102,7 +110,7 @@ namespace FinalUi
                 }
             }
 
-            SubmitRecords.IsEnabled = true;
+           
         }
         PowerEntry()
         {
