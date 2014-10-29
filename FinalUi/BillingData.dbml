@@ -300,14 +300,6 @@
       <Column Name="CLNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.BalanceView" Member="BalanceViews">
-    <Type Name="BalanceView">
-      <Column Name="PC" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="PaymentRecieved" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="AmountBilled" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="NetBalance" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.InvoiceView" Member="InvoiceViews">
     <Type Name="InvoiceView">
       <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
@@ -393,6 +385,14 @@
       <Column Name="Details" Type="System.String" DbType="VarChar(120)" CanBeNull="true" />
       <Column Name="TotalRecievedAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="PayAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BalanceView" Member="BalanceViews">
+    <Type Name="BalanceView">
+      <Column Name="PC" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="PaymentRecieved" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="AmountBilled" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NetBalance" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.sp_LoadToRuntimeFromDate" Method="sp_LoadToRuntimeFromDate">
