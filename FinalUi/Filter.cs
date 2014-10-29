@@ -17,6 +17,8 @@ namespace FinalUi
         public bool? showBilled { get; set; }
         public string startConnNo { get; set; }
         public string endConnNo { get; set; }
+        public double startPrice { get; set; }
+        public double endPrice { get; set; }
         /// <summary>
         /// Creates a Filter Object
         /// </summary>
@@ -35,49 +37,20 @@ namespace FinalUi
             showBilled = null;
             this.startConnNo = "";
             this.endConnNo = "";
+            startPrice = -1;
+            endPrice = double.MaxValue;
         }
         public List<RuntimeData> applyFilter(List<RuntimeData> data, int sheetNo)
         {
             IEnumerable<RuntimeData> fData = data;
             BillingDataDataContext db = new BillingDataDataContext();
-            List<RuntimeData> qData = db.ExecuteQuery<RuntimeData>(@"
-                select 
-	                RuntimeData.Id,
-	                RuntimeData.ConsignmentNo,
-	                RuntimeData.Weight,
-	                RuntimeData.Type,
-	                RuntimeData.Destination,
-	                RuntimeData.Mode,
-	                RuntimeData.DestinationPin,
-	                RuntimeData.BookingDate,
-	                RuntimeData.Amount,
-	                RuntimeData.DOX,
-	                RuntimeData.ServiceTax,
-	                RuntimeData.SplDisc,
-	                RuntimeData.InvoiceNo,
-	                RuntimeData.InvoiceDate,
-	                RuntimeData.EmpId,
-	                RuntimeData.FrAmount,
-	                RuntimeData.FrWeight,
-	                RuntimeData.TransactionId,
-	                RuntimeData.CustCode,
-	                RuntimeData.TransMF_No,
-	                RuntimeData.BilledWeight,
-                    RuntimeData.UserId,
-                    RuntimeData.SheetNo
-                from
-	                RuntimeData join InvoiceAssignment
-                on
-	                RuntimeData.TransactionId = InvoiceAssignment.TransactionId
-                where
-	                RuntimeData.UserId = '{0}' 
-	                and
-	                RuntimeData.SheetNo = {1};
-
-                ", SecurityModule.currentUserName, sheetNo).ToList();
-
             if (showBilled != null)
             {
+                List<RuntimeData> qData = (from rdata in db.RuntimeDatas.Where(x => x.UserId == SecurityModule.currentUserName && x.SheetNo == sheetNo)
+                                           join qdata in db.InvoiceAssignments
+                                           on rdata.TransactionId equals qdata.TransactionId
+                                           select rdata).ToList();
+          
                 if (showBilled == true)
                 {
                     fData = from fdata in fData
@@ -90,9 +63,11 @@ namespace FinalUi
                     fData = fData.Where(x => !qData.Select(y => y.ConsignmentNo).Contains(x.ConsignmentNo));
                 }
             }
+
             bool areNullAllowed = selectedClientList.Select(x => x.CLCODE).Contains("<NONE>");
             fData = fData.Where(x => selectedClientList.Select(y => y.CLCODE).Contains(x.CustCode) || (x.CustCode == null && areNullAllowed));
             fData = fData.Where(x => x.BookingDate <= toDate && x.BookingDate >= fromDate);
+            fData = fData.Where(x => (double)(x.FrAmount??99999) > startPrice && (double)(x.FrAmount??0) < endPrice);
             if (startConnNo != "" && endConnNo != "")
                 fData = fData.Where(x => x.ConsignmentNo.CompareTo(startConnNo) >= 0 && x.ConsignmentNo.CompareTo(endConnNo) <= 0);
 

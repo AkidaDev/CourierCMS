@@ -134,7 +134,9 @@ namespace FinalUi
             else
                 clc = client;
             List<ReportParameter> repParams = new List<ReportParameter>();
-            dateString = FromDate.DisplayDate.ToString("dd/MM/yyyy") + " to " + ToDate.DisplayDate.ToString("dd/MM/yyyy");
+            DateTime toDate = ToDate.SelectedDate??DateTime.Today;
+            DateTime fromDate = FromDate.SelectedDate??DateTime.Today;
+            dateString = fromDate.ToString("dd/MM/yyyy") + " to " + toDate.ToString("dd/MM/yyyy");
             repParams.Add(new ReportParameter("DateString", dateString));
             descriptionString = "Total Connsignments: " + source.Count;
             repParams.Add(new ReportParameter("DescriptionString", descriptionString));
