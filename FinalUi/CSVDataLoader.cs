@@ -58,7 +58,7 @@ namespace FinalUi
                 City city = cityList.SingleOrDefault(x => x.CITY_CODE == rowData.Destination);
                 if (city != null)
                     rowData.City_Desc = city.CITY_DESC;
-                
+                rowData.Client_Desc = DataSources.ClientCopy.SingleOrDefault(x => x.CLCODE == "<NONE>").CLNAME;
                 data.Add(rowData);
 
             }

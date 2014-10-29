@@ -933,6 +933,9 @@
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock FontSize="12" Text="Invoice No " VerticalAlignment="Center" />
                                                 <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding InvoiceNo}" VerticalAlignment="Center" />
+                                                <TextBlock FontSize="12" Margin="10 0 0 0" Text="Client: " VerticalAlignment="Center" />
+                                                <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Client_Desc}" VerticalAlignment="Center"/>
+
                                             </StackPanel>
                                         </StackPanel>
                                     </Border>
