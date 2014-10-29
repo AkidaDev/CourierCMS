@@ -12,15 +12,15 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.5*"></ColumnDefinition>
-            <ColumnDefinition Width="0.25*"/>
+            <ColumnDefinition Width="94"/>
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
         <ListBox Name="AllListBox" DataContext="{StaticResource NetList}" ItemsSource="{Binding}" Grid.Column="0"/>
         <StackPanel Grid.Column="1" VerticalAlignment="Center">
-            <Button Name="SelectAllButton" Click="SelectAllButton_Click" Content=">>" Margin="2"/>
-            <Button Name="SelectSelectedButton" Click="SelectSelectedButton_Click" Content=">" Margin="2"/>
-            <Button Name="DeSelectSelectededButton" Content="&lt;" Margin="2" Click="DeSelectSelectededButton_Click"/>
-            <Button Name="DeSelectAllButton" Click="DeSelectAllButton_Click" Content="&lt;&lt;" Margin="2"/>
+            <Button Name="SelectAllButton" Click="SelectAllButton_Click" Content="Add All>>" Margin="2"/>
+            <Button Name="SelectSelectedButton" Click="SelectSelectedButton_Click" Content="Add>" Margin="2"/>
+            <Button Name="DeSelectSelectededButton" Content="&lt; Remove" Margin="2" Click="DeSelectSelectededButton_Click"/>
+            <Button Name="DeSelectAllButton" Click="DeSelectAllButton_Click" Content="&lt;&lt; Remove All" Margin="2"/>
         </StackPanel>
         <ListBox Grid.Column="2" Name="SelectedList" DataContext="{StaticResource SelectedList}" ItemsSource="{Binding}"/>
     </Grid>

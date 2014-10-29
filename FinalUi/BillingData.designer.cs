@@ -81,7 +81,7 @@ namespace FinalUi
     #endregion
 		
 		public BillingDataDataContext() : 
-				base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString6, mappingSource)
+				base(global::FinalUi.Properties.Settings.Default.BillingDatabaseConnectionString2, mappingSource)
 		{
 			OnCreated();
 		}
@@ -246,27 +246,11 @@ namespace FinalUi
 			}
 		}
 		
-		public System.Data.Linq.Table<AccountStatement> AccountStatements
-		{
-			get
-			{
-				return this.GetTable<AccountStatement>();
-			}
-		}
-		
 		public System.Data.Linq.Table<TransactionCityView> TransactionCityViews
 		{
 			get
 			{
 				return this.GetTable<TransactionCityView>();
-			}
-		}
-		
-		public System.Data.Linq.Table<BalanceView> BalanceViews
-		{
-			get
-			{
-				return this.GetTable<BalanceView>();
 			}
 		}
 		
@@ -302,22 +286,20 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_ImportZoneData")]
-		public void sp_ImportZoneData()
+		public System.Data.Linq.Table<AccountStatement> AccountStatements
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			get
+			{
+				return this.GetTable<AccountStatement>();
+			}
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferTransactionDetails")]
-		public void sp_TransferTransactionDetails()
+		public System.Data.Linq.Table<BalanceView> BalanceViews
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_ImportZones")]
-		public void sp_ImportZones()
-		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			get
+			{
+				return this.GetTable<BalanceView>();
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_LoadToRuntimeFromDate")]
@@ -327,53 +309,10 @@ namespace FinalUi
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_SaveDataFromRunToTran")]
-		public int sp_SaveDataFromRunToTran([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserName", DbType="VarChar(50)")] string userName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SheetNo", DbType="Int")] System.Nullable<int> sheetNo)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_getRateReportingObject", IsComposable=true)]
+		public object sp_getRateReportingObject([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ClientCode", DbType="VarChar(50)")] string clientCode)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userName, sheetNo);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferClients")]
-		public void sp_TransferClients()
-		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferFRWRDRAsService")]
-		public void sp_TransferFRWRDRAsService()
-		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail")]
-		public void sp_TransferMInvoiceDetailToBInvoiceDetail()
-		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferMInvoiceToBInvoice")]
-		public void sp_TransferMInvoiceToBInvoice()
-		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferPaymentDetails")]
-		public void sp_TransferPaymentDetails()
-		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferRatespart1")]
-		public void sp_TransferRatespart1()
-		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferRatespart2")]
-		public void sp_TransferRatespart2()
-		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), clientCode).ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_deleteSheetFromRuntime")]
@@ -383,10 +322,10 @@ namespace FinalUi
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_getRateReportingObject")]
-		public void sp_getRateReportingObject([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ClientCode", DbType="VarChar(50)")] string clientCode)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetPreviousDue", IsComposable=true)]
+		public System.Nullable<double> GetPreviousDue([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CLCODE", DbType="VarChar(6)")] string cLCODE)
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), clientCode);
+			return ((System.Nullable<double>)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cLCODE).ReturnValue));
 		}
 	}
 	
@@ -993,7 +932,7 @@ namespace FinalUi
 		
 		private System.Nullable<double> _AMTDISC;
 		
-		private string _STAX;
+		private System.Nullable<double> _STAX;
 		
 		private string _BRANCH;
 		
@@ -1049,7 +988,7 @@ namespace FinalUi
     partial void OnAMTADDChanged();
     partial void OnAMTDISCChanging(System.Nullable<double> value);
     partial void OnAMTDISCChanged();
-    partial void OnSTAXChanging(string value);
+    partial void OnSTAXChanging(System.Nullable<double> value);
     partial void OnSTAXChanged();
     partial void OnBRANCHChanging(string value);
     partial void OnBRANCHChanged();
@@ -1321,8 +1260,8 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STAX", DbType="Char(2)")]
-		public string STAX
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STAX", DbType="Float")]
+		public System.Nullable<double> STAX
 		{
 			get
 			{
@@ -2034,6 +1973,8 @@ namespace FinalUi
 		
 		private System.Nullable<double> _Misc;
 		
+		private System.Nullable<double> _Discount;
+		
 		private EntitySet<InvoiceAssignment> _InvoiceAssignments;
 		
     #region Extensibility Method Definitions
@@ -2060,6 +2001,8 @@ namespace FinalUi
     partial void OnPreviousDueChanged();
     partial void OnMiscChanging(System.Nullable<double> value);
     partial void OnMiscChanged();
+    partial void OnDiscountChanging(System.Nullable<double> value);
+    partial void OnDiscountChanged();
     #endregion
 		
 		public Invoice()
@@ -2268,6 +2211,26 @@ namespace FinalUi
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Discount", DbType="Float")]
+		public System.Nullable<double> Discount
+		{
+			get
+			{
+				return this._Discount;
+			}
+			set
+			{
+				if ((this._Discount != value))
+				{
+					this.OnDiscountChanging(value);
+					this.SendPropertyChanging();
+					this._Discount = value;
+					this.SendPropertyChanged("Discount");
+					this.OnDiscountChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Invoice_InvoiceAssignment", Storage="_InvoiceAssignments", ThisKey="BillId", OtherKey="BillId")]
 		public EntitySet<InvoiceAssignment> InvoiceAssignments
 		{
@@ -2330,6 +2293,10 @@ namespace FinalUi
 		
 		private double _BilledWeight;
 		
+		private string _Destination;
+		
+		private string _DestinationDesc;
+		
 		private EntityRef<Invoice> _Invoice;
 		
 		private EntityRef<Transaction> _Transaction;
@@ -2348,6 +2315,10 @@ namespace FinalUi
     partial void OnBilledAmountChanged();
     partial void OnBilledWeightChanging(double value);
     partial void OnBilledWeightChanged();
+    partial void OnDestinationChanging(string value);
+    partial void OnDestinationChanged();
+    partial void OnDestinationDescChanging(string value);
+    partial void OnDestinationDescChanged();
     #endregion
 		
 		public InvoiceAssignment()
@@ -2465,6 +2436,46 @@ namespace FinalUi
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Destination", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Destination
+		{
+			get
+			{
+				return this._Destination;
+			}
+			set
+			{
+				if ((this._Destination != value))
+				{
+					this.OnDestinationChanging(value);
+					this.SendPropertyChanging();
+					this._Destination = value;
+					this.SendPropertyChanged("Destination");
+					this.OnDestinationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DestinationDesc", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string DestinationDesc
+		{
+			get
+			{
+				return this._DestinationDesc;
+			}
+			set
+			{
+				if ((this._DestinationDesc != value))
+				{
+					this.OnDestinationDescChanging(value);
+					this.SendPropertyChanging();
+					this._DestinationDesc = value;
+					this.SendPropertyChanged("DestinationDesc");
+					this.OnDestinationDescChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Invoice_InvoiceAssignment", Storage="_Invoice", ThisKey="BillId", OtherKey="BillId", IsForeignKey=true)]
 		public Invoice Invoice
 		{
@@ -2576,6 +2587,12 @@ namespace FinalUi
 		
 		private string _BankName;
 		
+		private double _DebitNote;
+		
+		private double _TDS;
+		
+		private string _InvoiceNumber;
+		
 		private EntityRef<Client> _Client;
 		
     #region Extensibility Method Definitions
@@ -2598,6 +2615,12 @@ namespace FinalUi
     partial void OnRemarksChanged();
     partial void OnBankNameChanging(string value);
     partial void OnBankNameChanged();
+    partial void OnDebitNoteChanging(double value);
+    partial void OnDebitNoteChanged();
+    partial void OnTDSChanging(double value);
+    partial void OnTDSChanged();
+    partial void OnInvoiceNumberChanging(string value);
+    partial void OnInvoiceNumberChanged();
     #endregion
 		
 		public PaymentEntry()
@@ -2706,7 +2729,7 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientCode", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientCode", DbType="VarChar(6)")]
 		public string ClientCode
 		{
 			get
@@ -2766,6 +2789,66 @@ namespace FinalUi
 					this._BankName = value;
 					this.SendPropertyChanged("BankName");
 					this.OnBankNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DebitNote", DbType="Float NOT NULL")]
+		public double DebitNote
+		{
+			get
+			{
+				return this._DebitNote;
+			}
+			set
+			{
+				if ((this._DebitNote != value))
+				{
+					this.OnDebitNoteChanging(value);
+					this.SendPropertyChanging();
+					this._DebitNote = value;
+					this.SendPropertyChanged("DebitNote");
+					this.OnDebitNoteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TDS", DbType="Float NOT NULL")]
+		public double TDS
+		{
+			get
+			{
+				return this._TDS;
+			}
+			set
+			{
+				if ((this._TDS != value))
+				{
+					this.OnTDSChanging(value);
+					this.SendPropertyChanging();
+					this._TDS = value;
+					this.SendPropertyChanged("TDS");
+					this.OnTDSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceNumber", DbType="VarChar(32)")]
+		public string InvoiceNumber
+		{
+			get
+			{
+				return this._InvoiceNumber;
+			}
+			set
+			{
+				if ((this._InvoiceNumber != value))
+				{
+					this.OnInvoiceNumberChanging(value);
+					this.SendPropertyChanging();
+					this._InvoiceNumber = value;
+					this.SendPropertyChanged("InvoiceNumber");
+					this.OnInvoiceNumberChanged();
 				}
 			}
 		}
@@ -5942,105 +6025,6 @@ namespace FinalUi
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AccountStatement")]
-	public partial class AccountStatement
-	{
-		
-		private string _Id;
-		
-		private System.DateTime _TransactionDate;
-		
-		private string _ClientCode;
-		
-		private System.Nullable<double> _RecievedAmount;
-		
-		private System.Nullable<double> _PayAmount;
-		
-		public AccountStatement()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this._Id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionDate", DbType="Date NOT NULL")]
-		public System.DateTime TransactionDate
-		{
-			get
-			{
-				return this._TransactionDate;
-			}
-			set
-			{
-				if ((this._TransactionDate != value))
-				{
-					this._TransactionDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientCode", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
-		public string ClientCode
-		{
-			get
-			{
-				return this._ClientCode;
-			}
-			set
-			{
-				if ((this._ClientCode != value))
-				{
-					this._ClientCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecievedAmount", DbType="Float")]
-		public System.Nullable<double> RecievedAmount
-		{
-			get
-			{
-				return this._RecievedAmount;
-			}
-			set
-			{
-				if ((this._RecievedAmount != value))
-				{
-					this._RecievedAmount = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PayAmount", DbType="Float")]
-		public System.Nullable<double> PayAmount
-		{
-			get
-			{
-				return this._PayAmount;
-			}
-			set
-			{
-				if ((this._PayAmount != value))
-				{
-					this._PayAmount = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TransactionCityView")]
 	public partial class TransactionCityView
 	{
@@ -6495,87 +6479,6 @@ namespace FinalUi
 				if ((this._CLNAME != value))
 				{
 					this._CLNAME = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BalanceView")]
-	public partial class BalanceView
-	{
-		
-		private string _PC;
-		
-		private System.Nullable<double> _PaymentRecieved;
-		
-		private System.Nullable<double> _AmountBilled;
-		
-		private System.Nullable<double> _NetBalance;
-		
-		public BalanceView()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PC", DbType="VarChar(6) NOT NULL", CanBeNull=false)]
-		public string PC
-		{
-			get
-			{
-				return this._PC;
-			}
-			set
-			{
-				if ((this._PC != value))
-				{
-					this._PC = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentRecieved", DbType="Float")]
-		public System.Nullable<double> PaymentRecieved
-		{
-			get
-			{
-				return this._PaymentRecieved;
-			}
-			set
-			{
-				if ((this._PaymentRecieved != value))
-				{
-					this._PaymentRecieved = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AmountBilled", DbType="Float")]
-		public System.Nullable<double> AmountBilled
-		{
-			get
-			{
-				return this._AmountBilled;
-			}
-			set
-			{
-				if ((this._AmountBilled != value))
-				{
-					this._AmountBilled = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NetBalance", DbType="Float")]
-		public System.Nullable<double> NetBalance
-		{
-			get
-			{
-				return this._NetBalance;
-			}
-			set
-			{
-				if ((this._NetBalance != value))
-				{
-					this._NetBalance = value;
 				}
 			}
 		}
@@ -7692,6 +7595,222 @@ namespace FinalUi
 				if ((this._CITY_DESC != value))
 				{
 					this._CITY_DESC = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AccountStatement")]
+	public partial class AccountStatement
+	{
+		
+		private string _Id;
+		
+		private System.DateTime _TransactionDate;
+		
+		private string _ClientCode;
+		
+		private string _Remark;
+		
+		private string _Details;
+		
+		private System.Nullable<double> _TotalRecievedAmount;
+		
+		private System.Nullable<double> _PayAmount;
+		
+		public AccountStatement()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionDate", DbType="Date NOT NULL")]
+		public System.DateTime TransactionDate
+		{
+			get
+			{
+				return this._TransactionDate;
+			}
+			set
+			{
+				if ((this._TransactionDate != value))
+				{
+					this._TransactionDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientCode", DbType="VarChar(6)")]
+		public string ClientCode
+		{
+			get
+			{
+				return this._ClientCode;
+			}
+			set
+			{
+				if ((this._ClientCode != value))
+				{
+					this._ClientCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remark", DbType="VarChar(131)")]
+		public string Remark
+		{
+			get
+			{
+				return this._Remark;
+			}
+			set
+			{
+				if ((this._Remark != value))
+				{
+					this._Remark = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Details", DbType="VarChar(120)")]
+		public string Details
+		{
+			get
+			{
+				return this._Details;
+			}
+			set
+			{
+				if ((this._Details != value))
+				{
+					this._Details = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalRecievedAmount", DbType="Float")]
+		public System.Nullable<double> TotalRecievedAmount
+		{
+			get
+			{
+				return this._TotalRecievedAmount;
+			}
+			set
+			{
+				if ((this._TotalRecievedAmount != value))
+				{
+					this._TotalRecievedAmount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PayAmount", DbType="Float")]
+		public System.Nullable<double> PayAmount
+		{
+			get
+			{
+				return this._PayAmount;
+			}
+			set
+			{
+				if ((this._PayAmount != value))
+				{
+					this._PayAmount = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BalanceView")]
+	public partial class BalanceView
+	{
+		
+		private string _PC;
+		
+		private System.Nullable<double> _PaymentRecieved;
+		
+		private System.Nullable<double> _AmountBilled;
+		
+		private System.Nullable<decimal> _NetBalance;
+		
+		public BalanceView()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PC", DbType="VarChar(6)")]
+		public string PC
+		{
+			get
+			{
+				return this._PC;
+			}
+			set
+			{
+				if ((this._PC != value))
+				{
+					this._PC = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentRecieved", DbType="Float")]
+		public System.Nullable<double> PaymentRecieved
+		{
+			get
+			{
+				return this._PaymentRecieved;
+			}
+			set
+			{
+				if ((this._PaymentRecieved != value))
+				{
+					this._PaymentRecieved = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AmountBilled", DbType="Float")]
+		public System.Nullable<double> AmountBilled
+		{
+			get
+			{
+				return this._AmountBilled;
+			}
+			set
+			{
+				if ((this._AmountBilled != value))
+				{
+					this._AmountBilled = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NetBalance", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> NetBalance
+		{
+			get
+			{
+				return this._NetBalance;
+			}
+			set
+			{
+				if ((this._NetBalance != value))
+				{
+					this._NetBalance = value;
 				}
 			}
 		}

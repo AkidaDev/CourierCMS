@@ -85,5 +85,31 @@ namespace FinalUi
         {
             DragMove();
         }
+
+        private void cloakAll()
+        {
+            this.BackgroundSettingGrid.Visibility = Visibility.Collapsed;
+            this.CompanyDetails.Visibility = Visibility.Collapsed;
+            this.InvoicePanel.Visibility = Visibility.Collapsed;
+        }
+
+        private void settingtreeview_Click(object sender, RoutedEventArgs e)
+        {
+            cloakAll();
+            this.BackgroundSettingGrid.Visibility = Visibility.Visible;
+        }
+
+        private void DetailsEntry_Click(object sender, RoutedEventArgs e)
+        {
+            cloakAll();
+            this.CompanyDetails.Visibility = Visibility.Visible;
+        }
+
+        private void InvoiceEntry_Click(object sender, RoutedEventArgs e)
+        {
+            cloakAll();
+            this.InvoicePanel.Visibility = Visibility.Visible;
+        }
+
     }
 }

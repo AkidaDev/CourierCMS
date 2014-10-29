@@ -74,21 +74,26 @@ where [BillId] = '" + inv.BillId + @"'
 
                 Client clc = db.Clients.SingleOrDefault(x => x.CLCODE == inv.ClientCode);
                 List<ReportParameter> repParams = new List<ReportParameter>();
-                string dateString = inv.Date.ToString();
+                DateTime FromDate = data.Min(x => x.BookingDate);
+                DateTime ToDate = data.Max(x => x.BookingDate);
+                string dateString = FromDate.ToString("dd/MM/yyyy") + " to " + ToDate.ToString("dd/MM/yyyy");
                 repParams.Add(new ReportParameter("DateString", dateString));
-                string descriptionString = "";
-                descriptionString = "Total Connsignments: " + source.Count;
+                string descriptionString = "Total Connsignments: " + source.Count;
                 repParams.Add(new ReportParameter("DescriptionString", descriptionString));
-                string mainAmount = source.Sum(x => x.FrAmount).ToString();
-                repParams.Add(new ReportParameter("MainAmountString", mainAmount));
-                repParams.Add(new ReportParameter("FuelString", inv.Fuel.ToString()));
+                double mainAmountValue = inv.Basic;
+                repParams.Add(new ReportParameter("MainAmountString", mainAmountValue.ToString()));
+                repParams.Add(new ReportParameter("FuelString",inv.Fuel.ToString()));
+                double fuelAmount = inv.Fuel * mainAmountValue / 100;
+                repParams.Add(new ReportParameter("FuelAmount", fuelAmount.ToString()));
                 repParams.Add(new ReportParameter("ServiceTaxString", inv.STax.ToString()));
-                double tax = inv.Fuel + inv.STax;
-                repParams.Add(new ReportParameter("TaxPercentageString", tax.ToString()));
-                double taxamount = tax * double.Parse(mainAmount) / 100;
-                repParams.Add(new ReportParameter("TaxAmountString", taxamount.ToString()));
+                double tax = inv.STax * mainAmountValue / 100;
+                repParams.Add(new ReportParameter("ServiceTaxAmount", tax.ToString()));
+                double discount = (inv.Discount??0) * mainAmountValue / 100;
+                repParams.Add(new ReportParameter("DiscountPString",inv.Discount.ToString()));
+                repParams.Add(new ReportParameter("DiscountAmountString", discount.ToString()));
                 repParams.Add(new ReportParameter("MiscellaneousAmountString", inv.Misc.ToString()));
-                double totalAmount = double.Parse(mainAmount) + taxamount + (double)(inv.Misc) + (double)inv.PreviousDue;
+                double taxamount = tax + fuelAmount;
+                double totalAmount = mainAmountValue + taxamount + (double)(inv.Misc??0) + (double)(inv.PreviousDue??0) - discount;
                 repParams.Add(new ReportParameter("TotalAmountString", totalAmount.ToString()));
                 string totalAmountinWordString = UtilityClass.NumbersToWords((int)totalAmount);
                 repParams.Add(new ReportParameter("TotalAmountInWordString", totalAmountinWordString));
@@ -101,8 +106,8 @@ where [BillId] = '" + inv.BillId + @"'
                 repParams.Add(new ReportParameter("ClientName", clc.CLNAME));
                 repParams.Add(new ReportParameter("ClientAddress", clc.ADDRESS));
                 repParams.Add(new ReportParameter("ClientPhoneNo", clc.CONTACTNO));
-                string invoiceNo = inv.BillId;
-                repParams.Add(new ReportParameter("InvoiceNumber", invoiceNo));
+              
+                repParams.Add(new ReportParameter("InvoiceNumber", inv.BillId));
                 BillViewer.LocalReport.ReportPath = "Report1.rdlc";
                 BillViewer.LocalReport.DataSources.Clear();
                 rs.Name = "DataSet1";

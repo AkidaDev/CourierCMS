@@ -57,9 +57,10 @@ namespace FinalUi
             repParams.Add(new ReportParameter("CompanyEmail", Configs.Default.CompanyEmail));
             repParams.Add(new ReportParameter("CompanyFax", Configs.Default.CompanyFax));
             double? billedamountsum =  this.invoice.Select(y => y.PayAmount).Sum();
-            double? amountRecivedsum = this.invoice.Select(y => y.RecievedAmount).Sum();
+            double? amountRecivedsum = this.invoice.Select(y => y.TotalRecievedAmount).Sum();
             double? TotalSum = billedamountsum - amountRecivedsum;
-            repParams.Add(new ReportParameter("TotalSum", TotalSum.ToString()));
+            string sumS = String.Format("{0:F2}", TotalSum??0);
+            repParams.Add(new ReportParameter("TotalSum", sumS));
             repParams.Add(new ReportParameter("ClientName", c.CLNAME));
             repParams.Add(new ReportParameter("ClientAddress", c.ADDRESS));
             repParams.Add(new ReportParameter("ClientPhoneNo", c.CONTACTNO));

@@ -131,6 +131,8 @@ namespace FinalUi
                 transactionData.Employee = db.Employees.Single(x => x.Id == data.EmpId);
             transactionData.InvoiceDate = data.InvoiceDate;
             transactionData.InvoiceNo = data.InvoiceNo;
+            transactionData.TransMF_No = data.TransMF_No;
+           
             transactionData.Mode = data.Mode;
 
             if (data.ServiceTax != null)
