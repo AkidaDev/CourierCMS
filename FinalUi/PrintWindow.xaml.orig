@@ -31,7 +31,7 @@
                 <DatePicker Canvas.Top="108" Canvas.Left="393" x:Name="ToDate" CalendarClosed="ToDate_CalendarClosed" Height="26"  Width="124"  BorderThickness="0" Padding="0 4 0 0"/>
                 <Path Canvas.Top="108" Canvas.Left="392" x:Name="Rectangle" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="26"  Stroke="Black" Stretch="Fill"/>
             </Canvas>
-            <Canvas Canvas.Left="-30" Canvas.Top="4" >
+            <Canvas Canvas.Left="-30" Canvas.Top="4" Visibility="Hidden">
                 <TextBlock  Canvas.Top="171" Canvas.Left="60"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Previous Due .:"/>
                 <TextBox  Canvas.Top="166"  Canvas.Left="175" Height="22" x:Name="PreviousDueTextBox" Width="50" Padding="10 2 0 0"/>
                 <TextBlock Text="&#8377;" Canvas.Top="168" Canvas.Left="178" FontSize="14" FontWeight="Bold"/>
@@ -56,7 +56,7 @@
                 <Path x:Name="remark" Data="F1M18.387,5.167C17.681,5.167 17.109,5.764 17.109,6.5 17.109,7.235 17.681,7.832 18.387,7.832 19.092,7.832 19.664,7.235 19.664,6.5 19.664,5.764 19.092,5.167 18.387,5.167z M2.488,1C2.488,1 17.444,1 17.444,1 17.666,1 17.877,1.051 18.067,1.142 18.25,1.205 18.423,1.312 18.569,1.465 18.569,1.465 22.504,5.567 22.504,5.567 23,6.085 23,6.924 22.504,7.442 22.504,7.442 18.64,11.47 18.64,11.47 18.53,11.585 18.405,11.674 18.271,11.738 18.034,11.904 17.75,12 17.444,12 17.444,12 2.488,12 2.488,12 1.666,12 1,11.305 1,10.448 1,10.448 1,2.552 1,2.552 1,1.695 1.666,1 2.488,1z" Fill="Black" Height="13" Canvas.Left="46" Canvas.Top="250" Width="24"/>
                 <TextBlock Canvas.Top="247" Canvas.Left="74" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Remarks .:"/>
                 <TextBox Canvas.Top="242" Canvas.Left="154" Name="RemarkBox" Width="345" Height="22" Padding="2"/>
-                <WrapPanel  Canvas.Top="243" Margin="115,35,0,0" >
+                <WrapPanel  Canvas.Top="243" Margin="115,30,0,0" >
                     <Button Click="Button_Click" Style="{StaticResource all}" Margin="0,0,50,0">
                         <WrapPanel Margin="6,6,6,6">
                             <Path Margin="0 0 3 0" x:Name="print" Data="F1M8.9,14.833C8.9,14.833 8.9,20.667 8.9,20.667 8.9,20.667 18.1,20.667 18.1,20.667 18.1,20.667 18.1,14.833 18.1,14.833 18.1,14.833 8.9,14.833 8.9,14.833z M21.55,10.167C20.86,10.167 20.4,10.633 20.4,11.333 20.4,12.033 20.86,12.5 21.55,12.5 22.24,12.5 22.7,12.033 22.7,11.333 22.7,10.633 22.24,10.167 21.55,10.167z M5.45,7.833C5.45,7.833 21.55,7.833 21.55,7.833 23.505,7.833 25,9.35 25,11.333 25,11.333 25,18.333 25,18.333 25,18.333 20.4,18.333 20.4,18.333 20.4,18.333 20.4,23 20.4,23 20.4,23 6.6,23 6.6,23 6.6,23 6.6,18.333 6.6,18.333 6.6,18.333 2,18.333 2,18.333 2,18.333 2,11.333 2,11.333 2,9.35 3.495,7.833 5.45,7.833z M6.6,2C6.6,2 20.4,2 20.4,2 20.4,2 20.4,6.667 20.4,6.667 20.4,6.667 6.6,6.667 6.6,6.667 6.6,6.667 6.6,2 6.6,2z" Fill="Black" Height="24" Width="26"/>
