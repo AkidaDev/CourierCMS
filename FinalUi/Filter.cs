@@ -17,6 +17,8 @@ namespace FinalUi
         public bool? showBilled { get; set; }
         public string startConnNo { get; set; }
         public string endConnNo { get; set; }
+        public double startPrice { get; set; }
+        public double endPrice { get; set; }
         /// <summary>
         /// Creates a Filter Object
         /// </summary>
@@ -35,6 +37,8 @@ namespace FinalUi
             showBilled = null;
             this.startConnNo = "";
             this.endConnNo = "";
+            startPrice = -1;
+            endPrice = double.MaxValue;
         }
         public List<RuntimeData> applyFilter(List<RuntimeData> data, int sheetNo)
         {
@@ -59,9 +63,11 @@ namespace FinalUi
                     fData = fData.Where(x => !qData.Select(y => y.ConsignmentNo).Contains(x.ConsignmentNo));
                 }
             }
+
             bool areNullAllowed = selectedClientList.Select(x => x.CLCODE).Contains("<NONE>");
             fData = fData.Where(x => selectedClientList.Select(y => y.CLCODE).Contains(x.CustCode) || (x.CustCode == null && areNullAllowed));
             fData = fData.Where(x => x.BookingDate <= toDate && x.BookingDate >= fromDate);
+            fData = fData.Where(x => (double)(x.FrAmount??99999) > startPrice && (double)(x.FrAmount??0) < endPrice);
             if (startConnNo != "" && endConnNo != "")
                 fData = fData.Where(x => x.ConsignmentNo.CompareTo(startConnNo) >= 0 && x.ConsignmentNo.CompareTo(endConnNo) <= 0);
 
