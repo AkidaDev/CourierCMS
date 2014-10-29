@@ -28,6 +28,7 @@ namespace FinalUi
         {
             InitializeComponent();
             FillDetails();
+            
             ConnectionStringCombo.Items.Add("Still loading please wait...");
             sqlInstanceGetVersion = new BackgroundWorker();
             sqlInstanceGetVersion.DoWork += sqlInstanceGetVersion_DoWork;
@@ -75,6 +76,12 @@ namespace FinalUi
         private void FillDetails()
         {
             ThemeColorPicker.SelectedColor = (Color)ColorConverter.ConvertFromString(Configs.Default.Background);
+            CompanyAddressBox.Text = Configs.Default.CompanyAddress;
+            CompanyContactBox.Text = Configs.Default.CompanyPhone;
+            CompanyEmailBox.Text = Configs.Default.CompanyEmail;
+            CompanyNameBox.Text = Configs.Default.CompanyName;
+            CompanyOwnerBox.Text = Configs.Default.CompanyOwner;
+            
             this.ServiceTax.Text = Configs.Default.ServiceTax;
         }
         private void Button_Click_Close(object sender, RoutedEventArgs e)
@@ -109,6 +116,16 @@ namespace FinalUi
         {
             cloakAll();
             this.InvoicePanel.Visibility = Visibility.Visible;
+        }
+
+        private void SaveDetailsButton_Click(object sender, RoutedEventArgs e)
+        {
+            Configs.Default.CompanyAddress = CompanyAddressBox.Text;
+            Configs.Default.CompanyEmail = CompanyEmailBox.Text;
+            Configs.Default.CompanyName = CompanyNameBox.Text;
+            Configs.Default.CompanyOwner = CompanyOwnerBox.Text;
+            Configs.Default.CompanyPhone = CompanyContactBox.Text;
+            Configs.Default.Save();
         }
 
     }
