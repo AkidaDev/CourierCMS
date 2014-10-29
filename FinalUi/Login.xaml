@@ -36,7 +36,7 @@
 		</Canvas>
 				<StackPanel Margin="283,139,0,0">
                 <WrapPanel HorizontalAlignment="Center"  Margin="0,26,0,0">
-                <TextBox Width="150" Padding="5 5 5 5" Name="UserName" FontSize="14" />
+                <TextBox Width="150" Padding="5 5 5 5" Name="UserName" FontSize="14"/>
                 </WrapPanel>
                 <Separator Visibility="Hidden"/>
                 <WrapPanel HorizontalAlignment="Center" >
