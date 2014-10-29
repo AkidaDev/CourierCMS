@@ -194,5 +194,32 @@ namespace FinalUi
             }
         }
     }
+    public partial class Invoice
+    {
+        public string CompactInvoiceDetail
+        {
+            get
+            {
+                return BillId + "     |     " + ClientCode + "     |     " + TotalAmount;
+            }
+        }
+        public string CompactDate
+        {
+            get
+            {
+                return Date.ToString("dd-MMM-yyyy");
+            }
+        }
+    }
+    partial class PaymentEntry
+    {
+        public string CompactDate
+        {
+            get
+            {
+                return Date.ToString("dd-MMM-yyyy");
+            }
+        }
+    }
 
 }

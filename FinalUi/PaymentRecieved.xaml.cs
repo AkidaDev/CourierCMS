@@ -26,10 +26,11 @@ namespace FinalUi
             PaymentDatePicker.SelectedDate = DateTime.Today;
             ChequeRadio.Checked += CashRadio_Unchecked;
             CashRadio.Checked += CashRadio_Checked;
-            BillingDataDataContext db = new BillingDataDataContext();
-            ClientList = db.Clients.ToList();
             CollectionViewSource clientListSource = (CollectionViewSource)(FindResource("ClientList"));
-            clientListSource.Source = ClientList;
+            clientListSource.Source = DataSources.ClientCopy;
+            CollectionViewSource invoiceListSource = (CollectionViewSource)FindResource("InvoiceList");
+            BillingDataDataContext db = new BillingDataDataContext();
+            invoiceListSource.Source = db.Invoices;
         }
         private void CashRadio_Checked(object sender, RoutedEventArgs e)
         {
@@ -52,7 +53,17 @@ namespace FinalUi
                 errorMessage += "Amount is not in correct format. \n";
             else
                 paymentEntry.RecievedAmount = tempStorage;
-            paymentEntry.ClientCode = ((Client)ClientComboBox.SelectedItem).CLCODE;
+            if (InvoiceSelectRadio.IsChecked == true)
+            {
+                Invoice invoice = (Invoice)InvoiceComboBox.SelectedItem;
+                paymentEntry.InvoiceNumber = invoice.BillId;
+                paymentEntry.ClientCode = invoice.ClientCode;
+            }
+            else
+            {
+                Client client = (Client)ClientComboBox.SelectedItem;
+                paymentEntry.ClientCode = client.CLCODE;
+            }
             if (PaymentDatePicker.SelectedDate != null)
                 paymentEntry.Date = (DateTime)PaymentDatePicker.SelectedDate;
             else
@@ -68,7 +79,16 @@ namespace FinalUi
             else
                 paymentEntry.Type = "Cash";
             paymentEntry.Remarks = RemarkBox.Text;
-            if(errorMessage == "")
+            if (double.TryParse(DebitNoteBox.Text, out tempStorage))
+                paymentEntry.DebitNote = tempStorage;
+            else
+                errorMessage += "Enter debit note properly \n";
+            if (double.TryParse(TDSBox.Text, out tempStorage))
+                paymentEntry.TDS = tempStorage;
+            else
+                errorMessage += "Enter TDS properly \n";
+
+            if (errorMessage == "")
             {
                 BillingDataDataContext db = new BillingDataDataContext();
                 db.PaymentEntries.InsertOnSubmit(paymentEntry);
@@ -85,17 +105,34 @@ namespace FinalUi
             }
             if (isdone)
             {
-                MessageBox.Show("Payment Recived\n Reference no is "+paymentEntry.Id);
+                MessageBox.Show("Payment Recived\nReference no is " + paymentEntry.Id);
                 this.Close();
             }
         }
-		private void DragthisWindow(object sender, MouseButtonEventArgs e)
+        private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (IsInitialized)
+            {
+                if (InvoiceSelectRadio.IsChecked == true)
+                {
+                    InvoiceComboBox.Visibility = Visibility.Visible;
+                    ClientComboBox.Visibility = System.Windows.Visibility.Collapsed;
+                }
+                else
+                {
+                    InvoiceComboBox.Visibility = System.Windows.Visibility.Collapsed;
+                    ClientComboBox.Visibility = System.Windows.Visibility.Visible;
+                }
+            }
         }
     }
 }
