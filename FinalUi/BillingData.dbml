@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BillingDatabase" Class="BillingDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=PANKAJ\SQLEXPRESS;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString6" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=SYSTEM;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString2" Provider="System.Data.SqlClient" />
   <Table Name="dbo.City" Member="Cities">
     <Type Name="City">
       <Column Name="CITY_CODE" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -42,7 +42,7 @@
       <Column Name="OPBALANCE" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="AMTADD" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="AMTDISC" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="STAX" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="STAX" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="BRANCH" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="CLEXT" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
       <Column Name="ADSDOX" Type="System.Double" DbType="Float" CanBeNull="true" />
@@ -92,6 +92,7 @@
       <Column Name="Remarks" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="PreviousDue" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="Misc" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Discount" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Association Name="Invoice_InvoiceAssignment" Member="InvoiceAssignments" ThisKey="BillId" OtherKey="BillId" Type="InvoiceAssignment" />
     </Type>
   </Table>
@@ -102,6 +103,8 @@
       <Column Name="TransactionId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="BilledAmount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="BilledWeight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Destination" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DestinationDesc" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="Invoice_InvoiceAssignment" Member="Invoice" ThisKey="BillId" OtherKey="BillId" Type="Invoice" IsForeignKey="true" />
       <Association Name="Transaction_InvoiceAssignment" Member="Transaction" ThisKey="TransactionId" OtherKey="ID" Type="Transaction" IsForeignKey="true" />
     </Type>
@@ -113,9 +116,12 @@
       <Column Name="RecievedAmount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="Type" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="ChequeNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ClientCode" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
       <Column Name="Remarks" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="BankName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DebitNote" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="TDS" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceNumber" Type="System.String" DbType="VarChar(32)" CanBeNull="true" />
       <Association Name="Client_PaymentEntry" Member="Client" ThisKey="ClientCode" OtherKey="CLCODE" Type="Client" IsForeignKey="true" />
     </Type>
   </Table>
@@ -387,9 +393,6 @@
       <Column Name="CITY_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
     </Type>
   </Table>
-  <Function Name="dbo.sp_ImportZoneData" Method="sp_ImportZoneData" />
-  <Function Name="dbo.sp_TransferTransactionDetails" Method="sp_TransferTransactionDetails" />
-  <Function Name="dbo.sp_ImportZones" Method="sp_ImportZones" />
   <Function Name="dbo.sp_LoadToRuntimeFromDate" Method="sp_LoadToRuntimeFromDate">
     <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
@@ -397,24 +400,17 @@
     <Parameter Name="FromDate" Parameter="fromDate" Type="System.DateTime" DbType="DateTime" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_SaveDataFromRunToTran" Method="sp_SaveDataFromRunToTran">
-    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
+  <Function Name="dbo.sp_getRateReportingObject" Method="sp_getRateReportingObject" IsComposable="true">
+    <Parameter Name="ClientCode" Parameter="clientCode" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="object" />
   </Function>
-  <Function Name="dbo.sp_TransferClients" Method="sp_TransferClients" />
-  <Function Name="dbo.sp_TransferFRWRDRAsService" Method="sp_TransferFRWRDRAsService" />
-  <Function Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail" Method="sp_TransferMInvoiceDetailToBInvoiceDetail" />
-  <Function Name="dbo.sp_TransferMInvoiceToBInvoice" Method="sp_TransferMInvoiceToBInvoice" />
-  <Function Name="dbo.sp_TransferPaymentDetails" Method="sp_TransferPaymentDetails" />
-  <Function Name="dbo.sp_TransferRatespart1" Method="sp_TransferRatespart1" />
-  <Function Name="dbo.sp_TransferRatespart2" Method="sp_TransferRatespart2" />
   <Function Name="dbo.sp_deleteSheetFromRuntime" Method="sp_deleteSheetFromRuntime">
     <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_getRateReportingObject" Method="sp_getRateReportingObject">
-    <Parameter Name="ClientCode" Parameter="clientCode" Type="System.String" DbType="VarChar(50)" />
+  <Function Name="dbo.GetPreviousDue" Method="GetPreviousDue" IsComposable="true">
+    <Parameter Name="CLCODE" Parameter="cLCODE" Type="System.String" DbType="VarChar(6)" />
+    <Return Type="System.Double" />
   </Function>
 </Database>

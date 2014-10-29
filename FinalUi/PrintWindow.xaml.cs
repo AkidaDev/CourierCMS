@@ -48,7 +48,7 @@ namespace FinalUi
             ToDate.SelectedDate = toDate.Date;
             FromDate.SelectedDate = fromDate.Date;
             TaxBox.Text = Configs.Default.ServiceTax;
-
+            
             ClientListSource = (CollectionViewSource)FindResource("ClientList");
             DataGridSource = (CollectionViewSource)FindResource("DataGridDataSource");
             dataGridSource = data;
@@ -76,7 +76,13 @@ namespace FinalUi
 
         private void ClientList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            Client selectedClient = ((Client)ClientList.SelectedItem);
             TaxBox.Text = ((Client)ClientList.SelectedItem).FUEL.ToString();
+            ServiceTaxBox.Text = selectedClient.STAX.ToString() ;
+            DiscountBox.Text = selectedClient.AMTDISC.ToString();
+            BillingDataDataContext db = new BillingDataDataContext();
+            double prevdue = db.GetPreviousDue(selectedClient.CLCODE) ?? 0;
+            PreviousDueTextBox.Text = prevdue.ToString();
             RefreshDataGridSource();
         }
         string dateString;
