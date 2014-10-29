@@ -60,7 +60,7 @@
                         </MenuItem>
                         <MenuItem Header="Account Statement" x:Name="AccountStatementMenuItem" Click="AccountStatementMenuItem_Click" />
                         <MenuItem Header="Payment Entry"  x:Name="PaymentRecievedMenuItem"  Click="PaymentRecieved_Click"/>
-                        <MenuItem Header="Payment Received"  x:Name="PaymentEntryMenuItem" Click="PaymentEntry_Click"/>
+                        <MenuItem Header="Payment Details"  x:Name="PaymentEntryMenuItem" Click="PaymentEntry_Click"/>
                         <MenuItem Header="Client Report" x:Name="ClientReport" Click="ClientReport_Click"/>
                     </MenuItem>
                     <MenuItem ToolTip="Editing Tools" Header="Tools" Margin="10 0 0 0">
