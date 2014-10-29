@@ -5,8 +5,7 @@
     <Grid>
         <Image Source="Images/Shape 21.png" Width="120" Height="120" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40 15 30 30"/>
         <Canvas>
-            <TextBlock Text="Powered by       SLT.INTEGRITY " FontSize="14" Foreground="Gray" FontFamily="Calibri" Canvas.Left="213" Canvas.Top="7"/>
-            <Path x:Name="slt_integrity" Data="F1M1,1C1,1 11.102,6.725 11.102,6.725 11.102,6.725 11.142,7.902 11.142,7.902 11.142,7.902 14,6.333 14,6.333 14,6.333 14,15.51 14,15.51 14,15.51 11.786,16.922 11.786,16.922 11.786,16.922 13.195,17.745 13.195,17.745 13.195,17.745 13.155,27 13.155,27 13.155,27 3.053,21.275 3.053,21.275 3.053,21.275 3.053,11.549 3.053,11.549 3.053,11.549 1,10.255 1,10.255 1,10.255 1,1 1,1z" Fill="Gray" Height="28" Canvas.Left="283" Width="15" Canvas.Top="1.128"/>
+            <TextBlock Text="Powered by SLT-INTEGRITY " FontSize="14" Foreground="LightGray" FontFamily="Calibri" Canvas.Left="226" Canvas.Top="11"/>
             <TextBlock Foreground="#6666cc" FontSize="60" Text="V" FontWeight="SemiBold" Canvas.Left="176" Canvas.Top="42"/>
             <TextBlock Foreground="#6666cc" FontSize="40" Text="ORTEX" Canvas.Left="208" Canvas.Top="64" />
         </Canvas>

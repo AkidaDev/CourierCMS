@@ -756,19 +756,19 @@
                                         <WrapPanel Background="#223f3f46">
                                             <StackPanel Margin="3" Background="#A9FFFFF3">
                                                 <TextBlock Text="Service List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
-                                                <ListBox ItemsSource="{Binding ServiceList}"  BorderThickness="0" Margin="3 3 0 0" Background="Transparent"/>
+                                                <ListBox ItemsSource="{Binding ServiceList}"  BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
                                             </StackPanel>
                                             <StackPanel Margin="0 3 0 3" Background="#A9FFFFF3">
                                                 <TextBlock Text="Zone List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
-                                                <ListBox ItemsSource="{Binding ZoneList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent"/>
+                                                <ListBox ItemsSource="{Binding ZoneList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
                                             </StackPanel>
                                             <StackPanel Margin="3" Background="#A9FFFFF3">
                                                 <TextBlock Text="City List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
-                                                <ListBox ItemsSource="{Binding CityList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent"/>
+                                                <ListBox ItemsSource="{Binding CityList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
                                             </StackPanel>
                                             <StackPanel Margin="0 3 0 3" Background="#A9FFFFF3">
                                                 <TextBlock Text="State List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
-                                                <ListBox ItemsSource="{Binding StateList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent"/>
+                                                <ListBox ItemsSource="{Binding StateList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
                                             </StackPanel>
                                         </WrapPanel>
                                     </DataTemplate>
@@ -795,19 +795,19 @@
                                         <WrapPanel Background="#223f3f46">
                                             <StackPanel Margin="3" Background="#A9FFFFF3">
                                                 <TextBlock Text="Service List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
-                                                <ListBox ItemsSource="{Binding ServiceList}"  BorderThickness="0" Margin="3 3 0 0" Background="Transparent"/>
+                                                <ListBox ItemsSource="{Binding ServiceList}"  BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
                                             </StackPanel>
                                             <StackPanel Margin="0 3 0 3" Background="#A9FFFFF3">
                                                 <TextBlock Text="Zone List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
-                                                <ListBox ItemsSource="{Binding ZoneList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent"/>
+                                                <ListBox ItemsSource="{Binding ZoneList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
                                             </StackPanel>
                                             <StackPanel Margin="3" Background="#A9FFFFF3">
                                                 <TextBlock Text="City List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
-                                                <ListBox ItemsSource="{Binding CityList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent"/>
+                                                <ListBox ItemsSource="{Binding CityList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
                                             </StackPanel>
                                             <StackPanel Margin="0 3 0 3" Background="#A9FFFFF3">
                                                 <TextBlock Text="State List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
-                                                <ListBox ItemsSource="{Binding StateList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent"/>
+                                                <ListBox ItemsSource="{Binding StateList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
                                             </StackPanel>
                                         </WrapPanel>
                                     </DataTemplate>
@@ -917,22 +917,31 @@
                             <DataGrid.RowDetailsTemplate>
                                 <DataTemplate>
                                     <Border BorderThickness="0" Background="BlanchedAlmond" Padding="10">
-                                        <StackPanel Orientation="Vertical">
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock FontSize="12" Text="Booking Date: " VerticalAlignment="Center" />
-                                                <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding BookingDate.Date}" VerticalAlignment="Center" />
-                                                <TextBlock FontSize="12" Margin="10 0 0 0" Text="Destination: " VerticalAlignment="Center" />
-                                                <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding City_Desc}" VerticalAlignment="Center"/>
+
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel>
+                                                <WrapPanel>
+                                                    <TextBlock FontSize="12" Text="Booking Date: " VerticalAlignment="Center" />
+                                                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding BookingDate.Date}" VerticalAlignment="Center" />
+                                                </WrapPanel>
+                                                <WrapPanel>
+                                                    <TextBlock FontSize="12" Text="TransMfNo: " VerticalAlignment="Center" />
+                                                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding TransMF_No}" VerticalAlignment="Center" />
+                                                </WrapPanel>
+                                                <WrapPanel>
+                                                    <TextBlock FontSize="12" Text="Invoice No " VerticalAlignment="Center" />
+                                                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding InvoiceNo}" VerticalAlignment="Center" />
+                                                </WrapPanel>
                                             </StackPanel>
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock FontSize="12" Text="TransMfNo: " VerticalAlignment="Center" />
-                                                <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding TransMF_No}" VerticalAlignment="Center" />
-                                                <TextBlock FontSize="12" Text="Service: " VerticalAlignment="Center" Margin="10 0 0 0"/>
-                                                <TextBlock FontSize="16" Text="{Binding Service_Desc}" VerticalAlignment="Center" Foreground="MidnightBlue"/>
-                                            </StackPanel>
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock FontSize="12" Text="Invoice No " VerticalAlignment="Center" />
-                                                <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding InvoiceNo}" VerticalAlignment="Center" />
+                                            <StackPanel Margin="40 0 0 0">
+                                                <WrapPanel>
+                                                    <TextBlock FontSize="12" Text="Destination: " VerticalAlignment="Center" />
+                                                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding City_Desc}" VerticalAlignment="Center"/>
+                                                </WrapPanel>
+                                                <WrapPanel>
+                                                    <TextBlock FontSize="12" Text="Service: " VerticalAlignment="Center"/>
+                                                    <TextBlock FontSize="16" Text="{Binding Service_Desc}" VerticalAlignment="Center" Foreground="MidnightBlue"/>
+                                                </WrapPanel>
                                             </StackPanel>
                                         </StackPanel>
                                     </Border>
