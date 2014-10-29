@@ -407,20 +407,8 @@
                             <Path Margin="6 5 0 0" Data="F1M7.006,17.756C8.089,18.341 9.324,18.675 10.635,18.675 11.947,18.675 13.183,18.341 14.264,17.756 16.602,18.374 18.432,19.843 19.272,23 19.272,23 2,23 2,23 2.839,19.843 4.67,18.375 7.006,17.756z M22.992,14.925C25.33,15.543 27.161,17.011 28,20.168 28,20.168 19.469,20.168 19.469,20.168 18.486,18.463 17.033,17.311 15.075,16.685 15.597,16.276 16.061,15.798 16.456,15.264 17.354,15.635 18.334,15.843 19.363,15.843 20.674,15.843 21.911,15.51 22.992,14.925z M6.639,12.72C7.558,14.518 9.136,15.706 10.928,15.706 12.722,15.706 14.298,14.518 15.217,12.72 15.217,12.72 6.639,12.72 6.639,12.72z M10.635,4.831C13.958,4.831 16.649,7.548 16.649,10.899 16.649,14.252 13.958,16.968 10.635,16.968 7.313,16.968 4.621,14.252 4.621,10.899 4.621,7.548 7.313,4.831 10.635,4.831z M19.363,2C22.685,2 25.377,4.717 25.377,8.068 25.377,11.421 22.685,14.137 19.363,14.137 18.642,14.137 17.954,14.003 17.313,13.768 17.499,13.331 17.641,12.872 17.74,12.396 18.332,12.704 18.979,12.874 19.656,12.874 21.449,12.874 23.026,11.686 23.944,9.888 23.944,9.888 17.819,9.888 17.819,9.888 17.513,7.667 16.22,5.766 14.398,4.645 15.482,3.049 17.3,2 19.363,2z" Fill="Black" Height="19" Canvas.Left="16" Canvas.Top="188.46" Width="23" Stretch="Fill"/>
                             <TextBlock Text="Client Quotation" Margin="8 2 6 0" FontSize="16" Padding="1 3 1 0.5"/>
                         </WrapPanel>
-                        <ComboBox FontSize="14" Margin="10 0 0 0" MinWidth="250" x:Name="ClientCombo" Height="27" MaxWidth="450" Grid.Row="0" Grid.Column="1" ItemsSource="{Binding}" DataContext="{StaticResource ClienTable}" SelectionChanged="ClientCombo_SelectionChanged" >
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock>
-                                        <TextBlock.Text>
-                                            <MultiBinding StringFormat="{}{0} ({1})">
-                                                <Binding Path="CLNAME" />
-                                                <Binding Path="CLCODE" />
-                                            </MultiBinding>
-                                        </TextBlock.Text>
-                                    </TextBlock>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
+                        <ComboBox FontSize="14" Margin="10 0 0 0" MinWidth="250" x:Name="ClientCombo" Height="27" MaxWidth="450" Grid.Row="0" Grid.Column="1" IsReadOnly="True" ItemsSource="{Binding}" DataContext="{StaticResource ClienTable}" SelectionChanged="ClientCombo_SelectionChanged" DisplayMemberPath="NameAndCode">
+                            </ComboBox>
                         <Button Margin="10 0 0 0" ToolTip="Reload" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="2">
                             <Path Data="F1M2,12.942C2,12.942 10.226,15.241 10.226,15.241 10.226,15.241 8.275,17.071 8.275,17.071 9.288,17.922 10.917,18.786 12.32,18.786 15.074,18.786 17.386,16.824 18.039,14.171 18.039,14.171 21.987,15.222 21.987,15.222 20.891,19.693 16.996,23 12.357,23 9.771,23 7.076,21.618 5.308,19.934 5.308,19.934 3.454,21.671 3.454,21.671 3.454,21.671 2,12.942 2,12.942z M11.643,2C14.229,2 16.924,3.382 18.692,5.066 18.692,5.066 20.546,3.329 20.546,3.329 20.546,3.329 22,12.058 22,12.058 22,12.058 13.774,9.759 13.774,9.759 13.774,9.759 15.725,7.929 15.725,7.929 14.712,7.078 13.083,6.214 11.68,6.214 8.926,6.214 6.614,8.176 5.961,10.829 5.961,10.829 2.013,9.778 2.013,9.778 3.109,5.307 7.004,2 11.643,2z" Fill="Black" Height="24" Width="23">
                                 <Path.Effect>
@@ -661,9 +649,6 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
-
-
-
                     <Grid Grid.Row="0" x:Name="ManageZoneDatagridPanel" Visibility="Collapsed">
                         <DataGrid x:Name="ZoneDataGrid" AutoGenerateColumns="False" RowHeaderWidth="0" BorderThickness="0" ItemsSource="{Binding}" DataContext="{StaticResource zoneTable}">
                             <DataGrid.Columns>

@@ -851,7 +851,9 @@ namespace FinalUi
         }
         private void ManageClient_Click(object sender, RoutedEventArgs e)
         {
-            ManageClient window = new ManageClient(); window.Show();
+            ManageClient window = new ManageClient();
+            window.Closed += AddClient_close;
+            window.Show();
         }
         private void ManageEmployee_Click(object sender, RoutedEventArgs e)
         {
@@ -1029,6 +1031,15 @@ namespace FinalUi
         }
         private void ClientCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            try
+            {
+                e.AddedItems.Cast<Client>().Count() ;
+            }
+            catch ( Exception ex)
+            {
+                return;
+            }
+
             LoadClientRules();
         }
         private void LoadClientRules()
