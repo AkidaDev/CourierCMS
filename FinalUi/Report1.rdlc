@@ -1312,7 +1312,7 @@
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>FUEL Surcharge .:</Value>
+                            <Value>Fuel Surcharge .:</Value>
                             <Style>
                               <FontFamily>arial</FontFamily>
                               <FontSize>9pt</FontSize>
@@ -1507,14 +1507,14 @@
               </TablixCornerCell>
               <TablixCornerCell>
                 <CellContents>
-                  <Textbox Name="Textbox58">
+                  <Textbox Name="Textbox2">
                     <CanGrow>true</CanGrow>
                     <KeepTogether>true</KeepTogether>
                     <Paragraphs>
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>=Parameters!TaxPercentageString.Value</Value>
+                            <Value>=Parameters!ServiceTaxString.Value</Value>
                             <Style>
                               <FontFamily>arial</FontFamily>
                               <FontSize>9pt</FontSize>
@@ -1526,7 +1526,7 @@
                         </Style>
                       </Paragraph>
                     </Paragraphs>
-                    <rd:DefaultName>Textbox58</rd:DefaultName>
+                    <rd:DefaultName>Textbox2</rd:DefaultName>
                     <Style>
                       <Border>
                         <Style>None</Style>
@@ -1631,14 +1631,14 @@
               </TablixCornerCell>
               <TablixCornerCell>
                 <CellContents>
-                  <Textbox Name="Textbox52">
+                  <Textbox Name="Textbox12">
                     <CanGrow>true</CanGrow>
                     <KeepTogether>true</KeepTogether>
                     <Paragraphs>
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>Service TAX .:</Value>
+                            <Value>Discount :</Value>
                             <Style>
                               <FontFamily>arial</FontFamily>
                               <FontSize>9pt</FontSize>
@@ -1651,7 +1651,7 @@
                         </Style>
                       </Paragraph>
                     </Paragraphs>
-                    <rd:DefaultName>Textbox52</rd:DefaultName>
+                    <rd:DefaultName>Textbox12</rd:DefaultName>
                     <Style>
                       <Border>
                         <Style>None</Style>
@@ -1677,7 +1677,7 @@
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>=Parameters!ServiceTaxString.Value</Value>
+                            <Value>=Parameters!DiscountPString.Value</Value>
                             <Style>
                               <FontFamily>arial</FontFamily>
                               <FontSize>9pt</FontSize>
@@ -1949,7 +1949,7 @@
                                   <Paragraph>
                                     <TextRuns>
                                       <TextRun>
-                                        <Value />
+                                        <Value>=Parameters!FuelAmount.Value</Value>
                                         <Style>
                                           <FontFamily>arial</FontFamily>
                                           <FontSize>8pt</FontSize>
@@ -1990,7 +1990,7 @@
                                       <Paragraph>
                                         <TextRuns>
                                           <TextRun>
-                                            <Value />
+                                            <Value>=Parameters!ServiceTaxAmount.Value</Value>
                                             <Style>
                                               <FontFamily>arial</FontFamily>
                                               <FontSize>8pt</FontSize>
@@ -2031,7 +2031,7 @@
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>=Parameters!TaxAmountString.Value</Value>
+                                                <Value>=Parameters!DiscountAmountString.Value</Value>
                                                 <Style>
                                                   <FontFamily>arial</FontFamily>
                                                   <FontSize>9pt</FontSize>
@@ -2437,7 +2437,7 @@
         </TablixRowHierarchy>
         <Top>4.47985cm</Top>
         <Left>0.18646cm</Left>
-        <Height>5.61882cm</Height>
+        <Height>5.61883cm</Height>
         <Width>19.84375cm</Width>
         <ZIndex>8</ZIndex>
         <Style>
@@ -4501,7 +4501,7 @@
         <Top>10.27506cm</Top>
         <Left>0.18646cm</Left>
         <Height>1.36634cm</Height>
-        <Width>19.83932cm</Width>
+        <Width>19.83933cm</Width>
         <ZIndex>12</ZIndex>
         <Style>
           <Border>
@@ -5003,14 +5003,6 @@
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="TaxPercentageString">
-      <DataType>String</DataType>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="TaxAmountString">
-      <DataType>String</DataType>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
     <ReportParameter Name="MiscellaneousAmountString">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
@@ -5028,6 +5020,34 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="ServiceTaxString">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="FuelAmount">
+      <DataType>Float</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value>0</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ServiceTaxAmount">
+      <DataType>Float</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>0</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="DiscountPString">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="DiscountAmountString">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>

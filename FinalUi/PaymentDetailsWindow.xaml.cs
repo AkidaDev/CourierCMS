@@ -73,7 +73,7 @@ namespace FinalUi
                 inv.PreviousDue = 0;
              * */
             PrintMainWindow window = new PrintMainWindow(inv);
-            window.ShowDialog();
+            window.Show();
         }
 		private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {
