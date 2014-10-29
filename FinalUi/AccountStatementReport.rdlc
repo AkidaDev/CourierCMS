@@ -353,6 +353,7 @@
                               <Value>=Fields!TransactionDate.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
+                                <Format>dd-MMM-yyyy</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -467,6 +468,7 @@
                               <Value>=Fields!PayAmount.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
+                                <Format>#0.00</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -505,6 +507,7 @@
                               <Value>=Fields!TotalRecievedAmount.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
+                                <Format>#0.00</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -655,7 +658,9 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!TotalSum.Value</Value>
-                <Style />
+                <Style>
+                  <Format>#0.00</Format>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style>

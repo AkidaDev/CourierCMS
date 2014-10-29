@@ -550,6 +550,7 @@
     </None>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
+    <None Include="Properties\DataSources\AccountStatement.datasource" />
     <None Include="Properties\DataSources\Assignment.datasource" />
     <None Include="Properties\DataSources\BillingDataDataContext.datasource" />
     <None Include="Properties\Settings.settings">
