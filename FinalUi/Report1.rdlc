@@ -23,11 +23,14 @@
         <Top>8.69545in</Top>
         <Left>0.125in</Left>
         <Height>0.56471cm</Height>
-        <Width>5.63538cm</Width>
+        <Width>5.62365cm</Width>
         <Style>
           <Border>
             <Style>Solid</Style>
           </Border>
+          <RightBorder>
+            <Style>None</Style>
+          </RightBorder>
           <VerticalAlign>Middle</VerticalAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
@@ -69,7 +72,6 @@
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
       <Textbox Name="Textbox27">
@@ -2343,7 +2345,7 @@
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>2.9828cm</Size>
+                    <Size>3.5765cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox109">
                         <CanGrow>true</CanGrow>
@@ -2390,7 +2392,7 @@
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>9.04329cm</Size>
+                        <Size>8.44516cm</Size>
                         <CellContents>
                           <Textbox Name="Textbox53">
                             <CanGrow>true</CanGrow>
@@ -2519,7 +2521,7 @@
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>2.9828cm</Size>
+                    <Size>3.5765cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox41">
                         <CanGrow>true</CanGrow>
@@ -2560,7 +2562,7 @@
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>9.04329cm</Size>
+                        <Size>8.44516cm</Size>
                         <CellContents>
                           <Textbox Name="Textbox42">
                             <CanGrow>true</CanGrow>
@@ -2655,7 +2657,7 @@
         <Top>4.47985cm</Top>
         <Left>0.3175cm</Left>
         <Height>5.58383cm</Height>
-        <Width>19.84375cm</Width>
+        <Width>19.83932cm</Width>
         <ZIndex>8</ZIndex>
         <Style>
           <Border>
@@ -2765,7 +2767,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.71024cm</Height>
+              <Height>0.70363cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -3145,7 +3147,7 @@
         </TablixRowHierarchy>
         <Top>19.26393cm</Top>
         <Left>0.3175cm</Left>
-        <Height>1.37598cm</Height>
+        <Height>1.36937cm</Height>
         <Width>19.84818cm</Width>
         <ZIndex>9</ZIndex>
         <Style>
@@ -3167,7 +3169,7 @@
               <Width>2.71892cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.51663cm</Width>
+              <Width>3.52393cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -3201,7 +3203,7 @@
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </TopBorder>
                         <BottomBorder>
                           <Style>None</Style>
@@ -3245,7 +3247,7 @@
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </TopBorder>
                         <BottomBorder>
                           <Style>None</Style>
@@ -3289,7 +3291,7 @@
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </TopBorder>
                         <BottomBorder>
                           <Style>None</Style>
@@ -3333,7 +3335,7 @@
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </TopBorder>
                         <BottomBorder>
                           <Style>None</Style>
@@ -3583,7 +3585,7 @@
                         <Style>None</Style>
                       </Border>
                       <TopBorder>
-                        <Style>Solid</Style>
+                        <Style>None</Style>
                       </TopBorder>
                       <BottomBorder>
                         <Style>None</Style>
@@ -3656,7 +3658,7 @@
         <Top>20.63992cm</Top>
         <Left>0.3175cm</Left>
         <Height>1.27015cm</Height>
-        <Width>19.84375cm</Width>
+        <Width>19.85105cm</Width>
         <ZIndex>10</ZIndex>
         <Style>
           <Border>
@@ -3737,7 +3739,7 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Address    .:</Value>
+                                <Value>Address      .:</Value>
                                 <Style>
                                   <FontFamily>arial</FontFamily>
                                   <FontSize>9pt</FontSize>
@@ -3745,9 +3747,7 @@
                                 </Style>
                               </TextRun>
                             </TextRuns>
-                            <Style>
-                              <TextAlign>General</TextAlign>
-                            </Style>
+                            <Style />
                           </Paragraph>
                         </Paragraphs>
                         <rd:DefaultName>Textbox74</rd:DefaultName>
@@ -3756,7 +3756,6 @@
                             <Color>LightGrey</Color>
                             <Style>None</Style>
                           </Border>
-                          <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -3776,7 +3775,7 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>ContactNo .:</Value>
+                                <Value>ContactNo  .:</Value>
                                 <Style>
                                   <FontFamily>arial</FontFamily>
                                   <FontSize>9pt</FontSize>
@@ -3784,9 +3783,7 @@
                                 </Style>
                               </TextRun>
                             </TextRuns>
-                            <Style>
-                              <TextAlign>General</TextAlign>
-                            </Style>
+                            <Style />
                           </Paragraph>
                         </Paragraphs>
                         <rd:DefaultName>Textbox73</rd:DefaultName>
@@ -3795,7 +3792,6 @@
                             <Color>LightGrey</Color>
                             <Style>None</Style>
                           </Border>
-                          <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -3810,7 +3806,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>4.12679cm</Width>
+                  <Width>4.23262cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -3842,7 +3838,6 @@
                               <Color>LightGrey</Color>
                               <Style>None</Style>
                             </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -3889,7 +3884,6 @@
                             <Color>LightGrey</Color>
                             <Style>None</Style>
                           </Border>
-                          <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -3926,7 +3920,6 @@
                                 <Color>LightGrey</Color>
                                 <Style>None</Style>
                               </Border>
-                              <VerticalAlign>Middle</VerticalAlign>
                               <PaddingLeft>2pt</PaddingLeft>
                               <PaddingRight>2pt</PaddingRight>
                               <PaddingTop>2pt</PaddingTop>
@@ -3949,7 +3942,7 @@
                     </GroupExpressions>
                   </Group>
                   <TablixHeader>
-                    <Size>2.2008cm</Size>
+                    <Size>2.11555cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox66">
                         <CanGrow>true</CanGrow>
@@ -3958,7 +3951,7 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Email ID     .:</Value>
+                                <Value>Email ID      .:</Value>
                                 <Style>
                                   <FontFamily>arial</FontFamily>
                                   <FontSize>9pt</FontSize>
@@ -3966,9 +3959,7 @@
                                 </Style>
                               </TextRun>
                             </TextRuns>
-                            <Style>
-                              <TextAlign>General</TextAlign>
-                            </Style>
+                            <Style />
                           </Paragraph>
                         </Paragraphs>
                         <rd:DefaultName>Textbox66</rd:DefaultName>
@@ -3977,8 +3968,7 @@
                             <Color>LightGrey</Color>
                             <Style>None</Style>
                           </Border>
-                          <VerticalAlign>Middle</VerticalAlign>
-                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingLeft>3pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
                           <PaddingBottom>2pt</PaddingBottom>
@@ -3992,7 +3982,7 @@
             <Top>1.20779cm</Top>
             <Left>0.2992cm</Left>
             <Height>1.81937cm</Height>
-            <Width>6.32759cm</Width>
+            <Width>6.34817cm</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -4049,10 +4039,11 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Name .:</Value>
+                                <Value>Name           .:</Value>
                                 <Style>
                                   <FontFamily>arial</FontFamily>
-                                  <FontSize>8pt</FontSize>
+                                  <FontSize>9pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
                                 </Style>
                               </TextRun>
                             </TextRuns>
@@ -4065,7 +4056,6 @@
                             <Color>LightGrey</Color>
                             <Style>None</Style>
                           </Border>
-                          <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -4085,10 +4075,10 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Address .:</Value>
+                                <Value>Address      .:</Value>
                                 <Style>
                                   <FontFamily>arial</FontFamily>
-                                  <FontSize>8pt</FontSize>
+                                  <FontSize>9pt</FontSize>
                                   <FontWeight>Bold</FontWeight>
                                 </Style>
                               </TextRun>
@@ -4102,7 +4092,6 @@
                             <Color>LightGrey</Color>
                             <Style>None</Style>
                           </Border>
-                          <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -4117,7 +4106,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>4.23671cm</Width>
+                  <Width>4.21025cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -4256,7 +4245,7 @@
                     </GroupExpressions>
                   </Group>
                   <TablixHeader>
-                    <Size>2.01567cm</Size>
+                    <Size>2.05017cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox93">
                         <CanGrow>true</CanGrow>
@@ -4268,7 +4257,7 @@
                                 <Value>Contact No .:</Value>
                                 <Style>
                                   <FontFamily>arial</FontFamily>
-                                  <FontSize>8pt</FontSize>
+                                  <FontSize>9pt</FontSize>
                                   <FontWeight>Bold</FontWeight>
                                 </Style>
                               </TextRun>
@@ -4282,7 +4271,6 @@
                             <Color>LightGrey</Color>
                             <Style>None</Style>
                           </Border>
-                          <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -4297,7 +4285,7 @@
             <Top>1.20779cm</Top>
             <Left>7.09395cm</Left>
             <Height>1.81935cm</Height>
-            <Width>6.25238cm</Width>
+            <Width>6.26043cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -4566,7 +4554,6 @@
                       <PaddingLeft>2pt</PaddingLeft>
                       <PaddingRight>2pt</PaddingRight>
                       <PaddingTop>2pt</PaddingTop>
-                      <PaddingBottom>2pt</PaddingBottom>
                     </Style>
                   </Textbox>
                 </CellContents>
@@ -4656,7 +4643,6 @@
                       <PaddingLeft>2pt</PaddingLeft>
                       <PaddingRight>2pt</PaddingRight>
                       <PaddingTop>2pt</PaddingTop>
-                      <PaddingBottom>2pt</PaddingBottom>
                     </Style>
                   </Textbox>
                 </CellContents>
@@ -4729,7 +4715,7 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>3.91451cm</Width>
+              <Width>3.91008cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -4862,10 +4848,10 @@
                       <LeftBorder>
                         <Style>Solid</Style>
                       </LeftBorder>
-                      <PaddingLeft>2pt</PaddingLeft>
-                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingLeft>4pt</PaddingLeft>
+                      <PaddingRight>4pt</PaddingRight>
                       <PaddingTop>2pt</PaddingTop>
-                      <PaddingBottom>2pt</PaddingBottom>
+                      <PaddingBottom>4pt</PaddingBottom>
                     </Style>
                   </Textbox>
                 </CellContents>
@@ -4880,7 +4866,7 @@
         <Top>11.64141cm</Top>
         <Left>0.3175cm</Left>
         <Height>5.85667cm</Height>
-        <Width>19.84375cm</Width>
+        <Width>19.83932cm</Width>
         <ZIndex>13</ZIndex>
         <Style>
           <Border>
@@ -4892,7 +4878,7 @@
     <Height>29cm</Height>
     <Style>
       <Border>
-        <Style>Solid</Style>
+        <Style>None</Style>
       </Border>
       <TopBorder>
         <Style>None</Style>
@@ -4909,7 +4895,7 @@
       <BackgroundColor>White</BackgroundColor>
     </Style>
   </Body>
-  <Width>23.8091cm</Width>
+  <Width>20.37188cm</Width>
   <Page>
     <PageHeader>
       <Height>0.90868cm</Height>

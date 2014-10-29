@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BillingDatabase" Class="BillingDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=SYSTEM;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString2" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=PANKAJ\SQLEXPRESS;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa" SettingsObjectName="FinalUi.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString8" Provider="System.Data.SqlClient" />
   <Table Name="dbo.City" Member="Cities">
     <Type Name="City">
       <Column Name="CITY_CODE" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -395,15 +395,17 @@
       <Column Name="CITY_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
     </Type>
   </Table>
-  <Function Name="dbo.sp_ImportZoneData" Method="sp_ImportZoneData" IsComposable="true">
-    <Return Type="object" />
+  <Function Name="dbo.sp_deleteSheetFromRuntime" Method="sp_deleteSheetFromRuntime">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_TransferTransactionDetails" Method="sp_TransferTransactionDetails" IsComposable="true">
-    <Return Type="object" />
+  <Function Name="dbo.sp_getRateReportingObject" Method="sp_getRateReportingObject">
+    <Parameter Name="ClientCode" Parameter="clientCode" Type="System.String" DbType="VarChar(50)" />
   </Function>
-  <Function Name="dbo.sp_ImportZones" Method="sp_ImportZones" IsComposable="true">
-    <Return Type="object" />
-  </Function>
+  <Function Name="dbo.sp_ImportZoneData" Method="sp_ImportZoneData" />
+  <Function Name="dbo.sp_TransferTransactionDetails" Method="sp_TransferTransactionDetails" />
+  <Function Name="dbo.sp_ImportZones" Method="sp_ImportZones" />
   <Function Name="dbo.sp_LoadToRuntimeFromDate" Method="sp_LoadToRuntimeFromDate">
     <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
@@ -416,36 +418,13 @@
     <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_TransferClients" Method="sp_TransferClients" IsComposable="true">
-    <Return Type="object" />
-  </Function>
-  <Function Name="dbo.sp_TransferFRWRDRAsService" Method="sp_TransferFRWRDRAsService" IsComposable="true">
-    <Return Type="object" />
-  </Function>
-  <Function Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail" Method="sp_TransferMInvoiceDetailToBInvoiceDetail" IsComposable="true">
-    <Return Type="object" />
-  </Function>
-  <Function Name="dbo.sp_TransferMInvoiceToBInvoice" Method="sp_TransferMInvoiceToBInvoice" IsComposable="true">
-    <Return Type="object" />
-  </Function>
-  <Function Name="dbo.sp_TransferPaymentDetails" Method="sp_TransferPaymentDetails" IsComposable="true">
-    <Return Type="object" />
-  </Function>
-  <Function Name="dbo.sp_TransferRatespart1" Method="sp_TransferRatespart1" IsComposable="true">
-    <Return Type="object" />
-  </Function>
-  <Function Name="dbo.sp_TransferRatespart2" Method="sp_TransferRatespart2" IsComposable="true">
-    <Return Type="object" />
-  </Function>
-  <Function Name="dbo.sp_getRateReportingObject" Method="sp_getRateReportingObject" IsComposable="true">
-    <Parameter Name="ClientCode" Parameter="clientCode" Type="System.String" DbType="VarChar(50)" />
-    <Return Type="object" />
-  </Function>
-  <Function Name="dbo.sp_deleteSheetFromRuntime" Method="sp_deleteSheetFromRuntime">
-    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
+  <Function Name="dbo.sp_TransferClients" Method="sp_TransferClients" />
+  <Function Name="dbo.sp_TransferFRWRDRAsService" Method="sp_TransferFRWRDRAsService" />
+  <Function Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail" Method="sp_TransferMInvoiceDetailToBInvoiceDetail" />
+  <Function Name="dbo.sp_TransferMInvoiceToBInvoice" Method="sp_TransferMInvoiceToBInvoice" />
+  <Function Name="dbo.sp_TransferPaymentDetails" Method="sp_TransferPaymentDetails" />
+  <Function Name="dbo.sp_TransferRatespart1" Method="sp_TransferRatespart1" />
+  <Function Name="dbo.sp_TransferRatespart2" Method="sp_TransferRatespart2" />
   <Function Name="dbo.GetPreviousDue" Method="GetPreviousDue" IsComposable="true">
     <Parameter Name="CLCODE" Parameter="cLCODE" Type="System.String" DbType="VarChar(6)" />
     <Return Type="System.Double" />
