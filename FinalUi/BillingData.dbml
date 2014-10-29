@@ -395,9 +395,15 @@
       <Column Name="CITY_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
     </Type>
   </Table>
-  <Function Name="dbo.sp_ImportZoneData" Method="sp_ImportZoneData" />
-  <Function Name="dbo.sp_TransferTransactionDetails" Method="sp_TransferTransactionDetails" />
-  <Function Name="dbo.sp_ImportZones" Method="sp_ImportZones" />
+  <Function Name="dbo.sp_ImportZoneData" Method="sp_ImportZoneData" IsComposable="true">
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.sp_TransferTransactionDetails" Method="sp_TransferTransactionDetails" IsComposable="true">
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.sp_ImportZones" Method="sp_ImportZones" IsComposable="true">
+    <Return Type="object" />
+  </Function>
   <Function Name="dbo.sp_LoadToRuntimeFromDate" Method="sp_LoadToRuntimeFromDate">
     <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
@@ -410,19 +416,48 @@
     <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_TransferClients" Method="sp_TransferClients" />
-  <Function Name="dbo.sp_TransferFRWRDRAsService" Method="sp_TransferFRWRDRAsService" />
-  <Function Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail" Method="sp_TransferMInvoiceDetailToBInvoiceDetail" />
-  <Function Name="dbo.sp_TransferMInvoiceToBInvoice" Method="sp_TransferMInvoiceToBInvoice" />
-  <Function Name="dbo.sp_TransferPaymentDetails" Method="sp_TransferPaymentDetails" />
-  <Function Name="dbo.sp_TransferRatespart1" Method="sp_TransferRatespart1" />
-  <Function Name="dbo.sp_TransferRatespart2" Method="sp_TransferRatespart2" />
-  <Function Name="dbo.sp_getRateReportingObject" Method="sp_getRateReportingObject">
+  <Function Name="dbo.sp_TransferClients" Method="sp_TransferClients" IsComposable="true">
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.sp_TransferFRWRDRAsService" Method="sp_TransferFRWRDRAsService" IsComposable="true">
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail" Method="sp_TransferMInvoiceDetailToBInvoiceDetail" IsComposable="true">
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.sp_TransferMInvoiceToBInvoice" Method="sp_TransferMInvoiceToBInvoice" IsComposable="true">
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.sp_TransferPaymentDetails" Method="sp_TransferPaymentDetails" IsComposable="true">
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.sp_TransferRatespart1" Method="sp_TransferRatespart1" IsComposable="true">
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.sp_TransferRatespart2" Method="sp_TransferRatespart2" IsComposable="true">
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.sp_getRateReportingObject" Method="sp_getRateReportingObject" IsComposable="true">
     <Parameter Name="ClientCode" Parameter="clientCode" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="object" />
   </Function>
   <Function Name="dbo.sp_deleteSheetFromRuntime" Method="sp_deleteSheetFromRuntime">
     <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetPreviousDue" Method="GetPreviousDue" IsComposable="true">
+    <Parameter Name="CLCODE" Parameter="cLCODE" Type="System.String" DbType="VarChar(6)" />
+    <Return Type="System.Double" />
+  </Function>
+  <Function Name="dbo.getRecordsInSheet" Method="getRecordsInSheet" IsComposable="true">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
+    <ElementType Name="getRecordsInSheetResult">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="RuntimeDataID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SheetNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
   </Function>
 </Database>

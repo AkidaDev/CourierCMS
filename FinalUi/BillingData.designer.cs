@@ -302,22 +302,22 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_ImportZoneData")]
-		public void sp_ImportZoneData()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_ImportZoneData", IsComposable=true)]
+		public object sp_ImportZoneData()
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod()))).ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferTransactionDetails")]
-		public void sp_TransferTransactionDetails()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferTransactionDetails", IsComposable=true)]
+		public object sp_TransferTransactionDetails()
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod()))).ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_ImportZones")]
-		public void sp_ImportZones()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_ImportZones", IsComposable=true)]
+		public object sp_ImportZones()
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod()))).ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_LoadToRuntimeFromDate")]
@@ -334,52 +334,52 @@ namespace FinalUi
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferClients")]
-		public void sp_TransferClients()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferClients", IsComposable=true)]
+		public object sp_TransferClients()
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod()))).ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferFRWRDRAsService")]
-		public void sp_TransferFRWRDRAsService()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferFRWRDRAsService", IsComposable=true)]
+		public object sp_TransferFRWRDRAsService()
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod()))).ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail")]
-		public void sp_TransferMInvoiceDetailToBInvoiceDetail()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail", IsComposable=true)]
+		public object sp_TransferMInvoiceDetailToBInvoiceDetail()
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod()))).ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferMInvoiceToBInvoice")]
-		public void sp_TransferMInvoiceToBInvoice()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferMInvoiceToBInvoice", IsComposable=true)]
+		public object sp_TransferMInvoiceToBInvoice()
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod()))).ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferPaymentDetails")]
-		public void sp_TransferPaymentDetails()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferPaymentDetails", IsComposable=true)]
+		public object sp_TransferPaymentDetails()
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod()))).ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferRatespart1")]
-		public void sp_TransferRatespart1()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferRatespart1", IsComposable=true)]
+		public object sp_TransferRatespart1()
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod()))).ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferRatespart2")]
-		public void sp_TransferRatespart2()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TransferRatespart2", IsComposable=true)]
+		public object sp_TransferRatespart2()
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod()))).ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_getRateReportingObject")]
-		public void sp_getRateReportingObject([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ClientCode", DbType="VarChar(50)")] string clientCode)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_getRateReportingObject", IsComposable=true)]
+		public object sp_getRateReportingObject([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ClientCode", DbType="VarChar(50)")] string clientCode)
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), clientCode);
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), clientCode).ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_deleteSheetFromRuntime")]
@@ -387,6 +387,18 @@ namespace FinalUi
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userName, sheetNo);
 			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetPreviousDue", IsComposable=true)]
+		public System.Nullable<double> GetPreviousDue([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CLCODE", DbType="VarChar(6)")] string cLCODE)
+		{
+			return ((System.Nullable<double>)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cLCODE).ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.getRecordsInSheet", IsComposable=true)]
+		public IQueryable<getRecordsInSheetResult> getRecordsInSheet([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserName", DbType="VarChar(50)")] string userName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SheetNo", DbType="Int")] System.Nullable<int> sheetNo)
+		{
+			return this.CreateMethodCallQuery<getRecordsInSheetResult>(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userName, sheetNo);
 		}
 	}
 	
@@ -7872,6 +7884,86 @@ namespace FinalUi
 				if ((this._CITY_DESC != value))
 				{
 					this._CITY_DESC = value;
+				}
+			}
+		}
+	}
+	
+	public partial class getRecordsInSheetResult
+	{
+		
+		private System.Guid _Id;
+		
+		private System.Guid _RuntimeDataID;
+		
+		private string _UserName;
+		
+		private int _SheetNo;
+		
+		public getRecordsInSheetResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RuntimeDataID", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid RuntimeDataID
+		{
+			get
+			{
+				return this._RuntimeDataID;
+			}
+			set
+			{
+				if ((this._RuntimeDataID != value))
+				{
+					this._RuntimeDataID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string UserName
+		{
+			get
+			{
+				return this._UserName;
+			}
+			set
+			{
+				if ((this._UserName != value))
+				{
+					this._UserName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SheetNo", DbType="Int NOT NULL")]
+		public int SheetNo
+		{
+			get
+			{
+				return this._SheetNo;
+			}
+			set
+			{
+				if ((this._SheetNo != value))
+				{
+					this._SheetNo = value;
 				}
 			}
 		}
