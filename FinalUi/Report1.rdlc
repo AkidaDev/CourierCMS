@@ -3757,7 +3757,6 @@
                             <Style>None</Style>
                           </Border>
                           <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
                           <PaddingBottom>2pt</PaddingBottom>
                         </Style>
@@ -3793,7 +3792,6 @@
                             <Style>None</Style>
                           </Border>
                           <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
                           <PaddingBottom>2pt</PaddingBottom>
                         </Style>
@@ -3969,7 +3967,6 @@
                             <Style>None</Style>
                           </Border>
                           <PaddingLeft>3pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
                           <PaddingBottom>2pt</PaddingBottom>
                         </Style>
@@ -4057,7 +4054,6 @@
                             <Style>None</Style>
                           </Border>
                           <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
                           <PaddingBottom>2pt</PaddingBottom>
                         </Style>
@@ -4093,7 +4089,6 @@
                             <Style>None</Style>
                           </Border>
                           <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
                           <PaddingBottom>2pt</PaddingBottom>
                         </Style>
@@ -4272,11 +4267,11 @@
                             <Style>None</Style>
                           </Border>
                           <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
                           <PaddingBottom>2pt</PaddingBottom>
                         </Style>
                       </Textbox>
+                      <rd:Selected>true</rd:Selected>
                     </CellContents>
                   </TablixHeader>
                 </TablixMember>
@@ -4285,7 +4280,7 @@
             <Top>1.20779cm</Top>
             <Left>7.09395cm</Left>
             <Height>1.81935cm</Height>
-            <Width>6.26043cm</Width>
+            <Width>6.26042cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
