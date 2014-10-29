@@ -23,32 +23,22 @@
                     <TreeView Background="Transparent" BorderThickness="0">
                         <TreeViewItem Background="Transparent" BorderThickness="0">
                             <TreeViewItem.Header>
-                                <TextBlock Text=" Details Entry" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                <TextBlock Name="settingtreeview" MouseDown="settingtreeview_MouseDown"  Text=" Setting" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
                             </TreeViewItem.Header>
                         </TreeViewItem>
                     </TreeView>
                     <TreeView Background="Transparent" BorderThickness="0" Margin="0 10 0 0">
                         <TreeViewItem Background="Transparent" BorderThickness="0">
                             <TreeViewItem.Header>
-                                <TextBlock Text=" Setting" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                <TextBlock MouseDown="DetailsEntry_MouseDown" Text=" Details Entry" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
                             </TreeViewItem.Header>
                         </TreeViewItem>
                     </TreeView>
                     <TreeView Background="Transparent" BorderThickness="0" Margin="0 10 0 0">
                         <TreeViewItem Background="Transparent" BorderThickness="0">
                             <TreeViewItem.Header>
-                                <TextBlock Text=" blablah" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                                <TextBlock MouseDown="InvoiceEntry_MouseDown" Text=" Invoice" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
                             </TreeViewItem.Header>
-                            <TreeViewItem>
-                                <TreeViewItem.Header>
-                                    <TextBlock Text="hahah" FontSize="14" Foreground="White"/>
-                                </TreeViewItem.Header>
-                            </TreeViewItem>
-                            <TreeViewItem>
-                                <TreeViewItem.Header>
-                                    <TextBlock  Text="lala" FontSize="14" Foreground="White"/>
-                                </TreeViewItem.Header>
-                            </TreeViewItem>
                         </TreeViewItem>
                     </TreeView>
                     <TreeView Background="Transparent" BorderThickness="0" Margin="0 10 0 0">
@@ -70,8 +60,37 @@
                     </TreeView>
                 </StackPanel>
                 <Rectangle Grid.Column="1" Margin=" 2 1 1 1" RadiusX="8" RadiusY="8" StrokeThickness="2" Stroke="Gray"/>
-
-                <Canvas Grid.Column="1" Name="CompanyDetails" Visibility="Visible">
+                <Grid Name="BackgroundSettingGrid" Grid.Column="1" Margin=" 2 0 0 0" Visibility="Collapsed">
+                    <WrapPanel>
+                        <WrapPanel Margin="10 20 0 20">
+                            <TextBlock  Text=" BackGround Color .: " Height="21" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                            <xctk:ColorPicker Name="ThemeColorPicker" Width="210"/>
+                        </WrapPanel>
+                        <WrapPanel Margin="10 20 0 20">
+                            <TextBlock  Text=" Service Tax .: " Height="21" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                            <TextBox Name="ServiceTax"  Width="100"/>
+                        </WrapPanel>
+                    </WrapPanel>
+                    <WrapPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,11,10" Visibility="Collapsed">
+                        <Button Click="DefaultButton_Click" Style="{StaticResource all}">
+                            <Button.Content>
+                                <WrapPanel Margin="6,3,6,3">
+                                    <Path x:Name="reload" Data="F1M2,12.942C2,12.942 10.226,15.241 10.226,15.241 10.226,15.241 8.275,17.071 8.275,17.071 9.288,17.922 10.917,18.786 12.32,18.786 15.074,18.786 17.386,16.824 18.039,14.171 18.039,14.171 21.987,15.222 21.987,15.222 20.891,19.693 16.996,23 12.357,23 9.771,23 7.076,21.618 5.308,19.934 5.308,19.934 3.454,21.671 3.454,21.671 3.454,21.671 2,12.942 2,12.942z M11.643,2C14.229,2 16.924,3.382 18.692,5.066 18.692,5.066 20.546,3.329 20.546,3.329 20.546,3.329 22,12.058 22,12.058 22,12.058 13.774,9.759 13.774,9.759 13.774,9.759 15.725,7.929 15.725,7.929 14.712,7.078 13.083,6.214 11.68,6.214 8.926,6.214 6.614,8.176 5.961,10.829 5.961,10.829 2.013,9.778 2.013,9.778 3.109,5.307 7.004,2 11.643,2z" Fill="Black" Height="24" Width="23"/>
+                                    <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"  LineHeight="18" TextAlignment="Center" Text="Reset " Padding="3 3 0 0"/>
+                                </WrapPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button Margin="30 0 0 0" Name="SaveInvoiceButton" Click="SaveButton_Click" Style="{StaticResource all}">
+                            <Button.Content>
+                                <WrapPanel Margin="6,3,6,3" >
+                                    <Path  x:Name="save" Data="F1M5.707,16.89C5.707,16.89 16.879,16.89 16.879,16.89 16.879,16.89 16.879,18.13 16.879,18.13 16.879,18.13 5.707,18.13 5.707,18.13 5.707,18.13 5.707,16.89 5.707,16.89z M5.707,13.414C5.707,13.414 16.879,13.414 16.879,13.414 16.879,13.414 16.879,14.653 16.879,14.653 16.879,14.653 5.707,14.653 5.707,14.653 5.707,14.653 5.707,13.414 5.707,13.414z M4.207,10.739C4.207,10.739 4.207,20.566 4.207,20.566 4.207,20.566 18.793,20.566 18.793,20.566 18.793,20.566 18.793,10.739 18.793,10.739 18.793,10.739 4.207,10.739 4.207,10.739z M9.432,1.83C9.432,1.83 13.777,1.83 13.777,1.83 13.777,1.83 13.777,7.358 13.777,7.358 13.777,7.358 9.432,7.358 9.432,7.358 9.432,7.358 9.432,1.83 9.432,1.83z M1.626,1C1.626,1 4.207,1 4.207,1 4.207,1 4.207,8.508 4.207,8.508 4.207,8.508 15.586,8.508 15.586,8.508 15.586,8.508 15.586,1 15.586,1 15.586,1 17.711,1 17.711,1 17.711,1 22,5.246 22,5.246 22,5.246 22,21.381 22,21.381 22,21.723 21.72,22 21.374,22 21.374,22 1.626,22 1.626,22 1.28,22 1,21.723 1,21.381 1,21.381 1,1.62 1,1.62 1,1.277 1.28,1 1.626,1z" Fill="Black" Height="23" Width="23" Margin="3 0 3 0"/>
+                                    <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"  LineHeight="18" TextAlignment="Center" Text="Save " Padding="3 3 0 0"/>
+                                </WrapPanel>
+                            </Button.Content>
+                        </Button>
+                    </WrapPanel>
+                </Grid>
+                <Canvas Grid.Column="1" Name="CompanyDetails" Visibility="Collapsed">
                     <Canvas Canvas.Top="-20" Canvas.Left="-40">
                         <Path x:Name="Vertical_line" Data="F1M2,3C2,3 2,2 2,2 2,2 331,2 331,2 331,2 331,3 331,3 331,3 2,3 2,3" Fill="Black" Height="1" Canvas.Left="107" Canvas.Top="58" Width="273" Stretch="Fill"/>
                         <Path x:Name="detail" Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Black" Height="24" Canvas.Left="81" Canvas.Top="35" Width="24"/>
@@ -99,37 +118,9 @@
                         </Button.Content>
                     </Button>
                 </Canvas>
-                <Grid Name="BackgroundSettingGrid" Grid.Column="1" Margin=" 2 0 0 0" >
-                    <WrapPanel>
-                        <WrapPanel Margin="10 20 0 20">
-                            <TextBlock  Text=" BackGround Color .: " Height="21" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                            <xctk:ColorPicker Name="ThemeColorPicker" Width="210"/>
-                        </WrapPanel>
-                        <WrapPanel Margin="10 20 0 20">
-                            <TextBlock  Text=" Service Tax .: " Height="21" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                            <TextBox Name="ServiceTax"  Width="100"/>
-                        </WrapPanel>
-                    </WrapPanel>
-
-                    <WrapPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,11,10" Visibility="Collapsed">
-                        <Button Click="DefaultButton_Click" Style="{StaticResource all}">
-                            <Button.Content>
-                                <WrapPanel Margin="6,3,6,3">
-                                    <Path x:Name="reload" Data="F1M2,12.942C2,12.942 10.226,15.241 10.226,15.241 10.226,15.241 8.275,17.071 8.275,17.071 9.288,17.922 10.917,18.786 12.32,18.786 15.074,18.786 17.386,16.824 18.039,14.171 18.039,14.171 21.987,15.222 21.987,15.222 20.891,19.693 16.996,23 12.357,23 9.771,23 7.076,21.618 5.308,19.934 5.308,19.934 3.454,21.671 3.454,21.671 3.454,21.671 2,12.942 2,12.942z M11.643,2C14.229,2 16.924,3.382 18.692,5.066 18.692,5.066 20.546,3.329 20.546,3.329 20.546,3.329 22,12.058 22,12.058 22,12.058 13.774,9.759 13.774,9.759 13.774,9.759 15.725,7.929 15.725,7.929 14.712,7.078 13.083,6.214 11.68,6.214 8.926,6.214 6.614,8.176 5.961,10.829 5.961,10.829 2.013,9.778 2.013,9.778 3.109,5.307 7.004,2 11.643,2z" Fill="Black" Height="24" Width="23"/>
-                                    <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"  LineHeight="18" TextAlignment="Center" Text="Reset " Padding="3 3 0 0"/>
-                                </WrapPanel>
-                            </Button.Content>
-                        </Button>
-                        <Button Margin="30 0 0 0" Name="SaveInvoiceButton" Click="SaveButton_Click" Style="{StaticResource all}">
-                            <Button.Content>
-                                <WrapPanel Margin="6,3,6,3" >
-                                    <Path  x:Name="save" Data="F1M5.707,16.89C5.707,16.89 16.879,16.89 16.879,16.89 16.879,16.89 16.879,18.13 16.879,18.13 16.879,18.13 5.707,18.13 5.707,18.13 5.707,18.13 5.707,16.89 5.707,16.89z M5.707,13.414C5.707,13.414 16.879,13.414 16.879,13.414 16.879,13.414 16.879,14.653 16.879,14.653 16.879,14.653 5.707,14.653 5.707,14.653 5.707,14.653 5.707,13.414 5.707,13.414z M4.207,10.739C4.207,10.739 4.207,20.566 4.207,20.566 4.207,20.566 18.793,20.566 18.793,20.566 18.793,20.566 18.793,10.739 18.793,10.739 18.793,10.739 4.207,10.739 4.207,10.739z M9.432,1.83C9.432,1.83 13.777,1.83 13.777,1.83 13.777,1.83 13.777,7.358 13.777,7.358 13.777,7.358 9.432,7.358 9.432,7.358 9.432,7.358 9.432,1.83 9.432,1.83z M1.626,1C1.626,1 4.207,1 4.207,1 4.207,1 4.207,8.508 4.207,8.508 4.207,8.508 15.586,8.508 15.586,8.508 15.586,8.508 15.586,1 15.586,1 15.586,1 17.711,1 17.711,1 17.711,1 22,5.246 22,5.246 22,5.246 22,21.381 22,21.381 22,21.723 21.72,22 21.374,22 21.374,22 1.626,22 1.626,22 1.28,22 1,21.723 1,21.381 1,21.381 1,1.62 1,1.62 1,1.277 1.28,1 1.626,1z" Fill="Black" Height="23" Width="23" Margin="3 0 3 0"/>
-                                    <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"  LineHeight="18" TextAlignment="Center" Text="Save " Padding="3 3 0 0"/>
-                                </WrapPanel>
-                            </Button.Content>
-                        </Button>
-                    </WrapPanel>
-                </Grid>
+            </Grid>
+            <Grid Name="InvoicePanel" Grid.Column="1" Visibility="Visible">
+                
             </Grid>
             <WrapPanel Visibility="Collapsed">
                 <TextBlock Text="Connection String"/>
