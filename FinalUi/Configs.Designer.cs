@@ -167,5 +167,17 @@ namespace FinalUi {
                 this["CompanyOwner"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TNC {
+            get {
+                return ((string)(this["TNC"]));
+            }
+            set {
+                this["TNC"] = value;
+            }
+        }
     }
 }

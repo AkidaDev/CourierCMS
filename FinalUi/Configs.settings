@@ -38,5 +38,8 @@
     <Setting Name="CompanyOwner" Type="System.String" Scope="User">
       <Value Profile="(Default)">Dharmendra</Value>
     </Setting>
+    <Setting Name="TNC" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

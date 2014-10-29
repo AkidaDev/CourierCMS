@@ -81,7 +81,7 @@ namespace FinalUi
             CompanyEmailBox.Text = Configs.Default.CompanyEmail;
             CompanyNameBox.Text = Configs.Default.CompanyName;
             CompanyOwnerBox.Text = Configs.Default.CompanyOwner;
-            
+            TNCBox.Text = Configs.Default.TNC;
             this.ServiceTax.Text = Configs.Default.ServiceTax;
         }
         private void Button_Click_Close(object sender, RoutedEventArgs e)
@@ -125,6 +125,12 @@ namespace FinalUi
             Configs.Default.CompanyName = CompanyNameBox.Text;
             Configs.Default.CompanyOwner = CompanyOwnerBox.Text;
             Configs.Default.CompanyPhone = CompanyContactBox.Text;
+            Configs.Default.Save();
+        }
+
+        private void SaveTNCButton_Click(object sender, RoutedEventArgs e)
+        {
+            Configs.Default.TNC = TNCBox.Text;
             Configs.Default.Save();
         }
 
