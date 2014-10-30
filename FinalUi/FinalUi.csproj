@@ -28,12 +28,12 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>http://api.sltintegrity.com/install/</InstallUrl>
     <UpdateUrl>http://localhost/FinalUi/</UpdateUrl>
-    <MinimumRequiredVersion>0.0.1.1</MinimumRequiredVersion>
+    <MinimumRequiredVersion>0.0.1.0</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>3</ApplicationRevision>
-    <ApplicationVersion>0.0.1.%2a</ApplicationVersion>
+    <ApplicationRevision>11</ApplicationRevision>
+    <ApplicationVersion>0.1.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <ExcludeDeploymentUrl>true</ExcludeDeploymentUrl>
