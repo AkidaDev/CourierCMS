@@ -23,7 +23,7 @@ namespace FinalUi
                 if (_Services == null)
                     initialize();
                 List<Service> ServiceCopy = new List<Service>();
-                ServiceCopy.AddRange(_Services);
+                ServiceCopy.AddRange(_Services.OrderBy(x=>x.NameAndCode));
                 return ServiceCopy;
             }
         }
@@ -34,7 +34,7 @@ namespace FinalUi
                 if (_Zones == null)
                     initialize();
                 List<ZONE> ZoneCopy = new List<ZONE>();
-                ZoneCopy.AddRange(_Zones);
+                ZoneCopy.AddRange(_Zones.OrderBy(x=>x.NameAndCode));
                 return ZoneCopy;
             }
         }
@@ -45,7 +45,7 @@ namespace FinalUi
                 if (_Cities == null)
                     initialize();
                 List<City> CityCopy = new List<City>();
-                CityCopy.AddRange(_Cities);
+                CityCopy.AddRange(_Cities.OrderBy(x=>x.NameAndCode));
                 return CityCopy;
             }
         }
@@ -56,7 +56,7 @@ namespace FinalUi
                 if (_States == null)
                     initialize();
                 List<State> StatesCopy = new List<State>();
-                StatesCopy.AddRange(_States);
+                StatesCopy.AddRange(_States.OrderBy(x=>x.NameAndCode));
                 return StatesCopy;
             }
         }
@@ -67,7 +67,7 @@ namespace FinalUi
                 if (_Client == null)
                     initialize();
                 List<Client> ClientCopy = new List<Client>();
-                ClientCopy.AddRange(_Client);
+                ClientCopy.AddRange(_Client.OrderBy(x=>x.NameAndCode));
                 return ClientCopy;
             }
         }
@@ -80,7 +80,7 @@ namespace FinalUi
                     initialize();
                 }
                 List<Employee> empCopy = new List<Employee>();
-                empCopy.AddRange(_Employee);
+                empCopy.AddRange(_Employee.OrderBy(x=>x.Name));
                 return empCopy;
             }
         }

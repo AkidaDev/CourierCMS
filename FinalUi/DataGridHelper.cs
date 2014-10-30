@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace FinalUi
 {
-  
+
     class DataSheet
     {
         List<RuntimeData> filteredData;
@@ -66,7 +66,7 @@ namespace FinalUi
         CollectionViewSource dataGridSource;
         Dictionary<int, DataSheet> sheets;
         DataSheet _currentDataSheet;
-        
+
         public DataSheet currentDataSheet
         {
             get
@@ -203,7 +203,7 @@ namespace FinalUi
                 {
                     return null;
                 }
-                return dataSheetManager.currentDataSheet.dataStack.OrderBy(x=>x.ConsignmentNo).ToList();
+                return dataSheetManager.currentDataSheet.dataStack.OrderBy(x => x.ConsignmentNo).ToList();
             }
             set
             {
@@ -264,9 +264,12 @@ namespace FinalUi
             }
             set
             {
-                dataSheetManager.currentDataSheet.rowsPerPage = value;
-                this.notifyPropertyChanged("rowsPerPage");
-                refreshCurrentPage();
+                if (dataSheetManager.currentDataSheet != null)
+                {
+                    dataSheetManager.currentDataSheet.rowsPerPage = value;
+                    this.notifyPropertyChanged("rowsPerPage");
+                    refreshCurrentPage();
+                }
 
             }
         }
@@ -281,10 +284,13 @@ namespace FinalUi
             }
             set
             {
-                dataSheetManager.currentDataSheet.currentPageNo = value;
+                if (dataSheetManager.currentDataSheet != null)
+                {
+                    dataSheetManager.currentDataSheet.currentPageNo = value;
 
-                this.notifyPropertyChanged("currentPageNo");
-                refreshCurrentPage();
+                    this.notifyPropertyChanged("currentPageNo");
+                    refreshCurrentPage();
+                }
             }
         }
         int totalPageNo
@@ -344,7 +350,10 @@ namespace FinalUi
         #region pageNavigationMethods
         public List<RuntimeData> getDataForPage(int pageNo, int rows)
         {
-            return dataSheetManager.currentDataSheet.dataStack.Skip((pageNo - 1) * rowsPerPage).Take(rows).ToList();
+            if (dataSheetManager.currentDataSheet != null)
+                return dataSheetManager.currentDataSheet.dataStack.Skip((pageNo - 1) * rowsPerPage).Take(rows).ToList();
+            else
+                return null;
         }
         public void getPrevPage()
         {

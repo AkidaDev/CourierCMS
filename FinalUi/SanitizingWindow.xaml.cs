@@ -29,9 +29,9 @@ namespace FinalUi
             viewSource = (CollectionViewSource)FindResource("CustomerNameList");
             viewSource.Source = DataSources.ClientCopy.ToList();
             cityList = (CollectionViewSource)FindResource("CityList");
-            cityList.Source = db.Cities.ToList();
+            cityList.Source = DataSources.CityCopy;
             ServiceListSource = (CollectionViewSource)FindResource("ServiceList");
-            ServiceListSource.Source = db.Services.ToList();
+            ServiceListSource.Source = DataSources.ServicesCopy;
         }
         CollectionViewSource viewSource;
         CollectionViewSource conssNumbers;

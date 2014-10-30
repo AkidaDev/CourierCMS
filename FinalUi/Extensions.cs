@@ -48,7 +48,7 @@ namespace FinalUi
                         zoneCode = "DEF";
                     else
                         zoneCode = zone.zcode;
-                    RulesApplied = RulesApplied.Where(x => x.ZoneList.Contains(zone.zcode)).ToList();
+                    RulesApplied = RulesApplied.Where(x => x.ZoneList.Contains(zoneCode)).ToList();
 
                 }
             }
