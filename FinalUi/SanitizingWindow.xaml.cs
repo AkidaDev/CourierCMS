@@ -233,6 +233,7 @@ namespace FinalUi
             else
             {
                 ConnsignmentNumber.Text = (string)ConnsignmentNumber.Items.GetItemAt(index + 1);
+
                 fillAllElements(ConnsignmentNumber.Text);
             }
             ConnsignmentNumber.Focus();
@@ -265,10 +266,26 @@ namespace FinalUi
             data = dataContext.SingleOrDefault(x => x.ConsignmentNo == connsignmentNo);
             if (data != null)
             {
+                if (backDataGrid != null)
+                {
+                    if (backDataGrid.Items.Contains(data))
+                    {
+                        backDataGrid.SelectedItem = data;
+                        DataGridRow row = (DataGridRow)backDataGrid.ItemContainerGenerator.ContainerFromItem(data);
+                        row.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                        this.Focus();
+                    }
+                    else
+                    {
+                        backDataGrid.SelectedItems.Clear();
+                    }
+                }
                 fillDetails(data);
             }
             else
             {
+                if (backDataGrid != null)
+                    backDataGrid.SelectedItems.Clear();
                 var TData = db.Transactions.SingleOrDefault(x => x.ConnsignmentNo == connsignmentNo);
                 if (TData != null)
                 {
@@ -362,15 +379,18 @@ namespace FinalUi
         }
         private void getrate()
         {
-            if (Destination.Text == "" && Destination.Text == null)
+            if (Destination.Text == "" || Destination.Text == null)
             {
-                MessageBox.Show("City cannot be empty");
                 return;
             }
             if (this.BilledWeightTextBox.Text != null && this.BilledWeightTextBox.Text != "")
             {
                 RuntimeData data = null;
                 data = fillData(data);
+                if(data.Destination == null)
+                {
+                    return;
+                }
                 var c = db.Cities.Where(x => x.CITY_CODE == data.Destination && x.CITY_STATUS == "A").FirstOrDefault();
                 if (c == null)
                     c = db.Cities.SingleOrDefault(x => x.CITY_CODE == "DEL");
