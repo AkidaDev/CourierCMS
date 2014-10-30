@@ -271,8 +271,16 @@ namespace FinalUi
                     if (backDataGrid.Items.Contains(data))
                     {
                         backDataGrid.SelectedItem = data;
-                        DataGridRow row = (DataGridRow)backDataGrid.ItemContainerGenerator.ContainerFromItem(data);
-                        row.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                        DataGridRow row;
+                        try
+                        {
+                            row = (DataGridRow)backDataGrid.ItemContainerGenerator.ContainerFromItem(data);
+                            row.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                        }
+                        catch(Exception ex)
+                        {
+                            Console.WriteLine("Error....");
+                        }
                         this.Focus();
                     }
                     else
