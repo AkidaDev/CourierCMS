@@ -70,7 +70,7 @@ namespace FinalUi
         string errorNos;
         void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-
+            Client client = DataSources.ClientCopy.FirstOrDefault(x => x.CLCODE == clientCodeSelectedValue);
             errorNos = "";
             Debug.WriteLine("inside do work");
             if (startCOnnNoIndex <= endConnNoIndex && startCOnnNoIndex != -1 && endConnNoIndex != -1)
@@ -83,10 +83,12 @@ namespace FinalUi
                     data.CustCode = clientCodeSelectedValue;
 
                     data = db.RuntimeDatas.Single(x => x.Id == data.Id);
-                    var c = cs.Where(x => x.CITY_CODE == data.Destination && x.CITY_STATUS == "A").FirstOrDefault();
+                    var c = cs.Where(x => x.CITY_CODE == data.Destination).FirstOrDefault();
                     if (c == null)
                         c = db.Cities.SingleOrDefault(x => x.CITY_CODE == "DEL");
                     data.CustCode = clientCodeSelectedValue;
+                    data.Client_Desc = client.CLNAME;
+
                     data.FrWeight = data.Weight;
                     data.BilledWeight = data.Weight;
                     try
