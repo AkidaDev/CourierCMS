@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Linq;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -27,15 +28,16 @@ namespace FinalUi
         int endConnNoIndex;
         string clientCodeSelectedValue;
         DataGrid datagrid;
-        public PowerEntry(List<RuntimeData> DataStack , DataGrid datagrid)
+        public PowerEntry(List<RuntimeData> DataStack, DataGrid datagrid)
             : this()
         {
             this.datagrid = datagrid;
+            CollectionViewSource source = (CollectionViewSource)FindResource("ClientList");
+            source.Source = DataSources.ClientCopy;
             DataStack = DataStack.OrderBy(x => x.BookingDate).ThenBy(y => y.ConsignmentNo).ToList();
             List<string> connList = DataStack.Select(c => c.ConsignmentNo).ToList();
             startConnNo.DataContext = connList;
             endConnNo.DataContext = connList;
-            clientCode.DataContext = DataSources.ClientCopy.Select(x => x.CLCODE);
             this.DataStack = DataStack;
             this.db = new BillingDataDataContext();
             worker = new BackgroundWorker();
@@ -44,7 +46,35 @@ namespace FinalUi
             worker.ProgressChanged += worker_ProgressChanged;
             worker.WorkerReportsProgress = true;
         }
-
+        public void dupliData(RuntimeData sData, RuntimeData dData)
+        {
+            dData.Amount = sData.Amount;
+            dData.BilledWeight = sData.BilledWeight;
+            dData.BookingDate = sData.BookingDate;
+            dData.City_Desc = sData.City_Desc;
+            dData.Client_Desc = sData.Client_Desc;
+            dData.ConsignmentNo = sData.ConsignmentNo;
+            dData.CustCode = sData.CustCode;
+            dData.Destination = sData.Destination;
+            dData.DestinationPin = sData.DestinationPin;
+            dData.DOX = sData.DOX;
+            dData.EmpId = sData.EmpId;
+            dData.FrAmount = sData.FrAmount;
+            dData.FrWeight = sData.FrWeight;
+            dData.InvoiceDate = sData.InvoiceDate;
+            dData.InvoiceNo = sData.InvoiceNo;
+            dData.Mode = sData.Mode;
+            dData.Service_Desc = sData.Service_Desc;
+            dData.ServiceTax = sData.ServiceTax;
+            dData.SheetNo = sData.SheetNo;
+            dData.SplDisc = sData.SplDisc;
+            dData.TransactionId = sData.TransactionId;
+            dData.TransMF_No = sData.TransMF_No;
+            dData.Type = sData.Type;
+            dData.UserId = sData.UserId;
+            dData.Weight = sData.Weight;
+            dData.Client_Desc = sData.Client_Desc;
+        }
         void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             Debug.WriteLine("Progress is " + e.ProgressPercentage);
@@ -60,7 +90,7 @@ namespace FinalUi
             SubmitRecords.IsEnabled = true;
             if (errorNos != "")
                 MessageBox.Show("Error calculating records: " + errorNos);
-           
+
             startCOnnNoIndex = -1;
             endConnNoIndex = -1;
             progressbar.Value = 0;
@@ -70,7 +100,7 @@ namespace FinalUi
         string errorNos;
         void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-
+            Client client = DataSources.ClientCopy.FirstOrDefault(x => x.CLCODE == clientCodeSelectedValue);
             errorNos = "";
             Debug.WriteLine("inside do work");
             if (startCOnnNoIndex <= endConnNoIndex && startCOnnNoIndex != -1 && endConnNoIndex != -1)
@@ -80,27 +110,33 @@ namespace FinalUi
                 for (int i = startCOnnNoIndex; i <= endConnNoIndex; i++)
                 {
                     RuntimeData data = DataStack.ElementAt(i);
-                    data.CustCode = clientCodeSelectedValue;
 
                     data = db.RuntimeDatas.Single(x => x.Id == data.Id);
-                    var c = cs.Where(x => x.CITY_CODE == data.Destination && x.CITY_STATUS == "A").FirstOrDefault();
+                    var c = cs.Where(x => x.CITY_CODE == data.Destination).FirstOrDefault();
                     if (c == null)
                         c = db.Cities.SingleOrDefault(x => x.CITY_CODE == "DEL");
                     data.CustCode = clientCodeSelectedValue;
-                    data.FrWeight = data.Weight;
-                    data.BilledWeight = data.Weight;
+                    if (client != null)
+                        data.Client_Desc = client.CLNAME;
+                    if (data.FrWeight == null)
+                        data.FrWeight = data.Weight;
+                    if (data.BilledWeight == null)
+                        data.BilledWeight = data.Weight;
                     try
                     {
                         data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, (double)data.BilledWeight, data.Destination, data.Type, (char)data.DOX);
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         Debug.WriteLine(ex.Message + ": Occured in " + data.ConsignmentNo);
                         data.FrAmount = -1;
                     }
                     try
                     {
+                        RuntimeData ndata = DataStack.ElementAt(i);
+                        dupliData(data, ndata);
                         db.SubmitChanges();
+
                     }
                     catch (Exception)
                     {
@@ -110,7 +146,7 @@ namespace FinalUi
                 }
             }
 
-           
+
         }
         PowerEntry()
         {
@@ -123,10 +159,15 @@ namespace FinalUi
                 SubmitRecords.IsEnabled = false;
                 startCOnnNoIndex = startConnNo.SelectedIndex;
                 endConnNoIndex = endConnNo.SelectedIndex;
-                if (clientCode.Text == "")
+                Client client = DataSources.ClientCopy.SingleOrDefault(x => x.NameAndCode == ((Client)clientCode.SelectedItem).NameAndCode);
+                if (client == null)
+                {
+                    MessageBox.Show("No such client exists..!!");
                     return;
-                clientCodeSelectedValue = clientCode.SelectedValue.ToString();
+                }
+                clientCodeSelectedValue = client.CLCODE;
                 worker.RunWorkerAsync();
+                //worker_DoWork(null, null);
             }
             else
                 MessageBox.Show("Process already running.");
