@@ -32,5 +32,26 @@ namespace FinalUi.Properties {
                 return ((string)(this["BillingDatabaseConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=KHANCOMPUTER\\SQLExpress;Initial Catalog=BillingDatabase;Integrated Se" +
+            "curity=True")]
+        public string BillingDatabaseConnectionString1 {
+            get {
+                return ((string)(this["BillingDatabaseConnectionString1"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=PC\\SQLEXPRESS;Initial Catalog=BillingDatabase;User ID=sa")]
+        public string BillingDatabaseConnectionString2 {
+            get {
+                return ((string)(this["BillingDatabaseConnectionString2"]));
+            }
+        }
     }
 }
