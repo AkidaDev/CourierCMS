@@ -83,15 +83,55 @@ namespace FinalUi
             runtimeDataObj.BilledWeight = trans.BilledWeight;
             return runtimeDataObj;
         }
-        static public List<RuntimeData> loadDataFromDatabase(DateTime startDate, DateTime endDate)
+        #endregion
+        #region convert transcity to run
+        public static RuntimeData convertTransCityObjToRunObj(TransactionCityView trans)
         {
-
-            BillingDataDataContext db = new BillingDataDataContext();
-            List<Transaction> transData = db.Transactions.Where(x => startDate <= x.BookingDate && endDate >= x.BookingDate).ToList();
-            return convertTransListToRuntimeList(transData).OrderBy(x => x.BookingDate).ThenBy(y => y.ConsignmentNo).ToList();
-
+            RuntimeData runtimeDataObj = new RuntimeData();
+            runtimeDataObj.Amount = trans.AmountPayed;
+            runtimeDataObj.BookingDate = trans.BookingDate;
+            runtimeDataObj.Weight = trans.Weight;
+            runtimeDataObj.ConsignmentNo = trans.ConnsignmentNo.Trim();
+            runtimeDataObj.Destination = trans.Destination.Trim();
+            if (trans.DestinationPin != null)
+                runtimeDataObj.DestinationPin = (decimal)trans.DestinationPin;
+            runtimeDataObj.DOX = trans.DOX;
+            runtimeDataObj.FrAmount = trans.AmountCharged;
+            runtimeDataObj.FrWeight = trans.WeightByFranchize;
+            runtimeDataObj.Id = Guid.NewGuid();
+            if (trans.InvoiceDate != null)
+                runtimeDataObj.InvoiceDate = (DateTime)trans.InvoiceDate;
+            if (trans.InvoiceNo != null)
+                runtimeDataObj.InvoiceNo = trans.InvoiceNo.Trim();
+            runtimeDataObj.Mode = trans.Mode.Trim();
+            runtimeDataObj.ServiceTax = trans.ServiceTax;
+            runtimeDataObj.SplDisc = trans.SplDisc;
+            runtimeDataObj.CustCode = trans.CustCode;
+            runtimeDataObj.TransactionId = trans.ID;
+            if (trans.Type != null)
+                runtimeDataObj.Type = trans.Type.Trim();
+            runtimeDataObj.BilledWeight = trans.BilledWeight;
+            runtimeDataObj.City_Desc = trans.CITY_DESC;
+            runtimeDataObj.Client_Desc = trans.CLNAME;
+            runtimeDataObj.Service_Desc = trans.SER_DESC;
+            return runtimeDataObj;
+        }
+        public static List<RuntimeData> convertTransCityListToRuntimeList(List<TransactionCityView> tList)
+        {
+            List<RuntimeData> data = new List<RuntimeData>();
+            tList.ForEach(x => 
+            {
+                data.Add(convertTransCityObjToRunObj(x));
+            });
+            return data;
         }
         #endregion
+        static public List<RuntimeData> loadDataFromDatabase(DateTime startDate, DateTime endDate)
+        {   BillingDataDataContext db = new BillingDataDataContext();
+            List<TransactionCityView> transData = db.TransactionCityViews.Where(x => startDate <= x.BookingDate && endDate >= x.BookingDate).ToList();
+            return convertTransCityListToRuntimeList(transData).OrderBy(x => x.BookingDate).ThenBy(y => y.ConsignmentNo).ToList();
+        }
+
         #region converting runtime data to transaction data
         static public List<Transaction> convertRuntimeListToTransList(List<RuntimeData> transList, BillingDataDataContext db)
         {
@@ -131,6 +171,8 @@ namespace FinalUi
                 transactionData.Employee = db.Employees.Single(x => x.Id == data.EmpId);
             transactionData.InvoiceDate = data.InvoiceDate;
             transactionData.InvoiceNo = data.InvoiceNo;
+            transactionData.TransMF_No = data.TransMF_No;
+
             transactionData.Mode = data.Mode;
 
             if (data.ServiceTax != null)
@@ -167,7 +209,6 @@ namespace FinalUi
                     }
                 }
                 removeList.ForEach(ele =>
-                
                 {
                     duplicateData.Add(ele);
                     newData.Remove(ele);

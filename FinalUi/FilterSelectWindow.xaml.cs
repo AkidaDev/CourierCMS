@@ -80,11 +80,18 @@ namespace FinalUi
                 EndConnNo.Text = ConnNo.LastOrDefault() ?? "";
             ToDate.SelectedDate = filterObj.toDate;
             FromDate.SelectedDate = filterObj.fromDate;
+            StartPriceValue.Text = filterObj.startPrice.ToString();
+            EndPriceValue.Text = filterObj.endPrice.ToString();
         }
 
         private void GetFilter_Click(object sender, RoutedEventArgs e)
         {
             string errorMsg = "";
+            double temp;
+            if (!double.TryParse(StartPriceValue.Text, out temp))
+                errorMsg += "Enter starting price value correctly \n";
+            if (!double.TryParse(EndPriceValue.Text, out temp))
+                errorMsg += "Enter ending price value correctly \n";
             if (!((List<string>)EndConnoList.Source).Contains(EndConnNo.Text) && !((List<string>)StartConnNoList.Source).Contains(StartConnNo.Text))
                 errorMsg += "Enter the connsignments correctly \n";
             if (ToDate.SelectedDate < FromDate.SelectedDate)
@@ -104,6 +111,8 @@ namespace FinalUi
                     filterObj.showBilled = null;
                 filterObj.startConnNo = StartConnNo.Text;
                 filterObj.toDate = (DateTime)ToDate.SelectedDate;
+                filterObj.startPrice = double.Parse(StartPriceValue.Text);
+                filterObj.endPrice = double.Parse(EndPriceValue.Text);
 
             }
             this.Close();

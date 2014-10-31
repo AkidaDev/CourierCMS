@@ -26,8 +26,7 @@ namespace FinalUi.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=RIZWANKHAN;Initial Catalog=BillingDatabase;Persist Security Info=True" +
-            ";User ID=sa;Password=Alver!22")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SYSTEM;Initial Catalog=BillingDatabase;User ID=sa;Password=Alver!22")]
         public string BillingDatabaseConnectionString {
             get {
                 return ((string)(this["BillingDatabaseConnectionString"]));
@@ -37,19 +36,8 @@ namespace FinalUi.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=RIZWANKHAN;Initial Catalog=BillingDatabase;Persist Security Info=True" +
-            ";User ID=sa;Password=Alver!22")]
-        public string BillingDatabaseConnectionString3 {
-            get {
-                return ((string)(this["BillingDatabaseConnectionString3"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SYSTEM;Initial Catalog=BillingDatabase;Persist Security Info=True;Use" +
-            "r ID=sa")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=KHANCOMPUTER\\SQLExpress;Initial Catalog=BillingDatabase;Integrated Se" +
+            "curity=True")]
         public string BillingDatabaseConnectionString1 {
             get {
                 return ((string)(this["BillingDatabaseConnectionString1"]));
@@ -59,8 +47,7 @@ namespace FinalUi.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SYSTEM;Initial Catalog=BillingDatabase;Persist Security Info=True;Use" +
-            "r ID=sa;Password=Alver!22")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=PC\\SQLEXPRESS;Initial Catalog=BillingDatabase;User ID=sa")]
         public string BillingDatabaseConnectionString2 {
             get {
                 return ((string)(this["BillingDatabaseConnectionString2"]));
@@ -70,33 +57,11 @@ namespace FinalUi.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=KHANCOMPUTER\\SQLExpress;Initial Catalog=BillingDatabase;Integrated Se" +
-            "curity=True")]
-        public string BillingDatabaseConnectionString4 {
-            get {
-                return ((string)(this["BillingDatabaseConnectionString4"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SYSTEM;Initial Catalog=BillingDatabase;Persist Security Info=True;Use" +
-            "r ID=sa;Password=Alver!22")]
-        public string BillingDatabaseConnectionString5 {
-            get {
-                return ((string)(this["BillingDatabaseConnectionString5"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=PANKAJ\\SQLEXPRESS;Initial Catalog=BillingDatabase;Persist Security In" +
             "fo=True;User ID=sa;Password=9811010024")]
-        public string BillingDatabaseConnectionString6 {
+        public string BillingDatabaseConnectionString3 {
             get {
-                return ((string)(this["BillingDatabaseConnectionString6"]));
+                return ((string)(this["BillingDatabaseConnectionString3"]));
             }
         }
     }

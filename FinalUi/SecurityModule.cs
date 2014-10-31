@@ -34,7 +34,7 @@ namespace FinalUi
                 employee = db.Employees.Where(x => x.UserName == userName).FirstOrDefault();
                 _currentUser = employee.UserName;
                 userpermissionList = employee.User_permissions.Select(x => x.Permission).ToList();
-                if (userName == "purushottam")
+                if (userName == "dharmendra")
                     isSuper = true;
                 return true;
             }

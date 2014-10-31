@@ -48,8 +48,8 @@ namespace FinalUi
                         zoneCode = "DEF";
                     else
                         zoneCode = zone.zcode;
-                       RulesApplied = RulesApplied.Where(x => x.ZoneList.Contains(zone.zcode)).ToList();
-                 
+                    RulesApplied = RulesApplied.Where(x => x.ZoneList.Contains(zoneCode)).ToList();
+
                 }
             }
             RulesApplied = RulesApplied.Where(x => x.ServiceList.Contains(trans.Type.Trim())).ToList();
@@ -80,7 +80,7 @@ namespace FinalUi
         {
             get
             {
-                if(serviceRules == null)
+                if (serviceRules == null)
                 {
                     initializeRules();
                 }
@@ -92,7 +92,7 @@ namespace FinalUi
             BillingDataDataContext db = new BillingDataDataContext();
             rulesList = db.Rules.Where(x => x.QID == this.Id).ToList();
             costingRules = rulesList.Where(x => x.Type == 1).Select(y => ((new JavaScriptSerializer()).Deserialize<CostingRule>(y.Properties))).ToList();
-          serviceRules = rulesList.Where(x => x.Type == 2).Select(y => ((new JavaScriptSerializer()).Deserialize<ServiceRule>(y.Properties))).ToList();
+            serviceRules = rulesList.Where(x => x.Type == 2).Select(y => ((new JavaScriptSerializer()).Deserialize<ServiceRule>(y.Properties))).ToList();
             //invoiceRule = rulesList.Where(x => x.Type == 3).Select(y => ((new JavaScriptSerializer()).Deserialize<InvoiceRule>(y.Properties))).ToList();
         }
         public double applyServiceRulesOnTransaction(double billedWeight, string destination, string serviceCode, char DOX, decimal cost)
@@ -107,7 +107,7 @@ namespace FinalUi
         }
         public double applyServiceRulesOnTransaction(RuntimeData trans)
         {
-            double price = (double)trans.FrAmount ;
+            double price = (double)trans.FrAmount;
             List<ServiceRule> RulesApplied = serviceRules.Where(x => x.startW <= trans.BilledWeight && x.endW >= trans.BilledWeight).ToList();
 
             if (RulesApplied.Where(x => x.CityList.Contains(trans.Destination)).Count() > 0)
@@ -170,7 +170,7 @@ namespace FinalUi
         {
             get
             {
-                return  this.Zone_name + " (" + this.zcode + ")";
+                return this.Zone_name + " (" + this.zcode + ")";
             }
         }
     }
@@ -180,7 +180,7 @@ namespace FinalUi
         {
             get
             {
-                return this.STATE_DESC + " (" + this.STATE_CODE +")";
+                return this.STATE_DESC + " (" + this.STATE_CODE + ")";
             }
         }
     }
@@ -191,6 +191,63 @@ namespace FinalUi
             get
             {
                 return this.CITY_DESC + " (" + this.CITY_CODE + ")";
+            }
+        }
+    }
+    public partial class Invoice
+    {
+        public string CompactInvoiceDetail
+        {
+            get
+            {
+                return BillId + "     |     " + ClientCode + "     |     " + TotalAmount;
+            }
+        }
+        public string CompactDate
+        {
+            get
+            {
+                return Date.ToString("dd-MMM-yyyy");
+            }
+        }
+    }
+    partial class PaymentEntry
+    {
+        public string CompactDate
+        {
+            get
+            {
+                return Date.ToString("dd-MMM-yyyy");
+            }
+        }
+    }
+    partial class AccountStatement
+    {
+        public string CompactDate
+        {
+            get
+            {
+                return this.TransactionDate.ToString("dd-MMM-yyyy");
+            }
+        }
+        public string CompactPayAmount
+        {
+            get
+            {
+                if (this.PayAmount != null)
+                    return String.Format("{0:F2}", this.PayAmount);
+                else
+                    return "";
+            }
+        }
+        public string CompactRecievedAmount
+        {
+            get
+            {
+                if (this.TotalRecievedAmount != null)
+                    return String.Format("{0:F2}", this.TotalRecievedAmount);
+                else
+                    return "";
             }
         }
     }

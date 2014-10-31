@@ -41,7 +41,7 @@
                     <DataGrid Name="InvoiceDatagrid" DockPanel.Dock="Left" AutoGenerateColumns="False" DataContext="{StaticResource InvoiceDetailsSourceGrid}" ItemsSource="{Binding}" RowHeaderWidth="0" BorderThickness="1" BorderBrush="Gray" Background="White" IsReadOnly="True" SelectionMode="Single" Width="493" Height="105">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="BillNumber" Binding="{Binding BillId}"/>
-                            <DataGridTextColumn Header="Date" Binding="{Binding Date}"/>
+                            <DataGridTextColumn Header="Date" Binding="{Binding CompactDate}"/>
                             <DataGridTextColumn Header="Basic" Binding="{Binding Basic}"/>
                             <DataGridTextColumn Header="Fuel" Binding="{Binding Fuel}"/>
                             <DataGridTextColumn Header="STax" Binding="{Binding STax}"/>
@@ -49,12 +49,17 @@
                             <DataGridTextColumn Header="Remarks" Binding="{Binding Remarks}"/>
                         </DataGrid.Columns>
                     </DataGrid>
+ 
                     <Button Name="FetchInvoiceButton" Content="View Selected invoice" Click="FetchInvoiceButton_Click" Margin="0,2,-10,11" Width="120" HorizontalAlignment="Right"/>
+                    <Button Name="DeleteInvoiceButton" Content="Delete Selected invoice" Click="DeleteInvoiceButton_Click" Margin="0,0,-10,0" Width="120" HorizontalAlignment="Right"/>
 
                     <DataGrid DockPanel.Dock="Right" AutoGenerateColumns="False" DataContext="{StaticResource PaymentDetailsSourceGrid}" ItemsSource="{Binding}" RowHeaderWidth="0" BorderThickness="1" BorderBrush="Gray" Background="White" IsReadOnly="True" SelectionMode="Single" Width="493"  Height="105">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Date" Binding="{Binding Date}"/>
+                            <DataGridTextColumn Header="RefNo" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Date" Binding="{Binding CompactDate}"/>
                             <DataGridTextColumn Header="Amount" Binding="{Binding RecievedAmount}"/>
+                            <DataGridTextColumn Header="Debit Note" Binding="{Binding DebitNote}"/>
+                            <DataGridTextColumn Header="TDS" Binding="{Binding TDS}"/>
                             <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
                             <DataGridTextColumn Header="ChequeNumber" Binding="{Binding ChequeNumber}"/>
                             <DataGridTextColumn Header="Remarks" Binding="{Binding Remarks}"/>

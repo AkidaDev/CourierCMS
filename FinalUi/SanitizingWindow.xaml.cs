@@ -29,9 +29,9 @@ namespace FinalUi
             viewSource = (CollectionViewSource)FindResource("CustomerNameList");
             viewSource.Source = DataSources.ClientCopy.ToList();
             cityList = (CollectionViewSource)FindResource("CityList");
-            cityList.Source = db.Cities.ToList();
+            cityList.Source = DataSources.CityCopy;
             ServiceListSource = (CollectionViewSource)FindResource("ServiceList");
-            ServiceListSource.Source = db.Services.ToList();
+            ServiceListSource.Source = DataSources.ServicesCopy;
         }
         CollectionViewSource viewSource;
         CollectionViewSource conssNumbers;
@@ -78,6 +78,9 @@ namespace FinalUi
         }
         public RuntimeData fillData(RuntimeData data)
         {
+            List<Client> clientList = DataSources.ClientCopy;
+            List<City> cityList = DataSources.CityCopy;
+            List<Service> serviceList = DataSources.ServicesCopy;
             if (CustomerSelected.Text == "")
                 CustomerSelected.Text = "<NONE>";
             if (WeightAccToDTDC.Text == "")
@@ -115,15 +118,21 @@ namespace FinalUi
             if (Cost.Text == "" || !double.TryParse(Cost.Text, out tmpD))
                 Cost.Text = "0";
             data.Amount = Decimal.Parse(Cost.Text);
-            var c1 = DataSources.CityCopy.Where(x => x.NameAndCode == Destination.Text).Select(y => y.CITY_CODE).FirstOrDefault();
-            data.Destination = c1;
+            var c1 = cityList.Where(x => x.NameAndCode == Destination.Text).FirstOrDefault();
+            if (c1 != null)
+            {
+                data.Destination = c1.CITY_CODE;
+                data.City_Desc = c1.CITY_DESC;
+            }
             decimal tempDecimal;
             if (decimal.TryParse(DestinationPin.Text, out tempDecimal))
                 data.DestinationPin = tempDecimal;
             data.CustCode = DataSources.ClientCopy.Where(x => x.NameAndCode == CustomerSelected.Text).Select(y => y.CLCODE).FirstOrDefault();
             if (MODE.Text != "")
                 data.Mode = MODE.Text;
-            data.Type = DataSources.ServicesCopy.Where(x => x.NameAndCode == TypeComboBox.Text).Select(y => y.SER_CODE).FirstOrDefault();
+            Service service = serviceList.Where(x => x.NameAndCode == TypeComboBox.Text).FirstOrDefault();
+            data.Type = service.SER_CODE;
+            data.Service_Desc = service.SER_DESC;
             data.BookingDate = (DateTime)InsertionDate.SelectedDate;
             data.FrAmount = Decimal.Parse(BilledAmount.Text);
             if (DoxCombobox.Text == "")
@@ -145,7 +154,11 @@ namespace FinalUi
                 else
                     return null;
             }
-            data.CustCode = DataSources.ClientCopy.Where(x => x.NameAndCode == CustomerSelected.Text).Select(y => y.CLCODE).FirstOrDefault();
+            data.CustCode = clientList.Where(x => x.NameAndCode == CustomerSelected.Text).Select(y => y.CLCODE).FirstOrDefault();
+            if (data.CustCode != null)
+            {
+                data.Client_Desc = clientList.Where(x => x.NameAndCode == CustomerSelected.Text).Select(y => y.CLNAME).FirstOrDefault();
+            }
             if (this.BilledWeightTextBox.Text == "" || this.BilledWeightTextBox.Text == null)
             {
                 if (this.WeightAccToFranchize.Text == "" || this.WeightAccToFranchize == null)
@@ -188,7 +201,7 @@ namespace FinalUi
             dData.Type = sData.Type;
             dData.UserId = sData.UserId;
             dData.Weight = sData.Weight;
-
+            dData.Client_Desc = sData.Client_Desc;
         }
         public void SaveData()
         {
@@ -233,6 +246,7 @@ namespace FinalUi
             else
             {
                 ConnsignmentNumber.Text = (string)ConnsignmentNumber.Items.GetItemAt(index + 1);
+
                 fillAllElements(ConnsignmentNumber.Text);
             }
             ConnsignmentNumber.Focus();
@@ -265,10 +279,34 @@ namespace FinalUi
             data = dataContext.SingleOrDefault(x => x.ConsignmentNo == connsignmentNo);
             if (data != null)
             {
+                if (backDataGrid != null)
+                {
+                    if (backDataGrid.Items.Contains(data))
+                    {
+                        backDataGrid.SelectedItem = data;
+                        DataGridRow row;
+                        try
+                        {
+                            row = (DataGridRow)backDataGrid.ItemContainerGenerator.ContainerFromItem(data);
+                            row.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Error....");
+                        }
+                        this.Focus();
+                    }
+                    else
+                    {
+                        backDataGrid.SelectedItems.Clear();
+                    }
+                }
                 fillDetails(data);
             }
             else
             {
+                if (backDataGrid != null)
+                    backDataGrid.SelectedItems.Clear();
                 var TData = db.Transactions.SingleOrDefault(x => x.ConnsignmentNo == connsignmentNo);
                 if (TData != null)
                 {
@@ -362,15 +400,18 @@ namespace FinalUi
         }
         private void getrate()
         {
-            if (Destination.Text == "" && Destination.Text == null)
+            if (Destination.Text == "" || Destination.Text == null)
             {
-                MessageBox.Show("City cannot be empty");
                 return;
             }
             if (this.BilledWeightTextBox.Text != null && this.BilledWeightTextBox.Text != "")
             {
                 RuntimeData data = null;
                 data = fillData(data);
+                if (data.Destination == null)
+                {
+                    return;
+                }
                 var c = db.Cities.Where(x => x.CITY_CODE == data.Destination && x.CITY_STATUS == "A").FirstOrDefault();
                 if (c == null)
                     c = db.Cities.SingleOrDefault(x => x.CITY_CODE == "DEL");

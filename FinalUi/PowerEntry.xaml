@@ -4,7 +4,9 @@
 		Icon="Images/logo.ico"
         Title="PowerEntry" Height="260" Width="372" Background="Transparent"
 		ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Normal" BorderBrush="Transparent" AllowsTransparency="True" Padding="20">
-
+    <Window.Resources>
+        <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"/>
+    </Window.Resources>
     <Grid  Height="210" UseLayoutRounding="False"  Width="322"  >
         <Grid.Effect>
             <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
@@ -21,7 +23,7 @@
             <ComboBox Name="endConnNo"  Width="90" Height="22" IsEditable="True" ItemsSource="{Binding}" Canvas.Left="166.963" Canvas.Top="106.2"/>
 
             <TextBlock  Text="Select Client    .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="42.859" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Canvas.Top="140.2"/>
-            <ComboBox Name="clientCode"  Width="90" Height="22" IsEditable="True" ItemsSource="{Binding}" Canvas.Left="166.963" Canvas.Top="136.2"/>
+            <ComboBox Name="clientCode" DataContext="{StaticResource ClientList}" DisplayMemberPath="NameAndCode" Width="90" Height="22" IsEditable="True" ItemsSource="{Binding}" Canvas.Left="166.963" Canvas.Top="136.2"/>
 
             <Button Name="SubmitRecords" Click="SubmitRecords_Click" Style="{StaticResource all}" Canvas.Left="212" Canvas.Top="167">
                 <WrapPanel Margin="6,2,6,2">

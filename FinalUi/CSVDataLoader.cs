@@ -28,6 +28,8 @@ namespace FinalUi
                 rowData.Id = Guid.NewGuid();
                 rowData.ConsignmentNo = lineData[1].Trim('\'');
                 rowData.Weight = Double.Parse(lineData[4]);
+                rowData.FrWeight = rowData.Weight;
+                rowData.BilledWeight = rowData.Weight;
                 rowData.Type = lineData[5].Trim('\'');
                 rowData.Destination = lineData[6].Trim('\'');
                 rowData.Mode = lineData[7].Trim('\'');
@@ -58,7 +60,7 @@ namespace FinalUi
                 City city = cityList.SingleOrDefault(x => x.CITY_CODE == rowData.Destination);
                 if (city != null)
                     rowData.City_Desc = city.CITY_DESC;
-                
+                rowData.Client_Desc = DataSources.ClientCopy.SingleOrDefault(x => x.CLCODE == "<NONE>").CLNAME;
                 data.Add(rowData);
 
             }

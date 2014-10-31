@@ -73,7 +73,14 @@ namespace FinalUi
                 inv.PreviousDue = 0;
              * */
             PrintMainWindow window = new PrintMainWindow(inv);
-            window.ShowDialog();
+            try
+            {
+                window.Show();
+            }catch(InvalidOperationException)
+            {
+                MessageBox.Show("Unable to open invoice");
+            }
+
         }
 		private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {
@@ -82,6 +89,35 @@ namespace FinalUi
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void DeleteInvoiceButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(InvoiceDatagrid.SelectedItems.Count != 1)
+            {
+                MessageBox.Show("Please select 1 invoice to delete", "Message");
+                return;
+            }
+            if(MessageBox.Show("Are you sure you want to delete this invoice?","Confirm",MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                BillingDataDataContext db = new BillingDataDataContext();
+                Invoice invoice = db.Invoices.SingleOrDefault(x => x.BillId == ((Invoice)InvoiceDatagrid.SelectedItem).BillId);
+                if(invoice == null)
+                {
+                    MessageBox.Show("This invoice doesn't exists or has already been deleted..", "Error");
+                    return;
+                }
+                db.Invoices.DeleteOnSubmit(invoice);
+                try
+                {
+                    db.SubmitChanges();
+                    MessageBox.Show("Invoice successfully deleted. Click on fetch button to view the changes.","Success");
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Error in deleting invoice. Error Message: " + ex.Message, "Error");
+                }
+            }
         }
     }
 }

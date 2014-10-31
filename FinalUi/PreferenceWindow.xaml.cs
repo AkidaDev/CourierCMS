@@ -28,6 +28,7 @@ namespace FinalUi
         {
             InitializeComponent();
             FillDetails();
+            
             ConnectionStringCombo.Items.Add("Still loading please wait...");
             sqlInstanceGetVersion = new BackgroundWorker();
             sqlInstanceGetVersion.DoWork += sqlInstanceGetVersion_DoWork;
@@ -75,6 +76,12 @@ namespace FinalUi
         private void FillDetails()
         {
             ThemeColorPicker.SelectedColor = (Color)ColorConverter.ConvertFromString(Configs.Default.Background);
+            CompanyAddressBox.Text = Configs.Default.CompanyAddress;
+            CompanyContactBox.Text = Configs.Default.CompanyPhone;
+            CompanyEmailBox.Text = Configs.Default.CompanyEmail;
+            CompanyNameBox.Text = Configs.Default.CompanyName;
+            CompanyOwnerBox.Text = Configs.Default.CompanyOwner;
+            TNCBox.Text = Configs.Default.TNC;
             this.ServiceTax.Text = Configs.Default.ServiceTax;
         }
         private void Button_Click_Close(object sender, RoutedEventArgs e)
@@ -85,5 +92,47 @@ namespace FinalUi
         {
             DragMove();
         }
+
+        private void cloakAll()
+        {
+            this.BackgroundSettingGrid.Visibility = Visibility.Collapsed;
+            this.CompanyDetails.Visibility = Visibility.Collapsed;
+            this.InvoicePanel.Visibility = Visibility.Collapsed;
+        }
+
+        private void settingtreeview_Click(object sender, RoutedEventArgs e)
+        {
+            cloakAll();
+            this.BackgroundSettingGrid.Visibility = Visibility.Visible;
+        }
+
+        private void DetailsEntry_Click(object sender, RoutedEventArgs e)
+        {
+            cloakAll();
+            this.CompanyDetails.Visibility = Visibility.Visible;
+        }
+
+        private void InvoiceEntry_Click(object sender, RoutedEventArgs e)
+        {
+            cloakAll();
+            this.InvoicePanel.Visibility = Visibility.Visible;
+        }
+
+        private void SaveDetailsButton_Click(object sender, RoutedEventArgs e)
+        {
+            Configs.Default.CompanyAddress = CompanyAddressBox.Text;
+            Configs.Default.CompanyEmail = CompanyEmailBox.Text;
+            Configs.Default.CompanyName = CompanyNameBox.Text;
+            Configs.Default.CompanyOwner = CompanyOwnerBox.Text;
+            Configs.Default.CompanyPhone = CompanyContactBox.Text;
+            Configs.Default.Save();
+        }
+
+        private void SaveTNCButton_Click(object sender, RoutedEventArgs e)
+        {
+            Configs.Default.TNC = TNCBox.Text;
+            Configs.Default.Save();
+        }
+
     }
 }
