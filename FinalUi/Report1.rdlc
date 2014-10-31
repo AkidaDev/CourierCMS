@@ -22,7 +22,7 @@
         <Top>6.69545in</Top>
         <Left>0.125in</Left>
         <Height>0.56471cm</Height>
-        <Width>5.62365cm</Width>
+        <Width>5.78547cm</Width>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -53,9 +53,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox22</rd:DefaultName>
         <Top>6.69545in</Top>
-        <Left>5.94115cm</Left>
+        <Left>6.10297cm</Left>
         <Height>0.56471cm</Height>
-        <Width>14.21567cm</Width>
+        <Width>14.06558cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -286,7 +286,6 @@
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
       <Tablix Name="Tablix3">
@@ -734,7 +733,7 @@
         <PageBreak>
           <BreakLocation>Start</BreakLocation>
         </PageBreak>
-        <Top>22.94452cm</Top>
+        <Top>21.99202cm</Top>
         <Left>1.1962cm</Left>
         <Height>1.04126cm</Height>
         <Width>17.97249cm</Width>
@@ -1237,7 +1236,7 @@
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>2</Value>
+                            <Value />
                             <Style>
                               <FontFamily>arial</FontFamily>
                               <FontSize>9pt</FontSize>
@@ -2879,7 +2878,7 @@
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>Invoice No.:</Value>
+                            <Value>Invoice No .:</Value>
                             <Style>
                               <FontFamily>arial</FontFamily>
                               <FontWeight>Bold</FontWeight>
@@ -2971,7 +2970,7 @@
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>Date.:</Value>
+                                    <Value>Date .:</Value>
                                     <Style>
                                       <FontFamily>arial</FontFamily>
                                       <FontWeight>Bold</FontWeight>
@@ -2996,10 +2995,6 @@
                                 <Style>None</Style>
                               </RightBorder>
                               <VerticalAlign>Middle</VerticalAlign>
-                              <PaddingLeft>2pt</PaddingLeft>
-                              <PaddingRight>2pt</PaddingRight>
-                              <PaddingTop>2pt</PaddingTop>
-                              <PaddingBottom>2pt</PaddingBottom>
                             </Style>
                           </Textbox>
                         </CellContents>
@@ -4707,7 +4702,7 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>3.91008cm</Width>
+              <Width>19.83932cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -4716,21 +4711,21 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox217">
+                    <Textbox Name="Textbox16">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Parameters!TNC.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox217</rd:DefaultName>
+                      <rd:DefaultName>Textbox16</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -4738,13 +4733,16 @@
                         <BottomBorder>
                           <Style>Solid</Style>
                         </BottomBorder>
+                        <LeftBorder>
+                          <Style>Solid</Style>
+                        </LeftBorder>
                         <RightBorder>
                           <Style>Solid</Style>
                         </RightBorder>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
+                        <PaddingLeft>4pt</PaddingLeft>
+                        <PaddingRight>4pt</PaddingRight>
+                        <PaddingTop>4pt</PaddingTop>
+                        <PaddingBottom>4pt</PaddingBottom>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -4760,52 +4758,7 @@
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
           <TablixMembers>
-            <TablixMember>
-              <Group Name="RowGroup6">
-                <GroupExpressions>
-                  <GroupExpression />
-                </GroupExpressions>
-              </Group>
-              <TablixHeader>
-                <Size>15.92924cm</Size>
-                <CellContents>
-                  <Textbox Name="Textbox215">
-                    <CanGrow>true</CanGrow>
-                    <KeepTogether>true</KeepTogether>
-                    <Paragraphs>
-                      <Paragraph>
-                        <TextRuns>
-                          <TextRun>
-                            <Value>=Parameters!TNC.Value</Value>
-                            <Style />
-                          </TextRun>
-                        </TextRuns>
-                        <Style />
-                      </Paragraph>
-                    </Paragraphs>
-                    <rd:DefaultName>Textbox215</rd:DefaultName>
-                    <Style>
-                      <Border>
-                        <Style>None</Style>
-                      </Border>
-                      <BottomBorder>
-                        <Style>Solid</Style>
-                      </BottomBorder>
-                      <LeftBorder>
-                        <Style>Solid</Style>
-                      </LeftBorder>
-                      <PaddingLeft>4pt</PaddingLeft>
-                      <PaddingRight>4pt</PaddingRight>
-                      <PaddingTop>4pt</PaddingTop>
-                      <PaddingBottom>4pt</PaddingBottom>
-                    </Style>
-                  </Textbox>
-                </CellContents>
-              </TablixHeader>
-              <TablixMembers>
-                <TablixMember />
-              </TablixMembers>
-            </TablixMember>
+            <TablixMember />
           </TablixMembers>
         </TablixRowHierarchy>
         <Top>11.64141cm</Top>
@@ -4833,7 +4786,7 @@
       </Line>
       <Line Name="Line5">
         <Top>20.65156cm</Top>
-        <Left>0.21115cm</Left>
+        <Left>0.3175cm</Left>
         <Height>0cm</Height>
         <Width>19.84375cm</Width>
         <ZIndex>15</ZIndex>
@@ -4844,7 +4797,7 @@
         </Style>
       </Line>
     </ReportItems>
-    <Height>24cm</Height>
+    <Height>23.10042cm</Height>
     <Style>
       <Border>
         <Style>None</Style>
@@ -4916,11 +4869,39 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>0.81265cm</Height>
+      <Height>1.32197cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
         <Textbox Name="Textbox17">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>This Invoice is Computer Generated and Hence does not require Signature</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox17</rd:DefaultName>
+          <Top>0.07962cm</Top>
+          <Left>0.06177in</Left>
+          <Height>0.58236cm</Height>
+          <Width>19.99992cm</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <VerticalAlign>Middle</VerticalAlign>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox22">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
@@ -4936,19 +4917,17 @@
               </Style>
             </Paragraph>
           </Paragraphs>
-          <rd:DefaultName>Textbox17</rd:DefaultName>
-          <Top>0.07962cm</Top>
-          <Left>0.06177in</Left>
-          <Height>0.58236cm</Height>
-          <Width>19.87331cm</Width>
+          <rd:DefaultName>Textbox22</rd:DefaultName>
+          <Top>0.66198cm</Top>
+          <Left>7.50947cm</Left>
+          <Height>0.55416cm</Height>
+          <Width>5.21168cm</Width>
+          <ZIndex>1</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
             </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
+            <VerticalAlign>Middle</VerticalAlign>
           </Style>
         </Textbox>
       </ReportItems>
