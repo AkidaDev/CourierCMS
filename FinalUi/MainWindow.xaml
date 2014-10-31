@@ -920,29 +920,29 @@
                                         <StackPanel Orientation="Horizontal">
                                             <StackPanel>
                                                 <WrapPanel>
-                                                    <TextBlock FontSize="12" Text="Booking Date: " VerticalAlignment="Center" />
+                                                    <TextBlock FontSize="12" Text="Booking Date .: " VerticalAlignment="Center" />
                                                     <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding BookingDate.Date}" VerticalAlignment="Center" />
                                                 </WrapPanel>
                                                 <WrapPanel>
-                                                    <TextBlock FontSize="12" Text="TransMfNo: " VerticalAlignment="Center" />
+                                                    <TextBlock FontSize="12" Text="TransMfNo .: " VerticalAlignment="Center" />
                                                     <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding TransMF_No}" VerticalAlignment="Center" />
                                                 </WrapPanel>
                                                 <WrapPanel>
-                                                    <TextBlock FontSize="12" Text="Invoice No " VerticalAlignment="Center" />
+                                                    <TextBlock FontSize="12" Text="Invoice No .: " VerticalAlignment="Center" />
                                                     <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding InvoiceNo}" VerticalAlignment="Center" />
                                                 </WrapPanel>
                                             </StackPanel>
                                             <StackPanel Margin="40 0 0 0">
                                                 <WrapPanel>
-                                                    <TextBlock FontSize="12" Text="Destination: " VerticalAlignment="Center" />
+                                                    <TextBlock FontSize="12" Text="Destination .: " VerticalAlignment="Center" />
                                                     <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding City_Desc}" VerticalAlignment="Center"/>
                                                 </WrapPanel>
                                                 <WrapPanel>
-                                                    <TextBlock FontSize="12" Text="Service: " VerticalAlignment="Center"/>
+                                                    <TextBlock FontSize="12" Text="Service .: " VerticalAlignment="Center"/>
                                                     <TextBlock FontSize="16" Text="{Binding Service_Desc}" VerticalAlignment="Center" Foreground="MidnightBlue"/>
                                                 </WrapPanel>
                                                 <WrapPanel>
-                                                <TextBlock FontSize="12" Text="Client: " VerticalAlignment="Center" />
+                                                <TextBlock FontSize="12" Text="Client .: " VerticalAlignment="Center" />
                                                 <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Client_Desc}" VerticalAlignment="Center"/>
                                                 </WrapPanel>
                                             </StackPanel>
