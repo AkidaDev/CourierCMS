@@ -77,6 +77,8 @@ namespace FinalUi
         private void ClientList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Client selectedClient = ((Client)ClientList.SelectedItem);
+            if (selectedClient == null)
+                return;
             TaxBox.Text = ((Client)ClientList.SelectedItem).FUEL.ToString();
             ServiceTaxBox.Text = selectedClient.STAX.ToString();
             DiscountBox.Text = selectedClient.AMTDISC.ToString();

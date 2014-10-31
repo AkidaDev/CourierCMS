@@ -92,6 +92,7 @@ where [BillId] = '" + inv.BillId + @"'
                 repParams.Add(new ReportParameter("DiscountPString",inv.Discount.ToString()));
                 repParams.Add(new ReportParameter("DiscountAmountString", discount.ToString()));
                 repParams.Add(new ReportParameter("MiscellaneousAmountString", inv.Misc.ToString()));
+                repParams.Add(new ReportParameter("TNC", Configs.Default.TNC));
                 double taxamount = tax + fuelAmount;
                 double totalAmount = mainAmountValue + taxamount + (double)(inv.Misc??0) + (double)(inv.PreviousDue??0) - discount;
                 repParams.Add(new ReportParameter("TotalAmountString", totalAmount.ToString()));
