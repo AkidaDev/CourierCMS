@@ -211,6 +211,9 @@
       <DependentUpon>ClientReportWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Configs.cs" />
+    <Compile Include="ConnectionString.xaml.cs">
+      <DependentUpon>ConnectionString.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CostingRule.cs" />
     <Compile Include="CountryAssignment.xaml.cs">
       <DependentUpon>CountryAssignment.xaml</DependentUpon>
@@ -347,6 +350,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ClientReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConnectionString.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

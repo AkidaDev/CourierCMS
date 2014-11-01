@@ -4,8 +4,12 @@
 	x:Class="FinalUi.UserControlGallery"
 	Icon="Images/logo.ico"
 	Title="Vortex"
-	Width="1024" Height="700">
+	Width="500" Height="300">
 
     <Grid>
+        <WrapPanel Margin="48,68,47,178">
+            <TextBlock Text="Connection String"/>
+            <TextBox Name="ConnectionStringCombo"  Width="302" Height="23"/>
+        </WrapPanel>
     </Grid>
 </Window>
