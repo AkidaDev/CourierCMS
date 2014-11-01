@@ -1,7 +1,124 @@
 ﻿<Window x:Class="FinalUi.Setup"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Setup" Height="300" Width="300">
-    <Grid>
+        Icon="Images/logo.ico"
+        Title="Setup" Height="450" Width="750" Background="Transparent" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Normal" BorderBrush="Transparent" AllowsTransparency="True" Padding="20">
+
+    <Grid  Height="400" UseLayoutRounding="False"  Width="700" Background="White" MouseLeftButtonDown="Grid_MouseLeftButtonDown_1">
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
+        </Grid.Effect>
+        <Canvas Name="Step1" Visibility="Visible">
+            <TextBlock Foreground="#6666cc" FontSize="18" Canvas.Left="374" TextAlignment="Center" Text="Welcome!" Canvas.Top="135" Width="150"/>
+            <Rectangle Width="396" Height="160" Canvas.Left="280" Canvas.Top="162" Stroke="Gray"/>
+            <TextBlock Text="TERMS AND CONDITIONS" TextWrapping="Wrap" Width="392" Height="156" Canvas.Left="283" Canvas.Top="164"/>
+            <WrapPanel Canvas.Left="323" Canvas.Top="325">
+                <Button Click="update_CheckedUnChecked" Style="{StaticResource 1}">
+                    <Canvas Height="19" Width="19">
+                        <Path x:Name="checkbox_unselected" Data="F1M2.778,3.778C2.778,3.778 2.778,16.222 2.778,16.222 2.778,16.222 15.222,16.222 15.222,16.222 15.222,16.222 15.222,3.778 15.222,3.778 15.222,3.778 2.778,3.778 2.778,3.778z M2.778,2C2.778,2 15.222,2 15.222,2 16.2,2 17,2.8 17,3.778 17,3.778 17,16.222 17,16.222 17,17.2 16.2,18 15.222,18 15.222,18 2.778,18 2.778,18 1.8,18 1,17.2 1,16.222 1,16.222 1,3.778 1,3.778 1,2.8 1.8,2 2.778,2z"
+                              Fill="Gray" Height="19"  Width="19" Margin="1,0,0,0"/>
+                        <Path x:Name="checkbox_selected" Data="F1M16.755,3.422C16.755,3.422 18,4.667 18,4.667 18,4.667 9.111,13.556 9.111,13.556 9.111,13.556 5.111,9.556 5.111,9.556 5.111,9.556 6.355,8.311 6.355,8.311 6.355,8.311 9.111,11.067 9.111,11.067 9.111,11.067 16.755,3.422 16.755,3.422z M3.778,2C3.778,2 12.667,2 12.667,2 12.667,2 12.667,3.778 12.667,3.778 12.667,3.778 3.778,3.778 3.778,3.778 3.778,3.778 3.778,16.222 3.778,16.222 3.778,16.222 16.222,16.222 16.222,16.222 16.222,16.222 16.222,9.111 16.222,9.111 16.222,9.111 18,9.111 18,9.111 18,9.111 18,16.222 18,16.222 18,17.2 17.2,18 16.222,18 16.222,18 3.778,18 3.778,18 2.8,18 2,17.2 2,16.222 2,16.222 2,3.778 2,3.778 2,2.8 2.8,2 3.778,2z"
+                              Fill="Gray" Height="19" Width="19" Visibility="Hidden"/>
+                    </Canvas>
+                </Button>
+                <TextBlock FontSize="14" MouseDown="update_CheckedUnChecked" Text=" I Agree with the Terms and Conditions " Foreground="Gray" FontFamily="Calibri" Padding="3 2 0 0"/>
+            </WrapPanel>
+        </Canvas>
+        <Canvas Name="Step2" Visibility="Collapsed">
+            <TextBlock Foreground="#6666cc" FontSize="18" Canvas.Left="374" TextAlignment="Center" Text="Get Started !" Canvas.Top="135" Width="150"/>
+            <WrapPanel Canvas.Left="275" Canvas.Top="180">
+                <TextBlock  Text=" Product Key .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                <TextBox Width="310"/>
+            </WrapPanel>
+            <WrapPanel Canvas.Left="342" Canvas.Top="215">
+                <TextBlock  Text=" Instance .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                <ComboBox Width="210"/>
+            </WrapPanel>
+            <WrapPanel Canvas.Left="335" Canvas.Top="245">
+                <TextBlock  Text=" Database .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                <ComboBox Width="210"/>
+            </WrapPanel>
+            <WrapPanel Canvas.Left="324" Canvas.Top="275">
+                <TextBlock  Text=" User Name .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                <TextBox Width="210"/>
+            </WrapPanel>
+            <WrapPanel Canvas.Left="334" Canvas.Top="305">
+                <TextBlock  Text=" Password .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                <TextBox Width="210"/>
+            </WrapPanel>
+        </Canvas>
+        <Canvas Name="Step3" Visibility="Collapsed">
+            <TextBlock Foreground="#6666cc" FontSize="18" Canvas.Left="374" TextAlignment="Center" Text="Setup" Canvas.Top="135" Width="150"/>
+            <WrapPanel Canvas.Left="336" Canvas.Top="185">
+                <TextBlock  Text=" Directory .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                <Canvas>
+                    <TextBox Width="210" Height="22"/>
+                    <TextBlock Name="DirectoryPath" Padding="3 2 0 0" Width="210" Height="22"/>
+                </Canvas>
+                <Button Margin="220 0 0 0" ToolTip="Browse Directory" Click="Browse_Directory" Style="{DynamicResource 1}">
+                    <Path Data="F1M2.467,18.037C2.467,18.037 2.467,19.519 2.467,19.519 2.467,19.519 6.933,19.519 6.933,19.519 6.933,19.519 6.933,18.037 6.933,18.037 6.933,18.037 2.467,18.037 2.467,18.037z M1,15.815C1,15.815 23,15.815 23,15.815 23,15.815 23,21 23,21 23,21 1,21 1,21 1,21 1,15.815 1,15.815z M2.467,10.63C2.467,10.63 2.456,12.111 2.456,12.111 2.456,12.111 6.922,12.111 6.922,12.111 6.922,12.111 6.933,10.63 6.933,10.63 6.933,10.63 2.467,10.63 2.467,10.63z M1,8.407C1,8.407 23,8.407 23,8.407 23,8.407 23,13.593 23,13.593 23,13.593 1,13.593 1,13.593 1,13.593 1,8.407 1,8.407z M2.467,3.222C2.467,3.222 2.467,4.715 2.467,4.715 2.467,4.715 6.933,4.715 6.933,4.715 6.933,4.715 6.933,3.222 6.933,3.222 6.933,3.222 2.467,3.222 2.467,3.222z M1,1C1,1 23,1 23,1 23,1 23,6.185 23,6.185 23,6.185 1,6.185 1,6.185 1,6.185 1,1 1,1z" Fill="#FF5B5B5B" Height="22" Width="24"/>
+                </Button>
+            </WrapPanel>
+            <WrapPanel Canvas.Left="324" Canvas.Top="215">
+                <TextBlock  Text=" User Name .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                <TextBox Width="210"/>
+            </WrapPanel>
+            <WrapPanel Canvas.Left="334" Canvas.Top="245">
+                <TextBlock Text=" Password .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                <PasswordBox Width="210"/>
+            </WrapPanel>
+            <WrapPanel Canvas.Left="312" Canvas.Top="275">
+                <TextBlock  Text=" Confirm Pass .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                <PasswordBox Width="210"/>
+            </WrapPanel>
+            <WrapPanel Canvas.Left="304" Canvas.Top="305">
+                <TextBlock  Text=" Email Address .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                <TextBox Width="210"/>
+            </WrapPanel>
+        </Canvas>
+        <Canvas Name="Step4" Visibility="Collapsed">
+            <TextBlock Foreground="#6666cc" FontSize="18" Canvas.Left="374" TextAlignment="Center" Text="Installing" Canvas.Top="135" Width="150"/>
+            <ProgressBar Name="progressbar" Minimum="0" Maximum="100" Value="0" Height="33" Width="634" Canvas.Top="298" Canvas.Left="32"/>
+        </Canvas>
+        <Canvas Name="Step5" Visibility="Collapsed">
+            <TextBlock Foreground="#6666cc" FontSize="18" Canvas.Left="374" TextAlignment="Center" Text="Finalize" Canvas.Top="135" Width="150"/>
+            <WrapPanel Canvas.Left="328" Canvas.Top="186">
+                <Button Click="Shorcut_selection" Style="{StaticResource 1}">
+                    <Canvas Height="19" Width="19">
+                        <Path x:Name="unselected" Data="F1M2.778,3.778C2.778,3.778 2.778,16.222 2.778,16.222 2.778,16.222 15.222,16.222 15.222,16.222 15.222,16.222 15.222,3.778 15.222,3.778 15.222,3.778 2.778,3.778 2.778,3.778z M2.778,2C2.778,2 15.222,2 15.222,2 16.2,2 17,2.8 17,3.778 17,3.778 17,16.222 17,16.222 17,17.2 16.2,18 15.222,18 15.222,18 2.778,18 2.778,18 1.8,18 1,17.2 1,16.222 1,16.222 1,3.778 1,3.778 1,2.8 1.8,2 2.778,2z"
+                              Fill="#FF5B5B5B" Height="19"  Width="19" Margin="1,0,0,0" Visibility="Hidden"/>
+                        <Path x:Name="selected" Data="F1M16.755,3.422C16.755,3.422 18,4.667 18,4.667 18,4.667 9.111,13.556 9.111,13.556 9.111,13.556 5.111,9.556 5.111,9.556 5.111,9.556 6.355,8.311 6.355,8.311 6.355,8.311 9.111,11.067 9.111,11.067 9.111,11.067 16.755,3.422 16.755,3.422z M3.778,2C3.778,2 12.667,2 12.667,2 12.667,2 12.667,3.778 12.667,3.778 12.667,3.778 3.778,3.778 3.778,3.778 3.778,3.778 3.778,16.222 3.778,16.222 3.778,16.222 16.222,16.222 16.222,16.222 16.222,16.222 16.222,9.111 16.222,9.111 16.222,9.111 18,9.111 18,9.111 18,9.111 18,16.222 18,16.222 18,17.2 17.2,18 16.222,18 16.222,18 3.778,18 3.778,18 2.8,18 2,17.2 2,16.222 2,16.222 2,3.778 2,3.778 2,2.8 2.8,2 3.778,2z" 
+                              Fill="#FF5B5B5B" Height="19" Width="19"/>
+                    </Canvas>
+                </Button>
+                <TextBlock FontSize="14" Text=" Create Shorcut on Desktop " MouseDown="Shorcut_selection" Foreground="#FF5B5B5B" FontFamily="Calibri" Padding="3 2 0 0"/>
+            </WrapPanel>
+            <WrapPanel Canvas.Left="328" Canvas.Top="216">
+                <Button Click="Open_Vortex" Style="{StaticResource 1}">
+                    <Canvas Height="19" Width="19">
+                        <Path x:Name="checkunselected" Data="F1M2.778,3.778C2.778,3.778 2.778,16.222 2.778,16.222 2.778,16.222 15.222,16.222 15.222,16.222 15.222,16.222 15.222,3.778 15.222,3.778 15.222,3.778 2.778,3.778 2.778,3.778z M2.778,2C2.778,2 15.222,2 15.222,2 16.2,2 17,2.8 17,3.778 17,3.778 17,16.222 17,16.222 17,17.2 16.2,18 15.222,18 15.222,18 2.778,18 2.778,18 1.8,18 1,17.2 1,16.222 1,16.222 1,3.778 1,3.778 1,2.8 1.8,2 2.778,2z"
+                              Fill="#FF5B5B5B" Height="19"  Width="19" Margin="1,0,0,0" Visibility="Hidden"/>
+                        <Path x:Name="checkselected" Data="F1M16.755,3.422C16.755,3.422 18,4.667 18,4.667 18,4.667 9.111,13.556 9.111,13.556 9.111,13.556 5.111,9.556 5.111,9.556 5.111,9.556 6.355,8.311 6.355,8.311 6.355,8.311 9.111,11.067 9.111,11.067 9.111,11.067 16.755,3.422 16.755,3.422z M3.778,2C3.778,2 12.667,2 12.667,2 12.667,2 12.667,3.778 12.667,3.778 12.667,3.778 3.778,3.778 3.778,3.778 3.778,3.778 3.778,16.222 3.778,16.222 3.778,16.222 16.222,16.222 16.222,16.222 16.222,16.222 16.222,9.111 16.222,9.111 16.222,9.111 18,9.111 18,9.111 18,9.111 18,16.222 18,16.222 18,17.2 17.2,18 16.222,18 16.222,18 3.778,18 3.778,18 2.8,18 2,17.2 2,16.222 2,16.222 2,3.778 2,3.778 2,2.8 2.8,2 3.778,2z" 
+                              Fill="#FF5B5B5B" Height="19" Width="19"/>
+                    </Canvas>
+                </Button>
+                <TextBlock FontSize="14" Text=" Open Vortex Application after finishing Setup " MouseDown="Open_Vortex" Foreground="#FF5B5B5B" FontFamily="Calibri" Padding="3 2 0 0"/>
+            </WrapPanel>
+        </Canvas>
+        <Canvas>
+            <Image Height="230" Width="230" HorizontalAlignment="Left" Margin="40,40,0,101" Source="Images\Shape 21.png" />
+            <TextBlock Foreground="#6666cc" FontSize="60" Text="V" FontWeight="SemiBold" Canvas.Left="366" Canvas.Top="62"/>
+            <TextBlock Foreground="#6666cc" FontSize="40" Text="ORTEX" Canvas.Left="398" Canvas.Top="84" />
+            <TextBlock Text="Powered by SLT-INTEGRITY " FontSize="14" Foreground="LightGray" FontFamily="Calibri" Canvas.Left="513" Canvas.Top="46"/>
+            <Button Click="Next_Click" Name="Next" Content="  Next  " Canvas.Left="628" Canvas.Top="352" Height="24"/>
+            <Button Click="Finish_Click" Name="Finish" Content="  Finish  " Canvas.Left="628" Canvas.Top="352" Height="24" Visibility="Collapsed"/>
+            <Button Click="Previous_Click" Name="Previous" Content="  Previous  " Canvas.Left="515" Canvas.Top="352" Height="24" Visibility="Collapsed"/>
+            <Button ToolTip="Close" Style="{StaticResource 1}" Click="CloseButton_Click" Height="20" Canvas.Left="650" Canvas.Top="8" Width="40">
+                <Path Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" />
+            </Button>
+            <Button ToolTip="Minimize" Style="{StaticResource 1}"  Click="MinimizeButton_Click" Height="20" Canvas.Left="626" Canvas.Top="8" Width="20">
+                <Path Data="F1M2,4C2,4 2,2 2,2 2,2 14,2 14,2 14,2 14,4 14,4 14,4 2,4 2,4z" Fill="Black" Margin="0,5,2,0"/>
+            </Button>
+        </Canvas>
     </Grid>
 </Window>
