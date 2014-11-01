@@ -52,7 +52,7 @@
             <WrapPanel Canvas.Left="336" Canvas.Top="185">
                 <TextBlock  Text=" Directory .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
                 <Canvas>
-                    <TextBox Width="210" Height="22"/>
+                    <Rectangle Stroke="DarkGray" Width="210" Height="22"/>
                     <TextBlock Name="DirectoryPath" Padding="3 2 0 0" Width="210" Height="22"/>
                 </Canvas>
                 <Button Margin="220 0 0 0" ToolTip="Browse Directory" Click="Browse_Directory" Style="{DynamicResource 1}">
