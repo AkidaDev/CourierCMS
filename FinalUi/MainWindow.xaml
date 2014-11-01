@@ -49,7 +49,7 @@
                         <MenuItem Header="New Sheet" x:Name="NewSheetMenuItem" />
                         <MenuItem Header="Import Data" x:Name="ImportDataMenuItem" Command="ApplicationCommands.Open"/>
                         <MenuItem Header="Print" x:Name="PrintMenuItem" Command="ApplicationCommands.Print"/>
-                        <MenuItem Header="Close" Click="MenuItem_Click"/>
+                        <MenuItem Header="Log Out" Click="MenuItem_Click"/>
                     </MenuItem>
                     <MenuItem ToolTip="Open advanced options"  Header="View" Margin="10 0 0 0">
                         <MenuItem Header="Managment">

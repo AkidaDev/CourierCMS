@@ -847,7 +847,9 @@ namespace FinalUi
         #region menuItem
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+          
+            Login window = new Login(); window.Show();  this.Close();
+            //Application.Current.Shutdown();
         }
         private void ManageClient_Click(object sender, RoutedEventArgs e)
         {
