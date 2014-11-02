@@ -84,7 +84,6 @@ namespace FinalUi
                 this.StepRadio.IsChecked = true;
                 this.StepBox.Text = SRule.stepweight.ToString();
             }
-
             if (SRule.change == 'I')
                 this.IncRadio.IsChecked = true;
             else
