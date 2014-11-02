@@ -7,7 +7,8 @@ namespace FinalUi
 {
     interface IRule
     {
-         void encodeString();
-         void decodeString();
-    }
+        int Id { get; set; } 
+        void encodeString();
+        void decodeString();
+   }
 }

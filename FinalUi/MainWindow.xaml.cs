@@ -170,14 +170,14 @@ namespace FinalUi
             costingRules = new List<CostingRule>();
 
             AppDomain currentDomain = AppDomain.CurrentDomain;
-            currentDomain.UnhandledException += new UnhandledExceptionEventHandler(MyHandler);
+           // currentDomain.UnhandledException += new UnhandledExceptionEventHandler(MyHandler);
             try
             {
-                throw new Exception("1");
+              //  throw new Exception("1");
             }
             catch (Exception e)
             {
-                Console.WriteLine("Catch clause caught : {0} \n", e.Message);
+              //  Console.WriteLine("Catch clause caught : {0} \n", e.Message);
             }
         }
         static void MyHandler(object sender, UnhandledExceptionEventArgs args)
@@ -1429,7 +1429,6 @@ namespace FinalUi
                 return;
             RateRuleTextBox.Text = UtilityClass.getCost(client.CLCODE, weight, city.CITY_CODE, service.SER_CODE, dox).ToString();
         }
-
         private void ClientReportReloadButton_Click(object sender, RoutedEventArgs e)
         {
             BillingDataDataContext db = new BillingDataDataContext();
@@ -1437,6 +1436,45 @@ namespace FinalUi
             profitDataGridSource.Source = db.PROFITVIEWs;
             ClientDueGrid.Items.Refresh();
             ClientProfitabilityGrid.Items.Refresh();
+        }
+        private void EditRule_Click(object sender, RoutedEventArgs e)
+        {
+            BillingDataDataContext db = new BillingDataDataContext();
+            if (CostingRuleGrid.Visibility == Visibility.Visible && CostingRuleGrid.SelectedItem != null)
+            {
+                if (MessageBox.Show("Do you Want edit this Rule", "", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                {
+                    CostingRule dcr = (CostingRule)CostingRuleGrid.SelectedItem;
+                    AddRule win = new AddRule(dcr.Id);
+                    win.Closed += win_Closed;
+                    win.Show();
+                    CostingRuleGrid.SelectedItem = null;
+                }
+            }
+            if (ServiceRuleGrid.Visibility == Visibility.Visible && ServiceRuleGrid.SelectedItem != null)
+            {
+                if (MessageBox.Show("Do you Want edit this Rule", "", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                {
+                    ServiceRule dcr = (ServiceRule)ServiceRuleGrid.SelectedItem;
+                    ServiceRuleGrid.SelectedItem = null;
+                }
+            }
+            if (InvoiceRuleGrid.Visibility == Visibility.Visible && InvoiceRuleGrid.SelectedItem != null)
+            {
+                if (MessageBox.Show("Do you Want edit this Rule", "", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                {
+                    InvoiceRule dcr = (InvoiceRule)InvoiceRuleGrid.SelectedItem;
+                    InvoiceRuleGrid.SelectedItem = null;
+                }
+            }
+            db.SubmitChanges();
+        }
+        private void win_Closed(object sender, EventArgs e)
+        {
+            LoadClientRules();
+            this.CostingRuleGrid.Items.Refresh();
+            this.ServiceRuleGrid.Items.Refresh();
+            this.InvoiceRuleGrid.Items.Refresh();
         }
     }
 }
