@@ -145,17 +145,21 @@ namespace FinalUi
             mainAmountValue = (double)(source.Sum(x => x.FrAmount) ?? 0);
             repParams.Add(new ReportParameter("MainAmountString", mainAmountValue.ToString()));
             repParams.Add(new ReportParameter("FuelString", TaxBox.Text));
+            repParams.Add(new ReportParameter("ServiceTaxString", ServiceTaxBox.Text));
+            repParams.Add(new ReportParameter("DiscountPString", DiscountBox.Text));
+            repParams.Add(new ReportParameter("MiscellaneousAmountString", MiscBox.Text));
+            double discount = double.Parse(DiscountBox.Text) * mainAmountValue / 100;
+            repParams.Add(new ReportParameter("DiscountAmountString", discount.ToString()));
+            mainAmountValue = mainAmountValue - discount;
             double fuelAmount = double.Parse(TaxBox.Text) * mainAmountValue / 100;
             repParams.Add(new ReportParameter("FuelAmount", fuelAmount.ToString()));
-            repParams.Add(new ReportParameter("ServiceTaxString", ServiceTaxBox.Text));
+
             tax = double.Parse(ServiceTaxBox.Text) * mainAmountValue / 100;
             repParams.Add(new ReportParameter("ServiceTaxAmount", tax.ToString()));
-            double discount = double.Parse(DiscountBox.Text) * mainAmountValue / 100;
-            repParams.Add(new ReportParameter("DiscountPString", DiscountBox.Text));
-            repParams.Add(new ReportParameter("DiscountAmountString", discount.ToString()));
-            repParams.Add(new ReportParameter("MiscellaneousAmountString", MiscBox.Text));
+          
             taxamount = tax + fuelAmount;
-            totalAmount = mainAmountValue + taxamount + double.Parse(MiscBox.Text) + double.Parse(PreviousDueTextBox.Text) - discount;
+           
+            totalAmount = mainAmountValue + taxamount + double.Parse(MiscBox.Text) + double.Parse(PreviousDueTextBox.Text) ;
             repParams.Add(new ReportParameter("TotalAmountString", totalAmount.ToString()));
             totalAmountinWordString = UtilityClass.NumbersToWords((int)totalAmount);
             repParams.Add(new ReportParameter("TotalAmountInWordString", totalAmountinWordString));

@@ -78,7 +78,7 @@ namespace FinalUi
                 window.Show();
             }catch(InvalidOperationException)
             {
-                MessageBox.Show("Unable to open invoice");
+                MessageBox.Show("Unable to open invoice"); 
             }
 
         }

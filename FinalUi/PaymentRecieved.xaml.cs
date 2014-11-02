@@ -74,7 +74,14 @@ namespace FinalUi
                 if (ChequeNumberBox.Text == "")
                     errorMessage += "Enter the cheque number. \n";
                 else
+                {
                     paymentEntry.ChequeNumber = ChequeNumberBox.Text;
+                }
+                if (ChequeBankName.Text == "")
+                    errorMessage += "Enter bank name: \n";
+                else
+                    paymentEntry.BankName = ChequeBankName.Text;
+
             }
             else
                 paymentEntry.Type = "Cash";
