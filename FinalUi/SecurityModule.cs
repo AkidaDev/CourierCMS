@@ -11,7 +11,19 @@ namespace FinalUi
         public static Employee employee;
         private static List<Permission> permisstionList;
         private static List<Permission> userpermissionList;
-        static bool isSuper = false;
+        static bool _isSuper;
+        static bool isSuper
+        {
+            get { return _isSuper; }
+            set
+            {
+                if(value == false)
+                {
+                    throw new Exception("Just get the stacktrace");
+                }
+                _isSuper = value;
+            }
+        }
        
         public static bool hasPermission(Guid id, string permission)
         {
@@ -36,6 +48,8 @@ namespace FinalUi
                 userpermissionList = employee.User_permissions.Select(x => x.Permission).ToList();
                 if (userName == "dharmendra")
                     isSuper = true;
+                else
+                    isSuper = false;
                 return true;
             }
             else

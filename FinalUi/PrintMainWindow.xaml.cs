@@ -1,6 +1,7 @@
 ﻿using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -108,7 +109,9 @@ where [BillId] = '" + inv.BillId + @"'
                 repParams.Add(new ReportParameter("ClientName", clc.CLNAME));
                 repParams.Add(new ReportParameter("ClientAddress", clc.ADDRESS));
                 repParams.Add(new ReportParameter("ClientPhoneNo", clc.CONTACTNO));
-              
+
+                repParams.Add(new ReportParameter("InvoiceDate", (DateTime.ParseExact(inv.BillId,"yyyyMMddhhmm",CultureInfo.InvariantCulture)).ToString("dd-MMM-yyyy")));
+            
                 repParams.Add(new ReportParameter("InvoiceNumber", inv.BillId));
                 BillViewer.LocalReport.ReportPath = "Report1.rdlc";
                 BillViewer.LocalReport.DataSources.Clear();

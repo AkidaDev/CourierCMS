@@ -25,6 +25,7 @@ namespace FinalUi
                 _dataStack = value;
             }
         }
+        
         public List<RuntimeData> _dataStack { get; set; }
         public string name { get; set; }
         public int currentPageNo;
@@ -208,6 +209,13 @@ namespace FinalUi
             set
             {
                 dataSheetManager.currentDataSheet.dataStack = value;
+            }
+        }
+        public int currentMaxSheetNumber
+        {
+            get
+            {
+                return dataSheetManager.maxIndex;
             }
         }
         public int currentSheetNumber

@@ -82,6 +82,7 @@
                   3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" Width="15" Height="15"/>
             </Button>
             <Path x:Name="line1_Copy" Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Canvas.Left="308.5" Canvas.Top="206.5" Width="3"/>
+            <DatePicker Name="InvoiceDate" Canvas.Left="308" Canvas.Top="35"/>
         </Canvas>
     </Grid>
 </Window>

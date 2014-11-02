@@ -81,11 +81,11 @@ namespace FinalUi
                 {
                     string userName = UserName.Text;
                     string passWord = Password.Password;
+                    SecurityModule.Reload();
                     if (SecurityModule.authenticate(userName, passWord))
                     {
                         BillingDataDataContext db = new BillingDataDataContext();
                         window = new MainWindow();
-                        SecurityModule.Reload();
                         Properties.Settings.Default.Reload();
                         Configs.Default.Reload();
                         window.Show();

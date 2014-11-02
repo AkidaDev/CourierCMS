@@ -15,7 +15,6 @@ namespace FinalUi
             BillingDataDataContext db = new BillingDataDataContext();
             if(isLoadedFromFile == false)
             {
-                db.sp_LoadToRuntimeFromDate(SecurityModule.currentUserName, sheetNo, toDate, fromDate);
                 return;
             }
            
@@ -27,6 +26,7 @@ namespace FinalUi
                 db.SubmitChanges();
             }
             db.SubmitChanges();
+            data.Clear();
         }
         public void deleteRuntimeData(int sheetNo)
         {

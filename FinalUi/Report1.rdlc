@@ -4384,14 +4384,14 @@
                   <TablixHeader>
                     <Size>0.60326cm</Size>
                     <CellContents>
-                      <Textbox Name="Textbox104">
+                      <Textbox Name="Textbox33">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>=MonthName(Month(Today())) &amp; " " &amp; Day(Today()) &amp; ", " &amp; Year(Today())</Value>
+                                <Value>=Parameters!InvoiceDate.Value</Value>
                                 <Style>
                                   <FontFamily>arial</FontFamily>
                                   <FontSize>9pt</FontSize>
@@ -4401,7 +4401,7 @@
                             <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox104</rd:DefaultName>
+                        <rd:DefaultName>Textbox33</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -5764,6 +5764,10 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="TNC">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="InvoiceDate">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>

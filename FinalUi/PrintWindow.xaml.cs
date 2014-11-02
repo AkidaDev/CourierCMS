@@ -40,6 +40,7 @@ namespace FinalUi
             PreviousDueTextBox.Text = previousDue.ToString();
             PreviousDueTextBox.IsEnabled = false;
             MiscBox.Text = "0";
+            InvoiceDate.SelectedDate = DateTime.Today;
             printObj(client);
         }
         public PrintWindow(List<RuntimeData> data, DateTime toDate, DateTime fromDate)
@@ -173,8 +174,10 @@ namespace FinalUi
             repParams.Add(new ReportParameter("ClientAddress", clc.ADDRESS));
             repParams.Add(new ReportParameter("ClientPhoneNo", clc.CONTACTNO));
             repParams.Add(new ReportParameter("TNC", Configs.Default.TNC));
-            invoiceNo = DateTime.Now.ToString("yyyyMMddhhmm");
+            invoiceNo = (InvoiceDate.SelectedDate??DateTime.Today).ToString("yyyyMMdd");
+            invoiceNo = invoiceNo + DateTime.Today.ToString("hhmm");
             repParams.Add(new ReportParameter("InvoiceNumber", invoiceNo));
+            repParams.Add(new ReportParameter("InvoiceDate",(InvoiceDate.SelectedDate??DateTime.Today).ToString("dd-MMM-yyyy")));
             PrintMainWindow win = new PrintMainWindow(rs, repParams);
             win.Show();
         }
@@ -236,8 +239,8 @@ namespace FinalUi
                     assign.BillId = invoice.BillId;
                     assign.Id = Guid.NewGuid();
                     assign.TransactionId = (Guid)item.TransactionId;
-                    assign.BilledAmount = (double)item.FrAmount;
-                    assign.BilledWeight = (double)item.BilledWeight;
+                    assign.BilledAmount = (double)(item.FrAmount??0);
+                    assign.BilledWeight = (double)(item.BilledWeight??item.Weight);
                     assign.Destination = item.Destination;
                     assign.DestinationDesc = item.CITY_DESC;
                     db.InvoiceAssignments.InsertOnSubmit(assign);
