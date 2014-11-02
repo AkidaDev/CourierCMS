@@ -192,8 +192,11 @@ namespace FinalUi
         }
         private void SaveInvoiceButton_Click(object sender, RoutedEventArgs e)
         {
-            if (source == null || source.Count == 0)
+            if (source == null)
+            {
+                MessageBox.Show("Please print the invoice first...");
                 return;
+            }
             MessageBoxResult result = MessageBox.Show("Do you want to save this invoice? ", "Confirm", MessageBoxButton.YesNo);
             int count = source.Where(x => x.TransactionId == null || x.TransactionId == Guid.Empty).Count();
             if (count > 0)
