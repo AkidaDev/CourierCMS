@@ -183,7 +183,7 @@ namespace FinalUi
         private void analyzeData(List<RuntimeData> matchedRecs, Dictionary<RuntimeData, string> analyzingResults, DateTime toDate, DateTime fromDate)
         {
             BillingDataDataContext db = new BillingDataDataContext();
-            List<FinalUi.RuntimeData> loadedData = FinalUi.UtilityClass.loadDataFromDatabase(fromDate, toDate);
+            List<FinalUi.RuntimeData> loadedData = new List<RuntimeData>();
             /*Basic Checks*/
             List<RuntimeData> dupData = matchedRecs.Where(x => matchedRecs.Where(y => y.ConsignmentNo == x.ConsignmentNo).Count() > 1).ToList();
             dupData.ForEach((x) =>

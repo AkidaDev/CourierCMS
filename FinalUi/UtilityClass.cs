@@ -119,17 +119,18 @@ namespace FinalUi
         public static List<RuntimeData> convertTransCityListToRuntimeList(List<TransactionCityView> tList)
         {
             List<RuntimeData> data = new List<RuntimeData>();
-            tList.ForEach(x => 
+            tList.ForEach(x =>
             {
                 data.Add(convertTransCityObjToRunObj(x));
             });
             return data;
         }
         #endregion
-        static public List<RuntimeData> loadDataFromDatabase(DateTime startDate, DateTime endDate)
-        {   BillingDataDataContext db = new BillingDataDataContext();
-            List<TransactionCityView> transData = db.TransactionCityViews.Where(x => startDate <= x.BookingDate && endDate >= x.BookingDate).ToList();
-            return convertTransCityListToRuntimeList(transData).OrderBy(x => x.BookingDate).ThenBy(y => y.ConsignmentNo).ToList();
+        static public List<RuntimeData> loadDataFromDatabase(DateTime startDate, DateTime endDate, int sheetNo)
+        {
+            BillingDataDataContext db = new BillingDataDataContext();
+            db.sp_LoadToRuntimeFromDate(SecurityModule.currentUserName, sheetNo, startDate, endDate);
+            return db.RuntimeDatas.Where(x=>x.SheetNo == sheetNo && x.UserId == SecurityModule.currentUserName).OrderBy(z => z.BookingDate).ThenBy(y => y.ConsignmentNo).ToList();
         }
 
         #region converting runtime data to transaction data
@@ -230,6 +231,7 @@ namespace FinalUi
                 List<Transaction> dupliTransData = convertRuntimeListToTransList(duplicateData, db);
                 db.Transactions.InsertAllOnSubmit(newTransData);
                 db.SubmitChanges();
+                db.sp_ReflectTransactionInRuntime();
                 return "";
             }
             catch (Exception e)

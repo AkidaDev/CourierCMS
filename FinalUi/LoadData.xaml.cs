@@ -104,7 +104,6 @@ namespace FinalUi
                 if (StartLoadDate.SelectedDate <= EndLoadDate.SelectedDate)
                 {
                     BillingDataDataContext db = new BillingDataDataContext();
-                    _data = UtilityClass.loadDataFromDatabase((DateTime)StartLoadDate.SelectedDate, (DateTime)EndLoadDate.SelectedDate);
                     dataLoaded = true;
                     isLoadedFromFile = false;
                     toDate = (DateTime)EndLoadDate.SelectedDate;

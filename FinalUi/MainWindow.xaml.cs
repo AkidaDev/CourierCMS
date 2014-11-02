@@ -232,7 +232,7 @@ namespace FinalUi
         void SaveWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             string message = UtilityClass.saveRuntimeAsTransaction(dataGridHelper.getCurrentDataStack);
-            if(message!= "")
+            if (message != "")
             {
                 throw new Exception(message);
             }
@@ -311,8 +311,8 @@ namespace FinalUi
         RoutedCommand PowerEntryCommand = new RoutedCommand();
         private void PowerEntryCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            PowerEntry powerWin = new PowerEntry(dataGridHelper.getCurrentDataStack,dataGrid);
-            
+            PowerEntry powerWin = new PowerEntry(dataGridHelper.getCurrentDataStack, dataGrid);
+
             powerWin.Show();
         }
         #endregion
@@ -345,6 +345,17 @@ namespace FinalUi
         {
 
             List<RuntimeData> cData = dataGridHelper.getCurrentDataStack;
+            if (cData.Count(x => x.TransactionId == Guid.Empty || x.TransactionId == null) > 0)
+            {
+                MessageBox.Show("This data contains record that are not yet saved in the database. Please save the records first. ", "Error");
+                return;
+            }
+            int count = cData.Count(x => x.FrAmount == null);
+            if (count > 0)
+            {
+                if (MessageBox.Show("There are " + count.ToString() + " records whose billed amount is not set. Are you sure you want to continue? If you continue then amount billed for those those records will be equal to 0.", "Confirm", MessageBoxButton.YesNo) == MessageBoxResult.No)
+                    return;
+               }
             PrintWindow win = new PrintWindow(cData, cData.Select(x => x.BookingDate).Max(), cData.Select(x => x.BookingDate).Min());
             win.Show();
         }
@@ -522,25 +533,28 @@ namespace FinalUi
             string name = "";
             if (dataWind.dataLoaded)
             {
-                if (dataWind.isNewSheet || dataGridHelper.CurrentNumberOfSheets <= 0)
-                {
-                    int key = dataGridHelper.addNewSheet(dataWind.data, name);
-                    addingNewPage(key);
-                }
-                else
-                {
-                    dataGridHelper.addDataToCurrentSheet(dataWind.data);
-                    dataGridHelper.refreshCurrentPage();
-                }
                 isLoadedFromFile = dataWind.isLoadedFromFile;
-                if (!isLoadedFromFile)
-                {
-                    toDate_loadDataWin = dataWind.toDate;
-                    fromDate_loadDataWin = dataWind.fromDate;
-                }
-                LoadWorker.RunWorkerAsync(dataWind.data);
+                toDate_loadDataWin = dataWind.toDate;
+                fromDate_loadDataWin = dataWind.fromDate;
             }
+            if (dataWind.isNewSheet || dataGridHelper.CurrentNumberOfSheets <= 0)
+            {
+                if (dataWind.isLoadedFromFile == false)
+                    dataWind.data = UtilityClass.loadDataFromDatabase(toDate_loadDataWin ?? DateTime.Now, fromDate_loadDataWin ?? DateTime.Now, dataGridHelper.currentMaxSheetNumber + 1);
+                int key = dataGridHelper.addNewSheet(dataWind.data, name);
+                addingNewPage(key);
+            }
+            else
+            {
+                if (dataWind.isLoadedFromFile == false)
+                    dataWind.data = UtilityClass.loadDataFromDatabase(toDate_loadDataWin ?? DateTime.Now, fromDate_loadDataWin ?? DateTime.Now, dataGridHelper.currentSheetNumber);
+                dataGridHelper.addDataToCurrentSheet(dataWind.data);
+                dataGridHelper.refreshCurrentPage();
+            }
+
+            LoadWorker.RunWorkerAsync(dataWind.data);
         }
+
 
         void changeSheetButton(Button current_active, Button button)
         {
@@ -847,8 +861,8 @@ namespace FinalUi
         #region menuItem
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-          
-            Login window = new Login(); window.Show();  this.Close();
+
+            Login window = new Login(); window.Show(); this.Close();
             //Application.Current.Shutdown();
         }
         private void ManageClient_Click(object sender, RoutedEventArgs e)
@@ -927,7 +941,7 @@ namespace FinalUi
             clientViewSource.Source = DataSources.ClientCopy;
             mangaclientgrid.Items.Refresh();
             ClientCombo.Items.Refresh();
-            
+
         }
         #region sidepanel
         private void cloakAll()
@@ -1035,9 +1049,9 @@ namespace FinalUi
         {
             try
             {
-                e.AddedItems.Cast<Client>().Count() ;
+                e.AddedItems.Cast<Client>().Count();
             }
-            catch ( Exception ex)
+            catch (Exception ex)
             {
                 return;
             }
@@ -1420,10 +1434,10 @@ namespace FinalUi
         {
             Client client = (Client)Client_Combo.SelectedItem;
             Service service = (Service)Service_Combo.SelectedItem;
-            char dox = Dox_Combo.Text == "Non-Dox"?'N':'D';
+            char dox = Dox_Combo.Text == "Non-Dox" ? 'N' : 'D';
             City city = (City)City_Combo.SelectedItem;
             double weight;
-            if(!double.TryParse(WeightRuleTextBox.Text,out weight))
+            if (!double.TryParse(WeightRuleTextBox.Text, out weight))
             {
                 return;
             }

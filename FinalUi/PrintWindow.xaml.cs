@@ -40,6 +40,7 @@ namespace FinalUi
             PreviousDueTextBox.Text = previousDue.ToString();
             PreviousDueTextBox.IsEnabled = false;
             MiscBox.Text = "0";
+            InvoiceDate.SelectedDate = DateTime.Today;
             printObj(client);
         }
         public PrintWindow(List<RuntimeData> data, DateTime toDate, DateTime fromDate)
@@ -145,17 +146,21 @@ namespace FinalUi
             mainAmountValue = (double)(source.Sum(x => x.FrAmount) ?? 0);
             repParams.Add(new ReportParameter("MainAmountString", mainAmountValue.ToString()));
             repParams.Add(new ReportParameter("FuelString", TaxBox.Text));
+            repParams.Add(new ReportParameter("ServiceTaxString", ServiceTaxBox.Text));
+            repParams.Add(new ReportParameter("DiscountPString", DiscountBox.Text));
+            repParams.Add(new ReportParameter("MiscellaneousAmountString", MiscBox.Text));
+            double discount = double.Parse(DiscountBox.Text) * mainAmountValue / 100;
+            repParams.Add(new ReportParameter("DiscountAmountString", discount.ToString()));
+            mainAmountValue = mainAmountValue - discount;
             double fuelAmount = double.Parse(TaxBox.Text) * mainAmountValue / 100;
             repParams.Add(new ReportParameter("FuelAmount", fuelAmount.ToString()));
-            repParams.Add(new ReportParameter("ServiceTaxString", ServiceTaxBox.Text));
+
             tax = double.Parse(ServiceTaxBox.Text) * mainAmountValue / 100;
             repParams.Add(new ReportParameter("ServiceTaxAmount", tax.ToString()));
-            double discount = double.Parse(DiscountBox.Text) * mainAmountValue / 100;
-            repParams.Add(new ReportParameter("DiscountPString", DiscountBox.Text));
-            repParams.Add(new ReportParameter("DiscountAmountString", discount.ToString()));
-            repParams.Add(new ReportParameter("MiscellaneousAmountString", MiscBox.Text));
+          
             taxamount = tax + fuelAmount;
-            totalAmount = mainAmountValue + taxamount + double.Parse(MiscBox.Text) + double.Parse(PreviousDueTextBox.Text) - discount;
+           
+            totalAmount = mainAmountValue + taxamount + double.Parse(MiscBox.Text) + double.Parse(PreviousDueTextBox.Text) ;
             repParams.Add(new ReportParameter("TotalAmountString", totalAmount.ToString()));
             totalAmountinWordString = UtilityClass.NumbersToWords((int)totalAmount);
             repParams.Add(new ReportParameter("TotalAmountInWordString", totalAmountinWordString));
@@ -169,8 +174,10 @@ namespace FinalUi
             repParams.Add(new ReportParameter("ClientAddress", clc.ADDRESS));
             repParams.Add(new ReportParameter("ClientPhoneNo", clc.CONTACTNO));
             repParams.Add(new ReportParameter("TNC", Configs.Default.TNC));
-            invoiceNo = DateTime.Now.ToString("yyyyMMddhhmm");
+            invoiceNo = (InvoiceDate.SelectedDate??DateTime.Today).ToString("yyyyMMdd");
+            invoiceNo = invoiceNo + DateTime.Today.ToString("hhmm");
             repParams.Add(new ReportParameter("InvoiceNumber", invoiceNo));
+            repParams.Add(new ReportParameter("InvoiceDate",(InvoiceDate.SelectedDate??DateTime.Today).ToString("dd-MMM-yyyy")));
             PrintMainWindow win = new PrintMainWindow(rs, repParams);
             win.Show();
         }
@@ -232,8 +239,8 @@ namespace FinalUi
                     assign.BillId = invoice.BillId;
                     assign.Id = Guid.NewGuid();
                     assign.TransactionId = (Guid)item.TransactionId;
-                    assign.BilledAmount = (double)item.FrAmount;
-                    assign.BilledWeight = (double)item.BilledWeight;
+                    assign.BilledAmount = (double)(item.FrAmount??0);
+                    assign.BilledWeight = (double)(item.BilledWeight??item.Weight);
                     assign.Destination = item.Destination;
                     assign.DestinationDesc = item.CITY_DESC;
                     db.InvoiceAssignments.InsertOnSubmit(assign);

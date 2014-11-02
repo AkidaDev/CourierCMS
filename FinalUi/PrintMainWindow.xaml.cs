@@ -1,6 +1,7 @@
 ﻿using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -82,19 +83,20 @@ where [BillId] = '" + inv.BillId + @"'
                 repParams.Add(new ReportParameter("DescriptionString", descriptionString));
                 double mainAmountValue = inv.Basic;
                 repParams.Add(new ReportParameter("MainAmountString", mainAmountValue.ToString()));
+                double discount = (inv.Discount ?? 0) * mainAmountValue / 100;
+                repParams.Add(new ReportParameter("DiscountPString", inv.Discount.ToString()));
+                mainAmountValue = mainAmountValue - discount;
                 repParams.Add(new ReportParameter("FuelString",inv.Fuel.ToString()));
                 double fuelAmount = inv.Fuel * mainAmountValue / 100;
                 repParams.Add(new ReportParameter("FuelAmount", fuelAmount.ToString()));
                 repParams.Add(new ReportParameter("ServiceTaxString", inv.STax.ToString()));
                 double tax = inv.STax * mainAmountValue / 100;
                 repParams.Add(new ReportParameter("ServiceTaxAmount", tax.ToString()));
-                double discount = (inv.Discount??0) * mainAmountValue / 100;
-                repParams.Add(new ReportParameter("DiscountPString",inv.Discount.ToString()));
                 repParams.Add(new ReportParameter("DiscountAmountString", discount.ToString()));
                 repParams.Add(new ReportParameter("MiscellaneousAmountString", inv.Misc.ToString()));
                 repParams.Add(new ReportParameter("TNC", Configs.Default.TNC));
                 double taxamount = tax + fuelAmount;
-                double totalAmount = mainAmountValue + taxamount + (double)(inv.Misc??0) + (double)(inv.PreviousDue??0) - discount;
+                double totalAmount = mainAmountValue + taxamount + (double)(inv.Misc??0) + (double)(inv.PreviousDue??0);
                 repParams.Add(new ReportParameter("TotalAmountString", totalAmount.ToString()));
                 string totalAmountinWordString = UtilityClass.NumbersToWords((int)totalAmount);
                 repParams.Add(new ReportParameter("TotalAmountInWordString", totalAmountinWordString));
@@ -107,7 +109,9 @@ where [BillId] = '" + inv.BillId + @"'
                 repParams.Add(new ReportParameter("ClientName", clc.CLNAME));
                 repParams.Add(new ReportParameter("ClientAddress", clc.ADDRESS));
                 repParams.Add(new ReportParameter("ClientPhoneNo", clc.CONTACTNO));
-              
+
+                repParams.Add(new ReportParameter("InvoiceDate", (DateTime.ParseExact(inv.BillId,"yyyyMMddhhmm",CultureInfo.InvariantCulture)).ToString("dd-MMM-yyyy")));
+            
                 repParams.Add(new ReportParameter("InvoiceNumber", inv.BillId));
                 BillViewer.LocalReport.ReportPath = "Report1.rdlc";
                 BillViewer.LocalReport.DataSources.Clear();
