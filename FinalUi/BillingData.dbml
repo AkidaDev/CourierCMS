@@ -436,4 +436,7 @@
     <Parameter Name="CLCODE" Parameter="cLCODE" Type="System.String" DbType="VarChar(6)" />
     <Return Type="System.Double" />
   </Function>
+  <Function Name="dbo.sp_ReflectTransactionInRuntime" Method="sp_ReflectTransactionInRuntime">
+    <Return Type="System.Int32" />
+  </Function>
 </Database>

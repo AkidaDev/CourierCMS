@@ -353,10 +353,9 @@ namespace FinalUi
             int count = cData.Count(x => x.FrAmount == null);
             if (count > 0)
             {
-                if (MessageBox.Show("There are " + count.ToString() + " records whose billed amount is not set. Are you sure you want to continue? If you continue then amount billed for those those records will be equal to dtdc billed amount.", "Confirm", MessageBoxButton.YesNo) == MessageBoxResult.No)
+                if (MessageBox.Show("There are " + count.ToString() + " records whose billed amount is not set. Are you sure you want to continue? If you continue then amount billed for those those records will be equal to 0.", "Confirm", MessageBoxButton.YesNo) == MessageBoxResult.No)
                     return;
-                cData.Where(x => x.FrAmount == null).ToList().ForEach(x => x.FrAmount = x.Amount);
-            }
+               }
             PrintWindow win = new PrintWindow(cData, cData.Select(x => x.BookingDate).Max(), cData.Select(x => x.BookingDate).Min());
             win.Show();
         }

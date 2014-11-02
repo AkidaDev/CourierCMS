@@ -231,6 +231,7 @@ namespace FinalUi
                 List<Transaction> dupliTransData = convertRuntimeListToTransList(duplicateData, db);
                 db.Transactions.InsertAllOnSubmit(newTransData);
                 db.SubmitChanges();
+                db.sp_ReflectTransactionInRuntime();
                 return "";
             }
             catch (Exception e)
