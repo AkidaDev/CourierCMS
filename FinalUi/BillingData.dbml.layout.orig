@@ -154,9 +154,9 @@
       </nodes>
     </associationConnector>
 <<<<<<< local
-    <associationConnector edgePoints="[(2.75 : 9.69314697265625); (5.60416916666667 : 9.69314697265625 : JumpStart); (5.77083583333333 : 9.69314697265625 : JumpEnd); (6.5 : 9.69314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 9.69314697265625); (5.57291666666667 : 9.69314697265625 : JumpStart); (5.73958333333333 : 9.69314697265625 : JumpEnd); (6.5 : 9.69314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
 =======
-    <associationConnector edgePoints="[(2.75 : 9.69314697265625); (6.5 : 9.69314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 9.69314697265625); (5.57291666666667 : 9.69314697265625 : JumpStart); (5.77083583333333 : 9.69314697265625 : JumpEnd); (6.5 : 9.69314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
 >>>>>>> other
       <AssociationMoniker Name="/BillingDataDataContext/Employee/Employee_Transaction" />
       <nodes>

@@ -85,6 +85,9 @@ namespace FinalUi
                     {
                         BillingDataDataContext db = new BillingDataDataContext();
                         window = new MainWindow();
+                        SecurityModule.Reload();
+                        Properties.Settings.Default.Reload();
+                        Configs.Default.Reload();
                         window.Show();
                         this.Close();
                         loginFlag = true;
