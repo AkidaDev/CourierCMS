@@ -27,8 +27,8 @@
 			23 2,11.187 2,11.187 2,11.187 7.25,2 7.25,2z" Fill="Black"  Width="24"/>
         	<TextBlock x:Name="LOAD_From_DataBase" FontWeight="Bold" FontSize="14" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="62" LineHeight="14" TextAlignment="Left" TextWrapping="Wrap" Text="LOAD From DataBase " Canvas.Top="128.68" Margin="5,7,0,0" />
         	</WrapPanel></Button>
-			<Path x:Name="Rectangle_2" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="27" Canvas.Left="36" Canvas.Top="147" Width="98" Stroke="Black"/>
-        	<Path x:Name="Rectangle_2_copy" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="27" Canvas.Left="176" Canvas.Top="147" Width="98" Stroke="Black"/>
+			<Path x:Name="Rectangle_2" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="27" Canvas.Left="36" Canvas.Top="147" Width="98" Stroke="DarkGray"/>
+        	<Path x:Name="Rectangle_2_copy" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="27" Canvas.Left="176" Canvas.Top="147" Width="98" Stroke="DarkGray"/>
              <Button  Click="DataBrowserRadio_Click" Name="DataBrowserRadio" Canvas.Left="8" Canvas.Top="123" Style="{StaticResource smallbutton}">
                 <Button.Content>
                     <Canvas Height="18" Width="18">
@@ -82,7 +82,7 @@
                 </Canvas>
             </Button>
             <TextBlock MouseDown="addData_CheckedUnChecked" x:Name="ADD_Data_in_Current_Sheet" FontWeight="Bold" FontSize="14" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="94.5" LineHeight="14" TextAlignment="Left" TextWrapping="Wrap" Text="ADD Data in Current Sheet" Canvas.Top="92.178"/>
-        	<TextBox Name="filename"   Height="25" Canvas.Left="123.5" Canvas.Top="49" Width="171" Padding="0 4 0 0" BorderBrush="Gray" BorderThickness="1.5"/>
+        	<TextBox Name="filename"   Height="25" Canvas.Left="123.5" Canvas.Top="49" Width="171" Padding="0 4 0 0" />
                 </Canvas>
             <Button  Click="loaddata" Canvas.Left="239.5" Canvas.Top="179" Style="{StaticResource all}" >
                 <Button.Content>

@@ -24,12 +24,12 @@
             </Canvas>
             <Canvas Canvas.Top="18" Canvas.Left="-20">
                 <TextBlock Canvas.Top="116" Canvas.Left="80" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="From Date .:"/>
-                <DatePicker Canvas.Top="108" Canvas.Left="175" Name="FromDate" CalendarClosed="ToDate_CalendarClosed"    Height="26"  Width="124"  BorderThickness="0" Padding="0 4 0 0"/>
+                <DatePicker Canvas.Top="108" Canvas.Left="176" Name="FromDate" CalendarClosed="ToDate_CalendarClosed"    Height="26"  Width="124"  BorderThickness="0" Padding="0 4 0 0"/>
                 <Path x:Name="line" Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Canvas.Left="306.611" Canvas.Top="103.5" Width="3"/>
-                <Path Canvas.Top="108" Canvas.Left="174" x:Name="Rectangle_2" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="26"  Stroke="Black" Stretch="Fill"/>
+                <Path Canvas.Top="108" Canvas.Left="174" x:Name="Rectangle_2" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="26"  Stroke="DarkGray" Stretch="Fill"/>
                 <TextBlock Canvas.Top="116" Canvas.Left="320"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="To Date .:"/>
-                <DatePicker Canvas.Top="108" Canvas.Left="393" x:Name="ToDate" CalendarClosed="ToDate_CalendarClosed" Height="26"  Width="124"  BorderThickness="0" Padding="0 4 0 0"/>
-                <Path Canvas.Top="108" Canvas.Left="392" x:Name="Rectangle" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="26"  Stroke="Black" Stretch="Fill"/>
+                <DatePicker Canvas.Top="108" Canvas.Left="394" x:Name="ToDate" CalendarClosed="ToDate_CalendarClosed" Height="26"  Width="124"  BorderThickness="0" Padding="0 4 0 0"/>
+                <Path Canvas.Top="108" Canvas.Left="392" x:Name="Rectangle" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="26"  Stroke="DarkGray" Stretch="Fill"/>
             </Canvas>
             <Canvas Canvas.Left="-30" Canvas.Top="4" >
                 <TextBlock  Canvas.Top="171" Canvas.Left="60"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Previous Due .:"/>
@@ -82,7 +82,7 @@
                   3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" Width="15" Height="15"/>
             </Button>
             <Path x:Name="line1_Copy" Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Canvas.Left="308.5" Canvas.Top="206.5" Width="3"/>
-            <DatePicker Name="InvoiceDate" Canvas.Left="308" Canvas.Top="35"/>
+            <DatePicker Name="InvoiceDate" Canvas.Left="251" Canvas.Top="34" BorderBrush="Transparent" Width="125"/>
         </Canvas>
     </Grid>
 </Window>

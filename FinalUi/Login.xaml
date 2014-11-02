@@ -13,8 +13,8 @@
         </Grid.Effect>
 
         <Canvas x:Name="vortex_pag" ClipToBounds="True" HorizontalAlignment="Left" Height="300" UseLayoutRounding="False" VerticalAlignment="Top" Width="600" Background="White">
-            <Image x:Name="Blue" Height="272" Canvas.Left="16" Source="Images\Shape 21.png" Canvas.Top="13" Width="278" />
-            <Image x:Name="Red" Height="272" Canvas.Left="16" Source="Images\Shape 21 copy.png" Canvas.Top="13" Width="278" Visibility="Hidden"/>
+            <Image x:Name="Blue" Height="250" Canvas.Left="43" Source="Images\Shape 21.png" Canvas.Top="27" Width="250" />
+            <Image x:Name="Red" Height="250" Canvas.Left="43" Source="Images\Shape 21 copy.png" Canvas.Top="27" Width="250" Visibility="Hidden"/>
             <Path x:Name="IncorectBox"  Visibility="Hidden" Data="F1M7.897,41.514C7.897,41.514 135.848,41.514 135.848,41.514 139.104,41.514 141.744,39.337 141.744,36.652 141.744,36.652 141.744,18.178 141.744,18.178 141.744,15.492 139.104,13.316 135.848,13.316 135.848,13.316 23.281,13.316 23.281,13.316 24.525,6.763 32.072,2 32.072,2 22.277,4.433 16.873,9.086 13.89,13.316 13.89,13.316 7.897,13.316 7.897,13.316 4.64,13.316 2,15.492 2,18.178 2,18.178 2,36.652 2,36.652 2,39.337 4.64,41.514 7.897,41.514z" Fill="Black" Height="43" Canvas.Left="36" Canvas.Top="247" Width="143" Stroke="Red" StrokeThickness="1"/>
             <Path x:Name="Exclamatory" Visibility="Hidden" Data="F1M8.748,11.963C8.748,11.963 8.748,13.485 8.748,13.485 8.748,13.485 10.237,13.485 10.237,13.485 10.237,13.485 10.237,11.963 10.237,11.963 10.237,11.963 8.748,11.963 8.748,11.963z M8.748,7.398C8.748,7.398 8.748,10.442 8.748,10.442 8.748,10.442 10.237,10.442 10.237,10.442 10.237,10.442 10.237,7.398 10.237,7.398 10.237,7.398 8.748,7.398 8.748,7.398z M9.493,1.311C9.493,1.311 17.684,15.768 17.684,15.768 17.684,15.768 1.301,15.768 1.301,15.768 1.301,15.768 9.493,1.311 9.493,1.311z" Fill="Yellow" Height="17" Canvas.Left="42" Canvas.Top="266" Width="19"/>
         	<TextBlock x:Name="INCORRECT" Foreground="White" FontWeight="Bold" FontSize="36" FontFamily="Lithos Pro Regular" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="63.539" LineHeight="36" TextAlignment="Left" TextWrapping="Wrap" Text="INCORRECT" Canvas.Top="268.908">
@@ -22,9 +22,9 @@
         			<ScaleTransform ScaleY="0.482" ScaleX="0.482"/>
         		</TextBlock.RenderTransform>
         	</TextBlock>
-            <TextBlock Foreground="#6666cc" FontSize="60" Text="V" FontWeight="SemiBold" Canvas.Left="366" Canvas.Top="62"/>
-            <TextBlock Foreground="#6666cc" FontSize="40" Text="ORTEX" Canvas.Left="398" Canvas.Top="84" />
-            <TextBlock Foreground="#6666cc" FontSize="18" Canvas.Left="374" TextAlignment="Center" Text="Welcome!" Canvas.Top="130" Width="150"/>
+            <TextBlock FontSize="60" Text="V" FontWeight="SemiBold" Canvas.Left="360" Canvas.Top="60"/>
+            <TextBlock FontSize="40" Text="ORTEX" Canvas.Left="392" Canvas.Top="82" />
+            <TextBlock FontSize="18" Canvas.Left="374" TextAlignment="Center" Text="Welcome!" Canvas.Top="130" Width="150"/>
         	<Button ToolTip="Close" Style="{StaticResource 1}" Click="CloseButton_Click" Name="CloseButton" Height="20" Canvas.Left="555" Canvas.Top="6" Width="40">
 			<Path Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" />
         	</Button>
@@ -37,13 +37,12 @@
                 <TextBox Width="150" Padding="5 5 5 5" Name="UserName" FontSize="14"/>
                 </WrapPanel>
                 <Separator Visibility="Hidden"/>
-                <WrapPanel HorizontalAlignment="Center" >
+                <WrapPanel HorizontalAlignment="Center">
                 <PasswordBox Width="150" Name="Password" Padding="5 5 5 5" FontSize="14"/>
                 </WrapPanel>
-                <WrapPanel HorizontalAlignment="Center" Margin="0,26,0,0" >
-                <TextBlock MinWidth="150" FontSize="12" Text="Copyright ©2014, All Rights Reserved"/>
-                </WrapPanel>
-				<!--<Button Content="Setup Data" x:Name="SetupButton" Click="SetupButton_Click_1" Width="107" HorizontalAlignment="Right"/>-->
-			</StackPanel> 
+            <WrapPanel HorizontalAlignment="Center" Margin="0,26,0,0">
+                <TextBlock MinWidth="150" FontSize="12" Text="Copyright ©2014, All Rights Reserved" Foreground="#FF416DFF"/>
+            </WrapPanel>
+        </StackPanel> 
     </Grid>
 </Window>

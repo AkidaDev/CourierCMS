@@ -51,8 +51,6 @@ namespace FinalUi
         {
             DragMove();
         }
-        private void CloseButton_MouseLeave_1(object sender, MouseEventArgs e)
-        { }
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
