@@ -38,15 +38,27 @@ namespace FinalUi
 
         private void PrintButton_Click(object sender, RoutedEventArgs e)
         {
-            CreateObj();
+            try
+            {
+                CreateObj();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Unable to generate statement. Error: " + ex.Message);
+            }
         }
 
         private void CreateObj()
         {
-
+            
+            if(FromDate.SelectedDate == null || ToDate.SelectedDate == null)
+            {
+                MessageBox.Show("Please select from date and to date correctly..");
+                return;
+            }
             BillingDataDataContext db = new BillingDataDataContext();
             var c  =  (Client) this.ClientListCombo.SelectedItem;
-            invoice = db.AccountStatements.Where(x=> x.ClientCode == c.CLCODE).OrderBy(y => y.TransactionDate).ToList();
+            invoice = db.AccountStatements.Where(x=> x.ClientCode == c.CLCODE && x.TransactionDate <= ToDate.SelectedDate && x.TransactionDate >= FromDate.SelectedDate).OrderBy(y => y.TransactionDate).ToList();
             rs.Value = invoice;
             AccountStatementViewer.LocalReport.DataSources.Clear();
             AccountStatementViewer.LocalReport.DataSources.Add(rs);
@@ -56,6 +68,8 @@ namespace FinalUi
             repParams.Add(new ReportParameter("CompanyAddress", Configs.Default.CompanyAddress));
             repParams.Add(new ReportParameter("CompanyEmail", Configs.Default.CompanyEmail));
             repParams.Add(new ReportParameter("CompanyFax", Configs.Default.CompanyFax));
+            repParams.Add(new ReportParameter("ToDate", ((DateTime)ToDate.SelectedDate).ToString("dd-MMM-yyyy")));
+            repParams.Add(new ReportParameter("FromDate", ((DateTime)FromDate.SelectedDate).ToString("dd-MMM-yyyy")));
             double? billedamountsum =  this.invoice.Select(y => y.PayAmount).Sum();
             double? amountRecivedsum = this.invoice.Select(y => y.TotalRecievedAmount).Sum();
             double? TotalSum = billedamountsum - amountRecivedsum;

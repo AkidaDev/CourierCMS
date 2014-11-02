@@ -271,17 +271,6 @@
       <Column Name="Mode" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.AccountStatement" Member="AccountStatements">
-    <Type Name="AccountStatement">
-      <Column Name="Id" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="TransactionDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="ClientCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
-      <Column Name="Remark" Type="System.String" DbType="VarChar(180)" CanBeNull="true" />
-      <Column Name="Details" Type="System.String" DbType="VarChar(120)" CanBeNull="true" />
-      <Column Name="TotalRecievedAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="PayAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.BalanceView" Member="BalanceViews">
     <Type Name="BalanceView">
       <Column Name="PC" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
@@ -379,6 +368,18 @@
       <Column Name="CITY_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="SER_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="CLNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccountStatement" Member="AccountStatements">
+    <Type Name="AccountStatement">
+      <Column Name="Id" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TransactionDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="TypeOfRecord" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="VarChar(249)" CanBeNull="true" />
+      <Column Name="Details" Type="System.String" DbType="VarChar(120)" CanBeNull="true" />
+      <Column Name="TotalRecievedAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PayAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.sp_deleteSheetFromRuntime" Method="sp_deleteSheetFromRuntime">
