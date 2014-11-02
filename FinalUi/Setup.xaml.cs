@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Sql;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -27,6 +28,10 @@ namespace FinalUi
         }
         public void SetDefaultSetting()
         { 
+        }
+        public void getDataSources()
+        {
+            var table = SqlDataSourceEnumerator.Instance.GetDataSources();
         }
         private void Browse_Directory(object sender, RoutedEventArgs e)
         {

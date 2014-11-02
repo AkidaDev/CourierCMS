@@ -1458,6 +1458,9 @@ namespace FinalUi
                 if (MessageBox.Show("Do you Want edit this Rule", "", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
                     ServiceRule dcr = (ServiceRule)ServiceRuleGrid.SelectedItem;
+                    AddServiceRule win = new AddServiceRule(dcr.Id);
+                    win.Closed += win_Closed;
+                    win.Show();
                     ServiceRuleGrid.SelectedItem = null;
                 }
             }

@@ -49,23 +49,11 @@ namespace FinalUi
             InitializeComponent();
             isInitialized = true;
             RuleCR = (new JavaScriptSerializer()).Deserialize<CostingRule>(rule.Properties);
-            List<Service> serviceListr = DataSources.ServicesCopy.Where(x => !RuleCR.ServiceList.Contains(x.SER_CODE)).ToList();
-            ServiceTwinBox.AllListSource = serviceListr;
-            ServiceTwinBox.SelectedListSource = DataSources.ServicesCopy.Except<Service>(serviceListr).ToList();
-            List<City> cityList = DataSources.CityCopy.Where(x => !RuleCR.CityList.Contains(x.CITY_CODE)).ToList();
-            CitiesTwinBox.AllListSource = cityList;
-            CitiesTwinBox.SelectedListSource = DataSources.CityCopy.Except<City>(cityList).ToList();
-            List<State> stateList = DataSources.StateCopy.Where(x => !RuleCR.StateList.Contains(x.STATE_CODE)).ToList();
-            StateTwinBox.AllListSource = stateList;
-            StateTwinBox.SelectedListSource = DataSources.StateCopy.Except<State>(stateList).ToList();
-            List<ZONE> zoneList = DataSources.ZoneCopy.Where(x => !RuleCR.ZoneList.Contains(x.zcode)).ToList();
-            ZoneTwinBox.AllListSource = zoneList;
-            ZoneTwinBox.SelectedListSource = DataSources.ZoneCopy.Except<ZONE>(zoneList).ToList();
             FromWeightBox.Text = RuleCR.startW.ToString();
             ToWeightBox.Text = RuleCR.endW.ToString();
             DOXAmountBox.Text = RuleCR.doxAmount.ToString();
             NDoxAmountBox.Text = RuleCR.ndoxAmount.ToString();
-            setForm(RuleCR);
+            AddRule.setFormList(RuleCR, ServiceTwinBox, ZoneTwinBox, StateTwinBox, CitiesTwinBox);
             if (RuleCR.type == 'R')
             {
                 RangeTypeRadio.IsChecked = true;
@@ -100,9 +88,14 @@ namespace FinalUi
             CitiesTwinBox.SelectedListSource = new List<City>();
             CitiesTwinBox.DisplayValuePath = "NameAndCode";
         }
-        public void setForm(CostingRule crule)
+        public static void setFormList(IRule crule , CustomControls.TwinListBox ServiceTwinBox, CustomControls.TwinListBox ZoneTwinBox, CustomControls.TwinListBox StateTwinBox, CustomControls.TwinListBox CitiesTwinBox)
         {
-            if (ServiceTwinBox.SelectedListSource.Count > 0)
+            if(crule == null)
+            {
+                throw new Exception("Rule is Null");
+                return;
+            }
+            if (crule.ServiceList.Count > 0)
             {
                 ServiceTwinBox.AllListSource = DataSources.ServicesCopy.Where(x => !crule.ServiceList.Contains(x.SER_CODE) ).ToList();
                 ServiceTwinBox.SelectedListSource = DataSources.ServicesCopy.Where(x => crule.ServiceList.Contains(x.SER_CODE)).ToList();
@@ -113,10 +106,10 @@ namespace FinalUi
                 ServiceTwinBox.SelectedListSource = new List<Service>();
             }
             ServiceTwinBox.DisplayValuePath = "NameAndCode";
-            if (ZoneTwinBox.SelectedListSource.Count > 0)
+            if (crule.ZoneList.Count > 0)
             {
-                ZoneTwinBox.AllListSource = DataSources.ZoneCopy.Where(x => x.zcode != crule.ZoneList.Single()).ToList();
-                ZoneTwinBox.SelectedListSource = DataSources.ZoneCopy.Where(x => x.zcode == crule.ZoneList.Single()).ToList();
+                ZoneTwinBox.AllListSource = DataSources.ZoneCopy.Where(x => !crule.ZoneList.Contains(x.zcode)).ToList();
+                ZoneTwinBox.SelectedListSource = DataSources.ZoneCopy.Where(x => crule.ZoneList.Contains(x.zcode)).ToList();
             }
             else
             {
@@ -126,8 +119,8 @@ namespace FinalUi
             ZoneTwinBox.DisplayValuePath = "NameAndCode";
             if (crule.StateList.Count > 0)
             {
-                StateTwinBox.AllListSource = DataSources.StateCopy.Where(x => x.STATE_CODE != crule.StateList.Single()).ToList();
-                StateTwinBox.SelectedListSource = DataSources.StateCopy.Where(x => x.STATE_CODE == crule.StateList.Single()).ToList();
+                StateTwinBox.AllListSource = DataSources.StateCopy.Where(x => !crule.StateList.Contains(x.STATE_CODE)).ToList();
+                StateTwinBox.SelectedListSource = DataSources.StateCopy.Where(x => crule.StateList.Contains(x.STATE_CODE)).ToList();
             }
             else
             {
@@ -135,10 +128,10 @@ namespace FinalUi
                 StateTwinBox.SelectedListSource = new List<State>();
             }
             StateTwinBox.DisplayValuePath = "NameAndCode";
-            if (CitiesTwinBox.SelectedListSource.Count > 0)
+            if (crule.CityList.Count > 0)
             {
-                CitiesTwinBox.AllListSource = DataSources.CityCopy.Where(x => x.CITY_CODE != crule.CityList.Single()).ToList();
-                CitiesTwinBox.SelectedListSource = DataSources.CityCopy.Where(x => x.CITY_CODE == crule.CityList.Single()).ToList();
+                CitiesTwinBox.AllListSource = DataSources.CityCopy.Where(x => !crule.CityList.Contains(x.CITY_CODE)).ToList();
+                CitiesTwinBox.SelectedListSource = DataSources.CityCopy.Where(x => crule.CityList.Contains(x.CITY_CODE)).ToList();
             }
             else
             {
@@ -406,7 +399,6 @@ namespace FinalUi
             {
                 try
                 {
-
                     StepWeightBlock.Visibility = Visibility.Visible;
                     StepBlockBox.Visibility = Visibility.Visible;
                     NDoxStartValueBox.Visibility = Visibility.Visible;
@@ -421,10 +413,8 @@ namespace FinalUi
                 }
             }
         }
-
         private void RangeTypeRadio_Checked(object sender, RoutedEventArgs e)
         {
-
             vertical_line.Visibility = Visibility.Collapsed;
             StepWeightBlock.Visibility = Visibility.Collapsed;
             StepBlockBox.Visibility = Visibility.Collapsed;

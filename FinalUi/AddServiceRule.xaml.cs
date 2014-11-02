@@ -23,15 +23,25 @@ namespace FinalUi
         Canvas currentCanvasObj;
         ServiceRule RuleSR;
         Quotation quotation;
-        public AddServiceRule(Quotation quoation)
+        ServiceRule SRule;
+        Rule rule;
+        public bool isUpdate { get; set; }
+        public bool isInitialized { get; set; }
+        public AddServiceRule()
         {
             InitializeComponent();
-            isdone = false;
-            this.quotation = quoation;
-            this.WholeRadio.Checked += WholeRadio_Checked;
-            this.StepRadio.Checked += RadioButton_Checked_1;
             currentCanvasObj = Step1Canvas;
             currentCanvasObj.Visibility = Visibility.Visible;
+            this.WholeRadio.Checked += WholeRadio_Checked;
+            this.StepRadio.Checked += RadioButton_Checked_1;
+            PerRadio.Checked += PerRadio_Checked;
+            AmountRadio.Checked += AmountRadio_Checked;
+        }
+        public AddServiceRule(Quotation quoation)
+            : this()
+        {
+            isdone = false;
+            this.quotation = quoation;
             ServiceTwinBox.AllListSource = (DataSources.ServicesCopy);
             ServiceTwinBox.SelectedListSource = new List<Service>();
             ServiceTwinBox.DisplayValuePath = "NameAndCode";
@@ -45,9 +55,57 @@ namespace FinalUi
             CitiesTwinBox.SelectedListSource = new List<City>();
             CitiesTwinBox.DisplayValuePath = "NameAndCode";
             PerRadio.IsChecked = true;
-             PercentageWrap.Visibility = Visibility.Visible;
-            PerRadio.Checked += PerRadio_Checked;
-            AmountRadio.Checked += AmountRadio_Checked;
+            PercentageWrap.Visibility = Visibility.Visible;
+        }
+        public AddServiceRule(int ruleId)
+            : this()
+        {
+            this.isUpdate = true;
+            BillingDataDataContext db = new BillingDataDataContext();
+            db = new BillingDataDataContext();
+            rule = db.Rules.SingleOrDefault(x => x.ID == ruleId);
+            if (rule == null)
+            {
+                MessageBox.Show("Invalid Rule.");
+                return;
+            }
+            isInitialized = true;
+            SRule = RuleSR = (new JavaScriptSerializer()).Deserialize<ServiceRule>(rule.Properties);
+            this.FromWeightBox.Text = SRule.startW.ToString();
+            this.ToWeightBox.Text = SRule.endW.ToString();
+            if (SRule.type == 'W')
+            {
+                this.WholeRadio.IsChecked = true;
+                this.StepRadio.IsChecked = false;
+            }
+            else
+            {
+                this.WholeRadio.IsChecked = false;
+                this.StepRadio.IsChecked = true;
+                this.StepBox.Text = SRule.stepweight.ToString();
+            }
+
+            if (SRule.change == 'I')
+                this.IncRadio.IsChecked = true;
+            else
+                this.DecRadio.IsChecked = true;
+            if (SRule.mode == 'P')
+            {
+                this.PerRadio.IsChecked = true;
+                this.ValueBox.Text = SRule.per.ToString();
+            }
+            else
+            {
+                this.AmountRadio.IsChecked = true;
+                this.AmountBox.Text = SRule.per.ToString();
+            }
+            if (SRule.applicable == 'O')
+                this.OriginalAmountRadio.IsChecked = true;
+            else
+                this.CompoundRadio.IsChecked = true;
+            AddRule.setFormList(SRule,this.ServiceTwinBox,this.ZoneTwinBox,this.StateTwinBox,this.CitiesTwinBox);
+            this.RemarkBox.Text = rule.Remark;
+            this.AddRuleButtonBox.Text = "Update Rule";
         }
         private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {
@@ -68,6 +126,7 @@ namespace FinalUi
         }
         private void AddRuleButton_Click(object sender, RoutedEventArgs e)
         {
+            Rule r;
             BillingDataDataContext db = new BillingDataDataContext();
             double startW = 0, endW = 0;
             string errorMsg = "";
@@ -106,11 +165,23 @@ namespace FinalUi
             }
             else { change = 'D'; }
             char mode;
+            float per = 0;
             if (PerRadio.IsChecked == true)
             {
                 mode = 'P';
+                if (!float.TryParse(ValueBox.Text, out per))
+                {
+                    errorMsg += "Enter Percentage Properly\n";
+                }
+
             }
-            else mode = 'A';
+            else { 
+                mode = 'A';
+                if (!float.TryParse(AmountBox.Text, out per))
+                {
+                    errorMsg += "Enter Percentage Properly\n";
+                }
+            }
             char applicable;
             if (CompoundRadio.IsChecked == true)
             {
@@ -120,12 +191,8 @@ namespace FinalUi
             {
                 applicable = 'O';
             }
-            float per = 0;
-             if (!float.TryParse(PercentageBox.Text, out per))
-                {
-                    errorMsg += "Enter Percentage Properly\n";
-                }
-           
+            
+            
             if (errorMsg != "")
             {
                 MessageBox.Show("Please correct following errors: " + errorMsg);
@@ -135,11 +202,18 @@ namespace FinalUi
             List<string> selectedZoneList = ZoneTwinBox.SelectedListSource.Cast<ZONE>().Select(x => x.zcode).ToList();
             List<String> selectedCityList = CitiesTwinBox.SelectedListSource.Cast<City>().Select(x => x.CITY_CODE).ToList();
             List<string> selectedStateList = StateTwinBox.SelectedListSource.Cast<State>().Select(x => x.STATE_CODE).ToList();
-            RuleSR = new ServiceRule();
-            int id;
-            id = Convert.ToInt32(db.ExecuteQuery<decimal>("SELECT IDENT_CURRENT('Rule') +1;").FirstOrDefault());
-            RuleSR.Id = id;
-           
+            if (RuleSR == null || rule == null)
+            {
+                r = new Rule();
+                RuleSR = new ServiceRule();
+                int id;
+                id = Convert.ToInt32(db.ExecuteQuery<decimal>("SELECT IDENT_CURRENT('Rule') +1;").FirstOrDefault());
+                RuleSR.Id = id;
+            }
+            else
+            {
+                r = db.Rules.SingleOrDefault(x => x.ID == rule.ID);
+            }
             RuleSR.ServiceList = selectedServiceList;
             RuleSR.ZoneList = selectedZoneList;
             RuleSR.CityList = selectedCityList;
@@ -155,13 +229,13 @@ namespace FinalUi
             RuleSR.applicable = applicable;
             JavaScriptSerializer js = new JavaScriptSerializer();
             string serialized = js.Serialize(RuleSR);
-            Rule r = new Rule();
             r.Type = 2;
             r.Properties = serialized;
+            if(!isUpdate)
             r.QID = quotation.Id;
             r.Remark = this.RemarkBox.Text;
+            if (!isUpdate)
             db.Rules.InsertOnSubmit(r);
-          
             if (validate())
             {
                 try
