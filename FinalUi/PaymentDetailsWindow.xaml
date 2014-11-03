@@ -54,7 +54,7 @@
 
                         <Button x:Name="FetchInvoiceButton" Content="  View Selected invoice  " Click="FetchInvoiceButton_Click" Margin="222,2,0,11" HorizontalAlignment="Right"/>
                     </WrapPanel>
-                    <DataGrid DockPanel.Dock="Right" AutoGenerateColumns="False" DataContext="{StaticResource PaymentDetailsSourceGrid}" ItemsSource="{Binding}" RowHeaderWidth="0" BorderThickness="1" BorderBrush="Gray" Background="White" IsReadOnly="True" SelectionMode="Single" Width="493"  Height="105">
+                    <DataGrid Name="PaymentGrid" DockPanel.Dock="Right" AutoGenerateColumns="False" DataContext="{StaticResource PaymentDetailsSourceGrid}" ItemsSource="{Binding}" RowHeaderWidth="0" BorderThickness="1" BorderBrush="Gray" Background="White" IsReadOnly="True" SelectionMode="Single" Width="493"  Height="105">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="RefNo" Binding="{Binding Id}"/>
                             <DataGridTextColumn Header="Date" Binding="{Binding CompactDate}"/>
@@ -66,6 +66,8 @@
                             <DataGridTextColumn Header="Remarks" Binding="{Binding Remarks}"/>
                         </DataGrid.Columns>
                     </DataGrid>
+                    <Button Name="DeleteRecieptButton" Content="Delete Selected Payment Reciepted" Margin="0,2,-10,0" Width="186" HorizontalAlignment="Left" Click="DeleteRecieptButton_Click" />
+
                     <Button Name="ViewRecieptButton" Content="View Selected Payment Reciepted" Margin="0,2,-10,0" Width="186" HorizontalAlignment="Right" />
                 </StackPanel>
             </ContentControl>

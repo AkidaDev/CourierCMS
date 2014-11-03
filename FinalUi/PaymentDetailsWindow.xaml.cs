@@ -119,5 +119,28 @@ namespace FinalUi
                 }
             }
         }
+
+        private void DeleteRecieptButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(PaymentGrid.SelectedItems.Count != 1)
+            {
+                MessageBox.Show("Please select one payment entry to delete","Error");
+                return;
+            }
+            if(MessageBox.Show("Are you sure you want to delete this payment entry. This operation cannot be reversed.","Confirm",MessageBoxButton.YesNo)==MessageBoxResult.Yes)
+            {
+                PaymentEntry paymentEntry = (PaymentEntry)PaymentGrid.SelectedItem;
+                BillingDataDataContext db = new BillingDataDataContext();
+                paymentEntry = db.PaymentEntries.SingleOrDefault(x => x.Id == paymentEntry.Id);
+                if(paymentEntry == null)
+                {
+                    MessageBox.Show("Cannot find this payment entry!!!", "Error");
+                    return;
+                }
+                db.PaymentEntries.DeleteOnSubmit(paymentEntry);
+                db.SubmitChanges();
+                MessageBox.Show("Entry deleted!! Please fetch again to see changes.", "Info");
+            }
+        }
     }
 }
