@@ -693,8 +693,8 @@
         </Style>
       </Line>
       <Line Name="Line30">
-        <Top>3.04092in</Top>
-        <Left>0.08376in</Left>
+        <Top>4.50967in</Top>
+        <Left>0.08374in</Left>
         <Height>0in</Height>
         <Width>11.42622in</Width>
         <ZIndex>2</ZIndex>
@@ -721,8 +721,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox136</rd:DefaultName>
-        <Top>2.70759in</Top>
-        <Left>6.26494in</Left>
+        <Top>4.093in</Top>
+        <Left>8.87029in</Left>
         <Height>0.25in</Height>
         <Width>1.14583in</Width>
         <ZIndex>3</ZIndex>
@@ -755,8 +755,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>2.70759in</Top>
-        <Left>7.52268in</Left>
+        <Top>4.093in</Top>
+        <Left>10.12803in</Left>
         <Height>0.25in</Height>
         <Width>1.38194in</Width>
         <ZIndex>4</ZIndex>
@@ -1731,7 +1731,7 @@
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>Discount  .:</Value>
+                            <Value>DebitNote.:</Value>
                             <Style>
                               <FontWeight>Bold</FontWeight>
                             </Style>
@@ -1817,7 +1817,7 @@
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value />
+                            <Value>=Parameters!TotalTDS.Value</Value>
                             <Style>
                               <FontSize>8pt</FontSize>
                             </Style>
@@ -1858,7 +1858,7 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value />
+                                <Value>=Parameters!TotalDiscount.Value</Value>
                                 <Style>
                                   <FontSize>8pt</FontSize>
                                 </Style>
@@ -1898,14 +1898,14 @@
               <TablixHeader>
                 <Size>1.13542in</Size>
                 <CellContents>
-                  <Textbox Name="Textbox2">
+                  <Textbox Name="Textbox15">
                     <CanGrow>true</CanGrow>
                     <KeepTogether>true</KeepTogether>
                     <Paragraphs>
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>Miscellaneous .:</Value>
+                            <Value />
                             <Style>
                               <FontWeight>Bold</FontWeight>
                             </Style>
@@ -1916,7 +1916,7 @@
                         </Style>
                       </Paragraph>
                     </Paragraphs>
-                    <rd:DefaultName>Textbox2</rd:DefaultName>
+                    <rd:DefaultName>Textbox15</rd:DefaultName>
                     <Style>
                       <Border>
                         <Color>LightGrey</Color>
@@ -1928,11 +1928,14 @@
                   </Textbox>
                 </CellContents>
               </TablixHeader>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <Top>1.1189in</Top>
-        <Left>7.52962in</Left>
+        <Top>2.8064in</Top>
+        <Left>8.62456in</Left>
         <Height>0.71628in</Height>
         <Width>2.88542in</Width>
         <ZIndex>13</ZIndex>
@@ -2118,6 +2121,14 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="ToDate">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="TotalTDS">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="TotalDiscount">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>

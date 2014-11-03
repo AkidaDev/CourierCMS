@@ -81,8 +81,8 @@ namespace FinalUi
     #endregion
 		
 		public BillingDataDataContext() : 
-				base("Data Source=PANKAJ\\SQLEXPRESS;Initial Catalog=BillingDatabase;Persist Security In" +
-						"fo=True;User ID=sa;Password=9811010024", mappingSource)
+				base("Data Source=SYSTEM;Initial Catalog=BillingDatabase;Persist Security Info=True;Use" +
+						"r ID=sa;Password=Alver!22", mappingSource)
 		{
 			OnCreated();
 		}
