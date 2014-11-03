@@ -98,11 +98,7 @@ namespace FinalUi
                 this.AmountRadio.IsChecked = true;
                 this.AmountBox.Text = SRule.per.ToString();
             }
-            if (SRule.applicable == 'O')
-                this.OriginalAmountRadio.IsChecked = true;
-            else
-                this.CompoundRadio.IsChecked = true;
-            AddRule.setFormList(SRule,this.ServiceTwinBox,this.ZoneTwinBox,this.StateTwinBox,this.CitiesTwinBox);
+            AddRule.setFormList(SRule, this.ServiceTwinBox, this.ZoneTwinBox, this.StateTwinBox, this.CitiesTwinBox);
             this.RemarkBox.Text = rule.Remark;
             this.AddRuleButtonBox.Text = "Update Rule";
         }
@@ -174,7 +170,8 @@ namespace FinalUi
                 }
 
             }
-            else { 
+            else
+            {
                 mode = 'A';
                 if (!float.TryParse(AmountBox.Text, out per))
                 {
@@ -182,16 +179,9 @@ namespace FinalUi
                 }
             }
             char applicable;
-            if (CompoundRadio.IsChecked == true)
-            {
-                applicable = 'C';
-            }
-            else
-            {
-                applicable = 'O';
-            }
-            
-            
+            applicable = 'O';
+
+
             if (errorMsg != "")
             {
                 MessageBox.Show("Please correct following errors: " + errorMsg);
@@ -230,11 +220,11 @@ namespace FinalUi
             string serialized = js.Serialize(RuleSR);
             r.Type = 2;
             r.Properties = serialized;
-            if(!isUpdate)
-            r.QID = quotation.Id;
+            if (!isUpdate)
+                r.QID = quotation.Id;
             r.Remark = this.RemarkBox.Text;
             if (!isUpdate)
-            db.Rules.InsertOnSubmit(r);
+                db.Rules.InsertOnSubmit(r);
             if (validate())
             {
                 try

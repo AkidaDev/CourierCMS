@@ -53,12 +53,7 @@
                     <TextBox BorderThickness="2" Name="AmountBox"  Visibility="Visible" Width="50" />
                 </WrapPanel>
                 </WrapPanel>
-                <WrapPanel Canvas.Left="150" Canvas.Top="230">
-                    <TextBlock Text=" Applicable On  .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="8 0 0 0"/>
-                    <RadioButton IsChecked="True" Name="CompoundRadio" Content="Compound " FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
-                    <RadioButton Content="Original Amount " Name="OriginalAmountRadio" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
-                </WrapPanel>
-            </Canvas>
+                        </Canvas>
             <Canvas  Name="Step2Canvas" Canvas.Top="-160" Canvas.Left="120" Visibility="Collapsed">
                 <Path x:Name="client" Data="" Fill="Black" Height="19" Canvas.Left="31.333" Canvas.Top="222.365" Width="23" Stretch="Fill"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="59.482" Text="Add Service .:" Canvas.Top="232.079"/>
