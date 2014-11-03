@@ -93,7 +93,7 @@ namespace FinalUi
             if(crule == null)
             {
                 throw new Exception("Rule is Null");
-                return;
+                
             }
             if (crule.ServiceList.Count > 0)
             {

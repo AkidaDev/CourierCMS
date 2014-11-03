@@ -356,7 +356,7 @@ namespace FinalUi
             if (data.BilledWeight != null)
                 this.BilledWeightTextBox.Text = data.BilledWeight.ToString();
             else
-                this.BilledWeightTextBox.Text = "";
+                this.BilledWeightTextBox.Text = data.Weight.ToString();
             if (data.Type != "" && data.Type != null)
                 TypeComboBox.Text = DataSources.ServicesCopy.Where(x => x.SER_CODE == data.Type.Trim()).Select(y => y.NameAndCode).FirstOrDefault();
             if (data.Mode != "" && data.Mode != null)

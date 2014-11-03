@@ -5,6 +5,9 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 
 namespace FinalUi
 {
@@ -12,6 +15,6 @@ namespace FinalUi
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
-    {
+    {   
     }
 }
