@@ -137,14 +137,28 @@ namespace FinalUi
                 if (this.UserPasswordBox.Password == this.UserCPasswordBox.Password)
                 {
                     BillingDataDataContext db = new BillingDataDataContext(constring.ConnectionString);
+
                     this.emp.UserName = this.EUserNameBox.Text;
                     this.emp.Password = this.UserPasswordBox.Password;
                     this.emp.EMPCode = "Super";
-                    this.emp.Id = new Guid();
+                    this.emp.Id = Guid.NewGuid();
                     this.emp.Gender = 'M';
                     this.emp.Status = 'A';
                     this.emp.Name = "<none>";
-                    db.Employees.InsertOnSubmit(emp);
+
+                    Employee emp = db.Employees.Single(x => x.UserName == this.emp.UserName);
+                    if (emp != null)
+                    {
+                        if (!(MessageBox.Show("This employee already exists. Do you want to make this employee super on this system?", "Confirm", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
+                        {
+                            MessageBox.Show("Please enter different employee name","Error");
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        db.Employees.InsertOnSubmit(emp);
+                    }
                     try {
                         Configs.Default.SuperUser = this.emp.UserName;
                         Configs.Default.Save();
@@ -152,7 +166,7 @@ namespace FinalUi
                     }
                     catch (Exception ex){ MessageBox.Show(ex.Message); return;}
                 }
-                else { MessageBox.Show("Password do not match"); return; }
+                else { MessageBox.Show("Password do not match","Error"); return; }
             }
             switch (currentCanvas)
             {
