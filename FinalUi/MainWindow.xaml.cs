@@ -1441,7 +1441,7 @@ namespace FinalUi
             {
                 return;
             }
-            if (client == null || service == null || dox == null || city == null)
+            if (client == null || service == null || city == null)
                 return;
             RateRuleTextBox.Text = UtilityClass.getCost(client.CLCODE, weight, city.CITY_CODE, service.SER_CODE, dox).ToString();
         }

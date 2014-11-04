@@ -17,10 +17,6 @@ namespace FinalUi
             get { return _isSuper; }
             set
             {
-                if(value == false)
-                {
-                    throw new Exception("Just get the stacktrace");
-                }
                 _isSuper = value;
             }
         }

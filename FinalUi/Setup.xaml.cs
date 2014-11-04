@@ -145,7 +145,8 @@ namespace FinalUi
                     this.emp.Gender = 'M';
                     this.emp.Status = 'A';
                     this.emp.Name = "<none>";
-
+                    Configs.Default.CompanyName = CompanyNameBox.Text;
+                    Configs.Default.Save();
                     Employee emp = db.Employees.Single(x => x.UserName == this.emp.UserName);
                     if (emp != null)
                     {

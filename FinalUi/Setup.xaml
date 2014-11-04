@@ -74,8 +74,8 @@
                 <PasswordBox Width="210" Name="UserCPasswordBox"/>
             </WrapPanel>
             <WrapPanel Canvas.Left="304" Canvas.Top="305">
-                <TextBlock  Text=" Email Address .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                <TextBox Width="210" Name="EmailAddressBox"/>
+                <TextBlock  Text=" Company Name.: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                <TextBox Width="210" Name="CompanyNameBox"/>
             </WrapPanel>
         </Canvas>
         <Canvas Name="Step4" Visibility="Collapsed">

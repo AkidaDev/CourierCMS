@@ -74,8 +74,14 @@ namespace FinalUi
             double? billedamountsum =  this.invoice.Select(y => y.PayAmount).Sum();
             double? amountRecivedsum = this.invoice.Select(y => y.TotalRecievedAmount).Sum();
             double? TotalSum = billedamountsum - amountRecivedsum;
-            double totalDNote = db.PaymentEntries.Where(x => x.ClientCode == c.CLCODE && x.Date <= (ToDate.SelectedDate ?? DateTime.Today) && x.Date >= (FromDate.SelectedDate ?? DateTime.Today)).Sum(y => y.DebitNote);
-            double totalTDS = db.PaymentEntries.Where(x => x.ClientCode == c.CLCODE && x.Date <= (ToDate.SelectedDate ?? DateTime.Today) && x.Date >= (FromDate.SelectedDate ?? DateTime.Today)).Sum(y => y.TDS);
+            List<PaymentEntry> entries = db.PaymentEntries.Where(x => x.ClientCode == c.CLCODE && x.DebitNote != null && x.Date <= (ToDate.SelectedDate ?? DateTime.Today) && x.Date >= (FromDate.SelectedDate ?? DateTime.Today)).ToList();
+            double totalTDS = 0;
+            double totalDNote = 0;
+            if(entries.Count > 0)
+            {
+                totalTDS = entries.Select(x=>x.TDS).Sum();
+                totalDNote = entries.Select(x=>x.DebitNote).Sum();
+            }
             repParams.Add(new ReportParameter("TotalTDS", String.Format("{0:F2}",totalTDS)));
             repParams.Add(new ReportParameter("TotalDiscount", String.Format("{0:F2}",totalDNote)));
             string sumS = String.Format("{0:F2}", TotalSum??0);
