@@ -49,7 +49,6 @@ namespace FinalUi
                     else
                         zoneCode = zone.zcode;
                     RulesApplied = RulesApplied.Where(x => x.ZoneList.Contains(zoneCode)).ToList();
-
                 }
             }
             RulesApplied = RulesApplied.Where(x => x.ServiceList.Contains(trans.Type.Trim())).ToList();
@@ -131,7 +130,6 @@ namespace FinalUi
                     }
                 }
             }
-
             RulesApplied.Where(x => x.applicable == 'O').ToList().ForEach((x) =>
                 {
                     x.applyRule(trans, price);

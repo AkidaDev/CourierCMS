@@ -26,8 +26,8 @@
     <Setting Name="ServiceTax" Type="System.String" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="IsFirst" Type="System.String" Scope="User">
-      <Value Profile="(Default)">false</Value>
+    <Setting Name="IsFirst" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="Background" Type="System.String" Scope="User">
       <Value Profile="(Default)">#FF1E90FF</Value>
@@ -39,6 +39,9 @@
       <Value Profile="(Default)">Dharmendra</Value>
     </Setting>
     <Setting Name="TNC" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SuperUser" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

@@ -14,7 +14,6 @@ namespace FinalUi
       public  static int hey;
       static LoadResources()
         {
-            hey = 0;
             if(Configs.Default.IsFreshOrReset == true)
             {
                 Setup window = new Setup();
@@ -23,9 +22,9 @@ namespace FinalUi
         }
         public static string getConString()
         {
-            string con = "Data Source=" + "System" + ";Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa;Password=Alver!22";
+            string con = Configs.Default.BillingDatabaseConnectionString;
              con = Configs.Default.BillingDatabaseConnectionString;
-            MessageBox.Show(con);
+            //MessageBox.Show(con);
             return con;
         }
     }

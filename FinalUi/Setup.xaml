@@ -3,7 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Icon="Images/logo.ico"
         Title="Setup" Height="450" Width="750" Background="Transparent" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Normal" BorderBrush="Transparent" AllowsTransparency="True" Padding="20">
-
+    <Window.Resources>
+        <CollectionViewSource x:Key="InstanceList" CollectionViewType="{x:Type ListCollectionView}"/>
+    </Window.Resources>
     <Grid  Height="400" UseLayoutRounding="False"  Width="700" Background="White" MouseLeftButtonDown="Grid_MouseLeftButtonDown_1">
         <Grid.Effect>
             <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
@@ -31,20 +33,20 @@
                 <TextBox Width="310"/>
             </WrapPanel>
             <WrapPanel Canvas.Left="342" Canvas.Top="215">
-                <TextBlock  Text=" Instance .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                <ComboBox Width="210"/>
+                <TextBlock  Text=" ServerName .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                <ComboBox Width="210" Name="ServerNameBox" IsEditable="True" ItemsSource="{Binding}" DataContext="{StaticResource InstanceList}" DisplayMemberPath="ServerName"/>
             </WrapPanel>
             <WrapPanel Canvas.Left="335" Canvas.Top="245">
                 <TextBlock  Text=" Database .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                <ComboBox Width="210"/>
+                <TextBox Name="databaseBox" Width="210"/>
             </WrapPanel>
             <WrapPanel Canvas.Left="324" Canvas.Top="275">
                 <TextBlock  Text=" User Name .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                <TextBox Width="210"/>
+                <TextBox Width="210" Name="UserNameBox"/>
             </WrapPanel>
             <WrapPanel Canvas.Left="334" Canvas.Top="305">
                 <TextBlock  Text=" Password .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                <TextBox Width="210"/>
+                <TextBox Width="210" Name="PasswordBox" />
             </WrapPanel>
         </Canvas>
         <Canvas Name="Step3" Visibility="Collapsed">
@@ -61,19 +63,19 @@
             </WrapPanel>
             <WrapPanel Canvas.Left="324" Canvas.Top="215">
                 <TextBlock  Text=" User Name .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                <TextBox Width="210"/>
+                <TextBox Width="210" Name="EUserNameBox"/>
             </WrapPanel>
             <WrapPanel Canvas.Left="334" Canvas.Top="245">
                 <TextBlock Text=" Password .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                <PasswordBox Width="210"/>
+                <PasswordBox Name="UserPasswordBox" Width="210"/>
             </WrapPanel>
             <WrapPanel Canvas.Left="312" Canvas.Top="275">
                 <TextBlock  Text=" Confirm Pass .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                <PasswordBox Width="210"/>
+                <PasswordBox Width="210" Name="UserCPasswordBox"/>
             </WrapPanel>
             <WrapPanel Canvas.Left="304" Canvas.Top="305">
                 <TextBlock  Text=" Email Address .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                <TextBox Width="210"/>
+                <TextBox Width="210" Name="EmailAddressBox"/>
             </WrapPanel>
         </Canvas>
         <Canvas Name="Step4" Visibility="Collapsed">

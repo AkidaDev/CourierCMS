@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Data.Sql;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 namespace FinalUi
 {
     /// <summary>
@@ -21,17 +21,21 @@ namespace FinalUi
     {
         int currentCanvas = 1;
         Canvas currentCanvasObj;
-        
+        System.Data.DataTable table;
+        System.Data.SqlClient.SqlConnectionStringBuilder constring;
+        Employee emp;
         public Setup()
         {
             InitializeComponent();
+            table = SqlDataSourceEnumerator.Instance.GetDataSources();
+            constring = new System.Data.SqlClient.SqlConnectionStringBuilder();
+            CollectionViewSource instanceSource;
+            instanceSource = (CollectionViewSource)FindResource("InstanceList");
+            instanceSource.Source = table;
+            emp = new Employee();
         }
         public void SetDefaultSetting()
         { 
-        }
-        public void getDataSources()
-        {
-            var table = SqlDataSourceEnumerator.Instance.GetDataSources();
         }
         private void Browse_Directory(object sender, RoutedEventArgs e)
         {
@@ -56,7 +60,11 @@ namespace FinalUi
         }
         private void Finish_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            Configs.Default.IsFirst = false;
+            Configs.Default.Save();
+            Login win = new Login();
+            win.Show();
+            this.Close();
         }
         private void update_CheckedUnChecked(object sender, RoutedEventArgs e)
         {
@@ -99,6 +107,53 @@ namespace FinalUi
         }
         private void Next_Click(object sender, RoutedEventArgs e)
         {
+            if (currentCanvas == 2)
+            { //Data Source=SYSTEM;Initial Catalog=BillingDatabase;User ID=sa;Password=Alver!22
+                constring.DataSource = this.ServerNameBox.Text;
+                constring.InitialCatalog = this.databaseBox.Text;
+                constring.UserID = this.UserNameBox.Text;
+                constring.Password = this.PasswordBox.Text;
+                string provider = "System.Data.SqlClient"; // for example
+                DbProviderFactory factory = DbProviderFactories.GetFactory(provider);
+                using (DbConnection conn = factory.CreateConnection())
+                {
+                    conn.ConnectionString = constring.ConnectionString;
+                    try
+                    {
+                        conn.Open();
+                        isconnected = true;
+                        Configs.Default.BillingDatabaseConnectionString = constring.ConnectionString;
+                        Configs.Default.Save();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Unable to connect to server"); isconnected = false; return;
+                    }
+                }
+                MessageBox.Show(constring.ConnectionString);
+            }
+            if (currentCanvas == 3)
+            {
+                if (this.UserPasswordBox.Password == this.UserCPasswordBox.Password)
+                {
+                    BillingDataDataContext db = new BillingDataDataContext(constring.ConnectionString);
+                    this.emp.UserName = this.EUserNameBox.Text;
+                    this.emp.Password = this.UserPasswordBox.Password;
+                    this.emp.EMPCode = "Super";
+                    this.emp.Id = new Guid();
+                    this.emp.Gender = 'M';
+                    this.emp.Status = 'A';
+                    this.emp.Name = "<none>";
+                    db.Employees.InsertOnSubmit(emp);
+                    try {
+                        Configs.Default.SuperUser = this.emp.UserName;
+                        Configs.Default.Save();
+                        db.SubmitChanges();
+                    }
+                    catch (Exception ex){ MessageBox.Show(ex.Message); return;}
+                }
+                else { MessageBox.Show("Password do not match"); return; }
+            }
             switch (currentCanvas)
             {
                 case 1:
@@ -175,6 +230,12 @@ namespace FinalUi
                     break;
             }
         }
+        public void saveDbConnection()
+        {
+            Configs.Default.BillingDatabaseConnectionString = constring.ConnectionString;
+            Configs.Default.Save();
+        }
 
+        public bool isconnected { get; set; }
     }
 }

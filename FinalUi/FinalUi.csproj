@@ -238,6 +238,9 @@
     </Compile>
     <Compile Include="InvoiceRule.cs" />
     <Compile Include="IRule.cs" />
+    <Compile Include="Load.xaml.cs">
+      <DependentUpon>Load.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LoadResources.cs" />
     <Compile Include="ManageCity.xaml.cs">
       <DependentUpon>ManageCity.xaml</DependentUpon>
@@ -372,6 +375,10 @@
     <Page Include="InvoiceReport.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Load.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LoadData.xaml">
       <SubType>Designer</SubType>

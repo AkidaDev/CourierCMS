@@ -2,6 +2,11 @@ namespace FinalUi
 {
     partial class BillingDataDataContext
     {
+   	 public BillingDataDataContext() : 
+				base(LoadResources.getConString(), mappingSource)
+		{
+			OnCreated();
+		}
         partial void UpdateClient(Client instance)
         {
             string msg = "";
