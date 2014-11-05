@@ -3,6 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="InvoiceReport" WindowState="Maximized" Height="800" Width="1366">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.95*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <WrapPanel>
+                <Button Content="Browse" Name="BrowseButton" Click="BrowseButton_Click"/>
+                <TextBlock Name="FilePathBlock"/>
+            </WrapPanel>
+            <WrapPanel>
+                <Button Content="Open" Name="OpenButton" Click="OpenButton_Click"/>
+            </WrapPanel>
+        </StackPanel>
+        <DataGrid Visibility="Collapsed" Grid.Row="1">
+            
+        </DataGrid>
+        <RichTextBox Grid.Row="1" Name="TestTextBox"/>
     </Grid>
 </Window>

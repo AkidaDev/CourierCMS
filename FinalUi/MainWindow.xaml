@@ -66,6 +66,8 @@
                     <MenuItem ToolTip="Editing Tools" Header="Tools" Margin="10 0 0 0">
                         <MenuItem Header="Peferences" x:Name="Peferences" Click="Peferences_Click" />
                         <MenuItem Header="Hide/Show Image" Click="MenuItem_hideimage" />
+                        <MenuItem Header="Invoice Analysis" Click="InvoiceAnalysis_Click"/>
+
                     </MenuItem>
                     <MenuItem ToolTip="Know more" Header="Help" Margin="10 0 0 0">
                         <MenuItem Header="About" x:Name="AboutMenuItem" Click="AboutMenuItem_Click"/>

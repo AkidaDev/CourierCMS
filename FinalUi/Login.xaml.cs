@@ -114,6 +114,8 @@ namespace FinalUi
                 {
                     string userName = UserName.Text;
                     string passWord = Password.Password;
+                    var sString = Password.SecurePassword;
+                    MessageBox.Show(sString.ToString());
                     SecurityModule.Reload();
                     if (SecurityModule.authenticate(userName, passWord))
                     {

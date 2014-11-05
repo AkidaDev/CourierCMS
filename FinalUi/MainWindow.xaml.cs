@@ -1495,5 +1495,11 @@ namespace FinalUi
             this.ServiceRuleGrid.Items.Refresh();
             this.InvoiceRuleGrid.Items.Refresh();
         }
+
+        private void InvoiceAnalysis_Click(object sender, RoutedEventArgs e)
+        {
+            InvoiceReport invoiceReportWindow = new InvoiceReport();
+            invoiceReportWindow.Show();
+        }
     }
 }
