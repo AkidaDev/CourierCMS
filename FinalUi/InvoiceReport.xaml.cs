@@ -48,6 +48,14 @@ namespace FinalUi
         void bgWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             Analyzeprogress.Value = e.ProgressPercentage;
+            if (Analyzeprogress.Value == 100 || Analyzeprogress.Value == 0)
+            {
+                Analyzeprogress.Visibility = Visibility.Hidden;
+            }
+           else
+           {
+               Analyzeprogress.Visibility = Visibility.Visible;
+           }
         }
 
         void bgWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -177,5 +185,13 @@ namespace FinalUi
                 bgWorker.RunWorkerAsync(FilePathBlock.Text);
         }
 
+        private void Button_Click_Close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+        private void DragthisWindow(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }
