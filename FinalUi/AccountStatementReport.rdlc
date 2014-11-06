@@ -693,7 +693,7 @@
         </Style>
       </Line>
       <Line Name="Line30">
-        <Top>4.50967in</Top>
+        <Top>3.14856in</Top>
         <Left>0.08374in</Left>
         <Height>0in</Height>
         <Width>11.42622in</Width>
@@ -721,8 +721,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox136</rd:DefaultName>
-        <Top>4.093in</Top>
-        <Left>8.87029in</Left>
+        <Top>2.6814in</Top>
+        <Left>8.80165in</Left>
         <Height>0.25in</Height>
         <Width>1.14583in</Width>
         <ZIndex>3</ZIndex>
@@ -755,10 +755,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>4.093in</Top>
-        <Left>10.12803in</Left>
+        <Top>2.6814in</Top>
+        <Left>9.94748in</Left>
         <Height>0.25in</Height>
-        <Width>1.38194in</Width>
+        <Width>1.5625in</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -1721,40 +1721,6 @@
                 </CellContents>
               </TablixCornerCell>
             </TablixCornerRow>
-            <TablixCornerRow>
-              <TablixCornerCell>
-                <CellContents>
-                  <Textbox Name="Textbox12">
-                    <CanGrow>true</CanGrow>
-                    <KeepTogether>true</KeepTogether>
-                    <Paragraphs>
-                      <Paragraph>
-                        <TextRuns>
-                          <TextRun>
-                            <Value>DebitNote.:</Value>
-                            <Style>
-                              <FontWeight>Bold</FontWeight>
-                            </Style>
-                          </TextRun>
-                        </TextRuns>
-                        <Style>
-                          <TextAlign>Right</TextAlign>
-                        </Style>
-                      </Paragraph>
-                    </Paragraphs>
-                    <rd:DefaultName>Textbox12</rd:DefaultName>
-                    <Style>
-                      <Border>
-                        <Color>LightGrey</Color>
-                        <Style>None</Style>
-                      </Border>
-                      <VerticalAlign>Middle</VerticalAlign>
-                      <PaddingRight>2pt</PaddingRight>
-                    </Style>
-                  </Textbox>
-                </CellContents>
-              </TablixCornerCell>
-            </TablixCornerRow>
           </TablixCornerRows>
         </TablixCorner>
         <TablixBody>
@@ -1769,14 +1735,14 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox11">
+                    <Textbox Name="Textbox9">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Parameters!TotalDiscount.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
@@ -1785,7 +1751,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox11</rd:DefaultName>
+                      <rd:DefaultName>Textbox9</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1842,47 +1808,7 @@
                 </CellContents>
               </TablixHeader>
               <TablixMembers>
-                <TablixMember>
-                  <Group Name="ColumnGroup3">
-                    <GroupExpressions>
-                      <GroupExpression />
-                    </GroupExpressions>
-                  </Group>
-                  <TablixHeader>
-                    <Size>0.23876in</Size>
-                    <CellContents>
-                      <Textbox Name="Textbox9">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>=Parameters!TotalDiscount.Value</Value>
-                                <Style>
-                                  <FontSize>8pt</FontSize>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style />
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox9</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>None</Style>
-                          </Border>
-                          <VerticalAlign>Middle</VerticalAlign>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixHeader>
-                </TablixMember>
+                <TablixMember />
               </TablixMembers>
             </TablixMember>
           </TablixMembers>
@@ -1898,14 +1824,14 @@
               <TablixHeader>
                 <Size>1.13542in</Size>
                 <CellContents>
-                  <Textbox Name="Textbox15">
+                  <Textbox Name="Textbox12">
                     <CanGrow>true</CanGrow>
                     <KeepTogether>true</KeepTogether>
                     <Paragraphs>
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value />
+                            <Value>DebitNote.:</Value>
                             <Style>
                               <FontWeight>Bold</FontWeight>
                             </Style>
@@ -1916,7 +1842,7 @@
                         </Style>
                       </Paragraph>
                     </Paragraphs>
-                    <rd:DefaultName>Textbox15</rd:DefaultName>
+                    <rd:DefaultName>Textbox12</rd:DefaultName>
                     <Style>
                       <Border>
                         <Color>LightGrey</Color>
@@ -1934,9 +1860,9 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <Top>2.8064in</Top>
-        <Left>8.62456in</Left>
-        <Height>0.71628in</Height>
+        <Top>2.65715in</Top>
+        <Left>0.08376in</Left>
+        <Height>0.47752in</Height>
         <Width>2.88542in</Width>
         <ZIndex>13</ZIndex>
         <Style>
@@ -1965,7 +1891,7 @@
       </RightBorder>
     </Style>
   </Body>
-  <Width>11.74957in</Width>
+  <Width>11.60374in</Width>
   <Page>
     <PageHeader>
       <Height>0.33681in</Height>
