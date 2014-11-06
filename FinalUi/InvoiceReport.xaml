@@ -7,7 +7,7 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.1*"/>
             <RowDefinition Height="0.95*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
@@ -18,9 +18,18 @@
             <WrapPanel>
                 <Button Content="Open" Name="OpenButton" Click="OpenButton_Click"/>
             </WrapPanel>
+            <ProgressBar Name="Analyzeprogress" Height="30"/>
         </StackPanel>
-        <DataGrid Visibility="Visible" Grid.Row="1" ItemsSource="{Binding}" DataContext="{StaticResource ResultData}">
-            
+        <DataGrid Visibility="Visible" AutoGenerateColumns="False" Grid.Row="1" ItemsSource="{Binding}" DataContext="{StaticResource ResultData}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="SrlNo" Binding="{Binding SrlNo}"/>
+                <DataGridTextColumn Header="ConnsignmentNo" Binding="{Binding ConnNo}"/>
+                <DataGridTextColumn Header="Destination" Binding="{Binding Destination}"/>
+                <DataGridTextColumn Header="Service" Binding="{Binding serviceCode}"/>
+                <DataGridTextColumn Header="Amount" Binding="{Binding Amount}"/>
+                <DataGridTextColumn Header="hasError" Binding="{Binding hasError}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Error Discription" Binding="{Binding MisMatchDesc}"/>
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 </Window>

@@ -183,7 +183,8 @@ namespace FinalUi
         static void MyHandler(object sender, UnhandledExceptionEventArgs args)
         {
             Exception e = (Exception)args.ExceptionObject;
-            MessageBox.Show("Sorry vortex Crashed and  we know this is very terible for you. But you can help us by contacting with message mentioned under \n Error Message: " + e.Message + "\n Application is termination now", "oops!!");
+            MessageBox.Show("Vortex Crashed. You can help us by contacting with message mentioned under \n Error Message: " + e.Message + "\n Application will be restarting now", "Oops!!");
+            System.Windows.Forms.Application.Restart();
         }
         #region DataEntrySection
         #region backGround Worker Functions

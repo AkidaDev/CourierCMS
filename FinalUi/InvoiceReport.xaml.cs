@@ -2,6 +2,7 @@
 using iTextSharp.text.pdf.parser;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -24,43 +25,41 @@ namespace FinalUi
     /// </summary>
     public partial class InvoiceReport : Window
     {
-        string filePath;
+        BackgroundWorker bgWorker;
         List<string> unreadableData;
         IQueryable<InvoiceAnalyzeResult> Results;
         public InvoiceReport()
         {
             InitializeComponent();
-        }
-        private void initializeReport(string lines)
-        {
-            List<string> recordString = new List<string>();
-            foreach (string line in lines.Split('\n'))
-            {
-            }
+            bgWorker = new BackgroundWorker();
+            bgWorker.DoWork += bgWorker_DoWork;
+            bgWorker.ProgressChanged += bgWorker_ProgressChanged;
+            bgWorker.WorkerReportsProgress = true;
+            bgWorker.RunWorkerCompleted += bgWorker_RunWorkerCompleted;
         }
 
-        private void BrowseButton_Click(object sender, RoutedEventArgs e)
+        void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
-            Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
-            dialog.DefaultExt = ".pdf";
-            dialog.Filter = "(.pdf)|*.pdf";
-            Nullable<bool> result = dialog.ShowDialog();
-            if (result == true)
-            {
-                FilePathBlock.Text = dialog.FileName;
-            }
+            CollectionViewSource ResultCollection = (CollectionViewSource)FindResource("ResultData");
+            ResultCollection.Source = Results.ToList();
+            MessageBox.Show("Analysis done", "Info");
         }
-        public void AnalyzeResults(string filePath)
+
+        void bgWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            Analyzeprogress.Value = e.ProgressPercentage;
+        }
+
+        void bgWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             unreadableData = new List<string>();
             Guid Id = Guid.NewGuid();
             BillingDataDataContext db = new BillingDataDataContext();
             MatchCollection matches;
-
+            double progress = 0;
             try
             {
-                PdfReader reader = new PdfReader(filePath);
+                PdfReader reader = new PdfReader((string)e.Argument);
                 StringBuilder text = new StringBuilder();
                 for (int i = 1; i <= reader.NumberOfPages; i++)
                 {
@@ -68,13 +67,15 @@ namespace FinalUi
                 }
                 Regex reg = new Regex(@"(\d+)\s+([A-Za-z]\d+)\s+\d+\s+(\d{1,2}/){2}\d{2}\s+([^\d]*)(\d+\.\d*)\s+(\w{3})\s+([^\d]*\d+\.\d*)");
                 matches = reg.Matches(text.ToString());
-                MessageBox.Show("Regex Parsing Done");
+                progress = 5;
+                bgWorker.ReportProgress((int)progress);
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 throw new Exception("Unable to parse invoice");
             }
+            double count = matches.Count, ctr = 0;
             foreach (Match match in matches)
             {
                 InvoiceAnalyzeResult data = new InvoiceAnalyzeResult();
@@ -101,15 +102,18 @@ namespace FinalUi
                 }
                 else
                     unreadableData.Add(match.Groups[1].Value);
+                ctr++;
+                bgWorker.ReportProgress((int)(((ctr / count) * 50) + progress));
             }
-            MessageBox.Show("Insertion of data done");
-            //    TestTextBox.AppendText(text.ToString());
             Results = db.InvoiceAnalyzeResults.Where(x => x.AnalyzeId == Id);
             List<TransactionCityView> Transactions = (from transaction in db.TransactionCityViews
                                                       join result in Results
                                                       on transaction.ConnsignmentNo equals result.ConnNo
                                                       select transaction).ToList();
-            MessageBox.Show("Selection of data done");
+            progress = 60;
+            bgWorker.ReportProgress((int)progress);
+            count = Results.Count();
+            ctr = 0;
             foreach (InvoiceAnalyzeResult result in Results)
             {
                 TransactionCityView trans = Transactions.SingleOrDefault(x => x.ConnsignmentNo == result.ConnNo);
@@ -126,12 +130,12 @@ namespace FinalUi
                     result.hasError = true;
                     result.MisMatchDesc = "Weight should be " + trans.WeightByFranchize;
                 }
-                if (trans.CITY_DESC != result.Destination)
+                if (trans.CITY_DESC.Trim() != result.Destination.Trim())
                 {
                     result.hasError = true;
                     result.MisMatchDesc = result.MisMatchDesc + ", Destination should be " + trans.CITY_DESC;
                 }
-                if (trans.Type != result.serviceCode)
+                if (trans.Type.Trim() != result.serviceCode.Trim())
                 {
                     result.hasError = true;
                     result.MisMatchDesc = result.MisMatchDesc + ", Service should be " + trans.Type;
@@ -142,8 +146,23 @@ namespace FinalUi
                     result.hasError = true;
                     result.MisMatchDesc = result.MisMatchDesc + ", Amount should be " + trans.AmountCharged;
                 }
+                ctr++;
+                bgWorker.ReportProgress((int)(((ctr / count) * 30) + progress));
             }
-            MessageBox.Show("Analysis done");
+            bgWorker.ReportProgress(100);
+        }
+
+        private void BrowseButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
+            dialog.DefaultExt = ".pdf";
+            dialog.Filter = "(.pdf)|*.pdf";
+            Nullable<bool> result = dialog.ShowDialog();
+            if (result == true)
+            {
+                FilePathBlock.Text = dialog.FileName;
+            }
         }
         private void OpenButton_Click(object sender, RoutedEventArgs e)
         {
@@ -152,13 +171,11 @@ namespace FinalUi
                 MessageBox.Show("Unable to open file", "Error");
                 return;
             }
-            AnalyzeResults(FilePathBlock.Text);
-            AnalysisDone();
+            if (bgWorker.IsBusy)
+                MessageBox.Show("An analysis is already in progress");
+            else
+                bgWorker.RunWorkerAsync(FilePathBlock.Text);
         }
-        private void AnalysisDone()
-        {
-            CollectionViewSource ResultCollection = (CollectionViewSource)FindResource("ResultData");
-            ResultCollection.Source = Results;
-        }
+
     }
 }

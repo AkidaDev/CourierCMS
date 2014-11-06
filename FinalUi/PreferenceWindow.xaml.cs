@@ -69,6 +69,8 @@ namespace FinalUi
                 {
                     Configs.Default.Reset();
                     System.Windows.Forms.Application.Restart();
+                    Application.Current.Shutdown();
+
                 }
             }
             else { return; }
