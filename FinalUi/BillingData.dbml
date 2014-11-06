@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BillingDatabase" Class="BillingDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="ConnectionString" ConnectionString="Data Source=RIZWANKHAN;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa;Password=Alver!22" Provider="System.Data.SqlClient" />
+  <Connection Mode="ConnectionString" ConnectionString="Data Source=SYSTEM;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa" Provider="System.Data.SqlClient" />
   <Table Name="dbo.City" Member="Cities">
     <Type Name="City">
       <Column Name="CITY_CODE" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -393,6 +393,20 @@
       <Column Name="TransMF_No" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="BilledWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="CITY_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InvoiceAnalyzeResult" Member="InvoiceAnalyzeResults">
+    <Type Name="InvoiceAnalyzeResult">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AnalyzeId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="SrlNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ConnNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Weight" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Destination" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MisMatchDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="serviceCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="hasError" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.sp_deleteSheetFromRuntime" Method="sp_deleteSheetFromRuntime">
