@@ -26,6 +26,7 @@
                 <DataGridTextColumn Header="ConnsignmentNo" Binding="{Binding ConnNo}"/>
                 <DataGridTextColumn Header="Destination" Binding="{Binding Destination}"/>
                 <DataGridTextColumn Header="Service" Binding="{Binding serviceCode}"/>
+                <DataGridTextColumn Header="Weight" Binding="{Binding Weight}"/>
                 <DataGridTextColumn Header="Amount" Binding="{Binding Amount}"/>
                 <DataGridTextColumn Header="hasError" Binding="{Binding hasError}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Error Discription" Binding="{Binding MisMatchDesc}"/>

@@ -158,7 +158,7 @@ namespace FinalUi
         {
             get
             {
-                return this.SER_DESC + " (" + this.SER_CODE + ")";
+                return this.SER_CODE + ":" +  this.SER_DESC;
             }
         }
     }
@@ -168,7 +168,7 @@ namespace FinalUi
         {
             get
             {
-                return this.Zone_name + " (" + this.zcode + ")";
+                return this.zcode + ":" +  this.Zone_name ;
             }
         }
     }
@@ -178,7 +178,7 @@ namespace FinalUi
         {
             get
             {
-                return this.STATE_DESC + " (" + this.STATE_CODE + ")";
+                return this.STATE_CODE + ":" + this.STATE_DESC;
             }
         }
     }
@@ -188,7 +188,7 @@ namespace FinalUi
         {
             get
             {
-                return this.CITY_DESC + " (" + this.CITY_CODE + ")";
+                return this.CITY_CODE + ":" + this.CITY_DESC;
             }
         }
     }
