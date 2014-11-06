@@ -141,18 +141,18 @@ namespace FinalUi
                 if (trans.CITY_DESC.Trim() != result.Destination.Trim())
                 {
                     result.hasError = true;
-                    result.MisMatchDesc = result.MisMatchDesc + ", Destination should be " + trans.CITY_DESC;
+                    result.MisMatchDesc = result.MisMatchDesc + " Destination should be " + trans.CITY_DESC;
                 }
                 if (trans.Type.Trim() != result.serviceCode.Trim())
                 {
                     result.hasError = true;
-                    result.MisMatchDesc = result.MisMatchDesc + ", Service should be " + trans.Type;
+                    result.MisMatchDesc = result.MisMatchDesc + " Service should be " + trans.Type;
                 }
                 trans.AmountCharged = (decimal)UtilityClass.getCost("<DTDC>", (double)trans.WeightByFranchize, trans.Destination, trans.Type, trans.DOX);
                 if (trans.AmountCharged != (decimal)result.Amount)
                 {
                     result.hasError = true;
-                    result.MisMatchDesc = result.MisMatchDesc + ", Amount should be " + trans.AmountCharged;
+                    result.MisMatchDesc = result.MisMatchDesc + " Amount should be " + trans.AmountCharged;
                 }
                 ctr++;
                 bgWorker.ReportProgress((int)(((ctr / count) * 30) + progress));
