@@ -52,11 +52,6 @@ namespace FinalUi
         }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnectionStringBuilder bd = new SqlConnectionStringBuilder();
-            bd.DataSource = ConnectionStringCombo.Text;
-            bd.UserID = "sa";
-            bd.Password = "Alver!22";
-            Configs.Default.BillingDatabaseConnectionString = bd.ConnectionString;
             Configs.Default.Background = ThemeColorPicker.SelectedColorText;
             Configs.Default.Tin = this.Pannumber.Text ?? "";
             Configs.Default.TNC = TNCBox.Text;
