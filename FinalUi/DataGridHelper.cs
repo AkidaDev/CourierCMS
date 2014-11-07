@@ -278,7 +278,6 @@ namespace FinalUi
                     this.notifyPropertyChanged("rowsPerPage");
                     refreshCurrentPage();
                 }
-
             }
         }
         public int currentPageNo
