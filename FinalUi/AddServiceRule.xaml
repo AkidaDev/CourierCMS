@@ -36,8 +36,8 @@
                 </WrapPanel>
                 <WrapPanel Canvas.Left="150" Canvas.Top="165">
                     <TextBlock Text=" Change  .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="8 0 0 0"/>
-                    <RadioButton Name="IncRadio" IsChecked="True" Content="Increasing &#8593; " FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
-                    <RadioButton Name="DecRadio" Content="Decreasing &#8595; " FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
+                    <RadioButton Name="IncRadio" IsChecked="True" Content="Increasing ↑ " FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
+                    <RadioButton Name="DecRadio" Content="Decreasing ↓ " FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
                 </WrapPanel>
                 <WrapPanel Canvas.Left="150" Canvas.Top="200">
                     <TextBlock Text=" Mode .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="8 0 0 0"/>
