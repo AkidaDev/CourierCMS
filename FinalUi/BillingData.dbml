@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BillingDatabase" Class="BillingDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="ConnectionString" ConnectionString="Data Source=SYSTEM;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa" Provider="System.Data.SqlClient" />
+  <Connection Mode="ConnectionString" ConnectionString="Data Source=SYSTEM;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa;Password=Alver!22" Provider="System.Data.SqlClient" />
   <Table Name="dbo.City" Member="Cities">
     <Type Name="City">
       <Column Name="CITY_CODE" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -75,9 +75,9 @@
       <Column Name="UserName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Password" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-      <Association Name="Employee_Stock" Member="Stocks" ThisKey="Id" OtherKey="UserId" Type="Stock" />
       <Association Name="Employee_Transaction" Member="Transactions" ThisKey="Id" OtherKey="UserId" Type="Transaction" />
       <Association Name="Employee_User_permission" Member="User_permissions" ThisKey="Id" OtherKey="emp_id" Type="User_permission" />
+      <Association Name="Employee_Stock" Member="Stocks" ThisKey="Id" OtherKey="UserId" Type="Stock" />
     </Type>
   </Table>
   <Table Name="dbo.Invoice" Member="Invoices">
@@ -219,18 +219,6 @@
       <Column Name="STATE_RO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="STATE_ZONE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Association Name="State_City" Member="Cities" ThisKey="STATE_CODE" OtherKey="CITY_STATE" Type="City" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Stock" Member="Stocks">
-    <Type Name="Stock">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="StockStart" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="StockEnd" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="BookNo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="[desc]" Member="desc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-      <Column Name="cost" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Association Name="Employee_Stock" Member="Employee" ThisKey="UserId" OtherKey="Id" Type="Employee" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.[Transaction]" Member="Transactions">
@@ -407,6 +395,32 @@
       <Column Name="MisMatchDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="serviceCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="hasError" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Stock" Member="Stocks">
+    <Type Name="Stock">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="StockStart" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StockEnd" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BookNo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="[desc]" Member="desc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="cost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="Employee_Stock" Member="Employee" ThisKey="UserId" OtherKey="Id" Type="Employee" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StockAssignmentView" Member="StockAssignmentViews">
+    <Type Name="StockAssignmentView">
+      <Column Name="SrlNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeName" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="BookNo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CostPerSlip" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="StartNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EndNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SlipsUsed" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AddDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.sp_deleteSheetFromRuntime" Method="sp_deleteSheetFromRuntime">

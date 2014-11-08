@@ -57,6 +57,7 @@
                             <MenuItem Header="Clients" x:Name="ManageClient" Click="ManageClient_Click"/>
                             <MenuItem Header="Employees" x:Name="ManageEmployeeMenuItem" Click="ManageEmployee_Click"/>
                             <MenuItem Header="Zones" x:Name="ManageZone" Click="ManageZone_Click"/>
+                            <MenuItem Header="Stock" Name="ManageStocks" Click="ManageStock_Click"/>
                         </MenuItem>
                         <MenuItem Header="Account Statement" x:Name="AccountStatementMenuItem" Click="AccountStatementMenuItem_Click" />
                         <MenuItem Header="Payment Entry"  x:Name="PaymentRecievedMenuItem"  Click="PaymentRecieved_Click"/>

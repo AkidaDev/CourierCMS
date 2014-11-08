@@ -915,6 +915,11 @@ namespace FinalUi
             ZoneAssignment zone = new ZoneAssignment();
             zone.ShowDialog();
         }
+        private void ManageStock_Click(object sender, RoutedEventArgs e)
+        {
+            StockManagmentWindow window = new StockManagmentWindow();
+            window.Show();
+        }
         private void AccountStatementMenuItem_Click(object sender, RoutedEventArgs e)
         {
             AccountStatementReportingWindow window = new AccountStatementReportingWindow(); window.WindowState = WindowState.Maximized; window.Show();

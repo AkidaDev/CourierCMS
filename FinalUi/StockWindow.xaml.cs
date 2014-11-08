@@ -22,6 +22,7 @@ namespace FinalUi
     {
         Stock s;
         List<Employee> emp;
+        bool isUpdate;
         CollectionViewSource empView;
         public StockWindow()
         {
@@ -33,6 +34,25 @@ namespace FinalUi
             this.empView.Source = this.emp;
             this.AssignCombo.ItemsSource = this.emp;
             this.AssignCombo.SelectedItem = null;
+            AddDate.SelectedDate = DateTime.Today;
+            isUpdate = false;
+        }
+        public StockWindow(StockAssignmentView StockAssignment):this()
+        {
+           s = new Stock();
+            s.ID = StockAssignment.SrlNo;
+            s.StockEnd = StockAssignment.EndNumber;
+            s.StockStart = StockAssignment.StartNumber;
+            Employee selectedEmp = emp.SingleOrDefault(x => x.UserName == StockAssignment.EmployeeName);
+            s.UserId = selectedEmp.Id;
+            s.Employee = selectedEmp;
+            s.BookNo = StockAssignment.BookNo;
+            s.cost = StockAssignment.CostPerSlip;
+            s.Date = StockAssignment.AddDate;
+            s.desc = StockAssignment.Description;
+            isUpdate = true;
+            filldetails(s);
+            
         }
         void filldetails(Stock s)
         {
@@ -40,6 +60,10 @@ namespace FinalUi
             this.ToBox.Text = s.StockEnd;
             this.CostBox.Text = s.cost.ToString();
             this.DescriptionBox.Text = s.desc;
+            AssignCombo.SelectedItem = s.Employee;
+            BookNumber.Text = s.BookNo.ToString();
+            AddDate.SelectedDate = s.Date;
+            Add_Filter.Text = "Update Stock";
         }
         bool getdetails()
         {
@@ -57,11 +81,21 @@ namespace FinalUi
                 return false;
             }
             this.s.UserId = e.Id;
+            s.BookNo = BookNumber.Text;
+            if(AddDate.SelectedDate == null)
+            {
+                MessageBox.Show("Please select a date.");
+                return false;
+            }
+            else
+            {
+                s.Date = AddDate.SelectedDate;
+            }
             try
             {
                 this.s.cost = float.Parse(this.CostBox.Text);
             }
-            catch (Exception) { MessageBox.Show("cost should be number"); return false; }
+            catch (Exception) { MessageBox.Show("Cost should be number"); return false; }
 
             return true;
         }
@@ -71,22 +105,53 @@ namespace FinalUi
             if (getdetails())
             {
                 BillingDataDataContext db = new BillingDataDataContext();
-                db.Stocks.InsertOnSubmit(this.s);
-                try
+                if (!isUpdate)
                 {
+                    db.Stocks.InsertOnSubmit(this.s);
                     try
+                    {
+                        try
                         {
                             db.SubmitChanges();
                             flag = true;
                         }
-                    catch (Exception ex) { MessageBox.Show(ex.Message); flag = false; return; }
-                    
+                        catch (Exception ex) { MessageBox.Show(ex.Message); flag = false; return; }
+
+                    }
+                    catch (Exception d) { flag = false; MessageBox.Show(d.Message); return; }
+                    if (flag)
+                    {
+                        MessageBox.Show("Stock added","Info");
+                        this.Close();
+                    }
                 }
-                catch (Exception d) { flag = false; MessageBox.Show(d.Message); return; }
-                if (flag)
+                else
                 {
-                    MessageBox.Show("Stock added");
-                    this.Close();
+                    Stock stockEntry = db.Stocks.SingleOrDefault(x => x.ID == s.ID);
+                    if(stockEntry == null)
+                    {
+                        MessageBox.Show("This stock entry doesn't exists","Error");
+                        return;
+                    }
+                    else
+                    {
+                        stockEntry.BookNo = s.BookNo;
+                        stockEntry.cost = s.cost;
+                        stockEntry.Date = s.Date;
+                        stockEntry.desc = s.desc;
+                        stockEntry.StockEnd = s.StockEnd;
+                        stockEntry.StockStart = s.StockStart;
+                        stockEntry.UserId = s.UserId;
+                        try
+                        {
+                            db.SubmitChanges();
+                            MessageBox.Show("Stock successfully updated");
+                        }
+                        catch(Exception ex)
+                        {
+                            MessageBox.Show("Cannot update stock entry. Error: " + ex.Message);
+                        }
+                    }
                 }
             }
         }

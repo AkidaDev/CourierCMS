@@ -1,0 +1,43 @@
+﻿<Window x:Class="FinalUi.StockManagmentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="StockManagmentWindow" Height="768" Width="1024">
+    <Window.Resources>
+        <CollectionViewSource x:Key="StockAssignmentList" CollectionViewType="ListCollectionView"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.8*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <WrapPanel>
+                <Button Name="AddStockButton" Content="Add new stock entry" Click="AddStockButton_Click"/>
+                <Button Margin="20 0 0 0" Content="Refresh Data" Name="RefreshDataButton" Click="RefreshDataButton_Click"/>
+                <Button Margin="20 0 0 0" Name="UpdateStockButton" Content="Update existing stock entry" Click="UpdateStockButton_Click"/>
+                <Button Margin="20 0 0 0" Name="DeleteStockButton" Content="Delete existing stock entry" Click="DeleteStockButton_Click"/>
+            </WrapPanel>
+            <WrapPanel Margin="0 10 0 0">
+                <TextBlock Text="From Date: "></TextBlock>
+                <DatePicker Name="FromDatePicker"/>
+                <TextBlock Text="To Date:" Margin="10 0 0 0"/>
+                <DatePicker Name="ToDatePicker"/>
+            </WrapPanel>
+        </StackPanel>
+        <DataGrid Name="StockAssignmentDatagrid" SelectionMode="Single" AutoGenerateColumns="False" Grid.Row="1" DataContext="{StaticResource StockAssignmentList}" ItemsSource="{Binding}" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="SrlNo" Binding="{Binding SrlNo}"/>
+                <DataGridTextColumn Header="Employee" Binding="{Binding EmployeeName}"/>
+                <DataGridTextColumn Header="Start Number" Binding="{Binding StartNumber}"/>
+                <DataGridTextColumn Header="End Number" Binding="{Binding EndNumber}"/>
+                <DataGridTextColumn Header="TotalSlipAssigned" Binding="{Binding AssignedCount}"/>
+                <DataGridTextColumn Header="SlipsUsed" Binding="{Binding SlipsUsed}"/>
+                <DataGridTextColumn Header="SlipsRemaining" Binding="{Binding SlipsRemaining}"/>
+                <DataGridTextColumn Header="Add Date" Binding="{Binding AddDate}"/>
+                <DataGridTextColumn Header="Book No" Binding="{Binding BookNo}"/>
+                <DataGridTextColumn Header="Cost per slip" Binding="{Binding CostPerSlip}"/>
+                <DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
