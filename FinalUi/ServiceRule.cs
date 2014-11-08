@@ -77,7 +77,7 @@ namespace FinalUi
         public void applyRule(object obj)
         { 
         }
-        public void applyRule(Object obj, double origAmount)
+        public bool applyRule(Object obj, double origAmount)
         {
             RuntimeData runData = (RuntimeData)obj;
             double amount;
@@ -113,6 +113,7 @@ namespace FinalUi
             }
             else
                 runData.FrAmount = (decimal)((double)runData.FrAmount - amount);
+            return true;
         }
         public void encodeString()
         {}

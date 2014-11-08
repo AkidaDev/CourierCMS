@@ -12,8 +12,9 @@ namespace FinalUi
         public  List<string> ZoneList { get; set; }
         public List<string> StateList { get; set; }
         public List<string> CityList { get; set; }
-        public  void applyRule(object obj)
+        public  bool applyRule(object obj, double original)
         {
+            return true;
         }
         public void encodeString() { }
         public void decodeString(){ }

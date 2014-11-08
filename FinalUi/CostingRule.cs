@@ -158,7 +158,7 @@ namespace FinalUi
             }
         }
         #endregion
-        public void applyRule(object obj)
+        public bool applyRule(object obj, double billedWeight)
         {
             RuntimeData trans = (RuntimeData)obj;
             if (type == 'R')
@@ -166,9 +166,11 @@ namespace FinalUi
                 if (char.ToUpper((char)trans.DOX) == 'D')
                 {
                     trans.FrAmount = Convert.ToDecimal(doxAmount);
+                    return true;
                 }
                 else
                     trans.FrAmount = Convert.ToDecimal(ndoxAmount);
+                    return true;
             }
             else
             {
@@ -182,11 +184,15 @@ namespace FinalUi
                     startAmount = ndStartValue;
                 }
                 int steps = 0;
-                double restWeight = (double)trans.BilledWeight - startW;
-                steps = (int)(restWeight / stepWeight);
-                steps++;
+                double restWeight = billedWeight - startW;
+                steps = (int)(restWeight / stepWeight)+1;
                 trans.FrAmount = (decimal)(startAmount + steps * multiAmount);
+                return false;
             }
+        }
+        public CostingRule getCostingRule()
+        {
+            return new CostingRule();
         }
         public void encodeString()
         {

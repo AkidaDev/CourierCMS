@@ -55,7 +55,7 @@
                         </WrapPanel>
                     </WrapPanel>
                     <WrapPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,28,25" >
-
+                        <Button Content="Reset" Click="DefaultButton_Click" Visibility="Visible" />
                         <Button Margin="30 0 0 0" Name="SaveInvoiceButton" Click="SaveButton_Click" Style="{StaticResource all}">
                             <Button.Content>
                                 <WrapPanel Margin="6,3,6,3" >

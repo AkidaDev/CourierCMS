@@ -19,7 +19,7 @@ namespace FinalUi
                 window.ShowDialog();
             }
             AppDomain currentDomain = AppDomain.CurrentDomain;
-            // currentDomain.UnhandledException += new UnhandledExceptionEventHandler(MyHandler);
+             currentDomain.UnhandledException += new UnhandledExceptionEventHandler(MyHandler);
             try
             {
                 //  throw new Exception("1");

@@ -20,15 +20,15 @@ namespace FinalUi
             dt.Destination = destination;
             dt.Type = serviceCode;
             dt.DOX = DOX;
-            return applyCostingRulesOnTransaction(dt);
+            return applyCostingRulesOnTransaction(dt,(double)dt.BilledWeight);
         }
-        public double applyCostingRulesOnTransaction(RuntimeData trans)
+        public double applyCostingRulesOnTransaction(RuntimeData trans, double billedWeight)
         {
             if (costingRules == null)
             {
                 initializeRules();
             }
-            List<CostingRule> RulesApplied = costingRules.Where(x => x.startW <= trans.BilledWeight && x.endW >= trans.BilledWeight).ToList();
+            List<CostingRule> RulesApplied = costingRules.Where(x => x.startW <= billedWeight && x.endW >= billedWeight).ToList();
             if (RulesApplied.Where(x => x.CityList.Contains(trans.Destination)).Count() > 0)
             {
                 RulesApplied = RulesApplied.Where(x => x.CityList.Contains(trans.Destination)).ToList();
@@ -55,15 +55,20 @@ namespace FinalUi
             decimal price = 0;
             RulesApplied.ForEach((x) =>
             {
-                x.applyRule(trans);
+                if (!x.applyRule(trans, billedWeight))
+                {
+                    CostingRule RulesApplied2 = costingRules.Where(u => u.endW < x.startW ).OrderByDescending(z => z.endW).FirstOrDefault();
+                    if(RulesApplied2!=null)
+                       trans.FrAmount += (decimal)applyCostingRulesOnTransaction(trans, RulesApplied2.endW);
+                }
                 if (price < trans.FrAmount)
                 {
                     price = (decimal)trans.FrAmount;
-                    lastCostingRuleApplied = null;
                 }
             });
             return Convert.ToDouble(price);
         }
+
         public List<CostingRule> CostingRules
         {
             get
