@@ -34,7 +34,7 @@
             <Canvas Canvas.Left="-30" Canvas.Top="4" >
                 <TextBlock  Canvas.Top="171" Canvas.Left="60"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Previous Due .:"/>
                 <TextBox  Canvas.Top="166"  Canvas.Left="175" Height="22" x:Name="PreviousDueTextBox" Width="50" Padding="10 2 0 0"/>
-                <TextBlock Text="&#8377;" Canvas.Top="168" Canvas.Left="178" FontSize="14" FontWeight="Bold"/>
+                <TextBlock Text="₹" Canvas.Top="168" Canvas.Left="178" FontSize="14" FontWeight="Bold"/>
                 <Path x:Name="line1" Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Canvas.Left="230" Canvas.Top="162" Width="3"/>
                 <TextBlock Canvas.Top="171"  Canvas.Left="244" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Fuel Surcharge .:"/>
                 <TextBox Canvas.Top="166"  Canvas.Left="371" x:Name="TaxBox" Width="50" Height="22" Padding="2" />
@@ -47,7 +47,7 @@
             <Canvas Canvas.Top="5" Visibility="Visible">
                 <TextBlock  Canvas.Top="213.33" Canvas.Left="60" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Miscellaneous Charges .:"/>
                 <TextBox Canvas.Top="208" Canvas.Left="246" Height="22" x:Name="MiscBox" Width="57" Padding="10 2 0 0"/>
-                <TextBlock Text="&#8377;" Canvas.Top="210" Canvas.Left="249" FontSize="14" FontWeight="Bold"/>
+                <TextBlock Text="₹" Canvas.Top="210" Canvas.Left="249" FontSize="14" FontWeight="Bold"/>
                 <Path x:Name="Discount" Data="F1M3.844,19.156C3.281,19.156 2.825,19.606 2.825,20.159 2.825,20.714 3.281,21.163 3.844,21.163 4.407,21.163 4.863,20.714 4.863,20.159 4.863,19.606 4.407,19.156 3.844,19.156z M15.513,9.991C15.513,9.991 7.26,18.119 7.26,18.119 7.26,18.119 8.433,19.274 8.433,19.274 8.433,19.274 16.686,11.146 16.686,11.146 16.686,11.146 15.513,9.991 15.513,9.991z M12.959,7.376C12.959,7.376 4.654,15.554 4.654,15.554 4.654,15.554 5.826,16.709 5.826,16.709 5.826,16.709 14.131,8.53 14.131,8.53 14.131,8.53 12.959,7.376 12.959,7.376z M13.112,2.419C13.112,2.419 22,11.167 22,11.167 22,11.167 9.906,22.979 9.906,22.979 9.906,22.979 1,23 1,23 1,23 1.02,14.229 1.02,14.229 1.02,14.229 13.112,2.419 13.112,2.419z M8.276,1C8.276,1 11.544,2.53 11.544,2.53 11.544,2.53 2.875,10.797 2.875,10.797 2.875,10.797 8.276,1 8.276,1z" Fill="Black" Height="19" Canvas.Left="329" Canvas.Top="212" Width="19" Stretch="Fill"/>
                 <TextBlock  Canvas.Top="213" Canvas.Left="352" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Discount .:"/>
                 <TextBox Name="DiscountBox" Canvas.Top="208" Canvas.Left="434" Height="22"  Width="57" Padding="2"/>

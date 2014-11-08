@@ -39,17 +39,8 @@
                     <RadioButton GroupName="PaymentOptionRadio"  IsChecked="True" Name="ChequeRadio" Content="Cheque" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="172" Canvas.Top="166" Padding="5 -5 0 0" />
                     <Path x:Name="Shape_1" Data="F1M5.375,17C5.375,17 5.375,18.667 5.375,18.667 5.375,18.667 15.5,18.667 15.5,18.667 15.5,18.667 15.5,17 15.5,17 15.5,17 5.375,17 5.375,17z M13.812,12C13.812,12 13.812,13.667 13.812,13.667 13.812,13.667 15.5,13.667 15.5,13.667 15.5,13.667 15.5,12 15.5,12 15.5,12 13.812,12 13.812,12z M5.375,12C5.375,12 5.375,13.667 5.375,13.667 5.375,13.667 12.125,13.667 12.125,13.667 12.125,13.667 12.125,12 12.125,12 12.125,12 5.375,12 5.375,12z M2,8.667C2,8.667 29,8.667 29,8.667 29,8.667 29,20.333 29,20.333 29,21.254 28.244,22 27.312,22 27.312,22 3.687,22 3.687,22 2.756,22 2,21.254 2,20.333 2,20.333 2,8.667 2,8.667z M3.687,2C3.687,2 27.312,2 27.312,2 28.244,2 29,2.746 29,3.667 29,3.667 29,5.333 29,5.333 29,5.333 2,5.333 2,5.333 2,5.333 2,3.667 2,3.667 2,2.746 2.756,2 3.687,2z" Fill="Black" Canvas.Left="331"  Canvas.Top="162.5"/>
                     <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="365" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Amount .:" Canvas.Top="165"/>
-                    <TextBox Name="AmountTextBox" Padding="15 1 0 0" Height="24" Canvas.Left="444" Canvas.Top="159" Width="103" FontSize="14"/>
-                    <Path Canvas.Left="448" Canvas.Top="164" Fill="Black" Stretch="Fill" Data="M898 1066v-102q0 -14 -9 -23t-23 -9h-168q-23 -144 -129 -234t-276 -110q167 -178 459 -536q14 -16 4 -34q-8 -18 -29 -18h-195q-16 0 -25 12q-306 367 -498 571q-9 9 -9 22v127q0 13 9.5 22.5t22.5 9.5h112q132 0 212.5 43t102.5 125h-427q-14 0 -23 9t-9 23v102 q0 14 9 23t23 9h413q-57 113 -268 113h-145q-13 0 -22.5 9.5t-9.5 22.5v133q0 14 9 23t23 9h832q14 0 23 -9t9 -23v-102q0 -14 -9 -23t-23 -9h-233q47 -61 64 -144h171q14 0 23 -9t9 -23z" Width="11" Height="14" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" >
-                        <Path.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform ScaleY="-1" ScaleX="1"/>
-                                <SkewTransform AngleY="0" AngleX="0"/>
-                                <RotateTransform Angle="0"/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Path.RenderTransform>
-                    </Path>
+                    <TextBox Name="AmountTextBox" Padding="15 2 0 0" Height="24" Canvas.Left="444" Canvas.Top="159" Width="103" FontSize="14"/>
+                    <TextBlock Text="₹" Canvas.Left="447" Canvas.Top="159" FontSize="18" FontWeight="Bold"/>
                     <Path x:Name="line" Data="F1M1,2C1,2 1,1 1,1 1,1 262,1 262,1 262,1 262,2 262,2 262,2 1,2 1,2" Fill="Black" Height="1" Canvas.Left="38" Canvas.Top="204" Width="402.5" Stretch="Fill"/>
                     <Canvas Canvas.Top="35" Canvas.Left="5">
                         <Path x:Name="remark" Data="F1M18.387,5.167C17.681,5.167 17.109,5.764 17.109,6.5 17.109,7.235 17.681,7.832 18.387,7.832 19.092,7.832 19.664,7.235 19.664,6.5 19.664,5.764 19.092,5.167 18.387,5.167z M2.488,1C2.488,1 17.444,1 17.444,1 17.666,1 17.877,1.051 18.067,1.142 18.25,1.205 18.423,1.312 18.569,1.465 18.569,1.465 22.504,5.567 22.504,5.567 23,6.085 23,6.924 22.504,7.442 22.504,7.442 18.64,11.47 18.64,11.47 18.53,11.585 18.405,11.674 18.271,11.738 18.034,11.904 17.75,12 17.444,12 17.444,12 2.488,12 2.488,12 1.666,12 1,11.305 1,10.448 1,10.448 1,2.552 1,2.552 1,1.695 1.666,1 2.488,1z" Fill="Black" Height="13" Canvas.Left="10" Canvas.Top="187" Width="24"/>

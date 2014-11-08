@@ -1261,7 +1261,6 @@
                       <PaddingBottom>2pt</PaddingBottom>
                     </Style>
                   </Textbox>
-                  <rd:Selected>true</rd:Selected>
                 </CellContents>
               </TablixCornerCell>
               <TablixCornerCell>
@@ -4723,7 +4722,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Parameters!Tinnumber.Value</Value>
+                              <Value EvaluationMode="Constant" />
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
@@ -4743,6 +4742,7 @@
                         <VerticalAlign>Middle</VerticalAlign>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>

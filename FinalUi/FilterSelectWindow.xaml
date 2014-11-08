@@ -47,7 +47,7 @@
                     <Path x:Name="Rectangle2" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Stretch="Fill" Height="23" Canvas.Left="364" Canvas.Top="185" Width="98" Stroke="DarkGray"/>
                 </Canvas>
                 <Canvas Canvas.Top="-20">
-                    <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="&#8377; Price .:" Canvas.Top="246" Canvas.Left="1"/>
+                    <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="₹ Price .:" Canvas.Top="246" Canvas.Left="1"/>
                     <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="106" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="From .:" Canvas.Top="246"/>
                     <TextBox Name="StartPriceValue" Height="20" Canvas.Left="163" Canvas.Top="242" Width="85"/>
                     <Path x:Name="start_Copy" Data="F1M11.605,8.832C11.605,8.832 11.605,19 11.605,19 11.605,19 6.395,19 6.395,19 6.395,19 6.395,8.832 6.395,8.832 6.395,8.832 2,8.832 2,8.832 2,8.832 9,2 9,2 9,2 16,8.832 16,8.832 16,8.832 11.605,8.832 11.605,8.832z" Fill="Black" Height="20" Canvas.Left="251" Canvas.Top="241" Width="17"/>
