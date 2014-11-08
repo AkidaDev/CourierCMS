@@ -191,5 +191,17 @@ namespace FinalUi {
                 this["SuperUser"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Tin {
+            get {
+                return ((string)(this["Tin"]));
+            }
+            set {
+                this["Tin"] = value;
+            }
+        }
     }
 }

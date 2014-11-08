@@ -188,7 +188,7 @@ namespace FinalUi
         {
             get
             {
-                return this.CITY_CODE + ":" + this.CITY_DESC;
+                return  this.CITY_DESC + "(" + this.CITY_CODE + ")" ;
             }
         }
     }

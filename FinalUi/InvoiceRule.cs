@@ -16,8 +16,6 @@ namespace FinalUi
         {
         }
         public void encodeString() { }
-        public void decodeString()
-        { }
-
+        public void decodeString(){ }
     }
 }
