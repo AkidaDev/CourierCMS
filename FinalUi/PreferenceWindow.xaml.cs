@@ -52,12 +52,14 @@ namespace FinalUi
         }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnectionStringBuilder bd = new SqlConnectionStringBuilder();
-            bd.DataSource = ConnectionStringCombo.Text;
-            bd.UserID = "sa";
-            bd.Password = "Alver!22";
-            Configs.Default.BillingDatabaseConnectionString = bd.ConnectionString;
             Configs.Default.Background = ThemeColorPicker.SelectedColorText;
+            Configs.Default.Tin = this.Pannumber.Text ?? "";
+            Configs.Default.TNC = TNCBox.Text;
+            Configs.Default.CompanyAddress = CompanyAddressBox.Text;
+            Configs.Default.CompanyEmail = CompanyEmailBox.Text;
+            Configs.Default.CompanyName = CompanyNameBox.Text;
+            Configs.Default.CompanyOwner = CompanyOwnerBox.Text;
+            Configs.Default.CompanyPhone = CompanyContactBox.Text;
             Configs.Default.Save();
             this.Close();
         }
@@ -70,7 +72,6 @@ namespace FinalUi
                     Configs.Default.Reset();
                     System.Windows.Forms.Application.Restart();
                     Application.Current.Shutdown();
-
                 }
             }
             else { return; }
@@ -94,47 +95,26 @@ namespace FinalUi
         {
             DragMove();
         }
-
         private void cloakAll()
         {
             this.BackgroundSettingGrid.Visibility = Visibility.Collapsed;
             this.CompanyDetails.Visibility = Visibility.Collapsed;
             this.InvoicePanel.Visibility = Visibility.Collapsed;
         }
-
         private void settingtreeview_Click(object sender, RoutedEventArgs e)
         {
             cloakAll();
             this.BackgroundSettingGrid.Visibility = Visibility.Visible;
         }
-
         private void DetailsEntry_Click(object sender, RoutedEventArgs e)
         {
             cloakAll();
             this.CompanyDetails.Visibility = Visibility.Visible;
         }
-
         private void InvoiceEntry_Click(object sender, RoutedEventArgs e)
         {
             cloakAll();
             this.InvoicePanel.Visibility = Visibility.Visible;
         }
-
-        private void SaveDetailsButton_Click(object sender, RoutedEventArgs e)
-        {
-            Configs.Default.CompanyAddress = CompanyAddressBox.Text;
-            Configs.Default.CompanyEmail = CompanyEmailBox.Text;
-            Configs.Default.CompanyName = CompanyNameBox.Text;
-            Configs.Default.CompanyOwner = CompanyOwnerBox.Text;
-            Configs.Default.CompanyPhone = CompanyContactBox.Text;
-            Configs.Default.Save();
-        }
-
-        private void SaveTNCButton_Click(object sender, RoutedEventArgs e)
-        {
-            Configs.Default.TNC = TNCBox.Text;
-            Configs.Default.Save();
-        }
-
     }
 }

@@ -49,19 +49,14 @@ namespace FinalUi
             ToDate.SelectedDate = toDate.Date;
             FromDate.SelectedDate = fromDate.Date;
             TaxBox.Text = Configs.Default.ServiceTax;
-
             ClientListSource = (CollectionViewSource)FindResource("ClientList");
             DataGridSource = (CollectionViewSource)FindResource("DataGridDataSource");
             dataGridSource = data;
-            BillingDataDataContext db = new BillingDataDataContext();
-            ClientListSource.Source = db.Clients;
+            ClientListSource.Source = DataSources.ClientCopy;
             rs = new Microsoft.Reporting.WinForms.ReportDataSource();
             rs.Name = "DataSet1";
             rs.Value = dataGridSource;
-
         }
-
-
         public void RefreshDataGridSource()
         {
             if (ClientList.SelectedValue != null && ToDate.SelectedDate != null && FromDate.SelectedDate != null)
@@ -74,7 +69,6 @@ namespace FinalUi
         {
             RefreshDataGridSource();
         }
-
         private void ClientList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Client selectedClient = ((Client)ClientList.SelectedItem);
@@ -137,8 +131,8 @@ namespace FinalUi
             else
                 clc = client;
             List<ReportParameter> repParams = new List<ReportParameter>();
-            DateTime toDate = ToDate.SelectedDate??DateTime.Today;
-            DateTime fromDate = FromDate.SelectedDate??DateTime.Today;
+            DateTime toDate = ToDate.SelectedDate ?? DateTime.Today;
+            DateTime fromDate = FromDate.SelectedDate ?? DateTime.Today;
             dateString = fromDate.ToString("dd/MM/yyyy") + " to " + toDate.ToString("dd/MM/yyyy");
             repParams.Add(new ReportParameter("DateString", dateString));
             descriptionString = "Total Connsignments: " + source.Count;
@@ -154,13 +148,10 @@ namespace FinalUi
             mainAmountValue = mainAmountValue - discount;
             double fuelAmount = double.Parse(TaxBox.Text) * mainAmountValue / 100;
             repParams.Add(new ReportParameter("FuelAmount", fuelAmount.ToString()));
-
             tax = double.Parse(ServiceTaxBox.Text) * mainAmountValue / 100;
             repParams.Add(new ReportParameter("ServiceTaxAmount", tax.ToString()));
-          
             taxamount = tax + fuelAmount;
-           
-            totalAmount = mainAmountValue + taxamount + double.Parse(MiscBox.Text) + double.Parse(PreviousDueTextBox.Text) ;
+            totalAmount = mainAmountValue + taxamount + double.Parse(MiscBox.Text) + double.Parse(PreviousDueTextBox.Text);
             repParams.Add(new ReportParameter("TotalAmountString", totalAmount.ToString()));
             totalAmountinWordString = UtilityClass.NumbersToWords((int)totalAmount);
             repParams.Add(new ReportParameter("TotalAmountInWordString", totalAmountinWordString));
@@ -174,10 +165,10 @@ namespace FinalUi
             repParams.Add(new ReportParameter("ClientAddress", clc.ADDRESS));
             repParams.Add(new ReportParameter("ClientPhoneNo", clc.CONTACTNO));
             repParams.Add(new ReportParameter("TNC", Configs.Default.TNC));
-            invoiceNo = (InvoiceDate.SelectedDate??DateTime.Today).ToString("yyyyMMdd");
+            invoiceNo = (InvoiceDate.SelectedDate ?? DateTime.Today).ToString("yyyyMMdd");
             invoiceNo = invoiceNo + DateTime.Today.ToString("hhmm");
             repParams.Add(new ReportParameter("InvoiceNumber", invoiceNo));
-            repParams.Add(new ReportParameter("InvoiceDate",(InvoiceDate.SelectedDate??DateTime.Today).ToString("dd-MMM-yyyy")));
+            repParams.Add(new ReportParameter("InvoiceDate", (InvoiceDate.SelectedDate ?? DateTime.Today).ToString("dd-MMM-yyyy")));
             PrintMainWindow win = new PrintMainWindow(rs, repParams);
             win.Show();
         }
@@ -185,11 +176,7 @@ namespace FinalUi
         {
             printObj();
         }
-
-        private void Preview_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        private void Preview_Click(object sender, RoutedEventArgs e){}
         private void SaveInvoiceButton_Click(object sender, RoutedEventArgs e)
         {
             if (source == null)
@@ -222,7 +209,7 @@ namespace FinalUi
                     invoice.Discount = double.Parse(DiscountBox.Text);
                     invoice.Misc = double.Parse(MiscBox.Text);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("Enter the fields properly...");
                     return;
@@ -231,7 +218,7 @@ namespace FinalUi
                 {
                     db.Invoices.InsertOnSubmit(invoice);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("Error: " + ex.Message);
                     return;
@@ -242,8 +229,8 @@ namespace FinalUi
                     assign.BillId = invoice.BillId;
                     assign.Id = Guid.NewGuid();
                     assign.TransactionId = (Guid)item.TransactionId;
-                    assign.BilledAmount = (double)(item.FrAmount??0);
-                    assign.BilledWeight = (double)(item.BilledWeight??item.Weight);
+                    assign.BilledAmount = (double)(item.FrAmount ?? 0);
+                    assign.BilledWeight = (double)(item.BilledWeight ?? item.Weight);
                     assign.Destination = item.Destination;
                     assign.DestinationDesc = item.CITY_DESC;
                     db.InvoiceAssignments.InsertOnSubmit(assign);
