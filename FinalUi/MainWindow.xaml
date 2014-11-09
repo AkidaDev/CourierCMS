@@ -27,23 +27,23 @@
     </Window.CommandBindings>
     <Grid Name="MainGrid" Background="Turquoise" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="6"/>
+            <RowDefinition Height="4"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="6"/>
+            <RowDefinition Height="4"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="6"/>
+            <ColumnDefinition Width="4"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="6"/>
+            <ColumnDefinition Width="4"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1" Grid.Row="1" Margin="0,2,0,4" Grid.RowSpan="2">
+        <Grid Grid.Column="1" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="20"/>
                 <RowDefinition Height="286*"/>
             </Grid.RowDefinitions>
-        <!--<Grid Grid.Row="0" Height="28" Background="{DynamicResource menu}" Margin="-6 -6 -6 0">-->
-            <Grid Grid.Row="0" Height="28" Margin="-6 -6 -6 0">
+       <!--     <Grid Height="28" Background="{DynamicResource menu}" Margin="-3 -3 -3 0">-->
+            <Grid Height="28" Margin="-4 -4 -4 0">
                 <Menu  Background="Transparent" FontSize="14" Margin="6 6 6 0">
                     <MenuItem ToolTip="Open new document" Header="File" Margin="10 0 0 0">
                         <MenuItem Header="New Sheet" Name="NewSheetMenuItem" />
@@ -81,7 +81,7 @@
                         <Path MouseDown="Grid_MouseDown" Name="Memu_bar" Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="25" Canvas.Left="0" Canvas.Top="0" Stretch="Fill" Width="1920" />
                     </Button>
                 </Canvas>
-                <WrapPanel Name="minimax" HorizontalAlignment="Right" Margin="0 0 6 0">
+                <WrapPanel Name="minimax" HorizontalAlignment="Right" Margin="0 0 5 0">
                     <Button ToolTip="Minimize" Style="{StaticResource 1}" Name="MinimizeButton" Click="MinimizeButton_Click" Width="25">
                         <Path Name="minimize" Data="F1M2,4C2,4 2,2 2,2 2,2 14,2 14,2 14,2 14,4 14,4 14,4 2,4 2,4z" Fill="Black" Height="5" Width="12" Margin="-1,0,0,-7"/>
                     </Button>
@@ -97,9 +97,10 @@
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="230*" MaxWidth="260" MinWidth="220"/>
+                    <ColumnDefinition Width="4"/>
                     <ColumnDefinition Width="770*"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0" Margin="-3,0,0,-3" Grid.RowSpan="3" Width="Auto">
+                <StackPanel Grid.Column="0">
                     <StackPanel.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="#19000000" Offset="0"/>
@@ -109,7 +110,7 @@
                     <TreeView Background="Transparent" BorderThickness="0" Margin="7 20 0 0">
                         <TreeViewItem Background="Transparent" BorderThickness="0">
                             <TreeViewItem.Header>
-                                <TextBlock MouseDown="DataDockPanelTreeView_Selected" Width="210" Text="Data Entry Table" FontSize="16" FontWeight="Bold" Padding="4 1 0 4" Foreground="white" FontFamily="Calibri" >
+                                <TextBlock MouseDown="DataDockPanelTreeView_Selected" Width="210" Text="Data Entry Table" FontSize="16" FontWeight="Bold" Padding="30 1 0 4" Foreground="white" FontFamily="Calibri" >
                                     <TextBlock.Effect>
                                         <DropShadowEffect Color="#FFB0B0B0"/>
                                     </TextBlock.Effect>
@@ -118,7 +119,7 @@
                         </TreeViewItem>
                     </TreeView>
                     <Canvas>
-                        <Path MouseDown="DataDockPanelTreeView_Selected" Data="F1M8.667,3.556C8.667,3.556 8.667,8.667 8.667,8.667 8.667,8.667 3.555,8.667 3.555,8.667 3.555,8.667 3.555,11.222 3.555,11.222 3.555,11.222 8.667,11.222 8.667,11.222 8.667,11.222 8.667,21.444 8.667,21.444 8.667,21.444 11.222,21.444 11.222,21.444 11.222,21.444 11.222,11.222 11.222,11.222 11.222,11.222 21.444,11.222 21.444,11.222 21.444,11.222 21.444,8.667 21.444,8.667 21.444,8.667 11.222,8.667 11.222,8.667 11.222,8.667 11.222,3.556 11.222,3.556 11.222,3.556 8.667,3.556 8.667,3.556z M3.555,1C3.555,1 21.444,1 21.444,1 22.85,1 24,2.15 24,3.556 24,3.556 24,21.444 24,21.444 24,22.85 22.85,24 21.444,24 21.444,24 3.555,24 3.555,24 2.15,24 1,22.85 1,21.444 1,21.444 1,3.556 1,3.556 1,2.15 2.15,1 3.555,1z" Fill="White" Height="19" Width="18" Stretch="Fill" Canvas.Left="7" Canvas.Top="-25" >
+                        <Path MouseDown="DataDockPanelTreeView_Selected" Data="F1M8.667,3.556C8.667,3.556 8.667,8.667 8.667,8.667 8.667,8.667 3.555,8.667 3.555,8.667 3.555,8.667 3.555,11.222 3.555,11.222 3.555,11.222 8.667,11.222 8.667,11.222 8.667,11.222 8.667,21.444 8.667,21.444 8.667,21.444 11.222,21.444 11.222,21.444 11.222,21.444 11.222,11.222 11.222,11.222 11.222,11.222 21.444,11.222 21.444,11.222 21.444,11.222 21.444,8.667 21.444,8.667 21.444,8.667 11.222,8.667 11.222,8.667 11.222,8.667 11.222,3.556 11.222,3.556 11.222,3.556 8.667,3.556 8.667,3.556z M3.555,1C3.555,1 21.444,1 21.444,1 22.85,1 24,2.15 24,3.556 24,3.556 24,21.444 24,21.444 24,22.85 22.85,24 21.444,24 21.444,24 3.555,24 3.555,24 2.15,24 1,22.85 1,21.444 1,21.444 1,3.556 1,3.556 1,2.15 2.15,1 3.555,1z" Fill="White" Height="18" Width="18" Stretch="Fill" Canvas.Left="32" Canvas.Top="-24" >
                             <Path.Effect>
                                 <DropShadowEffect Color="#FFB0B0B0"/>
                             </Path.Effect>
@@ -193,7 +194,7 @@
                     </TreeView>
                     <Path Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Black" Height="4" HorizontalAlignment="Left" Margin="15,6,0,0"  Width="194"/>
                 </StackPanel>
-                <Grid Grid.Column="2" Margin="3 0 -3 -3">
+                <Grid Grid.Column="2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="220*"/>
                         <RowDefinition Height="70*"/>
@@ -201,30 +202,32 @@
                     <Grid>
                         <Grid Visibility="Visible">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="34"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="4"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="25"/>
                             </Grid.RowDefinitions>
-                            <Image Source="Images/apples.jpg" Height="768" Width="1366" Grid.Row="1" Margin="0 0 0 -25" Stretch="Uniform" Name="backgroundimage" Visibility="Visible"/>
+                            <Image Source="Images/apples.jpg" Height="768" Width="1366" Grid.Row="2" Margin="0 0 0 -25" Stretch="Uniform" Name="backgroundimage" Visibility="Visible"/>
                         </Grid>
                         <Grid Visibility="Visible" Name="HideAllDatagrid">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="34"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="4"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="25"/>
                             </Grid.RowDefinitions>
-                            <StackPanel Background="#19000000" Margin="0 0 0 3"/>
-                            <Image Source="Images/apples.jpg" Height="768" Width="1366" Grid.Row="1" Margin="0 0 0 -25" Stretch="Uniform"/>
-                            <StackPanel Grid.Row="2" Background="#A9FFFFF3"/>
+                            <StackPanel Background="#19000000"/>
+                            <Image Source="Images/apples.jpg" Height="768" Width="1366" Grid.Row="2" Margin="0 0 0 -25" Stretch="Uniform"/>
+                            <StackPanel Grid.Row="3" Background="#A9FFFFF3"/>
                         </Grid>
                         <Grid Name="DataDockPanel" Visibility="Collapsed">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="34"/>
-                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="4"/>
+                                <RowDefinition Height="222*"/>
                                 <RowDefinition Height="25"/>
                             </Grid.RowDefinitions>
-                            <StackPanel Background="#19000000" Margin="0 0 0 3"/>
-                            <Grid>
+                            <Grid Background="#19000000">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -244,56 +247,56 @@
                                         <TextBlock ToolTip="Load new files " Text="Open File" Margin="8 -3 1 1" FontSize="16" Padding="1 3 1 0.5"/>
                                     </WrapPanel>
                                 </Button>
-                                <Button ToolTip="Save" Style="{StaticResource side}"  Name="SaveButton" Grid.Row="0" Width="45" Height="30" Grid.Column="1">
+                                <Button ToolTip="Save" Style="{StaticResource side}"  Name="SaveButton" Width="45" Height="30" Grid.Column="1">
                                     <Path  Name="save" Data="F1M5.707,16.89C5.707,16.89 16.879,16.89 16.879,16.89 16.879,16.89 16.879,18.13 16.879,18.13 16.879,18.13 5.707,18.13 5.707,18.13 5.707,18.13 5.707,16.89 5.707,16.89z M5.707,13.414C5.707,13.414 16.879,13.414 16.879,13.414 16.879,13.414 16.879,14.653 16.879,14.653 16.879,14.653 5.707,14.653 5.707,14.653 5.707,14.653 5.707,13.414 5.707,13.414z M4.207,10.739C4.207,10.739 4.207,20.566 4.207,20.566 4.207,20.566 18.793,20.566 18.793,20.566 18.793,20.566 18.793,10.739 18.793,10.739 18.793,10.739 4.207,10.739 4.207,10.739z M9.432,1.83C9.432,1.83 13.777,1.83 13.777,1.83 13.777,1.83 13.777,7.358 13.777,7.358 13.777,7.358 9.432,7.358 9.432,7.358 9.432,7.358 9.432,1.83 9.432,1.83z M1.626,1C1.626,1 4.207,1 4.207,1 4.207,1 4.207,8.508 4.207,8.508 4.207,8.508 15.586,8.508 15.586,8.508 15.586,8.508 15.586,1 15.586,1 15.586,1 17.711,1 17.711,1 17.711,1 22,5.246 22,5.246 22,5.246 22,21.381 22,21.381 22,21.723 21.72,22 21.374,22 21.374,22 1.626,22 1.626,22 1.28,22 1,21.723 1,21.381 1,21.381 1,1.62 1,1.62 1,1.277 1.28,1 1.626,1z" Fill="#FF484555" Height="23" Width="23">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button ToolTip="Power Entry" Style="{StaticResource side}" Name="PowerEntryButton" Grid.Row="0" Width="45" Height="30" Grid.Column="2">
+                                <Button ToolTip="Power Entry" Style="{StaticResource side}" Name="PowerEntryButton" Width="45" Height="30" Grid.Column="2">
                                     <Path Name="autofill" Data="F1M16.844,4C16.844,4 15.755,7.6 15.755,7.6 15.755,7.6 17.932,7.6 17.932,7.6 17.932,7.6 16.844,4 16.844,4z M15.854,2C15.854,2 17.833,2 17.833,2 17.833,2 21,11 21,11 21,11 19.12,11 19.12,11 19.12,11 18.427,9 18.427,9 18.427,9 15.26,9 15.26,9 15.26,9 14.568,11 14.568,11 14.568,11 12.687,11 12.687,11 12.687,11 15.854,2 15.854,2z M2,2C2,2 11.896,2 11.896,2 11.896,2 7.937,11 7.937,11 7.937,11 11.896,11 11.896,11 11.896,11 4.969,23 4.969,23 4.969,23 4.969,14 4.969,14 4.969,14 2,14 2,14 2,14 2,2 2,2z" Height="24" Width="22" Fill="#FF1E00A6">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button ToolTip="New Sheet" Name="NewSheetButton" Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="3">
+                                <Button ToolTip="New Sheet" Name="NewSheetButton" Style="{StaticResource side}" Width="45" Height="30" Grid.Column="3">
                                     <Path Name="newSheet" Data="F1M3.667,15.929C3.667,15.929 3.667,17.286 3.667,17.286 3.667,17.286 14.333,17.286 14.333,17.286 14.333,17.286 14.333,15.929 14.333,15.929 14.333,15.929 3.667,15.929 3.667,15.929z M3.667,11.857C3.667,11.857 3.667,13.214 3.667,13.214 3.667,13.214 14.333,13.214 14.333,13.214 14.333,13.214 14.333,11.857 14.333,11.857 14.333,11.857 3.667,11.857 3.667,11.857z M3.667,7.786C3.667,7.786 3.667,9.143 3.667,9.143 3.667,9.143 14.333,9.143 14.333,9.143 14.333,9.143 14.333,7.786 14.333,7.786 14.333,7.786 3.667,7.786 3.667,7.786z M3.667,3.714C3.667,3.714 3.667,5.071 3.667,5.071 3.667,5.071 14.333,5.071 14.333,5.071 14.333,5.071 14.333,3.714 14.333,3.714 14.333,3.714 3.667,3.714 3.667,3.714z M1,1C1,1 17,1 17,1 17,1 17,20 17,20 17,20 1,20 1,20 1,20 1,1 1,1z" Fill="White" Height="21" Width="18">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button ToolTip="Filter &amp; Select" Style="{StaticResource side}"  Click="FilterButton_Click" Grid.Row="0" Width="45" Height="30" Grid.Column="4">
+                                <Button ToolTip="Filter &amp; Select" Style="{StaticResource side}"  Click="FilterButton_Click" Width="45" Height="30" Grid.Column="4">
                                     <Path Data="F1M2.118,1C2.881,1 16.282,1 16.809,1 17.492,1 18,1.384 17.6,1.763 17.36,1.991 13.667,5.465 11.603,7.406L11,7.973 11,9.797C11,13.312 11,18 11,18 11,18 8,20 8,20 8,20 8,19 8,18L8,17.792 8,17.213 8,17C8,17.5,8,17,8,16.625L8,16.527C8,16.438,8,16.281,8,16.172L8,16C8,16.227,8,15.797,8,15.281L8,15.217 8,13.52 8,12.562 8,11.5 8,9.797 8,9.48 8,8.026 7.423,7.484C5.405,5.591 1.669,2.078 1.331,1.747 1,1.424 1.365,1 2.118,1z" Fill="#FF2D6356" Height="21" Width="20" Stretch="Fill">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button ToolTip="Data Entry" Style="{StaticResource side}"  Name="SanitizingButton" Grid.Row="0" Width="45" Height="30" Grid.Column="5">
+                                <Button ToolTip="Data Entry" Style="{StaticResource side}"  Name="SanitizingButton" Width="45" Height="30" Grid.Column="5">
                                     <Path Name="sanitize" Data="F1M1,12.667C1,12.667 8,12.667 8,12.667 8,12.667 8,15 8,15 8,15 1,15 1,15 1,15 1,12.667 1,12.667z M1,6.833C1,6.833 15,6.833 15,6.833 15,     6.833 15,9.167 15,9.167 15,9.167 1,9.167 1,9.167 1,9.167 1,6.833 1,6.833z M1,1C1,1 22,1 22,1 22,1 22,3.333 22,3.333 22,3.333 1,3.333 1,3.333 1,3.333 1,1 1,1z" Fill="White" Height="16" Width="23">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button ToolTip="Print" Name="PrintButton" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="6" Command="ApplicationCommands.Print">
+                                <Button ToolTip="Print" Name="PrintButton" Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="6" Command="ApplicationCommands.Print">
                                     <Path Name="print" Data="F1M8.9,14.833C8.9,14.833 8.9,20.667 8.9,20.667 8.9,20.667 18.1,20.667 18.1,20.667 18.1,20.667 18.1,14.833 18.1,14.833 18.1,14.833 8.9,14.833 8.9,14.833z M21.55,10.167C20.86,10.167 20.4,10.633 20.4,11.333 20.4,12.033 20.86,12.5 21.55,12.5 22.24,12.5 22.7,12.033 22.7,11.333 22.7,10.633 22.24,10.167 21.55,10.167z M5.45,7.833C5.45,7.833 21.55,7.833 21.55,7.833 23.505,7.833 25,9.35 25,11.333 25,11.333 25,18.333 25,18.333 25,18.333 20.4,18.333 20.4,18.333 20.4,18.333 20.4,23 20.4,23 20.4,23 6.6,23 6.6,23 6.6,23 6.6,18.333 6.6,18.333 6.6,18.333 2,18.333 2,18.333 2,18.333 2,11.333 2,11.333 2,9.35 3.495,7.833 5.45,7.833z M6.6,2C6.6,2 20.4,2 20.4,2 20.4,2 20.4,6.667 20.4,6.667 20.4,6.667 6.6,6.667 6.6,6.667 6.6,6.667 6.6,2 6.6,2z" Fill="Black" Height="24" Width="26">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="5" HorizontalAlignment="Right"/>
-                                <Rectangle Name="AfterPrint" VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="6" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="5" HorizontalAlignment="Right"/>
+                                <Rectangle Name="AfterPrint" VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="6" HorizontalAlignment="Right"/>
                             </Grid>
-                            <DockPanel Grid.Row="1" Margin="-1 0 0 0">
+                            <DockPanel Grid.Row="2">
                                 <DockPanel.Resources>
                                     <Style TargetType="{x:Type DataGridCell}">
                                         <Setter Property="BorderThickness" Value="0"/>
@@ -361,7 +364,7 @@
                                     </DataGrid.RowDetailsTemplate>
                                 </DataGrid>
                             </DockPanel>
-                            <DockPanel Grid.Row="2" Background="#A9FFFFF3">
+                            <DockPanel Grid.Row="3" Background="#A9FFFFF3">
                                 <WrapPanel Name="buttontabcanvaswrap" Margin="9,0,0,0"/>
                                 <WrapPanel HorizontalAlignment="Right" Margin="0 -1 0 0">
                                     <Button ToolTip="First Page" Style="{StaticResource smallbutton}" Name="DataGridFirstPage" Margin="2,2,5,2" Click="DataGridFirstPage_Click" >
@@ -388,12 +391,12 @@
                         </Grid>
                         <Grid Name="ClientReportOptionPanel" Visibility="Collapsed">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="34"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="4"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="25"/>
                             </Grid.RowDefinitions>
-                            <StackPanel Background="#19000000" Margin="0 0 0 3"/>
-                            <Grid>
+                            <Grid Background="#19000000">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -408,39 +411,39 @@
                                     <Path Margin="6 3 0 0" Data="F1M8.199,17.196C8.199,17.196 15.002,17.196 15.002,17.196 15.002,17.196 15.002,17.807 15.002,17.807 15.002,17.807 8.199,17.807 8.199,17.807 8.199,17.807 8.199,17.196 8.199,17.196z M8.199,15.36C8.199,15.36 12.2,15.36 12.2,15.36 12.2,15.36 12.2,15.971 12.2,15.971 12.2,15.971 8.199,15.971 8.199,15.971 8.199,15.971 8.199,15.36 8.199,15.36z M8.199,13.527C8.199,13.527 13.4,13.527 13.4,13.527 13.4,13.527 13.4,14.138 13.4,14.138 13.4,14.138 8.199,14.138 8.199,14.138 8.199,14.138 8.199,13.527 8.199,13.527z M8.199,11.695C8.199,11.695 15.401,11.695 15.401,11.695 15.401,11.695 15.401,12.305 15.401,12.305 15.401,12.305 8.199,12.305 8.199,12.305 8.199,12.305 8.199,11.695 8.199,11.695z M8.199,9.862C8.199,9.862 12.2,9.862 12.2,9.862 12.2,9.862 12.2,10.473 12.2,10.473 12.2,10.473 8.199,10.473 8.199,10.473 8.199,10.473 8.199,9.862 8.199,9.862z M6.399,6.501C6.399,6.501 6.399,21.167 6.399,21.167 6.399,21.167 17.2,21.167 17.2,21.167 17.2,21.167 17.2,6.501 17.2,6.501 17.2,6.501 6.399,6.501 6.399,6.501z M4.599,4.666C4.599,4.666 19,4.666 19,4.666 19,4.666 19,23 19,23 19,23 4.599,23 4.599,23 4.599,23 4.599,4.666 4.599,4.666z M1,1C1,1 15.401,1 15.401,1 15.401,1 15.401,2.833 15.401,2.833 15.401,2.833 15.401,3.749 15.401,3.749 15.401,3.749 13.601,3.749 13.601,3.749 13.601,3.749 13.601,2.833 13.601,2.833 13.601,2.833 2.8,2.833 2.8,2.833 2.8,2.833 2.8,17.501 2.8,17.501 2.8,17.501 3.7,17.501 3.7,17.501 3.7,17.501 3.7,19.334 3.7,19.334 3.7,19.334 2.8,19.334 2.8,19.334 2.8,19.334 1,19.334 1,19.334 1,19.334 1,1 1,1z" Fill="Black" Height="24" Canvas.Left="410" Canvas.Top="6" Width="20"/>
                                     <TextBlock Text="Client Analytic Report" Margin="8 2 6 0" FontSize="16" Padding="1 3 1 0.5"/>
                                 </WrapPanel>
-                                <Button ToolTip="Reload" Name="ClientReportReloadButton" Click="ClientReportReloadButton_Click" Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="1">
+                                <Button ToolTip="Reload" Name="ClientReportReloadButton" Click="ClientReportReloadButton_Click" Style="{StaticResource side}" Width="45" Height="30" Grid.Column="1">
                                     <Path Data="F1M2,12.942C2,12.942 10.226,15.241 10.226,15.241 10.226,15.241 8.275,17.071 8.275,17.071 9.288,17.922 10.917,18.786 12.32,18.786 15.074,18.786 17.386,16.824 18.039,14.171 18.039,14.171 21.987,15.222 21.987,15.222 20.891,19.693 16.996,23 12.357,23 9.771,23 7.076,21.618 5.308,19.934 5.308,19.934 3.454,21.671 3.454,21.671 3.454,21.671 2,12.942 2,12.942z M11.643,2C14.229,2 16.924,3.382 18.692,5.066 18.692,5.066 20.546,3.329 20.546,3.329 20.546,3.329 22,12.058 22,12.058 22,12.058 13.774,9.759 13.774,9.759 13.774,9.759 15.725,7.929 15.725,7.929 14.712,7.078 13.083,6.214 11.68,6.214 8.926,6.214 6.614,8.176 5.961,10.829 5.961,10.829 2.013,9.778 2.013,9.778 3.109,5.307 7.004,2 11.643,2z" Fill="Black" Height="24" Width="23">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button ToolTip="Filter &amp; Select" Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="2">
+                                <Button ToolTip="Filter &amp; Select" Style="{StaticResource side}" Width="45" Height="30" Grid.Column="2">
                                     <Path Data="F1M2.118,1C2.881,1 16.282,1 16.809,1 17.492,1 18,1.384 17.6,1.763 17.36,1.991 13.667,5.465 11.603,7.406L11,7.973 11,9.797C11,13.312 11,18 11,18 11,18 8,20 8,20 8,20 8,19 8,18L8,17.792 8,17.213 8,17C8,17.5,8,17,8,16.625L8,16.527C8,16.438,8,16.281,8,16.172L8,16C8,16.227,8,15.797,8,15.281L8,15.217 8,13.52 8,12.562 8,11.5 8,9.797 8,9.48 8,8.026 7.423,7.484C5.405,5.591 1.669,2.078 1.331,1.747 1,1.424 1.365,1 2.118,1z" Fill="White" Height="21" Width="20" Stretch="Fill" Margin="0 1 0 0" >
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button ToolTip="Print" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="3">
+                                <Button ToolTip="Print" Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="3">
                                     <Path Data="F1M8.9,14.833C8.9,14.833 8.9,20.667 8.9,20.667 8.9,20.667 18.1,20.667 18.1,20.667 18.1,20.667 18.1,14.833 18.1,14.833 18.1,14.833 8.9,14.833 8.9,14.833z M21.55,10.167C20.86,10.167 20.4,10.633 20.4,11.333 20.4,12.033 20.86,12.5 21.55,12.5 22.24,12.5 22.7,12.033 22.7,11.333 22.7,10.633 22.24,10.167 21.55,10.167z M5.45,7.833C5.45,7.833 21.55,7.833 21.55,7.833 23.505,7.833 25,9.35 25,11.333 25,11.333 25,18.333 25,18.333 25,18.333 20.4,18.333 20.4,18.333 20.4,18.333 20.4,23 20.4,23 20.4,23 6.6,23 6.6,23 6.6,23 6.6,18.333 6.6,18.333 6.6,18.333 2,18.333 2,18.333 2,18.333 2,11.333 2,11.333 2,9.35 3.495,7.833 5.45,7.833z M6.6,2C6.6,2 20.4,2 20.4,2 20.4,2 20.4,6.667 20.4,6.667 20.4,6.667 6.6,6.667 6.6,6.667 6.6,6.667 6.6,2 6.6,2z" Fill="Black" Height="24" Width="26">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1"  HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2" HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1"  HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
                             </Grid>
-                            <Grid Grid.Row="1">
+                            <Grid Grid.Row="2">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="30"/>
                                     <RowDefinition Height="200*"/>
                                     <RowDefinition Height="30"/>
                                     <RowDefinition Height="200*"/>
                                 </Grid.RowDefinitions>
-                                <Grid Grid.Row="0" Margin="0 3"  Background="#A9FFFFF3">
+                                <Grid Margin="0 3"  Background="#A9FFFFF3">
                                     <TextBlock Foreground="#FF5B5B5B" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Client Due List .:"/>
                                 </Grid>
                                 <DataGrid Grid.Row="1" IsReadOnly="True"  RowHeaderWidth="0" BorderThickness="0" Name="ClientDueGrid" AutoGenerateColumns="False" DataContext="{StaticResource DueGridDataSource}" ItemsSource="{Binding}">
@@ -463,16 +466,16 @@
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </Grid>
-                            <StackPanel Grid.Row="2" Background="#A9FFFFF3"/>
+                            <StackPanel Grid.Row="3" Background="#A9FFFFF3"/>
                         </Grid>
                         <Grid Visibility="Collapsed" Name="QuotationoptionPanel">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="34"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="4"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="25"/>
                             </Grid.RowDefinitions>
-                            <StackPanel Background="#19000000" Margin="0 0 0 3"/>
-                            <Grid>
+                            <Grid Background="#19000000">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -489,56 +492,56 @@
                                     <Path Margin="6 5 0 0" Data="F1M7.006,17.756C8.089,18.341 9.324,18.675 10.635,18.675 11.947,18.675 13.183,18.341 14.264,17.756 16.602,18.374 18.432,19.843 19.272,23 19.272,23 2,23 2,23 2.839,19.843 4.67,18.375 7.006,17.756z M22.992,14.925C25.33,15.543 27.161,17.011 28,20.168 28,20.168 19.469,20.168 19.469,20.168 18.486,18.463 17.033,17.311 15.075,16.685 15.597,16.276 16.061,15.798 16.456,15.264 17.354,15.635 18.334,15.843 19.363,15.843 20.674,15.843 21.911,15.51 22.992,14.925z M6.639,12.72C7.558,14.518 9.136,15.706 10.928,15.706 12.722,15.706 14.298,14.518 15.217,12.72 15.217,12.72 6.639,12.72 6.639,12.72z M10.635,4.831C13.958,4.831 16.649,7.548 16.649,10.899 16.649,14.252 13.958,16.968 10.635,16.968 7.313,16.968 4.621,14.252 4.621,10.899 4.621,7.548 7.313,4.831 10.635,4.831z M19.363,2C22.685,2 25.377,4.717 25.377,8.068 25.377,11.421 22.685,14.137 19.363,14.137 18.642,14.137 17.954,14.003 17.313,13.768 17.499,13.331 17.641,12.872 17.74,12.396 18.332,12.704 18.979,12.874 19.656,12.874 21.449,12.874 23.026,11.686 23.944,9.888 23.944,9.888 17.819,9.888 17.819,9.888 17.513,7.667 16.22,5.766 14.398,4.645 15.482,3.049 17.3,2 19.363,2z" Fill="Black" Height="19" Canvas.Left="16" Canvas.Top="188.46" Width="23" Stretch="Fill"/>
                                     <TextBlock Text="Client Quotation" Margin="8 2 6 0" FontSize="16" Padding="1 3 1 0.5"/>
                                 </WrapPanel>
-                                <ComboBox FontSize="14" Margin="10 0 0 0" MinWidth="250" Name="ClientCombo" Height="27" MaxWidth="450" Grid.Row="0" Grid.Column="1" IsReadOnly="True" ItemsSource="{Binding}" DataContext="{StaticResource ClienTable}" SelectionChanged="ClientCombo_SelectionChanged" DisplayMemberPath="NameAndCode">
+                                <ComboBox FontSize="14" Margin="10 2" MinWidth="250" Name="ClientCombo" MaxWidth="450" Grid.Column="1" IsReadOnly="True" ItemsSource="{Binding}" DataContext="{StaticResource ClienTable}" SelectionChanged="ClientCombo_SelectionChanged" DisplayMemberPath="NameAndCode">
                                 </ComboBox>
-                                <Button Margin="10 0 0 0" ToolTip="Reload" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="2">
+                                <Button ToolTip="Reload" Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="2">
                                     <Path Data="F1M2,12.942C2,12.942 10.226,15.241 10.226,15.241 10.226,15.241 8.275,17.071 8.275,17.071 9.288,17.922 10.917,18.786 12.32,18.786 15.074,18.786 17.386,16.824 18.039,14.171 18.039,14.171 21.987,15.222 21.987,15.222 20.891,19.693 16.996,23 12.357,23 9.771,23 7.076,21.618 5.308,19.934 5.308,19.934 3.454,21.671 3.454,21.671 3.454,21.671 2,12.942 2,12.942z M11.643,2C14.229,2 16.924,3.382 18.692,5.066 18.692,5.066 20.546,3.329 20.546,3.329 20.546,3.329 22,12.058 22,12.058 22,12.058 13.774,9.759 13.774,9.759 13.774,9.759 15.725,7.929 15.725,7.929 14.712,7.078 13.083,6.214 11.68,6.214 8.926,6.214 6.614,8.176 5.961,10.829 5.961,10.829 2.013,9.778 2.013,9.778 3.109,5.307 7.004,2 11.643,2z" Fill="Black" Height="24" Width="23">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button ToolTip="Import Rule" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="3" Click="ImportRule_Click">
+                                <Button ToolTip="Import Rule" Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="3" Click="ImportRule_Click">
                                     <Path Name="import_files" Data="F1M11.187,19.719C11.187,19.719 11.187,20.375 11.187,20.375 11.187,20.375 13.812,20.375 13.812,20.375 13.812,20.375 13.812,19.719 13.812,19.719 13.812,19.719 11.187,19.719 11.187,19.719z M9.875,17.094C9.875,17.094 9.875,17.75 9.875,17.75 9.875,17.75 15.125,17.75 15.125,17.75 15.125,17.75 15.125,17.094 15.125,17.094 15.125,17.094 9.875,17.094 9.875,17.094z M20.375,12.5C20.375,12.5 20.375,13.812 20.375,13.812 20.375,13.812 21.687,13.812 21.687,13.812 21.687,13.812 21.687,12.5 21.687,12.5 21.687,12.5 20.375,12.5 20.375,12.5z M11.187,4.625C11.187,4.625 13.812,4.625 13.812,4.625 13.812,4.625 13.812,5.937 13.812,5.937 13.812,5.937 13.812,7.25 13.812,7.25 13.812,7.25 15.781,7.25 15.781,7.25 15.781,7.25 12.5,10.531 12.5,10.531 12.5,10.531 9.219,7.25 9.219,7.25 9.219,7.25 11.187,7.25 11.187,7.25 11.187,7.25 11.187,5.937 11.187,5.937 11.187,5.937 11.187,4.625 11.187,4.625z M7.906,3.312C7.906,3.312 4.01,11.187 4.01,11.187 4.01,11.187 9.875,11.187 9.875,11.187 9.875,11.187 9.875,12.5 9.875,12.5 9.875,13.225 10.463,13.812 11.187,13.812 11.187,13.812 13.812,13.812 13.812,13.812 14.537,13.812 15.125,13.225 15.125,12.5 15.125,12.5 15.125,11.187 15.125,11.187 15.125,11.187 21.031,11.187 21.031,11.187 21.031,11.187 17.094,3.312 17.094,3.312 17.094,3.312 7.906,3.312 7.906,3.312z M7.25,2C7.25,2 17.709,2 17.709,2 17.709,2 23,11.187 23,11.187 23,11.187 23,23 23,23 23,23 2,23 2,23 2,23 2,11.187 2,11.187 2,11.187 7.25,2 7.25,2z" Fill="White" Height="24" Canvas.Left="326" Canvas.Top="59" Width="24">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button ToolTip="Edit" Style="{StaticResource side}"  Name="EditRule" Click="EditRule_Click" Grid.Row="0" Width="45" Height="30" Grid.Column="4">
+                                <Button ToolTip="Edit" Style="{StaticResource side}"  Name="EditRule" Click="EditRule_Click" Width="45" Height="30" Grid.Column="4">
                                     <Path Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="#FF1E00A6" Height="24" Canvas.Left="19" Canvas.Top="32" Width="24">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button ToolTip="Add" Click="AddRuleButton_Click" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="5">
+                                <Button ToolTip="Add" Click="AddRuleButton_Click" Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="5">
                                     <Path Data="F1M13.455,5.818C13.455,5.818 13.455,9.636 13.455,9.636 13.455,9.636 9.636,9.636 9.636,9.636 9.636,9.636 9.636,11.545 9.636,11.545 9.636,11.545 13.455,11.545 13.455,11.545 13.455,11.545 13.455,15.364 13.455,15.364 13.455,15.364 15.364,15.364 15.364,15.364 15.364,15.364 15.364,11.545 15.364,11.545 15.364,11.545 19.182,11.545 19.182,11.545 19.182,11.545 19.182,9.636 19.182,9.636 19.182,9.636 15.364,9.636 15.364,9.636 15.364,9.636 15.364,5.818 15.364,5.818 15.364,5.818 13.455,5.818 13.455,5.818z M2,5.818C2,5.818 3.909,5.818 3.909,5.818 3.909,5.818 3.909,21.091 3.909,21.091 3.909,21.091 19.182,21.091 19.182,21.091 19.182,21.091 19.182,23 19.182,23 19.182,23 3.909,23 3.909,23 2.859,23 2,22.141 2,21.091 2,21.091 2,5.818 2,5.818z M7.727,2C7.727,2 21.091,2 21.091,2 22.141,2 23,2.859 23,3.909 23,3.909 23,17.273 23,17.273 23,18.323 22.141,19.182 21.091,19.182 21.091,19.182 7.727,19.182 7.727,19.182 6.677,19.182 5.818,18.323 5.818,17.273 5.818,17.273 5.818,3.909 5.818,3.909 5.818,2.859 6.677,2 7.727,2z" Fill="Black" Height="24" Width="24">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button ToolTip="Delete" Name="DeleteRule" Click="DeleteRule_Click" Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="6">
+                                <Button ToolTip="Delete" Name="DeleteRule" Click="DeleteRule_Click" Style="{StaticResource side}" Width="45" Height="30" Grid.Column="6">
                                     <Path Data="F1M3.056,10.35C3.714,11.001 6.347,11.109 9.499,11.109 12.65,11.109 15.286,11.001 15.941,10.35 16.022,10.432 16.077,10.516 16.091,10.603 16.091,10.603 16.1,10.603 16.1,10.603 16.1,10.603 16.096,10.65 16.096,10.65 16.096,10.655 16.1,10.661 16.1,10.666 16.1,10.679 16.096,10.69 16.095,10.702 16.095,10.702 15.581,20.977 15.581,20.977 15.581,20.977 15.578,20.977 15.578,20.977 15.533,21.782 14.589,23 9.499,23 4.409,23 3.465,21.782 3.42,20.977 3.42,20.977 3.419,20.977 3.419,20.977 3.419,20.977 2.906,10.702 2.906,10.702 2.904,10.69 2.9,10.679 2.9,10.666 2.9,10.661 2.902,10.655 2.902,10.65 2.902,10.65 2.9,10.603 2.9,10.603 2.9,10.603 2.906,10.603 2.906,10.603 2.925,10.516 2.975,10.432 3.056,10.35z M7.59,3.334C7.516,3.334 7.453,3.694 7.453,4.133 7.453,4.133 7.453,5.138 7.453,5.138 7.453,5.138 7.66,5.125 7.66,5.125 8.247,5.093 8.864,5.075 9.499,5.075 10.111,5.075 10.703,5.093 11.272,5.122 11.272,5.122 11.272,4.133 11.272,4.133 11.272,3.694 11.211,3.334 11.135,3.334 11.06,3.334 10.63,3.334 10.182,3.334 10.182,3.334 8.545,3.334 8.545,3.334 8.095,3.334 7.666,3.334 7.59,3.334z M6.906,2C6.906,2 11.818,2 11.818,2 12.268,2 12.635,2.362 12.635,2.8 12.635,2.8 12.635,5.226 12.635,5.226 15.21,5.483 17,6.046 17,6.699 17,6.699 17,7.899 17,7.899 17,8.145 16.743,8.379 16.288,8.59 15.089,9.14 12.501,9.522 9.499,9.522 6.499,9.522 3.91,9.14 2.712,8.59 2.255,8.379 2,8.145 2,7.899 2,7.899 2,6.699 2,6.699 2,6.068 3.662,5.523 6.09,5.253 6.09,5.253 6.09,2.8 6.09,2.8 6.09,2.362 6.459,2 6.906,2z" Fill="white" Height="24" Width="18" >
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="5" HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="6" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="5" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="6" HorizontalAlignment="Right"/>
                             </Grid>
-                            <Grid Grid.Row="1">
+                            <Grid Grid.Row="2">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="188*"/>
                                 </Grid.RowDefinitions>
-                                <Grid Grid.Row="0" Background="#A9FFFFF3" Margin="0,1,0,3" >
-                                    <WrapPanel VerticalAlignment="Center" Margin="-4,24,4,24">
+                                <Grid Background="#A9FFFFF3" Margin="0 3" >
+                                    <WrapPanel VerticalAlignment="Center" Margin="0 24">
                                         <TextBlock Foreground="#FF5B5B5B" Text="Select Type of RULE  .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="15 0 0 0" TextDecorations="Underline"/>
                                         <RadioButton Foreground="#FF5B5B5B" IsChecked="True" Name="CostingRuleRadio"  Content="Costing Rule" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0" Checked="CostingRuleRadio_Checked_1"/>
                                         <RadioButton Checked="ServiceRuleRadio_Checked" Foreground="#FF5B5B5B" Content="Service Rule" Name="ServiceRuleRadio"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
@@ -578,7 +581,7 @@
                                                         <TextBlock Text="Service List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
                                                         <ListBox ItemsSource="{Binding ServiceList}"  BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
                                                     </StackPanel>
-                                                    <StackPanel Margin="0 3 0 3" Background="#A9FFFFF3">
+                                                    <StackPanel Margin="0 3" Background="#A9FFFFF3">
                                                         <TextBlock Text="Zone List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
                                                         <ListBox ItemsSource="{Binding ZoneList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
                                                     </StackPanel>
@@ -586,7 +589,7 @@
                                                         <TextBlock Text="City List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
                                                         <ListBox ItemsSource="{Binding CityList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
                                                     </StackPanel>
-                                                    <StackPanel Margin="0 3 0 3" Background="#A9FFFFF3">
+                                                    <StackPanel Margin="0 3" Background="#A9FFFFF3">
                                                         <TextBlock Text="State List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
                                                         <ListBox ItemsSource="{Binding StateList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
                                                     </StackPanel>
@@ -656,7 +659,7 @@
                                             <RowDefinition Height="Auto"/>
                                             <RowDefinition Height="50*"/>
                                         </Grid.RowDefinitions>
-                                        <StackPanel Background="#A9FFFFF3" Grid.Row="0" Margin="4 4 4 0">
+                                        <StackPanel Background="#A9FFFFF3" Margin="4 4 4 0">
                                             <TextBlock Text="Calculator" HorizontalAlignment="Center" Height="21" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" />
                                         </StackPanel>
                                         <Grid Grid.Row="1">
@@ -671,8 +674,8 @@
                                                 <RowDefinition Height="Auto"/>
                                                 <RowDefinition Height="Auto"/>
                                             </Grid.RowDefinitions>
-                                            <TextBlock Text=" Client .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="0" Grid.Column="0" Margin="4 4 0 0"/>
-                                            <ComboBox DataContext="{StaticResource ClienTable}" DisplayMemberPath="NameAndCode" ItemsSource="{Binding}" Name="Client_Combo" Grid.Row="0"  Grid.Column="1" Margin="0 4 4 0"/>
+                                            <TextBlock Text=" Client .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Column="0" Margin="4 4 0 0"/>
+                                            <ComboBox DataContext="{StaticResource ClienTable}" DisplayMemberPath="NameAndCode" ItemsSource="{Binding}" Name="Client_Combo"  Grid.Column="1" Margin="0 4 4 0"/>
                                             <TextBlock   Text=" Weight .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="1" Grid.Column="0" Margin="4 4 0 0"/>
                                             <WrapPanel Grid.Row="1"  Grid.Column="1" Margin="0 4 4 0">
                                                 <TextBox Width="70" Height="22" Name="WeightRuleTextBox"/>
@@ -702,16 +705,16 @@
                                     </Grid>
                                 </Grid>
                             </Grid>
-                            <StackPanel Grid.Row="2" Background="#A9FFFFF3"/>
+                            <StackPanel Grid.Row="3" Background="#A9FFFFF3"/>
                         </Grid>
                         <Grid Visibility="Collapsed" Name="ClientOptionPanel">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="34"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="4"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="25"/>
                             </Grid.RowDefinitions>
-                            <StackPanel Background="#19000000" Margin="0 0 0 3"/>
-                            <Grid>
+                            <Grid Background="#19000000">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -726,40 +729,40 @@
                                     <Path Margin="6 5 0 0" Data="F1M7.006,17.756C8.089,18.341 9.324,18.675 10.635,18.675 11.947,18.675 13.183,18.341 14.264,17.756 16.602,18.374 18.432,19.843 19.272,23 19.272,23 2,23 2,23 2.839,19.843 4.67,18.375 7.006,17.756z M22.992,14.925C25.33,15.543 27.161,17.011 28,20.168 28,20.168 19.469,20.168 19.469,20.168 18.486,18.463 17.033,17.311 15.075,16.685 15.597,16.276 16.061,15.798 16.456,15.264 17.354,15.635 18.334,15.843 19.363,15.843 20.674,15.843 21.911,15.51 22.992,14.925z M6.639,12.72C7.558,14.518 9.136,15.706 10.928,15.706 12.722,15.706 14.298,14.518 15.217,12.72 15.217,12.72 6.639,12.72 6.639,12.72z M10.635,4.831C13.958,4.831 16.649,7.548 16.649,10.899 16.649,14.252 13.958,16.968 10.635,16.968 7.313,16.968 4.621,14.252 4.621,10.899 4.621,7.548 7.313,4.831 10.635,4.831z M19.363,2C22.685,2 25.377,4.717 25.377,8.068 25.377,11.421 22.685,14.137 19.363,14.137 18.642,14.137 17.954,14.003 17.313,13.768 17.499,13.331 17.641,12.872 17.74,12.396 18.332,12.704 18.979,12.874 19.656,12.874 21.449,12.874 23.026,11.686 23.944,9.888 23.944,9.888 17.819,9.888 17.819,9.888 17.513,7.667 16.22,5.766 14.398,4.645 15.482,3.049 17.3,2 19.363,2z" Fill="Black" Height="19" Canvas.Left="16" Canvas.Top="188.46" Width="23" Stretch="Fill"/>
                                     <TextBlock Text="Manage Client" Margin="8 2 6 0" FontSize="16" Padding="1 3 1 0.5"/>
                                 </WrapPanel>
-                                <Button Name="ReloadClientGridButton" Click="ReloadClientGridButton_Click" Margin="10 0 0 0" ToolTip="Reload" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="1">
+                                <Button Name="ReloadClientGridButton" Click="ReloadClientGridButton_Click" Margin="10 0 0 0" ToolTip="Reload" Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="1">
                                     <Path Data="F1M2,12.942C2,12.942 10.226,15.241 10.226,15.241 10.226,15.241 8.275,17.071 8.275,17.071 9.288,17.922 10.917,18.786 12.32,18.786 15.074,18.786 17.386,16.824 18.039,14.171 18.039,14.171 21.987,15.222 21.987,15.222 20.891,19.693 16.996,23 12.357,23 9.771,23 7.076,21.618 5.308,19.934 5.308,19.934 3.454,21.671 3.454,21.671 3.454,21.671 2,12.942 2,12.942z M11.643,2C14.229,2 16.924,3.382 18.692,5.066 18.692,5.066 20.546,3.329 20.546,3.329 20.546,3.329 22,12.058 22,12.058 22,12.058 13.774,9.759 13.774,9.759 13.774,9.759 15.725,7.929 15.725,7.929 14.712,7.078 13.083,6.214 11.68,6.214 8.926,6.214 6.614,8.176 5.961,10.829 5.961,10.829 2.013,9.778 2.013,9.778 3.109,5.307 7.004,2 11.643,2z" Fill="Black" Height="24" Width="23">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button Name="UpdateClientGridButton" ToolTip="Edit" Click="UpdateClientGridButton_Click"  Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="2">
+                                <Button Name="UpdateClientGridButton" ToolTip="Edit" Click="UpdateClientGridButton_Click"  Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="2">
                                     <Path Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="#FF1E00A6" Height="24" Canvas.Left="19" Canvas.Top="32" Width="24">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button  ToolTip="Add" Name="AddClientButton" Click="AddClientButton_Click" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="3">
+                                <Button  ToolTip="Add" Name="AddClientButton" Click="AddClientButton_Click" Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="3">
                                     <Path Data="F1M13.455,5.818C13.455,5.818 13.455,9.636 13.455,9.636 13.455,9.636 9.636,9.636 9.636,9.636 9.636,9.636 9.636,11.545 9.636,11.545 9.636,11.545 13.455,11.545 13.455,11.545 13.455,11.545 13.455,15.364 13.455,15.364 13.455,15.364 15.364,15.364 15.364,15.364 15.364,15.364 15.364,11.545 15.364,11.545 15.364,11.545 19.182,11.545 19.182,11.545 19.182,11.545 19.182,9.636 19.182,9.636 19.182,9.636 15.364,9.636 15.364,9.636 15.364,9.636 15.364,5.818 15.364,5.818 15.364,5.818 13.455,5.818 13.455,5.818z M2,5.818C2,5.818 3.909,5.818 3.909,5.818 3.909,5.818 3.909,21.091 3.909,21.091 3.909,21.091 19.182,21.091 19.182,21.091 19.182,21.091 19.182,23 19.182,23 19.182,23 3.909,23 3.909,23 2.859,23 2,22.141 2,21.091 2,21.091 2,5.818 2,5.818z M7.727,2C7.727,2 21.091,2 21.091,2 22.141,2 23,2.859 23,3.909 23,3.909 23,17.273 23,17.273 23,18.323 22.141,19.182 21.091,19.182 21.091,19.182 7.727,19.182 7.727,19.182 6.677,19.182 5.818,18.323 5.818,17.273 5.818,17.273 5.818,3.909 5.818,3.909 5.818,2.859 6.677,2 7.727,2z" Fill="Black" Height="24" Width="24">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button Name="DeleteClientGridButton" Click="DeleteClientGridButton_Click" ToolTip="Delete"  Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="4">
+                                <Button Name="DeleteClientGridButton" Click="DeleteClientGridButton_Click" ToolTip="Delete"  Style="{StaticResource side}" Width="45" Height="30" Grid.Column="4">
                                     <Path Data="F1M3.056,10.35C3.714,11.001 6.347,11.109 9.499,11.109 12.65,11.109 15.286,11.001 15.941,10.35 16.022,10.432 16.077,10.516 16.091,10.603 16.091,10.603 16.1,10.603 16.1,10.603 16.1,10.603 16.096,10.65 16.096,10.65 16.096,10.655 16.1,10.661 16.1,10.666 16.1,10.679 16.096,10.69 16.095,10.702 16.095,10.702 15.581,20.977 15.581,20.977 15.581,20.977 15.578,20.977 15.578,20.977 15.533,21.782 14.589,23 9.499,23 4.409,23 3.465,21.782 3.42,20.977 3.42,20.977 3.419,20.977 3.419,20.977 3.419,20.977 2.906,10.702 2.906,10.702 2.904,10.69 2.9,10.679 2.9,10.666 2.9,10.661 2.902,10.655 2.902,10.65 2.902,10.65 2.9,10.603 2.9,10.603 2.9,10.603 2.906,10.603 2.906,10.603 2.925,10.516 2.975,10.432 3.056,10.35z M7.59,3.334C7.516,3.334 7.453,3.694 7.453,4.133 7.453,4.133 7.453,5.138 7.453,5.138 7.453,5.138 7.66,5.125 7.66,5.125 8.247,5.093 8.864,5.075 9.499,5.075 10.111,5.075 10.703,5.093 11.272,5.122 11.272,5.122 11.272,4.133 11.272,4.133 11.272,3.694 11.211,3.334 11.135,3.334 11.06,3.334 10.63,3.334 10.182,3.334 10.182,3.334 8.545,3.334 8.545,3.334 8.095,3.334 7.666,3.334 7.59,3.334z M6.906,2C6.906,2 11.818,2 11.818,2 12.268,2 12.635,2.362 12.635,2.8 12.635,2.8 12.635,5.226 12.635,5.226 15.21,5.483 17,6.046 17,6.699 17,6.699 17,7.899 17,7.899 17,8.145 16.743,8.379 16.288,8.59 15.089,9.14 12.501,9.522 9.499,9.522 6.499,9.522 3.91,9.14 2.712,8.59 2.255,8.379 2,8.145 2,7.899 2,7.899 2,6.699 2,6.699 2,6.068 3.662,5.523 6.09,5.253 6.09,5.253 6.09,2.8 6.09,2.8 6.09,2.362 6.459,2 6.906,2z" Fill="white" Height="24" Width="18" >
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
                             </Grid>
-                            <Grid Grid.Row="1">
+                            <Grid Grid.Row="2">
                                 <DataGrid RowHeaderWidth="0" BorderThickness="0" Name="mangaclientgrid" ItemsSource="{Binding}" DataContext="{StaticResource ClienTable}"  SelectionMode="Single" AutoGenerateColumns="False" >
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Name" Binding="{Binding CLNAME, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
@@ -770,16 +773,16 @@
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </Grid>
-                            <StackPanel Grid.Row="2" Background="#A9FFFFF3"/>
+                            <StackPanel Grid.Row="3" Background="#A9FFFFF3"/>
                         </Grid>
                         <Grid Visibility="Collapsed" Name="StockOptionPanel">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="34"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="4"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="25"/>
                             </Grid.RowDefinitions>
-                            <StackPanel Background="#19000000" Margin="0 0 0 3"/>
-                            <Grid>
+                            <Grid Background="#19000000">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -791,43 +794,43 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <WrapPanel Margin="7,0,5,0" Background="#A9FFFFF3" VerticalAlignment="Stretch">
-                                    <Path Margin="6 5 0 0" Data="F1M7.006,17.756C8.089,18.341 9.324,18.675 10.635,18.675 11.947,18.675 13.183,18.341 14.264,17.756 16.602,18.374 18.432,19.843 19.272,23 19.272,23 2,23 2,23 2.839,19.843 4.67,18.375 7.006,17.756z M22.992,14.925C25.33,15.543 27.161,17.011 28,20.168 28,20.168 19.469,20.168 19.469,20.168 18.486,18.463 17.033,17.311 15.075,16.685 15.597,16.276 16.061,15.798 16.456,15.264 17.354,15.635 18.334,15.843 19.363,15.843 20.674,15.843 21.911,15.51 22.992,14.925z M6.639,12.72C7.558,14.518 9.136,15.706 10.928,15.706 12.722,15.706 14.298,14.518 15.217,12.72 15.217,12.72 6.639,12.72 6.639,12.72z M10.635,4.831C13.958,4.831 16.649,7.548 16.649,10.899 16.649,14.252 13.958,16.968 10.635,16.968 7.313,16.968 4.621,14.252 4.621,10.899 4.621,7.548 7.313,4.831 10.635,4.831z M19.363,2C22.685,2 25.377,4.717 25.377,8.068 25.377,11.421 22.685,14.137 19.363,14.137 18.642,14.137 17.954,14.003 17.313,13.768 17.499,13.331 17.641,12.872 17.74,12.396 18.332,12.704 18.979,12.874 19.656,12.874 21.449,12.874 23.026,11.686 23.944,9.888 23.944,9.888 17.819,9.888 17.819,9.888 17.513,7.667 16.22,5.766 14.398,4.645 15.482,3.049 17.3,2 19.363,2z" Fill="Black" Height="19" Canvas.Left="16" Canvas.Top="188.46" Width="23" Stretch="Fill"/>
+                                    <Path Margin="6 5 0 0" Data="F1M2.375,13.893C2.375,13.893 12,18.643 12,18.643 12,18.643 21.625,13.893 21.625,13.893 21.625,13.893 23,14.571 23,14.571 23,14.571 12,20 12,20 12,20 1,14.571 1,14.571 1,14.571 2.375,13.893 2.375,13.893z M2.375,11.179C2.375,11.179 12,15.929 12,15.929 12,15.929 21.625,11.179 21.625,11.179 21.625,11.179 23,11.857 23,11.857 23,11.857 12,17.286 12,17.286 12,17.286 1,11.857 1,11.857 1,11.857 2.375,11.179 2.375,11.179z M2.375,8.464C2.375,8.464 12,13.214 12,13.214 12,13.214 21.625,8.464 21.625,8.464 21.625,8.464 23,9.143 23,9.143 23,9.143 12,14.571 12,14.571 12,14.571 1,9.143 1,9.143 1,9.143 2.375,8.464 2.375,8.464z M12,1C12,1 23,6.429 23,6.429 23,6.429 12,11.857 12,11.857 12,11.857 1,6.429 1,6.429 1,6.429 12,1 12,1z" Fill="Black" Height="21" Width="24"/>
                                     <TextBlock Text="Manage Stock" Margin="8 2 6 0" FontSize="16" Padding="1 3 1 0.5"/>
                                 </WrapPanel>
-                                <Button  Name="RefreshDataButton" Margin="10 0 0 0" ToolTip="Reload" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="1">
+                                <Button  Name="RefreshDataButton" Margin="10 0 0 0" ToolTip="Reload" Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="1">
                                     <Path Margin="2 0 0 0" Data="F1M2,12.942C2,12.942 10.226,15.241 10.226,15.241 10.226,15.241 8.275,17.071 8.275,17.071 9.288,17.922 10.917,18.786 12.32,18.786 15.074,18.786 17.386,16.824 18.039,14.171 18.039,14.171 21.987,15.222 21.987,15.222 20.891,19.693 16.996,23 12.357,23 9.771,23 7.076,21.618 5.308,19.934 5.308,19.934 3.454,21.671 3.454,21.671 3.454,21.671 2,12.942 2,12.942z M11.643,2C14.229,2 16.924,3.382 18.692,5.066 18.692,5.066 20.546,3.329 20.546,3.329 20.546,3.329 22,12.058 22,12.058 22,12.058 13.774,9.759 13.774,9.759 13.774,9.759 15.725,7.929 15.725,7.929 14.712,7.078 13.083,6.214 11.68,6.214 8.926,6.214 6.614,8.176 5.961,10.829 5.961,10.829 2.013,9.778 2.013,9.778 3.109,5.307 7.004,2 11.643,2z" Fill="Black" Height="24" Width="23">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button  Name="UpdateStockButton" ToolTip="Edit" Style="{StaticResource side}"  Grid.Row="0" Width="42" Height="30" Grid.Column="2">
+                                <Button  Name="UpdateStockButton" ToolTip="Edit" Style="{StaticResource side}"  Width="42" Height="30" Grid.Column="2">
                                     <Path Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="#FF1E00A6" Height="24" Width="24">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button Name="AddStockButton" ToolTip="Add" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="3">
+                                <Button Name="AddStockButton" ToolTip="Add" Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="3">
                                     <Path Data="F1M13.455,5.818C13.455,5.818 13.455,9.636 13.455,9.636 13.455,9.636 9.636,9.636 9.636,9.636 9.636,9.636 9.636,11.545 9.636,11.545 9.636,11.545 13.455,11.545 13.455,11.545 13.455,11.545 13.455,15.364 13.455,15.364 13.455,15.364 15.364,15.364 15.364,15.364 15.364,15.364 15.364,11.545 15.364,11.545 15.364,11.545 19.182,11.545 19.182,11.545 19.182,11.545 19.182,9.636 19.182,9.636 19.182,9.636 15.364,9.636 15.364,9.636 15.364,9.636 15.364,5.818 15.364,5.818 15.364,5.818 13.455,5.818 13.455,5.818z M2,5.818C2,5.818 3.909,5.818 3.909,5.818 3.909,5.818 3.909,21.091 3.909,21.091 3.909,21.091 19.182,21.091 19.182,21.091 19.182,21.091 19.182,23 19.182,23 19.182,23 3.909,23 3.909,23 2.859,23 2,22.141 2,21.091 2,21.091 2,5.818 2,5.818z M7.727,2C7.727,2 21.091,2 21.091,2 22.141,2 23,2.859 23,3.909 23,3.909 23,17.273 23,17.273 23,18.323 22.141,19.182 21.091,19.182 21.091,19.182 7.727,19.182 7.727,19.182 6.677,19.182 5.818,18.323 5.818,17.273 5.818,17.273 5.818,3.909 5.818,3.909 5.818,2.859 6.677,2 7.727,2z" Fill="Black" Height="24" Width="24">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button Name="DeleteStockButton" ToolTip="Delete"  Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="4">
+                                <Button Name="DeleteStockButton" ToolTip="Delete"  Style="{StaticResource side}" Width="45" Height="30" Grid.Column="4">
                                     <Path Margin="-2 0 0 0" Data="F1M3.056,10.35C3.714,11.001 6.347,11.109 9.499,11.109 12.65,11.109 15.286,11.001 15.941,10.35 16.022,10.432 16.077,10.516 16.091,10.603 16.091,10.603 16.1,10.603 16.1,10.603 16.1,10.603 16.096,10.65 16.096,10.65 16.096,10.655 16.1,10.661 16.1,10.666 16.1,10.679 16.096,10.69 16.095,10.702 16.095,10.702 15.581,20.977 15.581,20.977 15.581,20.977 15.578,20.977 15.578,20.977 15.533,21.782 14.589,23 9.499,23 4.409,23 3.465,21.782 3.42,20.977 3.42,20.977 3.419,20.977 3.419,20.977 3.419,20.977 2.906,10.702 2.906,10.702 2.904,10.69 2.9,10.679 2.9,10.666 2.9,10.661 2.902,10.655 2.902,10.65 2.902,10.65 2.9,10.603 2.9,10.603 2.9,10.603 2.906,10.603 2.906,10.603 2.925,10.516 2.975,10.432 3.056,10.35z M7.59,3.334C7.516,3.334 7.453,3.694 7.453,4.133 7.453,4.133 7.453,5.138 7.453,5.138 7.453,5.138 7.66,5.125 7.66,5.125 8.247,5.093 8.864,5.075 9.499,5.075 10.111,5.075 10.703,5.093 11.272,5.122 11.272,5.122 11.272,4.133 11.272,4.133 11.272,3.694 11.211,3.334 11.135,3.334 11.06,3.334 10.63,3.334 10.182,3.334 10.182,3.334 8.545,3.334 8.545,3.334 8.095,3.334 7.666,3.334 7.59,3.334z M6.906,2C6.906,2 11.818,2 11.818,2 12.268,2 12.635,2.362 12.635,2.8 12.635,2.8 12.635,5.226 12.635,5.226 15.21,5.483 17,6.046 17,6.699 17,6.699 17,7.899 17,7.899 17,8.145 16.743,8.379 16.288,8.59 15.089,9.14 12.501,9.522 9.499,9.522 6.499,9.522 3.91,9.14 2.712,8.59 2.255,8.379 2,8.145 2,7.899 2,7.899 2,6.699 2,6.699 2,6.068 3.662,5.523 6.09,5.253 6.09,5.253 6.09,2.8 6.09,2.8 6.09,2.362 6.459,2 6.906,2z" Fill="white" Height="24" Width="18" >
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
                             </Grid>
-                            <Grid Grid.Row="1">
+                            <Grid Grid.Row="2">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="*"/>
@@ -841,7 +844,7 @@
                                     <Rectangle Fill="White" Height="20" Stretch="Fill" Width="95" Stroke="Black" VerticalAlignment="Center"/>
                                     <DatePicker Margin="-95 0 0 0"  Name="ToStockDatePicker" Width="122" BorderThickness="0" VerticalAlignment="Center"/>
                                 </WrapPanel>
-                                <DataGrid Name="StockAssignmentDatagrid" SelectionMode="Single" AutoGenerateColumns="False" Grid.Row="1" DataContext="{StaticResource StockAssignmentList}" ItemsSource="{Binding}" IsReadOnly="True">
+                                <DataGrid Name="StockAssignmentDatagrid" SelectionMode="Single" BorderThickness="0" AutoGenerateColumns="False" Grid.Row="1" DataContext="{StaticResource StockAssignmentList}" ItemsSource="{Binding}" IsReadOnly="True">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="SrlNo" Binding="{Binding SrlNo}"/>
                                         <DataGridTextColumn Header="Employee" Binding="{Binding EmployeeName}"/>
@@ -857,16 +860,16 @@
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </Grid>
-                            <StackPanel Grid.Row="2" Background="#A9FFFFF3"/>
+                            <StackPanel Grid.Row="3" Background="#A9FFFFF3"/>
                         </Grid>
                         <Grid Visibility="Collapsed" Name="EmployeeOptionPanel">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="34"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="4"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="25"/>
                             </Grid.RowDefinitions>
-                            <StackPanel Background="#19000000" Margin="0 0 0 3"/>
-                            <Grid>
+                            <Grid Background="#19000000">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -881,40 +884,40 @@
                                     <Path Margin="6 5 0 0" Data="F1M7.006,17.756C8.089,18.341 9.324,18.675 10.635,18.675 11.947,18.675 13.183,18.341 14.264,17.756 16.602,18.374 18.432,19.843 19.272,23 19.272,23 2,23 2,23 2.839,19.843 4.67,18.375 7.006,17.756z M22.992,14.925C25.33,15.543 27.161,17.011 28,20.168 28,20.168 19.469,20.168 19.469,20.168 18.486,18.463 17.033,17.311 15.075,16.685 15.597,16.276 16.061,15.798 16.456,15.264 17.354,15.635 18.334,15.843 19.363,15.843 20.674,15.843 21.911,15.51 22.992,14.925z M6.639,12.72C7.558,14.518 9.136,15.706 10.928,15.706 12.722,15.706 14.298,14.518 15.217,12.72 15.217,12.72 6.639,12.72 6.639,12.72z M10.635,4.831C13.958,4.831 16.649,7.548 16.649,10.899 16.649,14.252 13.958,16.968 10.635,16.968 7.313,16.968 4.621,14.252 4.621,10.899 4.621,7.548 7.313,4.831 10.635,4.831z M19.363,2C22.685,2 25.377,4.717 25.377,8.068 25.377,11.421 22.685,14.137 19.363,14.137 18.642,14.137 17.954,14.003 17.313,13.768 17.499,13.331 17.641,12.872 17.74,12.396 18.332,12.704 18.979,12.874 19.656,12.874 21.449,12.874 23.026,11.686 23.944,9.888 23.944,9.888 17.819,9.888 17.819,9.888 17.513,7.667 16.22,5.766 14.398,4.645 15.482,3.049 17.3,2 19.363,2z" Fill="Black" Height="19" Canvas.Left="16" Canvas.Top="188.46" Width="23" Stretch="Fill"/>
                                     <TextBlock Text="Manage Employee" Margin="8 2 6 0" FontSize="16" Padding="1 3 1 0.5"/>
                                 </WrapPanel>
-                                <Button Name="ReloadEmployeeGrid" Click="ReloadEmployeeGrid_Click" Margin="10 0 0 0" ToolTip="Reload" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="1">
+                                <Button Name="ReloadEmployeeGrid" Click="ReloadEmployeeGrid_Click" Margin="10 0 0 0" ToolTip="Reload" Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="1">
                                     <Path Margin="2 0 0 0" Data="F1M2,12.942C2,12.942 10.226,15.241 10.226,15.241 10.226,15.241 8.275,17.071 8.275,17.071 9.288,17.922 10.917,18.786 12.32,18.786 15.074,18.786 17.386,16.824 18.039,14.171 18.039,14.171 21.987,15.222 21.987,15.222 20.891,19.693 16.996,23 12.357,23 9.771,23 7.076,21.618 5.308,19.934 5.308,19.934 3.454,21.671 3.454,21.671 3.454,21.671 2,12.942 2,12.942z M11.643,2C14.229,2 16.924,3.382 18.692,5.066 18.692,5.066 20.546,3.329 20.546,3.329 20.546,3.329 22,12.058 22,12.058 22,12.058 13.774,9.759 13.774,9.759 13.774,9.759 15.725,7.929 15.725,7.929 14.712,7.078 13.083,6.214 11.68,6.214 8.926,6.214 6.614,8.176 5.961,10.829 5.961,10.829 2.013,9.778 2.013,9.778 3.109,5.307 7.004,2 11.643,2z" Fill="Black" Height="24" Width="23">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button Name="EditEmployeeGrid" Click="EditEmployeeGrid_Click" ToolTip="Edit" Style="{StaticResource side}"  Grid.Row="0" Width="42" Height="30" Grid.Column="2">
+                                <Button Name="EditEmployeeGrid" Click="EditEmployeeGrid_Click" ToolTip="Edit" Style="{StaticResource side}"  Width="42" Height="30" Grid.Column="2">
                                     <Path Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="#FF1E00A6" Height="24" Width="24">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button Name="AddEmployeeGrid" Click="AddEmployeeGrid_Click" ToolTip="Add" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="3">
+                                <Button Name="AddEmployeeGrid" Click="AddEmployeeGrid_Click" ToolTip="Add" Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="3">
                                     <Path Data="F1M13.455,5.818C13.455,5.818 13.455,9.636 13.455,9.636 13.455,9.636 9.636,9.636 9.636,9.636 9.636,9.636 9.636,11.545 9.636,11.545 9.636,11.545 13.455,11.545 13.455,11.545 13.455,11.545 13.455,15.364 13.455,15.364 13.455,15.364 15.364,15.364 15.364,15.364 15.364,15.364 15.364,11.545 15.364,11.545 15.364,11.545 19.182,11.545 19.182,11.545 19.182,11.545 19.182,9.636 19.182,9.636 19.182,9.636 15.364,9.636 15.364,9.636 15.364,9.636 15.364,5.818 15.364,5.818 15.364,5.818 13.455,5.818 13.455,5.818z M2,5.818C2,5.818 3.909,5.818 3.909,5.818 3.909,5.818 3.909,21.091 3.909,21.091 3.909,21.091 19.182,21.091 19.182,21.091 19.182,21.091 19.182,23 19.182,23 19.182,23 3.909,23 3.909,23 2.859,23 2,22.141 2,21.091 2,21.091 2,5.818 2,5.818z M7.727,2C7.727,2 21.091,2 21.091,2 22.141,2 23,2.859 23,3.909 23,3.909 23,17.273 23,17.273 23,18.323 22.141,19.182 21.091,19.182 21.091,19.182 7.727,19.182 7.727,19.182 6.677,19.182 5.818,18.323 5.818,17.273 5.818,17.273 5.818,3.909 5.818,3.909 5.818,2.859 6.677,2 7.727,2z" Fill="Black" Height="24" Width="24">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button Name="DeleteEmployeeGrid" Click="DeleteEmployeeGrid_Click" ToolTip="Delete"  Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="4">
+                                <Button Name="DeleteEmployeeGrid" Click="DeleteEmployeeGrid_Click" ToolTip="Delete"  Style="{StaticResource side}" Width="45" Height="30" Grid.Column="4">
                                     <Path Margin="-2 0 0 0" Data="F1M3.056,10.35C3.714,11.001 6.347,11.109 9.499,11.109 12.65,11.109 15.286,11.001 15.941,10.35 16.022,10.432 16.077,10.516 16.091,10.603 16.091,10.603 16.1,10.603 16.1,10.603 16.1,10.603 16.096,10.65 16.096,10.65 16.096,10.655 16.1,10.661 16.1,10.666 16.1,10.679 16.096,10.69 16.095,10.702 16.095,10.702 15.581,20.977 15.581,20.977 15.581,20.977 15.578,20.977 15.578,20.977 15.533,21.782 14.589,23 9.499,23 4.409,23 3.465,21.782 3.42,20.977 3.42,20.977 3.419,20.977 3.419,20.977 3.419,20.977 2.906,10.702 2.906,10.702 2.904,10.69 2.9,10.679 2.9,10.666 2.9,10.661 2.902,10.655 2.902,10.65 2.902,10.65 2.9,10.603 2.9,10.603 2.9,10.603 2.906,10.603 2.906,10.603 2.925,10.516 2.975,10.432 3.056,10.35z M7.59,3.334C7.516,3.334 7.453,3.694 7.453,4.133 7.453,4.133 7.453,5.138 7.453,5.138 7.453,5.138 7.66,5.125 7.66,5.125 8.247,5.093 8.864,5.075 9.499,5.075 10.111,5.075 10.703,5.093 11.272,5.122 11.272,5.122 11.272,4.133 11.272,4.133 11.272,3.694 11.211,3.334 11.135,3.334 11.06,3.334 10.63,3.334 10.182,3.334 10.182,3.334 8.545,3.334 8.545,3.334 8.095,3.334 7.666,3.334 7.59,3.334z M6.906,2C6.906,2 11.818,2 11.818,2 12.268,2 12.635,2.362 12.635,2.8 12.635,2.8 12.635,5.226 12.635,5.226 15.21,5.483 17,6.046 17,6.699 17,6.699 17,7.899 17,7.899 17,8.145 16.743,8.379 16.288,8.59 15.089,9.14 12.501,9.522 9.499,9.522 6.499,9.522 3.91,9.14 2.712,8.59 2.255,8.379 2,8.145 2,7.899 2,7.899 2,6.699 2,6.699 2,6.068 3.662,5.523 6.09,5.253 6.09,5.253 6.09,2.8 6.09,2.8 6.09,2.362 6.459,2 6.906,2z" Fill="white" Height="24" Width="18" >
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
                             </Grid>
-                            <Grid Grid.Row="1">
+                            <Grid Grid.Row="2">
                                 <DataGrid RowHeaderWidth="0" IsReadOnly="True" BorderThickness="0" Name="mangaEmployeegrid" ItemsSource="{Binding}" DataContext="{StaticResource EmployeeTable}"  AutoGenerateColumns="False" >
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Name" Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -924,16 +927,16 @@
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </Grid>
-                            <StackPanel Grid.Row="2" Background="#A9FFFFF3"/>
+                            <StackPanel Grid.Row="3" Background="#A9FFFFF3"/>
                         </Grid>
                         <Grid Visibility="Collapsed" Name="ZoneOptionPanel">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="34"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="4"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="25"/>
                             </Grid.RowDefinitions>
-                            <StackPanel Background="#19000000" Margin="0 0 0 3"/>
-                            <Grid>
+                            <Grid Background="#19000000">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -948,40 +951,40 @@
                                     <Path Margin="6 2 0 0" Data="F1M8.5,4.833C10.571,4.833 12.25,6.55 12.25,8.667 12.25,10.784 10.571,12.5 8.5,12.5 6.429,12.5 4.75,10.784 4.75,8.667 4.75,6.55 6.429,4.833 8.5,4.833z M8.5,3.3C5.6,3.3 3.25,5.703 3.25,8.667 3.25,11.631 5.6,14.033 8.5,14.033 11.399,14.033 13.75,11.631 13.75,8.667 13.75,5.703 11.399,3.3 8.5,3.3z M8.5,1C12.642,1 16,4.432 16,8.667 16,12.901 8.5,24 8.5,24 8.5,24 1,12.901 1,8.667 1,4.432 4.358,1 8.5,1z" Fill="Black" Height="25" Canvas.Left="351.667" Canvas.Top="77.333" Width="17"/>
                                     <TextBlock Text="Manage Zone" Margin="8 2 6 0" FontSize="16" Padding="1 3 1 0.5"/>
                                 </WrapPanel>
-                                <Button Margin="10 0 0 0" ToolTip="Reload" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="1">
+                                <Button Margin="10 0 0 0" ToolTip="Reload" Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="1">
                                     <Path Data="F1M2,12.942C2,12.942 10.226,15.241 10.226,15.241 10.226,15.241 8.275,17.071 8.275,17.071 9.288,17.922 10.917,18.786 12.32,18.786 15.074,18.786 17.386,16.824 18.039,14.171 18.039,14.171 21.987,15.222 21.987,15.222 20.891,19.693 16.996,23 12.357,23 9.771,23 7.076,21.618 5.308,19.934 5.308,19.934 3.454,21.671 3.454,21.671 3.454,21.671 2,12.942 2,12.942z M11.643,2C14.229,2 16.924,3.382 18.692,5.066 18.692,5.066 20.546,3.329 20.546,3.329 20.546,3.329 22,12.058 22,12.058 22,12.058 13.774,9.759 13.774,9.759 13.774,9.759 15.725,7.929 15.725,7.929 14.712,7.078 13.083,6.214 11.68,6.214 8.926,6.214 6.614,8.176 5.961,10.829 5.961,10.829 2.013,9.778 2.013,9.778 3.109,5.307 7.004,2 11.643,2z" Fill="Black" Height="24" Width="23">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button ToolTip="Edit" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="2">
+                                <Button ToolTip="Edit" Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="2">
                                     <Path Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="#FF1E00A6" Height="24" Canvas.Left="19" Canvas.Top="32" Width="24">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button ToolTip="Add" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="3">
+                                <Button ToolTip="Add" Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="3">
                                     <Path Data="F1M13.455,5.818C13.455,5.818 13.455,9.636 13.455,9.636 13.455,9.636 9.636,9.636 9.636,9.636 9.636,9.636 9.636,11.545 9.636,11.545 9.636,11.545 13.455,11.545 13.455,11.545 13.455,11.545 13.455,15.364 13.455,15.364 13.455,15.364 15.364,15.364 15.364,15.364 15.364,15.364 15.364,11.545 15.364,11.545 15.364,11.545 19.182,11.545 19.182,11.545 19.182,11.545 19.182,9.636 19.182,9.636 19.182,9.636 15.364,9.636 15.364,9.636 15.364,9.636 15.364,5.818 15.364,5.818 15.364,5.818 13.455,5.818 13.455,5.818z M2,5.818C2,5.818 3.909,5.818 3.909,5.818 3.909,5.818 3.909,21.091 3.909,21.091 3.909,21.091 19.182,21.091 19.182,21.091 19.182,21.091 19.182,23 19.182,23 19.182,23 3.909,23 3.909,23 2.859,23 2,22.141 2,21.091 2,21.091 2,5.818 2,5.818z M7.727,2C7.727,2 21.091,2 21.091,2 22.141,2 23,2.859 23,3.909 23,3.909 23,17.273 23,17.273 23,18.323 22.141,19.182 21.091,19.182 21.091,19.182 7.727,19.182 7.727,19.182 6.677,19.182 5.818,18.323 5.818,17.273 5.818,17.273 5.818,3.909 5.818,3.909 5.818,2.859 6.677,2 7.727,2z" Fill="Black" Height="24" Width="24">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button ToolTip="Delete"  Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="4">
+                                <Button ToolTip="Delete"  Style="{StaticResource side}" Width="45" Height="30" Grid.Column="4">
                                     <Path Data="F1M3.056,10.35C3.714,11.001 6.347,11.109 9.499,11.109 12.65,11.109 15.286,11.001 15.941,10.35 16.022,10.432 16.077,10.516 16.091,10.603 16.091,10.603 16.1,10.603 16.1,10.603 16.1,10.603 16.096,10.65 16.096,10.65 16.096,10.655 16.1,10.661 16.1,10.666 16.1,10.679 16.096,10.69 16.095,10.702 16.095,10.702 15.581,20.977 15.581,20.977 15.581,20.977 15.578,20.977 15.578,20.977 15.533,21.782 14.589,23 9.499,23 4.409,23 3.465,21.782 3.42,20.977 3.42,20.977 3.419,20.977 3.419,20.977 3.419,20.977 2.906,10.702 2.906,10.702 2.904,10.69 2.9,10.679 2.9,10.666 2.9,10.661 2.902,10.655 2.902,10.65 2.902,10.65 2.9,10.603 2.9,10.603 2.9,10.603 2.906,10.603 2.906,10.603 2.925,10.516 2.975,10.432 3.056,10.35z M7.59,3.334C7.516,3.334 7.453,3.694 7.453,4.133 7.453,4.133 7.453,5.138 7.453,5.138 7.453,5.138 7.66,5.125 7.66,5.125 8.247,5.093 8.864,5.075 9.499,5.075 10.111,5.075 10.703,5.093 11.272,5.122 11.272,5.122 11.272,4.133 11.272,4.133 11.272,3.694 11.211,3.334 11.135,3.334 11.06,3.334 10.63,3.334 10.182,3.334 10.182,3.334 8.545,3.334 8.545,3.334 8.095,3.334 7.666,3.334 7.59,3.334z M6.906,2C6.906,2 11.818,2 11.818,2 12.268,2 12.635,2.362 12.635,2.8 12.635,2.8 12.635,5.226 12.635,5.226 15.21,5.483 17,6.046 17,6.699 17,6.699 17,7.899 17,7.899 17,8.145 16.743,8.379 16.288,8.59 15.089,9.14 12.501,9.522 9.499,9.522 6.499,9.522 3.91,9.14 2.712,8.59 2.255,8.379 2,8.145 2,7.899 2,7.899 2,6.699 2,6.699 2,6.068 3.662,5.523 6.09,5.253 6.09,5.253 6.09,2.8 6.09,2.8 6.09,2.362 6.459,2 6.906,2z" Fill="white" Height="24" Width="18" >
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
                             </Grid>
-                            <Grid Grid.Row="1">
+                            <Grid Grid.Row="2">
                                 <DataGrid Name="ZoneDataGrid" AutoGenerateColumns="False" RowHeaderWidth="0" BorderThickness="0" ItemsSource="{Binding}" DataContext="{StaticResource zoneTable}">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Zone Code" IsReadOnly="True" Binding="{Binding zcode}" />
@@ -989,16 +992,16 @@
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </Grid>
-                            <StackPanel Grid.Row="2" Background="#A9FFFFF3"/>
+                            <StackPanel Grid.Row="3" Background="#A9FFFFF3"/>
                         </Grid>
                         <Grid Visibility="Collapsed" Name="CityOptionPanel">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="34"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="4"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="25"/>
                             </Grid.RowDefinitions>
-                            <StackPanel Background="#19000000" Margin="0 0 0 3"/>
-                            <Grid>
+                            <Grid Background="#19000000">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -1013,40 +1016,40 @@
                                     <Path Margin="6 2 0 0" Data="F1M8.5,4.833C10.571,4.833 12.25,6.55 12.25,8.667 12.25,10.784 10.571,12.5 8.5,12.5 6.429,12.5 4.75,10.784 4.75,8.667 4.75,6.55 6.429,4.833 8.5,4.833z M8.5,3.3C5.6,3.3 3.25,5.703 3.25,8.667 3.25,11.631 5.6,14.033 8.5,14.033 11.399,14.033 13.75,11.631 13.75,8.667 13.75,5.703 11.399,3.3 8.5,3.3z M8.5,1C12.642,1 16,4.432 16,8.667 16,12.901 8.5,24 8.5,24 8.5,24 1,12.901 1,8.667 1,4.432 4.358,1 8.5,1z" Fill="Black" Height="25" Canvas.Left="351.667" Canvas.Top="77.333" Width="17"/>
                                     <TextBlock Text="Manage City" Margin="8 2 6 0" FontSize="16" Padding="1 3 1 0.5"/>
                                 </WrapPanel>
-                                <Button Name="ReloadCityButton" Click="ReloadCityButton_Click" Margin="10 0 0 0" ToolTip="Reload" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="1">
+                                <Button Name="ReloadCityButton" Click="ReloadCityButton_Click" Margin="10 0 0 0" ToolTip="Reload" Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="1">
                                     <Path Data="F1M2,12.942C2,12.942 10.226,15.241 10.226,15.241 10.226,15.241 8.275,17.071 8.275,17.071 9.288,17.922 10.917,18.786 12.32,18.786 15.074,18.786 17.386,16.824 18.039,14.171 18.039,14.171 21.987,15.222 21.987,15.222 20.891,19.693 16.996,23 12.357,23 9.771,23 7.076,21.618 5.308,19.934 5.308,19.934 3.454,21.671 3.454,21.671 3.454,21.671 2,12.942 2,12.942z M11.643,2C14.229,2 16.924,3.382 18.692,5.066 18.692,5.066 20.546,3.329 20.546,3.329 20.546,3.329 22,12.058 22,12.058 22,12.058 13.774,9.759 13.774,9.759 13.774,9.759 15.725,7.929 15.725,7.929 14.712,7.078 13.083,6.214 11.68,6.214 8.926,6.214 6.614,8.176 5.961,10.829 5.961,10.829 2.013,9.778 2.013,9.778 3.109,5.307 7.004,2 11.643,2z" Fill="Black" Height="24" Width="23">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button Name="EditCityButton" Click="EditCityButton_Click" ToolTip="Edit" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="2">
+                                <Button Name="EditCityButton" Click="EditCityButton_Click" ToolTip="Edit" Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="2">
                                     <Path Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="#FF1E00A6" Height="24" Canvas.Left="19" Canvas.Top="32" Width="24">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button Name="AddCityButton" Click="AddCityButton_Click" ToolTip="Add" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="3">
+                                <Button Name="AddCityButton" Click="AddCityButton_Click" ToolTip="Add" Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="3">
                                     <Path Data="F1M13.455,5.818C13.455,5.818 13.455,9.636 13.455,9.636 13.455,9.636 9.636,9.636 9.636,9.636 9.636,9.636 9.636,11.545 9.636,11.545 9.636,11.545 13.455,11.545 13.455,11.545 13.455,11.545 13.455,15.364 13.455,15.364 13.455,15.364 15.364,15.364 15.364,15.364 15.364,15.364 15.364,11.545 15.364,11.545 15.364,11.545 19.182,11.545 19.182,11.545 19.182,11.545 19.182,9.636 19.182,9.636 19.182,9.636 15.364,9.636 15.364,9.636 15.364,9.636 15.364,5.818 15.364,5.818 15.364,5.818 13.455,5.818 13.455,5.818z M2,5.818C2,5.818 3.909,5.818 3.909,5.818 3.909,5.818 3.909,21.091 3.909,21.091 3.909,21.091 19.182,21.091 19.182,21.091 19.182,21.091 19.182,23 19.182,23 19.182,23 3.909,23 3.909,23 2.859,23 2,22.141 2,21.091 2,21.091 2,5.818 2,5.818z M7.727,2C7.727,2 21.091,2 21.091,2 22.141,2 23,2.859 23,3.909 23,3.909 23,17.273 23,17.273 23,18.323 22.141,19.182 21.091,19.182 21.091,19.182 7.727,19.182 7.727,19.182 6.677,19.182 5.818,18.323 5.818,17.273 5.818,17.273 5.818,3.909 5.818,3.909 5.818,2.859 6.677,2 7.727,2z" Fill="Black" Height="24" Width="24">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button Name="DeleteCityButton" Click="DeleteCityButton_Click" ToolTip="Delete"  Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="4">
+                                <Button Name="DeleteCityButton" Click="DeleteCityButton_Click" ToolTip="Delete"  Style="{StaticResource side}" Width="45" Height="30" Grid.Column="4">
                                     <Path Data="F1M3.056,10.35C3.714,11.001 6.347,11.109 9.499,11.109 12.65,11.109 15.286,11.001 15.941,10.35 16.022,10.432 16.077,10.516 16.091,10.603 16.091,10.603 16.1,10.603 16.1,10.603 16.1,10.603 16.096,10.65 16.096,10.65 16.096,10.655 16.1,10.661 16.1,10.666 16.1,10.679 16.096,10.69 16.095,10.702 16.095,10.702 15.581,20.977 15.581,20.977 15.581,20.977 15.578,20.977 15.578,20.977 15.533,21.782 14.589,23 9.499,23 4.409,23 3.465,21.782 3.42,20.977 3.42,20.977 3.419,20.977 3.419,20.977 3.419,20.977 2.906,10.702 2.906,10.702 2.904,10.69 2.9,10.679 2.9,10.666 2.9,10.661 2.902,10.655 2.902,10.65 2.902,10.65 2.9,10.603 2.9,10.603 2.9,10.603 2.906,10.603 2.906,10.603 2.925,10.516 2.975,10.432 3.056,10.35z M7.59,3.334C7.516,3.334 7.453,3.694 7.453,4.133 7.453,4.133 7.453,5.138 7.453,5.138 7.453,5.138 7.66,5.125 7.66,5.125 8.247,5.093 8.864,5.075 9.499,5.075 10.111,5.075 10.703,5.093 11.272,5.122 11.272,5.122 11.272,4.133 11.272,4.133 11.272,3.694 11.211,3.334 11.135,3.334 11.06,3.334 10.63,3.334 10.182,3.334 10.182,3.334 8.545,3.334 8.545,3.334 8.095,3.334 7.666,3.334 7.59,3.334z M6.906,2C6.906,2 11.818,2 11.818,2 12.268,2 12.635,2.362 12.635,2.8 12.635,2.8 12.635,5.226 12.635,5.226 15.21,5.483 17,6.046 17,6.699 17,6.699 17,7.899 17,7.899 17,8.145 16.743,8.379 16.288,8.59 15.089,9.14 12.501,9.522 9.499,9.522 6.499,9.522 3.91,9.14 2.712,8.59 2.255,8.379 2,8.145 2,7.899 2,7.899 2,6.699 2,6.699 2,6.068 3.662,5.523 6.09,5.253 6.09,5.253 6.09,2.8 6.09,2.8 6.09,2.362 6.459,2 6.906,2z" Fill="white" Height="24" Width="18" >
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
                             </Grid>
-                            <Grid Grid.Row="1">
+                            <Grid Grid.Row="2">
                                 <DataGrid AutoGenerateColumns="False" Name="CityDataGrid" RowHeaderWidth="0" BorderThickness="0" DataContext="{StaticResource CityTable}" ItemsSource="{Binding}">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="City Code" IsReadOnly="True" Binding="{Binding CITY_CODE}"/>
@@ -1056,16 +1059,16 @@
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </Grid>
-                            <StackPanel Grid.Row="2" Background="#A9FFFFF3"/>
+                            <StackPanel Grid.Row="3" Background="#A9FFFFF3"/>
                         </Grid>
                         <Grid Visibility="Collapsed" Name="CountryOptionPanel">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="34"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="4"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="25"/>
                             </Grid.RowDefinitions>
-                            <StackPanel Background="#19000000" Margin="0 0 0 3"/>
-                            <Grid>
+                            <Grid Background="#19000000">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -1080,40 +1083,40 @@
                                     <Path Margin="6 2 0 0" Data="F1M8.5,4.833C10.571,4.833 12.25,6.55 12.25,8.667 12.25,10.784 10.571,12.5 8.5,12.5 6.429,12.5 4.75,10.784 4.75,8.667 4.75,6.55 6.429,4.833 8.5,4.833z M8.5,3.3C5.6,3.3 3.25,5.703 3.25,8.667 3.25,11.631 5.6,14.033 8.5,14.033 11.399,14.033 13.75,11.631 13.75,8.667 13.75,5.703 11.399,3.3 8.5,3.3z M8.5,1C12.642,1 16,4.432 16,8.667 16,12.901 8.5,24 8.5,24 8.5,24 1,12.901 1,8.667 1,4.432 4.358,1 8.5,1z" Fill="Black" Height="25" Canvas.Left="351.667" Canvas.Top="77.333" Width="17"/>
                                     <TextBlock Text="Manage Country" Margin="8 2 6 0" FontSize="16" Padding="1 3 1 0.5"/>
                                 </WrapPanel>
-                                <Button Margin="10 0 0 0" ToolTip="Reload" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="1">
+                                <Button Margin="10 0 0 0" ToolTip="Reload" Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="1">
                                     <Path Data="F1M2,12.942C2,12.942 10.226,15.241 10.226,15.241 10.226,15.241 8.275,17.071 8.275,17.071 9.288,17.922 10.917,18.786 12.32,18.786 15.074,18.786 17.386,16.824 18.039,14.171 18.039,14.171 21.987,15.222 21.987,15.222 20.891,19.693 16.996,23 12.357,23 9.771,23 7.076,21.618 5.308,19.934 5.308,19.934 3.454,21.671 3.454,21.671 3.454,21.671 2,12.942 2,12.942z M11.643,2C14.229,2 16.924,3.382 18.692,5.066 18.692,5.066 20.546,3.329 20.546,3.329 20.546,3.329 22,12.058 22,12.058 22,12.058 13.774,9.759 13.774,9.759 13.774,9.759 15.725,7.929 15.725,7.929 14.712,7.078 13.083,6.214 11.68,6.214 8.926,6.214 6.614,8.176 5.961,10.829 5.961,10.829 2.013,9.778 2.013,9.778 3.109,5.307 7.004,2 11.643,2z" Fill="Black" Height="24" Width="23">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button ToolTip="Edit" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="2">
+                                <Button ToolTip="Edit" Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="2">
                                     <Path Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="#FF1E00A6" Height="24" Canvas.Left="19" Canvas.Top="32" Width="24">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button ToolTip="Add" Style="{StaticResource side}"  Grid.Row="0" Width="45" Height="30" Grid.Column="3">
+                                <Button ToolTip="Add" Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="3">
                                     <Path Data="F1M13.455,5.818C13.455,5.818 13.455,9.636 13.455,9.636 13.455,9.636 9.636,9.636 9.636,9.636 9.636,9.636 9.636,11.545 9.636,11.545 9.636,11.545 13.455,11.545 13.455,11.545 13.455,11.545 13.455,15.364 13.455,15.364 13.455,15.364 15.364,15.364 15.364,15.364 15.364,15.364 15.364,11.545 15.364,11.545 15.364,11.545 19.182,11.545 19.182,11.545 19.182,11.545 19.182,9.636 19.182,9.636 19.182,9.636 15.364,9.636 15.364,9.636 15.364,9.636 15.364,5.818 15.364,5.818 15.364,5.818 13.455,5.818 13.455,5.818z M2,5.818C2,5.818 3.909,5.818 3.909,5.818 3.909,5.818 3.909,21.091 3.909,21.091 3.909,21.091 19.182,21.091 19.182,21.091 19.182,21.091 19.182,23 19.182,23 19.182,23 3.909,23 3.909,23 2.859,23 2,22.141 2,21.091 2,21.091 2,5.818 2,5.818z M7.727,2C7.727,2 21.091,2 21.091,2 22.141,2 23,2.859 23,3.909 23,3.909 23,17.273 23,17.273 23,18.323 22.141,19.182 21.091,19.182 21.091,19.182 7.727,19.182 7.727,19.182 6.677,19.182 5.818,18.323 5.818,17.273 5.818,17.273 5.818,3.909 5.818,3.909 5.818,2.859 6.677,2 7.727,2z" Fill="Black" Height="24" Width="24">
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Button ToolTip="Delete"  Style="{StaticResource side}" Grid.Row="0" Width="45" Height="30" Grid.Column="4">
+                                <Button ToolTip="Delete"  Style="{StaticResource side}" Width="45" Height="30" Grid.Column="4">
                                     <Path Data="F1M3.056,10.35C3.714,11.001 6.347,11.109 9.499,11.109 12.65,11.109 15.286,11.001 15.941,10.35 16.022,10.432 16.077,10.516 16.091,10.603 16.091,10.603 16.1,10.603 16.1,10.603 16.1,10.603 16.096,10.65 16.096,10.65 16.096,10.655 16.1,10.661 16.1,10.666 16.1,10.679 16.096,10.69 16.095,10.702 16.095,10.702 15.581,20.977 15.581,20.977 15.581,20.977 15.578,20.977 15.578,20.977 15.533,21.782 14.589,23 9.499,23 4.409,23 3.465,21.782 3.42,20.977 3.42,20.977 3.419,20.977 3.419,20.977 3.419,20.977 2.906,10.702 2.906,10.702 2.904,10.69 2.9,10.679 2.9,10.666 2.9,10.661 2.902,10.655 2.902,10.65 2.902,10.65 2.9,10.603 2.9,10.603 2.9,10.603 2.906,10.603 2.906,10.603 2.925,10.516 2.975,10.432 3.056,10.35z M7.59,3.334C7.516,3.334 7.453,3.694 7.453,4.133 7.453,4.133 7.453,5.138 7.453,5.138 7.453,5.138 7.66,5.125 7.66,5.125 8.247,5.093 8.864,5.075 9.499,5.075 10.111,5.075 10.703,5.093 11.272,5.122 11.272,5.122 11.272,4.133 11.272,4.133 11.272,3.694 11.211,3.334 11.135,3.334 11.06,3.334 10.63,3.334 10.182,3.334 10.182,3.334 8.545,3.334 8.545,3.334 8.095,3.334 7.666,3.334 7.59,3.334z M6.906,2C6.906,2 11.818,2 11.818,2 12.268,2 12.635,2.362 12.635,2.8 12.635,2.8 12.635,5.226 12.635,5.226 15.21,5.483 17,6.046 17,6.699 17,6.699 17,7.899 17,7.899 17,8.145 16.743,8.379 16.288,8.59 15.089,9.14 12.501,9.522 9.499,9.522 6.499,9.522 3.91,9.14 2.712,8.59 2.255,8.379 2,8.145 2,7.899 2,7.899 2,6.699 2,6.699 2,6.068 3.662,5.523 6.09,5.253 6.09,5.253 6.09,2.8 6.09,2.8 6.09,2.362 6.459,2 6.906,2z" Fill="white" Height="24" Width="18" >
                                         <Path.Effect>
                                             <DropShadowEffect Color="#FFB0B0B0"/>
                                         </Path.Effect>
                                     </Path>
                                 </Button>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
-                                <Rectangle VerticalAlignment="Stretch" Grid.Row="0"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
+                                <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
                             </Grid>
-                            <Grid Grid.Row="1">
+                            <Grid Grid.Row="2">
                                 <DataGrid RowHeaderWidth="0" BorderThickness="0" AutoGenerateColumns="False">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Country Code" IsReadOnly="True"/>
@@ -1121,7 +1124,7 @@
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </Grid>
-                            <StackPanel Grid.Row="2" Background="#A9FFFFF3"/>
+                            <StackPanel Grid.Row="3" Background="#A9FFFFF3"/>
                         </Grid>
                     </Grid>
                     <Grid Grid.Row="1">
@@ -1129,7 +1132,7 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="119*"/>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0" Background="#FFE8E8E8">
+                        <Grid Background="#FFE8E8E8">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="Auto"/>
@@ -1141,7 +1144,7 @@
                             <Button Margin="-1 3 0 0" Content="  Help  " Grid.Column="2" VerticalAlignment="Center" BorderThickness="1" Background="LightGray" BorderBrush="Gray" Name="HelpRibbon" Click="Help_Ribbon"/>
                             <Button Margin="-1 3 0 0" Content="  Feedback  " Grid.Column="3" VerticalAlignment="Center" BorderThickness="1" Background="LightGray" BorderBrush="Gray" Name="FeedbackRibbon" Click="Feedback_Ribbon"/>
                         </Grid>
-                        <Rectangle Height="1" Grid.Row="0" VerticalAlignment="Bottom" Fill="Gray"/>
+                        <Rectangle Height="1" VerticalAlignment="Bottom" Fill="Gray"/>
                         <ScrollViewer Name="GeneralRibbonTab" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
                             <TextBlock Text="Log..." Name="MessageBlock" Background="White" Padding="4,4,0,0" />
                         </ScrollViewer>
@@ -1158,9 +1161,9 @@
                 </Grid>
             </Grid>
         </Grid>
-        <Rectangle  Name="Rec_Top" Fill="Transparent"  Grid.Row="0" Grid.Column="1" MouseMove="Rec_MouseMove"  MouseDown="ResizeRectangle_PreviewMouseDown" Margin="0 0 107 0"/>
-        <Rectangle  Name="Rec_Top_Left" Fill="Transparent"  Grid.Row="0" Grid.Column="0" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>
-        <Rectangle  Name="Rec_Top_Right" Fill="Transparent"  Grid.Row="0" Grid.Column="2" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown" />
+        <Rectangle  Name="Rec_Top" Fill="Transparent"  Grid.Column="1" MouseMove="Rec_MouseMove"  MouseDown="ResizeRectangle_PreviewMouseDown" Margin="0 0 107 0"/>
+        <Rectangle  Name="Rec_Top_Left" Fill="Transparent"  Grid.Column="0" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>
+        <Rectangle  Name="Rec_Top_Right" Fill="Transparent"  Grid.Column="2" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown" />
         <Rectangle  Name="Rec_Left" Fill="Transparent"  Grid.Row="1" Grid.Column="0" MouseMove="Rec_MouseMove"  MouseDown="ResizeRectangle_PreviewMouseDown"/>
         <Rectangle  Name="Rec_Right" Fill="Transparent"  Grid.Row="1" Grid.Column="2" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown" />
         <Rectangle  Name="Rec_Bottom" Fill="Transparent"  Grid.Row="2" Grid.Column="1" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>
