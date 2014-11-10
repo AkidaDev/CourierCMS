@@ -169,13 +169,13 @@ namespace FinalUi
             }
             costingRules = new List<CostingRule>();
         }
-        
+
         #region DataEntrySection
         #region backGround Worker Functions
         #region LoadWorker
         void LoadWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBlock.Text = MessageBlock.Text + "\n" + e.Result;
+            MessageBlock.Text = DateTime.Now.ToShortTimeString() + ": " + e.Result + "\n" + MessageBlock.Text;
         }
 
         void LoadWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -203,9 +203,9 @@ namespace FinalUi
         void SaveWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Error != null)
-                MessageBlock.Text += "\n Error in saving: " + e.Error.Message;
+                MessageBlock.Text = DateTime.Now.ToShortTimeString() + ": " +  "Error in saving: " + e.Error.Message + "\n" + MessageBlock.Text;
             else
-                MessageBlock.Text = MessageBlock.Text + "\n " + "Save Completed" + e.Result;
+                MessageBlock.Text = DateTime.Now.ToShortTimeString() + ": " + "Save Completed" + e.Result + "\n" + MessageBlock.Text;
         }
 
         void SaveWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -227,7 +227,7 @@ namespace FinalUi
         #region Delete Sheet Worker
         void DeleteWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBlock.Text = MessageBlock.Text + "\n" + "Delete Operation Completed. " + e.Error;
+            MessageBlock.Text = DateTime.Now.ToShortTimeString() + ": " + "Delete Operation Completed. " + e.Error + "\n" + MessageBlock.Text ;
         }
         void DeleteWorker_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -318,7 +318,7 @@ namespace FinalUi
         }
         private void ExecuteSaveCommand(object sender, ExecutedRoutedEventArgs e)
         {
-            MessageBlock.Text = MessageBlock.Text + "\n Saving operation started...";
+            MessageBlock.Text = DateTime.Now.ToShortTimeString() + ": " + "Saving operation started..." + "\n" + MessageBlock.Text ;
             SaveWorker.RunWorkerAsync();
         }
         #endregion
@@ -338,7 +338,7 @@ namespace FinalUi
             {
                 if (MessageBox.Show("There are " + count.ToString() + " records whose billed amount is not set. Are you sure you want to continue? If you continue then amount billed for those those records will be equal to 0.", "Confirm", MessageBoxButton.YesNo) == MessageBoxResult.No)
                     return;
-               }
+            }
             PrintWindow win = new PrintWindow(cData, cData.Select(x => x.BookingDate).Max(), cData.Select(x => x.BookingDate).Min());
             win.Show();
         }
@@ -392,16 +392,19 @@ namespace FinalUi
             if (buttonList.Count > 0)
             {
                 Button b;
-                DeleteSheetWorker.RunWorkerAsync(dataGridHelper.currentSheetNumber);
-                dataGridHelper.removeSheet(dataGridHelper.currentSheetNumber);
-                buttontabcanvaswrap.Children.Remove(activeButton);
-                if (buttonList.Count > 0)
-                    b = buttonList.Single(x => x.Value == buttonList.Values.Min()).Key;
-                else
-                    b = null;
-                changeSheetButton(activeButton, b);
-                buttonList.Remove(activeButton);
-                activeButton = b;
+                if (MessageBox.Show("If you continue then you will lose all the unsaved data for this sheet. Please make sure that you have saved before closing the sheet. Click Yes to continue or click No to go back and save the sheet data", "Information", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    DeleteSheetWorker.RunWorkerAsync(dataGridHelper.currentSheetNumber);
+                    dataGridHelper.removeSheet(dataGridHelper.currentSheetNumber);
+                    buttontabcanvaswrap.Children.Remove(activeButton);
+                    if (buttonList.Count > 0)
+                        b = buttonList.Single(x => x.Value == buttonList.Values.Min()).Key;
+                    else
+                        b = null;
+                    changeSheetButton(activeButton, b);
+                    buttonList.Remove(activeButton);
+                    activeButton = b;
+                }
             }
         }
         #endregion
@@ -489,6 +492,7 @@ namespace FinalUi
             buttonkatta.Content = pathkatta;
             buttonkatta.Name = "CloseCurrentClick";
             buttonkatta.Command = DeleteCommand;
+
 
             Canvas.SetLeft(buttonkatta, 67);
             Canvas.SetTop(buttonkatta, 5);
@@ -1283,9 +1287,9 @@ namespace FinalUi
         private void DeleteRule_Click(object sender, RoutedEventArgs e)
         {
             BillingDataDataContext db = new BillingDataDataContext();
-            if (CostingRuleGrid.Visibility == Visibility.Visible && CostingRuleGrid.SelectedItem != null)
+            if (CostingRuleGrid.Visibility == Visibility.Visible && CostingRuleGrid.SelectedItems != null)
             {
-                if (MessageBox.Show("Do you Want delete this Rule", "", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                if (MessageBox.Show("Do you Want delete this Rule", "Confirm", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
                     CostingRule dcr = (CostingRule)CostingRuleGrid.SelectedItem;
                     CostingRuleGrid.SelectedItem = null;
@@ -1293,9 +1297,9 @@ namespace FinalUi
                     db.Rules.DeleteOnSubmit(dr);
                 }
             }
-            if (ServiceRuleGrid.Visibility == Visibility.Visible && ServiceRuleGrid.SelectedItem != null)
+            if (ServiceRuleGrid.Visibility == Visibility.Visible && ServiceRuleGrid.SelectedItems != null)
             {
-                if (MessageBox.Show("Do you Want delete this Rule", "", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                if (MessageBox.Show("Do you Want delete this Rule", "Confirm", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
                     ServiceRule dcr = (ServiceRule)ServiceRuleGrid.SelectedItem;
                     Rule dr = db.Rules.Where(x => x.ID == dcr.Id).FirstOrDefault();
@@ -1303,9 +1307,9 @@ namespace FinalUi
                     db.Rules.DeleteOnSubmit(dr);
                 }
             }
-            if (InvoiceRuleGrid.Visibility == Visibility.Visible && InvoiceRuleGrid.SelectedItem != null)
+            if (InvoiceRuleGrid.Visibility == Visibility.Visible && InvoiceRuleGrid.SelectedItems != null)
             {
-                if (MessageBox.Show("Do you Want delete this Rule", "", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                if (MessageBox.Show("Do you Want delete this Rule", "Confirm", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
                     InvoiceRule dcr = (InvoiceRule)InvoiceRuleGrid.SelectedItem;
                     Rule dr = db.Rules.Where(x => x.ID == dcr.Id).FirstOrDefault();
@@ -1474,6 +1478,14 @@ namespace FinalUi
         {
             InvoiceReport invoiceReportWindow = new InvoiceReport();
             invoiceReportWindow.Show();
+        }
+
+        private void WeightRuleTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                GetRateButton_Click(null, null);
+            }
         }
     }
 }

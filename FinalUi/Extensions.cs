@@ -61,10 +61,12 @@ namespace FinalUi
                     if(RulesApplied2!=null)
                        trans.FrAmount += (decimal)applyCostingRulesOnTransaction(trans, RulesApplied2.endW);
                 }
+                
                 if (price < trans.FrAmount)
                 {
                     price = (decimal)trans.FrAmount;
                 }
+                 
             });
             return Convert.ToDouble(price);
         }

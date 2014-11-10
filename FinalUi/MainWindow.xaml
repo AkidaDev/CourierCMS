@@ -678,7 +678,7 @@
                                             <ComboBox DataContext="{StaticResource ClienTable}" DisplayMemberPath="NameAndCode" ItemsSource="{Binding}" Name="Client_Combo"  Grid.Column="1" Margin="0 4 4 0"/>
                                             <TextBlock   Text=" Weight .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="1" Grid.Column="0" Margin="4 4 0 0"/>
                                             <WrapPanel Grid.Row="1"  Grid.Column="1" Margin="0 4 4 0">
-                                                <TextBox Width="70" Height="22" Name="WeightRuleTextBox"/>
+                                                <TextBox KeyDown="WeightRuleTextBox_KeyDown" Width="70" Height="22" Name="WeightRuleTextBox"/>
                                                 <TextBlock Text=" in Kg " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
                                             </WrapPanel>
                                             <TextBlock Text=" City .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="2" Grid.Column="0" Margin="4 4 0 0"/>
