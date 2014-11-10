@@ -53,7 +53,7 @@ namespace FinalUi
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             Configs.Default.Background = ThemeColorPicker.SelectedColorText;
-            Configs.Default.Tin = this.Pannumber.Text ?? "";
+            Configs.Default.Tin = Pannumber.Text;
             Configs.Default.TNC = TNCBox.Text;
             Configs.Default.CompanyAddress = CompanyAddressBox.Text;
             Configs.Default.CompanyEmail = CompanyEmailBox.Text;
@@ -61,7 +61,7 @@ namespace FinalUi
             Configs.Default.CompanyOwner = CompanyOwnerBox.Text;
             Configs.Default.CompanyPhone = CompanyContactBox.Text;
             Configs.Default.Save();
-            this.Close();
+            MessageBox.Show("Settings Saved");
         }
         private void DefaultButton_Click(object sender, RoutedEventArgs e)
         {
@@ -85,6 +85,7 @@ namespace FinalUi
             CompanyNameBox.Text = Configs.Default.CompanyName;
             CompanyOwnerBox.Text = Configs.Default.CompanyOwner;
             TNCBox.Text = Configs.Default.TNC;
+            Pannumber.Text = Configs.Default.Tin;
             this.ServiceTax.Text = Configs.Default.ServiceTax;
         }
         private void Button_Click_Close(object sender, RoutedEventArgs e)

@@ -253,9 +253,7 @@ namespace FinalUi
             addingNewPage(key);
             cloakAll();
             DataDockPanel.Visibility = Visibility.Visible;
-            DataEntryOptionPanel.Visibility = Visibility.Visible;
             buttontabcanvaswrap.Visibility = Visibility.Visible;
-            NavigationBar.Visibility = Visibility.Visible;
 
         }
         private void NewSheetCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -936,24 +934,16 @@ namespace FinalUi
         #region sidepanel
         private void cloakAll()
         {
-            this.ProfitGrid.Visibility = Visibility.Collapsed;
-            this.RuleGrid.Visibility = Visibility.Collapsed;
             this.DataDockPanel.Visibility = Visibility.Collapsed;
-            this.buttontabcanvaswrap.Visibility = Visibility.Collapsed;
-            this.NavigationBar.Visibility = Visibility.Collapsed;
             this.ClientReportOptionPanel.Visibility = Visibility.Collapsed;
             this.QuotationoptionPanel.Visibility = Visibility.Collapsed;
-            this.DataEntryOptionPanel.Visibility = Visibility.Collapsed;
-            this.ManageClientDatagridPanel.Visibility = Visibility.Collapsed;
             this.ClientOptionPanel.Visibility = Visibility.Collapsed;
-            this.ManageEmployeeDatagridPanel.Visibility = Visibility.Collapsed;
             this.EmployeeOptionPanel.Visibility = Visibility.Collapsed;
-            this.ManageCityDatagridPanel.Visibility = Visibility.Collapsed;
             this.CityOptionPanel.Visibility = Visibility.Collapsed;
-            this.ManageZoneDatagridPanel.Visibility = Visibility.Collapsed;
             this.ZoneOptionPanel.Visibility = Visibility.Collapsed;
-            this.ManageCountryDatagridPanel.Visibility = Visibility.Collapsed;
             this.CountryOptionPanel.Visibility = Visibility.Collapsed;
+            this.StockOptionPanel.Visibility = Visibility.Collapsed;
+            this.HideAllDatagrid.Visibility = Visibility.Collapsed;
         }
         private void AddRuleButton_Click(object sender, RoutedEventArgs e)
         {
@@ -980,52 +970,45 @@ namespace FinalUi
         {
             cloakAll();
             QuotationoptionPanel.Visibility = Visibility.Visible;
-            RuleGrid.Visibility = Visibility.Visible;
         }
         private void ClientsReportTreeView_Selected(object sender, RoutedEventArgs e)
         {
             cloakAll();
-            ProfitGrid.Visibility = Visibility.Visible;
             ClientReportOptionPanel.Visibility = Visibility.Visible;
         }
         private void DataDockPanelTreeView_Selected(object sender, RoutedEventArgs e)
         {
             cloakAll();
             DataDockPanel.Visibility = Visibility.Visible;
-            DataEntryOptionPanel.Visibility = Visibility.Visible;
-            buttontabcanvaswrap.Visibility = Visibility.Visible;
-            NavigationBar.Visibility = Visibility.Visible;
         }
-
-
         private void clienttreeviewitembutton_Click(object sender, RoutedEventArgs e)
         {
             cloakAll();
-            ManageClientDatagridPanel.Visibility = Visibility.Visible;
             ClientOptionPanel.Visibility = Visibility.Visible;
+        }
+        private void Stocktreeviewitembutton_Click(object sender, RoutedEventArgs e)
+        {
+            cloakAll();
+            StockOptionPanel.Visibility = Visibility.Visible;
         }
         private void Employeetreeviewitembutton_Click(object sender, RoutedEventArgs e)
         {
             cloakAll();
-            ManageEmployeeDatagridPanel.Visibility = Visibility.Visible;
             EmployeeOptionPanel.Visibility = Visibility.Visible;
         }
         private void citytreeviewitembutton_Click(object sender, RoutedEventArgs e)
         {
             cloakAll();
-            ManageCityDatagridPanel.Visibility = Visibility.Visible;
             CityOptionPanel.Visibility = Visibility.Visible;
         }
         private void zonetreeitembutton_Click(object sender, RoutedEventArgs e)
         {
             cloakAll();
-            ManageZoneDatagridPanel.Visibility = Visibility.Visible;
             ZoneOptionPanel.Visibility = Visibility.Visible;
         }
         private void countrytreeitembutton_Click(object sender, RoutedEventArgs e)
         {
             cloakAll();
-            ManageCountryDatagridPanel.Visibility = Visibility.Visible;
             CountryOptionPanel.Visibility = Visibility.Visible;
         }
         #endregion
@@ -1034,6 +1017,7 @@ namespace FinalUi
         private void CloseTableTreeView_Selected(object sender, RoutedEventArgs e)
         {
             cloakAll();
+            HideAllDatagrid.Visibility = Visibility.Visible;
         }
         private void ClientCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
