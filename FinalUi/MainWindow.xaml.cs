@@ -944,8 +944,6 @@ namespace FinalUi
             this.ClientOptionPanel.Visibility = Visibility.Collapsed;
             this.EmployeeOptionPanel.Visibility = Visibility.Collapsed;
             this.CityOptionPanel.Visibility = Visibility.Collapsed;
-            this.ZoneOptionPanel.Visibility = Visibility.Collapsed;
-            this.CountryOptionPanel.Visibility = Visibility.Collapsed;
             this.StockOptionPanel.Visibility = Visibility.Collapsed;
             this.HideAllDatagrid.Visibility = Visibility.Collapsed;
         }
@@ -1004,16 +1002,6 @@ namespace FinalUi
         {
             cloakAll();
             CityOptionPanel.Visibility = Visibility.Visible;
-        }
-        private void zonetreeitembutton_Click(object sender, RoutedEventArgs e)
-        {
-            cloakAll();
-            ZoneOptionPanel.Visibility = Visibility.Visible;
-        }
-        private void countrytreeitembutton_Click(object sender, RoutedEventArgs e)
-        {
-            cloakAll();
-            CountryOptionPanel.Visibility = Visibility.Visible;
         }
         #endregion
         #endregion
@@ -1344,53 +1332,6 @@ namespace FinalUi
             {
                 backgroundimage.Visibility = Visibility.Visible;
             }
-        }
-        private void General_Ribbon(object sender, RoutedEventArgs e)
-        {
-            this.GeneralRibbon.Background = Brushes.White;
-            this.DescriptionRibbon.Background = Brushes.LightGray;
-            this.HelpRibbon.Background = Brushes.LightGray;
-            this.FeedbackRibbon.Background = Brushes.LightGray;
-            GeneralRibbonTab.Visibility = Visibility.Visible;
-            DescriptionRibbonTab.Visibility = Visibility.Collapsed;
-            HelpRibbonTab.Visibility = Visibility.Collapsed;
-            FeedbackRibbonTab.Visibility = Visibility.Collapsed;
-        }
-
-        private void Description_Ribbon(object sender, RoutedEventArgs e)
-        {
-            this.DescriptionRibbon.Background = Brushes.White;
-            this.GeneralRibbon.Background = Brushes.LightGray;
-            this.HelpRibbon.Background = Brushes.LightGray;
-            this.FeedbackRibbon.Background = Brushes.LightGray;
-            GeneralRibbonTab.Visibility = Visibility.Collapsed;
-            DescriptionRibbonTab.Visibility = Visibility.Visible;
-            HelpRibbonTab.Visibility = Visibility.Collapsed;
-            FeedbackRibbonTab.Visibility = Visibility.Collapsed;
-        }
-
-        private void Help_Ribbon(object sender, RoutedEventArgs e)
-        {
-            this.HelpRibbon.Background = Brushes.White;
-            this.GeneralRibbon.Background = Brushes.LightGray;
-            this.DescriptionRibbon.Background = Brushes.LightGray;
-            this.FeedbackRibbon.Background = Brushes.LightGray;
-            GeneralRibbonTab.Visibility = Visibility.Collapsed;
-            DescriptionRibbonTab.Visibility = Visibility.Collapsed;
-            HelpRibbonTab.Visibility = Visibility.Visible;
-            FeedbackRibbonTab.Visibility = Visibility.Collapsed;
-        }
-
-        private void Feedback_Ribbon(object sender, RoutedEventArgs e)
-        {
-            this.FeedbackRibbon.Background = Brushes.White;
-            this.GeneralRibbon.Background = Brushes.LightGray;
-            this.DescriptionRibbon.Background = Brushes.LightGray;
-            this.HelpRibbon.Background = Brushes.LightGray;
-            GeneralRibbonTab.Visibility = Visibility.Collapsed;
-            DescriptionRibbonTab.Visibility = Visibility.Collapsed;
-            HelpRibbonTab.Visibility = Visibility.Collapsed;
-            FeedbackRibbonTab.Visibility = Visibility.Visible;
         }
         private void ImportRule_Click(object sender, RoutedEventArgs e)
         {
