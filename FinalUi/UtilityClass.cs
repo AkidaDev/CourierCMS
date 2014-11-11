@@ -130,7 +130,7 @@ namespace FinalUi
         {
             BillingDataDataContext db = new BillingDataDataContext();
             db.sp_LoadToRuntimeFromDate(SecurityModule.currentUserName, sheetNo, startDate, endDate);
-            return db.RuntimeDatas.Where(x=>x.SheetNo == sheetNo && x.UserId == SecurityModule.currentUserName).OrderBy(z => z.BookingDate).ThenBy(y => y.ConsignmentNo).ToList();
+            return db.RuntimeDatas.Where(x => x.SheetNo == sheetNo && x.UserId == SecurityModule.currentUserName).OrderBy(z => z.BookingDate).ThenBy(y => y.ConsignmentNo).ToList();
         }
 
         #region converting runtime data to transaction data
@@ -150,7 +150,7 @@ namespace FinalUi
             Transaction transactionData;
             if (Guid.Empty != data.TransactionId && data.TransactionId != null)
             {
-                transactionData = db.Transactions.Single(x => x.ID == data.TransactionId);
+                transactionData = db.Transactions.SingleOrDefault(x => x.ID == data.TransactionId);
             }
             else
             {

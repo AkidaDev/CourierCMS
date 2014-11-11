@@ -1,12 +1,37 @@
+using System.Text.RegularExpressions;
 namespace FinalUi
 {
+    partial class StockAssignmentView
+    {
+        public int? AssignedCount
+        {
+            get
+            {
+                string startNo = Regex.Match(StartNumber, @"\d+").Value;
+                string endNo = Regex.Match(EndNumber, @"\d+").Value;
+                int iStartNo, iEndNo;
+                if (int.TryParse(startNo, out iStartNo) && int.TryParse(endNo, out iEndNo))
+                    return iEndNo - iStartNo;
+                else
+                    return null;
+
+            }
+        }
+        public int SlipsRemaining
+        {
+            get
+            {
+                return (AssignedCount??0) - (int)SlipsUsed;
+            }
+        }
+    }
     partial class BillingDataDataContext
     {
-   	 public BillingDataDataContext() : 
-				base(LoadResources.getConString(), mappingSource)
-		{
-			OnCreated();
-		}
+        public BillingDataDataContext() :
+            base(LoadResources.getConString(), mappingSource)
+        {
+            OnCreated();
+        }
         partial void UpdateClient(Client instance)
         {
             string msg = "";
@@ -44,7 +69,7 @@ namespace FinalUi
         partial void UpdateEmployee(Employee instance)
         {
             string msg = "";
-            if (instance.Password == "" || instance.Password == null || instance.Password.Length <6)
+            if (instance.Password == "" || instance.Password == null || instance.Password.Length < 6)
                 msg += "Password should be at least six Characters \n";
             if (instance.UserName == "" || instance.UserName == null || instance.UserName.Length < 4)
                 msg += "UserName should be at least 4 Characters \n";

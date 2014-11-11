@@ -7,7 +7,7 @@
    <Window.Resources>
         <CollectionViewSource x:Key="EmpList" CollectionViewType="ListCollectionView"></CollectionViewSource>
     </Window.Resources>
-     <Grid  Height="210" UseLayoutRounding="False"  Width="322"  >
+     <Grid  Height="310" UseLayoutRounding="False"  Width="322"  >
     	<Grid.Effect>
             <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
         </Grid.Effect>

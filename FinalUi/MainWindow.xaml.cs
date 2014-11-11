@@ -305,7 +305,7 @@ namespace FinalUi
             Debug.WriteLine("Here In");
             if (dataGridHelper != null)
             {
-                if (dataGridHelper.getCurrentDataStack == null || SaveWorker.IsBusy == true)
+                if (dataGridHelper.getCurrentDataStack == null || SaveWorker.IsBusy == true || LoadWorker.IsBusy == true)
                 {
                     e.CanExecute = false;
                 }
@@ -320,6 +320,7 @@ namespace FinalUi
         {
             MessageBlock.Text = DateTime.Now.ToShortTimeString() + ": " + "Saving operation started..." + "\n" + MessageBlock.Text ;
             SaveWorker.RunWorkerAsync();
+            //SaveWorker_DoWork(null, null);
         }
         #endregion
         #region printCommand
@@ -377,7 +378,7 @@ namespace FinalUi
         {
             if (DeleteSheetWorker != null && dataGridHelper != null)
             {
-                if (DeleteSheetWorker.IsBusy == true || buttonList.Count == 0)
+                if (DeleteSheetWorker.IsBusy == true || buttonList.Count == 0 || SaveWorker.IsBusy == true || LoadWorker.IsBusy == true)
                 {
                     e.CanExecute = false;
                 }

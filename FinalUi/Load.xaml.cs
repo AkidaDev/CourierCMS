@@ -21,7 +21,7 @@ namespace FinalUi
     {
         public Load()
         {
-            MessageBox.Show("Con String :" + Configs.Default.BillingDatabaseConnectionString);
+         //   MessageBox.Show("Con String :" + Configs.Default.BillingDatabaseConnectionString);
             if(Configs.Default.IsFirst)
             {
                 Setup win = new Setup();
