@@ -49,6 +49,34 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="CityPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClientPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClientReportPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DataDockPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuotationPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StockPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TwinDataGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -57,6 +85,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="CityPanel.xaml.cs">
+      <DependentUpon>CityPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClientPanel.xaml.cs">
+      <DependentUpon>ClientPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClientReportPanel.xaml.cs">
+      <DependentUpon>ClientReportPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataDockPanel.xaml.cs">
+      <DependentUpon>DataDockPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeePanel.xaml.cs">
+      <DependentUpon>EmployeePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuotationPanel.xaml.cs">
+      <DependentUpon>QuotationPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StockPanel.xaml.cs">
+      <DependentUpon>StockPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TwinDataGrid.xaml.cs">
       <DependentUpon>TwinDataGrid.xaml</DependentUpon>
     </Compile>
