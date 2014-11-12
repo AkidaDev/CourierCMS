@@ -287,7 +287,14 @@ namespace FinalUi
                 window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber, dataGrid, (RuntimeData)dataGrid.SelectedItem);
             else
                 window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber, dataGrid);
+            window.Closed += SanitizingWindow_Closed;
             window.Show();
+        }
+
+        private void SanitizingWindow_Closed(object sender, EventArgs e)
+        {
+            BillingDataDataContext db = new BillingDataDataContext();
+            dataGridHelper.currentDataSheet.dataStack = db.RuntimeDatas.Where(x => x.UserId == SecurityModule.currentUserName && x.SheetNo == dataGridHelper.currentSheetNumber).ToList();
         }
         #endregion
         #region PowerEntryCommand

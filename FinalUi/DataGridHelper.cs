@@ -411,6 +411,7 @@ namespace FinalUi
             if (dataSheetManager.totalSheets != 0)
                 refreshCurrentPage();
         }
+        
         public Filter CurrentSheetFilterObject
         {
             get
