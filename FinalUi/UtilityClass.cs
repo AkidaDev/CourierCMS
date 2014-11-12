@@ -191,11 +191,12 @@ namespace FinalUi
         }
         #endregion
         #region save runtime into transaction and save
-        public static string saveRuntimeAsTransaction(List<RuntimeData> runList)
+        public static string saveRuntimeAsTransaction(int sheetNo,string username)
         {
             try
             {
                 BillingDataDataContext db = new BillingDataDataContext();
+              /*
                 List<RuntimeData> oldData = runList.Where(x => x.TransactionId != Guid.Empty && x.TransactionId != null).ToList();
                 List<RuntimeData> newData = runList.Where(x => x.TransactionId == null || x.TransactionId == Guid.Empty).ToList();
                 List<Transaction> oldTransData = convertRuntimeListToTransList(oldData, db).ToList();
@@ -231,6 +232,8 @@ namespace FinalUi
                 List<Transaction> dupliTransData = convertRuntimeListToTransList(duplicateData, db);
                 db.Transactions.InsertAllOnSubmit(newTransData);
                 db.SubmitChanges();
+               * */
+                db.SaveRuntimeData(sheetNo,username);
                 db.sp_ReflectTransactionInRuntime();
                 return "";
             }

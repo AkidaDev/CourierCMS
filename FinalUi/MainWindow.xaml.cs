@@ -216,7 +216,7 @@ namespace FinalUi
 
         void SaveWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            string message = UtilityClass.saveRuntimeAsTransaction(dataGridHelper.getCurrentDataStack);
+            string message = UtilityClass.saveRuntimeAsTransaction(dataGridHelper.currentSheetNumber,SecurityModule.currentUserName);
             if (message != "")
             {
                 throw new Exception(message);

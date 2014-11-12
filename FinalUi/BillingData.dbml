@@ -481,4 +481,9 @@
   <Function Name="dbo.sp_ReflectTransactionInRuntime" Method="sp_ReflectTransactionInRuntime">
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.SaveRuntimeData" Method="SaveRuntimeData">
+    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>
