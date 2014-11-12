@@ -23,5 +23,25 @@ namespace CustomControls
         {
             InitializeComponent();
         }
+
+        private void ReloadCityButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditCityButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddCityButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteCityButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

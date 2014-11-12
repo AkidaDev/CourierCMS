@@ -23,5 +23,25 @@ namespace CustomControls
         {
             InitializeComponent();
         }
+
+        private void ReloadEmployeeGrid_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddEmployeeGrid_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditEmployeeGrid_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteEmployeeGrid_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

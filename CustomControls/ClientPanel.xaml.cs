@@ -23,5 +23,25 @@ namespace CustomControls
         {
             InitializeComponent();
         }
+
+        private void ReloadClientGridButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UpdateClientGridButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddClientButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteClientGridButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

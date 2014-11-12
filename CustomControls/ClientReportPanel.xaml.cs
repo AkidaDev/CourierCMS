@@ -23,5 +23,10 @@ namespace CustomControls
         {
             InitializeComponent();
         }
+
+        private void ReloadButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -4,8 +4,252 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="400" d:DesignWidth="800">
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="ServiceRuleList" CollectionViewType="{x:Type ListCollectionView}"/>
+        <CollectionViewSource x:Key="CostingRuleList" CollectionViewType="{x:Type ListCollectionView}"/>
+        <CollectionViewSource x:Key="InvoiceRuleList" CollectionViewType="{x:Type ListCollectionView}"/>
+        <CollectionViewSource x:Key="ServiceTable" CollectionViewType="{x:Type ListCollectionView}"/>
+        <CollectionViewSource x:Key="ClienTable" CollectionViewType="{x:Type ListCollectionView}"/>
+        <CollectionViewSource x:Key="CityTable" CollectionViewType="{x:Type ListCollectionView}"/>
+    </UserControl.Resources>
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="4"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Grid Background="#19000000">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <WrapPanel Margin="7,0,5,0" Background="#A9FFFFF3" VerticalAlignment="Stretch">
+                <Path Margin="6 5 0 0" Data="F1M7.006,17.756C8.089,18.341 9.324,18.675 10.635,18.675 11.947,18.675 13.183,18.341 14.264,17.756 16.602,18.374 18.432,19.843 19.272,23 19.272,23 2,23 2,23 2.839,19.843 4.67,18.375 7.006,17.756z M22.992,14.925C25.33,15.543 27.161,17.011 28,20.168 28,20.168 19.469,20.168 19.469,20.168 18.486,18.463 17.033,17.311 15.075,16.685 15.597,16.276 16.061,15.798 16.456,15.264 17.354,15.635 18.334,15.843 19.363,15.843 20.674,15.843 21.911,15.51 22.992,14.925z M6.639,12.72C7.558,14.518 9.136,15.706 10.928,15.706 12.722,15.706 14.298,14.518 15.217,12.72 15.217,12.72 6.639,12.72 6.639,12.72z M10.635,4.831C13.958,4.831 16.649,7.548 16.649,10.899 16.649,14.252 13.958,16.968 10.635,16.968 7.313,16.968 4.621,14.252 4.621,10.899 4.621,7.548 7.313,4.831 10.635,4.831z M19.363,2C22.685,2 25.377,4.717 25.377,8.068 25.377,11.421 22.685,14.137 19.363,14.137 18.642,14.137 17.954,14.003 17.313,13.768 17.499,13.331 17.641,12.872 17.74,12.396 18.332,12.704 18.979,12.874 19.656,12.874 21.449,12.874 23.026,11.686 23.944,9.888 23.944,9.888 17.819,9.888 17.819,9.888 17.513,7.667 16.22,5.766 14.398,4.645 15.482,3.049 17.3,2 19.363,2z" Fill="Black" Height="19" Canvas.Left="16" Canvas.Top="188.46" Width="23" Stretch="Fill"/>
+                <TextBlock Text="Client Quotation" Margin="8 2 6 0" FontSize="16" Padding="1 3 1 0.5"/>
+            </WrapPanel>
+            <ComboBox FontSize="14" Margin="10 2" MinWidth="250" Name="ClientCombo" MaxWidth="450" Grid.Column="1" IsReadOnly="True" ItemsSource="{Binding}" DataContext="{StaticResource ClienTable}" SelectionChanged="ClientCombo_SelectionChanged" DisplayMemberPath="NameAndCode">
+            </ComboBox>
+            <Button ToolTip="Reload" Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="2">
+                <Path Data="F1M2,12.942C2,12.942 10.226,15.241 10.226,15.241 10.226,15.241 8.275,17.071 8.275,17.071 9.288,17.922 10.917,18.786 12.32,18.786 15.074,18.786 17.386,16.824 18.039,14.171 18.039,14.171 21.987,15.222 21.987,15.222 20.891,19.693 16.996,23 12.357,23 9.771,23 7.076,21.618 5.308,19.934 5.308,19.934 3.454,21.671 3.454,21.671 3.454,21.671 2,12.942 2,12.942z M11.643,2C14.229,2 16.924,3.382 18.692,5.066 18.692,5.066 20.546,3.329 20.546,3.329 20.546,3.329 22,12.058 22,12.058 22,12.058 13.774,9.759 13.774,9.759 13.774,9.759 15.725,7.929 15.725,7.929 14.712,7.078 13.083,6.214 11.68,6.214 8.926,6.214 6.614,8.176 5.961,10.829 5.961,10.829 2.013,9.778 2.013,9.778 3.109,5.307 7.004,2 11.643,2z" Fill="Black" Height="24" Width="23">
+                    <Path.Effect>
+                        <DropShadowEffect Color="#FFB0B0B0"/>
+                    </Path.Effect>
+                </Path>
+            </Button>
+            <Button ToolTip="Import Rule" Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="3" Click="ImportRule_Click">
+                <Path Name="import_files" Data="F1M11.187,19.719C11.187,19.719 11.187,20.375 11.187,20.375 11.187,20.375 13.812,20.375 13.812,20.375 13.812,20.375 13.812,19.719 13.812,19.719 13.812,19.719 11.187,19.719 11.187,19.719z M9.875,17.094C9.875,17.094 9.875,17.75 9.875,17.75 9.875,17.75 15.125,17.75 15.125,17.75 15.125,17.75 15.125,17.094 15.125,17.094 15.125,17.094 9.875,17.094 9.875,17.094z M20.375,12.5C20.375,12.5 20.375,13.812 20.375,13.812 20.375,13.812 21.687,13.812 21.687,13.812 21.687,13.812 21.687,12.5 21.687,12.5 21.687,12.5 20.375,12.5 20.375,12.5z M11.187,4.625C11.187,4.625 13.812,4.625 13.812,4.625 13.812,4.625 13.812,5.937 13.812,5.937 13.812,5.937 13.812,7.25 13.812,7.25 13.812,7.25 15.781,7.25 15.781,7.25 15.781,7.25 12.5,10.531 12.5,10.531 12.5,10.531 9.219,7.25 9.219,7.25 9.219,7.25 11.187,7.25 11.187,7.25 11.187,7.25 11.187,5.937 11.187,5.937 11.187,5.937 11.187,4.625 11.187,4.625z M7.906,3.312C7.906,3.312 4.01,11.187 4.01,11.187 4.01,11.187 9.875,11.187 9.875,11.187 9.875,11.187 9.875,12.5 9.875,12.5 9.875,13.225 10.463,13.812 11.187,13.812 11.187,13.812 13.812,13.812 13.812,13.812 14.537,13.812 15.125,13.225 15.125,12.5 15.125,12.5 15.125,11.187 15.125,11.187 15.125,11.187 21.031,11.187 21.031,11.187 21.031,11.187 17.094,3.312 17.094,3.312 17.094,3.312 7.906,3.312 7.906,3.312z M7.25,2C7.25,2 17.709,2 17.709,2 17.709,2 23,11.187 23,11.187 23,11.187 23,23 23,23 23,23 2,23 2,23 2,23 2,11.187 2,11.187 2,11.187 7.25,2 7.25,2z" Fill="White" Height="24" Canvas.Left="326" Canvas.Top="59" Width="24">
+                    <Path.Effect>
+                        <DropShadowEffect Color="#FFB0B0B0"/>
+                    </Path.Effect>
+                </Path>
+            </Button>
+            <Button ToolTip="Edit" Style="{StaticResource side}"  Name="EditRule" Click="EditRule_Click" Width="45" Height="30" Grid.Column="4">
+                <Path Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="#FF1E00A6" Height="24" Canvas.Left="19" Canvas.Top="32" Width="24">
+                    <Path.Effect>
+                        <DropShadowEffect Color="#FFB0B0B0"/>
+                    </Path.Effect>
+                </Path>
+            </Button>
+            <Button ToolTip="Add" Click="AddCostingRuleButton_Click" Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="5">
+                <Path Data="F1M13.455,5.818C13.455,5.818 13.455,9.636 13.455,9.636 13.455,9.636 9.636,9.636 9.636,9.636 9.636,9.636 9.636,11.545 9.636,11.545 9.636,11.545 13.455,11.545 13.455,11.545 13.455,11.545 13.455,15.364 13.455,15.364 13.455,15.364 15.364,15.364 15.364,15.364 15.364,15.364 15.364,11.545 15.364,11.545 15.364,11.545 19.182,11.545 19.182,11.545 19.182,11.545 19.182,9.636 19.182,9.636 19.182,9.636 15.364,9.636 15.364,9.636 15.364,9.636 15.364,5.818 15.364,5.818 15.364,5.818 13.455,5.818 13.455,5.818z M2,5.818C2,5.818 3.909,5.818 3.909,5.818 3.909,5.818 3.909,21.091 3.909,21.091 3.909,21.091 19.182,21.091 19.182,21.091 19.182,21.091 19.182,23 19.182,23 19.182,23 3.909,23 3.909,23 2.859,23 2,22.141 2,21.091 2,21.091 2,5.818 2,5.818z M7.727,2C7.727,2 21.091,2 21.091,2 22.141,2 23,2.859 23,3.909 23,3.909 23,17.273 23,17.273 23,18.323 22.141,19.182 21.091,19.182 21.091,19.182 7.727,19.182 7.727,19.182 6.677,19.182 5.818,18.323 5.818,17.273 5.818,17.273 5.818,3.909 5.818,3.909 5.818,2.859 6.677,2 7.727,2z" Fill="Black" Height="24" Width="24">
+                    <Path.Effect>
+                        <DropShadowEffect Color="#FFB0B0B0"/>
+                    </Path.Effect>
+                </Path>
+            </Button>
+            <Button ToolTip="Delete" Name="DeleteRule" Click="DeleteRule_Click" Style="{StaticResource side}" Width="45" Height="30" Grid.Column="6">
+                <Path Data="F1M3.056,10.35C3.714,11.001 6.347,11.109 9.499,11.109 12.65,11.109 15.286,11.001 15.941,10.35 16.022,10.432 16.077,10.516 16.091,10.603 16.091,10.603 16.1,10.603 16.1,10.603 16.1,10.603 16.096,10.65 16.096,10.65 16.096,10.655 16.1,10.661 16.1,10.666 16.1,10.679 16.096,10.69 16.095,10.702 16.095,10.702 15.581,20.977 15.581,20.977 15.581,20.977 15.578,20.977 15.578,20.977 15.533,21.782 14.589,23 9.499,23 4.409,23 3.465,21.782 3.42,20.977 3.42,20.977 3.419,20.977 3.419,20.977 3.419,20.977 2.906,10.702 2.906,10.702 2.904,10.69 2.9,10.679 2.9,10.666 2.9,10.661 2.902,10.655 2.902,10.65 2.902,10.65 2.9,10.603 2.9,10.603 2.9,10.603 2.906,10.603 2.906,10.603 2.925,10.516 2.975,10.432 3.056,10.35z M7.59,3.334C7.516,3.334 7.453,3.694 7.453,4.133 7.453,4.133 7.453,5.138 7.453,5.138 7.453,5.138 7.66,5.125 7.66,5.125 8.247,5.093 8.864,5.075 9.499,5.075 10.111,5.075 10.703,5.093 11.272,5.122 11.272,5.122 11.272,4.133 11.272,4.133 11.272,3.694 11.211,3.334 11.135,3.334 11.06,3.334 10.63,3.334 10.182,3.334 10.182,3.334 8.545,3.334 8.545,3.334 8.095,3.334 7.666,3.334 7.59,3.334z M6.906,2C6.906,2 11.818,2 11.818,2 12.268,2 12.635,2.362 12.635,2.8 12.635,2.8 12.635,5.226 12.635,5.226 15.21,5.483 17,6.046 17,6.699 17,6.699 17,7.899 17,7.899 17,8.145 16.743,8.379 16.288,8.59 15.089,9.14 12.501,9.522 9.499,9.522 6.499,9.522 3.91,9.14 2.712,8.59 2.255,8.379 2,8.145 2,7.899 2,7.899 2,6.699 2,6.699 2,6.068 3.662,5.523 6.09,5.253 6.09,5.253 6.09,2.8 6.09,2.8 6.09,2.362 6.459,2 6.906,2z" Fill="white" Height="24" Width="18" >
+                    <Path.Effect>
+                        <DropShadowEffect Color="#FFB0B0B0"/>
+                    </Path.Effect>
+                </Path>
+            </Button>
+            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
+            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
+            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
+            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="5" HorizontalAlignment="Right"/>
+            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="6" HorizontalAlignment="Right"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="188*"/>
+            </Grid.RowDefinitions>
+            <Grid Background="#A9FFFFF3" Margin="0 3" >
+                <WrapPanel VerticalAlignment="Center" Margin="0 24">
+                    <TextBlock Foreground="#FF5B5B5B" Text="Select Type of RULE  .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="15 0 0 0" TextDecorations="Underline"/>
+                    <RadioButton Foreground="#FF5B5B5B" IsChecked="True" Name="CostingRuleRadio"  Content="Costing Rule" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0" Checked="CostingRuleRadio_Checked_1"/>
+                    <RadioButton Checked="ServiceRuleRadio_Checked" Foreground="#FF5B5B5B" Content="Service Rule" Name="ServiceRuleRadio"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
+                    <!--<RadioButton Checked="InvoiceRuleRadio_Checked" Foreground="#FF5B5B5B" Content="Invoice Rule" Name="InvoiceRuleRadio" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Margin=" 40 5 0 0"/>
+                               -->
+                    <Button Content="  Add Costing Rule  " Name="AddCostingRuleButton" Click="AddCostingRuleButton_Click"  Margin="34 0 0 0" Visibility="Visible" Style="{StaticResource all}"/>
+                    <Button Content="  Add Service Rule  " Name="AddServiceRuleButton" Click="AddServiceRuleButton_Click" Margin="34 0 0 0" Visibility="Collapsed" Style="{StaticResource all}"/>
+                    <Button Content="  Add Invoice Rule  " Name="AddInvoiceRuleButton" Click="AddInvoiceRuleButton_Click" Margin="34 0 0 0" Visibility="Collapsed" Style="{StaticResource all}"/>
+                </WrapPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300*"/>
+                    <ColumnDefinition Width="115*"/>
+                </Grid.ColumnDefinitions>
+                <DataGrid DataContext="{StaticResource CostingRuleList}" ItemsSource="{Binding}" Name="CostingRuleGrid" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
+							AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Range(Kg)" Binding="{Binding range}"/>
+                        <DataGridTextColumn Header="Dox(Rs)" Binding="{Binding doxAmount}"/>
+                        <DataGridTextColumn Header="NDox(Rs)" Binding="{Binding ndoxAmount}"/>
+                        <DataGridTextColumn Header="Type" Binding="{Binding type}"/>
+                        <DataGridTextColumn Header="Step(Kg)" Binding="{Binding StepS}"/>
+                        <DataGridTextColumn Header="DStart(Rs)" Binding="{Binding DoxStartS}"/>
+                        <DataGridTextColumn Header="NStart(Rs)" Binding="{Binding nDoxStartS}"/>
+                        <DataGridTextColumn Header="Services" Binding="{Binding serviceCount}"/>
+                        <DataGridTextColumn Header="Cities" Binding="{Binding CityCount}"/>
+                        <DataGridTextColumn Header="States" Binding="{Binding StateCount}"/>
+                        <DataGridTextColumn Header="Zones" Binding="{Binding zoneCount}"/>
+                    </DataGrid.Columns>
+                    <DataGrid.RowDetailsTemplate>
+                        <DataTemplate>
+                            <WrapPanel Background="#223f3f46">
+                                <StackPanel Margin="3" Background="#A9FFFFF3">
+                                    <TextBlock Text="Service List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
+                                    <ListBox ItemsSource="{Binding ServiceList}"  BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
+                                </StackPanel>
+                                <StackPanel Margin="0 3" Background="#A9FFFFF3">
+                                    <TextBlock Text="Zone List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
+                                    <ListBox ItemsSource="{Binding ZoneList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
+                                </StackPanel>
+                                <StackPanel Margin="3" Background="#A9FFFFF3">
+                                    <TextBlock Text="City List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
+                                    <ListBox ItemsSource="{Binding CityList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
+                                </StackPanel>
+                                <StackPanel Margin="0 3" Background="#A9FFFFF3">
+                                    <TextBlock Text="State List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
+                                    <ListBox ItemsSource="{Binding StateList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
+                                </StackPanel>
+                            </WrapPanel>
+                        </DataTemplate>
+                    </DataGrid.RowDetailsTemplate>
+                </DataGrid>
+                <DataGrid Visibility="Collapsed" DataContext="{StaticResource ServiceRuleList}" ItemsSource="{Binding}" Name="ServiceRuleGrid" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
+							AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Range" Binding="{Binding RangeWeight}"/>
+                        <DataGridTextColumn Header="Type" Binding="{Binding type}"/>
+                        <DataGridTextColumn Header="Mode" Binding="{Binding mode}"/>
+                        <DataGridTextColumn Header="Change" Binding="{Binding change}"/>
+                        <DataGridTextColumn Header="Applicable" Binding="{Binding applicable}"/>
+                        <DataGridTextColumn Header="ServiceCount" Binding="{Binding servCount}"/>
+                        <DataGridTextColumn Header="ZoneCount" Binding="{Binding zoneCount}"/>
+                        <DataGridTextColumn Header="CityCount" Binding="{Binding cityCount}"/>
+                        <DataGridTextColumn Header="StateCount" Binding="{Binding stateCount}"/>
+                        <DataGridTextColumn Header="StepWeight" Binding="{Binding stepweight}"/>
+                        <DataGridTextColumn Header="Amount" Binding="{Binding per}"/>
+                    </DataGrid.Columns>
+                    <DataGrid.RowDetailsTemplate>
+                        <DataTemplate>
+                            <WrapPanel Background="#223f3f46">
+                                <StackPanel Margin="3" Background="#A9FFFFF3">
+                                    <TextBlock Text="Service List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
+                                    <ListBox ItemsSource="{Binding ServiceList}"  BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
+                                </StackPanel>
+                                <StackPanel Margin="0 3 0 3" Background="#A9FFFFF3">
+                                    <TextBlock Text="Zone List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
+                                    <ListBox ItemsSource="{Binding ZoneList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
+                                </StackPanel>
+                                <StackPanel Margin="3" Background="#A9FFFFF3">
+                                    <TextBlock Text="City List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
+                                    <ListBox ItemsSource="{Binding CityList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
+                                </StackPanel>
+                                <StackPanel Margin="0 3 0 3" Background="#A9FFFFF3">
+                                    <TextBlock Text="State List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
+                                    <ListBox ItemsSource="{Binding StateList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
+                                </StackPanel>
+                            </WrapPanel>
+                        </DataTemplate>
+                    </DataGrid.RowDetailsTemplate>
+                </DataGrid>
+                <DataGrid Visibility="Collapsed" Name="InvoiceRuleGrid" ItemsSource="{Binding}" DataContext="{StaticResource InvoiceRuleList}" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7"
+							AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="StartWieght"/>
+                        <DataGridTextColumn Header="EndWeight"/>
+                        <DataGridTextColumn Header="DOX"/>
+                        <DataGridTextColumn Header="NDOX"/>
+                        <DataGridTextColumn Header="Type"/>
+                        <DataGridTextColumn Header="StepWeight"/>
+                        <DataGridTextColumn Header="NStart"/>
+                        <DataGridTextColumn Header="DStart"/>
+                        <DataGridTextColumn Header=""/>
+                        <DataGridTextColumn Header=""/>
+                        <DataGridTextColumn Header=""/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Grid Grid.Column="1" Background="#A9FFFFF3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="50*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Background="#A9FFFFF3" Margin="4 4 4 0">
+                        <TextBlock Text="Calculator" HorizontalAlignment="Center" Height="21" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" />
+                    </StackPanel>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="115*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text=" Client .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="4 4 0 0"/>
+                        <ComboBox DataContext="{StaticResource ClienTable}" DisplayMemberPath="NameAndCode" ItemsSource="{Binding}" Name="Client_Combo"  Grid.Column="1" Margin="0 4 4 0"/>
+                        <TextBlock   Text=" Weight .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="1" Margin="4 4 0 0"/>
+                        <WrapPanel Grid.Row="1"  Grid.Column="1" Margin="0 4 4 0">
+                            <TextBox KeyDown="WeightRuleTextBox_KeyDown"  Width="70" Height="22" Name="WeightRuleTextBox"/>
+                            <TextBlock Text=" in Kg " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
+                        </WrapPanel>
+                        <TextBlock Text=" City .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="2" Margin="4 4 0 0"/>
+                        <ComboBox DataContext="{StaticResource CityTable}" DisplayMemberPath="NameAndCode" ItemsSource="{Binding}" Name="City_Combo" Grid.Row="2"  Grid.Column="1" Margin="0 4 4 0"/>
+                        <TextBlock Text=" Service .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="3" Margin="4 4 0 0"/>
+                        <ComboBox DataContext="{StaticResource ServiceTable}" DisplayMemberPath="NameAndCode" ItemsSource="{Binding}" Name="Service_Combo" Grid.Row="3"  Grid.Column="1" Margin="0 4 4 0"/>
+                        <TextBlock Text=" Dox  .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="4" Margin="4 4 0 0"/>
+                        <ComboBox SelectedIndex="0" Name="Dox_Combo" Grid.Row="4"  Grid.Column="1" Margin="0 4 4 0" Width="80" HorizontalAlignment="Left">
+                            <ComboBoxItem Content="Dox"></ComboBoxItem>
+                            <ComboBoxItem Content="Non-Dox"></ComboBoxItem>
+                        </ComboBox>
+                    </Grid>
+                    <Rectangle Grid.Row="2" VerticalAlignment="Top" Height="1" Fill="Black" Margin="5 3 5 0"/>
+                    <WrapPanel Grid.Row="2" Margin="50 15 4 0">
+                        <TextBox Width="70" Name="RateRuleTextBox" Height="22"/>
+                        <Button Content=" Get Rate " Name="GetRateButton" Click="GetRateButton_Click" Margin="15 0 0 0"/>
+                    </WrapPanel>
+                    <TextBlock Text=" Log Box .: " Height="21" FontSize="16" FontWeight="Bold" Background="#A9FFFFF3" Foreground="#FF5B5B5B" FontFamily="Calibri" Grid.Row="2" Margin="4 40 4 0"/>
+
+                    <Rectangle Grid.Row="2" VerticalAlignment="Bottom" Height="1" Fill="Black" Margin="4 0"/>
+                    <ScrollViewer  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="3" Margin="4 0 4 0">
+                        <TextBlock Text="Log..." Background="White" Padding="4,4,0,0" />
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+        </Grid>
+        <StackPanel Grid.Row="3" Background="#A9FFFFF3"/>
     </Grid>
 </UserControl>

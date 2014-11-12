@@ -976,9 +976,27 @@
                             </Grid>
                             <StackPanel Grid.Row="3" Background="#A9FFFFF3"/>
                         </Grid>
-                        <!--<ContentControl>
+                        <ContentControl Visibility="Collapsed">
                             <cstmcntrl:DataDockPanel/>
-                        </ContentControl>-->
+                        </ContentControl>
+                        <ContentControl Visibility="Collapsed">
+                            <cstmcntrl:ClientReportPanel/>
+                        </ContentControl>
+                        <ContentControl Visibility="Collapsed">
+                            <cstmcntrl:QuotationPanel/>
+                        </ContentControl>
+                        <ContentControl Visibility="Collapsed">
+                            <cstmcntrl:ClientPanel/>
+                        </ContentControl>
+                        <ContentControl Visibility="Collapsed">
+                            <cstmcntrl:StockPanel/>
+                        </ContentControl>
+                        <ContentControl Visibility="Collapsed">
+                            <cstmcntrl:EmployeePanel/>
+                        </ContentControl>
+                        <ContentControl Visibility="Collapsed">
+                            <cstmcntrl:CityPanel/>
+                        </ContentControl>
                     </Grid>
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>

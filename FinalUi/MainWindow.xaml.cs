@@ -1004,14 +1004,14 @@ namespace FinalUi
             cloakAll();
             CityOptionPanel.Visibility = Visibility.Visible;
         }
-        #endregion
-        #endregion
-        #region QuotationFunctions
         private void CloseTableTreeView_Selected(object sender, RoutedEventArgs e)
         {
             cloakAll();
             HideAllDatagrid.Visibility = Visibility.Visible;
         }
+        #endregion
+        #endregion
+        #region QuotationFunctions
         private void ClientCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
