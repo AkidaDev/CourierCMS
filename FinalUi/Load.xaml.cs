@@ -40,7 +40,10 @@ namespace FinalUi
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Unable to connect to server. Please Contact System Administrator"); Configs.Default.IsFirst = true; Configs.Default.Save(); System.Windows.Forms.Application.Restart(); Application.Current.Shutdown();
+                        MessageBox.Show("Unable to connect to server. Please Contact System Administrator"); 
+                        Configs.Default.Save(); 
+                        System.Windows.Forms.Application.Restart(); 
+                        Application.Current.Shutdown();
                     }
                 }
                 Login win = new Login();

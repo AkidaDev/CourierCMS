@@ -41,10 +41,12 @@ namespace FinalUi
         CollectionViewSource ServiceListSource;
         BillingDataDataContext db;
         DataGrid backDataGrid;
+        DataGridHelper helper;
         int sheetNo;
-        public SanitizingWindow(List<RuntimeData> dataContext, BillingDataDataContext db, int sheetNo, DataGrid dg, RuntimeData selectedRec = null)
+        public SanitizingWindow(List<RuntimeData> dataContext, BillingDataDataContext db, int sheetNo, DataGrid dg,DataGridHelper helper, RuntimeData selectedRec = null)
             : this()
         {
+            this.helper = helper;
             this.backDataGrid = dg;
             this.sheetNo = sheetNo;
             if (dataContext != null)
@@ -223,6 +225,7 @@ namespace FinalUi
             {
                 db.RuntimeDatas.InsertOnSubmit(data);
                 dataContext.Add(data);
+                helper.addRecordToCurrentSheet(data);
                 dataListContext.AddNewItem(data);
             }
             try

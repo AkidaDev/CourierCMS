@@ -22,7 +22,7 @@ namespace FinalUi
         {
             isNewSheet = true;
             InitializeComponent();
-            
+            dataLoaded = false;
             isLoadedFromFile = false;
         }
         public bool dataLoaded { get; set; }

@@ -50,11 +50,13 @@ namespace FinalUi
             if (_dataStack == null)
             {
                 _dataStack = value;
+                
             }
             else
             {
                 _dataStack.AddRange(value);
             }
+            applyFilter();
         }
 
         internal void addRecord(RuntimeData data)
@@ -66,6 +68,7 @@ namespace FinalUi
                 _dataStack = new List<RuntimeData>();
                 _dataStack.Add(data);
             }
+            applyFilter();
         }
     }
 
