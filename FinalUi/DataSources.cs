@@ -106,7 +106,7 @@ namespace FinalUi
         public static void initialize()
         {
             db = new BillingDataDataContext();
-            _Services = db.Services.ToList();
+            _Services = db.Services.Where(x=>x.SER_TYPE_STATUS == "A").ToList();
             _Zones = db.ZONEs.ToList();
             _States = db.States.ToList();
             refreshCityList();

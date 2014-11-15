@@ -172,7 +172,7 @@ namespace FinalUi
                     trans.FrAmount = Convert.ToDecimal(ndoxAmount);
                     return true;
             }
-            else
+            if(type == 'S')
             {
                 double multiAmount,startAmount;
                 if (char.ToUpper((char)trans.DOX) == 'D'){
@@ -189,6 +189,23 @@ namespace FinalUi
                 trans.FrAmount = (decimal)(startAmount + steps * multiAmount);
                 return false;
             }
+            if(type == 'M')
+            {
+                double multiAmount;
+                if (char.ToUpper((char)trans.DOX) == 'D')
+                {
+                    multiAmount = doxAmount;
+                }
+                else
+                {
+                    multiAmount = ndoxAmount;
+                }
+                int steps = 0;
+                steps = (int)Math.Ceiling((decimal)(billedWeight / stepWeight)) ;
+                trans.FrAmount = (decimal)(steps * multiAmount);
+                return true;
+            }
+            return false;
         }
         public CostingRule getCostingRule()
         {

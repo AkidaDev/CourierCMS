@@ -3,21 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:cstmcntrl="clr-namespace:CustomControls;assembly=CustomControls"
 		Icon="Images/logo.ico"
-        Title="Add Rule" Height="360" Width="850" Background="Transparent"
+        Title="Add Rule" Height="380" Width="850" Background="Transparent"
 		ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Normal" BorderBrush="Transparent" AllowsTransparency="True" Padding="20">
 
-    <Grid Height="310" Width="800">
+    <Grid Height="330" Width="800">
         <Grid.Effect>
             <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
         </Grid.Effect>
-        <Canvas Height="310" Width="800" Background="White">
+        <Canvas Height="330" Width="800" Background="White">
             <Canvas Canvas.Left="-88" Canvas.Top="2">
                 <Path x:Name="Vertical_line" Data="F1M2,3C2,3 2,2 2,2 2,2 331,2 331,2 331,2 331,3 331,3 331,3 2,3 2,3" Fill="Black" Height="1" Canvas.Left="208" Canvas.Top="57" Width="500" Stretch="Fill"/>
                 <Path x:Name="detail" Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Black" Height="24" Canvas.Left="181" Canvas.Top="35" Width="24"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="209" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text=" Enter Details for COSTING RULE .:" Canvas.Top="41.16"/>
             </Canvas>
 
-            <Canvas Name="Step1Canvas" >
+            <Canvas Name="Step5Canvas" Visibility="Collapsed">
 
                 <Canvas Canvas.Left="100" Canvas.Top="-30">
                     <Path Data="F1M13.502,2.907C10.599,2.907 10.599,3.75 10.599,4.243 10.599,4.243 16.405,4.243 16.405,4.243 16.405,3.75 16.405,2.907 13.502,2.907z M13.502,1C15.895,1 18.341,1.286 18.341,4.243 18.341,4.243 22.791,4.243 22.791,4.243 22.791,4.243 22.792,4.243 22.792,4.243 24.074,4.243 25,5.721 25,6.985 25,6.985 25,19.194 25,19.194 25,20.458 24.075,21 22.792,21 22.792,21 3.437,21 3.437,21 2.154,21 1,20.458 1,19.194 1,19.194 1,6.985 1,6.985 1,5.72 2.154,4.243 3.437,4.243 3.437,4.243 8.663,4.243 8.663,4.243 8.663,1.286 11.109,1 13.502,1z" Fill="Black" Height="22" Canvas.Left="3" Canvas.Top="120.867" Width="26"/>
@@ -39,20 +39,21 @@
                     <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="80" Text="Type .:" Canvas.Top="90"/>
                     <RadioButton Checked="StepTypeRadio_Checked" Name="StepTypeRadio" GroupName="TypeRadioGroup" IsChecked="True" Content="Step" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="135" Canvas.Top="95" Padding="5 -5 0 0"  />
                     <RadioButton Checked="RangeTypeRadio_Checked" Name="RangeTypeRadio" GroupName="TypeRadioGroup" Content="Range" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="135" Canvas.Top="114" Padding="5 -5 0 0" Margin=" 0 3 0 0"/>
+                    <RadioButton Checked="MultiplierTypeRadio_Checked" Name="MultiplierTypeRadio" GroupName="TypeRadioGroup" Content="Multiplier" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="135" Canvas.Top="135" Padding="5 -5 0 0" Margin=" 0 3 0 0"/>
                     <TextBlock Name="StepWeightBlock" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="255" Text="Step .:" Canvas.Top="100"/>
                     <TextBox Name="StepBlockBox" BorderThickness="2" Height="26" Canvas.Left="305" Canvas.Top="95" Width="81" Padding="3 3 0 0"/>
                 </Canvas>
                 <Canvas Canvas.Left="10" Canvas.Top="100">
-                    <Path Name="vertical_line" Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Canvas.Left="392" Canvas.Top="113" Width="3"/>
-                    <TextBlock Name="NDoxStartValue" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="168" Text="Start Value DOX .:" Canvas.Top="122"/>
-                    <TextBox Name="DoxStartValueBox" BorderThickness="2" Height="26" Canvas.Left="305" Canvas.Top="116" Width="81" Padding="3 3 0 0" TextChanged="TextBox_TextChanged"/>
-                    <TextBox Name="NDoxStartValueBox" BorderThickness="2" Height="26" Canvas.Left="562" Canvas.Top="116" Width="81" Padding="3 3 0 0"/>
-                    <TextBlock Name="DoxStartValue" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="413" Text="Start Value NDOX .:" Canvas.Top="122"/>
-                    </Canvas>
+                    <Path Name="vertical_line" Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Canvas.Left="392" Canvas.Top="133" Width="3"/>
+                    <TextBlock Name="NDoxStartValue" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="168" Text="Start Value DOX .:" Canvas.Top="142"/>
+                    <TextBox Name="DoxStartValueBox" BorderThickness="2" Height="26" Canvas.Left="305" Canvas.Top="136" Width="81" Padding="3 3 0 0" TextChanged="TextBox_TextChanged"/>
+                    <TextBox Name="NDoxStartValueBox" BorderThickness="2" Height="26" Canvas.Left="562" Canvas.Top="136" Width="81" Padding="3 3 0 0"/>
+                    <TextBlock Name="DoxStartValue" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="413" Text="Start Value NDOX .:" Canvas.Top="142"/>
+                </Canvas>
             </Canvas>
 
 
-            <Canvas  Name="Step2Canvas" Canvas.Top="-160" Canvas.Left="120" Visibility="Collapsed">
+            <Canvas  Name="Step1Canvas" Canvas.Top="-160" Canvas.Left="120" Visibility="Visible">
                 <Path x:Name="ClientPath" Data="" Fill="Black" Height="19" Canvas.Left="31.333" Canvas.Top="222.365" Width="23" Stretch="Fill"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="59.482" Text="Add Service .:" Canvas.Top="232.079"/>
                 <ContentControl Canvas.Left="31.333" Canvas.Top="255">
@@ -61,7 +62,7 @@
             </Canvas>
 
 
-            <Canvas Name="Step3Canvas" Canvas.Top="-155" Canvas.Left="120" Visibility="Collapsed">
+            <Canvas Name="Step2Canvas" Canvas.Top="-155" Canvas.Left="120" Visibility="Collapsed">
                 <Path Data="" Fill="Black" Height="19" Canvas.Left="31.333" Canvas.Top="222.365" Width="23" Stretch="Fill"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="59.482" Text="Add City .:" Canvas.Top="227.079"/>
                 <ContentControl Canvas.Left="31.333" Canvas.Top="250">
@@ -70,7 +71,7 @@
             </Canvas>
 
 
-            <Canvas Name="Step4Canvas" Canvas.Top="-150" Canvas.Left="120" Visibility="Collapsed">
+            <Canvas Name="Step3Canvas" Canvas.Top="-150" Canvas.Left="120" Visibility="Collapsed">
                 <Path Data="" Fill="Black" Height="19" Canvas.Left="31.333" Canvas.Top="222.365" Width="23" Stretch="Fill"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="59.482" Text="Add State .:" Canvas.Top="222"/>
                 <ContentControl Canvas.Left="31.333" Canvas.Top="245">
@@ -79,7 +80,7 @@
             </Canvas>
 
 
-            <Canvas Name="Step5Canvas" Canvas.Top="-155" Canvas.Left="120" Visibility="Collapsed">
+            <Canvas Name="Step4Canvas" Canvas.Top="-155" Canvas.Left="120" Visibility="Collapsed">
                 <Path Data="" Fill="Black" Height="19" Canvas.Left="31.333" Canvas.Top="222.365" Width="23" Stretch="Fill"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="59.482" Text="Add Zone .:" Canvas.Top="227.079"/>
                 <ContentControl Canvas.Left="31.333" Canvas.Top="250">
@@ -140,7 +141,7 @@
                     </WrapPanel>
                 </Button.Content>
             </Button>
-            <TextBlock Name="StepBlock" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="43" Text="Step 1 of 6" Canvas.Top="275"/>
+            <TextBlock Name="StepBlock" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Canvas.Left="43" Text="Step 1 of 6" Canvas.Top="295"/>
         </Canvas>
     </Grid>
 </Window>

@@ -271,7 +271,8 @@ namespace FinalUi
         }
         private void ConnsignmentNumber_KeyUp(object sender, KeyEventArgs e)
         {
-            fillAllElements(ConnsignmentNumber.Text);
+            if (e.Key == Key.Enter)
+                fillAllElements(ConnsignmentNumber.Text);
         }
         void fillAllElements(string connsignmentNo)
         {
@@ -446,6 +447,13 @@ namespace FinalUi
         }
         private void TypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+        }
+
+     
+     
+        private void ConnsignmentNumber_LostFocus(object sender, RoutedEventArgs e)
+        {
+            fillAllElements(ConnsignmentNumber.Text);
         }
     }
 }

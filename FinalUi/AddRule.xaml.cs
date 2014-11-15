@@ -58,11 +58,20 @@ namespace FinalUi
             {
                 RangeTypeRadio.IsChecked = true;
                 StepTypeRadio.IsChecked = false;
+                MultiplierTypeRadio.IsChecked = false;
             }
-            else
+            if (RuleCR.type == 'S')
             {
                 RangeTypeRadio.IsChecked = false;
                 StepTypeRadio.IsChecked = true;
+                MultiplierTypeRadio.IsChecked = false;
+            }
+            if (RuleCR.type == 'M')
+            {
+                RangeTypeRadio.IsChecked = false;
+                StepTypeRadio.IsChecked = false;
+                MultiplierTypeRadio.IsChecked = true;
+
             }
             StepBlockBox.Text = RuleCR.stepWeight.ToString();
             DoxStartValueBox.Text = RuleCR.dStartValue.ToString();
@@ -88,16 +97,16 @@ namespace FinalUi
             CitiesTwinBox.SelectedListSource = new List<City>();
             CitiesTwinBox.DisplayValuePath = "NameAndCode";
         }
-        public static void setFormList(IRule crule , CustomControls.TwinListBox ServiceTwinBox, CustomControls.TwinListBox ZoneTwinBox, CustomControls.TwinListBox StateTwinBox, CustomControls.TwinListBox CitiesTwinBox)
+        public static void setFormList(IRule crule, CustomControls.TwinListBox ServiceTwinBox, CustomControls.TwinListBox ZoneTwinBox, CustomControls.TwinListBox StateTwinBox, CustomControls.TwinListBox CitiesTwinBox)
         {
-            if(crule == null)
+            if (crule == null)
             {
                 throw new Exception("Rule is Null");
-                
+
             }
             if (crule.ServiceList.Count > 0)
             {
-                ServiceTwinBox.AllListSource = DataSources.ServicesCopy.Where(x => !crule.ServiceList.Contains(x.SER_CODE) ).ToList();
+                ServiceTwinBox.AllListSource = DataSources.ServicesCopy.Where(x => !crule.ServiceList.Contains(x.SER_CODE)).ToList();
                 ServiceTwinBox.SelectedListSource = DataSources.ServicesCopy.Where(x => crule.ServiceList.Contains(x.SER_CODE)).ToList();
             }
             else
@@ -149,25 +158,25 @@ namespace FinalUi
             this.Close();
         }
         private void GetFilter_Click(object sender, RoutedEventArgs e)
-        {}
+        { }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {}
+        { }
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
-        {}
+        { }
         private void UpdateRule()
-        {}
+        { }
         private void AddRuleButton_Click(object sender, RoutedEventArgs e)
         {
             Rule r;
             BillingDataDataContext db = new BillingDataDataContext();
             if (!isUpdate)
             {
-                 r = new Rule();
+                r = new Rule();
             }
             else
             {
-                if(rule != null)
-                 r = rule;
+                if (rule != null)
+                    r = rule;
                 else
                 {
                     MessageBox.Show("Come Error Occured");
@@ -190,13 +199,13 @@ namespace FinalUi
                 errorMsg = errorMsg + "Enter To Weight Properly \n";
             if (startW > endW)
                 errorMsg += "Starting weight cannot be greater than ending weight. \n";
-            char type;
+            char type = 'U';
             if (RangeTypeRadio.IsChecked == true)
-            {
                 type = 'R';
-            }
-            else
+            if (StepTypeRadio.IsChecked == true)
                 type = 'S';
+            if (MultiplierTypeRadio.IsChecked == true)
+                type = 'M';
             double doxAmount = 0, ndoxAmount = 0;
             if (!double.TryParse(DOXAmountBox.Text, out doxAmount))
                 errorMsg += "Enter dox amount properly \n";
@@ -245,16 +254,16 @@ namespace FinalUi
             r.Remark = this.RemarkBox.Text ?? " ";
             if (!isUpdate)
                 db.Rules.InsertOnSubmit(r);
-            else 
+            else
             {
-               Rule ruledb = db.Rules.Where(x => x.ID == r.ID).FirstOrDefault();
-               if (ruledb == null)
-               {
-                   MessageBox.Show("Some Error Occured");
-                   return;
-               }
-               else
-                   setvalue(ruledb, r);
+                Rule ruledb = db.Rules.Where(x => x.ID == r.ID).FirstOrDefault();
+                if (ruledb == null)
+                {
+                    MessageBox.Show("Some Error Occured");
+                    return;
+                }
+                else
+                    setvalue(ruledb, r);
             }
             bool isdone = false;
             if (validate())
@@ -267,7 +276,17 @@ namespace FinalUi
                 catch (Exception ex) { MessageBox.Show(ex.Message); return; }
                 if (isdone)
                 {
-                    MessageBox.Show("New Costing Rule Added");
+                    if (MessageBox.Show("Do you want to add a new rule for this configuration of service and destination", "Confirm", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        FromWeightBox.Text = (RuleCR.endW + 0.0001).ToString();
+                        ToWeightBox.Text = "";
+                        currentCanvas = 5;
+                        currentCanvasObj.Visibility = Visibility.Collapsed;
+                        currentCanvasObj = Step5Canvas;
+                        currentCanvasObj.Visibility = Visibility.Visible;
+                        StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
+                    }
+                    else
                     this.Close();
                 }
             }
@@ -415,13 +434,31 @@ namespace FinalUi
         }
         private void RangeTypeRadio_Checked(object sender, RoutedEventArgs e)
         {
-            vertical_line.Visibility = Visibility.Collapsed;
-            StepWeightBlock.Visibility = Visibility.Collapsed;
-            StepBlockBox.Visibility = Visibility.Collapsed;
-            NDoxStartValueBox.Visibility = Visibility.Collapsed;
-            DoxStartValue.Visibility = Visibility.Collapsed;
-            DoxStartValueBox.Visibility = Visibility.Collapsed;
-            NDoxStartValue.Visibility = Visibility.Collapsed;
+            if (IsInitialized)
+            {
+                vertical_line.Visibility = Visibility.Collapsed;
+                StepWeightBlock.Visibility = Visibility.Collapsed;
+                StepBlockBox.Visibility = Visibility.Collapsed;
+                NDoxStartValueBox.Visibility = Visibility.Collapsed;
+                DoxStartValue.Visibility = Visibility.Collapsed;
+                DoxStartValueBox.Visibility = Visibility.Collapsed;
+                NDoxStartValue.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void MultiplierTypeRadio_Checked(object sender, RoutedEventArgs e)
+        {
+            if (IsInitialized)
+            {
+
+                StepWeightBlock.Visibility = Visibility.Visible;
+                StepBlockBox.Visibility = Visibility.Visible;
+                vertical_line.Visibility = Visibility.Collapsed;
+                NDoxStartValueBox.Visibility = Visibility.Collapsed;
+                DoxStartValue.Visibility = Visibility.Collapsed;
+                DoxStartValueBox.Visibility = Visibility.Collapsed;
+                NDoxStartValue.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

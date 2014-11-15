@@ -23,6 +23,7 @@ namespace FinalUi
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     /// 
+
     public partial class MainWindow : Window
     {
         // Zone listing data import procedure
@@ -284,9 +285,9 @@ namespace FinalUi
             }
             SanitizingWindow window;
             if (dataGrid.SelectedItem != null)
-                window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber, dataGrid, (RuntimeData)dataGrid.SelectedItem);
+                window = new SanitizingWindow(dataGridHelper.getCurrentDataStack,db,dataGridHelper.currentSheetNumber,dataGrid, (RuntimeData)dataGrid.SelectedItem);
             else
-                window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber, dataGrid);
+                window = new SanitizingWindow(dataGridHelper.getCurrentDataStack,db,dataGridHelper.currentSheetNumber,dataGrid);
             window.Closed += SanitizingWindow_Closed;
             window.Show();
         }
@@ -524,6 +525,8 @@ namespace FinalUi
         {
             this.Effect = null;
             LoadData dataWind = (LoadData)sender;
+            if (dataGrid.IsLoaded == false)
+                return;
             //TODO: Get Name 
             string name = "";
             if (dataWind.dataLoaded)

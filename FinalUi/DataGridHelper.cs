@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace FinalUi
 {
 
-    class DataSheet
+    public class DataSheet
     {
         List<RuntimeData> filteredData;
         public List<RuntimeData> dataStack
@@ -25,7 +25,7 @@ namespace FinalUi
                 _dataStack = value;
             }
         }
-        
+
         public List<RuntimeData> _dataStack { get; set; }
         public string name { get; set; }
         public int currentPageNo;
@@ -54,6 +54,17 @@ namespace FinalUi
             else
             {
                 _dataStack.AddRange(value);
+            }
+        }
+
+        internal void addRecord(RuntimeData data)
+        {
+            if (_dataStack != null)
+                _dataStack.Add(data);
+            else
+            {
+                _dataStack = new List<RuntimeData>();
+                _dataStack.Add(data);
             }
         }
     }
@@ -157,14 +168,9 @@ namespace FinalUi
         }
         public void addDataToCurrentSheet(List<RuntimeData> data)
         {
-            try
-            {
+            if (_currentDataSheet != null)
                 _currentDataSheet.addData(data);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("booga booga");
-            }
+
         }
         public void setActiveSheet(int index)
         {
@@ -187,11 +193,17 @@ namespace FinalUi
             }
         }
 
+
+        internal void addRecordToCurrentSheet(RuntimeData data)
+        {
+            if (_currentDataSheet != null)
+                _currentDataSheet.addRecord(data);
+        }
     }
 
 
 
-    class DataGridHelper : INotifyPropertyChanged
+    public class DataGridHelper : INotifyPropertyChanged
     {
         DataSheetmanager dataSheetManager;
         CollectionViewSource dataGrid;
@@ -347,6 +359,13 @@ namespace FinalUi
             this.notifyPropertyChanged("rowsPerPage");
             refreshCurrentPage();
         }
+        public void addRecordToCurrentSheet(RuntimeData data)
+        {
+            dataSheetManager.addRecordToCurrentSheet(data);
+            this.notifyPropertyChanged("currentPageNo");
+            this.notifyPropertyChanged("rowsPerPage");
+            refreshCurrentPage();
+        }
         public int CurrentNumberOfSheets
         {
             get
@@ -411,7 +430,7 @@ namespace FinalUi
             if (dataSheetManager.totalSheets != 0)
                 refreshCurrentPage();
         }
-        
+
         public Filter CurrentSheetFilterObject
         {
             get
