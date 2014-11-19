@@ -23,6 +23,7 @@ namespace FinalUi
             set
             {
                 _dataStack = value;
+                applyFilter();
             }
         }
 
@@ -35,9 +36,11 @@ namespace FinalUi
         {
             currentPageNo = 1;
             rowsPerPage = 100;
-            dataStack = value;
-            filterObj = new Filter();
             this.name = name;
+            filterObj = new Filter();
+          
+            dataStack = value;
+           
             if (filteredData == null)
                 applyFilter();
         }

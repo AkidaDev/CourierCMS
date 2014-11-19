@@ -204,7 +204,7 @@ namespace FinalUi
         void SaveWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Error != null)
-                MessageBlock.Text = DateTime.Now.ToShortTimeString() + ": " +  "Error in saving: " + e.Error.Message + "\n" + MessageBlock.Text;
+                MessageBlock.Text = DateTime.Now.ToShortTimeString() + ": " + "Error in saving: " + e.Error.Message + "\n" + MessageBlock.Text;
             else
                 MessageBlock.Text = DateTime.Now.ToShortTimeString() + ": " + "Save Completed" + e.Result + "\n" + MessageBlock.Text;
         }
@@ -217,10 +217,18 @@ namespace FinalUi
 
         void SaveWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            string message = UtilityClass.saveRuntimeAsTransaction(dataGridHelper.currentSheetNumber,SecurityModule.currentUserName);
+            string message = UtilityClass.saveRuntimeAsTransaction(dataGridHelper.currentSheetNumber, SecurityModule.currentUserName);
             if (message != "")
             {
                 throw new Exception(message);
+            }
+            try
+            {
+                dataGridHelper.currentDataSheet.dataStack = db.RuntimeDatas.Where(x => x.SheetNo == dataGridHelper.currentSheetNumber && x.UserId == SecurityModule.currentUserName).ToList();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
             }
         }
 
@@ -228,7 +236,7 @@ namespace FinalUi
         #region Delete Sheet Worker
         void DeleteWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBlock.Text = DateTime.Now.ToShortTimeString() + ": " + "Delete Operation Completed. " + e.Error + "\n" + MessageBlock.Text ;
+            MessageBlock.Text = DateTime.Now.ToShortTimeString() + ": " + "Delete Operation Completed. " + e.Error + "\n" + MessageBlock.Text;
         }
         void DeleteWorker_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -285,9 +293,9 @@ namespace FinalUi
             }
             SanitizingWindow window;
             if (dataGrid.SelectedItem != null)
-                window = new SanitizingWindow(dataGridHelper.getCurrentDataStack,db,dataGridHelper.currentSheetNumber,dataGrid,dataGridHelper, (RuntimeData)dataGrid.SelectedItem);
+                window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber, dataGrid, dataGridHelper, (RuntimeData)dataGrid.SelectedItem);
             else
-                window = new SanitizingWindow(dataGridHelper.getCurrentDataStack,db,dataGridHelper.currentSheetNumber,dataGrid,dataGridHelper);
+                window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber, dataGrid, dataGridHelper);
             window.Closed += SanitizingWindow_Closed;
             window.Show();
         }
@@ -326,7 +334,7 @@ namespace FinalUi
         }
         private void ExecuteSaveCommand(object sender, ExecutedRoutedEventArgs e)
         {
-            MessageBlock.Text = DateTime.Now.ToShortTimeString() + ": " + "Saving operation started..." + "\n" + MessageBlock.Text ;
+            MessageBlock.Text = DateTime.Now.ToShortTimeString() + ": " + "Saving operation started..." + "\n" + MessageBlock.Text;
             SaveWorker.RunWorkerAsync();
             //SaveWorker_DoWork(null, null);
         }

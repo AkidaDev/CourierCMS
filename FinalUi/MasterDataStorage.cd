@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FinalUi.City" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <Members>
+      <Field Name="_city_category" Hidden="true" />
+      <Field Name="_CITY_CATG_PDN" Hidden="true" />
+      <Field Name="_CITY_COD" Hidden="true" />
+      <Field Name="_CITY_CODE" Hidden="true" />
+      <Field Name="_CITY_DESC" Hidden="true" />
+      <Field Name="_CITY_STATE" Hidden="true" />
+      <Field Name="_CITY_STATE_DESC" Hidden="true" />
+      <Field Name="_CITY_STATUS" Hidden="true" />
+      <Field Name="_MOD_DATE" Hidden="true" />
+      <Field Name="_MOD_TIME" Hidden="true" />
+      <Field Name="_NODEID" Hidden="true" />
+      <Field Name="_State" Hidden="true" />
+      <Field Name="_Status" Hidden="true" />
+      <Field Name="_TRANS_STATUS" Hidden="true" />
+      <Field Name="_USERID" Hidden="true" />
+      <Field Name="_ZONE" Hidden="true" />
+      <Method Name="City" Hidden="true" />
+      <Property Name="city_category" Hidden="true" />
+      <Property Name="CITY_CATG_PDN" Hidden="true" />
+      <Property Name="CITY_COD" Hidden="true" />
+      <Property Name="CITY_STATE_DESC" Hidden="true" />
+      <Property Name="CITY_STATUS" Hidden="true" />
+      <Field Name="emptyChangingEventArgs" Hidden="true" />
+      <Property Name="MOD_DATE" Hidden="true" />
+      <Property Name="MOD_TIME" Hidden="true" />
+      <Property Name="NameAndCode" Hidden="true" />
+      <Property Name="NODEID" Hidden="true" />
+      <Method Name="Oncity_categoryChanged" Hidden="true" />
+      <Method Name="Oncity_categoryChanging" Hidden="true" />
+      <Method Name="OnCITY_CATG_PDNChanged" Hidden="true" />
+      <Method Name="OnCITY_CATG_PDNChanging" Hidden="true" />
+      <Method Name="OnCITY_CODChanged" Hidden="true" />
+      <Method Name="OnCITY_CODChanging" Hidden="true" />
+      <Method Name="OnCITY_CODEChanged" Hidden="true" />
+      <Method Name="OnCITY_CODEChanging" Hidden="true" />
+      <Method Name="OnCITY_DESCChanged" Hidden="true" />
+      <Method Name="OnCITY_DESCChanging" Hidden="true" />
+      <Method Name="OnCITY_STATE_DESCChanged" Hidden="true" />
+      <Method Name="OnCITY_STATE_DESCChanging" Hidden="true" />
+      <Method Name="OnCITY_STATEChanged" Hidden="true" />
+      <Method Name="OnCITY_STATEChanging" Hidden="true" />
+      <Method Name="OnCITY_STATUSChanged" Hidden="true" />
+      <Method Name="OnCITY_STATUSChanging" Hidden="true" />
+      <Method Name="OnCreated" Hidden="true" />
+      <Method Name="OnLoaded" Hidden="true" />
+      <Method Name="OnMOD_DATEChanged" Hidden="true" />
+      <Method Name="OnMOD_DATEChanging" Hidden="true" />
+      <Method Name="OnMOD_TIMEChanged" Hidden="true" />
+      <Method Name="OnMOD_TIMEChanging" Hidden="true" />
+      <Method Name="OnNODEIDChanged" Hidden="true" />
+      <Method Name="OnNODEIDChanging" Hidden="true" />
+      <Method Name="OnStatusChanged" Hidden="true" />
+      <Method Name="OnStatusChanging" Hidden="true" />
+      <Method Name="OnTRANS_STATUSChanged" Hidden="true" />
+      <Method Name="OnTRANS_STATUSChanging" Hidden="true" />
+      <Method Name="OnUSERIDChanged" Hidden="true" />
+      <Method Name="OnUSERIDChanging" Hidden="true" />
+      <Method Name="OnValidate" Hidden="true" />
+      <Method Name="OnZONEChanged" Hidden="true" />
+      <Method Name="OnZONEChanging" Hidden="true" />
+      <Method Name="SendPropertyChanged" Hidden="true" />
+      <Method Name="SendPropertyChanging" Hidden="true" />
+      <Property Name="Status" Hidden="true" />
+      <Property Name="TRANS_STATUS" Hidden="true" />
+      <Property Name="USERID" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>YQAqYQZFRCCioAQE6iEEqYADjCBgCBQACgEgBaAZEEg=</HashCode>
+      <FileName>Extensions.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.ZONE" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <Members>
+      <Field Name="_Id" Hidden="true" />
+      <Field Name="_Mode" Hidden="true" />
+      <Field Name="_zcode" Hidden="true" />
+      <Field Name="_Zone_name" Hidden="true" />
+      <Field Name="emptyChangingEventArgs" Hidden="true" />
+      <Method Name="OnCreated" Hidden="true" />
+      <Method Name="OnIdChanged" Hidden="true" />
+      <Method Name="OnIdChanging" Hidden="true" />
+      <Method Name="OnLoaded" Hidden="true" />
+      <Method Name="OnModeChanged" Hidden="true" />
+      <Method Name="OnModeChanging" Hidden="true" />
+      <Method Name="OnValidate" Hidden="true" />
+      <Method Name="OnzcodeChanged" Hidden="true" />
+      <Method Name="OnzcodeChanging" Hidden="true" />
+      <Method Name="OnZone_nameChanged" Hidden="true" />
+      <Method Name="OnZone_nameChanging" Hidden="true" />
+      <Method Name="SendPropertyChanged" Hidden="true" />
+      <Method Name="SendPropertyChanging" Hidden="true" />
+      <Method Name="ZONE" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAiAgABgIQAAgAASAUAAAABjCAAEAAQCAAAAAAUAIA=</HashCode>
+      <FileName>Extensions.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.Employee" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Members>
+      <Field Name="_EMPCode" Hidden="true" />
+      <Field Name="_Gender" Hidden="true" />
+      <Field Name="_Id" Hidden="true" />
+      <Field Name="_Name" Hidden="true" />
+      <Field Name="_Password" Hidden="true" />
+      <Field Name="_Status" Hidden="true" />
+      <Field Name="_Stocks" Hidden="true" />
+      <Field Name="_Transactions" Hidden="true" />
+      <Field Name="_User_permissions" Hidden="true" />
+      <Field Name="_UserName" Hidden="true" />
+      <Method Name="attach_Stocks" Hidden="true" />
+      <Method Name="attach_Transactions" Hidden="true" />
+      <Method Name="attach_User_permissions" Hidden="true" />
+      <Method Name="detach_Stocks" Hidden="true" />
+      <Method Name="detach_Transactions" Hidden="true" />
+      <Method Name="detach_User_permissions" Hidden="true" />
+      <Method Name="Employee" Hidden="true" />
+      <Field Name="emptyChangingEventArgs" Hidden="true" />
+      <Method Name="OnCreated" Hidden="true" />
+      <Method Name="OnEMPCodeChanged" Hidden="true" />
+      <Method Name="OnEMPCodeChanging" Hidden="true" />
+      <Method Name="OnGenderChanged" Hidden="true" />
+      <Method Name="OnGenderChanging" Hidden="true" />
+      <Method Name="OnIdChanged" Hidden="true" />
+      <Method Name="OnIdChanging" Hidden="true" />
+      <Method Name="OnLoaded" Hidden="true" />
+      <Method Name="OnNameChanged" Hidden="true" />
+      <Method Name="OnNameChanging" Hidden="true" />
+      <Method Name="OnPasswordChanged" Hidden="true" />
+      <Method Name="OnPasswordChanging" Hidden="true" />
+      <Method Name="OnStatusChanged" Hidden="true" />
+      <Method Name="OnStatusChanging" Hidden="true" />
+      <Method Name="OnUserNameChanged" Hidden="true" />
+      <Method Name="OnUserNameChanging" Hidden="true" />
+      <Method Name="OnValidate" Hidden="true" />
+      <Method Name="SendPropertyChanged" Hidden="true" />
+      <Method Name="SendPropertyChanging" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>BACiEAgFBAAQAESAQJMEIASRjCAARgECBQEggABUkAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.Permission" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <Members>
+      <Field Name="_id" Hidden="true" />
+      <Field Name="_Per" Hidden="true" />
+      <Field Name="_User_permissions" Hidden="true" />
+      <Method Name="attach_User_permissions" Hidden="true" />
+      <Method Name="detach_User_permissions" Hidden="true" />
+      <Field Name="emptyChangingEventArgs" Hidden="true" />
+      <Method Name="OnCreated" Hidden="true" />
+      <Method Name="OnidChanged" Hidden="true" />
+      <Method Name="OnidChanging" Hidden="true" />
+      <Method Name="OnLoaded" Hidden="true" />
+      <Method Name="OnPerChanged" Hidden="true" />
+      <Method Name="OnPerChanging" Hidden="true" />
+      <Method Name="OnValidate" Hidden="true" />
+      <Method Name="Permission" Hidden="true" />
+      <Method Name="SendPropertyChanged" Hidden="true" />
+      <Method Name="SendPropertyChanging" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAgAAgBBAAQCAAAQAFAAAARjiAAAAAAAAAAAAAQggA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.Service" BaseTypeListCollapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <Members>
+      <Field Name="_MOD_DATE" Hidden="true" />
+      <Field Name="_MOD_TIME" Hidden="true" />
+      <Field Name="_MODE_TYPE" Hidden="true" />
+      <Field Name="_NODEID" Hidden="true" />
+      <Field Name="_PRODUCT_ID" Hidden="true" />
+      <Field Name="_SER_BILLING" Hidden="true" />
+      <Field Name="_SER_CODE" Hidden="true" />
+      <Field Name="_SER_DESC" Hidden="true" />
+      <Field Name="_SER_DIV" Hidden="true" />
+      <Field Name="_SER_HIERARCHY_ID" Hidden="true" />
+      <Field Name="_SER_TYPE_STATUS" Hidden="true" />
+      <Field Name="_TRANS_STATUS" Hidden="true" />
+      <Field Name="_USERID" Hidden="true" />
+      <Field Name="emptyChangingEventArgs" Hidden="true" />
+      <Method Name="OnCreated" Hidden="true" />
+      <Method Name="OnLoaded" Hidden="true" />
+      <Method Name="OnMOD_DATEChanged" Hidden="true" />
+      <Method Name="OnMOD_DATEChanging" Hidden="true" />
+      <Method Name="OnMOD_TIMEChanged" Hidden="true" />
+      <Method Name="OnMOD_TIMEChanging" Hidden="true" />
+      <Method Name="OnMODE_TYPEChanged" Hidden="true" />
+      <Method Name="OnMODE_TYPEChanging" Hidden="true" />
+      <Method Name="OnNODEIDChanged" Hidden="true" />
+      <Method Name="OnNODEIDChanging" Hidden="true" />
+      <Method Name="OnPRODUCT_IDChanged" Hidden="true" />
+      <Method Name="OnPRODUCT_IDChanging" Hidden="true" />
+      <Method Name="OnSER_BILLINGChanged" Hidden="true" />
+      <Method Name="OnSER_BILLINGChanging" Hidden="true" />
+      <Method Name="OnSER_CODEChanged" Hidden="true" />
+      <Method Name="OnSER_CODEChanging" Hidden="true" />
+      <Method Name="OnSER_DESCChanged" Hidden="true" />
+      <Method Name="OnSER_DESCChanging" Hidden="true" />
+      <Method Name="OnSER_DIVChanged" Hidden="true" />
+      <Method Name="OnSER_DIVChanging" Hidden="true" />
+      <Method Name="OnSER_HIERARCHY_IDChanged" Hidden="true" />
+      <Method Name="OnSER_HIERARCHY_IDChanging" Hidden="true" />
+      <Method Name="OnSER_TYPE_STATUSChanged" Hidden="true" />
+      <Method Name="OnSER_TYPE_STATUSChanging" Hidden="true" />
+      <Method Name="OnTRANS_STATUSChanged" Hidden="true" />
+      <Method Name="OnTRANS_STATUSChanging" Hidden="true" />
+      <Method Name="OnUSERIDChanged" Hidden="true" />
+      <Method Name="OnUSERIDChanging" Hidden="true" />
+      <Method Name="OnValidate" Hidden="true" />
+      <Method Name="SendPropertyChanged" Hidden="true" />
+      <Method Name="SendPropertyChanging" Hidden="true" />
+      <Method Name="Service" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>aUAoaABhBBAg4AMASmEBoYABjHApgBUACgBgAQAIAAo=</HashCode>
+      <FileName>Extensions.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.State" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="2.75" Width="1.5" />
+    <Members>
+      <Field Name="_Cities" Hidden="true" />
+      <Field Name="_MOD_DATE" Hidden="true" />
+      <Field Name="_MOD_TIME" Hidden="true" />
+      <Field Name="_NODEID" Hidden="true" />
+      <Field Name="_STATE_CAPITAL" Hidden="true" />
+      <Field Name="_STATE_CODE" Hidden="true" />
+      <Field Name="_STATE_COUNTRY" Hidden="true" />
+      <Field Name="_STATE_DESC" Hidden="true" />
+      <Field Name="_STATE_IMP_AREA" Hidden="true" />
+      <Field Name="_STATE_INDUSTRIES" Hidden="true" />
+      <Field Name="_STATE_MAP" Hidden="true" />
+      <Field Name="_STATE_POPULATION" Hidden="true" />
+      <Field Name="_STATE_RO" Hidden="true" />
+      <Field Name="_STATE_STATUS" Hidden="true" />
+      <Field Name="_STATE_ZO" Hidden="true" />
+      <Field Name="_STATE_ZONE" Hidden="true" />
+      <Field Name="_TRANS_STATUS" Hidden="true" />
+      <Field Name="_USERID" Hidden="true" />
+      <Method Name="attach_Cities" Hidden="true" />
+      <Method Name="detach_Cities" Hidden="true" />
+      <Field Name="emptyChangingEventArgs" Hidden="true" />
+      <Property Name="MOD_DATE" Hidden="true" />
+      <Property Name="MOD_TIME" Hidden="true" />
+      <Property Name="NameAndCode" Hidden="true" />
+      <Property Name="NODEID" Hidden="true" />
+      <Method Name="OnCreated" Hidden="true" />
+      <Method Name="OnLoaded" Hidden="true" />
+      <Method Name="OnMOD_DATEChanged" Hidden="true" />
+      <Method Name="OnMOD_DATEChanging" Hidden="true" />
+      <Method Name="OnMOD_TIMEChanged" Hidden="true" />
+      <Method Name="OnMOD_TIMEChanging" Hidden="true" />
+      <Method Name="OnNODEIDChanged" Hidden="true" />
+      <Method Name="OnNODEIDChanging" Hidden="true" />
+      <Method Name="OnSTATE_CAPITALChanged" Hidden="true" />
+      <Method Name="OnSTATE_CAPITALChanging" Hidden="true" />
+      <Method Name="OnSTATE_CODEChanged" Hidden="true" />
+      <Method Name="OnSTATE_CODEChanging" Hidden="true" />
+      <Method Name="OnSTATE_COUNTRYChanged" Hidden="true" />
+      <Method Name="OnSTATE_COUNTRYChanging" Hidden="true" />
+      <Method Name="OnSTATE_DESCChanged" Hidden="true" />
+      <Method Name="OnSTATE_DESCChanging" Hidden="true" />
+      <Method Name="OnSTATE_IMP_AREAChanged" Hidden="true" />
+      <Method Name="OnSTATE_IMP_AREAChanging" Hidden="true" />
+      <Method Name="OnSTATE_INDUSTRIESChanged" Hidden="true" />
+      <Method Name="OnSTATE_INDUSTRIESChanging" Hidden="true" />
+      <Method Name="OnSTATE_MAPChanged" Hidden="true" />
+      <Method Name="OnSTATE_MAPChanging" Hidden="true" />
+      <Method Name="OnSTATE_POPULATIONChanged" Hidden="true" />
+      <Method Name="OnSTATE_POPULATIONChanging" Hidden="true" />
+      <Method Name="OnSTATE_ROChanged" Hidden="true" />
+      <Method Name="OnSTATE_ROChanging" Hidden="true" />
+      <Method Name="OnSTATE_STATUSChanged" Hidden="true" />
+      <Method Name="OnSTATE_STATUSChanging" Hidden="true" />
+      <Method Name="OnSTATE_ZOChanged" Hidden="true" />
+      <Method Name="OnSTATE_ZOChanging" Hidden="true" />
+      <Method Name="OnSTATE_ZONEChanged" Hidden="true" />
+      <Method Name="OnSTATE_ZONEChanging" Hidden="true" />
+      <Method Name="OnTRANS_STATUSChanged" Hidden="true" />
+      <Method Name="OnTRANS_STATUSChanging" Hidden="true" />
+      <Method Name="OnUSERIDChanged" Hidden="true" />
+      <Method Name="OnUSERIDChanging" Hidden="true" />
+      <Method Name="OnValidate" Hidden="true" />
+      <Method Name="SendPropertyChanged" Hidden="true" />
+      <Method Name="SendPropertyChanging" Hidden="true" />
+      <Method Name="State" Hidden="true" />
+      <Property Name="STATE_CAPITAL" Hidden="true" />
+      <Property Name="STATE_IMP_AREA" Hidden="true" />
+      <Property Name="STATE_INDUSTRIES" Hidden="true" />
+      <Property Name="STATE_MAP" Hidden="true" />
+      <Property Name="STATE_POPULATION" Hidden="true" />
+      <Property Name="STATE_RO" Hidden="true" />
+      <Property Name="STATE_STATUS" Hidden="true" />
+      <Property Name="STATE_ZO" Hidden="true" />
+      <Property Name="TRANS_STATUS" Hidden="true" />
+      <Property Name="USERID" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>cRAo4QAxFuFggGgUSiMAKKABnrQgEhwICgYhEAAAIMA=</HashCode>
+      <FileName>Extensions.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

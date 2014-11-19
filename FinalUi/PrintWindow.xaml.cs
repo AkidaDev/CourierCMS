@@ -166,7 +166,7 @@ namespace FinalUi
             repParams.Add(new ReportParameter("ClientPhoneNo", clc.CONTACTNO));
             repParams.Add(new ReportParameter("TNC", Configs.Default.TNC));
             invoiceNo = (InvoiceDate.SelectedDate ?? DateTime.Today).ToString("yyyyMMdd");
-            invoiceNo = invoiceNo + DateTime.Today.ToString("hhmm");
+            invoiceNo = invoiceNo + DateTime.Now.ToString("hhmm");
             repParams.Add(new ReportParameter("InvoiceNumber", invoiceNo));
             repParams.Add(new ReportParameter("InvoiceDate", (InvoiceDate.SelectedDate ?? DateTime.Today).ToString("dd-MMM-yyyy")));
             PrintMainWindow win = new PrintMainWindow(rs, repParams);

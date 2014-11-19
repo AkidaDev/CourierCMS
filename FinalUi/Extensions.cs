@@ -20,7 +20,7 @@ namespace FinalUi
             dt.Destination = destination;
             dt.Type = serviceCode;
             dt.DOX = DOX;
-            return applyCostingRulesOnTransaction(dt,(double)dt.BilledWeight);
+            return applyCostingRulesOnTransaction(dt, (double)dt.BilledWeight);
         }
         public double applyCostingRulesOnTransaction(RuntimeData trans, double billedWeight)
         {
@@ -29,6 +29,8 @@ namespace FinalUi
                 initializeRules();
             }
             List<CostingRule> RulesApplied = costingRules.Where(x => x.startW <= billedWeight && x.endW >= billedWeight).ToList();
+            RulesApplied = RulesApplied.Where(x => x.ServiceList.Contains(trans.Type.Trim())).ToList();
+
             if (RulesApplied.Where(x => x.CityList.Contains(trans.Destination)).Count() > 0)
             {
                 RulesApplied = RulesApplied.Where(x => x.CityList.Contains(trans.Destination)).ToList();
@@ -51,22 +53,21 @@ namespace FinalUi
                     RulesApplied = RulesApplied.Where(x => x.ZoneList.Contains(zoneCode)).ToList();
                 }
             }
-            RulesApplied = RulesApplied.Where(x => x.ServiceList.Contains(trans.Type.Trim())).ToList();
             decimal price = 0;
             RulesApplied.ForEach((x) =>
             {
                 if (!x.applyRule(trans, billedWeight))
                 {
-                    CostingRule RulesApplied2 = costingRules.Where(u => u.endW < x.startW ).OrderByDescending(z => z.endW).FirstOrDefault();
-                    if(RulesApplied2!=null)
-                       trans.FrAmount += (decimal)applyCostingRulesOnTransaction(trans, RulesApplied2.endW);
+                    CostingRule RulesApplied2 = costingRules.Where(u => u.endW < x.startW).OrderByDescending(z => z.endW).FirstOrDefault();
+                    if (RulesApplied2 != null)
+                        trans.FrAmount += (decimal)applyCostingRulesOnTransaction(trans, RulesApplied2.endW);
                 }
-                
+
                 if (price < trans.FrAmount)
                 {
                     price = (decimal)trans.FrAmount;
                 }
-                 
+
             });
             return Convert.ToDouble(price);
         }
@@ -115,6 +116,7 @@ namespace FinalUi
         {
             double price = (double)trans.FrAmount;
             List<ServiceRule> RulesApplied = serviceRules.Where(x => x.startW <= trans.BilledWeight && x.endW >= trans.BilledWeight).ToList();
+            RulesApplied = RulesApplied.Where(x => x.ServiceList.Contains(trans.Type.Trim())).ToList();
 
             if (RulesApplied.Where(x => x.CityList.Contains(trans.Destination)).Count() > 0)
             {
@@ -130,17 +132,19 @@ namespace FinalUi
                 else
                 {
                     ZONE zone = UtilityClass.getZoneFromCityCode(trans.Destination);
-                    string zonecode = zone == null ? "DEF" : zone.zcode;
-                    if (RulesApplied.Where(x => x.ZoneList.Contains(zonecode)).Count() > 0)
-                    {
-                        RulesApplied = RulesApplied.Where(x => x.ZoneList.Contains(zone.zcode)).ToList();
-                    }
+                    string zoneCode;
+                    if (zone == null)
+                        zoneCode = "DEF";
+                    else
+                        zoneCode = zone.zcode;
+                    RulesApplied = RulesApplied.Where(x => x.ZoneList.Contains(zoneCode)).ToList();
                 }
             }
+
             RulesApplied.Where(x => x.applicable == 'O').ToList().ForEach((x) =>
-                {
-                    x.applyRule(trans, price);
-                });
+                            {
+                                x.applyRule(trans, price);
+                            });
             return (double)trans.FrAmount;
         }
     }
@@ -165,7 +169,7 @@ namespace FinalUi
         {
             get
             {
-                return this.SER_CODE + ":" +  this.SER_DESC;
+                return this.SER_CODE + ":" + this.SER_DESC;
             }
         }
     }
@@ -175,7 +179,7 @@ namespace FinalUi
         {
             get
             {
-                return this.zcode + ":" +  this.Zone_name ;
+                return this.zcode + ":" + this.Zone_name;
             }
         }
     }
@@ -195,7 +199,7 @@ namespace FinalUi
         {
             get
             {
-                return  this.CITY_CODE + ":" + this.CITY_DESC ;
+                return this.CITY_CODE + ":" + this.CITY_DESC;
             }
         }
     }

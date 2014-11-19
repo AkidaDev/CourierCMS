@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="FinalUi.CostingRule">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>EEACAAAICgANAAcgAAABIAAAAAADBEAABEAgAABAAGA=</HashCode>
+      <FileName>CostingRule.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FinalUi.ServiceRule">
+    <Position X="3" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AEACAEUAQAAIAASgAAoDIAAAAAAhAEBABEAgAAAAAAA=</HashCode>
+      <FileName>ServiceRule.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FinalUi.Quotation" BaseTypeListCollapsed="true">
+    <Position X="6" Y="0.5" Width="4" />
+    <Members>
+      <Field Name="_CLCODE" Hidden="true" />
+      <Field Name="_Client" Hidden="true" />
+      <Field Name="_Description" Hidden="true" />
+      <Field Name="_Id" Hidden="true" />
+      <Field Name="_Name" Hidden="true" />
+      <Field Name="_Rules" Hidden="true" />
+      <Method Name="attach_Rules" Hidden="true" />
+      <Field Name="costingRules" Hidden="true" />
+      <Method Name="detach_Rules" Hidden="true" />
+      <Field Name="emptyChangingEventArgs" Hidden="true" />
+      <Field Name="invoiceRule" Hidden="true" />
+      <Field Name="lastCostingRuleApplied" Hidden="true" />
+      <Method Name="OnCLCODEChanged" Hidden="true" />
+      <Method Name="OnCLCODEChanging" Hidden="true" />
+      <Method Name="OnCreated" Hidden="true" />
+      <Method Name="OnDescriptionChanged" Hidden="true" />
+      <Method Name="OnDescriptionChanging" Hidden="true" />
+      <Method Name="OnIdChanged" Hidden="true" />
+      <Method Name="OnIdChanging" Hidden="true" />
+      <Method Name="OnLoaded" Hidden="true" />
+      <Method Name="OnNameChanged" Hidden="true" />
+      <Method Name="OnNameChanging" Hidden="true" />
+      <Method Name="OnValidate" Hidden="true" />
+      <Event Name="PropertyChanged" Hidden="true" />
+      <Event Name="PropertyChanging" Hidden="true" />
+      <Method Name="Quotation" Hidden="true" />
+      <Field Name="rulesList" Hidden="true" />
+      <Method Name="SendPropertyChanged" Hidden="true" />
+      <Method Name="SendPropertyChanging" Hidden="true" />
+      <Field Name="serviceRules" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AgAiAAABiIUgBAAAQgEAIAYBrSAISMAECAQAAAgUggQ=</HashCode>
+      <FileName>Extensions.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="FinalUi.IRule">
+    <Position X="10.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AEACAAAAAAAIAAAAAAABIAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>IRule.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="FinalUi.Invoice" BaseTypeListCollapsed="true">
+    <Position X="1.75" Y="1.5" Width="3.5" />
+    <Members>
+      <Field Name="_Basic" Hidden="true" />
+      <Field Name="_BillId" Hidden="true" />
+      <Field Name="_ClientCode" Hidden="true" />
+      <Field Name="_Date" Hidden="true" />
+      <Field Name="_Discount" Hidden="true" />
+      <Field Name="_Fuel" Hidden="true" />
+      <Field Name="_InvoiceAssignments" Hidden="true" />
+      <Field Name="_Misc" Hidden="true" />
+      <Field Name="_PreviousDue" Hidden="true" />
+      <Field Name="_Remarks" Hidden="true" />
+      <Field Name="_STax" Hidden="true" />
+      <Field Name="_TotalAmount" Hidden="true" />
+      <Method Name="attach_InvoiceAssignments" Hidden="true" />
+      <Property Name="CompactDate" Hidden="true" />
+      <Property Name="CompactInvoiceDetail" Hidden="true" />
+      <Method Name="detach_InvoiceAssignments" Hidden="true" />
+      <Field Name="emptyChangingEventArgs" Hidden="true" />
+      <Method Name="Invoice" Hidden="true" />
+      <Method Name="OnBasicChanged" Hidden="true" />
+      <Method Name="OnBasicChanging" Hidden="true" />
+      <Method Name="OnBillIdChanged" Hidden="true" />
+      <Method Name="OnBillIdChanging" Hidden="true" />
+      <Method Name="OnClientCodeChanged" Hidden="true" />
+      <Method Name="OnClientCodeChanging" Hidden="true" />
+      <Method Name="OnCreated" Hidden="true" />
+      <Method Name="OnDateChanged" Hidden="true" />
+      <Method Name="OnDateChanging" Hidden="true" />
+      <Method Name="OnDiscountChanged" Hidden="true" />
+      <Method Name="OnDiscountChanging" Hidden="true" />
+      <Method Name="OnFuelChanged" Hidden="true" />
+      <Method Name="OnFuelChanging" Hidden="true" />
+      <Method Name="OnLoaded" Hidden="true" />
+      <Method Name="OnMiscChanged" Hidden="true" />
+      <Method Name="OnMiscChanging" Hidden="true" />
+      <Method Name="OnPreviousDueChanged" Hidden="true" />
+      <Method Name="OnPreviousDueChanging" Hidden="true" />
+      <Method Name="OnRemarksChanged" Hidden="true" />
+      <Method Name="OnRemarksChanging" Hidden="true" />
+      <Method Name="OnSTaxChanged" Hidden="true" />
+      <Method Name="OnSTaxChanging" Hidden="true" />
+      <Method Name="OnTotalAmountChanged" Hidden="true" />
+      <Method Name="OnTotalAmountChanging" Hidden="true" />
+      <Method Name="OnValidate" Hidden="true" />
+      <Method Name="SendPropertyChanged" Hidden="true" />
+      <Method Name="SendPropertyChanging" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>gAghpAAlgIIRQSCYQAEAIQABmCIEBAERDgoAjIWmAAI=</HashCode>
+      <FileName>Extensions.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.InvoiceAssignment" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="1.5" Width="3.5" />
+    <Members>
+      <Field Name="_BilledAmount" Hidden="true" />
+      <Field Name="_BilledWeight" Hidden="true" />
+      <Field Name="_BillId" Hidden="true" />
+      <Field Name="_Destination" Hidden="true" />
+      <Field Name="_DestinationDesc" Hidden="true" />
+      <Field Name="_Id" Hidden="true" />
+      <Field Name="_Invoice" Hidden="true" />
+      <Field Name="_Transaction" Hidden="true" />
+      <Field Name="_TransactionId" Hidden="true" />
+      <Field Name="emptyChangingEventArgs" Hidden="true" />
+      <Method Name="InvoiceAssignment" Hidden="true" />
+      <Method Name="OnBilledAmountChanged" Hidden="true" />
+      <Method Name="OnBilledAmountChanging" Hidden="true" />
+      <Method Name="OnBilledWeightChanged" Hidden="true" />
+      <Method Name="OnBilledWeightChanging" Hidden="true" />
+      <Method Name="OnBillIdChanged" Hidden="true" />
+      <Method Name="OnBillIdChanging" Hidden="true" />
+      <Method Name="OnCreated" Hidden="true" />
+      <Method Name="OnDestinationChanged" Hidden="true" />
+      <Method Name="OnDestinationChanging" Hidden="true" />
+      <Method Name="OnDestinationDescChanged" Hidden="true" />
+      <Method Name="OnDestinationDescChanging" Hidden="true" />
+      <Method Name="OnIdChanged" Hidden="true" />
+      <Method Name="OnIdChanging" Hidden="true" />
+      <Method Name="OnLoaded" Hidden="true" />
+      <Method Name="OnTransactionIdChanged" Hidden="true" />
+      <Method Name="OnTransactionIdChanging" Hidden="true" />
+      <Method Name="OnValidate" Hidden="true" />
+      <Method Name="SendPropertyChanged" Hidden="true" />
+      <Method Name="SendPropertyChanging" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AKCqAAABQAACiAAwQCEAgQARjCBBAgYEAAAAAIAWAUA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.PaymentEntry" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="1.5" Width="3.5" />
+    <Members>
+      <Field Name="_BankName" Hidden="true" />
+      <Field Name="_ChequeNumber" Hidden="true" />
+      <Field Name="_Client" Hidden="true" />
+      <Field Name="_ClientCode" Hidden="true" />
+      <Field Name="_Date" Hidden="true" />
+      <Field Name="_DebitNote" Hidden="true" />
+      <Field Name="_Id" Hidden="true" />
+      <Field Name="_InvoiceNumber" Hidden="true" />
+      <Field Name="_RecievedAmount" Hidden="true" />
+      <Field Name="_Remarks" Hidden="true" />
+      <Field Name="_TDS" Hidden="true" />
+      <Field Name="_Type" Hidden="true" />
+      <Field Name="emptyChangingEventArgs" Hidden="true" />
+      <Method Name="OnBankNameChanged" Hidden="true" />
+      <Method Name="OnBankNameChanging" Hidden="true" />
+      <Method Name="OnChequeNumberChanged" Hidden="true" />
+      <Method Name="OnChequeNumberChanging" Hidden="true" />
+      <Method Name="OnClientCodeChanged" Hidden="true" />
+      <Method Name="OnClientCodeChanging" Hidden="true" />
+      <Method Name="OnCreated" Hidden="true" />
+      <Method Name="OnDateChanged" Hidden="true" />
+      <Method Name="OnDateChanging" Hidden="true" />
+      <Method Name="OnDebitNoteChanged" Hidden="true" />
+      <Method Name="OnDebitNoteChanging" Hidden="true" />
+      <Method Name="OnIdChanged" Hidden="true" />
+      <Method Name="OnIdChanging" Hidden="true" />
+      <Method Name="OnInvoiceNumberChanged" Hidden="true" />
+      <Method Name="OnInvoiceNumberChanging" Hidden="true" />
+      <Method Name="OnLoaded" Hidden="true" />
+      <Method Name="OnRecievedAmountChanged" Hidden="true" />
+      <Method Name="OnRecievedAmountChanging" Hidden="true" />
+      <Method Name="OnRemarksChanged" Hidden="true" />
+      <Method Name="OnRemarksChanging" Hidden="true" />
+      <Method Name="OnTDSChanged" Hidden="true" />
+      <Method Name="OnTDSChanging" Hidden="true" />
+      <Method Name="OnTypeChanged" Hidden="true" />
+      <Method Name="OnTypeChanging" Hidden="true" />
+      <Method Name="OnValidate" Hidden="true" />
+      <Method Name="PaymentEntry" Hidden="true" />
+      <Method Name="SendPropertyChanged" Hidden="true" />
+      <Method Name="SendPropertyChanging" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AQAikIAhgoAARShAQwFABAwNzCBkAEgTBREQDCQ0BAQ=</HashCode>
+      <FileName>Extensions.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
