@@ -67,11 +67,6 @@ namespace FinalUi
             }
             Invoice inv = (Invoice)InvoiceDatagrid.SelectedItem;
             BillingDataDataContext db = new BillingDataDataContext();
-            /*List<Transaction> transactions = db.InvoiceAssignments.Where(x => x.BillId == inv.BillId).Select(y => y.Transaction).ToList();
-            Double tax = (((inv.TotalAmount - (inv.Basic + inv.Fuel)) / (inv.TotalAmount)) * 100);
-            if (inv.PreviousDue == null)
-                inv.PreviousDue = 0;
-             * */
             PrintMainWindow window = new PrintMainWindow(inv);
             try
             {

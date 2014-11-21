@@ -347,7 +347,7 @@ namespace FinalUi
             List<RuntimeData> cData = dataGridHelper.getCurrentDataStack;
             if (cData.Count(x => x.TransactionId == Guid.Empty || x.TransactionId == null) > 0)
             {
-                MessageBox.Show("This data contains record that are not yet saved in the database. Please save the records first. ", "Error");
+                MessageBox.Show("This data contains records that are loaded directly from a file. To print out an invoice data must loaded properly from database. ", "Error");
                 return;
             }
             int count = cData.Count(x => x.FrAmount == null);

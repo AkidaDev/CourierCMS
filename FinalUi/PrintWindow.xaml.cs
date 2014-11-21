@@ -91,6 +91,7 @@ namespace FinalUi
         double totalAmount;
         string totalAmountinWordString;
         string invoiceNo;
+        double basic;
         List<RuntimeCityView> source;
         private void printObj(Client client = null)
         {
@@ -138,13 +139,14 @@ namespace FinalUi
             descriptionString = "Total Connsignments: " + source.Count;
             repParams.Add(new ReportParameter("DescriptionString", descriptionString));
             mainAmountValue = (double)(source.Sum(x => x.FrAmount) ?? 0);
-            repParams.Add(new ReportParameter("MainAmountString", mainAmountValue.ToString()));
+            basic = mainAmountValue;
+            repParams.Add(new ReportParameter("MainAmountString",  String.Format("{0:0.00}",mainAmountValue)));
             repParams.Add(new ReportParameter("FuelString", TaxBox.Text));
             repParams.Add(new ReportParameter("ServiceTaxString", ServiceTaxBox.Text));
             repParams.Add(new ReportParameter("DiscountPString", DiscountBox.Text));
             repParams.Add(new ReportParameter("MiscellaneousAmountString", MiscBox.Text));
             double discount = double.Parse(DiscountBox.Text) * mainAmountValue / 100;
-            repParams.Add(new ReportParameter("DiscountAmountString", discount.ToString()));
+            repParams.Add(new ReportParameter("DiscountAmountString",  String.Format("{0:0.00}",discount)));
             mainAmountValue = mainAmountValue - discount;
             double fuelAmount = double.Parse(TaxBox.Text) * mainAmountValue / 100;
             repParams.Add(new ReportParameter("FuelAmount", fuelAmount.ToString()));
@@ -152,7 +154,7 @@ namespace FinalUi
             repParams.Add(new ReportParameter("ServiceTaxAmount", tax.ToString()));
             taxamount = tax + fuelAmount;
             totalAmount = mainAmountValue + taxamount + double.Parse(MiscBox.Text) + double.Parse(PreviousDueTextBox.Text);
-            repParams.Add(new ReportParameter("TotalAmountString", totalAmount.ToString()));
+            repParams.Add(new ReportParameter("TotalAmountString",  String.Format("{0:0.00}",totalAmount)));
             totalAmountinWordString = UtilityClass.NumbersToWords((int)totalAmount);
             repParams.Add(new ReportParameter("TotalAmountInWordString", totalAmountinWordString));
             repParams.Add(new ReportParameter("PreviousDueString", PreviousDueTextBox.Text));
@@ -197,7 +199,7 @@ namespace FinalUi
                 Invoice invoice = new Invoice();
                 try
                 {
-                    invoice.Basic = mainAmountValue;
+                    invoice.Basic = basic;
                     invoice.BillId = invoiceNo;
                     invoice.ClientCode = clc.CLCODE;
                     invoice.Date = DateTime.Today;
