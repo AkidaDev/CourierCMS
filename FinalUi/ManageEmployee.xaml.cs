@@ -55,14 +55,6 @@ namespace FinalUi
             window.Closed += reloadgrid;
             window.ShowDialog();
         }
-        private void DragthisWindow(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
-        private void Button_Click_Close(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
         private void DeleteEmployee_MouseDown(object sender, MouseButtonEventArgs e)
         {
             BillingDataDataContext db = new BillingDataDataContext();
