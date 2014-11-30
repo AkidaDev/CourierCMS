@@ -19,15 +19,21 @@ namespace FinalUi
     public partial class ClientReportWindow : Window
     {
         CollectionViewSource dueDataGridSource;
-        CollectionViewSource profitDataGridSource;
+        CollectionViewSource UnpaidInvoicesList;
         public ClientReportWindow()
         {
             InitializeComponent();
             dueDataGridSource = (CollectionViewSource)FindResource("DueGridDataSource");
-            profitDataGridSource = (CollectionViewSource)FindResource("ProfitabilityGridDataSource");
+            UnpaidInvoicesList = (CollectionViewSource)FindResource("UnpaidInvoiceGridSource");
             BillingDataDataContext db = new BillingDataDataContext();
             dueDataGridSource.Source = db.BalanceViews;
-            profitDataGridSource.Source = db.PROFITVIEWs;
+            UnpaidInvoicesList.Source = (from invoice in db.Invoices
+                                        where !(from payment in db.PaymentEntries
+                                                    select payment.InvoiceNumber)
+                                                .Contains(invoice.BillId)
+                                         select invoice).ToList();
+            Invoice inv = new Invoice();
+            
         }
         private void DragthisWindow(object sender, MouseButtonEventArgs e)
         {

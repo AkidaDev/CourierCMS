@@ -7,7 +7,7 @@
     
     <Window.Resources>
         <CollectionViewSource x:Key="DueGridDataSource" CollectionViewType="ListCollectionView"></CollectionViewSource>
-        <CollectionViewSource x:Key="ProfitabilityGridDataSource" CollectionViewType="ListCollectionView"></CollectionViewSource>
+        <CollectionViewSource x:Key="UnpaidInvoiceGridSource" CollectionViewType="ListCollectionView"></CollectionViewSource>
     </Window.Resources>
 
     <Grid  Height="405" UseLayoutRounding="False"  Width="550">
@@ -26,14 +26,15 @@
                     <DataGridTextColumn Header="NetBalance" Binding="{Binding NetBalance}"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
-			<TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"  LineHeight="18" TextAlignment="Center" Text="Client Profitability List .:" Canvas.Top="217" Canvas.Left="55"/>
+			<TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"  LineHeight="18" TextAlignment="Center" Text="Unpaid Invoices List .:" Canvas.Top="217" Canvas.Left="55"/>
             <Path x:Name="line1" Data="F1M1,2C1,2 1,1 1,1 1,1 262,1 262,1 262,1 262,2 262,2 262,2 1,2 1,2" Fill="Black" Height="3" Canvas.Left="28" Canvas.Top="232" Width="263"/>
-			<DataGrid IsReadOnly="True" RowHeaderWidth="0" BorderBrush="Gray" BorderThickness="1" Canvas.Bottom="20" Height="150" Canvas.Left="126"  Name="ClientProfitabilityGrid" Width="365" AutoGenerateColumns="False" DataContext="{StaticResource ProfitabilityGridDataSource}" ItemsSource="{Binding}" >
+            <DataGrid IsReadOnly="True" RowHeaderWidth="0" BorderBrush="Gray" BorderThickness="1" Canvas.Bottom="20" Height="150" Canvas.Left="126"  Name="ClientProfitabilityGrid" Width="365" AutoGenerateColumns="False" DataContext="{StaticResource UnpaidInvoiceGridSource}" ItemsSource="{Binding}" >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="CustomerCode" Binding="{Binding CustCode}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="TotalPayed" Binding="{Binding TotalPayed}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="TotalCharged" Binding="{Binding TotalChargedAmount}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="ProfitPercentage" Binding="{Binding netProfit}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="BillId" Binding="{Binding BillId}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="CustomerCode" Binding="{Binding ClientCode}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Date" Binding="{Binding CompactDate}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Total Amount" Binding="{Binding TotalAmount}"></DataGridTextColumn>
+
                 </DataGrid.Columns>
             </DataGrid>    
 		<Path Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="#FFCBCBCB" Height="26" Canvas.Left="0" Canvas.Top="0" Width="550" Stretch="Fill" Stroke="Black" />

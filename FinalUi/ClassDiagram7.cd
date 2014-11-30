@@ -1,0 +1,640 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FinalUi.About" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>About.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.AccountStatementReportingWindow" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAAAEBAAAAAABIAAAAAAAAAAAIAACAAAAAAAA=</HashCode>
+      <FileName>AccountStatementReportingwindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.AddCity" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAEAgAABAEIAAgBACAAAASAAAQAAAAAACABAAAA=</HashCode>
+      <FileName>AddCity.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.AddClient" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACIAAAAADAAAAAAFAAAAAAAAAAAAAAAAABAAGAAA=</HashCode>
+      <FileName>AddClient.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.AddCountry" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AddCountry.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.AddEmployee" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAACAAIABgBAQAJAAhAABAAAAAAAIAgIKAAAEACAAA=</HashCode>
+      <FileName>AddEmployee.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.AddInvoiceRule" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAABAAAAAABAIAAAAAQAAAAAAAAAAAAQAAE=</HashCode>
+      <FileName>AddInvoiceRule.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.AddRule" Collapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAASIhAAAARAgAEAgBAIAIAAAQAAEIEAAAAQAAQAAE=</HashCode>
+      <FileName>AddRule.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.AddServiceRule" Collapsed="true">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IEAwSIhAAIABAAAEAgBAIAAAAIwAAAAEAAAAQAAAAAU=</HashCode>
+      <FileName>AddServiceRule.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.AddZone" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAABBAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AddZone.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.App" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.StockAssignmentView" Collapsed="true">
+    <Position X="14.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABIAABAAAhgAAEgQAAAACEEKAAJAAAEAAAJAAAAAAA=</HashCode>
+      <FileName>BillingData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.BillingDataDataContext" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>knChIA9EQGaQEpKokDITAVRAvGwFAFkZkAqBFHQgpgQ=</HashCode>
+      <FileName>BillingData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.City" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YQAqYQZFRCCioAQE6iEEqYADjCBgCBQACgEgBaAZEEg=</HashCode>
+      <FileName>Extensions.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.Client" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DAa9HQoFgg4WDBQAax2TVuGFra6Y1SiIIDGwlOBERKA=</HashCode>
+      <FileName>Extensions.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.Country" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQgAAAACAAAAAEQAAAAAABAAAAAAAAAAAQQAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.Employee" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BACiEAgFBAAQAESAQJMEIASRjCAARgECBQEggABUkAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.Invoice" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAghpAAlgIIRQSCYQAEAIQABmCIEBAERDgoAjIWmAAI=</HashCode>
+      <FileName>Extensions.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.InvoiceAssignment" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AKCqAAABQAACiAAwQCEAgQARjCBBAgYEAAAAAIAWAUA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.PaymentEntry" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAikIAhgoAARShAQwFABAwNzCBkAEgTBREQDCQ0BAQ=</HashCode>
+      <FileName>Extensions.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.Permission" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAgBBAAQCAAAQAFAAAARjiAAAAAAAAAAAAAQggA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.Quotation" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAiAAABiIUgBAAAQgEAIAYBrSAISMAECAQAAAgUggQ=</HashCode>
+      <FileName>Extensions.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.Rule" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAABBlAIghDAQAEEAAABjCACAAAABRBAAAAGBQA=</HashCode>
+      <FileName>Rule.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.RuntimeData" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>OJEqBEdJ6oKiqMFoYj0AAGyxnSDxFAGlJQIMCxAchIg=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.Service" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>aUAoaABhBBAg4AMASmEBoYABjHApgBUACgBgAQAIAAo=</HashCode>
+      <FileName>Extensions.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.State" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>cRAo4QAxFuFggGgUSiMAKKABnrQgEhwICgYhEAAAIMA=</HashCode>
+      <FileName>Extensions.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.Transaction" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ONFqBARBjooEiMFoYj0MBAwzmCDZlEGFJRKAAxAMBIw=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.User_permission" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIgABADAAAEAQAAQAFAAIABjCAhAgAAQAAAAAAQAgA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.AccountStatement" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAGgAAgAGABAQAAAAAgEAAAEAAAAAAQAABAEAAEAQA=</HashCode>
+      <FileName>Extensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.TransactionCityView" Collapsed="true">
+    <Position X="9.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KMAABABADIgAiIAoADgAAAwSACDYiAGNBRAQAwAEBIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.BalanceView" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQBAAAAAAAIAAAEAAAQAAAAAAIAAAAAIEAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.InvoiceView" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KMAABABADIgAiIA4ADgAAAwSACDYgAGFBRAAAwAGBIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.PROFITVIEW" Collapsed="true">
+    <Position X="2.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAQAAAIAAABQABAAAAAAQAACAAAABAAAAABA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.RateAssignmentReportingView" Collapsed="true">
+    <Position X="5.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACCAAEQAAAgAhAAAAACAAAAQTBAAAEGAQAAAAEADAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.RuntimeCityView" Collapsed="true">
+    <Position X="11" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KIAKBAFASIAACIAgADgAAGSAASBQCAGFBQAEAxAEhIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.InvoiceAnalyzeResult" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQrAARRQAABGEEoUAEABACDjCCBBAFEIACDAAY0AAE=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.Stock" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAiEAgBBDAAwIAISKEEAA0FiCARAALBBBEACAAEQAo=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.BillReportWindow" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEgAAgAAAEAAAAAAAgAAAAAAAAAAEAA=</HashCode>
+      <FileName>BillReportWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.ClientAnalyzingWindow" Collapsed="true">
+    <Position X="14.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClientAnalyzingWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.ClientReport" Collapsed="true">
+    <Position X="16.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAEAAAAAAAAIAAAAAAAAAAAIAACAAAAAAAA=</HashCode>
+      <FileName>ClientReport.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.ClientReportWindow" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAABAAAAAMAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClientReportWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.Configs" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACRABAAFAAAAAEACICIAgAAAABAQAAIAAoAAAACAA=</HashCode>
+      <FileName>Configs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.ConnectionString" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConnectionString.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.CostingRule" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EEACAAAICgANAAcgAAABIAAAAAADBEAABEAgAABAAGA=</HashCode>
+      <FileName>CostingRule.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.CountryAssignment" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAABAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CountryAssignment.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.CSVDataLoader" Collapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>CSVDataLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.DataSheet" Collapsed="true">
+    <Position X="16.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAACgAAAQAAAAAAAAQkAEAAAAAAAAAAABAQA=</HashCode>
+      <FileName>DataGridHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.DataSheetmanager" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEACIAAAQAAAAAAAAAAAAAJABABkBAAAAAAQAAgACA=</HashCode>
+      <FileName>DataGridHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.DataGridHelper" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACEACAAAAQBAgAATAAAAgAIJgAgBkAgAABAAASCBgCA=</HashCode>
+      <FileName>DataGridHelper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.DataSet2" Collapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACEAAAAAwAAAAJIBAEAQCAAAEgCQBgACAAAAAEABBQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.DataSources" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAFAAATBAQAEAEAABAAAAABEEAQAAAABAIAACA=</HashCode>
+      <FileName>DataSources.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.DBHelper" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DBHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.Extensions" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Extensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.Filter" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIABAEAAgAAEAAEAAAAAQIA=</HashCode>
+      <FileName>Filter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.FilterSelectWindow" Collapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAIAgAAAARABAAAABAAACAAgAIAAGAAAAAQAAAAAE=</HashCode>
+      <FileName>FilterSelectWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.ImportRules" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAIACIABAAAgAAJAAAAAABAACAMAACAABCAAUCA=</HashCode>
+      <FileName>ImportRules.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.InvoiceReport" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAACAQEAACAACgAAAAAAAAEAAAAA=</HashCode>
+      <FileName>InvoiceReport.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.InvoiceRule" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEACAAAAAAAIAAAAAAABIAAAAAAAAEAABAAgAAAAAAA=</HashCode>
+      <FileName>InvoiceRule.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.Load" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Load.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.LoadData" Collapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAABABAABAIAAAABAEQEAgAAAAAAEAAEQCAAAAIA=</HashCode>
+      <FileName>LoadData.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.LoadResources" Collapsed="true">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LoadResources.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.Login" Collapsed="true">
+    <Position X="12.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAECAAQggAAAgAAAAIAAgAQAAAAAA=</HashCode>
+      <FileName>Login.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.MainWindow" Collapsed="true">
+    <Position X="14.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>X08BNrTrFlCQNgsol6itM6AbOaUNzDk0i2QjReK4SCQ=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.ManageCity" Collapsed="true">
+    <Position X="16.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAABAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ManageCity.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.ManageClient" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAARAAAAAIBAAAAgAQAJACAAAAAABQAAAAA=</HashCode>
+      <FileName>ManageClient.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.ManageEmployee" Collapsed="true">
+    <Position X="2.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAABAAFAAAAAABIAAAAAIQAAAAAAgCAAAAAAAA=</HashCode>
+      <FileName>ManageEmployee.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.PaymentDetailsWindow" Collapsed="true">
+    <Position X="5.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAJAAAEAABAAAEAAAAAAgAAAgAAAIAAAAA=</HashCode>
+      <FileName>PaymentDetailsWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.PaymentRecieved" Collapsed="true">
+    <Position X="9.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAEAABAAAAAABAAAAAAAgBAQAAAAAA=</HashCode>
+      <FileName>PaymentRecieved.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.PowerEntry" Collapsed="true">
+    <Position X="12.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAABASAARAAACJABAAABgAAIAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>PowerEntry.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.PreferenceWindow" Collapsed="true">
+    <Position X="14.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAJAAAAAAABAARCAABAAIAABAAAwAAAABAAAAAAAAA=</HashCode>
+      <FileName>PreferenceWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.PrintMainWindow" Collapsed="true">
+    <Position X="16.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAgAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>PrintMainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.PrintWindow" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABCABAAABAAMyFAFAAAEBAAAgAAAJAIAQAAAgAAI=</HashCode>
+      <FileName>PrintWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.SanitizingWindow" Collapsed="true">
+    <Position X="16.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AChgAgABQAFRACkEQgFEAwAwAQAEAgAAAAAFIIgAAAE=</HashCode>
+      <FileName>SanitizingWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.SecurityModule" Collapsed="true">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAIAAAAAAACIAAADAAAAAgCBAA=</HashCode>
+      <FileName>SecurityModule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.ServiceFinder" Collapsed="true">
+    <Position X="4" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAABCAAAAAQAAAAAAAAAJAAAAA=</HashCode>
+      <FileName>ServiceFinder.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.ServiceRule" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEACAEUAQAAIAASgAAoDIAAAAAAhAEBABEAgAAAAAAA=</HashCode>
+      <FileName>ServiceRule.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FinalUi.Setup" Collapsed="true">
+    <Position X="9.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JAAAQBAAAAAAAABBAAAQYAgAAAQAAAQAEAAAQAAiCAE=</HashCode>
+      <FileName>Setup.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.StockManagmentWindow" Collapsed="true">
+    <Position X="16.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAEAAAAAAAAAAAAIAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>StockManagmentWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.StockWindow" Collapsed="true">
+    <Position X="0.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAABAAABAABAAAAAAABAAAEAAIABAIAAAAA=</HashCode>
+      <FileName>StockWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.TestingMainWindow" Collapsed="true">
+    <Position X="4" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACQAQAAgAJgJAAAAAAEAEEAACAAAAAAAAACAgAAAA=</HashCode>
+      <FileName>TestingMainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.TestingPermisstion" Collapsed="true">
+    <Position X="5.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TestingPermisstion.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.UserControlGallery" Collapsed="true">
+    <Position X="14.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UserControlGallery.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.UtilityClass" Collapsed="true">
+    <Position X="16.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAEAIAAhCAAAAAAAQAAAAIABIAAAQAMAAAABAAA=</HashCode>
+      <FileName>UtilityClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.DataSet2TableAdapters.CityTableAdapter" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.DataSet2TableAdapters.RuntimeDataTableAdapter" Collapsed="true">
+    <Position X="14.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.DataSet2TableAdapters.TransactionTableAdapter" Collapsed="true">
+    <Position X="11" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.DataSet2TableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="2.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACgABABABAEBAEAAMAAgAAACgEAAAAQAABAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MoreLinq.MoreEnumerable" Collapsed="true">
+    <Position X="4" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>MoreLinq\MoreEnumerable.ExceptBy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.Properties.Resources" Collapsed="true">
+    <Position X="7.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinalUi.Properties.Settings" Collapsed="true">
+    <Position X="7.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAIAAAAAABAAAAAAAIAAAACAA=</HashCode>
+      <FileName>Settings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="FinalUi.IRule" Collapsed="true">
+    <Position X="0.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEACAAAAAAAIAAAAAAABIAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>IRule.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

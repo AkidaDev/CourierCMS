@@ -179,7 +179,7 @@ namespace FinalUi
                     r = rule;
                 else
                 {
-                    MessageBox.Show("Come Error Occured");
+                    MessageBox.Show("Some Error Occured");
                     r = new Rule();
                     this.Close();
                 }
@@ -232,6 +232,7 @@ namespace FinalUi
             RuleCR.ZoneList = selectedZoneList;
             RuleCR.CityList = selectedCityList;
             RuleCR.StateList = selectedStateList;
+            
             RuleCR.startW = startW;
             int id;
             id = Convert.ToInt32(db.ExecuteQuery<decimal>("SELECT IDENT_CURRENT('Rule') +1;").FirstOrDefault());
