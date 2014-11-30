@@ -1,12 +1,10 @@
 ﻿<Window x:Class="FinalUi.StockManagmentWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="StockManagmentWindow" Height="700" Width="1024">
+        Title="StockManagmentWindow" WindowStartupLocation="CenterScreen" Height="700" Width="1024" Background="Turquoise">
     <Window.Resources>
         <CollectionViewSource x:Key="StockAssignmentList" CollectionViewType="ListCollectionView"/>
     </Window.Resources>
-    <Grid>
-        <Image Source="Images/apples.jpg" Height="1080" Width="1920" Margin="0 34 0 0" Stretch="Uniform"/>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -92,6 +90,5 @@
             </DataGrid>
         </Grid>
         <StackPanel Grid.Row="3" Background="#A9FFFFF3"/>
-        </Grid>
     </Grid>
 </Window>

@@ -197,7 +197,7 @@
                                 <RowDefinition Height="25"/>
                             </Grid.RowDefinitions>
                             <StackPanel Background="#19000000"/>
-                            <Image Source="Images/apples.jpg" Height="768" Width="1366" Grid.Row="2" Stretch="Uniform" Grid.RowSpan="2"/>
+                            <Image Source="Images/apples.jpg" Height="768" Width="1366" Grid.Row="2" Stretch="Uniform"/>
                             <StackPanel Grid.Row="3" Background="#A9FFFFF3"/>
                         </Grid>
                         <Grid Visibility="Collapsed" Name="DataDockPanel">
@@ -915,12 +915,43 @@
                         </ContentControl>
                     </Grid>
                     <Grid Background="#FFE8E8E8" Grid.Row="1"/>
-                        <TabControl Grid.Row="1" Margin="2 0 2 2">
+                    <TabControl Grid.Row="1" Margin="2 0 2 2">
                         <TabItem Header="  General  ">
                             <Grid>
                                 <Rectangle Height="1" Fill="DarkGray" VerticalAlignment="Top"/>
                                 <ScrollViewer Name="GeneralRibbonTab" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
                                     <TextBlock Text="Log..." Name="MessageBlock" Padding="4,8,0,0"/>
+                                </ScrollViewer>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="  Filter  ">
+                            <Grid>
+                                <Rectangle Height="1" Fill="DarkGray" VerticalAlignment="Top"/>
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" >
+                                    <Grid Margin="10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <CheckBox Grid.Row="0" Grid.Column="0" Content="Service .: " VerticalAlignment="Center"/>
+                                        <ComboBox Grid.Row="0" Grid.Column="1" Width="120" HorizontalAlignment="Left" Margin="2"/>
+                                        <CheckBox Grid.Row="1" Grid.Column="0" Content="City .: " VerticalAlignment="Center"/>
+                                        <ComboBox Grid.Row="1" Grid.Column="1" Width="120" HorizontalAlignment="Left" Margin="2"/>
+                                        <CheckBox Grid.Row="2" Grid.Column="0" Content="State .: " VerticalAlignment="Center"/>
+                                        <ComboBox Grid.Row="2" Grid.Column="1" Width="120" HorizontalAlignment="Left" Margin="2"/>
+                                        <CheckBox Grid.Row="3" Grid.Column="0" Content="Zone .: " VerticalAlignment="Center"/>
+                                        <ComboBox Grid.Row="3" Grid.Column="1" Width="120" HorizontalAlignment="Left" Margin="2"/>
+                                        <WrapPanel Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"> 
+                                            <Button Content="Add Filter" Width="80" Height="20" Background="#FFE8E8E8"/>
+                                            <Button Content="Remove Filter" Width="90" Height="20" Background="#FFE8E8E8" Margin="15 0 0 0"/>
+                                        </WrapPanel>
+                                    </Grid>
                                 </ScrollViewer>
                             </Grid>
                         </TabItem>
