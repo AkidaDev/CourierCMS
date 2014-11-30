@@ -965,6 +965,8 @@ namespace FinalUi
             this.CityOptionPanel.Visibility = Visibility.Collapsed;
             this.StockOptionPanel.Visibility = Visibility.Collapsed;
             this.HideAllDatagrid.Visibility = Visibility.Collapsed;
+            this.FilterQuotation.Visibility = Visibility.Collapsed;
+
         }
         private void AddRuleButton_Click(object sender, RoutedEventArgs e)
         {
@@ -991,6 +993,7 @@ namespace FinalUi
         {
             cloakAll();
             QuotationoptionPanel.Visibility = Visibility.Visible;
+            FilterQuotation.Visibility = Visibility.Visible;
         }
         private void ClientsReportTreeView_Selected(object sender, RoutedEventArgs e)
         {
