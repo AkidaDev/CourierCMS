@@ -298,6 +298,9 @@
     <Compile Include="AddRule.xaml.cs">
       <DependentUpon>AddRule.xaml</DependentUpon>
     </Compile>
+    <Compile Include="viewhelp.xaml.cs">
+      <DependentUpon>viewhelp.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ZoneAssignment.xaml.cs">
       <DependentUpon>ZoneAssignment.xaml</DependentUpon>
     </Compile>
@@ -488,6 +491,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddRule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="viewhelp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
