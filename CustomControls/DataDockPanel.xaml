@@ -35,42 +35,42 @@
                     <TextBlock ToolTip="Load new files " Text="Open File" Margin="8 -3 1 1" FontSize="16" Padding="1 3 1 0.5"/>
                 </WrapPanel>
             </Button>
-            <Button ToolTip="Save" Style="{StaticResource side}"  Name="SaveButton" Width="45" Height="30" Grid.Column="1">
+            <Button ToolTip="Save" Style="{StaticResource 1}"  Name="SaveButton" Width="45" Height="30" Grid.Column="1">
                 <Path  Name="save" Data="F1M5.707,16.89C5.707,16.89 16.879,16.89 16.879,16.89 16.879,16.89 16.879,18.13 16.879,18.13 16.879,18.13 5.707,18.13 5.707,18.13 5.707,18.13 5.707,16.89 5.707,16.89z M5.707,13.414C5.707,13.414 16.879,13.414 16.879,13.414 16.879,13.414 16.879,14.653 16.879,14.653 16.879,14.653 5.707,14.653 5.707,14.653 5.707,14.653 5.707,13.414 5.707,13.414z M4.207,10.739C4.207,10.739 4.207,20.566 4.207,20.566 4.207,20.566 18.793,20.566 18.793,20.566 18.793,20.566 18.793,10.739 18.793,10.739 18.793,10.739 4.207,10.739 4.207,10.739z M9.432,1.83C9.432,1.83 13.777,1.83 13.777,1.83 13.777,1.83 13.777,7.358 13.777,7.358 13.777,7.358 9.432,7.358 9.432,7.358 9.432,7.358 9.432,1.83 9.432,1.83z M1.626,1C1.626,1 4.207,1 4.207,1 4.207,1 4.207,8.508 4.207,8.508 4.207,8.508 15.586,8.508 15.586,8.508 15.586,8.508 15.586,1 15.586,1 15.586,1 17.711,1 17.711,1 17.711,1 22,5.246 22,5.246 22,5.246 22,21.381 22,21.381 22,21.723 21.72,22 21.374,22 21.374,22 1.626,22 1.626,22 1.28,22 1,21.723 1,21.381 1,21.381 1,1.62 1,1.62 1,1.277 1.28,1 1.626,1z" Fill="#FF484555" Height="23" Width="23">
                     <Path.Effect>
                         <DropShadowEffect Color="#FFB0B0B0"/>
                     </Path.Effect>
                 </Path>
             </Button>
-            <Button ToolTip="Power Entry" Style="{StaticResource side}" Name="PowerEntryButton" Width="45" Height="30" Grid.Column="2">
+            <Button ToolTip="Power Entry" Style="{StaticResource 1}" Name="PowerEntryButton" Width="45" Height="30" Grid.Column="2">
                 <Path Name="autofill" Data="F1M16.844,4C16.844,4 15.755,7.6 15.755,7.6 15.755,7.6 17.932,7.6 17.932,7.6 17.932,7.6 16.844,4 16.844,4z M15.854,2C15.854,2 17.833,2 17.833,2 17.833,2 21,11 21,11 21,11 19.12,11 19.12,11 19.12,11 18.427,9 18.427,9 18.427,9 15.26,9 15.26,9 15.26,9 14.568,11 14.568,11 14.568,11 12.687,11 12.687,11 12.687,11 15.854,2 15.854,2z M2,2C2,2 11.896,2 11.896,2 11.896,2 7.937,11 7.937,11 7.937,11 11.896,11 11.896,11 11.896,11 4.969,23 4.969,23 4.969,23 4.969,14 4.969,14 4.969,14 2,14 2,14 2,14 2,2 2,2z" Height="24" Width="22" Fill="#FF1E00A6">
                     <Path.Effect>
                         <DropShadowEffect Color="#FFB0B0B0"/>
                     </Path.Effect>
                 </Path>
             </Button>
-            <Button ToolTip="New Sheet" Name="NewSheetButton" Style="{StaticResource side}" Width="45" Height="30" Grid.Column="3">
+            <Button ToolTip="New Sheet" Name="NewSheetButton" Style="{StaticResource 1}" Width="45" Height="30" Grid.Column="3">
                 <Path Name="newSheet" Data="F1M3.667,15.929C3.667,15.929 3.667,17.286 3.667,17.286 3.667,17.286 14.333,17.286 14.333,17.286 14.333,17.286 14.333,15.929 14.333,15.929 14.333,15.929 3.667,15.929 3.667,15.929z M3.667,11.857C3.667,11.857 3.667,13.214 3.667,13.214 3.667,13.214 14.333,13.214 14.333,13.214 14.333,13.214 14.333,11.857 14.333,11.857 14.333,11.857 3.667,11.857 3.667,11.857z M3.667,7.786C3.667,7.786 3.667,9.143 3.667,9.143 3.667,9.143 14.333,9.143 14.333,9.143 14.333,9.143 14.333,7.786 14.333,7.786 14.333,7.786 3.667,7.786 3.667,7.786z M3.667,3.714C3.667,3.714 3.667,5.071 3.667,5.071 3.667,5.071 14.333,5.071 14.333,5.071 14.333,5.071 14.333,3.714 14.333,3.714 14.333,3.714 3.667,3.714 3.667,3.714z M1,1C1,1 17,1 17,1 17,1 17,20 17,20 17,20 1,20 1,20 1,20 1,1 1,1z" Fill="White" Height="21" Width="18">
                     <Path.Effect>
                         <DropShadowEffect Color="#FFB0B0B0"/>
                     </Path.Effect>
                 </Path>
             </Button>
-            <Button ToolTip="Filter &amp; Select" Style="{StaticResource side}"  Click="FilterButton_Click" Width="45" Height="30" Grid.Column="4">
+            <Button ToolTip="Filter &amp; Select" Style="{StaticResource 1}"  Click="FilterButton_Click" Width="45" Height="30" Grid.Column="4">
                 <Path Data="F1M2.118,1C2.881,1 16.282,1 16.809,1 17.492,1 18,1.384 17.6,1.763 17.36,1.991 13.667,5.465 11.603,7.406L11,7.973 11,9.797C11,13.312 11,18 11,18 11,18 8,20 8,20 8,20 8,19 8,18L8,17.792 8,17.213 8,17C8,17.5,8,17,8,16.625L8,16.527C8,16.438,8,16.281,8,16.172L8,16C8,16.227,8,15.797,8,15.281L8,15.217 8,13.52 8,12.562 8,11.5 8,9.797 8,9.48 8,8.026 7.423,7.484C5.405,5.591 1.669,2.078 1.331,1.747 1,1.424 1.365,1 2.118,1z" Fill="#FF2D6356" Height="21" Width="20" Stretch="Fill">
                     <Path.Effect>
                         <DropShadowEffect Color="#FFB0B0B0"/>
                     </Path.Effect>
                 </Path>
             </Button>
-            <Button ToolTip="Data Entry" Style="{StaticResource side}"  Name="SanitizingButton" Width="45" Height="30" Grid.Column="5">
+            <Button ToolTip="Data Entry" Style="{StaticResource 1}"  Name="SanitizingButton" Width="45" Height="30" Grid.Column="5">
                 <Path Name="sanitize" Data="F1M1,12.667C1,12.667 8,12.667 8,12.667 8,12.667 8,15 8,15 8,15 1,15 1,15 1,15 1,12.667 1,12.667z M1,6.833C1,6.833 15,6.833 15,6.833 15,     6.833 15,9.167 15,9.167 15,9.167 1,9.167 1,9.167 1,9.167 1,6.833 1,6.833z M1,1C1,1 22,1 22,1 22,1 22,3.333 22,3.333 22,3.333 1,3.333 1,3.333 1,3.333 1,1 1,1z" Fill="White" Height="16" Width="23">
                     <Path.Effect>
                         <DropShadowEffect Color="#FFB0B0B0"/>
                     </Path.Effect>
                 </Path>
             </Button>
-            <Button ToolTip="Print" Name="PrintButton" Style="{StaticResource side}"  Width="45" Height="30" Grid.Column="6" Command="ApplicationCommands.Print">
+            <Button ToolTip="Print" Name="PrintButton" Style="{StaticResource 1}"  Width="45" Height="30" Grid.Column="6" Command="ApplicationCommands.Print">
                 <Path Name="print" Data="F1M8.9,14.833C8.9,14.833 8.9,20.667 8.9,20.667 8.9,20.667 18.1,20.667 18.1,20.667 18.1,20.667 18.1,14.833 18.1,14.833 18.1,14.833 8.9,14.833 8.9,14.833z M21.55,10.167C20.86,10.167 20.4,10.633 20.4,11.333 20.4,12.033 20.86,12.5 21.55,12.5 22.24,12.5 22.7,12.033 22.7,11.333 22.7,10.633 22.24,10.167 21.55,10.167z M5.45,7.833C5.45,7.833 21.55,7.833 21.55,7.833 23.505,7.833 25,9.35 25,11.333 25,11.333 25,18.333 25,18.333 25,18.333 20.4,18.333 20.4,18.333 20.4,18.333 20.4,23 20.4,23 20.4,23 6.6,23 6.6,23 6.6,23 6.6,18.333 6.6,18.333 6.6,18.333 2,18.333 2,18.333 2,18.333 2,11.333 2,11.333 2,9.35 3.495,7.833 5.45,7.833z M6.6,2C6.6,2 20.4,2 20.4,2 20.4,2 20.4,6.667 20.4,6.667 20.4,6.667 6.6,6.667 6.6,6.667 6.6,6.667 6.6,2 6.6,2z" Fill="Black" Height="24" Width="26">
                     <Path.Effect>
                         <DropShadowEffect Color="#FFB0B0B0"/>
