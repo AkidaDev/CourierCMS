@@ -464,8 +464,6 @@ namespace FinalUi
 
             Button canvasButton = new Button();
             canvasButton.Style = (Style)FindResource("Sheet_button");
-            canvasButton.Width = 90;
-            canvasButton.Height = 20;
             canvasButton.Margin = new Thickness(-9, 1, 0, 0);
             canvasButton.Height = 20;
             canvasButton.Width = 90;
@@ -478,23 +476,13 @@ namespace FinalUi
             pathsquare.Data = Geometry.Parse(@"F1M2,1.644C2,1.644 2,20 2,20 2,20 77.831,20 77.831,20 77.831,20 91.619,1.644 91.619,1.644 91.619,1.644 2,1.644 2,1.644z");
             pathsquare.Fill = Brushes.Black;
             pathsquare.Height = 20;
-            pathsquare.Width = 88.5;
+            pathsquare.Width = 90;
             pathsquare.Stretch = Stretch.Fill;
             Button buttonsquare = new Button();
             buttonsquare.Name = "_pathsquare";
             buttonsquare.Style = (Style)FindResource("Sheet_button");
             buttonsquare.Content = pathsquare;
 
-
-            Path pathkatta = new Path();
-            pathkatta.Fill = Brushes.White;
-            pathkatta.Stretch = Stretch.Fill;
-            pathkatta.Height = 9;
-            pathkatta.Width = 9;
-            pathkatta.Data = Geometry.Parse(@"F1M14.987,13.789C14.987,13.789 13.622,15.154 13.622,15.154 13.622,15.154 8.16,9.692 8.16,9.692 8.16,
-                      9.692 2.699,15.154 2.699,15.154 2.699,15.154 1.333,13.789 1.333,13.789 1.333,13.789 6.795,8.327 6.795,8.327 6.795,8.327 1.333,2.865 1.333,2.865 1.333,
-                     2.865 2.699,1.5 2.699,1.5 2.699,1.5 8.16,6.962 8.16,6.962 8.16,6.962 13.622,1.5 13.622,1.5 13.622,1.5 14.987,2.865 14.987,2.865 14.987,2.865 9.526,
-                    8.327 9.526,8.327 9.526,8.327 14.987,13.789 14.987,13.789z");
 
             TextBlock text = new TextBlock();
             text.Name = "Sheettext";
@@ -505,13 +493,12 @@ namespace FinalUi
             Canvas.SetTop(text, -2);
 
             Button buttonkatta = new Button();
-            buttonkatta.Style = (Style)FindResource("smallbutton");
-            buttonkatta.Content = pathkatta;
+            buttonkatta.Style = (Style)FindResource("CloseButton");
+            buttonkatta.Height = 10;
+            buttonkatta.Width = 10;
             buttonkatta.Name = "CloseCurrentClick";
             buttonkatta.Command = DeleteCommand;
-
-
-            Canvas.SetLeft(buttonkatta, 67);
+            Canvas.SetLeft(buttonkatta, 68.5);
             Canvas.SetTop(buttonkatta, 5);
 
             canvastab.Children.Add(buttonsquare);
@@ -524,7 +511,6 @@ namespace FinalUi
             if (activeButton != null)
                 changeSheetButton(activeButton, canvasButton);
             activeButton = canvasButton;
-
         }
         bool isLoadedFromFile = true;
         DateTime? toDate_loadDataWin;
@@ -884,6 +870,10 @@ namespace FinalUi
         private void RateWindowMenu_Click(object sender, RoutedEventArgs e)
         {
         }
+        private void ViewHelp_Click(object sender, RoutedEventArgs e)
+        {
+            viewhelp window = new viewhelp(); window.ShowDialog();
+        }
         private void AboutMenuItem_Click(object sender, RoutedEventArgs e)
         {
             About window = new About(); window.ShowDialog();
@@ -965,6 +955,8 @@ namespace FinalUi
             this.CityOptionPanel.Visibility = Visibility.Collapsed;
             this.StockOptionPanel.Visibility = Visibility.Collapsed;
             this.HideAllDatagrid.Visibility = Visibility.Collapsed;
+            this.FilterQuotation.Visibility = Visibility.Collapsed;
+
         }
         private void AddRuleButton_Click(object sender, RoutedEventArgs e)
         {
@@ -991,6 +983,7 @@ namespace FinalUi
         {
             cloakAll();
             QuotationoptionPanel.Visibility = Visibility.Visible;
+            FilterQuotation.Visibility = Visibility.Visible;
         }
         private void ClientsReportTreeView_Selected(object sender, RoutedEventArgs e)
         {
