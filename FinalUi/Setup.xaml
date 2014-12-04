@@ -78,7 +78,7 @@
             </WrapPanel>
             <WrapPanel Canvas.Left="334" Canvas.Top="305">
                 <TextBlock  Text=" Password .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                <TextBox Width="210" Name="PasswordBox" />
+                <PasswordBox Width="210" Name="PasswordBox" />
             </WrapPanel>
         </Canvas>
         <Canvas Name="Step3" Visibility="Collapsed">
