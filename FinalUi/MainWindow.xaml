@@ -782,6 +782,9 @@
                                         <DataGridTextColumn Header="Gender" Binding="{Binding Gender, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                         <DataGridTextColumn Header="User Name" Binding="{Binding UserName, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                                         <DataGridTextColumn Header="EmpCode" Binding="{Binding EMPCode, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                                        <DataGridTextColumn Header="Address" Binding="{Binding Adress}"/>
+                                        <DataGridTextColumn Header="ContactNo" Binding="{Binding ContactNo}"/>
+                                        <DataGridTextColumn Header="Other" Binding="{Binding Other}"/>
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </Grid>

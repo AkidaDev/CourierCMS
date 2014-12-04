@@ -54,7 +54,13 @@ namespace FinalUi
             }
             StockAssignmentView AssignmentEntry = (StockAssignmentView)StockAssignmentDatagrid.SelectedItem;
             StockWindow window = new StockWindow(AssignmentEntry);
+            window.Closed += window_Closed;
             window.Show();
+        }
+
+        void window_Closed(object sender, EventArgs e)
+        {
+            RefreshDataButton_Click(null, null);
         }
 
         private void DeleteStockButton_Click(object sender, RoutedEventArgs e)

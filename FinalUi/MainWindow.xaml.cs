@@ -292,6 +292,7 @@ namespace FinalUi
                 addingNewPage(key);
             }
             SanitizingWindow window;
+            concatinateAllRecordsInOnePage();
             if (dataGrid.SelectedItem != null)
                 window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber, dataGrid, dataGridHelper, (RuntimeData)dataGrid.SelectedItem);
             else
@@ -299,11 +300,26 @@ namespace FinalUi
             window.Closed += SanitizingWindow_Closed;
             window.Show();
         }
+        int currentRowsPerPage;
+        private void concatinateAllRecordsInOnePage()
+        {
+            if (int.TryParse(DataGridNumOfRows.Text, out currentRowsPerPage))
+                dataGridHelper.rowsPerPage = dataGridHelper.currentConnNos.Count;
+            else
+                currentRowsPerPage = 100;
+        }
 
         private void SanitizingWindow_Closed(object sender, EventArgs e)
         {
+            distributeAllRecords();
             BillingDataDataContext db = new BillingDataDataContext();
             dataGridHelper.currentDataSheet.dataStack = db.RuntimeDatas.Where(x => x.UserId == SecurityModule.currentUserName && x.SheetNo == dataGridHelper.currentSheetNumber).ToList();
+            
+        }
+
+        private void distributeAllRecords()
+        {
+            dataGridHelper.rowsPerPage = currentRowsPerPage; 
         }
         #endregion
         #region PowerEntryCommand
@@ -409,7 +425,12 @@ namespace FinalUi
             if (buttonList.Count > 0)
             {
                 Button b;
-                if (MessageBox.Show("If you continue then you will lose all the unsaved data for this sheet. Please make sure that you have saved before closing the sheet. Click Yes to continue or click No to go back and save the sheet data", "Information", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                MessageBoxResult result = MessageBoxResult.No;
+                if (dataGridHelper.currentConnNos.Count < 1)
+                    result = MessageBoxResult.Yes;
+                else
+                    result = MessageBox.Show("If you continue then you will lose all the unsaved data for this sheet. Please make sure that you have saved before closing the sheet. Click Yes to continue or click No to go back and save the sheet data", "Information", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
                 {
                     DeleteSheetWorker.RunWorkerAsync(dataGridHelper.currentSheetNumber);
                     dataGridHelper.removeSheet(dataGridHelper.currentSheetNumber);

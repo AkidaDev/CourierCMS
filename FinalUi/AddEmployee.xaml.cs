@@ -66,6 +66,7 @@ namespace FinalUi
             if (Password.Password == ConfirmPass.Password && Password.Password != "" && Password.Password != null)
             {
                 setEmpFromFields();
+                
                 emp.Status = 'A';
                 BillingDataDataContext db = new BillingDataDataContext();
                 db.Employees.InsertOnSubmit(emp);
@@ -160,9 +161,18 @@ namespace FinalUi
         }
         public void setEmpFromFields()
         {
-            emp.Name = FullName.Text;
             if (!isupdate)
+            {
+                emp = new FinalUi.Employee();
                 emp.Id = Guid.NewGuid();
+            }
+            else
+            {
+                Guid guid = emp.Id;
+                emp = new Employee();
+                emp.Id = guid;
+            }
+            emp.Name = FullName.Text;
             emp.Password = Password.Password;
             if ((Gender.SelectedIndex == 0))
             {

@@ -60,11 +60,20 @@ namespace FinalUi
                 msg += "Name can not Be Empty \n";
             if (instance.EMPCode == "" || instance.EMPCode == null || instance.EMPCode.Length < 3)
                 msg += "Employee Code should be at least 3 characters \n";
-            
+            if (instance.UserName.Length > 50)
+                msg += "Username should be lesser than 50 characters \n";
+            if (instance.EMPCode.Length > 50)
+                msg += "Employee code should be less than 50 characters \n";
+            if ((instance.Address ?? "").Length > 150)
+                msg += "Address should be less than 150 characters \n";
+            if ((instance.ContactNo ?? "").Length > 50)
+                msg += "Contacts should be atmost 50 characters \n";
+            if ((instance.Other ?? "").Length > 50)
+                msg += "Other details should be less than 50 characters \n";
             BillingDataDataContext db = new BillingDataDataContext();
             DataSources.refreshEmployeeList();
             if ((DataSources.EmployeeCopy.FindAll(x => x.EMPCode == instance.EMPCode || x.UserName == instance.UserName)).Count > 0)
-                msg += "Username and employee code must be unique";
+                msg += "Username and employee code must be unique \n";
             if (msg != "")
             {
                 throw new System.Exception(msg);

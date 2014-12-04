@@ -71,13 +71,16 @@
             <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
         </Grid>
         <Grid Grid.Row="2">
-            <DataGrid IsReadOnly="True" RowHeaderWidth="0" BorderBrush="Gray" BorderThickness="0" x:Name="mangaclientgrid" ItemsSource="{Binding}" DataContext="{StaticResource ClienTable }"  SelectionMode="Single" AutoGenerateColumns="False" >
+            <DataGrid IsTextSearchCaseSensitive="False" IsTextSearchEnabled="True" TextSearch.TextPath="CLNAME" IsReadOnly="True" RowHeaderWidth="0" BorderBrush="Gray" BorderThickness="0" x:Name="mangaclientgrid" ItemsSource="{Binding}" DataContext="{StaticResource ClienTable }"  SelectionMode="Single" AutoGenerateColumns="False" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Binding="{Binding CLNAME , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="Code" Binding="{Binding CLCODE , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="Contact Number" Binding="{Binding CONTACTNO,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="Address" Binding="{Binding ADDRESS,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="Email" Binding="{Binding EMAILID,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="ServiceTax" Binding="{Binding STAX}"/>
+                    <DataGridTextColumn Header="Fuel" Binding="{Binding FUEL}"/>
+                    <DataGridTextColumn Header="Discount" Binding="{Binding AMTDISC}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

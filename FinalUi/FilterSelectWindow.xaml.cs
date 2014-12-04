@@ -33,7 +33,7 @@ namespace FinalUi
         /// <param name="ConnNo">Connsignment Number List of current object</param>
         public FilterSelectWindow(Filter filterObj, IEnumerable<string> ConnNo)
         {
-            setDataSource(filterObj, ConnNo);
+            setDataSource(filterObj,ConnNo);
             //  List<WrapPanel> panels = (List<WrapPanel>)SelectClient.ItemsSource;
         }
         public void setDataSource(Filter filterObj, IEnumerable<string> ConnNo)
@@ -43,9 +43,10 @@ namespace FinalUi
             BillingDataDataContext db = new BillingDataDataContext();
 
             StartConnNoList = (CollectionViewSource)FindResource("StartConnNoList");
-            StartConnNoList.Source = ConnNo;
+            List<String> ConnNoList = ConnNo.OrderBy(x => x).ToList() ;
+            StartConnNoList.Source = ConnNoList;
             EndConnoList = (CollectionViewSource)FindResource("EndConnoList");
-            EndConnoList.Source = ConnNo;
+            EndConnoList.Source = ConnNoList;
             clientListToAdd = (CollectionViewSource)FindResource("ClientToAdd");
             clientListToSet = (CollectionViewSource)FindResource("ClientToSet");
             List<Client> fClientList = db.Clients.ToList();

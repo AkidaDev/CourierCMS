@@ -146,6 +146,7 @@ namespace FinalUi
                         {
                             db.SubmitChanges();
                             MessageBox.Show("Stock successfully updated");
+                            this.Close();
                         }
                         catch(Exception ex)
                         {

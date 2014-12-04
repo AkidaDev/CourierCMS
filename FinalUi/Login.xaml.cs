@@ -114,7 +114,6 @@ namespace FinalUi
                 {
                     string userName = UserName.Text;
                     string passWord = Password.Password;
-                    var sString = Password.SecurePassword;
                     if(userName == "SLTSetupUser" && passWord == "SetupAgain")
                     {
                         Setup setupWindow = new Setup();

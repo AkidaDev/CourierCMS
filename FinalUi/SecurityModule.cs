@@ -37,7 +37,7 @@ namespace FinalUi
             permisstionList = db.Permissions.ToList();
             userpermissionList = new List<Permission>();
           
-            if (db.Employees.Where(x => x.UserName == userName && x.Password == Password).Count() == 1)
+            if (db.Employees.Where(x => x.UserName == userName && x.Password == Password).AsEnumerable().Where(y=>y.UserName == userName && y.Password == Password).Count() == 1)
             {
                 employee = db.Employees.Where(x => x.UserName == userName).FirstOrDefault();
                 _currentUser = employee.UserName;
