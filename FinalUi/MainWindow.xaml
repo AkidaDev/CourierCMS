@@ -327,7 +327,7 @@
                                 </WrapPanel>
                             </DockPanel>
                         </Grid>
-                        <Grid Visibility="Visible" Name="ClientReportOptionPanel">
+                        <Grid Visibility="Collapsed" Name="ClientReportOptionPanel">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="30"/>
                                 <RowDefinition Height="4"/>
