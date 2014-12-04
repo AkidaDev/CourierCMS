@@ -87,10 +87,14 @@ namespace FinalUi
             employeeview.Source = this.employees;
             // Employee listing data import procedure
             dueDataGridSource = (CollectionViewSource)FindResource("DueGridDataSource");
-            profitDataGridSource = (CollectionViewSource)FindResource("ProfitabilityGridDataSource");
+            profitDataGridSource = (CollectionViewSource)FindResource("UnpaidInvoiceGridSource");
             BillingDataDataContext db = new BillingDataDataContext();
             dueDataGridSource.Source = db.BalanceViews;
-            profitDataGridSource.Source = db.PROFITVIEWs;
+            profitDataGridSource.Source = (from invoice in db.Invoices
+                                           where !(from payment in db.PaymentEntries
+                                                   select payment.InvoiceNumber)
+                                                   .Contains(invoice.BillId)
+                                           select invoice).ToList();
             ServiceTable = (CollectionViewSource)FindResource("ServiceTable");
             ServiceTable.Source = DataSources.ServicesCopy;
             #region setupCode
