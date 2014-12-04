@@ -30,8 +30,8 @@
             <Path x:Name="line1" Data="F1M1,2C1,2 1,1 1,1 1,1 262,1 262,1 262,1 262,2 262,2 262,2 1,2 1,2" Fill="Black" Height="3" Canvas.Left="28" Canvas.Top="232" Width="263"/>
             <DataGrid IsReadOnly="True" RowHeaderWidth="0" BorderBrush="Gray" BorderThickness="1" Canvas.Bottom="20" Height="150" Canvas.Left="126"  Name="ClientProfitabilityGrid" Width="365" AutoGenerateColumns="False" DataContext="{StaticResource UnpaidInvoiceGridSource}" ItemsSource="{Binding}" >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="BillId" Binding="{Binding BillId}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="CustomerCode" Binding="{Binding ClientCode}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Bill Id" Binding="{Binding BillId}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Customer Code" Binding="{Binding ClientCode}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Date" Binding="{Binding CompactDate}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Total Amount" Binding="{Binding TotalAmount}"></DataGridTextColumn>
 
