@@ -733,8 +733,10 @@ namespace FinalUi
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
-            //Application.Current.Shutdown();
-            this.Close();
+            if (MessageBox.Show("This will close all the open windows along with the application. Continue?", "Confirm", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                Application.Current.Shutdown();
+            }
         }
         #endregion
         #region custom window resize
