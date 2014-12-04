@@ -550,9 +550,8 @@
                                             <DataGridTextColumn Header="DStart(Rs)" Binding="{Binding DoxStartS}"/>
                                             <DataGridTextColumn Header="NStart(Rs)" Binding="{Binding nDoxStartS}"/>
                                             <DataGridTextColumn Header="Services" Binding="{Binding serviceCount}"/>
-                                            <DataGridTextColumn Header="Cities" Binding="{Binding CityCount}"/>
-                                            <DataGridTextColumn Header="States" Binding="{Binding StateCount}"/>
-                                            <DataGridTextColumn Header="Zones" Binding="{Binding zoneCount}"/>
+                                            <DataGridTextColumn Header="DestList" Binding="{Binding zoneListReporting}"/>
+                                            <DataGridTextColumn Header="ServiceList" Binding="{Binding serviceListReporting}"/>
                                         </DataGrid.Columns>
                                         <DataGrid.RowDetailsTemplate>
                                             <DataTemplate>

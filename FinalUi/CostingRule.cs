@@ -80,6 +80,52 @@ namespace FinalUi
         }
         #endregion
         #region Reporting properties
+        public string zoneListReporting
+        {
+            get
+            {
+                string zones;
+                zones = "";
+
+                if(CityList != null)
+                {
+                    CityList.ForEach(x => {
+                        zones += " " + x;
+                    });
+                }
+                if(StateList != null)
+                {
+                    StateList.ForEach(x => {
+                        zones += " " + x;
+                    });
+                }
+                if (ZoneList != null)
+                {
+                    ZoneList.ForEach(x =>
+                    {
+                        zones += "  " + x;
+                    });
+                }
+                
+                return zones;
+            }
+        }
+        public string serviceListReporting
+        {
+            get
+            {
+                string services = "";
+
+                if(ServiceList != null)
+                {
+                    ServiceList.ForEach(x =>
+                    {
+                        services += x + " ";
+                    });
+                }
+                return services;
+            }
+        }
         public int serviceCount
         {
             get
@@ -170,26 +216,28 @@ namespace FinalUi
                 }
                 else
                     trans.FrAmount = Convert.ToDecimal(ndoxAmount);
-                    return true;
+                return true;
             }
-            if(type == 'S')
+            if (type == 'S')
             {
-                double multiAmount,startAmount;
-                if (char.ToUpper((char)trans.DOX) == 'D'){
+                double multiAmount, startAmount;
+                if (char.ToUpper((char)trans.DOX) == 'D')
+                {
                     multiAmount = doxAmount;
                     startAmount = dStartValue;
                 }
-                else{
+                else
+                {
                     multiAmount = ndoxAmount;
                     startAmount = ndStartValue;
                 }
                 int steps = 0;
                 double restWeight = billedWeight - startW;
-                steps = (int)(restWeight / stepWeight)+1;
+                steps = (int)(restWeight / stepWeight) + 1;
                 trans.FrAmount = (decimal)(startAmount + steps * multiAmount);
                 return false;
             }
-            if(type == 'M')
+            if (type == 'M')
             {
                 double multiAmount;
                 if (char.ToUpper((char)trans.DOX) == 'D')
@@ -201,7 +249,7 @@ namespace FinalUi
                     multiAmount = ndoxAmount;
                 }
                 int steps = 0;
-                steps = (int)Math.Ceiling((decimal)(billedWeight / stepWeight)) ;
+                steps = (int)Math.Ceiling((decimal)(billedWeight / stepWeight));
                 trans.FrAmount = (decimal)(steps * multiAmount);
                 return true;
             }
