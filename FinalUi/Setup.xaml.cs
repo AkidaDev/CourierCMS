@@ -112,7 +112,7 @@ namespace FinalUi
                 constring.DataSource = this.ServerNameBox.Text;
                 constring.InitialCatalog = this.databaseBox.Text;
                 constring.UserID = this.UserNameBox.Text;
-                constring.Password = this.PasswordBox.Text;
+                constring.Password = this.PasswordBox.Password;
                 string provider = "System.Data.SqlClient"; // for example
                 DbProviderFactory factory = DbProviderFactories.GetFactory(provider);
                 using (DbConnection conn = factory.CreateConnection())
@@ -130,7 +130,7 @@ namespace FinalUi
                         MessageBox.Show("Unable to connect to server"); isconnected = false; return;
                     }
                 }
-                MessageBox.Show(constring.ConnectionString);
+                MessageBox.Show("Connected successfully");
             }
             if (currentCanvas == 3)
             {
