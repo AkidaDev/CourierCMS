@@ -11,9 +11,9 @@ namespace FinalUi
                 string endNo = Regex.Match(EndNumber, @"\d+").Value;
                 int iStartNo, iEndNo;
                 if (int.TryParse(startNo, out iStartNo) && int.TryParse(endNo, out iEndNo))
-                    return iEndNo - iStartNo;
+                    return iEndNo - iStartNo + 1;
                 else
-                    return null;
+                    return -1;
 
             }
         }
@@ -60,6 +60,11 @@ namespace FinalUi
                 msg += "Name can not Be Empty \n";
             if (instance.EMPCode == "" || instance.EMPCode == null || instance.EMPCode.Length < 3)
                 msg += "Employee Code should be at least 3 characters \n";
+            
+            BillingDataDataContext db = new BillingDataDataContext();
+            DataSources.refreshEmployeeList();
+            if ((DataSources.EmployeeCopy.FindAll(x => x.EMPCode == instance.EMPCode || x.UserName == instance.UserName)).Count > 0)
+                msg += "Username and employee code must be unique";
             if (msg != "")
             {
                 throw new System.Exception(msg);
@@ -75,8 +80,6 @@ namespace FinalUi
                 msg += "UserName should be at least 4 Characters \n";
             if (instance.Name == "" || instance.Name == null)
                 msg += "Name can not Be Empty \n";
-            if (instance.EMPCode == "" || instance.EMPCode == null || instance.EMPCode.Length < 3)
-                msg += "Employee Code should be at least 3 characters \n";
             if (msg != "")
             {
                 throw new System.Exception(msg);

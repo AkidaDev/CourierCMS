@@ -39,9 +39,6 @@ namespace FinalUi
     partial void InsertClient(Client instance);
     partial void UpdateClient(Client instance);
     partial void DeleteClient(Client instance);
-    partial void InsertEmployee(Employee instance);
-    partial void UpdateEmployee(Employee instance);
-    partial void DeleteEmployee(Employee instance);
     partial void InsertInvoice(Invoice instance);
     partial void UpdateInvoice(Invoice instance);
     partial void DeleteInvoice(Invoice instance);
@@ -81,8 +78,10 @@ namespace FinalUi
     partial void InsertStock(Stock instance);
     partial void UpdateStock(Stock instance);
     partial void DeleteStock(Stock instance);
+    partial void InsertEmployee(Employee instance);
+    partial void UpdateEmployee(Employee instance);
+    partial void DeleteEmployee(Employee instance);
     #endregion
-		
 		
 		public BillingDataDataContext(string connection) : 
 				base(connection, mappingSource)
@@ -137,14 +136,6 @@ namespace FinalUi
 			get
 			{
 				return this.GetTable<Country>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Employee> Employees
-		{
-			get
-			{
-				return this.GetTable<Employee>();
 			}
 		}
 		
@@ -313,6 +304,14 @@ namespace FinalUi
 			get
 			{
 				return this.GetTable<StockAssignmentView>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Employee> Employees
+		{
+			get
+			{
+				return this.GetTable<Employee>();
 			}
 		}
 		
@@ -1749,296 +1748,6 @@ namespace FinalUi
 					this._country_name = value;
 				}
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Employee")]
-	public partial class Employee : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private System.Guid _Id;
-		
-		private string _Name;
-		
-		private System.Nullable<char> _Gender;
-		
-		private string _EMPCode;
-		
-		private string _UserName;
-		
-		private string _Password;
-		
-		private char _Status;
-		
-		private EntitySet<Transaction> _Transactions;
-		
-		private EntitySet<User_permission> _User_permissions;
-		
-		private EntitySet<Stock> _Stocks;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(System.Guid value);
-    partial void OnIdChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnGenderChanging(System.Nullable<char> value);
-    partial void OnGenderChanged();
-    partial void OnEMPCodeChanging(string value);
-    partial void OnEMPCodeChanged();
-    partial void OnUserNameChanging(string value);
-    partial void OnUserNameChanged();
-    partial void OnPasswordChanging(string value);
-    partial void OnPasswordChanged();
-    partial void OnStatusChanging(char value);
-    partial void OnStatusChanged();
-    #endregion
-		
-		public Employee()
-		{
-			this._Transactions = new EntitySet<Transaction>(new Action<Transaction>(this.attach_Transactions), new Action<Transaction>(this.detach_Transactions));
-			this._User_permissions = new EntitySet<User_permission>(new Action<User_permission>(this.attach_User_permissions), new Action<User_permission>(this.detach_User_permissions));
-			this._Stocks = new EntitySet<Stock>(new Action<Stock>(this.attach_Stocks), new Action<Stock>(this.detach_Stocks));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Gender", DbType="Char(1)")]
-		public System.Nullable<char> Gender
-		{
-			get
-			{
-				return this._Gender;
-			}
-			set
-			{
-				if ((this._Gender != value))
-				{
-					this.OnGenderChanging(value);
-					this.SendPropertyChanging();
-					this._Gender = value;
-					this.SendPropertyChanged("Gender");
-					this.OnGenderChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EMPCode", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string EMPCode
-		{
-			get
-			{
-				return this._EMPCode;
-			}
-			set
-			{
-				if ((this._EMPCode != value))
-				{
-					this.OnEMPCodeChanging(value);
-					this.SendPropertyChanging();
-					this._EMPCode = value;
-					this.SendPropertyChanged("EMPCode");
-					this.OnEMPCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string UserName
-		{
-			get
-			{
-				return this._UserName;
-			}
-			set
-			{
-				if ((this._UserName != value))
-				{
-					this.OnUserNameChanging(value);
-					this.SendPropertyChanging();
-					this._UserName = value;
-					this.SendPropertyChanged("UserName");
-					this.OnUserNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string Password
-		{
-			get
-			{
-				return this._Password;
-			}
-			set
-			{
-				if ((this._Password != value))
-				{
-					this.OnPasswordChanging(value);
-					this.SendPropertyChanging();
-					this._Password = value;
-					this.SendPropertyChanged("Password");
-					this.OnPasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Char(1) NOT NULL")]
-		public char Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this.OnStatusChanging(value);
-					this.SendPropertyChanging();
-					this._Status = value;
-					this.SendPropertyChanged("Status");
-					this.OnStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Transaction", Storage="_Transactions", ThisKey="Id", OtherKey="UserId")]
-		public EntitySet<Transaction> Transactions
-		{
-			get
-			{
-				return this._Transactions;
-			}
-			set
-			{
-				this._Transactions.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_User_permission", Storage="_User_permissions", ThisKey="Id", OtherKey="emp_id")]
-		public EntitySet<User_permission> User_permissions
-		{
-			get
-			{
-				return this._User_permissions;
-			}
-			set
-			{
-				this._User_permissions.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Stock", Storage="_Stocks", ThisKey="Id", OtherKey="UserId")]
-		public EntitySet<Stock> Stocks
-		{
-			get
-			{
-				return this._Stocks;
-			}
-			set
-			{
-				this._Stocks.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Transactions(Transaction entity)
-		{
-			this.SendPropertyChanging();
-			entity.Employee = this;
-		}
-		
-		private void detach_Transactions(Transaction entity)
-		{
-			this.SendPropertyChanging();
-			entity.Employee = null;
-		}
-		
-		private void attach_User_permissions(User_permission entity)
-		{
-			this.SendPropertyChanging();
-			entity.Employee = this;
-		}
-		
-		private void detach_User_permissions(User_permission entity)
-		{
-			this.SendPropertyChanging();
-			entity.Employee = null;
-		}
-		
-		private void attach_Stocks(Stock entity)
-		{
-			this.SendPropertyChanging();
-			entity.Employee = this;
-		}
-		
-		private void detach_Stocks(Stock entity)
-		{
-			this.SendPropertyChanging();
-			entity.Employee = null;
 		}
 	}
 	
@@ -5057,9 +4766,9 @@ namespace FinalUi
 		
 		private EntitySet<InvoiceAssignment> _InvoiceAssignments;
 		
-		private EntityRef<Employee> _Employee;
-		
 		private EntityRef<Client> _Client;
+		
+		private EntityRef<Employee> _Employee;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -5114,8 +4823,8 @@ namespace FinalUi
 		public Transaction()
 		{
 			this._InvoiceAssignments = new EntitySet<InvoiceAssignment>(new Action<InvoiceAssignment>(this.attach_InvoiceAssignments), new Action<InvoiceAssignment>(this.detach_InvoiceAssignments));
-			this._Employee = default(EntityRef<Employee>);
 			this._Client = default(EntityRef<Client>);
+			this._Employee = default(EntityRef<Employee>);
 			OnCreated();
 		}
 		
@@ -5580,40 +5289,6 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Transaction", Storage="_Employee", ThisKey="UserId", OtherKey="Id", IsForeignKey=true)]
-		public Employee Employee
-		{
-			get
-			{
-				return this._Employee.Entity;
-			}
-			set
-			{
-				Employee previousValue = this._Employee.Entity;
-				if (((previousValue != value) 
-							|| (this._Employee.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Employee.Entity = null;
-						previousValue.Transactions.Remove(this);
-					}
-					this._Employee.Entity = value;
-					if ((value != null))
-					{
-						value.Transactions.Add(this);
-						this._UserId = value.Id;
-					}
-					else
-					{
-						this._UserId = default(Nullable<System.Guid>);
-					}
-					this.SendPropertyChanged("Employee");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Client_Transaction", Storage="_Client", ThisKey="CustCode", OtherKey="CLCODE", IsForeignKey=true)]
 		public Client Client
 		{
@@ -5644,6 +5319,40 @@ namespace FinalUi
 						this._CustCode = default(string);
 					}
 					this.SendPropertyChanged("Client");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Transaction", Storage="_Employee", ThisKey="UserId", OtherKey="Id", IsForeignKey=true)]
+		public Employee Employee
+		{
+			get
+			{
+				return this._Employee.Entity;
+			}
+			set
+			{
+				Employee previousValue = this._Employee.Entity;
+				if (((previousValue != value) 
+							|| (this._Employee.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Employee.Entity = null;
+						previousValue.Transactions.Remove(this);
+					}
+					this._Employee.Entity = value;
+					if ((value != null))
+					{
+						value.Transactions.Add(this);
+						this._UserId = value.Id;
+					}
+					else
+					{
+						this._UserId = default(Nullable<System.Guid>);
+					}
+					this.SendPropertyChanged("Employee");
 				}
 			}
 		}
@@ -5693,9 +5402,9 @@ namespace FinalUi
 		
 		private int _per_id;
 		
-		private EntityRef<Employee> _Employee;
-		
 		private EntityRef<Permission> _Permission;
+		
+		private EntityRef<Employee> _Employee;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -5711,8 +5420,8 @@ namespace FinalUi
 		
 		public User_permission()
 		{
-			this._Employee = default(EntityRef<Employee>);
 			this._Permission = default(EntityRef<Permission>);
+			this._Employee = default(EntityRef<Employee>);
 			OnCreated();
 		}
 		
@@ -5784,40 +5493,6 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_User_permission", Storage="_Employee", ThisKey="emp_id", OtherKey="Id", IsForeignKey=true)]
-		public Employee Employee
-		{
-			get
-			{
-				return this._Employee.Entity;
-			}
-			set
-			{
-				Employee previousValue = this._Employee.Entity;
-				if (((previousValue != value) 
-							|| (this._Employee.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Employee.Entity = null;
-						previousValue.User_permissions.Remove(this);
-					}
-					this._Employee.Entity = value;
-					if ((value != null))
-					{
-						value.User_permissions.Add(this);
-						this._emp_id = value.Id;
-					}
-					else
-					{
-						this._emp_id = default(System.Guid);
-					}
-					this.SendPropertyChanged("Employee");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Permission_User_permission", Storage="_Permission", ThisKey="per_id", OtherKey="id", IsForeignKey=true)]
 		public Permission Permission
 		{
@@ -5848,6 +5523,40 @@ namespace FinalUi
 						this._per_id = default(int);
 					}
 					this.SendPropertyChanged("Permission");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_User_permission", Storage="_Employee", ThisKey="emp_id", OtherKey="Id", IsForeignKey=true)]
+		public Employee Employee
+		{
+			get
+			{
+				return this._Employee.Entity;
+			}
+			set
+			{
+				Employee previousValue = this._Employee.Entity;
+				if (((previousValue != value) 
+							|| (this._Employee.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Employee.Entity = null;
+						previousValue.User_permissions.Remove(this);
+					}
+					this._Employee.Entity = value;
+					if ((value != null))
+					{
+						value.User_permissions.Add(this);
+						this._emp_id = value.Id;
+					}
+					else
+					{
+						this._emp_id = default(System.Guid);
+					}
+					this.SendPropertyChanged("Employee");
 				}
 			}
 		}
@@ -8381,6 +8090,368 @@ namespace FinalUi
 					this._Description = value;
 				}
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Employee")]
+	public partial class Employee : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _Id;
+		
+		private string _Name;
+		
+		private System.Nullable<char> _Gender;
+		
+		private string _EMPCode;
+		
+		private string _UserName;
+		
+		private string _Password;
+		
+		private char _Status;
+		
+		private string _Address;
+		
+		private string _ContactNo;
+		
+		private string _Other;
+		
+		private EntitySet<Transaction> _Transactions;
+		
+		private EntitySet<User_permission> _User_permissions;
+		
+		private EntitySet<Stock> _Stocks;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(System.Guid value);
+    partial void OnIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnGenderChanging(System.Nullable<char> value);
+    partial void OnGenderChanged();
+    partial void OnEMPCodeChanging(string value);
+    partial void OnEMPCodeChanged();
+    partial void OnUserNameChanging(string value);
+    partial void OnUserNameChanged();
+    partial void OnPasswordChanging(string value);
+    partial void OnPasswordChanged();
+    partial void OnStatusChanging(char value);
+    partial void OnStatusChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
+    partial void OnContactNoChanging(string value);
+    partial void OnContactNoChanged();
+    partial void OnOtherChanging(string value);
+    partial void OnOtherChanged();
+    #endregion
+		
+		public Employee()
+		{
+			this._Transactions = new EntitySet<Transaction>(new Action<Transaction>(this.attach_Transactions), new Action<Transaction>(this.detach_Transactions));
+			this._User_permissions = new EntitySet<User_permission>(new Action<User_permission>(this.attach_User_permissions), new Action<User_permission>(this.detach_User_permissions));
+			this._Stocks = new EntitySet<Stock>(new Action<Stock>(this.attach_Stocks), new Action<Stock>(this.detach_Stocks));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Gender", DbType="Char(1)")]
+		public System.Nullable<char> Gender
+		{
+			get
+			{
+				return this._Gender;
+			}
+			set
+			{
+				if ((this._Gender != value))
+				{
+					this.OnGenderChanging(value);
+					this.SendPropertyChanging();
+					this._Gender = value;
+					this.SendPropertyChanged("Gender");
+					this.OnGenderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EMPCode", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string EMPCode
+		{
+			get
+			{
+				return this._EMPCode;
+			}
+			set
+			{
+				if ((this._EMPCode != value))
+				{
+					this.OnEMPCodeChanging(value);
+					this.SendPropertyChanging();
+					this._EMPCode = value;
+					this.SendPropertyChanged("EMPCode");
+					this.OnEMPCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string UserName
+		{
+			get
+			{
+				return this._UserName;
+			}
+			set
+			{
+				if ((this._UserName != value))
+				{
+					this.OnUserNameChanging(value);
+					this.SendPropertyChanging();
+					this._UserName = value;
+					this.SendPropertyChanged("UserName");
+					this.OnUserNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Password
+		{
+			get
+			{
+				return this._Password;
+			}
+			set
+			{
+				if ((this._Password != value))
+				{
+					this.OnPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._Password = value;
+					this.SendPropertyChanged("Password");
+					this.OnPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Char(1) NOT NULL")]
+		public char Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="VarChar(150)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this.OnAddressChanging(value);
+					this.SendPropertyChanging();
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContactNo", DbType="VarChar(50)")]
+		public string ContactNo
+		{
+			get
+			{
+				return this._ContactNo;
+			}
+			set
+			{
+				if ((this._ContactNo != value))
+				{
+					this.OnContactNoChanging(value);
+					this.SendPropertyChanging();
+					this._ContactNo = value;
+					this.SendPropertyChanged("ContactNo");
+					this.OnContactNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Other", DbType="VarChar(100)")]
+		public string Other
+		{
+			get
+			{
+				return this._Other;
+			}
+			set
+			{
+				if ((this._Other != value))
+				{
+					this.OnOtherChanging(value);
+					this.SendPropertyChanging();
+					this._Other = value;
+					this.SendPropertyChanged("Other");
+					this.OnOtherChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Transaction", Storage="_Transactions", ThisKey="Id", OtherKey="UserId")]
+		public EntitySet<Transaction> Transactions
+		{
+			get
+			{
+				return this._Transactions;
+			}
+			set
+			{
+				this._Transactions.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_User_permission", Storage="_User_permissions", ThisKey="Id", OtherKey="emp_id")]
+		public EntitySet<User_permission> User_permissions
+		{
+			get
+			{
+				return this._User_permissions;
+			}
+			set
+			{
+				this._User_permissions.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Stock", Storage="_Stocks", ThisKey="Id", OtherKey="UserId")]
+		public EntitySet<Stock> Stocks
+		{
+			get
+			{
+				return this._Stocks;
+			}
+			set
+			{
+				this._Stocks.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Transactions(Transaction entity)
+		{
+			this.SendPropertyChanging();
+			entity.Employee = this;
+		}
+		
+		private void detach_Transactions(Transaction entity)
+		{
+			this.SendPropertyChanging();
+			entity.Employee = null;
+		}
+		
+		private void attach_User_permissions(User_permission entity)
+		{
+			this.SendPropertyChanging();
+			entity.Employee = this;
+		}
+		
+		private void detach_User_permissions(User_permission entity)
+		{
+			this.SendPropertyChanging();
+			entity.Employee = null;
+		}
+		
+		private void attach_Stocks(Stock entity)
+		{
+			this.SendPropertyChanging();
+			entity.Employee = this;
+		}
+		
+		private void detach_Stocks(Stock entity)
+		{
+			this.SendPropertyChanging();
+			entity.Employee = null;
 		}
 	}
 }

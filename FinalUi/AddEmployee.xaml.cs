@@ -58,6 +58,8 @@ namespace FinalUi
             this.Add_FilterE.Text = "Update";
             viewsourceUserPermission.Source = userPermission;
             viewsourcePermission.Source = permission;
+            EmployeeCode.IsReadOnly = true;
+            UserName.IsReadOnly = true;
         }
         private void AddNewEmployee()
         {
@@ -135,9 +137,15 @@ namespace FinalUi
             data.EMPCode = emp.EMPCode;
             data.Password = emp.Password;
             data.Gender = emp.Gender;
+            data.Other = emp.Other;
+            data.ContactNo = emp.ContactNo;
+            data.Address = emp.Address;
         }
         public void setFieldsFromEmp()
         {
+            EmployeeAddress.Text = emp.Address;
+            EmployeeContact.Text = emp.ContactNo;
+            EmployeeOther.Text = emp.Other;
             FullName.Text = emp.Name;
             UserName.Text = emp.UserName;
             Password.Password = "";
@@ -168,6 +176,9 @@ namespace FinalUi
             }
             emp.EMPCode = EmployeeCode.Text;
             emp.UserName = UserName.Text;
+            emp.Address = EmployeeAddress.Text;
+            emp.ContactNo = EmployeeContact.Text;
+            emp.Other = EmployeeOther.Text;
         }
         private void CreateEmployee_Click(object sender, RoutedEventArgs e)
         {
