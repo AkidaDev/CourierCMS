@@ -4734,7 +4734,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
+<<<<<<< local
+                              <Value />
+=======
                               <Value>=Parameters!TinNumber.Value</Value>
+>>>>>>> other
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>

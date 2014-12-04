@@ -166,6 +166,7 @@ namespace FinalUi
             repParams.Add(new ReportParameter("ClientName", clc.CLNAME));
             repParams.Add(new ReportParameter("ClientAddress", clc.ADDRESS));
             repParams.Add(new ReportParameter("ClientPhoneNo", clc.CONTACTNO));
+            repParams.Add(new ReportParameter("TinNumber", Configs.Default.Tin??""));
             repParams.Add(new ReportParameter("TNC", Configs.Default.TNC));
             invoiceNo = (InvoiceDate.SelectedDate ?? DateTime.Today).ToString("yyyyMMdd");
             invoiceNo = invoiceNo + DateTime.Now.ToString("hhmm");

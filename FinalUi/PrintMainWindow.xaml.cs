@@ -106,6 +106,7 @@ where [BillId] = '" + inv.BillId + @"'
                 repParams.Add(new ReportParameter("CompanyAddress", Configs.Default.CompanyAddress));
                 repParams.Add(new ReportParameter("CompanyEmail", Configs.Default.CompanyEmail));
                 repParams.Add(new ReportParameter("CompanyFax", Configs.Default.CompanyFax));
+                repParams.Add(new ReportParameter("TinNumber", Configs.Default.Tin ?? ""));
                 repParams.Add(new ReportParameter("ClientName", clc.CLNAME));
                 repParams.Add(new ReportParameter("ClientAddress", clc.ADDRESS));
                 repParams.Add(new ReportParameter("ClientPhoneNo", clc.CONTACTNO));
