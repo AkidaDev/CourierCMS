@@ -31,8 +31,7 @@ namespace FinalUi
             InitializeComponent();
             db = new BillingDataDataContext();
             clientToEdit = new List<Client>();
-            clients = (from client in db.Clients
-                       select client).ToList();
+            clients = DataSources.ClientCopy;
             viewsource = (CollectionViewSource)FindResource("ClienTable");
             viewsource.Source = clients;
         }
@@ -70,6 +69,42 @@ namespace FinalUi
         }
         private void showReport_Click(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void DeleteClientGridButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(mangaclientgrid.SelectedItems.Count != 1)
+            {
+                MessageBox.Show("Please select 1 client to delete","Error");
+                return;
+            }
+            if(MessageBox.Show("Are you sure you want to delete this client?","Confirm",MessageBoxButton.YesNo)==MessageBoxResult.Yes)
+            {
+                Client client = (Client)mangaclientgrid.SelectedItem;
+                client = db.Clients.SingleOrDefault(x => x.CLCODE == client.CLCODE);
+                if(client == null)
+                {
+                    MessageBox.Show("This client does not exists.", "Error");
+                    return;
+                }
+                if(client.CLCODE == "<NONE>"|| client.CLCODE == "<DTDC>")
+                {
+                    MessageBox.Show("This client cannot be deleted");
+                    return;
+                }
+                db.Clients.DeleteOnSubmit(client);
+                try
+                {
+                    db.SubmitChanges();
+                    MessageBox.Show("Client deleted.", "Success");
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Deletion failed with error : " + ex.Message,"Failure");
+                }
+                DataSources.refreshClientList();
+            }
 
         }
     }

@@ -1235,6 +1235,12 @@ namespace FinalUi
                     MessageBox.Show("No such client");
                     return;
                 }
+                if (client.CLCODE == "<NONE>" || client.CLCODE == "<DTDC>")
+                {
+                    MessageBox.Show("This client cannot be deleted");
+                    return;
+                }
+             
                 db.Clients.DeleteOnSubmit(client);
                 db.SubmitChanges();
             }
