@@ -29,23 +29,7 @@ namespace FinalUi
             }
             else
             { 
-                string provider = "System.Data.SqlClient"; // for example
-                DbProviderFactory factory = DbProviderFactories.GetFactory(provider);
-                using (DbConnection conn = factory.CreateConnection())
-                {
-                    conn.ConnectionString = Configs.Default.BillingDatabaseConnectionString;
-                    try
-                    {
-                        conn.Open();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Unable to connect to server. Please Contact System Administrator"); 
-                        Configs.Default.Save(); 
-                        System.Windows.Forms.Application.Restart(); 
-                        Application.Current.Shutdown();
-                    }
-                }
+                
                 Login win = new Login();
                 win.Show();
             }
