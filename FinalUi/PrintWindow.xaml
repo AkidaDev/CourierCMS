@@ -2,86 +2,99 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Icon="Images/logo.ico"
-        Title="PrintWindow" Height="380" Width="600" Background="Transparent"
+        Title="PrintWindow" Height="380" Width="750" Background="Transparent"
 		ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Normal" BorderBrush="Transparent" AllowsTransparency="True" Padding="20"
          xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms" >
     <Window.Resources>
         <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"></CollectionViewSource>
         <CollectionViewSource x:Key="DataGridDataSource" CollectionViewType="ListCollectionView"></CollectionViewSource>
     </Window.Resources>
-    <Grid  Height="330" UseLayoutRounding="False"  Width="550">
+    <Grid  Height="330" Width="700" Background="White">
         <Grid.Effect>
             <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
         </Grid.Effect>
-        <Canvas x:Name="RateWindow1" ClipToBounds="True" HorizontalAlignment="Left" Height="330" UseLayoutRounding="False" VerticalAlignment="Top" Width="550" Background="White">
-            <Path x:Name="Vertical_line" Data="F1M2,3C2,3 2,2 2,2 2,2 331,2 331,2 331,2 331,3 331,3 331,3 2,3 2,3" Fill="Black" Height="4" Canvas.Left="108" Canvas.Top="56" Width="332"/>
-            <Path x:Name="detail" Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Black" Height="24" Canvas.Left="81" Canvas.Top="35" Width="24"/>
-            <TextBlock x:Name="Enter_Invoice__Date__" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="109" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Enter Details.:" Canvas.Top="41.16"/>
-            <Canvas Canvas.Top="10">
-                <Path Canvas.Top="80" Canvas.Left="50" x:Name="client" Data="F1M7.006,17.756C8.089,18.341 9.324,18.675 10.635,18.675 11.947,18.675 13.183,18.341 14.264,17.756 16.602,18.374 18.432,19.843 19.272,23 19.272,23 2,23 2,23 2.839,19.843 4.67,18.375 7.006,17.756z M22.992,14.925C25.33,15.543 27.161,17.011 28,20.168 28,20.168 19.469,20.168 19.469,20.168 18.486,18.463 17.033,17.311 15.075,16.685 15.597,16.276 16.061,15.798 16.456,15.264 17.354,15.635 18.334,15.843 19.363,15.843 20.674,15.843 21.911,15.51 22.992,14.925z M6.639,12.72C7.558,14.518 9.136,15.706 10.928,15.706 12.722,15.706 14.298,14.518 15.217,12.72 15.217,12.72 6.639,12.72 6.639,12.72z M10.635,4.831C13.958,4.831 16.649,7.548 16.649,10.899 16.649,14.252 13.958,16.968 10.635,16.968 7.313,16.968 4.621,14.252 4.621,10.899 4.621,7.548 7.313,4.831 10.635,4.831z M19.363,2C22.685,2 25.377,4.717 25.377,8.068 25.377,11.421 22.685,14.137 19.363,14.137 18.642,14.137 17.954,14.003 17.313,13.768 17.499,13.331 17.641,12.872 17.74,12.396 18.332,12.704 18.979,12.874 19.656,12.874 21.449,12.874 23.026,11.686 23.944,9.888 23.944,9.888 17.819,9.888 17.819,9.888 17.513,7.667 16.22,5.766 14.398,4.645 15.482,3.049 17.3,2 19.363,2z" Fill="Black" Height="19" Width="23" Stretch="Fill"/>
-                <TextBlock Canvas.Top="82" Canvas.Left="80" x:Name="Select_Client" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Select Client .:"/>
-                <ComboBox Canvas.Top="76" Canvas.Left="188" IsEditable="True" ItemsSource="{Binding}" DataContext="{StaticResource ClientList}" x:Name="ClientList" SelectionChanged="ClientList_SelectionChanged" DisplayMemberPath="NameAndCode"  Width="314"/>
-            </Canvas>
-            <Canvas Canvas.Top="18" Canvas.Left="-20">
-                <TextBlock Canvas.Top="116" Canvas.Left="80" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="From Date .:"/>
-                <DatePicker Canvas.Top="108" Canvas.Left="176" Name="FromDate" CalendarClosed="ToDate_CalendarClosed"    Height="26"  Width="124"  BorderThickness="0" Padding="0 4 0 0"/>
-                <Path x:Name="line" Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Canvas.Left="306.611" Canvas.Top="103.5" Width="3"/>
-                <Path Canvas.Top="108" Canvas.Left="174" x:Name="Rectangle_2" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="26"  Stroke="DarkGray" Stretch="Fill"/>
-                <TextBlock Canvas.Top="116" Canvas.Left="320"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="To Date .:"/>
-                <DatePicker Canvas.Top="108" Canvas.Left="394" x:Name="ToDate" CalendarClosed="ToDate_CalendarClosed" Height="26"  Width="124"  BorderThickness="0" Padding="0 4 0 0"/>
-                <Path Canvas.Top="108" Canvas.Left="392" x:Name="Rectangle" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="26"  Stroke="DarkGray" Stretch="Fill"/>
-            </Canvas>
-            <Canvas Canvas.Left="-30" Canvas.Top="4" >
-                <TextBlock  Canvas.Top="171" Canvas.Left="60"  FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Previous Due .:"/>
-                <TextBox  Canvas.Top="166"  Canvas.Left="175" Height="22" x:Name="PreviousDueTextBox" Width="50" Padding="10 2 0 0"/>
-                <TextBlock Text="₹" Canvas.Top="168" Canvas.Left="178" FontSize="14" FontWeight="Bold"/>
-                <Path x:Name="line1" Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Canvas.Left="230" Canvas.Top="162" Width="3"/>
-                <TextBlock Canvas.Top="171"  Canvas.Left="244" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Fuel Surcharge .:"/>
-                <TextBox Canvas.Top="166"  Canvas.Left="371" x:Name="TaxBox" Width="50" Height="22" Padding="2" />
-                <TextBlock Text="%" Canvas.Top="169" Canvas.Left="409" FontWeight="Bold"/>
-                <Path x:Name="line2" Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Canvas.Left="425.5" Canvas.Top="162" Width="3"/>
-                <TextBlock Canvas.Top="171" Canvas.Left="438" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="S.Tax .:"/>
-                <TextBox Canvas.Top="166" Canvas.Left="491" x:Name="ServiceTaxBox" Width="50" Height="22" Padding="2"/>
-                <TextBlock Text="%" Canvas.Top="169" Canvas.Left="529" FontWeight="Bold"/>
-            </Canvas>
-            <Canvas Canvas.Top="5" Visibility="Visible">
-                <TextBlock  Canvas.Top="213.33" Canvas.Left="60" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Miscellaneous Charges .:"/>
-                <TextBox Canvas.Top="208" Canvas.Left="246" Height="22" x:Name="MiscBox" Width="57" Padding="10 2 0 0"/>
-                <TextBlock Text="₹" Canvas.Top="210" Canvas.Left="249" FontSize="14" FontWeight="Bold"/>
-                <Path x:Name="Discount" Data="F1M3.844,19.156C3.281,19.156 2.825,19.606 2.825,20.159 2.825,20.714 3.281,21.163 3.844,21.163 4.407,21.163 4.863,20.714 4.863,20.159 4.863,19.606 4.407,19.156 3.844,19.156z M15.513,9.991C15.513,9.991 7.26,18.119 7.26,18.119 7.26,18.119 8.433,19.274 8.433,19.274 8.433,19.274 16.686,11.146 16.686,11.146 16.686,11.146 15.513,9.991 15.513,9.991z M12.959,7.376C12.959,7.376 4.654,15.554 4.654,15.554 4.654,15.554 5.826,16.709 5.826,16.709 5.826,16.709 14.131,8.53 14.131,8.53 14.131,8.53 12.959,7.376 12.959,7.376z M13.112,2.419C13.112,2.419 22,11.167 22,11.167 22,11.167 9.906,22.979 9.906,22.979 9.906,22.979 1,23 1,23 1,23 1.02,14.229 1.02,14.229 1.02,14.229 13.112,2.419 13.112,2.419z M8.276,1C8.276,1 11.544,2.53 11.544,2.53 11.544,2.53 2.875,10.797 2.875,10.797 2.875,10.797 8.276,1 8.276,1z" Fill="Black" Height="19" Canvas.Left="329" Canvas.Top="212" Width="19" Stretch="Fill"/>
-                <TextBlock  Canvas.Top="213" Canvas.Left="352" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Discount .:"/>
-                <TextBox Name="DiscountBox" Canvas.Top="208" Canvas.Left="434" Height="22"  Width="57" Padding="2"/>
-                <TextBlock Text="%" Canvas.Top="211" Canvas.Left="479" FontWeight="Bold"/>
-                <Path x:Name="remark" Data="F1M18.387,5.167C17.681,5.167 17.109,5.764 17.109,6.5 17.109,7.235 17.681,7.832 18.387,7.832 19.092,7.832 19.664,7.235 19.664,6.5 19.664,5.764 19.092,5.167 18.387,5.167z M2.488,1C2.488,1 17.444,1 17.444,1 17.666,1 17.877,1.051 18.067,1.142 18.25,1.205 18.423,1.312 18.569,1.465 18.569,1.465 22.504,5.567 22.504,5.567 23,6.085 23,6.924 22.504,7.442 22.504,7.442 18.64,11.47 18.64,11.47 18.53,11.585 18.405,11.674 18.271,11.738 18.034,11.904 17.75,12 17.444,12 17.444,12 2.488,12 2.488,12 1.666,12 1,11.305 1,10.448 1,10.448 1,2.552 1,2.552 1,1.695 1.666,1 2.488,1z" Fill="Black" Height="13" Canvas.Left="46" Canvas.Top="250" Width="24"/>
-                <TextBlock Canvas.Top="247" Canvas.Left="74" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Remarks .:"/>
-                <TextBox Canvas.Top="242" Canvas.Left="154" Name="RemarkBox" Width="345" Height="22" Padding="2"/>
-                <WrapPanel  Canvas.Top="243" Margin="115,35,0,0" >
-                    <Button Click="Button_Click" Style="{StaticResource all}" Margin="0,0,50,0">
-                        <WrapPanel Margin="6,6,6,6">
-                            <Path Margin="0 0 3 0" x:Name="print" Data="F1M8.9,14.833C8.9,14.833 8.9,20.667 8.9,20.667 8.9,20.667 18.1,20.667 18.1,20.667 18.1,20.667 18.1,14.833 18.1,14.833 18.1,14.833 8.9,14.833 8.9,14.833z M21.55,10.167C20.86,10.167 20.4,10.633 20.4,11.333 20.4,12.033 20.86,12.5 21.55,12.5 22.24,12.5 22.7,12.033 22.7,11.333 22.7,10.633 22.24,10.167 21.55,10.167z M5.45,7.833C5.45,7.833 21.55,7.833 21.55,7.833 23.505,7.833 25,9.35 25,11.333 25,11.333 25,18.333 25,18.333 25,18.333 20.4,18.333 20.4,18.333 20.4,18.333 20.4,23 20.4,23 20.4,23 6.6,23 6.6,23 6.6,23 6.6,18.333 6.6,18.333 6.6,18.333 2,18.333 2,18.333 2,18.333 2,11.333 2,11.333 2,9.35 3.495,7.833 5.45,7.833z M6.6,2C6.6,2 20.4,2 20.4,2 20.4,2 20.4,6.667 20.4,6.667 20.4,6.667 6.6,6.667 6.6,6.667 6.6,6.667 6.6,2 6.6,2z" Fill="Black" Height="24" Width="26"/>
-                            <TextBlock Margin="4 0 0 0" x:Name="Previous" FontWeight="Bold" FontSize="20" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="413" LineHeight="24" TextAlignment="Left" TextWrapping="Wrap" Text="Print "/>
-                        </WrapPanel>
-                    </Button>
-                    <Button Name="SaveInvoiceButton" Click="SaveInvoiceButton_Click" Style="{StaticResource all}" Margin="60,0,0,0">
-                        <Button.Content>
-                            <WrapPanel Margin="6,3,6,3" >
-                                <Path  x:Name="save" Data="F1M5.707,16.89C5.707,16.89 16.879,16.89 16.879,16.89 16.879,16.89 16.879,18.13 16.879,18.13 16.879,18.13 5.707,18.13 5.707,18.13 5.707,18.13 5.707,16.89 5.707,16.89z M5.707,13.414C5.707,13.414 16.879,13.414 16.879,13.414 16.879,13.414 16.879,14.653 16.879,14.653 16.879,14.653 5.707,14.653 5.707,14.653 5.707,14.653 5.707,13.414 5.707,13.414z M4.207,10.739C4.207,10.739 4.207,20.566 4.207,20.566 4.207,20.566 18.793,20.566 18.793,20.566 18.793,20.566 18.793,10.739 18.793,10.739 18.793,10.739 4.207,10.739 4.207,10.739z M9.432,1.83C9.432,1.83 13.777,1.83 13.777,1.83 13.777,1.83 13.777,7.358 13.777,7.358 13.777,7.358 9.432,7.358 9.432,7.358 9.432,7.358 9.432,1.83 9.432,1.83z M1.626,1C1.626,1 4.207,1 4.207,1 4.207,1 4.207,8.508 4.207,8.508 4.207,8.508 15.586,8.508 15.586,8.508 15.586,8.508 15.586,1 15.586,1 15.586,1 17.711,1 17.711,1 17.711,1 22,5.246 22,5.246 22,5.246 22,21.381 22,21.381 22,21.723 21.72,22 21.374,22 21.374,22 1.626,22 1.626,22 1.28,22 1,21.723 1,21.381 1,21.381 1,1.62 1,1.62 1,1.277 1.28,1 1.626,1z" Fill="Black" Height="23" Width="23" Margin="3 0 3 0"/>
-                                <TextBlock x:Name="Done" FontWeight="Bold" FontSize="20" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="24" TextAlignment="Left" TextWrapping="Wrap" Text="Save Invoice "/>
-                            </WrapPanel>
-                        </Button.Content>
-                    </Button>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26"/>
+            <RowDefinition Height="36"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="43"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+        <Path Grid.Row="1" Data="F1M2,3C2,3 2,2 2,2 2,2 331,2 331,2 331,2 331,3 331,3 331,3 2,3 2,3" Fill="Black" Height="4" Width="332" VerticalAlignment="Bottom"/>
+        <TextBlock Grid.Row="1" FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom" Margin="186 0 0 0" Text="Enter Details .:"/>
+        <Path Grid.Row="1" Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Black" Height="24" Width="24" Margin="160,10,516,2"/>
+        <WrapPanel Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Path Data="F1M7.006,17.756C8.089,18.341 9.324,18.675 10.635,18.675 11.947,18.675 13.183,18.341 14.264,17.756 16.602,18.374 18.432,19.843 19.272,23 19.272,23 2,23 2,23 2.839,19.843 4.67,18.375 7.006,17.756z M22.992,14.925C25.33,15.543 27.161,17.011 28,20.168 28,20.168 19.469,20.168 19.469,20.168 18.486,18.463 17.033,17.311 15.075,16.685 15.597,16.276 16.061,15.798 16.456,15.264 17.354,15.635 18.334,15.843 19.363,15.843 20.674,15.843 21.911,15.51 22.992,14.925z M6.639,12.72C7.558,14.518 9.136,15.706 10.928,15.706 12.722,15.706 14.298,14.518 15.217,12.72 15.217,12.72 6.639,12.72 6.639,12.72z M10.635,4.831C13.958,4.831 16.649,7.548 16.649,10.899 16.649,14.252 13.958,16.968 10.635,16.968 7.313,16.968 4.621,14.252 4.621,10.899 4.621,7.548 7.313,4.831 10.635,4.831z M19.363,2C22.685,2 25.377,4.717 25.377,8.068 25.377,11.421 22.685,14.137 19.363,14.137 18.642,14.137 17.954,14.003 17.313,13.768 17.499,13.331 17.641,12.872 17.74,12.396 18.332,12.704 18.979,12.874 19.656,12.874 21.449,12.874 23.026,11.686 23.944,9.888 23.944,9.888 17.819,9.888 17.819,9.888 17.513,7.667 16.22,5.766 14.398,4.645 15.482,3.049 17.3,2 19.363,2z" Fill="Black" Height="19" Width="23" Stretch="Fill"/>
+            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Client Name.: " VerticalAlignment="Bottom"/>
+            <ComboBox Height="26" Width="300" ItemsSource="{Binding}" DataContext="{StaticResource ClientList}" x:Name="ClientList" SelectionChanged="ClientList_SelectionChanged" DisplayMemberPath="NameAndCode"/>
+            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -4 15 -3"/>
+            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Sub Client .: " VerticalAlignment="Bottom"/>
+            <ComboBox Height="26" Width="120"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="From Date .: " VerticalAlignment="Bottom"/>
+            <DatePicker Name="FromDate" CalendarClosed="ToDate_CalendarClosed" Height="26"  Width="123"  BorderThickness="0" Padding="4 4 0 0"/>
+            <Rectangle Height="26"  Width="98" Fill="Transparent" Stroke="DarkGray" Margin="-150 0 0 0"/>
+            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -4 15 -3"/>
+            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" To Date .: " VerticalAlignment="Bottom"/>
+            <DatePicker x:Name="ToDate" CalendarClosed="ToDate_CalendarClosed" Height="26"  Width="123"  BorderThickness="0" Padding="4 4 0 0"/>
+            <Rectangle Height="26"  Width="98" Fill="Transparent" Stroke="DarkGray" Margin="-150 0 0 0"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="4" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Previous Due .: " VerticalAlignment="Bottom"/>
+            <TextBox Height="22" x:Name="PreviousDueTextBox" Width="50" Padding="10 2 0 0"/>
+            <TextBlock Text="₹" FontSize="14" FontWeight="Bold" Margin="-48 0 0 0" VerticalAlignment="Center"/>
+            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -4 15 -3"/>
+            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Fuel Surcharge .: " VerticalAlignment="Bottom"/>
+            <TextBox x:Name="TaxBox" Width="50" Height="22" Padding="2"/>
+            <TextBlock Text=" %" FontWeight="Bold" VerticalAlignment="Center"/>
+            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -4 15 -3"/>
+            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Service Tax .: " VerticalAlignment="Bottom"/>
+            <TextBox x:Name="ServiceTaxBox" Width="50" Height="22" Padding="2"/>
+            <TextBlock Text=" %" FontWeight="Bold" VerticalAlignment="Center"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Path Data="F1M3.844,19.156C3.281,19.156 2.825,19.606 2.825,20.159 2.825,20.714 3.281,21.163 3.844,21.163 4.407,21.163 4.863,20.714 4.863,20.159 4.863,19.606 4.407,19.156 3.844,19.156z M15.513,9.991C15.513,9.991 7.26,18.119 7.26,18.119 7.26,18.119 8.433,19.274 8.433,19.274 8.433,19.274 16.686,11.146 16.686,11.146 16.686,11.146 15.513,9.991 15.513,9.991z M12.959,7.376C12.959,7.376 4.654,15.554 4.654,15.554 4.654,15.554 5.826,16.709 5.826,16.709 5.826,16.709 14.131,8.53 14.131,8.53 14.131,8.53 12.959,7.376 12.959,7.376z M13.112,2.419C13.112,2.419 22,11.167 22,11.167 22,11.167 9.906,22.979 9.906,22.979 9.906,22.979 1,23 1,23 1,23 1.02,14.229 1.02,14.229 1.02,14.229 13.112,2.419 13.112,2.419z M8.276,1C8.276,1 11.544,2.53 11.544,2.53 11.544,2.53 2.875,10.797 2.875,10.797 2.875,10.797 8.276,1 8.276,1z" Fill="Black" Height="19" Width="19" Stretch="Fill"/>
+            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Discount .: " VerticalAlignment="Bottom"/>
+            <TextBox Name="DiscountBox" Canvas.Top="208" Canvas.Left="434" Height="22"  Width="57" Padding="2"/>
+            <TextBlock Text=" %" Canvas.Top="211" Canvas.Left="479" FontWeight="Bold" VerticalAlignment="Center"/>
+            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -4 15 -3"/>
+            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Miscellaneous Charges .: " VerticalAlignment="Bottom"/>
+            <TextBox Height="22" x:Name="MiscBox" Width="57" Padding="10 2 0 0"/>
+            <TextBlock Text="₹" FontSize="14" FontWeight="Bold" Margin="-55 0 0 0" VerticalAlignment="Center"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="6" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Path Data="F1M18.387,5.167C17.681,5.167 17.109,5.764 17.109,6.5 17.109,7.235 17.681,7.832 18.387,7.832 19.092,7.832 19.664,7.235 19.664,6.5 19.664,5.764 19.092,5.167 18.387,5.167z M2.488,1C2.488,1 17.444,1 17.444,1 17.666,1 17.877,1.051 18.067,1.142 18.25,1.205 18.423,1.312 18.569,1.465 18.569,1.465 22.504,5.567 22.504,5.567 23,6.085 23,6.924 22.504,7.442 22.504,7.442 18.64,11.47 18.64,11.47 18.53,11.585 18.405,11.674 18.271,11.738 18.034,11.904 17.75,12 17.444,12 17.444,12 2.488,12 2.488,12 1.666,12 1,11.305 1,10.448 1,10.448 1,2.552 1,2.552 1,1.695 1.666,1 2.488,1z" Fill="Black" Height="13" Width="24"/>
+            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Remarks .: "/>
+            <TextBox Name="RemarkBox" Width="345" Height="22" Padding="2"/>
+            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -4 15 -3"/>
+            <DatePicker ToolTip="Invoice Date" Name="InvoiceDate" BorderBrush="Transparent" Height="26"  Width="123"  BorderThickness="0" Padding="4 4 0 0"/>
+            <Rectangle ToolTip="Invoice Date" Height="26"  Width="98" Fill="Transparent" Stroke="DarkGray" Margin="-150 0 0 0"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="7" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Button Click="Button_Click" Style="{StaticResource all}" Margin="0,0,110,0">
+                <WrapPanel Margin="6">
+                    <Path Margin="0 0 3 0" Data="F1M8.9,14.833C8.9,14.833 8.9,20.667 8.9,20.667 8.9,20.667 18.1,20.667 18.1,20.667 18.1,20.667 18.1,14.833 18.1,14.833 18.1,14.833 8.9,14.833 8.9,14.833z M21.55,10.167C20.86,10.167 20.4,10.633 20.4,11.333 20.4,12.033 20.86,12.5 21.55,12.5 22.24,12.5 22.7,12.033 22.7,11.333 22.7,10.633 22.24,10.167 21.55,10.167z M5.45,7.833C5.45,7.833 21.55,7.833 21.55,7.833 23.505,7.833 25,9.35 25,11.333 25,11.333 25,18.333 25,18.333 25,18.333 20.4,18.333 20.4,18.333 20.4,18.333 20.4,23 20.4,23 20.4,23 6.6,23 6.6,23 6.6,23 6.6,18.333 6.6,18.333 6.6,18.333 2,18.333 2,18.333 2,18.333 2,11.333 2,11.333 2,9.35 3.495,7.833 5.45,7.833z M6.6,2C6.6,2 20.4,2 20.4,2 20.4,2 20.4,6.667 20.4,6.667 20.4,6.667 6.6,6.667 6.6,6.667 6.6,6.667 6.6,2 6.6,2z" Fill="Black" Height="24" Width="26"/>
+                    <TextBlock Margin="4 0 0 0" x:Name="Previous" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Print "/>
                 </WrapPanel>
-            </Canvas>
-            <Path Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="#FFCBCBCB" Height="26" Canvas.Left="0" Canvas.Top="0" Width="550" Stretch="Fill" Stroke="Black" />
-            <TextBlock FontSize="16" Height="25" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="0" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Print Window" Canvas.Top="6" Width="548" FontFamily="Arial"/>
-            <Path MouseDown="DragthisWindow" x:Name="Memu_bar" Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26" Canvas.Left="0" Canvas.Top="0" Width="550" Stretch="Fill"/>
-            <Button ToolTip="Close" Height="18" Canvas.Left="510" Click="Button_Click_Close" Canvas.Top="4" Width="35" Style="{StaticResource 1}">
-                <Path x:Name="close" Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,
-                  12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,
-                  3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" Width="15" Height="15"/>
             </Button>
-            <Path x:Name="line1_Copy" Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Canvas.Left="308.5" Canvas.Top="206.5" Width="3"/>
-            <DatePicker Name="InvoiceDate" Canvas.Left="251" Canvas.Top="34" BorderBrush="Transparent" Width="125"/>
-        </Canvas>
+            <Button Name="SaveInvoiceButton" Click="SaveInvoiceButton_Click" Style="{StaticResource all}">
+                <Button.Content>
+                    <WrapPanel Margin="6" >
+                        <Path Margin="3 0 3 0" Data="F1M5.707,16.89C5.707,16.89 16.879,16.89 16.879,16.89 16.879,16.89 16.879,18.13 16.879,18.13 16.879,18.13 5.707,18.13 5.707,18.13 5.707,18.13 5.707,16.89 5.707,16.89z M5.707,13.414C5.707,13.414 16.879,13.414 16.879,13.414 16.879,13.414 16.879,14.653 16.879,14.653 16.879,14.653 5.707,14.653 5.707,14.653 5.707,14.653 5.707,13.414 5.707,13.414z M4.207,10.739C4.207,10.739 4.207,20.566 4.207,20.566 4.207,20.566 18.793,20.566 18.793,20.566 18.793,20.566 18.793,10.739 18.793,10.739 18.793,10.739 4.207,10.739 4.207,10.739z M9.432,1.83C9.432,1.83 13.777,1.83 13.777,1.83 13.777,1.83 13.777,7.358 13.777,7.358 13.777,7.358 9.432,7.358 9.432,7.358 9.432,7.358 9.432,1.83 9.432,1.83z M1.626,1C1.626,1 4.207,1 4.207,1 4.207,1 4.207,8.508 4.207,8.508 4.207,8.508 15.586,8.508 15.586,8.508 15.586,8.508 15.586,1 15.586,1 15.586,1 17.711,1 17.711,1 17.711,1 22,5.246 22,5.246 22,5.246 22,21.381 22,21.381 22,21.723 21.72,22 21.374,22 21.374,22 1.626,22 1.626,22 1.28,22 1,21.723 1,21.381 1,21.381 1,1.62 1,1.62 1,1.277 1.28,1 1.626,1z" Fill="Black" Height="23" Width="23"/>
+                        <TextBlock Margin="4 0 0 0" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Save Invoice "/>
+                    </WrapPanel>
+                </Button.Content>
+            </Button>
+        </WrapPanel>
+        <Path Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="#FFCBCBCB" Height="26" Width="700" Stretch="Fill" Stroke="Black"/>
+        <TextBlock FontSize="16" Text="Print Window" FontFamily="Arial" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Path MouseDown="DragthisWindow" x:Name="Memu_bar" Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26" Width="700" Stretch="Fill"/>
+        <Button ToolTip="Close" Height="18" HorizontalAlignment="Right" Margin="0,0,4,0" Click="Button_Click_Close" Width="35" Style="{StaticResource 1}">
+            <Path x:Name="close" Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" Width="15" Height="15"/>
+        </Button>
     </Grid>
 </Window>
