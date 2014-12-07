@@ -90,20 +90,20 @@ namespace FinalUi
                 if(CityList != null)
                 {
                     CityList.ForEach(x => {
-                        zones += " " + x;
+                        zones += x + " ";
                     });
                 }
                 if(StateList != null)
                 {
                     StateList.ForEach(x => {
-                        zones += " " + x;
+                        zones += x + " " ;
                     });
                 }
                 if (ZoneList != null)
                 {
                     ZoneList.ForEach(x =>
                     {
-                        zones += "  " + x;
+                        zones += x + " " ;
                     });
                 }
                 

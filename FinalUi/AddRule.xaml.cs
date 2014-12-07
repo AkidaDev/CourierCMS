@@ -48,6 +48,7 @@ namespace FinalUi
             }
             InitializeComponent();
             isInitialized = true;
+            TitleBox.Text = "Update Rule " + ruleId.ToString();
             RuleCR = (new JavaScriptSerializer()).Deserialize<CostingRule>(rule.Properties);
             FromWeightBox.Text = RuleCR.startW.ToString();
             ToWeightBox.Text = RuleCR.endW.ToString();
@@ -275,20 +276,31 @@ namespace FinalUi
                     isdone = true;
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message); return; }
-                if (isdone)
+                if (!isUpdate)
                 {
-                    if (MessageBox.Show("Do you want to add a new rule for this configuration of service and destination", "Confirm", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    if (isdone)
                     {
-                        FromWeightBox.Text = (RuleCR.endW + 0.0001).ToString();
-                        ToWeightBox.Text = "";
-                        currentCanvas = 5;
-                        currentCanvasObj.Visibility = Visibility.Collapsed;
-                        currentCanvasObj = Step5Canvas;
-                        currentCanvasObj.Visibility = Visibility.Visible;
-                        StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
+                        if (MessageBox.Show("Do you want to add a new rule for this configuration of service and destination", "Confirm", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                        {
+                            FromWeightBox.Text = (RuleCR.endW + 0.0001).ToString();
+                            ToWeightBox.Text = "";
+                            currentCanvas = 5;
+                            currentCanvasObj.Visibility = Visibility.Collapsed;
+                            currentCanvasObj = Step5Canvas;
+                            currentCanvasObj.Visibility = Visibility.Visible;
+                            StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
+                        }
+                        else
+                            this.Close();
                     }
-                    else
-                    this.Close();
+                }
+                else
+                {
+                    if(isdone)
+                    {
+                        MessageBox.Show("Rule updated successfully","Information");
+                        this.Close();
+                    }
                 }
             }
         }

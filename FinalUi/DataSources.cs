@@ -14,6 +14,18 @@ namespace FinalUi
         static List<Client> _Client;
         static List<Employee> _Employee;
         static BillingDataDataContext db;
+        static List<Stock> _Stocks;
+        #endregion
+        #region ReadOnlyCopies
+        public static List<Stock> StockStatic
+        {
+            get
+            {
+                if (_Stocks == null)
+                    initialize();
+                return _Stocks;
+            }
+        }
         #endregion
         #region CopyLists
         public static List<Service> ServicesCopy
@@ -86,6 +98,11 @@ namespace FinalUi
         }
         #endregion
         #region Refreshers
+        public static void refreshStockList()
+        {
+            BillingDataDataContext db = new BillingDataDataContext();
+            _Stocks = db.Stocks.ToList();
+        }
         public static void refreshEmployeeList()
         {
             BillingDataDataContext db = new BillingDataDataContext();
@@ -112,6 +129,7 @@ namespace FinalUi
             refreshCityList();
             refreshClientList();
             refreshEmployeeList();
+            refreshStockList();
         }
     }
 }

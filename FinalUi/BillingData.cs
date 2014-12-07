@@ -32,34 +32,59 @@ namespace FinalUi
         {
             OnCreated();
         }
+        string verifyClient(Client instance)
+        {
+            string msg = "";
+            if (instance.CLCODE == "" || instance.CLCODE == null || instance.CLCODE.Length < 3 || instance.CLCODE.Length > 5)
+                msg += "Client Code must be between 3 - 5 charaters \n";
+            if (instance.CONTACTNO == "" || instance.CONTACTNO == null || instance.CONTACTNO.Length < 8 || instance.CONTACTNO.Length > 50)
+                msg += "Contact number must be between 8 to 50 characters \n";
+            if (instance.CLNAME == "" || instance.CLNAME == null)
+                msg += "Client name cannot be empty \n";
+            if ((instance.CLNAME ?? "").Length > 50)
+                msg += "Client name must be less than 50 characters \n";
+            if ((instance.EMAILID ?? "").Length > 50)
+                msg += "Email address must be less than 50 characters \n";
+            if (instance.ADDRESS == "" || instance.ADDRESS == null)
+                msg += "Client address cannot be empty \n";
+            if ((instance.ADDRESS ?? "").Length > 100)
+                msg += "Address must be less than 100 characters \n";
+            
+            return msg;
+        }
         partial void UpdateClient(Client instance)
         {
             string msg = "";
-            if (instance.CLCODE == "" || instance.CLCODE == null || instance.CLCODE.Length < 3)
-                msg += "Client Code must be at least three charaters \n";
-            if (instance.CONTACTNO == "" || instance.CONTACTNO == null || instance.CONTACTNO.Length < 8)
-                msg += "Enter correct contact number \n";
-            if (instance.CLNAME == "" || instance.CLNAME == null)
-                msg += "Client name cannot be empty";
-            if (instance.ADDRESS == "" || instance.ADDRESS == null)
-                msg += "Client address cannot be empty";
+            msg = verifyClient(instance);
             if (msg != "")
             {
                 throw new System.Exception(msg);
             }
             this.ExecuteDynamicUpdate(instance);
         }
-        partial void InsertEmployee(Employee instance)
+        partial void InsertClient(Client instance)
+        {
+            string msg = "";
+            msg = verifyClient(instance);
+            if (DataSources.ClientCopy.FindAll(x => x.CLCODE == instance.CLCODE).Count > 0)
+                msg += "A code with this client already exists + \n";
+            if (msg != "")
+                throw new System.Exception(msg);
+            this.ExecuteDynamicInsert(instance);
+        }
+        string verifyEmployee(Employee instance)
         {
             string msg = "";
             if (instance.Password == "" || instance.Password == null || instance.Password.Length < 6)
                 msg += "Password should be at least six Characters \n";
-            if (instance.UserName == "" || instance.UserName == null || instance.UserName.Length < 4)
-                msg += "UserName should be at least 4 Characters \n";
+            if (instance.UserName == "" || instance.UserName == null)
+                msg += "UserName must be present \n";
+            if ((instance.UserName ?? "").Length > 50)
+                msg += "Username lenght should be less than 50 characters \n";
             if (instance.Name == "" || instance.Name == null)
                 msg += "Name can not Be Empty \n";
-            if (instance.EMPCode == "" || instance.EMPCode == null || instance.EMPCode.Length < 3)
-                msg += "Employee Code should be at least 3 characters \n";
+            if (instance.EMPCode == "" || instance.EMPCode == null || instance.EMPCode.Length < 3 || instance.EMPCode.Length > 50)
+                msg += "Employee Code should be between  characters \n";
             if (instance.UserName.Length > 50)
                 msg += "Username should be lesser than 50 characters \n";
             if (instance.EMPCode.Length > 50)
@@ -70,7 +95,12 @@ namespace FinalUi
                 msg += "Contacts should be atmost 50 characters \n";
             if ((instance.Other ?? "").Length > 50)
                 msg += "Other details should be less than 50 characters \n";
-            BillingDataDataContext db = new BillingDataDataContext();
+            
+            return msg;
+        }
+        partial void InsertEmployee(Employee instance)
+        {
+            string msg = verifyEmployee(instance);
             DataSources.refreshEmployeeList();
             if ((DataSources.EmployeeCopy.FindAll(x => x.EMPCode == instance.EMPCode || x.UserName == instance.UserName)).Count > 0)
                 msg += "Username and employee code must be unique \n";
@@ -82,13 +112,7 @@ namespace FinalUi
         }
         partial void UpdateEmployee(Employee instance)
         {
-            string msg = "";
-            if (instance.Password == "" || instance.Password == null || instance.Password.Length < 6)
-                msg += "Password should be at least six Characters \n";
-            if (instance.UserName == "" || instance.UserName == null || instance.UserName.Length < 4)
-                msg += "UserName should be at least 4 Characters \n";
-            if (instance.Name == "" || instance.Name == null)
-                msg += "Name can not Be Empty \n";
+            string msg = verifyEmployee(instance);
             if (msg != "")
             {
                 throw new System.Exception(msg);

@@ -30,6 +30,7 @@ namespace FinalUi
         private void AddStockButton_Click(object sender, RoutedEventArgs e)
         {
             StockWindow window = new StockWindow();
+            window.Closed +=window_Closed;
             window.Show();
         }
 
@@ -61,6 +62,7 @@ namespace FinalUi
         void window_Closed(object sender, EventArgs e)
         {
             RefreshDataButton_Click(null, null);
+            DataSources.refreshStockList();
         }
 
         private void DeleteStockButton_Click(object sender, RoutedEventArgs e)

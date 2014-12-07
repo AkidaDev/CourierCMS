@@ -316,10 +316,10 @@ namespace FinalUi
         private void SanitizingWindow_Closed(object sender, EventArgs e)
         {
             distributeAllRecords();
-            BillingDataDataContext db = new BillingDataDataContext();
+           /* BillingDataDataContext db = new BillingDataDataContext();
             dataGridHelper.currentDataSheet.dataStack = db.RuntimeDatas.Where(x => x.UserId == SecurityModule.currentUserName && x.SheetNo == dataGridHelper.currentSheetNumber).ToList();
-            
-        }
+       */
+             }
 
         private void distributeAllRecords()
         {
@@ -892,7 +892,7 @@ namespace FinalUi
         }
         private void ManageEmployee_Click(object sender, RoutedEventArgs e)
         {
-            ManageEmployee window = new ManageEmployee(); window.ShowDialog();
+            ManageEmployee window = new ManageEmployee(); window.Show();
         }
         private void RateWindowMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -930,7 +930,7 @@ namespace FinalUi
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
             AddCity window = new AddCity();
-            window.ShowDialog();
+            window.Show();
         }
         private void ManageZone_Click(object sender, RoutedEventArgs e)
         {

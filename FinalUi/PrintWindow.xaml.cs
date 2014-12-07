@@ -142,16 +142,16 @@ namespace FinalUi
             basic = mainAmountValue;
             repParams.Add(new ReportParameter("MainAmountString",  String.Format("{0:0.00}",mainAmountValue)));
             repParams.Add(new ReportParameter("FuelString", TaxBox.Text));
-            repParams.Add(new ReportParameter("ServiceTaxString", ServiceTaxBox.Text));
-            repParams.Add(new ReportParameter("DiscountPString", DiscountBox.Text));
-            repParams.Add(new ReportParameter("MiscellaneousAmountString", MiscBox.Text));
+            repParams.Add(new ReportParameter("ServiceTaxString",String.Format("{0:0.00}",double.Parse(ServiceTaxBox.Text))));
+            repParams.Add(new ReportParameter("DiscountPString", String.Format("{0:0.00}",double.Parse(DiscountBox.Text))));
+            repParams.Add(new ReportParameter("MiscellaneousAmountString",MiscBox.Text));
             double discount = double.Parse(DiscountBox.Text) * mainAmountValue / 100;
             repParams.Add(new ReportParameter("DiscountAmountString",  String.Format("{0:0.00}",discount)));
             mainAmountValue = mainAmountValue - discount;
             double fuelAmount = double.Parse(TaxBox.Text) * mainAmountValue / 100;
             repParams.Add(new ReportParameter("FuelAmount", fuelAmount.ToString()));
             tax = double.Parse(ServiceTaxBox.Text) * mainAmountValue / 100;
-            repParams.Add(new ReportParameter("ServiceTaxAmount", tax.ToString()));
+            repParams.Add(new ReportParameter("ServiceTaxAmount", String.Format("{0:0.00}",tax)));
             taxamount = tax + fuelAmount;
             totalAmount = mainAmountValue + taxamount + double.Parse(MiscBox.Text) + double.Parse(PreviousDueTextBox.Text);
             repParams.Add(new ReportParameter("TotalAmountString",  String.Format("{0:0.00}",totalAmount)));
@@ -208,7 +208,7 @@ namespace FinalUi
                     invoice.PreviousDue = double.Parse(PreviousDueTextBox.Text);
                     invoice.Remarks = RemarkBox.Text;
                     invoice.STax = double.Parse(ServiceTaxBox.Text);
-                    invoice.TotalAmount = totalAmount;
+                    invoice.TotalAmount = totalAmount - invoice.PreviousDue??0;
                     invoice.Discount = double.Parse(DiscountBox.Text);
                     invoice.Misc = double.Parse(MiscBox.Text);
                 }

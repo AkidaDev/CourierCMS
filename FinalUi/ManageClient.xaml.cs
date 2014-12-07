@@ -62,8 +62,7 @@ namespace FinalUi
         private void AddClient_close(object sender, EventArgs e)
         {
             BillingDataDataContext db = new BillingDataDataContext();
-            var clients = (from client in db.Clients
-                       select client).ToList();
+            var clients = DataSources.ClientCopy;
             viewsource = (CollectionViewSource)FindResource("ClienTable");
             viewsource.Source = clients;
         }
@@ -104,8 +103,18 @@ namespace FinalUi
                     MessageBox.Show("Deletion failed with error : " + ex.Message,"Failure");
                 }
                 DataSources.refreshClientList();
+                ReloadClientGridButton_Click(null, null);
             }
 
+        }
+
+        private void ReloadClientGridButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataSources.refreshClientList();
+            clients = DataSources.ClientCopy;
+            viewsource = (CollectionViewSource)FindResource("ClienTable");
+            viewsource.Source = clients;
+ 
         }
     }
 }

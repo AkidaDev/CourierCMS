@@ -263,6 +263,7 @@
                                         <DataGridTextColumn Header="PinCode" Binding="{Binding DestinationPin}"/>
                                         <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
                                         <DataGridTextColumn Header="Mode" Binding="{Binding Mode}"/>
+                                        <DataGridTextColumn Header="Stock" Binding="{Binding Stock}"/>
                                     </DataGrid.Columns>
                                     <DataGrid.RowDetailsTemplate>
                                         <DataTemplate>

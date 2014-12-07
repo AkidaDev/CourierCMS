@@ -376,6 +376,18 @@ namespace FinalUi
         }
         private void DoneButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                SaveData();
+            }
+            catch (Exception ex)
+            {
+                MessageBoxResult result = MessageBox.Show("Data will not be saved. Error: " + ex.Message + ". Continue?", "Error", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.No)
+                {
+                    return;
+                }
+            }
             this.Close();
         }
         private void Previous_Click(object sender, RoutedEventArgs e)

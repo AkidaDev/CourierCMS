@@ -90,6 +90,8 @@ namespace FinalUi
             {
                 loadQuotation(qutObj);
             }
+            CostingRuleGrid.SelectedItems.Clear();
+            ServiceRuleGrid.SelectedItems.Clear();
         }
         void unLoadQuotation()
         {

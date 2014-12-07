@@ -6,6 +6,22 @@ using System.Web.Script.Serialization;
 
 namespace FinalUi
 {
+    public partial class RuntimeData
+    {
+        public string Stock
+        {
+            get
+            {
+                List<Stock> stock = DataSources.StockStatic.Where(x =>( String.Compare(x.StockStart.Trim().ToUpperInvariant(), this.ConsignmentNo.ToUpperInvariant()) <= 0 )&& (String.Compare(x.StockEnd.Trim().ToUpperInvariant(), this.ConsignmentNo.Trim().ToUpperInvariant()) >= 0)).ToList();
+                if (stock.Count > 0)
+                {
+                    return "Yes";
+                }
+                else
+                    return "No";
+            }
+        }
+    }
     public partial class Quotation
     {
         List<Rule> rulesList;
@@ -199,7 +215,7 @@ namespace FinalUi
         {
             get
             {
-                return this.CITY_CODE + ":" + this.CITY_DESC;
+                return this.CITY_DESC + ":" + this.CITY_CODE;
             }
         }
     }
