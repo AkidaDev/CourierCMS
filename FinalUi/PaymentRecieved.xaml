@@ -69,7 +69,7 @@
                 <Button Name="SubmitButton" Click="SubmitButton_Click" Style="{StaticResource all}" Canvas.Left="544" Canvas.Top="328">
                     <WrapPanel Margin="6,2,6,2">
                         <Path x:Name="done" Data="F1M10.909,23C10.909,23 2,14.224 2,14.224 2,14.224 4.227,12.03 4.227,12.03 4.227,12.03 10.909,18.612 10.909,18.612 10.909,18.612 27.773,2 27.773,2 27.773,2 30,4.194 30,4.194 30,4.194 10.909,23 10.909,23z" Fill="Black" Height="24" Width="31"/>
-                        <TextBlock x:Name="Save" FontWeight="Bold" FontSize="24" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="24" TextAlignment="Left" TextWrapping="Wrap" Text="Save" Margin="2,3,3,3" />
+                        <TextBlock x:Name="Save" FontWeight="Bold" FontSize="24" FontFamily="Calibri" Text=" Save"/>
                     </WrapPanel>
                 </Button>
             </Canvas>

@@ -24,7 +24,7 @@
         <CommandBinding Command="ApplicationCommands.Close" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
         <CommandBinding Command="ApplicationCommands.Print" Executed="ExecutePrint" CanExecute="CanExecutePrintCommand"/>
     </Window.CommandBindings>
-    <Grid Name="MainGrid" Margin="7" Background="White">
+    <Grid Name="MainGrid" Margin="7" Background="Turquoise">
         <Grid.Effect>
             <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
         </Grid.Effect>
@@ -38,6 +38,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="6"/>
         </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1" Grid.Row="1" Margin="-6" Background="#01ffffff" MouseDown="Grid_MouseDown"/>
         <Grid Grid.Column="1" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -50,38 +51,39 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="116"/>
                 </Grid.ColumnDefinitions>
-                <Menu Background="Transparent" FontSize="14" Margin="6 6 6 0">
+                <Menu Background="Transparent" FontSize="14" Margin="6 6 0 0" Foreground="White">
                     <MenuItem ToolTip="Open new document" Header="File" Margin="10 0 0 0">
-                        <MenuItem Header="New Sheet" Name="NewSheetMenuItem" />
-                        <MenuItem Header="Import Data" Name="ImportDataMenuItem" Command="ApplicationCommands.Open"/>
-                        <MenuItem Header="Print" Name="PrintMenuItem" Command="ApplicationCommands.Print"/>
-                        <MenuItem Header="Log Out" Click="MenuItem_Click"/>
+                        <MenuItem Header="New Sheet" Name="NewSheetMenuItem" Foreground="Black"/>
+                        <MenuItem Header="Import Data" Name="ImportDataMenuItem" Command="ApplicationCommands.Open" Foreground="Black"/>
+                        <MenuItem Header="Print" Name="PrintMenuItem" Command="ApplicationCommands.Print" Foreground="Black"/>
+                        <MenuItem Header="Log Out" Click="MenuItem_Click" Foreground="Black"/>
                     </MenuItem>
                     <MenuItem ToolTip="Open advanced options" Header="View" Margin="10 0 0 0">
-                        <MenuItem Header="Managment">
-                            <MenuItem Header="Add City" Click="MenuItem_Click_1" />
-                            <MenuItem Header="Clients" Name="ManageClient" Click="ManageClient_Click"/>
-                            <MenuItem Header="Employees" Name="ManageEmployeeMenuItem" Click="ManageEmployee_Click"/>
-                            <MenuItem Header="Zones" Name="ManageZone" Click="ManageZone_Click"/>
-                            <MenuItem Header="Stock" Name="ManageStocks" Click="ManageStock_Click"/>
+                        <MenuItem Header="Managment" Foreground="Black">
+                            <MenuItem Header="Add City" Click="MenuItem_Click_1" Foreground="Black"/>
+                            <MenuItem Header="Clients" Name="ManageClient" Click="ManageClient_Click" Foreground="Black"/>
+                            <MenuItem Header="Employees" Name="ManageEmployeeMenuItem" Click="ManageEmployee_Click" Foreground="Black"/>
+                            <MenuItem Header="Zones" Name="ManageZone" Click="ManageZone_Click" Foreground="Black"/>
+                            <MenuItem Header="Stock" Name="ManageStocks" Click="ManageStock_Click" Foreground="Black"/>
                         </MenuItem>
-                        <MenuItem Header="Account Statement" Name="AccountStatementMenuItem" Click="AccountStatementMenuItem_Click" />
-                        <MenuItem Header="Payment Entry" Name="PaymentRecievedMenuItem" Click="PaymentRecieved_Click"/>
-                        <MenuItem Header="Payment Details" Name="PaymentEntryMenuItem" Click="PaymentEntry_Click"/>
-                        <MenuItem Header="Client Report" Name="ClientReport" Click="ClientReport_Click"/>
+                        <MenuItem Header="Account Statement" Name="AccountStatementMenuItem" Click="AccountStatementMenuItem_Click" Foreground="Black"/>
+                        <MenuItem Header="Payment Entry" Name="PaymentRecievedMenuItem" Click="PaymentRecieved_Click" Foreground="Black"/>
+                        <MenuItem Header="Payment Details" Name="PaymentEntryMenuItem" Click="PaymentEntry_Click" Foreground="Black"/>
+                        <MenuItem Header="Client Report" Name="ClientReport" Click="ClientReport_Click" Foreground="Black"/>
                     </MenuItem>
                     <MenuItem ToolTip="Editing Tools" Header="Tools" Margin="10 0 0 0">
-                        <MenuItem Header="Peferences" Name="Peferences" Click="Peferences_Click" />
-                        <MenuItem Header="Hide/Show Image" Click="MenuItem_hideimage" />
-                        <MenuItem Header="Invoice Analysis" Click="InvoiceAnalysis_Click"/>
+                        <MenuItem Header="Peferences" Name="Peferences" Click="Peferences_Click" Foreground="Black"/>
+                        <MenuItem Header="Hide/Show Image" Click="MenuItem_hideimage" Foreground="Black"/>
+                        <MenuItem Header="Invoice Analysis" Click="InvoiceAnalysis_Click" Foreground="Black"/>
                     </MenuItem>
                     <MenuItem ToolTip="Know more" Header="Help" Margin="10 0 0 0">
-                        <MenuItem Header="View Help" Name="ViewHelp" Click="ViewHelp_Click"/>
-                        <MenuItem Header="About" Name="AboutMenuItem" Click="AboutMenuItem_Click"/>
+                        <MenuItem Header="View Help" Name="ViewHelp" Click="ViewHelp_Click" Foreground="Black"/>
+                        <MenuItem Header="About" Name="AboutMenuItem" Click="AboutMenuItem_Click" Foreground="Black"/>
                     </MenuItem>
                 </Menu>
-                <TextBlock Grid.Column="1" FontSize="18" TextAlignment="Center" Text="ORTEX" Margin="34,4,0,0" Width="64"/>
-                <TextBlock Grid.Column="1" FontSize="24" TextAlignment="Center" Text="V" FontWeight="Bold" Margin="-34,-2,0,0" Width="20"/>
+                <TextBlock Grid.Column="1" Foreground="White" TextAlignment="Center" FontSize="18">
+                    <Bold FontSize="24">V</Bold>ORTEX
+                </TextBlock>
                 <Button MouseDoubleClick="NormalMaximize_Click" Style="{StaticResource window}" Grid.Column="1">
                     <Rectangle MouseDown="Grid_MouseDown" Fill="Transparent" Height="26" Stretch="Fill" Width="1920"/>
                 </Button>

@@ -89,8 +89,8 @@
                 <TextBox Name="RemarkBox" BorderThickness="2" Height="26" Canvas.Left="194" Canvas.Top="215" Width="528" Padding="3 3 0 0"/>
             </Canvas>
             <Button Name="Previous" Canvas.Right="200" Canvas.Bottom="15" Style="{StaticResource all}"  Click="Previous_Click" >
-                <WrapPanel Margin="8,6">
-                    <Path x:Name="PreviousPath" Data="F1M24.383,14.132C24.383,14.132 32.794,22.624 32.794,22.624 32.794,22.624 24.383,31.117 24.383,31.117 24.383,31.117 24.383,25.809 24.383,25.809 24.383,25.809 11.765,25.809 11.765,25.809 11.765,25.809 11.765,19.44 11.765,19.44 11.765,19.44 24.383,19.44 24.383,19.44 24.383,19.44 24.383,14.132 24.383,14.132z M22.25,6.05C13.34,6.05 6.05,13.34 6.05,22.25 6.05,31.16 13.34,38.45 22.25,38.45 31.16,38.45 38.45,31.16 38.45,22.25 38.45,13.34 31.16,6.05 22.25,6.05z M22.25,2C33.387,2 42.5,11.112 42.5,22.25 42.5,33.387 33.387,42.5 22.25,42.5 11.112,42.5 2,33.387 2,22.25 2,11.112 11.112,2 22.25,2z" Fill="Black" Height="23" Width="23" Stretch="Fill" Margin="0,0,3,0" RenderTransformOrigin="0.5,0.5">
+                <WrapPanel Margin="7 4">
+                    <Path x:Name="PreviousPath" Data="F1M24.383,14.132C24.383,14.132 32.794,22.624 32.794,22.624 32.794,22.624 24.383,31.117 24.383,31.117 24.383,31.117 24.383,25.809 24.383,25.809 24.383,25.809 11.765,25.809 11.765,25.809 11.765,25.809 11.765,19.44 11.765,19.44 11.765,19.44 24.383,19.44 24.383,19.44 24.383,19.44 24.383,14.132 24.383,14.132z M22.25,6.05C13.34,6.05 6.05,13.34 6.05,22.25 6.05,31.16 13.34,38.45 22.25,38.45 31.16,38.45 38.45,31.16 38.45,22.25 38.45,13.34 31.16,6.05 22.25,6.05z M22.25,2C33.387,2 42.5,11.112 42.5,22.25 42.5,33.387 33.387,42.5 22.25,42.5 11.112,42.5 2,33.387 2,22.25 2,11.112 11.112,2 22.25,2z" Fill="Black" Height="23" Width="23" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
                         <Path.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -100,22 +100,22 @@
                             </TransformGroup>
                         </Path.RenderTransform>
                     </Path>
-                    <TextBlock FontWeight="Bold" FontSize="24" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="413" LineHeight="24" TextAlignment="Left" TextWrapping="Wrap" Text="Previous" Canvas.Top="363.88" Height="20" />
+                    <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Previous"/>
                 </WrapPanel>
             </Button>
             <Button  Name="Next" Canvas.Right="15" Canvas.Bottom="15" Style="{StaticResource all}" Click="Next_Click">
                 <Button.Content>
-                    <WrapPanel Margin="8,6">
+                    <WrapPanel Margin="7 4">
                         <Path x:Name="next" Data="F1M24.383,14.132C24.383,14.132 32.794,22.624 32.794,22.624 32.794,22.624 24.383,31.117 24.383,31.117 24.383,31.117 24.383,25.809 24.383,25.809 24.383,25.809 11.765,25.809 11.765,25.809 11.765,25.809 11.765,19.44 11.765,19.44 11.765,19.44 24.383,19.44 24.383,19.44 24.383,19.44 24.383,14.132 24.383,14.132z M22.25,6.05C13.34,6.05 6.05,13.34 6.05,22.25 6.05,31.16 13.34,38.45 22.25,38.45 31.16,38.45 38.45,31.16 38.45,22.25 38.45,13.34 31.16,6.05 22.25,6.05z M22.25,2C33.387,2 42.5,11.112 42.5,22.25 42.5,33.387 33.387,42.5 22.25,42.5 11.112,42.5 2,33.387 2,22.25 2,11.112 11.112,2 22.25,2z" Fill="Black" Height="23" Width="23" Stretch="Fill" Margin="0,0,3,0"/>
-                        <TextBlock FontWeight="Bold" FontSize="24" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="413" LineHeight="24" TextAlignment="Left" TextWrapping="Wrap" Text="Next" Canvas.Top="363.88" Height="20" />
+                        <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Next"/>
                     </WrapPanel>
                 </Button.Content>
             </Button>
             <Button  Name="AddRuleButton" Click="AddRuleButton_Click" Canvas.Right="15" Canvas.Bottom="15" Style="{StaticResource all}" Visibility="Collapsed">
                 <Button.Content>
-                    <WrapPanel Margin="8,6">
+                    <WrapPanel Margin="7 4">
                         <Path  Data="F1M13.455,5.818C13.455,5.818 13.455,9.636 13.455,9.636 13.455,9.636 9.636,9.636 9.636,9.636 9.636,9.636 9.636,11.545 9.636,11.545 9.636,11.545 13.455,11.545 13.455,11.545 13.455,11.545 13.455,15.364 13.455,15.364 13.455,15.364 15.364,15.364 15.364,15.364 15.364,15.364 15.364,11.545 15.364,11.545 15.364,11.545 19.182,11.545 19.182,11.545 19.182,11.545 19.182,9.636 19.182,9.636 19.182,9.636 15.364,9.636 15.364,9.636 15.364,9.636 15.364,5.818 15.364,5.818 15.364,5.818 13.455,5.818 13.455,5.818z M2,5.818C2,5.818 3.909,5.818 3.909,5.818 3.909,5.818 3.909,21.091 3.909,21.091 3.909,21.091 19.182,21.091 19.182,21.091 19.182,21.091 19.182,23 19.182,23 19.182,23 3.909,23 3.909,23 2.859,23 2,22.141 2,21.091 2,21.091 2,5.818 2,5.818z M7.727,2C7.727,2 21.091,2 21.091,2 22.141,2 23,2.859 23,3.909 23,3.909 23,17.273 23,17.273 23,18.323 22.141,19.182 21.091,19.182 21.091,19.182 7.727,19.182 7.727,19.182 6.677,19.182 5.818,18.323 5.818,17.273 5.818,17.273 5.818,3.909 5.818,3.909 5.818,2.859 6.677,2 7.727,2z" Fill="Black" Height="24" Width="24"/>
-                        <TextBlock FontWeight="Bold" Name="AddRuleButtonBox" FontSize="22" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="413" LineHeight="24" TextAlignment="Left" TextWrapping="Wrap" Text="Add Rule" Canvas.Top="363.88" Height="20" Margin="5 0 0 0"/>
+                        <TextBlock FontWeight="Bold" Name="AddRuleButtonBox" FontSize="18" FontFamily="Calibri" Text=" Add Rule"/>
                     </WrapPanel>
                 </Button.Content>
             </Button>
@@ -130,8 +130,8 @@
             <Button Style="{StaticResource all}" Canvas.Left="676" Canvas.Top="36">
                 <Button.Content>
                     <WrapPanel Margin="8,5">
-                        <Path x:Name="help" Data="F1M10.9,17.5C10.9,17.5 10.9,19.7 10.9,19.7 10.9,19.7 13.1,19.7 13.1,19.7 13.1,19.7 13.1,17.5 13.1,17.5 13.1,17.5 10.9,17.5 10.9,17.5z M12,4.3C9.58,4.3 7.6,6.28 7.6,8.7 7.6,8.7 9.8,8.7 9.8,8.7 9.8,7.49 10.79,6.5 12,6.5 13.21,6.5 14.2,7.49 14.2,8.7 14.2,9.36 13.98,9.91 13.54,10.24 13.54,10.24 12.22,11.67 12.22,11.67 11.34,12.44 10.9,13.54 10.9,14.75 10.9,14.75 10.9,15.3 10.9,15.3 10.9,15.3 13.1,15.3 13.1,15.3 13.1,13.65 13.54,12.99 14.42,12.22 14.42,12.22 15.41,11.23 15.41,11.23 15.96,10.57 16.4,9.69 16.4,8.7 16.4,6.28 14.42,4.3 12,4.3z M12,1C18.05,1 23,5.95 23,12 23,18.05 18.05,23 12,23 5.95,23 1,18.05 1,12 1,5.95 5.95,1 12,1z" Fill="#FF5061B0" Height="21" Canvas.Left="384" Canvas.Top="4" Width="21" Stretch="Fill"/>
-                        <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"  LineHeight="18" TextAlignment="Center" Text="Help" Padding="5 3 0 0"/>
+                        <Path x:Name="help" Data="F1M10.9,17.5C10.9,17.5 10.9,19.7 10.9,19.7 10.9,19.7 13.1,19.7 13.1,19.7 13.1,19.7 13.1,17.5 13.1,17.5 13.1,17.5 10.9,17.5 10.9,17.5z M12,4.3C9.58,4.3 7.6,6.28 7.6,8.7 7.6,8.7 9.8,8.7 9.8,8.7 9.8,7.49 10.79,6.5 12,6.5 13.21,6.5 14.2,7.49 14.2,8.7 14.2,9.36 13.98,9.91 13.54,10.24 13.54,10.24 12.22,11.67 12.22,11.67 11.34,12.44 10.9,13.54 10.9,14.75 10.9,14.75 10.9,15.3 10.9,15.3 10.9,15.3 13.1,15.3 13.1,15.3 13.1,13.65 13.54,12.99 14.42,12.22 14.42,12.22 15.41,11.23 15.41,11.23 15.96,10.57 16.4,9.69 16.4,8.7 16.4,6.28 14.42,4.3 12,4.3z M12,1C18.05,1 23,5.95 23,12 23,18.05 18.05,23 12,23 5.95,23 1,18.05 1,12 1,5.95 5.95,1 12,1z" Fill="#FF5061B0" Height="21" Width="21" Stretch="Fill"/>
+                        <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Help"/>
                     </WrapPanel>
                 </Button.Content>
             </Button>
