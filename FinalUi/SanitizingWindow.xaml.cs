@@ -108,6 +108,7 @@ namespace FinalUi
                     data = new RuntimeData();
                     data.Id = Guid.NewGuid();
                     data.ConsignmentNo = ConnsignmentNumber.Text;
+
                 }
                 else
                 {
@@ -173,7 +174,10 @@ namespace FinalUi
                 if (float.TryParse(BilledWeightTextBox.Text, out tempValue))
                     data.BilledWeight = double.Parse(BilledWeightTextBox.Text, CultureInfo.InvariantCulture);
             }
-
+            data.ConsigneeName = ConsgineeName.Text;
+            data.ConsigneeAddress = ConsigneeAddress.Text;
+            data.ConsignerName = ConsignerName.Text;
+            data.ConsignerAddress = ConsignerAddress.Text;
             return data;
         }
         public void dupliData(RuntimeData sData, RuntimeData dData)
@@ -204,6 +208,10 @@ namespace FinalUi
             dData.UserId = sData.UserId;
             dData.Weight = sData.Weight;
             dData.Client_Desc = sData.Client_Desc;
+            dData.ConsigneeName = sData.ConsigneeName;
+            dData.ConsignerAddress = sData.ConsignerAddress;
+            dData.ConsignerName = sData.ConsignerName;
+            dData.ConsigneeAddress = sData.ConsigneeAddress;
         }
         public void SaveData()
         {
@@ -365,6 +373,11 @@ namespace FinalUi
                 TypeComboBox.Text = DataSources.ServicesCopy.Where(x => x.SER_CODE == data.Type.Trim()).Select(y => y.NameAndCode).FirstOrDefault();
             if (data.Mode != "" && data.Mode != null)
                 MODE.Text = data.Mode.Trim();
+            ConsigneeAddress.Text = data.ConsigneeAddress ?? "";
+            ConsgineeName.Text = data.ConsigneeName ?? "";
+            ConsignerAddress.Text = data.ConsignerAddress ?? "";
+            ConsignerName.Text = data.ConsignerName ?? "";
+            SlipCost.Text = data.Stock;
         }
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {

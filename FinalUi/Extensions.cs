@@ -15,10 +15,10 @@ namespace FinalUi
                 List<Stock> stock = DataSources.StockStatic.Where(x =>( String.Compare(x.StockStart.Trim().ToUpperInvariant(), this.ConsignmentNo.ToUpperInvariant()) <= 0 )&& (String.Compare(x.StockEnd.Trim().ToUpperInvariant(), this.ConsignmentNo.Trim().ToUpperInvariant()) >= 0)).ToList();
                 if (stock.Count > 0)
                 {
-                    return "Yes";
+                    return stock.First().cost.ToString();
                 }
                 else
-                    return "No";
+                    return "N/A";
             }
         }
     }

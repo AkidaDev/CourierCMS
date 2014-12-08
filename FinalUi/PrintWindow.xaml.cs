@@ -241,6 +241,8 @@ namespace FinalUi
                 try
                 {
                     db.SubmitChanges();
+                    MessageBox.Show("Invoice Saved... ", "Information");
+                    this.Close();
                 }
                 catch (Exception ex)
                 {

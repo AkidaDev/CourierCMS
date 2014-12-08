@@ -164,16 +164,29 @@ namespace FinalUi
             DeleteSheetWorker = new BackgroundWorker();
             DeleteSheetWorker.DoWork += DeleteWorker_DoWork;
             DeleteSheetWorker.RunWorkerCompleted += DeleteWorker_RunWorkerCompleted;
+            costingRules = new List<CostingRule>();
+            setUiFromPermissions();
+        }
+
+        private void setUiFromPermissions()
+        {
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "ManageEmployee"))
+            {
                 this.ManageEmployeeMenuItem.Visibility = Visibility.Collapsed;
+                TreeViewEmployee.Visibility = Visibility.Collapsed;
+            }
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "ManageClient"))
+            {
                 this.ManageClient.Visibility = Visibility.Collapsed;
-            if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "Print"))
+                TreeViewClient.Visibility = System.Windows.Visibility.Collapsed;
+            }
+            if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "CreateInvoice"))
             {
                 this.PrintButton.Visibility = this.PrintMenuItem.Visibility = this.AfterPrint.Visibility = Visibility.Collapsed;
             }
-            costingRules = new List<CostingRule>();
+
         }
+
 
         #region DataEntrySection
         #region backGround Worker Functions
@@ -316,14 +329,14 @@ namespace FinalUi
         private void SanitizingWindow_Closed(object sender, EventArgs e)
         {
             distributeAllRecords();
-           /* BillingDataDataContext db = new BillingDataDataContext();
-            dataGridHelper.currentDataSheet.dataStack = db.RuntimeDatas.Where(x => x.UserId == SecurityModule.currentUserName && x.SheetNo == dataGridHelper.currentSheetNumber).ToList();
-       */
-             }
+            /* BillingDataDataContext db = new BillingDataDataContext();
+             dataGridHelper.currentDataSheet.dataStack = db.RuntimeDatas.Where(x => x.UserId == SecurityModule.currentUserName && x.SheetNo == dataGridHelper.currentSheetNumber).ToList();
+        */
+        }
 
         private void distributeAllRecords()
         {
-            dataGridHelper.rowsPerPage = currentRowsPerPage; 
+            dataGridHelper.rowsPerPage = currentRowsPerPage;
         }
         #endregion
         #region PowerEntryCommand
@@ -381,7 +394,7 @@ namespace FinalUi
         }
         private void CanExecutePrintCommand(object sender, CanExecuteRoutedEventArgs e)
         {
-            if (dataGridHelper != null && dataGridHelper.areSheetsPresent && dataGridHelper.getCurrentDataStack.Count > 0)
+            if (dataGridHelper != null && dataGridHelper.areSheetsPresent && dataGridHelper.getCurrentDataStack.Count > 0 && SecurityModule.hasPermission(SecurityModule.employee.Id, "CreateInvoice"))
             {
                 e.CanExecute = true;
             }
@@ -1246,7 +1259,7 @@ namespace FinalUi
                     MessageBox.Show("This client cannot be deleted");
                     return;
                 }
-             
+
                 db.Clients.DeleteOnSubmit(client);
                 db.SubmitChanges();
             }

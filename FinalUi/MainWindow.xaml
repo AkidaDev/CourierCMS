@@ -122,9 +122,9 @@
                     </TreeView>
                     <TreeView BorderThickness="0" Background="Transparent">
                         <TreeViewItem BorderBrush="Transparent" BorderThickness="0" Margin="6 5 0 0" FontSize="15" FontWeight="Bold" Padding="4 1 0 4" Header="Manager">
-                            <TreeViewItem Header=" Client" FontSize="14" Padding=" 0 0 0 2" MouseDoubleClick="clienttreeviewitembutton_Click" FontWeight="Normal"/>
-                            <TreeViewItem Header=" Employee" FontSize="14" Padding=" 0 0 0 2" MouseDoubleClick="Employeetreeviewitembutton_Click" FontWeight="Normal"/>
-                            <TreeViewItem Header=" City" FontSize="14" Padding=" 0 0 0 2" MouseDoubleClick="citytreeviewitembutton_Click" FontWeight="Normal"/>
+                            <TreeViewItem Name="TreeViewClient" Header=" Client" FontSize="14" Padding=" 0 0 0 2" MouseDoubleClick="clienttreeviewitembutton_Click" FontWeight="Normal"/>
+                            <TreeViewItem Name="TreeViewEmployee" Header=" Employee" FontSize="14" Padding=" 0 0 0 2" MouseDoubleClick="Employeetreeviewitembutton_Click" FontWeight="Normal"/>
+                            <TreeViewItem Name="TreeViewCity" Header=" City" FontSize="14" Padding=" 0 0 0 2" MouseDoubleClick="citytreeviewitembutton_Click" FontWeight="Normal"/>
                             <TreeViewItem Header=" Hide all Table" FontSize="14" Padding=" 0 0 0 2" MouseDoubleClick="CloseTableTreeView_Selected" FontWeight="Normal"/>
                         </TreeViewItem>
                     </TreeView>
