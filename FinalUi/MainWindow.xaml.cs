@@ -101,13 +101,10 @@ namespace FinalUi
             PreviewMouseMove += OnPreviewMouseMove;
             #endregion
             #region WindowDimensionsCode
-            this.Left = 0;
-            this.Top = 0;
-            //this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             this.WindowState = WindowState.Normal;
             this.MainGrid.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Configs.Default.Background));
-            this.MaxHeight = System.Windows.SystemParameters.MaximizedPrimaryScreenHeight - 8;
-            this.MaxWidth = System.Windows.SystemParameters.MaximizedPrimaryScreenWidth - 6;
+            this.MaxHeight = System.Windows.SystemParameters.MaximizedPrimaryScreenHeight;
+            this.MaxWidth = System.Windows.SystemParameters.MaximizedPrimaryScreenWidth;
             #endregion
             db = new BillingDataDataContext();
             ResourceDictionary dict = this.Resources;
@@ -699,7 +696,7 @@ namespace FinalUi
                         path.Fill = Brushes.Black;
                         StackPanel panel = new StackPanel();
                         panel.Children.Add(path);
-                        this.minimax.Margin = new Thickness(0, 6, 6, 0);
+                        this.minimax.Margin = new Thickness(0, 0, 6, 0);
                         this.NormalMaximize.Content = panel;
                         this.NormalMaximize.ToolTip = "Restore Down";
                         break;

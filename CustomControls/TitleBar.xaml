@@ -28,16 +28,14 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="116"/>
                 </Grid.ColumnDefinitions>
-                <WrapPanel VerticalAlignment="Center">
-                    <TextBlock HorizontalAlignment="Left" Text="IC"/>
-                </WrapPanel>
-                <Canvas Grid.Column="1">
-                    <Button MouseDoubleClick="NormalMaximize_Click" Style="{StaticResource window}">
-                        <Path MouseDown="Grid_MouseDown" Name="Memu_bar" Data="F1M1,1C1,1 321,1 321,1 321,1 321,25 321,25 321,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="25" Stretch="Fill" Width="1920"/>
+                    <WrapPanel VerticalAlignment="Center">
+                        <TextBlock HorizontalAlignment="Left" Text="IC"/>
+                    </WrapPanel>
+                    <Button Grid.Column="1" MouseDoubleClick="NormalMaximize_Click" Style="{StaticResource window}">
+                        <Rectangle MouseDown="Grid_MouseDown" Name="Memu_bar" Fill="Transparent" Height="26" Stretch="Fill" Width="1920"/>
                     </Button>
-                </Canvas>
                 <WrapPanel Grid.Column="2" Name="minimax" HorizontalAlignment="Right" Margin="0 0 6 0">
                 <Button ToolTip="Minimize" Style="{StaticResource 1}" Name="MinimizeButton" Click="MinimizeButton_Click" Width="25">
                     <Path Name="minimize" Data="F1M2,4C2,4 2,2 2,2 2,2 14,2 14,2 14,2 14,4 14,4 14,4 2,4 2,4z" Fill="Black" Height="5" Width="12" Margin="-1,0,0,-7"/>
