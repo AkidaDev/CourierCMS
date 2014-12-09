@@ -83,13 +83,7 @@ namespace FinalUi
     partial void DeleteRuntimeData(RuntimeData instance);
     #endregion
 		
-		public BillingDataDataContext() : 
-				base("Data Source=SYSTEM;Initial Catalog=BillingDatabase;Persist Security Info=True;Use" +
-						"r ID=sa;Password=Alver!22", mappingSource)
-		{
-			OnCreated();
-		}
-		
+
 		public BillingDataDataContext(string connection) : 
 				base(connection, mappingSource)
 		{

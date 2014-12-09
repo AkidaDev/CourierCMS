@@ -180,5 +180,10 @@ namespace FinalUi
         {
             DragMove();
         }
+
+        private void SubClientCheck_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show(SubClientCheck.Checked.ToString());
+        }
     }
 }
