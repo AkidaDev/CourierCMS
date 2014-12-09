@@ -83,7 +83,7 @@ namespace FinalUi
     partial void DeleteRuntimeData(RuntimeData instance);
     #endregion
 		
-		
+
 		public BillingDataDataContext(string connection) : 
 				base(connection, mappingSource)
 		{

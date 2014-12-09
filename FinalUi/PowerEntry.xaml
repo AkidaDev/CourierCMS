@@ -2,44 +2,77 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		Icon="Images/logo.ico"
-        Title="PowerEntry" Height="260" Width="372" Background="Transparent"
+        Title="PowerEntry" Height="350" Width="600" Background="Transparent"
+        xmlns:cstmcntrl="clr-namespace:CustomControls;assembly=CustomControls"
 		ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Normal" BorderBrush="Transparent" AllowsTransparency="True" Padding="20">
     <Window.Resources>
         <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"/>
     </Window.Resources>
-    <Grid  Height="210" UseLayoutRounding="False"  Width="322"  >
+    <Grid  Height="300" Width="550" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <Grid.Effect>
             <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
         </Grid.Effect>
-        <Canvas x:Name="MainPanel" ClipToBounds="True" HorizontalAlignment="Left" Height="210" UseLayoutRounding="False" VerticalAlignment="Top" Width="322" Background="White">
-            <Path x:Name="Vertical_line" Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Black" Height="4" Canvas.Left="46" Canvas.Top="53" Width="237"/>
-            <Path x:Name="detail" Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Black" Height="24" Canvas.Left="19" Canvas.Top="32" Width="24"/>
-            <TextBlock x:Name="Enter_Details___" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="47" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Enter Details .:" Canvas.Top="38.16"/>
-
-            <TextBlock  Text="Starting Index .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="43.859" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Canvas.Top="80.2"/>
-            <ComboBox Name="startConnNo"  Width="90" Height="22" IsEditable="True" ItemsSource="{Binding}" Canvas.Left="166.963" Canvas.Top="76.2"/>
-
-            <TextBlock  Text="Ending Index   .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="43.026" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Canvas.Top="110.2"/>
-            <ComboBox Name="endConnNo"  Width="90" Height="22" IsEditable="True" ItemsSource="{Binding}" Canvas.Left="166.963" Canvas.Top="106.2"/>
-
-            <TextBlock  Text="Select Client    .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="42.859" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Canvas.Top="140.2"/>
-            <ComboBox Name="clientCode" DataContext="{StaticResource ClientList}" DisplayMemberPath="NameAndCode" Width="90" Height="22" IsEditable="True" ItemsSource="{Binding}" Canvas.Left="166.963" Canvas.Top="136.2"/>
-
-            <Button Name="SubmitRecords" Click="SubmitRecords_Click" Style="{StaticResource all}" Canvas.Left="212" Canvas.Top="163">
-                <WrapPanel Margin="7 4">
-                    <Path x:Name="done" Data="F1M10.909,23C10.909,23 2,14.224 2,14.224 2,14.224 4.227,12.03 4.227,12.03 4.227,12.03 10.909,18.612 10.909,18.612 10.909,18.612 27.773,2 27.773,2 27.773,2 30,4.194 30,4.194 30,4.194 10.909,23 10.909,23z" Fill="Black" Height="24" Width="31"/>
-                    <TextBlock x:Name="Save" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Done"/>
-                </WrapPanel>
-            </Button>
-            <ProgressBar Name="progressbar" Minimum="0" Maximum="100" Value="0" Height="33" Width="174" Canvas.Top="163" Canvas.Left="19" ></ProgressBar>
-            <Rectangle Fill="#FFCBCBCB" Height="26" Width="322" Stretch="Fill" Stroke="Black" />
-            <TextBlock FontSize="16" Height="24" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Power Entry" Canvas.Top="4.666" Width="320" FontFamily="Arial"/>
-            <Rectangle MouseDown="DragthisWindow" Fill="Transparent" Height="26" Width="322" Stretch="Fill" />
-            <Button ToolTip="Close" Height="18" Canvas.Left="283" Click="Button_Click_Close" Canvas.Top="4" Width="35" Style="{StaticResource 1}">
-                <Path x:Name="close" Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,
-                  12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,
-                  3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" Width="15" Height="15"/>
-            </Button>
-        </Canvas>
+        <Path Grid.Row="1" VerticalAlignment="Bottom" Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Black" Height="4" Width="237"/>
+        <Path Grid.Row="1" Margin="133 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Black" Height="24" Width="24"/>
+        <TextBlock Grid.Row="1" Margin="158 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Enter Details .:"/>
+        <WrapPanel Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <TextBlock  Text="Starting Index .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
+            <ComboBox Name="startConnNo"  Width="110" IsEditable="True" ItemsSource="{Binding}"/>
+            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -4 15 -3"/>
+            <TextBlock  Text="Ending Index   .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
+            <ComboBox Name="endConnNo"  Width="110" IsEditable="True" ItemsSource="{Binding}"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Path Data="F1M7.006,17.756C8.089,18.341 9.324,18.675 10.635,18.675 11.947,18.675 13.183,18.341 14.264,17.756 16.602,18.374 18.432,19.843 19.272,23 19.272,23 2,23 2,23 2.839,19.843 4.67,18.375 7.006,17.756z M22.992,14.925C25.33,15.543 27.161,17.011 28,20.168 28,20.168 19.469,20.168 19.469,20.168 18.486,18.463 17.033,17.311 15.075,16.685 15.597,16.276 16.061,15.798 16.456,15.264 17.354,15.635 18.334,15.843 19.363,15.843 20.674,15.843 21.911,15.51 22.992,14.925z M6.639,12.72C7.558,14.518 9.136,15.706 10.928,15.706 12.722,15.706 14.298,14.518 15.217,12.72 15.217,12.72 6.639,12.72 6.639,12.72z M10.635,4.831C13.958,4.831 16.649,7.548 16.649,10.899 16.649,14.252 13.958,16.968 10.635,16.968 7.313,16.968 4.621,14.252 4.621,10.899 4.621,7.548 7.313,4.831 10.635,4.831z M19.363,2C22.685,2 25.377,4.717 25.377,8.068 25.377,11.421 22.685,14.137 19.363,14.137 18.642,14.137 17.954,14.003 17.313,13.768 17.499,13.331 17.641,12.872 17.74,12.396 18.332,12.704 18.979,12.874 19.656,12.874 21.449,12.874 23.026,11.686 23.944,9.888 23.944,9.888 17.819,9.888 17.819,9.888 17.513,7.667 16.22,5.766 14.398,4.645 15.482,3.049 17.3,2 19.363,2z" Fill="Black" Height="19" Width="23" Stretch="Fill"/>
+            <TextBlock  Text=" Select Client .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
+            <ComboBox Name="clientCode" DataContext="{StaticResource ClientList}" DisplayMemberPath="NameAndCode" Width="300" IsEditable="True" ItemsSource="{Binding}"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="4" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <cstmcntrl:PandaCheckbox  Name="SubClientCheck" Checked="True"/>
+            <TextBlock Text=" Sub Client .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom" Margin="1 0 0 0"/>
+            <TextBox Width="250"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <cstmcntrl:PandaCheckbox  Name="ConsignerCheck" Checked="True"/>
+            <TextBlock Text=" Consigner .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom" Margin="2 0 0 0"/>
+            <TextBox Width="250"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="6" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2 0 0 0">
+            <cstmcntrl:PandaCheckbox  Name="Consignee" Checked="True"/>
+            <TextBlock Text=" Consignee .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
+            <TextBox Width="250" Margin="-1 0 0 0"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="7" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <cstmcntrl:PandaCheckbox  Name="SetWeightCheck" Checked="True"/>
+            <TextBlock Text=" Set Weight .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
+            <TextBox Width="88"/>
+            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -4 15 -3"/>
+            <cstmcntrl:PandaCheckbox  Name="CalcRateCheck" Checked="True"/>
+            <TextBlock Text=" Calculate Rate" FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
+        </WrapPanel>
+        <ProgressBar Grid.Row="8" Name="progressbar" Minimum="0" Maximum="100" Value="0" Height="24" Width="350" HorizontalAlignment="Left" Margin="50 0 0 0"/>
+        <Button Grid.Row="8" Name="SubmitRecords" Click="SubmitRecords_Click" Style="{StaticResource all}" Height="30" Width="85" HorizontalAlignment="Right" Margin="0 0 25 0">
+            <WrapPanel>
+                <Path x:Name="done" Data="F1M10.909,23C10.909,23 2,14.224 2,14.224 2,14.224 4.227,12.03 4.227,12.03 4.227,12.03 10.909,18.612 10.909,18.612 10.909,18.612 27.773,2 27.773,2 27.773,2 30,4.194 30,4.194 30,4.194 10.909,23 10.909,23z" Fill="Black" Height="24" Width="31"/>
+                <TextBlock x:Name="Save" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Done"/>
+            </WrapPanel>
+        </Button>
+        <Rectangle Fill="#FFCBCBCB" Height="26" Width="550" Stretch="Fill" Stroke="Black" />
+        <TextBlock Name="AddUpdateTitle" FontSize="16" TextAlignment="Center" VerticalAlignment="Center" Text="Power Entry" FontFamily="Arial"/>
+        <Rectangle MouseDown="DragthisWindow" Fill="Transparent" Height="26" Width="550" Stretch="Fill" />
+        <Button ToolTip="Close" Height="18" HorizontalAlignment="Right" Margin="0 0 4 0" Click="Button_Click_Close" Width="35" Style="{StaticResource 1}">
+            <Path Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" Width="15" Height="15"/>
+        </Button>
     </Grid>
 </Window>
