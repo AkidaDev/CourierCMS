@@ -218,14 +218,6 @@ namespace FinalUi
 			}
 		}
 		
-		public System.Data.Linq.Table<AccountStatement> AccountStatements
-		{
-			get
-			{
-				return this.GetTable<AccountStatement>();
-			}
-		}
-		
 		public System.Data.Linq.Table<TransactionCityView> TransactionCityViews
 		{
 			get
@@ -319,6 +311,14 @@ namespace FinalUi
 			get
 			{
 				return this.GetTable<RuntimeData>();
+			}
+		}
+		
+		public System.Data.Linq.Table<AccountStatement> AccountStatements
+		{
+			get
+			{
+				return this.GetTable<AccountStatement>();
 			}
 		}
 		
@@ -4247,141 +4247,6 @@ namespace FinalUi
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AccountStatement")]
-	public partial class AccountStatement
-	{
-		
-		private string _Id;
-		
-		private System.DateTime _TransactionDate;
-		
-		private string _ClientCode;
-		
-		private string _Remark;
-		
-		private string _Details;
-		
-		private System.Nullable<double> _TotalRecievedAmount;
-		
-		private System.Nullable<double> _PayAmount;
-		
-		public AccountStatement()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this._Id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionDate", DbType="Date NOT NULL")]
-		public System.DateTime TransactionDate
-		{
-			get
-			{
-				return this._TransactionDate;
-			}
-			set
-			{
-				if ((this._TransactionDate != value))
-				{
-					this._TransactionDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientCode", DbType="VarChar(6)")]
-		public string ClientCode
-		{
-			get
-			{
-				return this._ClientCode;
-			}
-			set
-			{
-				if ((this._ClientCode != value))
-				{
-					this._ClientCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remark", DbType="VarChar(180)")]
-		public string Remark
-		{
-			get
-			{
-				return this._Remark;
-			}
-			set
-			{
-				if ((this._Remark != value))
-				{
-					this._Remark = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Details", DbType="VarChar(120)")]
-		public string Details
-		{
-			get
-			{
-				return this._Details;
-			}
-			set
-			{
-				if ((this._Details != value))
-				{
-					this._Details = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalRecievedAmount", DbType="Float")]
-		public System.Nullable<double> TotalRecievedAmount
-		{
-			get
-			{
-				return this._TotalRecievedAmount;
-			}
-			set
-			{
-				if ((this._TotalRecievedAmount != value))
-				{
-					this._TotalRecievedAmount = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PayAmount", DbType="Float")]
-		public System.Nullable<double> PayAmount
-		{
-			get
-			{
-				return this._PayAmount;
-			}
-			set
-			{
-				if ((this._PayAmount != value))
-				{
-					this._PayAmount = value;
-				}
 			}
 		}
 	}
@@ -8650,6 +8515,159 @@ namespace FinalUi
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AccountStatement")]
+	public partial class AccountStatement
+	{
+		
+		private string _Id;
+		
+		private System.DateTime _TransactionDate;
+		
+		private string _TypeOfRecord;
+		
+		private string _ClientCode;
+		
+		private string _Remark;
+		
+		private string _Details;
+		
+		private System.Nullable<double> _TotalRecievedAmount;
+		
+		private System.Nullable<double> _PayAmount;
+		
+		public AccountStatement()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionDate", DbType="Date NOT NULL")]
+		public System.DateTime TransactionDate
+		{
+			get
+			{
+				return this._TransactionDate;
+			}
+			set
+			{
+				if ((this._TransactionDate != value))
+				{
+					this._TransactionDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TypeOfRecord", DbType="VarChar(7) NOT NULL", CanBeNull=false)]
+		public string TypeOfRecord
+		{
+			get
+			{
+				return this._TypeOfRecord;
+			}
+			set
+			{
+				if ((this._TypeOfRecord != value))
+				{
+					this._TypeOfRecord = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientCode", DbType="VarChar(6)")]
+		public string ClientCode
+		{
+			get
+			{
+				return this._ClientCode;
+			}
+			set
+			{
+				if ((this._ClientCode != value))
+				{
+					this._ClientCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remark", DbType="VarChar(249)")]
+		public string Remark
+		{
+			get
+			{
+				return this._Remark;
+			}
+			set
+			{
+				if ((this._Remark != value))
+				{
+					this._Remark = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Details", DbType="VarChar(360)")]
+		public string Details
+		{
+			get
+			{
+				return this._Details;
+			}
+			set
+			{
+				if ((this._Details != value))
+				{
+					this._Details = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalRecievedAmount", DbType="Float")]
+		public System.Nullable<double> TotalRecievedAmount
+		{
+			get
+			{
+				return this._TotalRecievedAmount;
+			}
+			set
+			{
+				if ((this._TotalRecievedAmount != value))
+				{
+					this._TotalRecievedAmount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PayAmount", DbType="Float")]
+		public System.Nullable<double> PayAmount
+		{
+			get
+			{
+				return this._PayAmount;
+			}
+			set
+			{
+				if ((this._PayAmount != value))
+				{
+					this._PayAmount = value;
+				}
 			}
 		}
 	}
