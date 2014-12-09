@@ -38,22 +38,22 @@
             <TextBlock  Text=" Select Client .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
             <ComboBox Name="clientCode" DataContext="{StaticResource ClientList}" DisplayMemberPath="NameAndCode" Width="300" IsEditable="True" ItemsSource="{Binding}"/>
         </WrapPanel>
-        <WrapPanel Grid.Row="4" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+        <WrapPanel Grid.Row="4" VerticalAlignment="Bottom" Margin="90 0 0 0">
             <cstmcntrl:PandaCheckbox  Name="SubClientCheck" Checked="True"/>
-            <TextBlock Text=" Sub Client .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom" Margin="1 0 0 0"/>
+            <TextBlock Text=" Sub Client .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom" Margin="4 0 0 0"/>
             <TextBox Width="250"/>
         </WrapPanel>
-        <WrapPanel Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+        <WrapPanel Grid.Row="5" VerticalAlignment="Bottom" Margin="90 0 0 0">
             <cstmcntrl:PandaCheckbox  Name="ConsignerCheck" Checked="True"/>
-            <TextBlock Text=" Consigner .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom" Margin="2 0 0 0"/>
+            <TextBlock Text=" Consigner .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom" Margin="5 0 0 0"/>
             <TextBox Width="250"/>
         </WrapPanel>
-        <WrapPanel Grid.Row="6" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2 0 0 0">
+        <WrapPanel Grid.Row="6" VerticalAlignment="Bottom" Margin="90 0 0 0">
             <cstmcntrl:PandaCheckbox  Name="Consignee" Checked="True"/>
-            <TextBlock Text=" Consignee .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
-            <TextBox Width="250" Margin="-1 0 0 0"/>
+            <TextBlock Text=" Consignee .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom" Margin="2 0 0 0"/>
+            <TextBox Width="250"/>
         </WrapPanel>
-        <WrapPanel Grid.Row="7" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+        <WrapPanel Grid.Row="7" VerticalAlignment="Bottom" Margin="90 0 0 0">
             <cstmcntrl:PandaCheckbox  Name="SetWeightCheck" Checked="True"/>
             <TextBlock Text=" Set Weight .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
             <TextBox Width="88"/>
