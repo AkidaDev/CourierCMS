@@ -78,23 +78,14 @@
             </Canvas>
             <Button Name="Previous" Canvas.Right="200" Canvas.Bottom="15" Style="{StaticResource all}"  Click="Previous_Click" >
                 <WrapPanel Margin="7 4">
-                    <Path x:Name="PreviousPath" Data="F1M24.383,14.132C24.383,14.132 32.794,22.624 32.794,22.624 32.794,22.624 24.383,31.117 24.383,31.117 24.383,31.117 24.383,25.809 24.383,25.809 24.383,25.809 11.765,25.809 11.765,25.809 11.765,25.809 11.765,19.44 11.765,19.44 11.765,19.44 24.383,19.44 24.383,19.44 24.383,19.44 24.383,14.132 24.383,14.132z M22.25,6.05C13.34,6.05 6.05,13.34 6.05,22.25 6.05,31.16 13.34,38.45 22.25,38.45 31.16,38.45 38.45,31.16 38.45,22.25 38.45,13.34 31.16,6.05 22.25,6.05z M22.25,2C33.387,2 42.5,11.112 42.5,22.25 42.5,33.387 33.387,42.5 22.25,42.5 11.112,42.5 2,33.387 2,22.25 2,11.112 11.112,2 22.25,2z" Fill="Black" Height="23" Width="23" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
-                        <Path.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform Angle="180"/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Path.RenderTransform>
-                    </Path>
+                    <Path Data="F1M11.289,7.89C11.289,7.89 11.289,10.904 11.289,10.904 11.289,10.904 18.454,10.904 18.454,10.904 18.454,10.904 18.454,14.521 18.454,14.521 18.454,14.521 11.289,14.521 11.289,14.521 11.289,14.521 11.289,17.535 11.289,17.535 11.289,17.535 6.512,12.713 6.512,12.713 6.512,12.713 11.289,7.89 11.289,7.89z M12.5,3.3C7.44,3.3 3.3,7.44 3.3,12.5 3.3,17.56 7.44,21.7 12.5,21.7 17.56,21.7 21.7,17.56 21.7,12.5 21.7,7.44 17.56,3.3 12.5,3.3z M12.5,1C18.825,1 24,6.175 24,12.5 24,18.825 18.825,24 12.5,24 6.175,24 1,18.825 1,12.5 1,6.175 6.175,1 12.5,1z" Fill="Black" Height="23" Width="23" Stretch="Fill"/>
                     <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Previous"/>
                 </WrapPanel>
             </Button>
             <Button  Name="Next" Canvas.Right="15" Canvas.Bottom="15" Style="{StaticResource all}" Click="Next_Click">
                 <Button.Content>
                     <WrapPanel Margin="7 4">
-                        <Path x:Name="next" Data="F1M24.383,14.132C24.383,14.132 32.794,22.624 32.794,22.624 32.794,22.624 24.383,31.117 24.383,31.117 24.383,31.117 24.383,25.809 24.383,25.809 24.383,25.809 11.765,25.809 11.765,25.809 11.765,25.809 11.765,19.44 11.765,19.44 11.765,19.44 24.383,19.44 24.383,19.44 24.383,19.44 24.383,14.132 24.383,14.132z M22.25,6.05C13.34,6.05 6.05,13.34 6.05,22.25 6.05,31.16 13.34,38.45 22.25,38.45 31.16,38.45 38.45,31.16 38.45,22.25 38.45,13.34 31.16,6.05 22.25,6.05z M22.25,2C33.387,2 42.5,11.112 42.5,22.25 42.5,33.387 33.387,42.5 22.25,42.5 11.112,42.5 2,33.387 2,22.25 2,11.112 11.112,2 22.25,2z" Fill="Black" Height="23" Width="23" Stretch="Fill"/>
+                        <Path Data="F1M13.711,7.89C13.711,7.89 18.488,12.713 18.488,12.713 18.488,12.713 13.711,17.535 13.711,17.535 13.711,17.535 13.711,14.521 13.711,14.521 13.711,14.521 6.546,14.521 6.546,14.521 6.546,14.521 6.546,10.904 6.546,10.904 6.546,10.904 13.711,10.904 13.711,10.904 13.711,10.904 13.711,7.89 13.711,7.89z M12.5,3.3C7.44,3.3 3.3,7.44 3.3,12.5 3.3,17.56 7.44,21.7 12.5,21.7 17.56,21.7 21.7,17.56 21.7,12.5 21.7,7.44 17.56,3.3 12.5,3.3z M12.5,1C18.825,1 24,6.175 24,12.5 24,18.825 18.825,24 12.5,24 6.175,24 1,18.825 1,12.5 1,6.175 6.175,1 12.5,1z" Fill="Black" Height="23" Width="23" Stretch="Fill"/>
                         <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Next"/>
                     </WrapPanel>
                 </Button.Content>
@@ -108,9 +99,9 @@
                 </Button.Content>
             </Button>
 
-            <Path Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="#FFCBCBCB" Height="26" Canvas.Left="0" Canvas.Top="0" Width="800" Stretch="Fill" Stroke="Black" />
-            <TextBlock FontSize="16" Height="25" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="0" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Add Invoice Rule" Canvas.Top="6" Width="800" FontFamily="Arial"/>
-            <Path MouseDown="DragthisWindow" x:Name="Memu_bar" Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26" Canvas.Left="0" Canvas.Top="0" Width="800" Stretch="Fill"/>
+            <Rectangle Fill="#FFCBCBCB" Height="26" Width="800" Stretch="Fill" Stroke="Black" />
+            <TextBlock FontSize="16" Height="25" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Add Invoice Rule" Canvas.Top="6" Width="800" FontFamily="Arial"/>
+            <Rectangle MouseDown="DragthisWindow" Fill="Transparent" Height="26" Width="800" Stretch="Fill"/>
             <Button ToolTip="Close" Height="18" Canvas.Right="4" Click="Button_Click_Close" Canvas.Top="4" Width="35" Style="{StaticResource 1}">
                 <Path x:Name="close" Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,
                   12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,

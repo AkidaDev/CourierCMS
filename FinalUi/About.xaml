@@ -4,9 +4,9 @@
 		Icon="Images/logo.ico"
         Title="About Vortex" Height="300" Width="400" ResizeMode="NoResize">
     <Grid>
-        <Image Source="Images/Shape 21.png" Width="120" Height="120" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40 15 30 30"/>
+        <Image Source="Images/Shape 21.png" Width="120" Height="120" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40 15 0 0"/>
+        <TextBlock Text="Powered by SLT-INTEGRITY " FontSize="14" Foreground="LightGray" FontFamily="Calibri" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 11 13 0"/>
         <Canvas>
-            <TextBlock Text="Powered by SLT-INTEGRITY " FontSize="14" Foreground="LightGray" FontFamily="Calibri" Canvas.Left="226" Canvas.Top="11"/>
             <TextBlock Foreground="#6666cc" FontSize="60" Text="V" FontWeight="SemiBold" Canvas.Left="176" Canvas.Top="42"/>
             <TextBlock Foreground="#6666cc" FontSize="40" Text="ORTEX" Canvas.Left="208" Canvas.Top="64" />
         </Canvas>

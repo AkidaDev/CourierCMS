@@ -85,7 +85,7 @@
                     <Bold FontSize="24">V</Bold>ORTEX
                 </TextBlock>
                 <Button MouseDoubleClick="NormalMaximize_Click" Style="{StaticResource window}" Grid.Column="1">
-                    <Rectangle MouseDown="Grid_MouseDown" Fill="Transparent" Height="26" Stretch="Fill" Width="1920"/>
+                    <Rectangle MouseDown="Grid_MouseDown" Fill="Transparent" Height="26" Width="1920"/>
                 </Button>
                 <WrapPanel Grid.Column="2" Name="minimax" HorizontalAlignment="Right" Margin="0 0 6 0">
                     <Button ToolTip="Minimize" Style="{StaticResource 1}" Name="MinimizeButton" Click="MinimizeButton_Click" Width="25">

@@ -90,9 +90,9 @@
                 </Button.Content>
             </Button>
         </WrapPanel>
-        <Path Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="#FFCBCBCB" Height="26" Width="700" Stretch="Fill" Stroke="Black"/>
+        <Rectangle Fill="#FFCBCBCB" Height="26" Width="700" Stretch="Fill" Stroke="Black"/>
         <TextBlock FontSize="16" Text="Print Window" FontFamily="Arial" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Path MouseDown="DragthisWindow" x:Name="Memu_bar" Data="F1M1,1C1,1 497,1 497,1 497,1 497,25 497,25 497,25 1,25 1,25 1,25 1,1 1,1z" Fill="Transparent" Height="26" Width="700" Stretch="Fill"/>
+        <Rectangle MouseDown="DragthisWindow" Fill="Transparent" Height="26" Width="700" Stretch="Fill"/>
         <Button ToolTip="Close" Height="18" HorizontalAlignment="Right" Margin="0,0,4,0" Click="Button_Click_Close" Width="35" Style="{StaticResource 1}">
             <Path x:Name="close" Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" Width="15" Height="15"/>
         </Button>
