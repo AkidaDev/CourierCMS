@@ -9,22 +9,29 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CustomControls
+namespace FinalUi
 {
     /// <summary>
-    /// Interaction logic for ClientReportPanel.xaml
+    /// Interaction logic for ServiceGrouping.xaml
     /// </summary>
-    public partial class ClientReportPanel : UserControl
+    public partial class ServiceGrouping : Window
     {
-        public ClientReportPanel()
+        public ServiceGrouping()
         {
             InitializeComponent();
         }
+        private void DragthisWindow(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+        private void Button_Click_Close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
 
-        private void ReloadButton_Click(object sender, RoutedEventArgs e)
+        private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
 
         }

@@ -63,6 +63,7 @@
                             <MenuItem Header="Add City" Click="MenuItem_Click_1" Foreground="Black"/>
                             <MenuItem Header="Clients" Name="ManageClient" Click="ManageClient_Click" Foreground="Black"/>
                             <MenuItem Header="Employees" Name="ManageEmployeeMenuItem" Click="ManageEmployee_Click" Foreground="Black"/>
+                            <MenuItem Header="Services" Name="ManageServices" Click="ManageServices_Click" Foreground="Black"/>
                             <MenuItem Header="Zones" Name="ManageZone" Click="ManageZone_Click" Foreground="Black"/>
                             <MenuItem Header="Stock" Name="ManageStocks" Click="ManageStock_Click" Foreground="Black"/>
                         </MenuItem>
@@ -824,30 +825,6 @@
                             </Grid>
                             <StackPanel Grid.Row="3" Background="#A9FFFFF3"/>
                         </Grid>
-                        <ContentControl Visibility="Collapsed">
-                            <cstmcntrl:DataDockPanel/>
-                        </ContentControl>
-                        <ContentControl Visibility="Collapsed">
-                            <cstmcntrl:ClientReportPanel/>
-                        </ContentControl>
-                        <ContentControl Visibility="Collapsed">
-                            <cstmcntrl:QuotationPanel/>
-                        </ContentControl>
-                        <ContentControl Visibility="Collapsed">
-                            <cstmcntrl:ClientPanel/>
-                        </ContentControl>
-                        <ContentControl Visibility="Collapsed" Name="StockOptionPanel">
-                            <cstmcntrl:StockPanel/>
-                        </ContentControl>
-                        <ContentControl Visibility="Collapsed">
-                            <cstmcntrl:EmployeePanel/>
-                        </ContentControl>
-                        <ContentControl Visibility="Collapsed">
-                            <cstmcntrl:CityPanel/>
-                        </ContentControl>
-                        <ContentControl Visibility="Collapsed">
-                            <cstmcntrl:ZonePanel/>
-                        </ContentControl>
                     </Grid>
                     <Path Margin="0 0 0 1" Data="F1M22,1C23.65,1 25,2.35 25,4 25,5.65 23.65,7 22,7 20.35,7 19,5.65 19,4 19,2.35 20.35,1 22,1z M13,1C14.65,1 16,2.35 16,4 16,5.65 14.65,7 13,7 11.35,7 10,5.65 10,4 10,2.35 11.35,1 13,1z M4,1C5.65,1 7,2.35 7,4 7,5.65 5.65,7 4,7 2.35,7 1,5.65 1,4 1,2.35 2.35,1 4,1z" Fill="Black" Height="5" Width="22" Stretch="Fill" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
                     <GridSplitter Height="6" Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>

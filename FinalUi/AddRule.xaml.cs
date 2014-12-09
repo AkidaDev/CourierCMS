@@ -21,8 +21,8 @@ namespace FinalUi
     /// </summary>
     public partial class AddRule : Window
     {
-        int currentCanvas = 1;
-        Canvas currentCanvasObj;
+        int currentGrid = 1;
+        Grid currentGridObj;
         Rule rule;
         Quotation quoation;
         CostingRule RuleCR;
@@ -33,7 +33,7 @@ namespace FinalUi
         {
             InitializeComponent();
             isInitialized = true;
-            currentCanvasObj = Step1Canvas;
+            currentGridObj = Step1Grid;
         }
         public AddRule(int ruleId)
             : this()
@@ -84,7 +84,7 @@ namespace FinalUi
             this.quoation = quoation;
             RuleCR = new CostingRule();
             db = new BillingDataDataContext();
-            currentCanvasObj.Visibility = Visibility.Visible;
+            currentGridObj.Visibility = Visibility.Visible;
             ServiceTwinBox.AllListSource = (DataSources.ServicesCopy);
             ServiceTwinBox.SelectedListSource = new List<Service>();
             ServiceTwinBox.DisplayValuePath = "NameAndCode";
@@ -284,11 +284,11 @@ namespace FinalUi
                         {
                             FromWeightBox.Text = (RuleCR.endW + 0.0001).ToString();
                             ToWeightBox.Text = "";
-                            currentCanvas = 5;
-                            currentCanvasObj.Visibility = Visibility.Collapsed;
-                            currentCanvasObj = Step5Canvas;
-                            currentCanvasObj.Visibility = Visibility.Visible;
-                            StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
+                            currentGrid = 6;
+                            currentGridObj.Visibility = Visibility.Collapsed;
+                            currentGridObj = Step6Grid;
+                            currentGridObj.Visibility = Visibility.Visible;
+                            StepBlock.Text = "Step " + currentGrid.ToString() + " of 7";
                         }
                         else
                             this.Close();
@@ -324,45 +324,52 @@ namespace FinalUi
         }
         private void Next_Click(object sender, RoutedEventArgs e)
         {
-            switch (currentCanvas)
+            switch (currentGrid)
             {
                 case 1:
-                    currentCanvas = 2;
-                    currentCanvasObj.Visibility = Visibility.Collapsed;
-                    currentCanvasObj = Step2Canvas;
-                    currentCanvasObj.Visibility = Visibility.Visible;
-                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
+                    currentGrid = 2;
+                    currentGridObj.Visibility = Visibility.Collapsed;
+                    currentGridObj = Step2Grid;
+                    currentGridObj.Visibility = Visibility.Visible;
+                    StepBlock.Text = "Step " + currentGrid.ToString() + " of 7";
                     break;
                 case 2:
-                    currentCanvas = 3;
-                    currentCanvasObj.Visibility = Visibility.Collapsed;
-                    currentCanvasObj = Step3Canvas;
-                    currentCanvasObj.Visibility = Visibility.Visible;
-                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
+                    currentGrid = 3;
+                    currentGridObj.Visibility = Visibility.Collapsed;
+                    currentGridObj = Step3Grid;
+                    currentGridObj.Visibility = Visibility.Visible;
+                    StepBlock.Text = "Step " + currentGrid.ToString() + " of 7";
                     break;
                 case 3:
-                    currentCanvas = 4;
-                    currentCanvasObj.Visibility = Visibility.Collapsed;
-                    currentCanvasObj = Step4Canvas;
-                    currentCanvasObj.Visibility = Visibility.Visible;
-                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
+                    currentGrid = 4;
+                    currentGridObj.Visibility = Visibility.Collapsed;
+                    currentGridObj = Step4Grid;
+                    currentGridObj.Visibility = Visibility.Visible;
+                    StepBlock.Text = "Step " + currentGrid.ToString() + " of 7";
                     break;
                 case 4:
-                    currentCanvas = 5;
-                    currentCanvasObj.Visibility = Visibility.Collapsed;
-                    currentCanvasObj = Step5Canvas;
-                    currentCanvasObj.Visibility = Visibility.Visible;
-                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
+                    currentGrid = 5;
+                    currentGridObj.Visibility = Visibility.Collapsed;
+                    currentGridObj = Step5Grid;
+                    currentGridObj.Visibility = Visibility.Visible;
+                    StepBlock.Text = "Step " + currentGrid.ToString() + " of 7";
                     break;
                 case 5:
-                    currentCanvas = 6;
-                    currentCanvasObj.Visibility = Visibility.Collapsed;
-                    currentCanvasObj = Step6Canvas;
-                    currentCanvasObj.Visibility = Visibility.Visible;
-                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
+                    currentGrid = 6;
+                    currentGridObj.Visibility = Visibility.Collapsed;
+                    currentGridObj = Step6Grid;
+                    currentGridObj.Visibility = Visibility.Visible;
+                    StepBlock.Text = "Step " + currentGrid.ToString() + " of 7";
+                    break;
+                case 6:
+                    currentGrid = 7;
+                    currentGridObj.Visibility = Visibility.Collapsed;
+                    currentGridObj = Step7Grid;
+                    currentGridObj.Visibility = Visibility.Visible;
+                    StepBlock.Text = "Step " + currentGrid.ToString() + " of 7";
                     break;
             }
-            if (currentCanvas == 6)
+            if (currentGrid == 7)
             {
                 Next.Visibility = Visibility.Collapsed;
                 AddRuleButton.Visibility = Visibility.Visible;
@@ -375,45 +382,52 @@ namespace FinalUi
         }
         private void Previous_Click(object sender, RoutedEventArgs e)
         {
-            switch (currentCanvas)
+            switch (currentGrid)
             {
+                case 7:
+                    currentGrid = 6;
+                    currentGridObj.Visibility = Visibility.Collapsed;
+                    currentGridObj = Step6Grid;
+                    currentGridObj.Visibility = Visibility.Visible;
+                    StepBlock.Text = "Step " + currentGrid.ToString() + " of 7";
+                    break;
                 case 6:
-                    currentCanvas = 5;
-                    currentCanvasObj.Visibility = Visibility.Collapsed;
-                    currentCanvasObj = Step5Canvas;
-                    currentCanvasObj.Visibility = Visibility.Visible;
-                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
+                    currentGrid = 5;
+                    currentGridObj.Visibility = Visibility.Collapsed;
+                    currentGridObj = Step5Grid;
+                    currentGridObj.Visibility = Visibility.Visible;
+                    StepBlock.Text = "Step " + currentGrid.ToString() + " of 7";
                     break;
                 case 5:
-                    currentCanvas = 4;
-                    currentCanvasObj.Visibility = Visibility.Collapsed;
-                    currentCanvasObj = Step4Canvas;
-                    currentCanvasObj.Visibility = Visibility.Visible;
-                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
+                    currentGrid = 4;
+                    currentGridObj.Visibility = Visibility.Collapsed;
+                    currentGridObj = Step4Grid;
+                    currentGridObj.Visibility = Visibility.Visible;
+                    StepBlock.Text = "Step " + currentGrid.ToString() + " of 7";
                     break;
                 case 4:
-                    currentCanvas = 3;
-                    currentCanvasObj.Visibility = Visibility.Collapsed;
-                    currentCanvasObj = Step3Canvas;
-                    currentCanvasObj.Visibility = Visibility.Visible;
-                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
+                    currentGrid = 3;
+                    currentGridObj.Visibility = Visibility.Collapsed;
+                    currentGridObj = Step3Grid;
+                    currentGridObj.Visibility = Visibility.Visible;
+                    StepBlock.Text = "Step " + currentGrid.ToString() + " of 7";
                     break;
                 case 3:
-                    currentCanvas = 2;
-                    currentCanvasObj.Visibility = Visibility.Collapsed;
-                    currentCanvasObj = Step2Canvas;
-                    currentCanvasObj.Visibility = Visibility.Visible;
-                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
+                    currentGrid = 2;
+                    currentGridObj.Visibility = Visibility.Collapsed;
+                    currentGridObj = Step2Grid;
+                    currentGridObj.Visibility = Visibility.Visible;
+                    StepBlock.Text = "Step " + currentGrid.ToString() + " of 7";
                     break;
                 case 2:
-                    currentCanvas = 1;
-                    currentCanvasObj.Visibility = Visibility.Collapsed;
-                    currentCanvasObj = Step1Canvas;
-                    currentCanvasObj.Visibility = Visibility.Visible;
-                    StepBlock.Text = "Step " + currentCanvas.ToString() + " of 6";
+                    currentGrid = 1;
+                    currentGridObj.Visibility = Visibility.Collapsed;
+                    currentGridObj = Step1Grid;
+                    currentGridObj.Visibility = Visibility.Visible;
+                    StepBlock.Text = "Step " + currentGrid.ToString() + " of 7";
                     break;
             }
-            if (currentCanvas == 6)
+            if (currentGrid == 7)
             {
                 Next.Visibility = Visibility.Collapsed;
                 AddRuleButton.Visibility = Visibility.Visible;

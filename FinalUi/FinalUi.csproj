@@ -248,6 +248,9 @@
     <Compile Include="ManageEmployee.xaml.cs">
       <DependentUpon>ManageEmployee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ManageService.xaml.cs">
+      <DependentUpon>ManageService.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MoreLinq\MoreEnumerable.ExceptBy.cs" />
     <Compile Include="PaymentDetailsWindow.xaml.cs">
       <DependentUpon>PaymentDetailsWindow.xaml</DependentUpon>
@@ -271,6 +274,9 @@
     <Compile Include="SecurityModule.cs" />
     <Compile Include="ServiceFinder.xaml.cs">
       <DependentUpon>ServiceFinder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceGrouping.xaml.cs">
+      <DependentUpon>ServiceGrouping.xaml</DependentUpon>
     </Compile>
     <Compile Include="ServiceRule.cs" />
     <Compile Include="Settings.cs" />
@@ -429,6 +435,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="ManageService.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PaymentDetailsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -460,6 +470,10 @@
     <Page Include="ServiceFinder.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ServiceGrouping.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Setup.xaml">
       <SubType>Designer</SubType>
