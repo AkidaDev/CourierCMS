@@ -27,6 +27,15 @@ namespace FinalUi
         int startCOnnNoIndex;
         int endConnNoIndex;
         string clientCodeSelectedValue;
+        string consigner;
+        string consignee;
+        double weight;
+        string subClient;
+        bool? setWeightCheck;
+        bool? consignerCheck;
+        bool? consigneeCheck;
+        bool? subClientCheck;
+        bool? calcRateCheck;
         DataGrid datagrid;
         public PowerEntry(List<RuntimeData> DataStack, DataGrid datagrid)
             : this()
@@ -74,6 +83,11 @@ namespace FinalUi
             dData.UserId = sData.UserId;
             dData.Weight = sData.Weight;
             dData.Client_Desc = sData.Client_Desc;
+            dData.ConsigneeName = sData.ConsigneeName;
+            dData.ConsignerAddress = sData.ConsignerAddress;
+            dData.ConsignerName = sData.ConsignerName;
+            dData.ConsigneeAddress = sData.ConsigneeAddress;
+            dData.SubClient = sData.SubClient;
         }
         void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
@@ -122,14 +136,29 @@ namespace FinalUi
                         data.FrWeight = data.Weight;
                     if (data.BilledWeight == null)
                         data.BilledWeight = data.Weight;
-                    try
+                    if(setWeightCheck == true)
                     {
-                        data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, (double)data.BilledWeight, data.Destination, data.Type, (char)data.DOX);
+                        data.BilledWeight = weight;
                     }
-                    catch (Exception ex)
+                    if (subClientCheck== true)
                     {
-                        Debug.WriteLine(ex.Message + ": Occured in " + data.ConsignmentNo);
-                        data.FrAmount = -1;
+                        data.SubClient = subClient;
+                    }
+                    if (consignerCheck== true)
+                        data.ConsignerName = consigner;
+                    if (consigneeCheck== true)
+                        data.ConsigneeName = consignee;
+                    if (calcRateCheck == true)
+                    {
+                        try
+                        {
+                            data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, (double)data.BilledWeight, data.Destination, data.Type, (char)data.DOX);
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine(ex.Message + ": Occured in " + data.ConsignmentNo);
+                            data.FrAmount = -1;
+                        }
                     }
                     try
                     {
@@ -160,9 +189,29 @@ namespace FinalUi
                 startCOnnNoIndex = startConnNo.SelectedIndex;
                 endConnNoIndex = endConnNo.SelectedIndex;
                 Client client = DataSources.ClientCopy.SingleOrDefault(x => x.NameAndCode == ((Client)clientCode.SelectedItem).NameAndCode);
+                consigneeCheck = Consignee.Checked;
+                consignerCheck = ConsignerCheck.Checked;
+                calcRateCheck = CalcRateCheck.Checked;
+                setWeightCheck = SetWeightCheck.Checked;
+                subClientCheck = SubClientCheck.Checked;
+                consignee = ConsigneeTextBox.Text;
+                consigner = ConsignerTextBox.Text;
+                subClient = SubClientTextBox.Text;
+                if(!double.TryParse(WeightTextBox.Text,out weight))
+                {
+                    if (setWeightCheck == true)
+                    {
+                        MessageBox.Show("Invalid weight", "Error!");
+                        SubmitRecords.IsEnabled = true;
+                        return;
+                    }
+                    else
+                        weight = 0;
+                }
                 if (client == null)
                 {
-                    MessageBox.Show("No such client exists..!!");
+                    MessageBox.Show("No such client exists..!!","Error");
+                    SubmitRecords.IsEnabled = true;
                     return;
                 }
                 clientCodeSelectedValue = client.CLCODE;

@@ -297,6 +297,21 @@
                                                             <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Client_Desc}" VerticalAlignment="Center"/>
                                                         </WrapPanel>
                                                     </StackPanel>
+
+                                                    <StackPanel Margin="40 0 0 0">
+                                                        <WrapPanel>
+                                                            <TextBlock FontSize="12" Text="Consignee Name .: " VerticalAlignment="Center" />
+                                                            <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding ConsigneeName}" VerticalAlignment="Center"/>
+                                                        </WrapPanel>
+                                                        <WrapPanel>
+                                                            <TextBlock FontSize="12" Text="Consigner Name .: " VerticalAlignment="Center"/>
+                                                            <TextBlock FontSize="16" Text="{Binding ConsignerName}" VerticalAlignment="Center" Foreground="MidnightBlue"/>
+                                                        </WrapPanel>
+                                                        <WrapPanel>
+                                                            <TextBlock FontSize="12" Text="Sub Client .: " VerticalAlignment="Center"/>
+                                                            <TextBlock FontSize="16" Text="{Binding SubClient}" VerticalAlignment="Center" Foreground="MidnightBlue"/>
+                                                        </WrapPanel>
+                                                    </StackPanel>
                                                 </StackPanel>
                                             </Border>
                                         </DataTemplate>

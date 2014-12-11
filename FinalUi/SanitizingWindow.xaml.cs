@@ -40,12 +40,27 @@ namespace FinalUi
         ListCollectionView dataListContext;
         CollectionViewSource ServiceListSource;
         BillingDataDataContext db;
+        CollectionViewSource ConsigneeListSource;
+        CollectionViewSource ConsignerListSource;
+        CollectionViewSource SubClientListSource;
         DataGrid backDataGrid;
         DataGridHelper helper;
+        Dictionary<string, List<string>> SubClientList;
+        List<string> ConsigneeList;
+        List<string> ConsignerList;
         int sheetNo;
-        public SanitizingWindow(List<RuntimeData> dataContext, BillingDataDataContext db, int sheetNo, DataGrid dg,DataGridHelper helper, RuntimeData selectedRec = null)
+        public SanitizingWindow(List<RuntimeData> dataContext, BillingDataDataContext db, int sheetNo, DataGrid dg, DataGridHelper helper, Dictionary<string, List<string>> SubClientList, List<string> ConsigneeList, List<string> ConsignerList, RuntimeData selectedRec = null)
             : this()
         {
+            ConsigneeListSource = (CollectionViewSource)FindResource("ConsigneeListSource");
+            ConsignerListSource = (CollectionViewSource)FindResource("ConsignerListSource");
+            SubClientListSource = (CollectionViewSource)FindResource("SubClientListSource");
+            this.SubClientList = SubClientList;
+            this.ConsigneeList = ConsigneeList;
+            this.ConsignerList = ConsignerList;
+            ConsignerListSource.Source = this.ConsignerList;
+            ConsigneeListSource.Source = this.ConsigneeList;
+            SubClientListSource.Source = SubClientList.ContainsKey(CustomerSelected.Text) ? SubClientList[CustomerSelected.Text] : null;
             this.helper = helper;
             this.backDataGrid = dg;
             this.sheetNo = sheetNo;
@@ -55,7 +70,7 @@ namespace FinalUi
                 dataListContext = (ListCollectionView)dg.ItemsSource;
             conssNumbers = (CollectionViewSource)FindResource("ConsignmentNumbers");
             conssNumbers.Source = (from id in dataContext
-                                   orderby id.BookingDate, id.ConsignmentNo
+                                   orderby id.BookingDate,id.ConsignmentNo
                                    select id.ConsignmentNo).ToList();
             InsertionDate.SelectedDate = DateTime.Today;
             if (selectedRec != null)
@@ -178,6 +193,7 @@ namespace FinalUi
             data.ConsigneeAddress = ConsigneeAddress.Text;
             data.ConsignerName = ConsignerName.Text;
             data.ConsignerAddress = ConsignerAddress.Text;
+            data.SubClient = SubClientComboBox.Text;
             return data;
         }
         public void dupliData(RuntimeData sData, RuntimeData dData)
@@ -212,6 +228,7 @@ namespace FinalUi
             dData.ConsignerAddress = sData.ConsignerAddress;
             dData.ConsignerName = sData.ConsignerName;
             dData.ConsigneeAddress = sData.ConsigneeAddress;
+            dData.SubClient = sData.SubClient;
         }
         public void SaveData()
         {
@@ -223,7 +240,21 @@ namespace FinalUi
                 throw new Exception("Details not present");
             data.SheetNo = sheetNo;
             data.UserId = SecurityModule.currentUserName;
-
+            if (!SubClientList.ContainsKey(data.CustCode))
+            {
+                SubClientList.Add(data.CustCode, new List<string>() { data.SubClient });
+            }
+            else
+            {
+                if (!SubClientList[data.CustCode].Contains(data.SubClient))
+                {
+                    SubClientList[data.CustCode].Add(data.SubClient);
+                }
+            }
+            if (!ConsignerList.Contains(data.ConsignerName))
+                ConsignerList.Add(data.ConsignerName);
+            if (!ConsigneeList.Contains(data.ConsigneeName))
+                ConsigneeList.Add(data.ConsigneeName);
             if (dataContext.Where(x => x.ConsignmentNo == data.ConsignmentNo).Count() > 0)
             {
                 RuntimeData origData = db.RuntimeDatas.SingleOrDefault(x => x.Id == data.Id);
@@ -351,7 +382,7 @@ namespace FinalUi
                 DoxCombobox.Text = "Dox";
             if (data.BookingDate != null)
                 InsertionDate.SelectedDate = data.BookingDate;
-            Destination.Text = db.Cities.Where(x => x.CITY_CODE == data.Destination).Select(y => y.NameAndCode).FirstOrDefault();
+            Destination.Text = DataSources.CityCopy.Where(x => x.CITY_CODE == data.Destination).Select(y => y.NameAndCode).FirstOrDefault();
             if (data.CustCode != "" && data.CustCode != null)
                 CustomerSelected.Text = DataSources.ClientCopy.Where(x => x.CLCODE == data.CustCode).Select(y => y.NameAndCode).FirstOrDefault();
             else
@@ -377,6 +408,7 @@ namespace FinalUi
             ConsgineeName.Text = data.ConsigneeName ?? "";
             ConsignerAddress.Text = data.ConsignerAddress ?? "";
             ConsignerName.Text = data.ConsignerName ?? "";
+            SubClientComboBox.Text = data.SubClient ?? "";
             SlipCost.Text = data.Stock;
         }
         private void Button_Click_Close(object sender, RoutedEventArgs e)
@@ -457,9 +489,6 @@ namespace FinalUi
                 this.BilledAmount.Text = "0";
             }
         }
-        private void Validate_Form()
-        {
-        }
         private void BilledWeightTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             if (this.BilledAmount.Text == "" || this.BilledAmount.Text == null)
@@ -469,6 +498,8 @@ namespace FinalUi
         }
         private void CustomerSelected_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (SubClientList != null)
+                SubClientListSource.Source = SubClientList.ContainsKey(CustomerSelected.Text) ? SubClientList[CustomerSelected.Text] : null;
         }
         private void MODE_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -477,8 +508,8 @@ namespace FinalUi
         {
         }
 
-     
-     
+
+
         private void ConnsignmentNumber_LostFocus(object sender, RoutedEventArgs e)
         {
             fillAllElements(ConnsignmentNumber.Text);

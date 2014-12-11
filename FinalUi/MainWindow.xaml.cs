@@ -307,10 +307,19 @@ namespace FinalUi
             }
             SanitizingWindow window;
             concatinateAllRecordsInOnePage();
+            Dictionary<string, List<string>> SubClientList = new Dictionary<string, List<string>>();
+            List<RuntimeData> data = dataGridHelper.getCurrentDataStack;
+            List<string> clients = data.Select(x => x.CustCode).Distinct().ToList();
+            clients.ForEach(x => {
+                List<string> subClients = data.Where(y => y.CustCode == x).Select(z => z.SubClient).Distinct().ToList();
+                SubClientList.Add(x, subClients);
+            });
+            List<string> ConsigneeList = data.Select(x => x.ConsigneeName).Distinct().ToList();
+            List<string> ConsignerList = data.Select(x => x.ConsignerName).Distinct().ToList();
             if (dataGrid.SelectedItem != null)
-                window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber, dataGrid, dataGridHelper, (RuntimeData)dataGrid.SelectedItem);
+                window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber, dataGrid, dataGridHelper,SubClientList,ConsigneeList,ConsignerList, (RuntimeData)dataGrid.SelectedItem);
             else
-                window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber, dataGrid, dataGridHelper);
+                window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber, dataGrid,dataGridHelper,SubClientList,ConsigneeList,ConsignerList);
             window.Closed += SanitizingWindow_Closed;
             window.Show();
         }
@@ -1332,22 +1341,24 @@ namespace FinalUi
             BillingDataDataContext db = new BillingDataDataContext();
             if (CostingRuleGrid.Visibility == Visibility.Visible && CostingRuleGrid.SelectedItems != null)
             {
-                if (MessageBox.Show("Do you Want delete this Rule", "Confirm", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                if (MessageBox.Show("Do you want delete " + CostingRuleGrid.SelectedItems.Count.ToString() +" Rule", "Confirm", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
-                    CostingRule dcr = (CostingRule)CostingRuleGrid.SelectedItem;
+                    List<CostingRule> dcr = CostingRuleGrid.SelectedItems.Cast<CostingRule>().ToList();
                     CostingRuleGrid.SelectedItem = null;
-                    Rule dr = db.Rules.Where(x => x.ID == dcr.Id).FirstOrDefault();
-                    db.Rules.DeleteOnSubmit(dr);
+                    List<int> Ids = dcr.Select(x=>x.Id).ToList();
+                    List<Rule> dr = db.Rules.Where(x => Ids.Contains(x.ID)).ToList();
+                    db.Rules.DeleteAllOnSubmit(dr);
                 }
             }
             if (ServiceRuleGrid.Visibility == Visibility.Visible && ServiceRuleGrid.SelectedItems != null)
             {
-                if (MessageBox.Show("Do you Want delete this Rule", "Confirm", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                if (MessageBox.Show("Do you want delete " + ServiceRuleGrid.SelectedItems.Count.ToString() + " Rule", "Confirm", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
-                    ServiceRule dcr = (ServiceRule)ServiceRuleGrid.SelectedItem;
-                    Rule dr = db.Rules.Where(x => x.ID == dcr.Id).FirstOrDefault();
+                    List<ServiceRule> dcr = ServiceRuleGrid.SelectedItems.Cast<ServiceRule>().ToList();
                     ServiceRuleGrid.SelectedItem = null;
-                    db.Rules.DeleteOnSubmit(dr);
+                    List<int> Ids = dcr.Select(x => x.Id).ToList();
+                    List<Rule> dr = db.Rules.Where(x => Ids.Contains(x.ID)).ToList();
+                    db.Rules.DeleteAllOnSubmit(dr);
                 }
             }
             if (InvoiceRuleGrid.Visibility == Visibility.Visible && InvoiceRuleGrid.SelectedItems != null)
