@@ -951,6 +951,11 @@ namespace FinalUi
             AddCity window = new AddCity();
             window.Show();
         }
+        private void ManageServices_Click(object sender, RoutedEventArgs e)
+        {
+            ManageService window = new ManageService();
+            window.Show();
+        }
         private void ManageZone_Click(object sender, RoutedEventArgs e)
         {
             ZoneAssignment zone = new ZoneAssignment();
@@ -999,7 +1004,6 @@ namespace FinalUi
             this.ClientOptionPanel.Visibility = Visibility.Collapsed;
             this.EmployeeOptionPanel.Visibility = Visibility.Collapsed;
             this.CityOptionPanel.Visibility = Visibility.Collapsed;
-            this.StockOptionPanel.Visibility = Visibility.Collapsed;
             this.HideAllDatagrid.Visibility = Visibility.Collapsed;
             this.FilterQuotation.Visibility = Visibility.Collapsed;
 
@@ -1045,11 +1049,6 @@ namespace FinalUi
         {
             cloakAll();
             ClientOptionPanel.Visibility = Visibility.Visible;
-        }
-        private void Stocktreeviewitembutton_Click(object sender, RoutedEventArgs e)
-        {
-            cloakAll();
-            StockOptionPanel.Visibility = Visibility.Visible;
         }
         private void Employeetreeviewitembutton_Click(object sender, RoutedEventArgs e)
         {
