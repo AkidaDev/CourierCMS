@@ -545,7 +545,6 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Report2.rdlc" />
     <None Include="BillingData.dbml.layout">
       <DependentUpon>BillingData.dbml</DependentUpon>
     </None>

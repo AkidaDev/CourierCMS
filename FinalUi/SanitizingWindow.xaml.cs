@@ -60,7 +60,8 @@ namespace FinalUi
             this.ConsignerList = ConsignerList;
             ConsignerListSource.Source = this.ConsignerList;
             ConsigneeListSource.Source = this.ConsigneeList;
-            SubClientListSource.Source = SubClientList.ContainsKey(CustomerSelected.Text) ? SubClientList[CustomerSelected.Text] : null;
+            string SelectedClientCode = ((Client)CustomerSelected.SelectedItem).CLCODE;
+            SubClientListSource.Source = SubClientList.ContainsKey(SelectedClientCode) ? SubClientList[SelectedClientCode] : null;
             this.helper = helper;
             this.backDataGrid = dg;
             this.sheetNo = sheetNo;
@@ -70,7 +71,7 @@ namespace FinalUi
                 dataListContext = (ListCollectionView)dg.ItemsSource;
             conssNumbers = (CollectionViewSource)FindResource("ConsignmentNumbers");
             conssNumbers.Source = (from id in dataContext
-                                   orderby id.BookingDate,id.ConsignmentNo
+                                   orderby id.ConsignmentNo
                                    select id.ConsignmentNo).ToList();
             InsertionDate.SelectedDate = DateTime.Today;
             if (selectedRec != null)
@@ -337,13 +338,14 @@ namespace FinalUi
                         {
                             Console.WriteLine("Error....");
                         }
-                        this.Focus();
+                        
                     }
                     else
                     {
                         backDataGrid.SelectedItems.Clear();
                     }
                 }
+                this.Focus();
                 fillDetails(data);
             }
             else
@@ -383,10 +385,8 @@ namespace FinalUi
             if (data.BookingDate != null)
                 InsertionDate.SelectedDate = data.BookingDate;
             Destination.Text = DataSources.CityCopy.Where(x => x.CITY_CODE == data.Destination).Select(y => y.NameAndCode).FirstOrDefault();
-            if (data.CustCode != "" && data.CustCode != null)
+            if (data.CustCode != "" && data.CustCode != null && data.CustCode != "<NONE>")
                 CustomerSelected.Text = DataSources.ClientCopy.Where(x => x.CLCODE == data.CustCode).Select(y => y.NameAndCode).FirstOrDefault();
-            else
-                CustomerSelected.Text = "<NONE>";
             DestinationPin.Text = data.DestinationPin.ToString();
             if (data.FrWeight != null)
                 WeightAccToFranchize.Text = data.FrWeight.ToString();
@@ -404,6 +404,10 @@ namespace FinalUi
                 TypeComboBox.Text = DataSources.ServicesCopy.Where(x => x.SER_CODE == data.Type.Trim()).Select(y => y.NameAndCode).FirstOrDefault();
             if (data.Mode != "" && data.Mode != null)
                 MODE.Text = data.Mode.Trim();
+            string SelectedClientCode = ((Client)CustomerSelected.SelectedItem).CLCODE;
+            SubClientListSource.Source = SubClientList.ContainsKey(SelectedClientCode) ? SubClientList[SelectedClientCode] : new List<string>();
+            ConsigneeListSource.Source = ConsigneeList;
+            ConsignerListSource.Source = ConsignerList;
             ConsigneeAddress.Text = data.ConsigneeAddress ?? "";
             ConsgineeName.Text = data.ConsigneeName ?? "";
             ConsignerAddress.Text = data.ConsignerAddress ?? "";
@@ -499,7 +503,10 @@ namespace FinalUi
         private void CustomerSelected_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (SubClientList != null)
-                SubClientListSource.Source = SubClientList.ContainsKey(CustomerSelected.Text) ? SubClientList[CustomerSelected.Text] : null;
+            {
+                string SelectedClientCode = ((Client)CustomerSelected.SelectedItem).CLCODE;
+                SubClientListSource.Source = SubClientList.ContainsKey(SelectedClientCode) ? SubClientList[SelectedClientCode] : null;
+            }
         }
         private void MODE_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
