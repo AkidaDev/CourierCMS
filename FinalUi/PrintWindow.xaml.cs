@@ -258,5 +258,24 @@ namespace FinalUi
         {
             this.Close();
         }
+
+        private void Invoice_Click(object sender, RoutedEventArgs e)
+        {
+            if(Invoice.IsChecked == true)
+            {
+                InvoiceGrid1.Visibility = System.Windows.Visibility.Visible;
+                InvoiceGrid2.Visibility = System.Windows.Visibility.Visible;
+                MisGrid1.Visibility = System.Windows.Visibility.Collapsed;
+                MisGrid2.Visibility = System.Windows.Visibility.Collapsed;
+            }
+            else
+            {
+                InvoiceGrid1.Visibility = System.Windows.Visibility.Collapsed;
+                InvoiceGrid2.Visibility = System.Windows.Visibility.Collapsed;
+                MisGrid1.Visibility = System.Windows.Visibility.Visible;
+                MisGrid2.Visibility = System.Windows.Visibility.Visible;
+            }
+        }
+
     }
 }

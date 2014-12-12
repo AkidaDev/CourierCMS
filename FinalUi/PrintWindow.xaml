@@ -28,8 +28,8 @@
         <Path Grid.Row="1" Data="F1M2,3C2,3 2,2 2,2 2,2 331,2 331,2 331,2 331,3 331,3 331,3 2,3 2,3" Fill="Black" Height="4" Width="332" VerticalAlignment="Bottom"/>
        <WrapPanel Grid.Row="1" VerticalAlignment="Bottom" Margin="186 0 0 0">
             <TextBlock Grid.Row="1" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Enter Details For .:   "/>
-            <RadioButton Name="Invoice" IsChecked="True" GroupName="Bill" Content="Invoice      " FontWeight="Bold" FontSize="16" FontFamily="Calibri" Padding="5 -3 0 0" VerticalAlignment="Bottom"/>
-            <RadioButton Name="Mis" GroupName="Bill" Content="M.I.S" FontWeight="Bold" FontSize="16" FontFamily="Calibri" Padding="5 -3 0 0" VerticalAlignment="Bottom"/>
+            <RadioButton Name="Invoice" IsChecked="True" GroupName="Bill" Content="Invoice      " FontWeight="Bold" FontSize="16" FontFamily="Calibri" Padding="5 -3 0 0" VerticalAlignment="Bottom" Click="Invoice_Click"/>
+            <RadioButton Name="Mis" GroupName="Bill" Content="M.I.S" FontWeight="Bold" FontSize="16" FontFamily="Calibri" Padding="5 -3 0 0" VerticalAlignment="Bottom" Click="Invoice_Click"/>
         </WrapPanel>
         <Path Grid.Row="1" Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Black" Height="24" Width="24" Margin="160,10,516,2"/>
         <WrapPanel Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Center">

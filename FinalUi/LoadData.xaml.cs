@@ -43,19 +43,19 @@ namespace FinalUi
             }
         }
        List<RuntimeData> _data;
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Microsoft.Win32.OpenFileDialog file = new Microsoft.Win32.OpenFileDialog();
-            file.DefaultExt = ".txt";
-            file.Filter = "(.txt)|*.txt";
-            Nullable<bool> result = file.ShowDialog();
-            if (result == true)
-            {
-                filename.Text = filename1 = file.FileName;
-            }
-                this.selected_Circle.Visibility = Visibility.Visible;
-                this.selected1_Circle.Visibility = Visibility.Hidden;
-        }
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Microsoft.Win32.OpenFileDialog file = new Microsoft.Win32.OpenFileDialog();
+        //    file.DefaultExt = ".txt";
+        //    file.Filter = "(.txt)|*.txt";
+        //    Nullable<bool> result = file.ShowDialog();
+        //    if (result == true)
+        //    {
+        //        filename.Text = filename1 = file.FileName;
+        //    }
+        //        this.selected_Circle.Visibility = Visibility.Visible;
+        //        this.selected1_Circle.Visibility = Visibility.Hidden;
+        //}
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             if (filename1 != null)

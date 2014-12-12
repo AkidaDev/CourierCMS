@@ -217,6 +217,7 @@ namespace FinalUi
         #region Save Worker
         void SaveWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            SaveDialogue.Visibility = System.Windows.Visibility.Collapsed;
             if (e.Error != null)
                 MessageBlock.Text = DateTime.Now.ToShortTimeString() + ": " + "Error in saving: " + e.Error.Message + "\n" + MessageBlock.Text;
             else
@@ -374,6 +375,7 @@ namespace FinalUi
         private void ExecuteSaveCommand(object sender, ExecutedRoutedEventArgs e)
         {
             MessageBlock.Text = DateTime.Now.ToShortTimeString() + ": " + "Saving operation started..." + "\n" + MessageBlock.Text;
+            SaveDialogue.Visibility = Visibility.Visible;
             SaveWorker.RunWorkerAsync();
             //SaveWorker_DoWork(null, null);
         }

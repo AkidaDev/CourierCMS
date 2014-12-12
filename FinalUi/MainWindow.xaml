@@ -283,9 +283,8 @@
                                     </DataGrid.RowDetailsTemplate>
                                 </DataGrid>
                             </DockPanel>
-                            <Grid Grid.Row="2" Height="80" Background="White">
+                            <Grid Name="SaveDialogue" Visibility="Collapsed" Grid.Row="2" Height="80" Background="White">
                                 <Image gif:ImageBehavior.AnimatedSource="Images/save.gif" Stretch="Uniform"/>
-                                <TextBlock Text="100 %" Foreground="Gray" FontWeight="SemiBold" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="200 0 0 0"/>
                             </Grid>
                             <DockPanel Grid.Row="3" Background="#A9FFFFF3">
                                 <WrapPanel Name="buttontabcanvaswrap" Margin="10,0,0,0"/>

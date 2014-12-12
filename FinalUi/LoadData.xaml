@@ -60,13 +60,12 @@
                         </Canvas>
                     </Button.Content>
                 </Button>
-                <Button  Click="Button_Click" Canvas.Left="26.157" Canvas.Top="47.993" Style="{StaticResource all}">
-                    <Button.Content>
-                        <WrapPanel Margin="6,3,6,3" >
-                            <Path x:Name="Shape_1" Data="F1M2.467,18.037C2.467,18.037 2.467,19.519 2.467,19.519 2.467,19.519 6.933,19.519 6.933,19.519 6.933,19.519 6.933,18.037 6.933,18.037 6.933,18.037 2.467,18.037 2.467,18.037z M1,15.815C1,15.815 23,15.815 23,15.815 23,15.815 23,21 23,21 23,21 1,21 1,21 1,21 1,15.815 1,15.815z M2.467,10.63C2.467,10.63 2.456,12.111 2.456,12.111 2.456,12.111 6.922,12.111 6.922,12.111 6.922,12.111 6.933,10.63 6.933,10.63 6.933,10.63 2.467,10.63 2.467,10.63z M1,8.407C1,8.407 23,8.407 23,8.407 23,8.407 23,13.593 23,13.593 23,13.593 1,13.593 1,13.593 1,13.593 1,8.407 1,8.407z M2.467,3.222C2.467,3.222 2.467,4.715 2.467,4.715 2.467,4.715 6.933,4.715 6.933,4.715 6.933,4.715 6.933,3.222 6.933,3.222 6.933,3.222 2.467,3.222 2.467,3.222z M1,1C1,1 23,1 23,1 23,1 23,6.185 23,6.185 23,6.185 1,6.185 1,6.185 1,6.185 1,1 1,1z" Fill="Black" Height="22" Width="24"/>
-                            <TextBlock x:Name="BROWSE" Foreground="Black" FontWeight="Bold" FontSize="14" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="14" TextAlignment="Left" TextWrapping="Wrap" Text="BROWSE" Margin="5,5,0,0" />
-                        </WrapPanel>
-                    </Button.Content>
+                <Button  Click="DataBrowserRadio_Click" Canvas.Left="30" Canvas.Top="51" Style="{DynamicResource window}">
+                    <WrapPanel>
+                        <Path x:Name="Shape_1" Data="F1M2.467,18.037C2.467,18.037 2.467,19.519 2.467,19.519 2.467,19.519 6.933,19.519 6.933,19.519 6.933,19.519 6.933,18.037 6.933,18.037 6.933,18.037 2.467,18.037 2.467,18.037z M1,15.815C1,15.815 23,15.815 23,15.815 23,15.815 23,21 23,21 23,21 1,21 1,21 1,21 1,15.815 1,15.815z M2.467,10.63C2.467,10.63 2.456,12.111 2.456,12.111 2.456,12.111 6.922,12.111 6.922,12.111 6.922,12.111 6.933,10.63 6.933,10.63 6.933,10.63 2.467,10.63 2.467,10.63z M1,8.407C1,8.407 23,8.407 23,8.407 23,8.407 23,13.593 23,13.593 23,13.593 1,13.593 1,13.593 1,13.593 1,8.407 1,8.407z M2.467,3.222C2.467,3.222 2.467,4.715 2.467,4.715 2.467,4.715 6.933,4.715 6.933,4.715 6.933,4.715 6.933,3.222 6.933,3.222 6.933,3.222 2.467,3.222 2.467,3.222z M1,1C1,1 23,1 23,1 23,1 23,6.185 23,6.185 23,6.185 1,6.185 1,6.185 1,6.185 1,1 1,1z" Fill="Black" Height="22" Width="24"/>
+                        <TextBlock FontWeight="Bold" FontSize="14" FontFamily="Calibri" Text=" Book No. .: " VerticalAlignment="Bottom"/>
+                        <TextBox Width="171" Padding="0 4 0 0"/>
+                    </WrapPanel>
                 </Button>
                 <Button Click="addData_CheckedUnChecked" Canvas.Left="72" Canvas.Top="87.496" Style="{StaticResource 1}">
                     <Canvas Height="19" Width="19">
@@ -83,11 +82,11 @@
                     </Canvas>
                 </Button>
                 <TextBlock MouseDown="addData_CheckedUnChecked" x:Name="ADD_Data_in_Current_Sheet" FontWeight="Bold" FontSize="14" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="94.5" LineHeight="14" TextAlignment="Left" TextWrapping="Wrap" Text="ADD Data in Current Sheet" Canvas.Top="92.178"/>
-                <TextBox Name="filename"   Height="25" Canvas.Left="123.5" Canvas.Top="49" Width="171" Padding="0 4 0 0" />
+                
             </Canvas>
             <Button Click="loaddata" Canvas.Left="239.5" Canvas.Top="179" Style="{StaticResource all}" >
                 <Button.Content>
-                    <WrapPanel  Margin="6,2,6,2">
+                    <WrapPanel  Margin="7 4">
                         <Path Data="F1M13.222,1C13.222,1 21,1 21,1 21,1 21,8.778 21,8.778 21,8.778 18.778,8.778 18.778,8.778 18.778,8.778 18.778,4.778 18.778,4.778 18.778,4.778 7.889,15.667 7.889,15.667 7.889,15.667 6.333,14.111 6.333,14.111 6.333,14.111 17.222,3.222 17.222,3.222 17.222,3.222 13.222,3.222 13.222,3.222 13.222,3.222 13.222,1 13.222,1z M3.222,1C3.222,1 11,1 11,1 11,1 11,3.222 11,3.222 11,3.222 3.222,3.222 3.222,3.222 3.222,3.222 3.222,18.778 3.222,18.778 3.222,18.778 18.778,18.778 18.778,18.778 18.778,18.778 18.778,11 18.778,11 18.778,11 21,11 21,11 21,11 21,18.778 21,18.778 21,20 20,21 18.778,21 18.778,21 3.222,21 3.222,21 2,21 1,20 1,18.778 1,18.778 1,3.222 1,3.222 1,2 2,1 3.222,1z" Fill="Black" Height="22" Canvas.Left="242" Canvas.Top="185" Width="22"/>
                         <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Start"/>
                     </WrapPanel>
