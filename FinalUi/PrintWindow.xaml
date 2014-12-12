@@ -9,6 +9,7 @@
     <Window.Resources>
         <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"></CollectionViewSource>
         <CollectionViewSource x:Key="DataGridDataSource" CollectionViewType="ListCollectionView"></CollectionViewSource>
+        <CollectionViewSource x:Key="SubClientList" CollectionViewType="ListCollectionView"/>
     </Window.Resources>
     <Grid  Height="330" Width="700" Background="White">
         <Grid.Effect>
@@ -37,7 +38,7 @@
             <ComboBox Height="26" Width="300" ItemsSource="{Binding}" DataContext="{StaticResource ClientList}" x:Name="ClientList" SelectionChanged="ClientList_SelectionChanged" DisplayMemberPath="NameAndCode"/>
             <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Sub Client .: " VerticalAlignment="Bottom"/>
-            <ComboBox Height="26" Width="120"/>
+            <ComboBox Name="SubClientComboBox" DataContext="{StaticResource SubClientList}" ItemsSource="{Binding}" Height="26" Width="120"/>
         </WrapPanel>
         <WrapPanel Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="From Date .: " VerticalAlignment="Bottom"/>
