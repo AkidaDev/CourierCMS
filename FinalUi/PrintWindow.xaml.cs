@@ -24,7 +24,9 @@ namespace FinalUi
     {
         CollectionViewSource ClientListSource;
         CollectionViewSource DataGridSource;
+        CollectionViewSource SubClientListSource;
         List<RuntimeData> dataGridSource;
+        Dictionary<string, List<string>> SubClientList;
         Microsoft.Reporting.WinForms.ReportDataSource rs;
 
         public PrintWindow(List<RuntimeData> data, Client client, DateTime toDate, DateTime fromDate, double tax, double previousDue)
@@ -51,10 +53,18 @@ namespace FinalUi
             TaxBox.Text = Configs.Default.ServiceTax;
             ClientListSource = (CollectionViewSource)FindResource("ClientList");
             DataGridSource = (CollectionViewSource)FindResource("DataGridDataSource");
+            SubClientListSource = (CollectionViewSource)FindResource("SubClientList");
             dataGridSource = data;
             ClientListSource.Source = DataSources.ClientCopy;
             rs = new Microsoft.Reporting.WinForms.ReportDataSource();
             rs.Name = "DataSet1";
+            SubClientList = new Dictionary<string, List<string>>();
+            List<string> clients = data.Select(x => x.CustCode).Distinct().ToList();
+            clients.ForEach(x =>
+            {
+                List<string> subClients = data.Where(y => y.CustCode == x).Select(z => z.SubClient).Distinct().ToList();
+                SubClientList.Add(x, subClients);
+            });
             rs.Value = dataGridSource;
         }
         public void RefreshDataGridSource()
@@ -74,12 +84,17 @@ namespace FinalUi
             Client selectedClient = ((Client)ClientList.SelectedItem);
             if (selectedClient == null)
                 return;
+
             TaxBox.Text = ((Client)ClientList.SelectedItem).FUEL.ToString();
             ServiceTaxBox.Text = selectedClient.STAX.ToString();
             DiscountBox.Text = selectedClient.AMTDISC.ToString();
             BillingDataDataContext db = new BillingDataDataContext();
             double prevdue = db.GetPreviousDue(selectedClient.CLCODE) ?? 0;
             PreviousDueTextBox.Text = prevdue.ToString();
+            if (SubClientList != null)
+            {
+                SubClientListSource.Source = SubClientList.ContainsKey(selectedClient.CLCODE) ? SubClientList[selectedClient.CLCODE] : new List<string>();
+            }
             RefreshDataGridSource();
         }
         string dateString;
@@ -126,6 +141,10 @@ namespace FinalUi
             #endregion
             BillingDataDataContext db = new BillingDataDataContext();
             source = UtilityClass.convertToRuntimeVIew(dataGridSource).Where(x => x.CustCode == ((Client)ClientList.SelectedItem).CLCODE && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
+            if (SubClientComboBox.Text != null)
+            {
+                source = source.Where(x => x.SubClient == SubClientComboBox.Text).ToList();
+            }
             rs.Value = source;
             if (client == null)
                 clc = db.Clients.SingleOrDefault(x => x.CLCODE == ((Client)ClientList.SelectedItem).CLCODE);
@@ -140,33 +159,34 @@ namespace FinalUi
             repParams.Add(new ReportParameter("DescriptionString", descriptionString));
             mainAmountValue = (double)(source.Sum(x => x.FrAmount) ?? 0);
             basic = mainAmountValue;
-            repParams.Add(new ReportParameter("MainAmountString",  String.Format("{0:0.00}",mainAmountValue)));
+            repParams.Add(new ReportParameter("MainAmountString", String.Format("{0:0.00}", mainAmountValue)));
             repParams.Add(new ReportParameter("FuelString", TaxBox.Text));
-            repParams.Add(new ReportParameter("ServiceTaxString",String.Format("{0:0.00}",double.Parse(ServiceTaxBox.Text))));
-            repParams.Add(new ReportParameter("DiscountPString", String.Format("{0:0.00}",double.Parse(DiscountBox.Text))));
-            repParams.Add(new ReportParameter("MiscellaneousAmountString",MiscBox.Text));
+            repParams.Add(new ReportParameter("ServiceTaxString", String.Format("{0:0.00}", double.Parse(ServiceTaxBox.Text))));
+            repParams.Add(new ReportParameter("DiscountPString", String.Format("{0:0.00}", double.Parse(DiscountBox.Text))));
+            repParams.Add(new ReportParameter("MiscellaneousAmountString", MiscBox.Text));
             double discount = double.Parse(DiscountBox.Text) * mainAmountValue / 100;
-            repParams.Add(new ReportParameter("DiscountAmountString",  String.Format("{0:0.00}",discount)));
+            repParams.Add(new ReportParameter("DiscountAmountString", String.Format("{0:0.00}", discount)));
             mainAmountValue = mainAmountValue - discount;
             double fuelAmount = double.Parse(TaxBox.Text) * mainAmountValue / 100;
             repParams.Add(new ReportParameter("FuelAmount", fuelAmount.ToString()));
             tax = double.Parse(ServiceTaxBox.Text) * mainAmountValue / 100;
-            repParams.Add(new ReportParameter("ServiceTaxAmount", String.Format("{0:0.00}",tax)));
+            repParams.Add(new ReportParameter("ServiceTaxAmount", String.Format("{0:0.00}", tax)));
             taxamount = tax + fuelAmount;
             totalAmount = mainAmountValue + taxamount + double.Parse(MiscBox.Text) + double.Parse(PreviousDueTextBox.Text);
-            repParams.Add(new ReportParameter("TotalAmountString",  String.Format("{0:0.00}",totalAmount)));
+            repParams.Add(new ReportParameter("TotalAmountString", String.Format("{0:0.00}", totalAmount)));
             totalAmountinWordString = UtilityClass.NumbersToWords((int)totalAmount);
             repParams.Add(new ReportParameter("TotalAmountInWordString", totalAmountinWordString));
-            repParams.Add(new ReportParameter("PreviousDueString", PreviousDueTextBox.Text));
+            if (PreviousDueCheck.Checked == true)
+                repParams.Add(new ReportParameter("PreviousDueString", PreviousDueTextBox.Text));
             repParams.Add(new ReportParameter("CompanyName", Configs.Default.CompanyName));
             repParams.Add(new ReportParameter("ComapnyPhoneNo", Configs.Default.CompanyPhone));
             repParams.Add(new ReportParameter("CompanyAddress", Configs.Default.CompanyAddress));
             repParams.Add(new ReportParameter("CompanyEmail", Configs.Default.CompanyEmail));
             repParams.Add(new ReportParameter("CompanyFax", Configs.Default.CompanyFax));
-            repParams.Add(new ReportParameter("ClientName", clc.CLNAME));
+            repParams.Add(new ReportParameter("ClientName", clc.CLNAME + " " + SubClientComboBox.Text ?? " "));
             repParams.Add(new ReportParameter("ClientAddress", clc.ADDRESS));
             repParams.Add(new ReportParameter("ClientPhoneNo", clc.CONTACTNO));
-            repParams.Add(new ReportParameter("TinNumber", Configs.Default.Tin??""));
+            repParams.Add(new ReportParameter("TinNumber", Configs.Default.Tin ?? ""));
             repParams.Add(new ReportParameter("TNC", Configs.Default.TNC));
             invoiceNo = (InvoiceDate.SelectedDate ?? DateTime.Today).ToString("yyyyMMdd");
             invoiceNo = invoiceNo + DateTime.Now.ToString("hhmm");
@@ -177,14 +197,24 @@ namespace FinalUi
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            printObj();
+            if (Invoice.IsChecked == true)
+                printObj();
+            else
+            {
+                printMIS();
+            }
         }
-        private void Preview_Click(object sender, RoutedEventArgs e){}
+
+        private void printMIS()
+        {
+            throw new NotImplementedException();
+        }
+        private void Preview_Click(object sender, RoutedEventArgs e) { }
         private void SaveInvoiceButton_Click(object sender, RoutedEventArgs e)
         {
             if (source == null)
             {
-                MessageBox.Show("Please print the invoice first...");
+                MessageBox.Show("Please print the invoice first...", "Error");
                 return;
             }
             MessageBoxResult result = MessageBox.Show("Do you want to save this invoice? ", "Confirm", MessageBoxButton.YesNo);
@@ -208,13 +238,18 @@ namespace FinalUi
                     invoice.PreviousDue = double.Parse(PreviousDueTextBox.Text);
                     invoice.Remarks = RemarkBox.Text;
                     invoice.STax = double.Parse(ServiceTaxBox.Text);
-                    invoice.TotalAmount = totalAmount - invoice.PreviousDue??0;
+                    invoice.TotalAmount = totalAmount - invoice.PreviousDue ?? 0;
                     invoice.Discount = double.Parse(DiscountBox.Text);
                     invoice.Misc = double.Parse(MiscBox.Text);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Enter the fields properly...");
+                    return;
+                }
+                if (db.Invoices.Where(x => x.BillId == invoiceNo).Count() > 0)
+                {
+                    MessageBox.Show("This invoice is already saved", "Error..");
                     return;
                 }
                 try
@@ -261,7 +296,7 @@ namespace FinalUi
 
         private void Invoice_Click(object sender, RoutedEventArgs e)
         {
-            if(Invoice.IsChecked == true)
+            if (Invoice.IsChecked == true)
             {
                 InvoiceGrid1.Visibility = System.Windows.Visibility.Visible;
                 InvoiceGrid2.Visibility = System.Windows.Visibility.Visible;

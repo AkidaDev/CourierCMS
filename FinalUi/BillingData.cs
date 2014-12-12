@@ -1,6 +1,14 @@
 using System.Text.RegularExpressions;
 namespace FinalUi
 {
+    partial class RuntimeCityView
+    {
+        public string SubClient
+        {
+            get;
+            set;
+        }
+    }
     partial class StockAssignmentView
     {
         public int? AssignedCount

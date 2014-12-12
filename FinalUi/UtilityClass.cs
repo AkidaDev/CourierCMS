@@ -38,6 +38,8 @@ namespace FinalUi
                 cityObj.TransMF_No = dataObj.TransMF_No;
                 cityObj.Type = dataObj.Type;
                 cityObj.Weight = dataObj.Weight;
+                cityObj.SubClient = dataObj.SubClient;
+                
                 rcvd.Add(cityObj);
             }
             return rcvd;
@@ -81,6 +83,9 @@ namespace FinalUi
             if (trans.Type != null)
                 runtimeDataObj.Type = trans.Type.Trim();
             runtimeDataObj.BilledWeight = trans.BilledWeight;
+            runtimeDataObj.SubClient = trans.SubClient;
+            runtimeDataObj.ConsigneeName = trans.ConsigneeName;
+            runtimeDataObj.ConsignerName = trans.ConsignerName;
             return runtimeDataObj;
         }
         #endregion

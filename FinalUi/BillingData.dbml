@@ -66,22 +66,6 @@
       <Column Name="country_name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.Invoice" Member="Invoices">
-    <Type Name="Invoice">
-      <Column Name="BillId" Type="System.String" DbType="VarChar(32) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ClientCode" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="TotalAmount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Fuel" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="STax" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Basic" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Remarks" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="PreviousDue" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Misc" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Discount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Association Name="Invoice_InvoiceAssignment" Member="InvoiceAssignments" ThisKey="BillId" OtherKey="BillId" Type="InvoiceAssignment" />
-    </Type>
-  </Table>
   <Table Name="dbo.InvoiceAssignment" Member="InvoiceAssignments">
     <Type Name="InvoiceAssignment">
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -91,8 +75,8 @@
       <Column Name="BilledWeight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="Destination" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="DestinationDesc" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="Invoice_InvoiceAssignment" Member="Invoice" ThisKey="BillId" OtherKey="BillId" Type="Invoice" IsForeignKey="true" />
       <Association Name="Transaction_InvoiceAssignment" Member="Transaction" ThisKey="TransactionId" OtherKey="ID" Type="Transaction" IsForeignKey="true" />
+      <Association Name="Invoice_InvoiceAssignment" Member="Invoice" ThisKey="BillId" OtherKey="BillId" Type="Invoice" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.PaymentEntry" Member="PaymentEntries">
@@ -435,6 +419,23 @@
       <Column Name="ConsignerName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="ConsignerAddress" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
       <Column Name="SubClient" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Invoice" Member="Invoices">
+    <Type Name="Invoice">
+      <Column Name="BillId" Type="System.String" DbType="VarChar(32) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ClientCode" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="TotalAmount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Fuel" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="STax" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Basic" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Remarks" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PreviousDue" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Misc" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Discount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SubClient" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Association Name="Invoice_InvoiceAssignment" Member="InvoiceAssignments" ThisKey="BillId" OtherKey="BillId" Type="InvoiceAssignment" />
     </Type>
   </Table>
   <Function Name="dbo.sp_deleteSheetFromRuntime" Method="sp_deleteSheetFromRuntime">
