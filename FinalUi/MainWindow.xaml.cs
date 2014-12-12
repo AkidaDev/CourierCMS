@@ -501,17 +501,17 @@ namespace FinalUi
             canvasButton.Style = (Style)FindResource("Sheet_button");
             canvasButton.Margin = new Thickness(-9, 1, 0, 0);
             canvasButton.Height = 20;
-            canvasButton.Width = 90;
+            canvasButton.Width = 92;
 
             Canvas canvastab = new Canvas();
-            canvastab.Width = 90;
+            canvastab.Width = 92;
             canvastab.Height = 20;
 
             Path pathsquare = new Path();
             pathsquare.Data = Geometry.Parse(@"F1M2,1.644C2,1.644 2,20 2,20 2,20 77.831,20 77.831,20 77.831,20 91.619,1.644 91.619,1.644 91.619,1.644 2,1.644 2,1.644z");
             pathsquare.Fill = Brushes.Black;
             pathsquare.Height = 20;
-            pathsquare.Width = 90;
+            pathsquare.Width = 92;
             pathsquare.Stretch = Stretch.Fill;
             Button buttonsquare = new Button();
             buttonsquare.Name = "_pathsquare";
@@ -1001,9 +1001,19 @@ namespace FinalUi
         }
         private void AddRuleButton_Click(object sender, RoutedEventArgs e)
         {
-            AddRule window = new AddRule(new BillingDataDataContext().Quotations.Where(x => x.CLCODE == ((Client)this.ClientCombo.SelectedItem).CLCODE).FirstOrDefault());
-            window.Closed += addRulwWindow_Closed;
-            window.Show();
+            if (CostingRuleRadio.IsChecked==true)
+            {
+                AddRule window = new AddRule(new BillingDataDataContext().Quotations.Where(x => x.CLCODE == ((Client)this.ClientCombo.SelectedItem).CLCODE).FirstOrDefault());
+                window.Closed += addRulwWindow_Closed;
+                window.Show();
+            }
+            if(ServiceRuleRadio.IsChecked==true)
+            {
+                AddServiceRule window = new AddServiceRule(new BillingDataDataContext().Quotations.Where(x => x.CLCODE == ((Client)this.ClientCombo.SelectedItem).CLCODE).FirstOrDefault());
+                window.Closed += ServiceRuleWindowClosed;
+                window.Show();
+            }
+            
         }
 
         private void addRulwWindow_Closed(object sender, EventArgs e)
@@ -1110,10 +1120,9 @@ namespace FinalUi
         }
         private void cloakAllGrid()
         {
-            if (CostingRuleGrid != null && InvoiceRuleGrid != null && ServiceRuleGrid != null)
+            if (CostingRuleGrid != null && ServiceRuleGrid != null)
             {
                 CostingRuleGrid.Visibility = Visibility.Collapsed;
-                InvoiceRuleGrid.Visibility = Visibility.Collapsed;
                 ServiceRuleGrid.Visibility = Visibility.Collapsed;
             }
         }
@@ -1125,10 +1134,6 @@ namespace FinalUi
                 {
                     cloakAllGrid();
                     CostingRuleGrid.Visibility = Visibility.Visible;
-
-                    currentaddrulebutton.Visibility = Visibility.Collapsed;
-                    AddCostingRuleButton.Visibility = Visibility.Visible;
-                    currentaddrulebutton = AddCostingRuleButton;
                 }
                 catch (NullReferenceException ex)
                 { }
@@ -1139,18 +1144,6 @@ namespace FinalUi
         {
             cloakAllGrid();
             ServiceRuleGrid.Visibility = Visibility.Visible;
-            currentaddrulebutton.Visibility = Visibility.Collapsed;
-            AddServiceRuleButton.Visibility = Visibility.Visible;
-            currentaddrulebutton = AddServiceRuleButton;
-        }
-
-        private void InvoiceRuleRadio_Checked(object sender, RoutedEventArgs e)
-        {
-            cloakAllGrid();
-            InvoiceRuleGrid.Visibility = Visibility.Visible;
-            currentaddrulebutton.Visibility = Visibility.Collapsed;
-            AddInvoiceRuleButton.Visibility = Visibility.Visible;
-            currentaddrulebutton = AddInvoiceRuleButton;
         }
         #endregion
         #region Employee Grid Buttons
@@ -1349,33 +1342,22 @@ namespace FinalUi
                     db.Rules.DeleteOnSubmit(dr);
                 }
             }
-            if (InvoiceRuleGrid.Visibility == Visibility.Visible && InvoiceRuleGrid.SelectedItems != null)
-            {
-                if (MessageBox.Show("Do you Want delete this Rule", "Confirm", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
-                {
-                    InvoiceRule dcr = (InvoiceRule)InvoiceRuleGrid.SelectedItem;
-                    Rule dr = db.Rules.Where(x => x.ID == dcr.Id).FirstOrDefault();
-                    db.Rules.DeleteOnSubmit(dr);
-                }
-            }
             db.SubmitChanges();
             LoadClientRules();
             this.CostingRuleGrid.Items.Refresh();
             this.ServiceRuleGrid.Items.Refresh();
-            this.InvoiceRuleGrid.Items.Refresh();
         }
-        private void AddServiceRuleButton_Click(object sender, RoutedEventArgs e)
+        private void Calculator_Click(object sender, RoutedEventArgs e)
         {
-            AddServiceRule window = new AddServiceRule(new BillingDataDataContext().Quotations.Where(x => x.CLCODE == ((Client)this.ClientCombo.SelectedItem).CLCODE).FirstOrDefault());
-            window.Closed += ServiceRuleWindowClosed;
-            window.Show();
+            if (Calculator.Visibility != Visibility.Collapsed)
+            {
+                Calculator.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                Calculator.Visibility = Visibility.Visible;
+            }
         }
-        private void AddInvoiceRuleButton_Click(object sender, RoutedEventArgs e)
-        {
-            AddInvoiceRule window = new AddInvoiceRule(new BillingDataDataContext().Quotations.Where(x => x.CLCODE == ((Client)this.ClientCombo.SelectedItem).CLCODE).FirstOrDefault());
-            window.Show();
-        }
-
         private void MenuItem_hideimage(object sender, RoutedEventArgs e)
         {
             if (backgroundimage.Visibility != Visibility.Collapsed)
@@ -1400,7 +1382,6 @@ namespace FinalUi
             LoadClientRules();
             this.CostingRuleGrid.Items.Refresh();
             this.ServiceRuleGrid.Items.Refresh();
-            this.InvoiceRuleGrid.Items.Refresh();
         }
 
         private void GetRateButton_Click(object sender, RoutedEventArgs e)
@@ -1451,14 +1432,6 @@ namespace FinalUi
                     ServiceRuleGrid.SelectedItem = null;
                 }
             }
-            if (InvoiceRuleGrid.Visibility == Visibility.Visible && InvoiceRuleGrid.SelectedItem != null)
-            {
-                if (MessageBox.Show("Do you Want edit this Rule", "", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
-                {
-                    InvoiceRule dcr = (InvoiceRule)InvoiceRuleGrid.SelectedItem;
-                    InvoiceRuleGrid.SelectedItem = null;
-                }
-            }
             db.SubmitChanges();
         }
         private void win_Closed(object sender, EventArgs e)
@@ -1466,7 +1439,6 @@ namespace FinalUi
             LoadClientRules();
             this.CostingRuleGrid.Items.Refresh();
             this.ServiceRuleGrid.Items.Refresh();
-            this.InvoiceRuleGrid.Items.Refresh();
         }
 
         private void InvoiceAnalysis_Click(object sender, RoutedEventArgs e)

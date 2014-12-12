@@ -487,5 +487,11 @@ namespace FinalUi
                 NDoxStartValue.Visibility = Visibility.Collapsed;
             }
         }
+
+        private void Help_Click(object sender, RoutedEventArgs e)
+        {
+            viewhelp window = new viewhelp();
+            window.Show();
+        }
     }
 }

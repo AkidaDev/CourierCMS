@@ -219,10 +219,10 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ToggleButton}">
-                        <Border Height="16" Width="16" BorderBrush="LightGray" BorderThickness="2" Background="Transparent">
+                        <Border Height="16" Width="16" BorderBrush="White" BorderThickness="2" Background="Transparent">
                             <Canvas Name="ExpandPath">
-                                <Rectangle x:Name="virticalbar" Canvas.Top="2" Canvas.Left="5" Width="2" Height="8" Fill="LightGray"></Rectangle>
-                                <Rectangle Canvas.Left="2" Canvas.Top="5" Width="8" Height="2" Fill="LightGray"></Rectangle>
+                                <Rectangle x:Name="virticalbar" Canvas.Top="2" Canvas.Left="5" Width="2" Height="8" Fill="White"></Rectangle>
+                                <Rectangle Canvas.Left="2" Canvas.Top="5" Width="8" Height="2" Fill="White"></Rectangle>
                             </Canvas>
                         </Border>
                         <ControlTemplate.Triggers>

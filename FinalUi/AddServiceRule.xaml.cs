@@ -393,5 +393,11 @@ namespace FinalUi
             AmountWrap.Visibility = Visibility.Visible;
             PercentageWrap.Visibility = Visibility.Collapsed;
         }
+
+        private void Help_Click(object sender, RoutedEventArgs e)
+        {
+            viewhelp window= new viewhelp();
+            window.Show();
+        }
     }
 }
