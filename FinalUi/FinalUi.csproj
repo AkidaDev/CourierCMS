@@ -172,14 +172,8 @@
     <Compile Include="AddClient.xaml.cs">
       <DependentUpon>AddClient.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddCountry.xaml.cs">
-      <DependentUpon>AddCountry.xaml</DependentUpon>
-    </Compile>
     <Compile Include="AddEmployee.xaml.cs">
       <DependentUpon>AddEmployee.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="AddInvoiceRule.xaml.cs">
-      <DependentUpon>AddInvoiceRule.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddServiceRule.xaml.cs">
       <DependentUpon>AddServiceRule.xaml</DependentUpon>
@@ -198,9 +192,6 @@
     <Compile Include="BillReportWindow.xaml.cs">
       <DependentUpon>BillReportWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ClientAnalyzingWindow.xaml.cs">
-      <DependentUpon>ClientAnalyzingWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ClientReport.xaml.cs">
       <DependentUpon>ClientReport.xaml</DependentUpon>
     </Compile>
@@ -208,13 +199,7 @@
       <DependentUpon>ClientReportWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Configs.cs" />
-    <Compile Include="ConnectionString.xaml.cs">
-      <DependentUpon>ConnectionString.xaml</DependentUpon>
-    </Compile>
     <Compile Include="CostingRule.cs" />
-    <Compile Include="CountryAssignment.xaml.cs">
-      <DependentUpon>CountryAssignment.xaml</DependentUpon>
-    </Compile>
     <Compile Include="DataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -239,9 +224,6 @@
       <DependentUpon>Load.xaml</DependentUpon>
     </Compile>
     <Compile Include="LoadResources.cs" />
-    <Compile Include="ManageCity.xaml.cs">
-      <DependentUpon>ManageCity.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ManageClient.xaml.cs">
       <DependentUpon>ManageClient.xaml</DependentUpon>
     </Compile>
@@ -289,12 +271,6 @@
     <Compile Include="StockWindow.xaml.cs">
       <DependentUpon>StockWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TestingMainWindow.xaml.cs">
-      <DependentUpon>TestingMainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="TestingPermisstion.xaml.cs">
-      <DependentUpon>TestingPermisstion.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControlGallery.xaml.cs">
       <DependentUpon>UserControlGallery.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -325,15 +301,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AddCountry.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="AddEmployee.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="AddInvoiceRule.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -349,14 +317,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Blue.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ClientAnalyzingWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="ClientReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -364,14 +324,6 @@
     <Page Include="ClientReportWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ConnectionString.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CountryAssignment.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="FilterSelectWindow.xaml">
       <SubType>Designer</SubType>
@@ -423,10 +375,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ManageCity.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="ManageClient.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -487,18 +435,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TestingMainWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="TestingPermisstion.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="theme\Red.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="UserControlGallery.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -538,9 +474,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="ClientAnalysis.rdlc" />
-    <EmbeddedResource Include="ClientReport.rdlc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <Resource Include="Images\save.gif" />
     <Content Include="Report1.rdlc">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

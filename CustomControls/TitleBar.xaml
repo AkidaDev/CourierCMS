@@ -24,11 +24,11 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid Margin="-6 -6 -6 0" Height="28">
+            <Grid Margin="-6 -6 -6 0" Height="28" Background="#19000000">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="116"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                     <WrapPanel VerticalAlignment="Center">
                         <TextBlock HorizontalAlignment="Left" Text="IC"/>
