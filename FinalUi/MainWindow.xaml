@@ -54,7 +54,8 @@
                 <Menu Background="Transparent" FontSize="14" Margin="6 6 0 0" Foreground="White">
                     <MenuItem ToolTip="Open new document" Header="File" Margin="10 0 0 0">
                         <MenuItem Header="New Sheet" Name="NewSheetMenuItem" Foreground="Black"/>
-                        <MenuItem Header="Import Data" Name="ImportDataMenuItem" Command="ApplicationCommands.Open" Foreground="Black"/>
+                        <MenuItem Header="Load Data" Name="ImportDataMenuItem" Command="ApplicationCommands.Open" Foreground="Black"/>
+                        <MenuItem Header="Import Data" Name="DataImportMenuItem" Foreground="Black" Click="DataImportMenuItem_Click"/>
                         <MenuItem Header="Print" Name="PrintMenuItem" Command="ApplicationCommands.Print" Foreground="Black"/>
                         <MenuItem Header="Log Out" Click="MenuItem_Click" Foreground="Black"/>
                     </MenuItem>

@@ -57,21 +57,24 @@ namespace FinalUi
             }
             else
             {
-                _dataStack.AddRange(value);
+                _dataStack.AddRange(value.Where(x=>!_dataStack.Select(y=>y.ConsignmentNo).Contains(x.ConsignmentNo)).ToList());
             }
             applyFilter();
         }
 
         internal void addRecord(RuntimeData data)
         {
-            if (_dataStack != null)
-                _dataStack.Add(data);
-            else
+            if (!_dataStack.Select(x => x.ConsignmentNo).Contains(data.ConsignmentNo))
             {
-                _dataStack = new List<RuntimeData>();
-                _dataStack.Add(data);
+                if (_dataStack != null)
+                    _dataStack.Add(data);
+                else
+                {
+                    _dataStack = new List<RuntimeData>();
+                    _dataStack.Add(data);
+                }
+                applyFilter();
             }
-            applyFilter();
         }
     }
 

@@ -49,7 +49,7 @@ namespace FinalUi
                 List<RuntimeData> qData = (from rdata in db.RuntimeDatas.Where(x => x.UserId == SecurityModule.currentUserName && x.SheetNo == sheetNo)
                                            join qdata in db.InvoiceAssignments
                                            on rdata.TransactionId equals qdata.TransactionId
-                                           select rdata).ToList();
+                                           select rdata).Distinct().ToList();
           
                 if (showBilled == true)
                 {

@@ -19,8 +19,6 @@ namespace FinalUi
     /// </summary>
     public partial class FilterSelectWindow : Window
     {
-        CollectionViewSource clientListToSet;
-        CollectionViewSource clientListToAdd;
         CollectionViewSource StartConnNoList;
         CollectionViewSource EndConnoList;
         Filter filterObj;
@@ -34,7 +32,6 @@ namespace FinalUi
         public FilterSelectWindow(Filter filterObj, IEnumerable<string> ConnNo)
         {
             setDataSource(filterObj,ConnNo);
-            //  List<WrapPanel> panels = (List<WrapPanel>)SelectClient.ItemsSource;
         }
         public void setDataSource(Filter filterObj, IEnumerable<string> ConnNo)
         {
@@ -47,11 +44,10 @@ namespace FinalUi
             StartConnNoList.Source = ConnNoList;
             EndConnoList = (CollectionViewSource)FindResource("EndConnoList");
             EndConnoList.Source = ConnNoList;
-            clientListToAdd = (CollectionViewSource)FindResource("ClientToAdd");
-            clientListToSet = (CollectionViewSource)FindResource("ClientToSet");
             List<Client> fClientList = db.Clients.ToList();
-            clientListToSet.Source = fClientList.Where(x => !filterObj.selectedClientList.Select(y => y.CLCODE).Contains(x.CLCODE)).ToList();
-            clientListToAdd.Source = filterObj.selectedClientList;
+            SelectClientBox.AllListSource = fClientList.Where(x => !filterObj.selectedClientList.Select(y => y.CLCODE).Contains(x.CLCODE)).ToList();
+            SelectClientBox.SelectedListSource= filterObj.selectedClientList;
+            SelectClientBox.DisplayValuePath = "NameAndCode";
             switch (filterObj.showBilled)
             {
                 case true:
@@ -103,7 +99,7 @@ namespace FinalUi
             {
                 filterObj.endConnNo = EndConnNo.Text;
                 filterObj.fromDate = (DateTime)FromDate.SelectedDate;
-                filterObj.selectedClientList = ((List<Client>)clientListToAdd.Source);
+                filterObj.selectedClientList = SelectClientBox.SelectedListSource.Cast<Client>().ToList();
                 if (BilledRadio.IsChecked == true)
                     filterObj.showBilled = true;
                 if (UnBilledRadio.IsChecked == true)
@@ -130,70 +126,6 @@ namespace FinalUi
             DragMove();
         }
 
-
-        private void RemoveClient_Click(object sender, RoutedEventArgs e)
-        {
-
-            if (this.ClientsToAdd.SelectedItem != null)
-            {
-                foreach (Client item in ClientsToAdd.SelectedItems)
-                {
-                    ((List<Client>)clientListToAdd.Source).Remove(item);
-                    ((List<Client>)clientListToSet.Source).Add(item);
-                }
-                ClientsToSet.SelectedItem = null;
-                ClientsToAdd.SelectedItem = null;
-                ClientsToSet.Items.Refresh();
-                ClientsToAdd.Items.Refresh();
-            }
-        }
-
-        private void AddClient_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.ClientsToSet.SelectedItem != null)
-            {
-                foreach (Client item in ClientsToSet.SelectedItems)
-                {
-                    ((List<Client>)clientListToSet.Source).Remove(item);
-                    ((List<Client>)clientListToAdd.Source).Add(item);
-                }
-                ClientsToSet.SelectedItem = null;
-                ClientsToAdd.SelectedItem = null;
-                ClientsToSet.Items.Refresh();
-                ClientsToAdd.Items.Refresh();
-            }
-        }
-
-        private void AddAllButton_Click(object sender, RoutedEventArgs e)
-        {
-            List<Client> clients = new List<Client>();
-            ((List<Client>)clientListToSet.Source).RemoveAll(
-                (x) =>
-                {
-                    clients.Add(x);
-                    return true;
-                }
-            );
-            ((List<Client>)clientListToAdd.Source).AddRange(clients);
-            ClientsToSet.Items.Refresh();
-            ClientsToAdd.Items.Refresh();
-        }
-
-        private void ClearAllButton_Click(object sender, RoutedEventArgs e)
-        {
-            List<Client> clients = new List<Client>();
-            ((List<Client>)clientListToAdd.Source).RemoveAll(
-                (x) =>
-                {
-                    clients.Add(x);
-                    return true;
-                }
-            );
-            ((List<Client>)clientListToSet.Source).AddRange(clients);
-            ClientsToSet.Items.Refresh();
-            ClientsToAdd.Items.Refresh();
-
-        }
 
     }
 }

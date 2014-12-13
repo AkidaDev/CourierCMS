@@ -141,7 +141,7 @@ namespace FinalUi
             #endregion
             BillingDataDataContext db = new BillingDataDataContext();
             source = UtilityClass.convertToRuntimeVIew(dataGridSource).Where(x => x.CustCode == ((Client)ClientList.SelectedItem).CLCODE && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
-            if (SubClientComboBox.Text != null)
+            if (SubClientComboBox.Text != null && SubClientComboBox.Text != "")
             {
                 source = source.Where(x => x.SubClient == SubClientComboBox.Text).ToList();
             }
@@ -172,12 +172,18 @@ namespace FinalUi
             tax = double.Parse(ServiceTaxBox.Text) * mainAmountValue / 100;
             repParams.Add(new ReportParameter("ServiceTaxAmount", String.Format("{0:0.00}", tax)));
             taxamount = tax + fuelAmount;
-            totalAmount = mainAmountValue + taxamount + double.Parse(MiscBox.Text) + double.Parse(PreviousDueTextBox.Text);
+            if (PreviousDueCheck.Checked == true)
+                totalAmount = mainAmountValue + taxamount + double.Parse(MiscBox.Text) + double.Parse(PreviousDueTextBox.Text);
+            else
+                totalAmount = mainAmountValue + taxamount + double.Parse(MiscBox.Text);
             repParams.Add(new ReportParameter("TotalAmountString", String.Format("{0:0.00}", totalAmount)));
             totalAmountinWordString = UtilityClass.NumbersToWords((int)totalAmount);
             repParams.Add(new ReportParameter("TotalAmountInWordString", totalAmountinWordString));
             if (PreviousDueCheck.Checked == true)
+            {
                 repParams.Add(new ReportParameter("PreviousDueString", PreviousDueTextBox.Text));
+                repParams.Add(new ReportParameter("PreviousDueCheck", "Previous Due .:"));
+            }
             repParams.Add(new ReportParameter("CompanyName", Configs.Default.CompanyName));
             repParams.Add(new ReportParameter("ComapnyPhoneNo", Configs.Default.CompanyPhone));
             repParams.Add(new ReportParameter("CompanyAddress", Configs.Default.CompanyAddress));

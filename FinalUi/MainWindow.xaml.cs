@@ -204,7 +204,7 @@ namespace FinalUi
             string response;
             try
             {
-                help.insertRuntimeData((List<RuntimeData>)e.Argument, dataGridHelper.currentSheetNumber, isLoadedFromFile, toDate_loadDataWin, fromDate_loadDataWin);
+                help.insertRuntimeData((List<RuntimeData>)e.Argument, dataGridHelper.currentSheetNumber, isLoadedFromBook, toDate_loadDataWin, fromDate_loadDataWin);
                 response = "Data Loading Successful";
             }
             catch (Exception ex)
@@ -558,7 +558,7 @@ namespace FinalUi
                 changeSheetButton(activeButton, canvasButton);
             activeButton = canvasButton;
         }
-        bool isLoadedFromFile = true;
+        bool isLoadedFromBook = true;
         DateTime? toDate_loadDataWin;
         DateTime? fromDate_loadDataWin;
         void loadData_Closed(object sender, EventArgs e)
@@ -569,28 +569,52 @@ namespace FinalUi
                 return;
             //TODO: Get Name 
             string name = "";
+            string stockStart = "", stockEnd = "";
+            if (dataWind.isLoadedFromBook == true)
+            {
+                try
+                {
+                    BillingDataDataContext db = new BillingDataDataContext();
+                    Stock stock = db.Stocks.Single(x => x.BookNo == dataWind.BookNo);
+                    stockStart = stock.StockStart;
+                    stockEnd = stock.StockEnd;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading data: " + ex.Message, "Error");
+                    return;
+                }
+            }
             if (dataWind.dataLoaded)
             {
-                isLoadedFromFile = dataWind.isLoadedFromFile;
+                isLoadedFromBook = dataWind.isLoadedFromBook;
                 toDate_loadDataWin = dataWind.toDate;
                 fromDate_loadDataWin = dataWind.fromDate;
             }
+            
             if (dataWind.isNewSheet || dataGridHelper.CurrentNumberOfSheets <= 0)
             {
-                if (dataWind.isLoadedFromFile == false)
+                if (dataWind.isLoadedFromBook == false)
                     dataWind.data = UtilityClass.loadDataFromDatabase(toDate_loadDataWin ?? DateTime.Now, fromDate_loadDataWin ?? DateTime.Now, dataGridHelper.currentMaxSheetNumber + 1);
+                else
+                {
+                    dataWind.data = UtilityClass.loadDataFromBook(dataGridHelper.currentMaxSheetNumber + 1,stockStart,stockEnd);
+                }
+
                 int key = dataGridHelper.addNewSheet(dataWind.data, name);
                 addingNewPage(key);
             }
             else
             {
-                if (dataWind.isLoadedFromFile == false)
+                if (dataWind.isLoadedFromBook== false)
                     dataWind.data = UtilityClass.loadDataFromDatabase(toDate_loadDataWin ?? DateTime.Now, fromDate_loadDataWin ?? DateTime.Now, dataGridHelper.currentSheetNumber);
+                else
+                    dataWind.data = UtilityClass.loadDataFromBook(dataGridHelper.currentSheetNumber, stockStart, stockEnd);
                 dataGridHelper.addDataToCurrentSheet(dataWind.data);
                 dataGridHelper.refreshCurrentPage();
             }
 
-            LoadWorker.RunWorkerAsync(dataWind.data);
+            MessageBlock.Text = DateTime.Now.ToShortTimeString() + ": " + "Data loading successfull" + "\n" + MessageBlock.Text;
         }
 
 
@@ -1466,6 +1490,12 @@ namespace FinalUi
             {
                 GetRateButton_Click(null, null);
             }
+        }
+
+        private void DataImportMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            importfile importFileWindow = new importfile();
+            importFileWindow.Show();
         }
     }
 }

@@ -19,7 +19,9 @@ namespace FinalUi
                 cityObj.Amount = dataObj.Amount;
                 cityObj.BilledWeight = dataObj.BilledWeight;
                 cityObj.BookingDate = dataObj.BookingDate;
-                cityObj.CITY_DESC = cities.SingleOrDefault(x => x.CITY_CODE == dataObj.Destination).CITY_DESC;
+                City city = cities.SingleOrDefault(x => x.CITY_CODE == dataObj.Destination);
+                if (city != null)
+                    cityObj.CITY_DESC =city.CITY_DESC;
                 cityObj.ConsignmentNo = dataObj.ConsignmentNo;
                 cityObj.CustCode = dataObj.CustCode;
                 cityObj.Destination = dataObj.Destination;
@@ -39,7 +41,7 @@ namespace FinalUi
                 cityObj.Type = dataObj.Type;
                 cityObj.Weight = dataObj.Weight;
                 cityObj.SubClient = dataObj.SubClient;
-                
+
                 rcvd.Add(cityObj);
             }
             return rcvd;
@@ -135,7 +137,7 @@ namespace FinalUi
         {
             BillingDataDataContext db = new BillingDataDataContext();
             db.sp_LoadToRuntimeFromDate(SecurityModule.currentUserName, sheetNo, startDate, endDate);
-            return db.RuntimeDatas.Where(x => x.SheetNo == sheetNo && x.UserId == SecurityModule.currentUserName).OrderBy(z => z.BookingDate).ThenBy(y => y.ConsignmentNo).ToList();
+            return db.RuntimeDatas.Where(x => x.SheetNo == sheetNo && x.UserId == SecurityModule.currentUserName).OrderBy(y => y.ConsignmentNo).ToList();
         }
 
         #region converting runtime data to transaction data
@@ -196,49 +198,49 @@ namespace FinalUi
         }
         #endregion
         #region save runtime into transaction and save
-        public static string saveRuntimeAsTransaction(int sheetNo,string username)
+        public static string saveRuntimeAsTransaction(int sheetNo, string username)
         {
             try
             {
                 BillingDataDataContext db = new BillingDataDataContext();
-              /*
-                List<RuntimeData> oldData = runList.Where(x => x.TransactionId != Guid.Empty && x.TransactionId != null).ToList();
-                List<RuntimeData> newData = runList.Where(x => x.TransactionId == null || x.TransactionId == Guid.Empty).ToList();
-                List<Transaction> oldTransData = convertRuntimeListToTransList(oldData, db).ToList();
-                List<RuntimeData> duplicateData = new List<RuntimeData>();
-                List<RuntimeData> removeList = new List<RuntimeData>();
-                foreach (var ele in newData)
-                {
-                    if (db.Transactions.Count(x => x.ConnsignmentNo == ele.ConsignmentNo) > 0)
-                    {
-                        removeList.Add(ele);
-                        ele.TransactionId = db.Transactions.Single(x => x.ConnsignmentNo == ele.ConsignmentNo).ID;
-                    }
-                }
-                removeList.ForEach(ele =>
-                {
-                    duplicateData.Add(ele);
-                    newData.Remove(ele);
-                });
-                List<Transaction> newTransData = convertRuntimeListToTransList(newData, db);
-                List<RuntimeData> discrepentData = duplicateData.Where(x =>
-                {
-                    bool flag = false;
-                    Transaction transData = db.Transactions.Single(y => y.ID == x.TransactionId);
-                    if (transData.BookingDate != x.BookingDate || transData.Weight != x.Weight || transData.AmountPayed != x.Amount)
-                        flag = true;
-                    return flag;
-                }).ToList();
-                duplicateData = duplicateData.Where(x => !discrepentData.Select(y => y.Id).Contains(x.Id)).ToList();
-                duplicateData.ForEach(ele =>
-                {
-                    ele.TransactionId = db.Transactions.Single(x => ele.ConsignmentNo == x.ConnsignmentNo).ID;
-                });
-                List<Transaction> dupliTransData = convertRuntimeListToTransList(duplicateData, db);
-                db.Transactions.InsertAllOnSubmit(newTransData);
-                db.SubmitChanges();
-               * */
-                db.SaveRuntimeData(sheetNo,username);
+                /*
+                  List<RuntimeData> oldData = runList.Where(x => x.TransactionId != Guid.Empty && x.TransactionId != null).ToList();
+                  List<RuntimeData> newData = runList.Where(x => x.TransactionId == null || x.TransactionId == Guid.Empty).ToList();
+                  List<Transaction> oldTransData = convertRuntimeListToTransList(oldData, db).ToList();
+                  List<RuntimeData> duplicateData = new List<RuntimeData>();
+                  List<RuntimeData> removeList = new List<RuntimeData>();
+                  foreach (var ele in newData)
+                  {
+                      if (db.Transactions.Count(x => x.ConnsignmentNo == ele.ConsignmentNo) > 0)
+                      {
+                          removeList.Add(ele);
+                          ele.TransactionId = db.Transactions.Single(x => x.ConnsignmentNo == ele.ConsignmentNo).ID;
+                      }
+                  }
+                  removeList.ForEach(ele =>
+                  {
+                      duplicateData.Add(ele);
+                      newData.Remove(ele);
+                  });
+                  List<Transaction> newTransData = convertRuntimeListToTransList(newData, db);
+                  List<RuntimeData> discrepentData = duplicateData.Where(x =>
+                  {
+                      bool flag = false;
+                      Transaction transData = db.Transactions.Single(y => y.ID == x.TransactionId);
+                      if (transData.BookingDate != x.BookingDate || transData.Weight != x.Weight || transData.AmountPayed != x.Amount)
+                          flag = true;
+                      return flag;
+                  }).ToList();
+                  duplicateData = duplicateData.Where(x => !discrepentData.Select(y => y.Id).Contains(x.Id)).ToList();
+                  duplicateData.ForEach(ele =>
+                  {
+                      ele.TransactionId = db.Transactions.Single(x => ele.ConsignmentNo == x.ConnsignmentNo).ID;
+                  });
+                  List<Transaction> dupliTransData = convertRuntimeListToTransList(duplicateData, db);
+                  db.Transactions.InsertAllOnSubmit(newTransData);
+                  db.SubmitChanges();
+                 * */
+                db.SaveRuntimeData(sheetNo, username);
                 db.sp_ReflectTransactionInRuntime();
                 return "";
             }
@@ -351,6 +353,14 @@ namespace FinalUi
                 zone = DataSources.ZoneCopy.Where(x => x.zcode == city.ZONE).FirstOrDefault();
             }
             return zone;
+        }
+
+        internal static List<RuntimeData> loadDataFromBook(int sheetNo,string stockStart, string stockEnd)
+        {
+            BillingDataDataContext db = new BillingDataDataContext();
+            db.sp_LoadToRuntimeFromBookNo(stockStart, stockEnd,SecurityModule.currentUserName,sheetNo);
+            return db.RuntimeDatas.Where(x => x.SheetNo == sheetNo && x.UserId == SecurityModule.currentUserName).OrderBy(y => y.ConsignmentNo).ToList();
+      
         }
     }
 }

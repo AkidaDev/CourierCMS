@@ -85,49 +85,61 @@ namespace CustomControls
         {
             IList AllObjects = ((IList)_AllListSource.Source);
             IList SelectedObjects = (IList)_SelectedListSource.Source;
-            foreach (var obj in AllObjects)
+            if (AllObjects != null)
             {
-                ((IList)_SelectedListSource.Source).Add(obj);
+                foreach (var obj in AllObjects)
+                {
+                    ((IList)_SelectedListSource.Source).Add(obj);
+                }
+                ((IList)_AllListSource.Source).Clear();
+                AllListBox.Items.Refresh();
+                SelectedList.Items.Refresh();
             }
-            ((IList)_AllListSource.Source).Clear();
-            AllListBox.Items.Refresh();
-            SelectedList.Items.Refresh();
         }
 
         private void SelectSelectedButton_Click(object sender, RoutedEventArgs e)
         {
             IList AllObjects = AllListBox.SelectedItems;
-            foreach (var obj in AllObjects)
+            if (AllObjects != null)
             {
-                ((IList)_AllListSource.Source).Remove(obj);
-                ((IList)_SelectedListSource.Source).Add(obj);
+                foreach (var obj in AllObjects)
+                {
+                    ((IList)_AllListSource.Source).Remove(obj);
+                    ((IList)_SelectedListSource.Source).Add(obj);
+                }
+                AllListBox.Items.Refresh();
+                SelectedList.Items.Refresh();
             }
-            AllListBox.Items.Refresh();
-            SelectedList.Items.Refresh();
         }
 
         private void DeSelectAllButton_Click(object sender, RoutedEventArgs e)
         {
             IList SelectedObjects = (IList)_SelectedListSource.Source;
-            foreach (var obj in SelectedObjects)
+            if (SelectedObjects != null)
             {
-                ((IList)_AllListSource.Source).Add(obj);
+                foreach (var obj in SelectedObjects)
+                {
+                    ((IList)_AllListSource.Source).Add(obj);
+                }
+                ((IList)_SelectedListSource.Source).Clear();
+                AllListBox.Items.Refresh();
+                SelectedList.Items.Refresh();
             }
-            ((IList)_SelectedListSource.Source).Clear();
-            AllListBox.Items.Refresh();
-            SelectedList.Items.Refresh();
         }
 
         private void DeSelectSelectededButton_Click(object sender, RoutedEventArgs e)
         {
             IList SelectedObjects = (IList)SelectedList.SelectedItems;
-            foreach (var obj in SelectedObjects)
+            if (SelectedObjects != null)
             {
-                ((IList)_AllListSource.Source).Add(obj);
-                ((IList)_SelectedListSource.Source).Remove(obj);
+                foreach (var obj in SelectedObjects)
+                {
+                    ((IList)_AllListSource.Source).Add(obj);
+                    ((IList)_SelectedListSource.Source).Remove(obj);
+                }
+                AllListBox.Items.Refresh();
+                SelectedList.Items.Refresh();
             }
-            AllListBox.Items.Refresh();
-            SelectedList.Items.Refresh();
         }
         #endregion
     }

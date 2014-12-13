@@ -12,7 +12,7 @@
             <Canvas Canvas.Top="-69">
                 <DatePicker Name="StartLoadDate" Canvas.Left="38" Canvas.Top="147.5"   Height="26"  Width="124" BorderThickness="0" Padding="0 4 0 0"/>
                 <DatePicker Name="EndLoadDate" Height="26" Canvas.Left="178" Canvas.Top="147.5" Width="124"  BorderThickness="0" Padding="0 4 0 0"/>
-                <Button Style="{DynamicResource window}" Click="DataBrowserRadio_Click"  Canvas.Top="119" Canvas.Left="31">
+                <Button Style="{DynamicResource window}" Name="DataBaseRadioButton" Click="DataBrowserRadio_Click"  Canvas.Top="119" Canvas.Left="31">
                     <WrapPanel >
                         <Path x:Name="import_files" Height="24"  Data="F1M11.187,19.719C11.187,19.719 11.187,20.375 11.187,20.375 11.187,20.375 13.812,20.375 13.812,20.375 13.812,
 			20.375 13.812,19.719 13.812,19.719 13.812,19.719 11.187,19.719 11.187,19.719z M9.875,17.094C9.875,17.094 9.875,17.75 9.875,17.75 9.875,17.75 15.125,
@@ -30,41 +30,19 @@
                 </Button>
                 <Path x:Name="Rectangle_2" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="27" Canvas.Left="36" Canvas.Top="147" Width="98" Stroke="DarkGray"/>
                 <Path x:Name="Rectangle_2_copy" Data="F1M1,1C1,1 97,1 97,1 97,1 97,26 97,26 97,26 1,26 1,26 1,26 1,1 1,1z" Fill="Transparent" Height="27" Canvas.Left="176" Canvas.Top="147" Width="98" Stroke="DarkGray"/>
-                <Button  Click="DataBrowserRadio_Click" Name="DataBrowserRadio" Canvas.Left="8" Canvas.Top="123" Style="{StaticResource smallbutton}">
-                    <Button.Content>
-                        <Canvas Height="18" Width="18">
-                            <Path x:Name="selected1_Circle" Data="F1M9,5C11.24,5 13,6.76 13,9 13,11.24 11.24,13 9,13 6.76,13 5,
-			11.24 5,9 5,6.76 6.76,5 9,5z M9,2.6C5.48,2.6 2.6,5.48 2.6,9 2.6,12.52 5.48,15.4 9,15.4 12.52,15.4 15.4,
-			12.52 15.4,9 15.4,5.48 12.52,2.6 9,2.6z M9,1C13.4,1 17,4.6 17,9 17,13.4 13.4,17 9,17 4.6,17 1,13.4 1,
-			9 1,4.6 4.6,1 9,1z" Fill="Black" Height="18" Width="18" Visibility="Hidden"/>
-                            <Path x:Name="unselected1_circle" Data="F1M9,2.6C5.48,2.6 2.6,5.48 2.6,9 2.6,12.52 5.48,15.4 9,
-			15.4 12.52,15.4 15.4,12.52 15.4,9 15.4,5.48 12.52,2.6 9,2.6z M9,1C13.4,1 17,4.6 17,9 17,13.4 13.4,17 9,
-			17 4.6,17 1,13.4 1,9 1,4.6 4.6,1 9,1z" Fill="Black" Height="18" Width="18" />
-                        </Canvas>
-                    </Button.Content>
-                </Button>
+                <RadioButton Name="DateRadio" GroupName="SelectedButton" Canvas.Left="8" Canvas.Top="123" >
+                </RadioButton>
             </Canvas>
             <Path x:Name="line" Data="F1M1,2C1,2 1,1 1,1 1,1 262,1 262,1 262,1 262,2 262,2 262,2 1,2 1,2" Fill="Black" Height="1.5" Stretch="Fill" Canvas.Left="31" Canvas.Top="110" Width="270"/>
 
             <Canvas Canvas.Top="75">
-                <Button  Click="DataBrowserRadio_Click" Name="BrowserRadio" Canvas.Left="8" Canvas.Top="54" Style="{StaticResource smallbutton}">
-                    <Button.Content>
-                        <Canvas Height="18" Width="18" >
-                            <Path x:Name="selected_Circle" Data="F1M9,5C11.24,5 13,6.76 13,9 13,11.24 11.24,13 9,13 6.76,13 5,
-			11.24 5,9 5,6.76 6.76,5 9,5z M9,2.6C5.48,2.6 2.6,5.48 2.6,9 2.6,12.52 5.48,15.4 9,15.4 12.52,15.4 15.4,
-			12.52 15.4,9 15.4,5.48 12.52,2.6 9,2.6z M9,1C13.4,1 17,4.6 17,9 17,13.4 13.4,17 9,17 4.6,17 1,13.4 1,
-			9 1,4.6 4.6,1 9,1z" Fill="Black" Height="18" Width="18" Visibility="Hidden"/>
-                            <Path x:Name="unselected_circle" Data="F1M9,2.6C5.48,2.6 2.6,5.48 2.6,9 2.6,12.52 5.48,15.4 9,15.4 12.52,
-			15.4 15.4,12.52 15.4,9 15.4,5.48 12.52,2.6 9,2.6z M9,1C13.4,1 17,4.6 17,9 17,13.4 13.4,17 9,17 4.6,17 1,
-			13.4 1,9 1,4.6 4.6,1 9,1z" Fill="Black" Height="18" Width="18"/>
-                        </Canvas>
-                    </Button.Content>
-                </Button>
-                <Button  Click="DataBrowserRadio_Click" Canvas.Left="30" Canvas.Top="51" Style="{DynamicResource window}">
+                <RadioButton Name="BookRadio" GroupName="SelectedButton"  Canvas.Left="8" Canvas.Top="54" >
+                    </RadioButton>
+                <Button Name="BookRadioButton" Click="DataBrowserRadio_Click" Canvas.Left="30" Canvas.Top="51" Style="{DynamicResource window}">
                     <WrapPanel>
                         <Path x:Name="Shape_1" Data="F1M2.467,18.037C2.467,18.037 2.467,19.519 2.467,19.519 2.467,19.519 6.933,19.519 6.933,19.519 6.933,19.519 6.933,18.037 6.933,18.037 6.933,18.037 2.467,18.037 2.467,18.037z M1,15.815C1,15.815 23,15.815 23,15.815 23,15.815 23,21 23,21 23,21 1,21 1,21 1,21 1,15.815 1,15.815z M2.467,10.63C2.467,10.63 2.456,12.111 2.456,12.111 2.456,12.111 6.922,12.111 6.922,12.111 6.922,12.111 6.933,10.63 6.933,10.63 6.933,10.63 2.467,10.63 2.467,10.63z M1,8.407C1,8.407 23,8.407 23,8.407 23,8.407 23,13.593 23,13.593 23,13.593 1,13.593 1,13.593 1,13.593 1,8.407 1,8.407z M2.467,3.222C2.467,3.222 2.467,4.715 2.467,4.715 2.467,4.715 6.933,4.715 6.933,4.715 6.933,4.715 6.933,3.222 6.933,3.222 6.933,3.222 2.467,3.222 2.467,3.222z M1,1C1,1 23,1 23,1 23,1 23,6.185 23,6.185 23,6.185 1,6.185 1,6.185 1,6.185 1,1 1,1z" Fill="Black" Height="22" Width="24"/>
                         <TextBlock FontWeight="Bold" FontSize="14" FontFamily="Calibri" Text=" Book No. .: " VerticalAlignment="Bottom"/>
-                        <TextBox Width="171" Padding="0 4 0 0"/>
+                        <TextBox Name="BookNoTextBox" Width="171" Padding="0 4 0 0"/>
                     </WrapPanel>
                 </Button>
                 <Button Click="addData_CheckedUnChecked" Canvas.Left="72" Canvas.Top="87.496" Style="{StaticResource 1}">

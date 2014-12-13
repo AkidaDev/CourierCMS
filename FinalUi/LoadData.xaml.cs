@@ -23,12 +23,13 @@ namespace FinalUi
             isNewSheet = true;
             InitializeComponent();
             dataLoaded = false;
-            isLoadedFromFile = false;
+            isLoadedFromBook = false;
         }
         public bool dataLoaded { get; set; }
         public string filename1 { get; set; }
         public bool isNewSheet { get; set; }
-        public bool isLoadedFromFile { get; set; }
+        public string BookNo { get; set; }
+        public bool isLoadedFromBook { get; set; }
         public DateTime toDate;
         public DateTime fromDate;
         public List<RuntimeData> data
@@ -42,36 +43,34 @@ namespace FinalUi
                 _data = value;
             }
         }
-       List<RuntimeData> _data;
-        //private void Button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Microsoft.Win32.OpenFileDialog file = new Microsoft.Win32.OpenFileDialog();
-        //    file.DefaultExt = ".txt";
-        //    file.Filter = "(.txt)|*.txt";
-        //    Nullable<bool> result = file.ShowDialog();
-        //    if (result == true)
-        //    {
-        //        filename.Text = filename1 = file.FileName;
-        //    }
-        //        this.selected_Circle.Visibility = Visibility.Visible;
-        //        this.selected1_Circle.Visibility = Visibility.Hidden;
-        //}
+        List<RuntimeData> _data;
+
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (filename1 != null)
+            dataLoaded = true;
+            isLoadedFromBook = true;
+            string bookNumber;
+            bookNumber = BookNoTextBox.Text;
+            BillingDataDataContext db = new BillingDataDataContext();
+            try
             {
-                CSVDataLoader load = new CSVDataLoader();
-                _data = load.getRuntimeDataFromCSV(filename1, '"', '\'');
-                dataLoaded = true;
-                isLoadedFromFile = true;
-                this.Close();
+                Stock stock = db.Stocks.SingleOrDefault(x => x.BookNo == bookNumber);
+                if (stock == null)
+                {
+                    MessageBox.Show("No book found", "Error");
+                    return;
+                }
+                else
+                {
+                    BookNo = bookNumber;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBoxButton button = MessageBoxButton.OK;
-                MessageBoxImage icon = MessageBoxImage.Warning;
-                MessageBox.Show("file not selected", "warning", button, icon);
+                MessageBox.Show("Error: " + ex.Message, "Error");
+                return;
             }
+            this.Close();
         }
         private void addData_CheckedUnChecked(object sender, RoutedEventArgs e)
         {
@@ -81,20 +80,23 @@ namespace FinalUi
                 this.checkbox_unselected.Visibility = Visibility.Hidden;
                 isNewSheet = false;
             }
-            else {
+            else
+            {
                 this.checkbox_selected.Visibility = Visibility.Hidden;
                 this.checkbox_unselected.Visibility = Visibility.Visible;
                 isNewSheet = true;
             }
         }
         public void loaddata(object sender, RoutedEventArgs e)
-        { 
-            if(this.selected_Circle.Visibility  == Visibility.Visible)
+        {
+            if (DateRadio.IsChecked == true)
             {
-                Button_Click_1(sender,e);
-            }else{
-                if(this.selected1_Circle.Visibility == Visibility.Visible)
-                Button_Click_2(sender,e);
+                Button_Click_2(sender, e);
+            }
+            else
+            {
+                if (BookRadio.IsChecked == true)
+                    Button_Click_1(sender, e);
             }
         }
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -103,9 +105,8 @@ namespace FinalUi
             {
                 if (StartLoadDate.SelectedDate <= EndLoadDate.SelectedDate)
                 {
-                    BillingDataDataContext db = new BillingDataDataContext();
                     dataLoaded = true;
-                    isLoadedFromFile = false;
+                    isLoadedFromBook = false;
                     toDate = (DateTime)EndLoadDate.SelectedDate;
                     fromDate = (DateTime)StartLoadDate.SelectedDate;
                     this.Close();
@@ -113,18 +114,12 @@ namespace FinalUi
             }
         }
         private void DataBrowserRadio_Click(object sender, RoutedEventArgs e)
-        { 
-            Button button = (Button)sender;
-            if (button.Name == this.BrowserRadio.Name)
-            {
-                this.selected_Circle.Visibility = Visibility.Visible;
-                this.selected1_Circle.Visibility = Visibility.Hidden;
-            }
+        {
+            Button bt = (Button)sender;
+            if (bt.Name == "DataBaseRadioButton")
+                DateRadio.IsChecked = true;
             else
-            {
-                this.selected_Circle.Visibility = Visibility.Hidden;
-                this.selected1_Circle.Visibility = Visibility.Visible;
-            }
+                BookRadio.IsChecked = true;
         }
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
