@@ -282,16 +282,13 @@ namespace FinalUi
         {
 
             int index = ConnsignmentNumber.SelectedIndex;
-            if (ConnsignmentNumber.Items.Count - 1 == index)
-            {
-            }
+            int connsigmentNo = int.Parse(new string(ConnsignmentNumber.Text.ToCharArray().Where(x => char.IsDigit(x)).ToArray()));
+            connsigmentNo++;
+            string start = new string(ConnsignmentNumber.Text.ToCharArray().Where(x => char.IsLetter(x)).ToArray());
+            start = start + connsigmentNo.ToString();
+            ConnsignmentNumber.Text = start;
+            fillAllElements(ConnsignmentNumber.Text);
 
-            else
-            {
-                ConnsignmentNumber.Text = (string)ConnsignmentNumber.Items.GetItemAt(index + 1);
-
-                fillAllElements(ConnsignmentNumber.Text);
-            }
             ConnsignmentNumber.Focus();
         }
         public void setdata(RuntimeData dbdata, RuntimeData data)
@@ -300,17 +297,15 @@ namespace FinalUi
         public void setPreviousData()
         {
             int index = ConnsignmentNumber.SelectedIndex;
-            if (index == 0 || index == -1)
-            {
-            }
-            else
-            {
-                if (index - 1 > ConnsignmentNumber.Items.Count - 1)
-                    index = 1;
-                ConnsignmentNumber.Text = (string)ConnsignmentNumber.Items.GetItemAt(index - 1);
-                fillAllElements(ConnsignmentNumber.Text);
-            }
+            int connsigmentNo = int.Parse(new string(ConnsignmentNumber.Text.ToCharArray().Where(x => char.IsDigit(x)).ToArray()));
+            connsigmentNo--;
+            string start = new string(ConnsignmentNumber.Text.ToCharArray().Where(x => char.IsLetter(x)).ToArray());
+            start = start + connsigmentNo.ToString();
+            ConnsignmentNumber.Text = start;
+            fillAllElements(ConnsignmentNumber.Text);
+
             ConnsignmentNumber.Focus();
+        
         }
         private void ConnsignmentNumber_KeyUp(object sender, KeyEventArgs e)
         {
@@ -338,7 +333,7 @@ namespace FinalUi
                         {
                             Console.WriteLine("Error....");
                         }
-                        
+
                     }
                     else
                     {
@@ -520,6 +515,12 @@ namespace FinalUi
         private void ConnsignmentNumber_LostFocus(object sender, RoutedEventArgs e)
         {
             fillAllElements(ConnsignmentNumber.Text);
+        }
+
+        private void Button_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Tab)
+                SubmitSanitizingDetails_Click(null, null);
         }
     }
 }

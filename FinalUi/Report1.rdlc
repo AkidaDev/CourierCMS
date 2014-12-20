@@ -581,7 +581,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!BookingDate.Value</Value>
+                              <Value>=FormatDateTime(CDate(Fields!BookingDate.Value),DateFormat.ShortDate)</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -728,7 +728,7 @@
         <Top>23.09336cm</Top>
         <Left>1.1962cm</Left>
         <Height>1.04126cm</Height>
-        <Width>18.37088cm</Width>
+        <Width>18.37086cm</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>

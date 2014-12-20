@@ -31,6 +31,15 @@ namespace FinalUi
             BillViewer.RefreshReport();
             this.Closed += PrintMainWindow_Closed;
         }
+        public PrintMainWindow(ReportDataSource rs, List<ReportParameter> repParams, bool isMis)
+        {
+            InitializeComponent();
+            BillViewer.LocalReport.ReportPath = "Report2.rdlc";
+            BillViewer.LocalReport.DataSources.Clear();
+            BillViewer.LocalReport.DataSources.Add(rs);
+            BillViewer.LocalReport.SetParameters(repParams);
+            BillViewer.RefreshReport();
+        }
         List<RuntimeCityView> source;
         Microsoft.Reporting.WinForms.ReportDataSource rs;
         public PrintMainWindow(Invoice inv)

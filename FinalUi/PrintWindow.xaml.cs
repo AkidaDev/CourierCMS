@@ -213,7 +213,33 @@ namespace FinalUi
 
         private void printMIS()
         {
-            throw new NotImplementedException();
+            string errorMsg = "";
+            if (ToDate.SelectedDate == null || FromDate.SelectedDate == null || ToDate.SelectedDate < FromDate.SelectedDate)
+                errorMsg += "Please set the date properly. \n";
+            Client selectedClient = (Client)ClientList.SelectedItem;
+            BillingDataDataContext db = new BillingDataDataContext();
+            if (errorMsg != "")
+            {
+                MessageBox.Show(errorMsg);
+                return;
+            }
+
+            List<MISReportView> source = db.MISReportViews.Where(x => x.CLCODE == selectedClient.CLCODE && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
+            if (SubClientComboBox.Text != null && SubClientComboBox.Text != "")
+            {
+                source = source.Where(x => x.SubClient == SubClientComboBox.Text).ToList();
+            }
+            ReportDataSource rs = new ReportDataSource();
+            rs.Value = source;
+            rs.Name = "DataSet1";
+            List<ReportParameter> repParams = new List<ReportParameter>();
+            repParams.Add(new ReportParameter("ClientName", selectedClient.CLNAME + " " + SubClientComboBox.Text));
+            repParams.Add(new ReportParameter("ClientAddress", selectedClient.ADDRESS));
+            repParams.Add(new ReportParameter("ClientPhoneNo",selectedClient.CONTACTNO));
+            repParams.Add(new ReportParameter("FromDate",((DateTime)(FromDate.SelectedDate)).ToString()));
+            repParams.Add(new ReportParameter("ToDate", ((DateTime)(ToDate.SelectedDate)).ToString()));
+            PrintMainWindow window = new PrintMainWindow(rs, repParams, true);
+            window.Show();
         }
         private void Preview_Click(object sender, RoutedEventArgs e) { }
         private void SaveInvoiceButton_Click(object sender, RoutedEventArgs e)
@@ -247,6 +273,7 @@ namespace FinalUi
                     invoice.TotalAmount = totalAmount - invoice.PreviousDue ?? 0;
                     invoice.Discount = double.Parse(DiscountBox.Text);
                     invoice.Misc = double.Parse(MiscBox.Text);
+                    invoice.SubClient = SubClientComboBox.Text;
                 }
                 catch (Exception ex)
                 {

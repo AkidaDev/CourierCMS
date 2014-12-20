@@ -38,7 +38,7 @@
             <ComboBox Height="26" Width="300" ItemsSource="{Binding}" DataContext="{StaticResource ClientList}" x:Name="ClientList" SelectionChanged="ClientList_SelectionChanged" DisplayMemberPath="NameAndCode"/>
             <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Sub Client .: " VerticalAlignment="Bottom"/>
-            <ComboBox IsEditable="True" Name="SubClientComboBox" DataContext="{StaticResource SubClientList}" ItemsSource="{Binding}" Height="26" Width="120"/>
+            <ComboBox IsEditable="True" Name="SubClientComboBox" DataContext="{StaticResource SubClientList}" ItemsSource="{Binding}" Height="26" Width="120" Padding="2 2 0 0"/>
         </WrapPanel>
         <WrapPanel Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="From Date .: " VerticalAlignment="Bottom"/>
@@ -74,12 +74,12 @@
             <TextBlock Text="₹" FontSize="14" FontWeight="Bold" Margin="-55 0 0 0" VerticalAlignment="Center"/>
         </WrapPanel>
         <WrapPanel Name="MisGrid1" Grid.Row="4" VerticalAlignment="Bottom" Margin="230 0 0 0" Visibility="Collapsed">
-            <cstmcntrl:PandaCheckbox  Name="ShowConsigneeCheck" Checked="True"/>
-            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Show Consignee on the report " VerticalAlignment="Bottom"/>
+            <cstmcntrl:PandaCheckbox  Name="ShowConsigneeCheck" Checked="True" Visibility="Collapsed"/>
+            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Show Consignee on the report " VerticalAlignment="Bottom" Visibility="Collapsed"/>
         </WrapPanel>
         <WrapPanel Name="MisGrid2" Grid.Row="5" VerticalAlignment="Bottom" Margin="230 0 0 0" Visibility="Collapsed">
-            <cstmcntrl:PandaCheckbox  Name="ShowConsignerCheck" Checked="True"/>
-            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Show Consigner on the report " VerticalAlignment="Bottom"/>
+            <cstmcntrl:PandaCheckbox  Name="ShowConsignerCheck" Checked="True" Visibility="Collapsed"/>
+            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Show Consigner on the report " VerticalAlignment="Bottom" Visibility="Collapsed"/>
         </WrapPanel>
         <WrapPanel Grid.Row="6" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <Path Data="F1M18.387,5.167C17.681,5.167 17.109,5.764 17.109,6.5 17.109,7.235 17.681,7.832 18.387,7.832 19.092,7.832 19.664,7.235 19.664,6.5 19.664,5.764 19.092,5.167 18.387,5.167z M2.488,1C2.488,1 17.444,1 17.444,1 17.666,1 17.877,1.051 18.067,1.142 18.25,1.205 18.423,1.312 18.569,1.465 18.569,1.465 22.504,5.567 22.504,5.567 23,6.085 23,6.924 22.504,7.442 22.504,7.442 18.64,11.47 18.64,11.47 18.53,11.585 18.405,11.674 18.271,11.738 18.034,11.904 17.75,12 17.444,12 17.444,12 2.488,12 2.488,12 1.666,12 1,11.305 1,10.448 1,10.448 1,2.552 1,2.552 1,1.695 1.666,1 2.488,1z" Fill="Black" Height="13" Width="24"/>

@@ -87,5 +87,21 @@ namespace FinalUi
                 db.SubmitChanges();
             }
         }
+
+        
+        private void ViewStockButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(StockAssignmentDatagrid.SelectedItems.Count != 1)
+            {
+                MessageBox.Show("Please select one stock entry..");
+                return;
+            }
+            else
+            {
+                StockAssignmentView stock = (StockAssignmentView)StockAssignmentDatagrid.SelectedItem;
+                ViewUnassignedStock stockWin = new ViewUnassignedStock(stock);
+                stockWin.Show();
+            }
+        }
     }
 }

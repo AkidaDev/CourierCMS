@@ -43,7 +43,7 @@ namespace FinalUi
             this.datagrid = datagrid;
             CollectionViewSource source = (CollectionViewSource)FindResource("ClientList");
             source.Source = DataSources.ClientCopy;
-            DataStack = DataStack.OrderBy(x => x.BookingDate).ThenBy(y => y.ConsignmentNo).ToList();
+            DataStack = DataStack.OrderBy(y => y.ConsignmentNo).ToList();
             List<string> connList = DataStack.Select(c => c.ConsignmentNo).ToList();
             startConnNo.DataContext = connList;
             endConnNo.DataContext = connList;

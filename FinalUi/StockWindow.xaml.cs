@@ -68,6 +68,7 @@ namespace FinalUi
         bool getdetails()
         {
             var e = new Employee();
+            
             this.s.StockStart = this.FromBox.Text;
             this.s.StockEnd = this.ToBox.Text;
             this.s.desc = this.DescriptionBox.Text;
@@ -107,6 +108,11 @@ namespace FinalUi
                 BillingDataDataContext db = new BillingDataDataContext();
                 if (!isUpdate)
                 {
+                    if(db.Stocks.Where(x=>x.BookNo == s.BookNo).Count() > 0)
+                    {
+                        MessageBox.Show("This book is already entered..","Error");
+                        return;
+                    }
                     db.Stocks.InsertOnSubmit(this.s);
                     try
                     {
