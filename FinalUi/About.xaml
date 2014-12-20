@@ -8,7 +8,7 @@
         <TextBlock Text="Powered by SLT-INTEGRITY " FontSize="14" Foreground="LightGray" FontFamily="Calibri" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 11 13 0"/>
         <Canvas>
             <TextBlock Foreground="#6666cc" FontSize="60" Text="V" FontWeight="SemiBold" Canvas.Left="176" Canvas.Top="42"/>
-            <TextBlock Foreground="#6666cc" FontSize="40" Text="ORTEX" Canvas.Left="208" Canvas.Top="64" />
+            <TextBlock Foreground="#6666cc" FontSize="40" Text="ORTEX" Canvas.Left="208" Canvas.Top="64"/>
         </Canvas>
         <StackPanel VerticalAlignment="Center" Margin="40 130 0 0 ">
             <WrapPanel Margin="0 4 0 0">

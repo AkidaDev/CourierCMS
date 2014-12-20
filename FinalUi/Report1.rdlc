@@ -4282,7 +4282,7 @@
             <Style>
               <Border>
                 <Color>White</Color>
-                <Style>Solid</Style>
+                <Style>None</Style>
               </Border>
             </Style>
           </Image>
@@ -5619,7 +5619,7 @@
   <Width>20.41959cm</Width>
   <Page>
     <PageHeader>
-      <Height>0.90868cm</Height>
+      <Height>0.59118cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -5635,7 +5635,7 @@
                     <FontFamily>arial</FontFamily>
                     <FontSize>12pt</FontSize>
                     <FontWeight>Bold</FontWeight>
-                    <TextDecoration>Underline</TextDecoration>
+                    <TextDecoration>None</TextDecoration>
                   </Style>
                 </TextRun>
               </TextRuns>
@@ -5645,10 +5645,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox21</rd:DefaultName>
-          <Top>0.26458cm</Top>
-          <Left>0.15689cm</Left>
+          <Top>0cm</Top>
+          <Left>0.3175cm</Left>
           <Height>0.57354cm</Height>
-          <Width>19.87302cm</Width>
+          <Width>19.86703cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -5660,6 +5660,18 @@
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
+        <Line Name="Line3">
+          <Top>0.52599cm</Top>
+          <Left>0.3175cm</Left>
+          <Height>0cm</Height>
+          <Width>19.86703cm</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>Solid</Style>
+            </Border>
+          </Style>
+        </Line>
       </ReportItems>
       <Style>
         <Border>
@@ -5679,7 +5691,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>This Invoice is Computer Generated and hence does not require Signature</Value>
+                  <Value>This Invoice is Computer Generated, Signature not required</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -5740,7 +5752,7 @@
     <PageWidth>21cm</PageWidth>
     <InteractiveHeight>11.5in</InteractiveHeight>
     <InteractiveWidth>8in</InteractiveWidth>
-    <LeftMargin>0.1cm</LeftMargin>
+    <LeftMargin>0.25cm</LeftMargin>
     <RightMargin>0.1cm</RightMargin>
     <TopMargin>0.1cm</TopMargin>
     <BottomMargin>0.1cm</BottomMargin>

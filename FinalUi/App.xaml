@@ -16,10 +16,10 @@
                                 <Style TargetType="{x:Type Path}">
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="False">
-                                            <Setter Property="Stroke" Value="LightGray" />
+                                            <Setter Property="Stroke" Value="LightGray"/>
                                         </Trigger>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Stroke" Value="Red" />
+                                            <Setter Property="Stroke" Value="Red"/>
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
@@ -85,7 +85,7 @@
                                 <Setter TargetName="Border" Property="BorderBrush" Value="#606060"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Opacity" Value="0.6" />
+                                <Setter Property="Opacity" Value="0.6"/>
                                 <Setter Property="Foreground" Value="#FFFFFF"/>
                             </Trigger>
                         </ControlTemplate.Triggers>

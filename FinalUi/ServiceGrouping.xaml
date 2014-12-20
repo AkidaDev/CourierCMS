@@ -5,7 +5,7 @@
 		Icon="Images/logo.ico"
         Title="ServiceGrouping" WindowStartupLocation="CenterScreen" Height="350" Width="650" WindowStyle="None" AllowsTransparency="True" Background="Transparent" ResizeMode="NoResize">
 
-    <Grid  Height="300" Width="600" Background="White">
+    <Grid  Height="300" Width="600" Background="AntiqueWhite">
         <Grid.RowDefinitions>
             <RowDefinition Height="26"/>
             <RowDefinition Height="30"/>
@@ -25,13 +25,13 @@
             <TextBox Width="300" Padding="2 2 0 0"/>
         </WrapPanel>
         <cstmcntrl:TwinListBox Grid.Row="3" Width="500" Height="150" Name="ServiceTwinBox" VerticalAlignment="Bottom" Margin="0 0 0 6"/>
-        <Button Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Top" Name="SubmitButton" Click="SubmitButton_Click"  Style="{StaticResource all}" Margin="0 0 15 0">
-            <WrapPanel Margin="7 4">
-                <Path x:Name="done" Data="F1M10.909,23C10.909,23 2,14.224 2,14.224 2,14.224 4.227,12.03 4.227,12.03 4.227,12.03 10.909,18.612 10.909,18.612 10.909,18.612 27.773,2 27.773,2 27.773,2 30,4.194 30,4.194 30,4.194 10.909,23 10.909,23z" Fill="Black" Height="24" Width="31"/>
-                <TextBlock x:Name="Save" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Save"/>
+        <Button Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Top" Name="SubmitButton" Click="SubmitButton_Click" Margin="0 0 15 0">
+            <WrapPanel Margin="6 1">
+                <Path Data="F1M10.909,23C10.909,23 2,14.224 2,14.224 2,14.224 4.227,12.03 4.227,12.03 4.227,12.03 10.909,18.612 10.909,18.612 10.909,18.612 27.773,2 27.773,2 27.773,2 30,4.194 30,4.194 30,4.194 10.909,23 10.909,23z" Fill="Black" Height="17" Width="23" Stretch="Fill"/>
+                <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text=" Save"/>
             </WrapPanel>
         </Button>
-        <Rectangle Fill="#FFCBCBCB" Height="26" Width="600" Stretch="Fill" Stroke="Black" />
+        <Rectangle Fill="#FFCBCBCB" Height="26" Width="600" Stretch="Fill" Stroke="Black"/>
         <TextBlock Name="AddUpdateTitle" FontSize="16" TextAlignment="Center" VerticalAlignment="Center" Text="Service Grouping" FontFamily="Arial"/>
         <Rectangle MouseDown="DragthisWindow" Fill="Transparent" Height="26" Width="600" Stretch="Fill"/>
         <Button ToolTip="Close" Height="18" HorizontalAlignment="Right" Margin="0 0 4 0" Click="Button_Click_Close" Width="35" Style="{StaticResource 1}">

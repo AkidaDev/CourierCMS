@@ -7,7 +7,7 @@
     <Window.Resources>
         <CollectionViewSource x:Key="EmpList" CollectionViewType="ListCollectionView"></CollectionViewSource>
     </Window.Resources>
-    <Grid  Height="285" Background="White" Width="450">
+    <Grid  Height="285" Background="AntiqueWhite" Width="450">
         <Grid.RowDefinitions>
             <RowDefinition Height="26"/>
             <RowDefinition Height="30"/>
@@ -27,60 +27,59 @@
         <TextBlock Margin="108 0 0 0" Grid.Row="1" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Enter Details .:" VerticalAlignment="Bottom"/>
         <WrapPanel Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <TextBlock Name="FromLabel" Text="From  .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
-            <TextBox Name="FromBox" Width="90"/>
-            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
+            <TextBox Name="FromBox" Width="100"/>
+            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="28" Width="3" Margin="8 -6 15 -5"/>
             <TextBlock Name="ToLabel" Text=" To .: "  FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
-            <TextBox Name="ToBox" Width="90"/>
+            <TextBox Name="ToBox" Width="100"/>
         </WrapPanel>
         <WrapPanel Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <TextBlock Name="AssignLabel" Text="Assign .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
-            <ComboBox Name="AssignCombo"  Width="90" ItemsSource="{Binding}" DataContext="{StaticResource EmpList}"  IsEditable="False">
+            <ComboBox Name="AssignCombo"  Width="100" ItemsSource="{Binding}" DataContext="{StaticResource EmpList}"  IsEditable="False">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock>
                             <TextBlock.Text>
                                 <MultiBinding StringFormat="{}{0} ({1})">
-                                    <Binding Path="Name" />
-                                    <Binding Path="EMPCode" />
+                                    <Binding Path="Name"/>
+                                    <Binding Path="EMPCode"/>
                                 </MultiBinding>
                             </TextBlock.Text>
                         </TextBlock>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
+            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="28" Width="3" Margin="8 -6 15 -5"/>
             <TextBlock  Name="CostLabel" Text=" Cost .: "  FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
-            <TextBox Name="CostBox" Width="80" Padding="2 2 0 0"/>
+            <TextBox Name="CostBox" Width="90" Padding="2 2 0 0"/>
         </WrapPanel>
         <WrapPanel Grid.Row="4" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-            <TextBlock Text=" Book No. .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
-            <TextBox Name="BookNumber" Width="150"/>
-        </WrapPanel>
-        <WrapPanel Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <TextBlock Name="DescriptionLabel" Text="Description .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
             <TextBox Name="DescriptionBox" Width="260" Height="22"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <TextBlock Text=" Book No. .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
+            <TextBox Name="BookNumber" Width="250"/>
         </WrapPanel>
         <WrapPanel Grid.Row="6" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <TextBlock Text="Expected Delivery in .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
             <TextBox Width="50"/>
             <TextBlock Text=" (days)" FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
         </WrapPanel>
-        <WrapPanel Grid.Row="7" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+        <WrapPanel Grid.Row="7" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="-20 0 0 0">
             <TextBlock Text="Date .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
-            <DatePicker Name="AddDate" Width="125" BorderThickness="0"/>
-            <Rectangle Width="98" Stroke="DarkGray" Margin="-153 0 0 0"/>
+            <DatePicker Name="AddDate" Width="120" BorderBrush="DarkGray" Padding="2 2 0 2" Background="White"/>
         </WrapPanel>
-        <Button Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Right" Name="AddstockLabel" Click="AddstockLabel_Click" Style="{StaticResource all}" Margin="0,22,14,10" Grid.RowSpan="2">
+        <Button Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Right" Name="AddstockLabel" Click="AddstockLabel_Click" Margin="0,22,10,10" Grid.RowSpan="2">
             <Button.Content>
-                <WrapPanel  Margin="7 4">
-                    <Path Data="F1M13.455,5.818C13.455,5.818 13.455,9.636 13.455,9.636 13.455,9.636 9.636,9.636 9.636,9.636 9.636,9.636 9.636,11.545 9.636,11.545 9.636,11.545 13.455,11.545 13.455,11.545 13.455,11.545 13.455,15.364 13.455,15.364 13.455,15.364 15.364,15.364 15.364,15.364 15.364,15.364 15.364,11.545 15.364,11.545 15.364,11.545 19.182,11.545 19.182,11.545 19.182,11.545 19.182,9.636 19.182,9.636 19.182,9.636 15.364,9.636 15.364,9.636 15.364,9.636 15.364,5.818 15.364,5.818 15.364,5.818 13.455,5.818 13.455,5.818z M2,5.818C2,5.818 3.909,5.818 3.909,5.818 3.909,5.818 3.909,21.091 3.909,21.091 3.909,21.091 19.182,21.091 19.182,21.091 19.182,21.091 19.182,23 19.182,23 19.182,23 3.909,23 3.909,23 2.859,23 2,22.141 2,21.091 2,21.091 2,5.818 2,5.818z M7.727,2C7.727,2 21.091,2 21.091,2 22.141,2 23,2.859 23,3.909 23,3.909 23,17.273 23,17.273 23,18.323 22.141,19.182 21.091,19.182 21.091,19.182 7.727,19.182 7.727,19.182 6.677,19.182 5.818,18.323 5.818,17.273 5.818,17.273 5.818,3.909 5.818,3.909 5.818,2.859 6.677,2 7.727,2z" Fill="Black" Height="24" Width="24"/>
-                    <TextBlock Name="Add_Filter" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Add Stock"/>
+                <WrapPanel  Margin="6 1">
+                    <Path Data="F1M13.455,5.818C13.455,5.818 13.455,9.636 13.455,9.636 13.455,9.636 9.636,9.636 9.636,9.636 9.636,9.636 9.636,11.545 9.636,11.545 9.636,11.545 13.455,11.545 13.455,11.545 13.455,11.545 13.455,15.364 13.455,15.364 13.455,15.364 15.364,15.364 15.364,15.364 15.364,15.364 15.364,11.545 15.364,11.545 15.364,11.545 19.182,11.545 19.182,11.545 19.182,11.545 19.182,9.636 19.182,9.636 19.182,9.636 15.364,9.636 15.364,9.636 15.364,9.636 15.364,5.818 15.364,5.818 15.364,5.818 13.455,5.818 13.455,5.818z M2,5.818C2,5.818 3.909,5.818 3.909,5.818 3.909,5.818 3.909,21.091 3.909,21.091 3.909,21.091 19.182,21.091 19.182,21.091 19.182,21.091 19.182,23 19.182,23 19.182,23 3.909,23 3.909,23 2.859,23 2,22.141 2,21.091 2,21.091 2,5.818 2,5.818z M7.727,2C7.727,2 21.091,2 21.091,2 22.141,2 23,2.859 23,3.909 23,3.909 23,17.273 23,17.273 23,18.323 22.141,19.182 21.091,19.182 21.091,19.182 7.727,19.182 7.727,19.182 6.677,19.182 5.818,18.323 5.818,17.273 5.818,17.273 5.818,3.909 5.818,3.909 5.818,2.859 6.677,2 7.727,2z" Fill="Black" Height="20" Width="20" Stretch="Fill"/>
+                    <TextBlock Name="Add_Filter" FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text=" Add Stock"/>
                 </WrapPanel>
             </Button.Content>
         </Button>
-        <Rectangle Fill="#FFCBCBCB" Height="26" Width="450" Stretch="Fill" Stroke="Black" />
+        <Rectangle Fill="#FFCBCBCB" Height="26" Width="450" Stretch="Fill" Stroke="Black"/>
         <TextBlock FontSize="16" TextAlignment="Center" VerticalAlignment="Center" Text="Stock Entry" FontFamily="Arial"/>
-        <Rectangle MouseDown="DragthisWindow" Fill="Transparent" Height="26" Width="450" Stretch="Fill" />
+        <Rectangle MouseDown="DragthisWindow" Fill="Transparent" Height="26" Width="450" Stretch="Fill"/>
         <Button ToolTip="Close" Height="18" HorizontalAlignment="Right" Margin="0 0 4 0" Click="Button_Click_Close" Width="35" Style="{StaticResource 1}">
             <Path Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" Width="15" Height="15"/>
         </Button>

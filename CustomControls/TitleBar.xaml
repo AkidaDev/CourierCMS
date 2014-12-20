@@ -52,9 +52,9 @@
         </Grid>
         <Rectangle Name="Rec_Top" Fill="Transparent" Grid.Column="1" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown" Margin="0 0 107 0"/>
         <Rectangle Name="Rec_Top_Left" Fill="Transparent" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>
-        <Rectangle Name="Rec_Top_Right" Fill="Transparent" Grid.Column="2" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown" />
+        <Rectangle Name="Rec_Top_Right" Fill="Transparent" Grid.Column="2" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>
         <Rectangle Name="Rec_Left" Fill="Transparent" Grid.Row="1" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>
-        <Rectangle Name="Rec_Right" Fill="Transparent" Grid.Row="1" Grid.Column="2" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown" />
+        <Rectangle Name="Rec_Right" Fill="Transparent" Grid.Row="1" Grid.Column="2" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>
         <Rectangle Name="Rec_Bottom" Fill="Transparent" Grid.Row="2" Grid.Column="1" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>
         <Rectangle Name="Rec_Bottom_Left" Fill="Transparent" Grid.Row="2" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>
         <Rectangle Name="Rec_Bottom_Right" Fill="Transparent" Grid.Row="2" Grid.Column="2" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>

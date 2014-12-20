@@ -5,7 +5,5 @@
     <Window.Resources>
         <CollectionViewSource x:Key="ListSource" CollectionViewType="ListCollectionView"/>
     </Window.Resources>
-    
-        <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" DataContext="{StaticResource ListSource}" ItemsSource="{Binding}" Name="UnassignedLists"></ListBox>
-    
+    <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" DataContext="{StaticResource ListSource}" ItemsSource="{Binding}" Name="UnassignedLists"/>
 </Window>

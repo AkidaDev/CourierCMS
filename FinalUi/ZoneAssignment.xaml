@@ -5,8 +5,8 @@
         Title="Manage Zone" Height="700" Width="1024" WindowStartupLocation="CenterScreen" Background="Turquoise">
     
     <Window.Resources>
-        <CollectionViewSource x:Key="zoneTable" CollectionViewType="{x:Type ListCollectionView}" />
-        <CollectionViewSource x:Key="CityTable" CollectionViewType="{x:Type ListCollectionView}" />
+        <CollectionViewSource x:Key="zoneTable" CollectionViewType="{x:Type ListCollectionView}"/>
+        <CollectionViewSource x:Key="CityTable" CollectionViewType="{x:Type ListCollectionView}"/>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -65,7 +65,7 @@
         </Grid>
         <DataGrid Grid.Row="2" Margin="0 3 0 0" x:Name="ZoneDataGrid" RowHeaderWidth="0" ItemsSource="{Binding}" DataContext="{StaticResource zoneTable}" BorderThickness="0">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Zone Code" IsReadOnly="True" Binding="{Binding zcode}" />
+                <DataGridTextColumn Header="Zone Code" IsReadOnly="True" Binding="{Binding zcode}"/>
                 <DataGridTextColumn Header="Description" IsReadOnly="True" Binding="{Binding Zone_name}"/>
             </DataGrid.Columns>
         </DataGrid>

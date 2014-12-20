@@ -491,7 +491,7 @@
     <EmbeddedResource Include="Report2.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <Resource Include="Images\save.gif" />
+    <Resource Include="Images\load.gif" />
     <Content Include="Report1.rdlc">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

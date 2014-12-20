@@ -63,7 +63,7 @@ namespace FinalUi
             AssignCombo.SelectedItem = s.Employee;
             BookNumber.Text = s.BookNo.ToString();
             AddDate.SelectedDate = s.Date;
-            Add_Filter.Text = "Update Stock";
+            Add_Filter.Text = " Update Stock";
         }
         bool getdetails()
         {

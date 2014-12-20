@@ -37,7 +37,7 @@
 
                 </DataGrid.Columns>
             </DataGrid>    
-		<Rectangle Fill="#FFCBCBCB" Height="26" Width="550" Stretch="Fill" Stroke="Black" />
+		<Rectangle Fill="#FFCBCBCB" Height="26" Width="550" Stretch="Fill" Stroke="Black"/>
             <TextBlock FontSize="16" Height="25" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Client Report" Canvas.Top="6" Width="548" FontFamily="Arial"/>
             <Rectangle MouseDown="DragthisWindow" Fill="Transparent" Height="26" Width="550" Stretch="Fill"/>
             <Button ToolTip="Close" Height="18" Canvas.Left="510" Click="Button_Click_Close" Canvas.Top="4" Width="35" Style="{StaticResource 1}">

@@ -1395,17 +1395,6 @@ namespace FinalUi
                 Calculator.Visibility = Visibility.Visible;
             }
         }
-        private void MenuItem_hideimage(object sender, RoutedEventArgs e)
-        {
-            if (backgroundimage.Visibility != Visibility.Collapsed)
-            {
-                backgroundimage.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                backgroundimage.Visibility = Visibility.Visible;
-            }
-        }
         private void ImportRule_Click(object sender, RoutedEventArgs e)
         {
             Client c = (Client)Client_Combo.SelectedItem;

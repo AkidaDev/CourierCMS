@@ -1,535 +1,535 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BillingDatabase" Class="BillingDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="ConnectionString" ConnectionString="Data Source=SYSTEM;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa;Password=Alver!22" Provider="System.Data.SqlClient" />
+  <Connection Mode="ConnectionString" ConnectionString="Data Source=SYSTEM;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa;Password=Alver!22" Provider="System.Data.SqlClient"/>
   <Table Name="dbo.City" Member="Cities">
     <Type Name="City">
-      <Column Name="CITY_CODE" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="CITY_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="CITY_STATE" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="CITY_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="CITY_STATE_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="MOD_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="MOD_TIME" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="NODEID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="USERID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="TRANS_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="CITY_COD" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="CITY_CATG_PDN" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="city_category" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="ZONE" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="Status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-      <Association Name="State_City" Member="State" ThisKey="CITY_STATE" OtherKey="STATE_CODE" Type="State" IsForeignKey="true" />
+      <Column Name="CITY_CODE" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false"/>
+      <Column Name="CITY_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="CITY_STATE" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="CITY_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="CITY_STATE_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="MOD_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true"/>
+      <Column Name="MOD_TIME" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="NODEID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="USERID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="TRANS_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="CITY_COD" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="CITY_CATG_PDN" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="city_category" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="ZONE" Type="System.String" DbType="VarChar(30)" CanBeNull="true"/>
+      <Column Name="Status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false"/>
+      <Association Name="State_City" Member="State" ThisKey="CITY_STATE" OtherKey="STATE_CODE" Type="State" IsForeignKey="true"/>
     </Type>
   </Table>
   <Table Name="dbo.ZONE" Member="ZONEs">
     <Type Name="ZONE">
-      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="zcode" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="Zone_name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="Mode" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false"/>
+      <Column Name="zcode" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false"/>
+      <Column Name="Zone_name" Type="System.String" DbType="VarChar(20)" CanBeNull="true"/>
+      <Column Name="Mode" Type="System.Char" DbType="Char(1)" CanBeNull="true"/>
     </Type>
   </Table>
   <Table Name="dbo.Client" Member="Clients">
     <Type Name="Client">
-      <Column Name="CLCODE" Type="System.String" DbType="VarChar(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="CLNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="CPERSON" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ADDRESS" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="STREET" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="CITY_NAME" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="CONTACTNO" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="EMAILID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="FUEL" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="OPBALANCE" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="AMTADD" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="AMTDISC" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="STAX" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="BRANCH" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="CLEXT" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="ADSDOX" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="ADSNDOX" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="INTRODATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="BOYCD" Type="System.String" DbType="Char(10)" CanBeNull="true" />
-      <Column Name="BOYNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="APPTRF" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
-      <Column Name="CASTATUS" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-      <Association Name="Client_PaymentEntry" Member="PaymentEntries" ThisKey="CLCODE" OtherKey="ClientCode" Type="PaymentEntry" />
-      <Association Name="Client_Quotation" Member="Quotations" ThisKey="CLCODE" OtherKey="CLCODE" Type="Quotation" />
-      <Association Name="Client_Transaction" Member="Transactions" ThisKey="CLCODE" OtherKey="CustCode" Type="Transaction" />
+      <Column Name="CLCODE" Type="System.String" DbType="VarChar(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false"/>
+      <Column Name="CLNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="CPERSON" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="ADDRESS" Type="System.String" DbType="VarChar(100)" CanBeNull="true"/>
+      <Column Name="STREET" Type="System.String" DbType="VarChar(100)" CanBeNull="true"/>
+      <Column Name="CITY_NAME" Type="System.String" DbType="VarChar(20)" CanBeNull="true"/>
+      <Column Name="CONTACTNO" Type="System.String" DbType="VarChar(20)" CanBeNull="true"/>
+      <Column Name="EMAILID" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="FUEL" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="OPBALANCE" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="AMTADD" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="AMTDISC" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="STAX" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="BRANCH" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="CLEXT" Type="System.Char" DbType="Char(1)" CanBeNull="true"/>
+      <Column Name="ADSDOX" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="ADSNDOX" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="INTRODATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true"/>
+      <Column Name="BOYCD" Type="System.String" DbType="Char(10)" CanBeNull="true"/>
+      <Column Name="BOYNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="APPTRF" Type="System.String" DbType="VarChar(6)" CanBeNull="true"/>
+      <Column Name="CASTATUS" Type="System.Boolean" DbType="Bit" CanBeNull="true"/>
+      <Column Name="Status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false"/>
+      <Association Name="Client_PaymentEntry" Member="PaymentEntries" ThisKey="CLCODE" OtherKey="ClientCode" Type="PaymentEntry"/>
+      <Association Name="Client_Quotation" Member="Quotations" ThisKey="CLCODE" OtherKey="CLCODE" Type="Quotation"/>
+      <Association Name="Client_Transaction" Member="Transactions" ThisKey="CLCODE" OtherKey="CustCode" Type="Transaction"/>
     </Type>
   </Table>
   <Table Name="dbo.Country" Member="Countries">
     <Type Name="Country">
-      <Column Name="cc_fips" Type="System.String" DbType="NVarChar(2) NOT NULL" CanBeNull="false" />
-      <Column Name="cc_iso" Type="System.String" DbType="NVarChar(2) NOT NULL" CanBeNull="false" />
-      <Column Name="tld" Type="System.String" DbType="NVarChar(3) NOT NULL" CanBeNull="false" />
-      <Column Name="country_name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="cc_fips" Type="System.String" DbType="NVarChar(2) NOT NULL" CanBeNull="false"/>
+      <Column Name="cc_iso" Type="System.String" DbType="NVarChar(2) NOT NULL" CanBeNull="false"/>
+      <Column Name="tld" Type="System.String" DbType="NVarChar(3) NOT NULL" CanBeNull="false"/>
+      <Column Name="country_name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false"/>
     </Type>
   </Table>
   <Table Name="dbo.InvoiceAssignment" Member="InvoiceAssignments">
     <Type Name="InvoiceAssignment">
-      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="BillId" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
-      <Column Name="TransactionId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="BilledAmount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="BilledWeight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Destination" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="DestinationDesc" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="Invoice_InvoiceAssignment" Member="Invoice" ThisKey="BillId" OtherKey="BillId" Type="Invoice" IsForeignKey="true" />
-      <Association Name="Transaction_InvoiceAssignment" Member="Transaction" ThisKey="TransactionId" OtherKey="ID" Type="Transaction" IsForeignKey="true" />
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false"/>
+      <Column Name="BillId" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false"/>
+      <Column Name="TransactionId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false"/>
+      <Column Name="BilledAmount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false"/>
+      <Column Name="BilledWeight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false"/>
+      <Column Name="Destination" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="DestinationDesc" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Association Name="Invoice_InvoiceAssignment" Member="Invoice" ThisKey="BillId" OtherKey="BillId" Type="Invoice" IsForeignKey="true"/>
+      <Association Name="Transaction_InvoiceAssignment" Member="Transaction" ThisKey="TransactionId" OtherKey="ID" Type="Transaction" IsForeignKey="true"/>
     </Type>
   </Table>
   <Table Name="dbo.PaymentEntry" Member="PaymentEntries">
     <Type Name="PaymentEntry">
-      <Column Name="Id" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="RecievedAmount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Type" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ChequeNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ClientCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
-      <Column Name="Remarks" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="BankName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="DebitNote" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="TDS" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="InvoiceNumber" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Association Name="Client_PaymentEntry" Member="Client" ThisKey="ClientCode" OtherKey="CLCODE" Type="Client" IsForeignKey="true" />
+      <Column Name="Id" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false"/>
+      <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false"/>
+      <Column Name="RecievedAmount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false"/>
+      <Column Name="Type" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="ChequeNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="ClientCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true"/>
+      <Column Name="Remarks" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="BankName" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="DebitNote" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false"/>
+      <Column Name="TDS" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false"/>
+      <Column Name="InvoiceNumber" Type="System.String" DbType="VarChar(100)" CanBeNull="true"/>
+      <Association Name="Client_PaymentEntry" Member="Client" ThisKey="ClientCode" OtherKey="CLCODE" Type="Client" IsForeignKey="true"/>
     </Type>
   </Table>
   <Table Name="dbo.Permissions" Member="Permissions">
     <Type Name="Permission">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Per" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="Permission_User_permission" Member="User_permissions" ThisKey="id" OtherKey="per_id" Type="User_permission" />
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false"/>
+      <Column Name="Per" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Association Name="Permission_User_permission" Member="User_permissions" ThisKey="id" OtherKey="per_id" Type="User_permission"/>
     </Type>
   </Table>
   <Table Name="dbo.Quotation" Member="Quotations">
     <Type Name="Quotation">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="CLCODE" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
-      <Association Name="Quotation_Rule" Member="Rules" ThisKey="Id" OtherKey="QID" Type="Rule" />
-      <Association Name="Client_Quotation" Member="Client" ThisKey="CLCODE" OtherKey="CLCODE" Type="Client" IsForeignKey="true" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false"/>
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true"/>
+      <Column Name="CLCODE" Type="System.String" DbType="VarChar(6)" CanBeNull="true"/>
+      <Association Name="Quotation_Rule" Member="Rules" ThisKey="Id" OtherKey="QID" Type="Rule"/>
+      <Association Name="Client_Quotation" Member="Client" ThisKey="CLCODE" OtherKey="CLCODE" Type="Client" IsForeignKey="true"/>
     </Type>
   </Table>
   <Table Name="dbo.[Rule]" Member="Rules">
     <Type Name="Rule">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="QID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Remark" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Properties" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Association Name="Quotation_Rule" Member="Quotation" ThisKey="QID" OtherKey="Id" Type="Quotation" IsForeignKey="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false"/>
+      <Column Name="QID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false"/>
+      <Column Name="Remark" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false"/>
+      <Column Name="Properties" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false"/>
+      <Association Name="Quotation_Rule" Member="Quotation" ThisKey="QID" OtherKey="Id" Type="Quotation" IsForeignKey="true"/>
     </Type>
   </Table>
   <Table Name="dbo.Service" Member="Services">
     <Type Name="Service">
-      <Column Name="SER_CODE" Type="System.String" DbType="NVarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="SER_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="SER_TYPE_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="MOD_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="MOD_TIME" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="NODEID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="USERID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="TRANS_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="SER_DIV" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="MODE_TYPE" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="SER_BILLING" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="PRODUCT_ID" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="SER_HIERARCHY_ID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SER_CODE" Type="System.String" DbType="NVarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false"/>
+      <Column Name="SER_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="SER_TYPE_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="MOD_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true"/>
+      <Column Name="MOD_TIME" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="NODEID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="USERID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="TRANS_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="SER_DIV" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="MODE_TYPE" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="SER_BILLING" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="PRODUCT_ID" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="SER_HIERARCHY_ID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
     </Type>
   </Table>
   <Table Name="dbo.State" Member="States">
     <Type Name="State">
-      <Column Name="STATE_CODE" Type="System.String" DbType="NVarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="STATE_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_COUNTRY" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_CAPITAL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_MAP" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_POPULATION" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="STATE_IMP_AREA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_INDUSTRIES" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_ZO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="MOD_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="MOD_TIME" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="NODEID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="USERID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="TRANS_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_RO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="STATE_ZONE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Association Name="State_City" Member="Cities" ThisKey="STATE_CODE" OtherKey="CITY_STATE" Type="City" />
+      <Column Name="STATE_CODE" Type="System.String" DbType="NVarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false"/>
+      <Column Name="STATE_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="STATE_COUNTRY" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="STATE_CAPITAL" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="STATE_MAP" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="STATE_POPULATION" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="STATE_IMP_AREA" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="STATE_INDUSTRIES" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="STATE_ZO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="STATE_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="MOD_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true"/>
+      <Column Name="MOD_TIME" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="NODEID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="USERID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="TRANS_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="STATE_RO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="STATE_ZONE" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Association Name="State_City" Member="Cities" ThisKey="STATE_CODE" OtherKey="CITY_STATE" Type="City"/>
     </Type>
   </Table>
   <Table Name="dbo.User_permission" Member="User_permissions">
     <Type Name="User_permission">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="emp_id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="per_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Permission_User_permission" Member="Permission" ThisKey="per_id" OtherKey="id" Type="Permission" IsForeignKey="true" />
-      <Association Name="Employee_User_permission" Member="Employee" ThisKey="emp_id" OtherKey="Id" Type="Employee" IsForeignKey="true" />
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false"/>
+      <Column Name="emp_id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false"/>
+      <Column Name="per_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false"/>
+      <Association Name="Permission_User_permission" Member="Permission" ThisKey="per_id" OtherKey="id" Type="Permission" IsForeignKey="true"/>
+      <Association Name="Employee_User_permission" Member="Employee" ThisKey="emp_id" OtherKey="Id" Type="Employee" IsForeignKey="true"/>
     </Type>
   </Table>
   <Table Name="dbo.TransactionCityView" Member="TransactionCityViews">
     <Type Name="TransactionCityView">
-      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="AmountPayed" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
-      <Column Name="AmountCharged" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="ConnsignmentNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="WeightByFranchize" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Destination" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="DestinationPin" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="BookingDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="AddDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="LastModified" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="Type" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
-      <Column Name="Mode" Type="System.String" DbType="NChar(25) NOT NULL" CanBeNull="false" />
-      <Column Name="DOX" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-      <Column Name="ServiceTax" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="SplDisc" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="InvoiceNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="InvoiceDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="CustCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
-      <Column Name="TransMF_No" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="BilledWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="CITY_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="SER_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="CLNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false"/>
+      <Column Name="AmountPayed" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false"/>
+      <Column Name="AmountCharged" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true"/>
+      <Column Name="ConnsignmentNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false"/>
+      <Column Name="WeightByFranchize" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="Destination" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="DestinationPin" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true"/>
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true"/>
+      <Column Name="BookingDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false"/>
+      <Column Name="AddDate" Type="System.DateTime" DbType="Date" CanBeNull="true"/>
+      <Column Name="LastModified" Type="System.DateTime" DbType="Date" CanBeNull="true"/>
+      <Column Name="Type" Type="System.String" DbType="NChar(25)" CanBeNull="true"/>
+      <Column Name="Mode" Type="System.String" DbType="NChar(25) NOT NULL" CanBeNull="false"/>
+      <Column Name="DOX" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false"/>
+      <Column Name="ServiceTax" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="SplDisc" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="InvoiceNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="Date" CanBeNull="true"/>
+      <Column Name="CustCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true"/>
+      <Column Name="TransMF_No" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="BilledWeight" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="CITY_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="SER_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="CLNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
     </Type>
   </Table>
   <Table Name="dbo.BalanceView" Member="BalanceViews">
     <Type Name="BalanceView">
-      <Column Name="PC" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
-      <Column Name="PaymentRecieved" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="AmountBilled" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="NetBalance" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="PC" Type="System.String" DbType="VarChar(6)" CanBeNull="true"/>
+      <Column Name="PaymentRecieved" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="AmountBilled" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="NetBalance" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true"/>
     </Type>
   </Table>
   <Table Name="dbo.InvoiceView" Member="InvoiceViews">
     <Type Name="InvoiceView">
-      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="AmountPayed" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="AmountCharged" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="ConnsignmentNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="WeightByFranchize" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Destination" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="DestinationPin" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="BookingDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="AddDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="LastModified" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="Type" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
-      <Column Name="Mode" Type="System.String" DbType="NChar(25) NOT NULL" CanBeNull="false" />
-      <Column Name="DOX" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-      <Column Name="ServiceTax" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="SplDisc" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="InvoiceNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="InvoiceDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="CustCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
-      <Column Name="TransMF_No" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="BilledWeight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="BillId" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false"/>
+      <Column Name="AmountPayed" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true"/>
+      <Column Name="AmountCharged" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true"/>
+      <Column Name="ConnsignmentNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false"/>
+      <Column Name="WeightByFranchize" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="Destination" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="DestinationPin" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true"/>
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true"/>
+      <Column Name="BookingDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false"/>
+      <Column Name="AddDate" Type="System.DateTime" DbType="Date" CanBeNull="true"/>
+      <Column Name="LastModified" Type="System.DateTime" DbType="Date" CanBeNull="true"/>
+      <Column Name="Type" Type="System.String" DbType="NChar(25)" CanBeNull="true"/>
+      <Column Name="Mode" Type="System.String" DbType="NChar(25) NOT NULL" CanBeNull="false"/>
+      <Column Name="DOX" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false"/>
+      <Column Name="ServiceTax" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="SplDisc" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="InvoiceNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="Date" CanBeNull="true"/>
+      <Column Name="CustCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true"/>
+      <Column Name="TransMF_No" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="BilledWeight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false"/>
+      <Column Name="BillId" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false"/>
     </Type>
   </Table>
   <Table Name="dbo.PROFITVIEW" Member="PROFITVIEWs">
     <Type Name="PROFITVIEW">
-      <Column Name="TotalPayed" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
-      <Column Name="TotalChargedAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="CustCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
-      <Column Name="netProfit" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FUEL" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TotalPayed" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true"/>
+      <Column Name="TotalChargedAmount" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="CustCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true"/>
+      <Column Name="netProfit" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="FUEL" Type="System.Double" DbType="Float" CanBeNull="true"/>
     </Type>
   </Table>
   <Table Name="dbo.RateAssignmentReportingView" Member="RateAssignmentReportingViews">
     <Type Name="RateAssignmentReportingView">
-      <Column Name="ClCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
-      <Column Name="ServiceCode" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="ZoneCode" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="RateCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="DoxRate" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="NonDoxRate" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="StepWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ClCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true"/>
+      <Column Name="ServiceCode" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="ZoneCode" Type="System.String" DbType="VarChar(30)" CanBeNull="true"/>
+      <Column Name="RateCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true"/>
+      <Column Name="DoxRate" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false"/>
+      <Column Name="NonDoxRate" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false"/>
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false"/>
+      <Column Name="StepWeight" Type="System.Double" DbType="Float" CanBeNull="true"/>
     </Type>
   </Table>
   <Table Name="dbo.RuntimeCityView" Member="RuntimeCityViews">
     <Type Name="RuntimeCityView">
-      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="ConsignmentNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Type" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
-      <Column Name="Destination" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Mode" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
-      <Column Name="DestinationPin" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="BookingDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
-      <Column Name="DOX" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="ServiceTax" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="SplDisc" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="InvoiceNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="InvoiceDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="EmpId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="FrAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="FrWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="TransactionId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="CustCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="TransMF_No" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="BilledWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="CITY_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false"/>
+      <Column Name="ConsignmentNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false"/>
+      <Column Name="Type" Type="System.String" DbType="NChar(25)" CanBeNull="true"/>
+      <Column Name="Destination" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="Mode" Type="System.String" DbType="NChar(25)" CanBeNull="true"/>
+      <Column Name="DestinationPin" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true"/>
+      <Column Name="BookingDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false"/>
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false"/>
+      <Column Name="DOX" Type="System.Char" DbType="Char(1)" CanBeNull="true"/>
+      <Column Name="ServiceTax" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="SplDisc" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="InvoiceNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="Date" CanBeNull="true"/>
+      <Column Name="EmpId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true"/>
+      <Column Name="FrAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true"/>
+      <Column Name="FrWeight" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="TransactionId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true"/>
+      <Column Name="CustCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true"/>
+      <Column Name="TransMF_No" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="BilledWeight" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="CITY_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
     </Type>
   </Table>
   <Table Name="dbo.InvoiceAnalyzeResult" Member="InvoiceAnalyzeResults">
     <Type Name="InvoiceAnalyzeResult">
-      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="AnalyzeId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="SrlNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ConnNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Weight" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Destination" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="MisMatchDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="serviceCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="hasError" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false"/>
+      <Column Name="AnalyzeId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false"/>
+      <Column Name="SrlNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="ConnNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="Weight" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="Destination" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="MisMatchDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true"/>
+      <Column Name="serviceCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true"/>
+      <Column Name="hasError" Type="System.Boolean" DbType="Bit" CanBeNull="true"/>
     </Type>
   </Table>
   <Table Name="dbo.Stock" Member="Stocks">
     <Type Name="Stock">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="StockStart" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="StockEnd" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="BookNo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="[desc]" Member="desc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-      <Column Name="cost" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Association Name="Employee_Stock" Member="Employee" ThisKey="UserId" OtherKey="Id" Type="Employee" IsForeignKey="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false"/>
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false"/>
+      <Column Name="StockStart" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="StockEnd" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="BookNo" Type="System.String" DbType="VarChar(20)" CanBeNull="true"/>
+      <Column Name="[desc]" Member="desc" Type="System.String" DbType="VarChar(250)" CanBeNull="true"/>
+      <Column Name="cost" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true"/>
+      <Association Name="Employee_Stock" Member="Employee" ThisKey="UserId" OtherKey="Id" Type="Employee" IsForeignKey="true"/>
     </Type>
   </Table>
   <Table Name="dbo.StockAssignmentView" Member="StockAssignmentViews">
     <Type Name="StockAssignmentView">
-      <Column Name="SrlNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="EmployeeName" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="BookNo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="CostPerSlip" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="StartNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="EndNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="SlipsUsed" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AddDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="Description" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="SrlNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false"/>
+      <Column Name="EmployeeName" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false"/>
+      <Column Name="BookNo" Type="System.String" DbType="VarChar(20)" CanBeNull="true"/>
+      <Column Name="CostPerSlip" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="StartNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="EndNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="SlipsUsed" Type="System.Int32" DbType="Int" CanBeNull="true"/>
+      <Column Name="AddDate" Type="System.DateTime" DbType="Date" CanBeNull="true"/>
+      <Column Name="Description" Type="System.String" DbType="VarChar(250)" CanBeNull="true"/>
     </Type>
   </Table>
   <Table Name="dbo.Employee" Member="Employees">
     <Type Name="Employee">
-      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Gender" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="EMPCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="UserName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Password" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-      <Column Name="Address" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
-      <Column Name="ContactNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Other" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Association Name="Employee_User_permission" Member="User_permissions" ThisKey="Id" OtherKey="emp_id" Type="User_permission" />
-      <Association Name="Employee_Stock" Member="Stocks" ThisKey="Id" OtherKey="UserId" Type="Stock" />
-      <Association Name="Employee_Transaction" Member="Transactions" ThisKey="Id" OtherKey="UserId" Type="Transaction" />
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false"/>
+      <Column Name="Name" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false"/>
+      <Column Name="Gender" Type="System.Char" DbType="Char(1)" CanBeNull="true"/>
+      <Column Name="EMPCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="Password" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false"/>
+      <Column Name="Status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false"/>
+      <Column Name="Address" Type="System.String" DbType="VarChar(150)" CanBeNull="true"/>
+      <Column Name="ContactNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="Other" Type="System.String" DbType="VarChar(100)" CanBeNull="true"/>
+      <Association Name="Employee_User_permission" Member="User_permissions" ThisKey="Id" OtherKey="emp_id" Type="User_permission"/>
+      <Association Name="Employee_Stock" Member="Stocks" ThisKey="Id" OtherKey="UserId" Type="Stock"/>
+      <Association Name="Employee_Transaction" Member="Transactions" ThisKey="Id" OtherKey="UserId" Type="Transaction"/>
     </Type>
   </Table>
   <Table Name="dbo.AccountStatement" Member="AccountStatements">
     <Type Name="AccountStatement">
-      <Column Name="Id" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="TransactionDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="TypeOfRecord" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
-      <Column Name="ClientCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
-      <Column Name="Remark" Type="System.String" DbType="VarChar(249)" CanBeNull="true" />
-      <Column Name="Details" Type="System.String" DbType="VarChar(360)" CanBeNull="true" />
-      <Column Name="TotalRecievedAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="PayAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Id" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="TransactionDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false"/>
+      <Column Name="TypeOfRecord" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false"/>
+      <Column Name="ClientCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true"/>
+      <Column Name="Remark" Type="System.String" DbType="VarChar(249)" CanBeNull="true"/>
+      <Column Name="Details" Type="System.String" DbType="VarChar(360)" CanBeNull="true"/>
+      <Column Name="TotalRecievedAmount" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="PayAmount" Type="System.Double" DbType="Float" CanBeNull="true"/>
     </Type>
   </Table>
   <Table Name="dbo.RuntimeData" Member="RuntimeDatas">
     <Type Name="RuntimeData">
-      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ConsignmentNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Type" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
-      <Column Name="Destination" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Mode" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
-      <Column Name="DestinationPin" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="BookingDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
-      <Column Name="DOX" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="ServiceTax" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="SplDisc" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="InvoiceNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="InvoiceDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="EmpId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="FrAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="FrWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="TransactionId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="CustCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="TransMF_No" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="BilledWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="SheetNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="UserId" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="City_Desc" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Service_Desc" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Client_Desc" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
-      <Column Name="ConsigneeName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="ConsigneeAddress" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
-      <Column Name="ConsignerName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="ConsignerAddress" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
-      <Column Name="SubClient" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false"/>
+      <Column Name="ConsignmentNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false"/>
+      <Column Name="Type" Type="System.String" DbType="NChar(25)" CanBeNull="true"/>
+      <Column Name="Destination" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="Mode" Type="System.String" DbType="NChar(25)" CanBeNull="true"/>
+      <Column Name="DestinationPin" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true"/>
+      <Column Name="BookingDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false"/>
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false"/>
+      <Column Name="DOX" Type="System.Char" DbType="Char(1)" CanBeNull="true"/>
+      <Column Name="ServiceTax" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="SplDisc" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="InvoiceNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="Date" CanBeNull="true"/>
+      <Column Name="EmpId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true"/>
+      <Column Name="FrAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true"/>
+      <Column Name="FrWeight" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="TransactionId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true"/>
+      <Column Name="CustCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true"/>
+      <Column Name="TransMF_No" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="BilledWeight" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="SheetNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false"/>
+      <Column Name="UserId" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="City_Desc" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="Service_Desc" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="Client_Desc" Type="System.String" DbType="VarChar(400)" CanBeNull="true"/>
+      <Column Name="ConsigneeName" Type="System.String" DbType="VarChar(100)" CanBeNull="true"/>
+      <Column Name="ConsigneeAddress" Type="System.String" DbType="VarChar(500)" CanBeNull="true"/>
+      <Column Name="ConsignerName" Type="System.String" DbType="VarChar(100)" CanBeNull="true"/>
+      <Column Name="ConsignerAddress" Type="System.String" DbType="VarChar(500)" CanBeNull="true"/>
+      <Column Name="SubClient" Type="System.String" DbType="VarChar(100)" CanBeNull="true"/>
     </Type>
   </Table>
   <Table Name="dbo.Invoice" Member="Invoices">
     <Type Name="Invoice">
-      <Column Name="BillId" Type="System.String" DbType="VarChar(32) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ClientCode" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="TotalAmount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Fuel" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="STax" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Basic" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Remarks" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="PreviousDue" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Misc" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Discount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="SubClient" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
-      <Association Name="Invoice_InvoiceAssignment" Member="InvoiceAssignments" ThisKey="BillId" OtherKey="BillId" Type="InvoiceAssignment" />
+      <Column Name="BillId" Type="System.String" DbType="VarChar(32) NOT NULL" IsPrimaryKey="true" CanBeNull="false"/>
+      <Column Name="ClientCode" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false"/>
+      <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false"/>
+      <Column Name="TotalAmount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false"/>
+      <Column Name="Fuel" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false"/>
+      <Column Name="STax" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false"/>
+      <Column Name="Basic" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false"/>
+      <Column Name="Remarks" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="PreviousDue" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="Misc" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="Discount" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="SubClient" Type="System.String" DbType="VarChar(500)" CanBeNull="true"/>
+      <Association Name="Invoice_InvoiceAssignment" Member="InvoiceAssignments" ThisKey="BillId" OtherKey="BillId" Type="InvoiceAssignment"/>
     </Type>
   </Table>
   <Table Name="dbo.[Transaction]" Member="Transactions">
     <Type Name="Transaction">
-      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="AmountPayed" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
-      <Column Name="AmountCharged" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="ConnsignmentNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="WeightByFranchize" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Destination" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="DestinationPin" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="BookingDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="AddDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="LastModified" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="Type" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
-      <Column Name="Mode" Type="System.String" DbType="NChar(25) NOT NULL" CanBeNull="false" />
-      <Column Name="DOX" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-      <Column Name="ServiceTax" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="SplDisc" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="InvoiceNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="InvoiceDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="CustCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
-      <Column Name="TransMF_No" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="BilledWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="ConsigneeName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="ConsigneeAddress" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
-      <Column Name="ConsignerName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="ConsignerAddress" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
-      <Column Name="SubClient" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="DeliveryStatus" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
-      <Association Name="Transaction_InvoiceAssignment" Member="InvoiceAssignments" ThisKey="ID" OtherKey="TransactionId" Type="InvoiceAssignment" />
-      <Association Name="Employee_Transaction" Member="Employee" ThisKey="UserId" OtherKey="Id" Type="Employee" IsForeignKey="true" />
-      <Association Name="Client_Transaction" Member="Client" ThisKey="CustCode" OtherKey="CLCODE" Type="Client" IsForeignKey="true" />
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false"/>
+      <Column Name="AmountPayed" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false"/>
+      <Column Name="AmountCharged" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true"/>
+      <Column Name="ConnsignmentNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="Weight" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false"/>
+      <Column Name="WeightByFranchize" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="Destination" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="DestinationPin" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true"/>
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true"/>
+      <Column Name="BookingDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false"/>
+      <Column Name="AddDate" Type="System.DateTime" DbType="Date" CanBeNull="true"/>
+      <Column Name="LastModified" Type="System.DateTime" DbType="Date" CanBeNull="true"/>
+      <Column Name="Type" Type="System.String" DbType="NChar(25)" CanBeNull="true"/>
+      <Column Name="Mode" Type="System.String" DbType="NChar(25) NOT NULL" CanBeNull="false"/>
+      <Column Name="DOX" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false"/>
+      <Column Name="ServiceTax" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="SplDisc" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="InvoiceNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="Date" CanBeNull="true"/>
+      <Column Name="CustCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true"/>
+      <Column Name="TransMF_No" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="BilledWeight" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="ConsigneeName" Type="System.String" DbType="VarChar(100)" CanBeNull="true"/>
+      <Column Name="ConsigneeAddress" Type="System.String" DbType="VarChar(500)" CanBeNull="true"/>
+      <Column Name="ConsignerName" Type="System.String" DbType="VarChar(100)" CanBeNull="true"/>
+      <Column Name="ConsignerAddress" Type="System.String" DbType="VarChar(500)" CanBeNull="true"/>
+      <Column Name="SubClient" Type="System.String" DbType="VarChar(100)" CanBeNull="true"/>
+      <Column Name="DeliveryStatus" Type="System.String" DbType="VarChar(500)" CanBeNull="true"/>
+      <Association Name="Transaction_InvoiceAssignment" Member="InvoiceAssignments" ThisKey="ID" OtherKey="TransactionId" Type="InvoiceAssignment"/>
+      <Association Name="Employee_Transaction" Member="Employee" ThisKey="UserId" OtherKey="Id" Type="Employee" IsForeignKey="true"/>
+      <Association Name="Client_Transaction" Member="Client" ThisKey="CustCode" OtherKey="CLCODE" Type="Client" IsForeignKey="true"/>
     </Type>
   </Table>
   <Table Name="dbo.MISReportView" Member="MISReportViews">
     <Type Name="MISReportView">
-      <Column Name="ConnsignmentNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="BookingDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="SER_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="BilledWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="ConsigneeName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="ConsignerName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="DeliveryStatus" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
-      <Column Name="CLNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="CITY_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="Expr1" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="AmountCharged" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="CLCODE" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="SubClient" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ConnsignmentNo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false"/>
+      <Column Name="BookingDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false"/>
+      <Column Name="SER_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="BilledWeight" Type="System.Double" DbType="Float" CanBeNull="true"/>
+      <Column Name="ConsigneeName" Type="System.String" DbType="VarChar(100)" CanBeNull="true"/>
+      <Column Name="ConsignerName" Type="System.String" DbType="VarChar(100)" CanBeNull="true"/>
+      <Column Name="DeliveryStatus" Type="System.String" DbType="VarChar(500)" CanBeNull="true"/>
+      <Column Name="CLNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true"/>
+      <Column Name="CITY_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="Expr1" Type="System.String" DbType="NVarChar(255)" CanBeNull="true"/>
+      <Column Name="AmountCharged" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true"/>
+      <Column Name="CLCODE" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false"/>
+      <Column Name="SubClient" Type="System.String" DbType="VarChar(100)" CanBeNull="true"/>
     </Type>
   </Table>
   <Function Name="dbo.sp_deleteSheetFromRuntime" Method="sp_deleteSheetFromRuntime">
-    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)"/>
+    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int"/>
+    <Return Type="System.Int32"/>
   </Function>
   <Function Name="dbo.sp_getRateReportingObject" Method="sp_getRateReportingObject" IsComposable="true">
-    <Parameter Name="ClientCode" Parameter="clientCode" Type="System.String" DbType="VarChar(50)" />
-    <Return Type="object" />
+    <Parameter Name="ClientCode" Parameter="clientCode" Type="System.String" DbType="VarChar(50)"/>
+    <Return Type="object"/>
   </Function>
   <Function Name="dbo.sp_ImportZoneData" Method="sp_ImportZoneData" IsComposable="true">
-    <Return Type="object" />
+    <Return Type="object"/>
   </Function>
   <Function Name="dbo.sp_ImportZones" Method="sp_ImportZones" IsComposable="true">
-    <Return Type="object" />
+    <Return Type="object"/>
   </Function>
   <Function Name="dbo.sp_LoadToRuntimeFromDate" Method="sp_LoadToRuntimeFromDate">
-    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
-    <Parameter Name="ToDate" Parameter="toDate" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="FromDate" Parameter="fromDate" Type="System.DateTime" DbType="DateTime" />
-    <Return Type="System.Int32" />
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)"/>
+    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int"/>
+    <Parameter Name="ToDate" Parameter="toDate" Type="System.DateTime" DbType="DateTime"/>
+    <Parameter Name="FromDate" Parameter="fromDate" Type="System.DateTime" DbType="DateTime"/>
+    <Return Type="System.Int32"/>
   </Function>
   <Function Name="dbo.sp_SaveDataFromRunToTran" Method="sp_SaveDataFromRunToTran">
-    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)"/>
+    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int"/>
+    <Return Type="System.Int32"/>
   </Function>
   <Function Name="dbo.sp_TransferClients" Method="sp_TransferClients" IsComposable="true">
-    <Return Type="object" />
+    <Return Type="object"/>
   </Function>
   <Function Name="dbo.sp_TransferFRWRDRAsService" Method="sp_TransferFRWRDRAsService" IsComposable="true">
-    <Return Type="object" />
+    <Return Type="object"/>
   </Function>
   <Function Name="dbo.sp_TransferMInvoiceDetailToBInvoiceDetail" Method="sp_TransferMInvoiceDetailToBInvoiceDetail" IsComposable="true">
-    <Return Type="object" />
+    <Return Type="object"/>
   </Function>
   <Function Name="dbo.sp_TransferMInvoiceToBInvoice" Method="sp_TransferMInvoiceToBInvoice" IsComposable="true">
-    <Return Type="object" />
+    <Return Type="object"/>
   </Function>
   <Function Name="dbo.sp_TransferPaymentDetails" Method="sp_TransferPaymentDetails" IsComposable="true">
-    <Return Type="object" />
+    <Return Type="object"/>
   </Function>
   <Function Name="dbo.sp_TransferRatespart1" Method="sp_TransferRatespart1" IsComposable="true">
-    <Return Type="object" />
+    <Return Type="object"/>
   </Function>
   <Function Name="dbo.sp_TransferRatespart2" Method="sp_TransferRatespart2" IsComposable="true">
-    <Return Type="object" />
+    <Return Type="object"/>
   </Function>
   <Function Name="dbo.sp_TransferTransactionDetails" Method="sp_TransferTransactionDetails" IsComposable="true">
-    <Return Type="object" />
+    <Return Type="object"/>
   </Function>
   <Function Name="dbo.GetPreviousDue" Method="GetPreviousDue" IsComposable="true">
-    <Parameter Name="CLCODE" Parameter="cLCODE" Type="System.String" DbType="VarChar(6)" />
-    <Return Type="System.Double" />
+    <Parameter Name="CLCODE" Parameter="cLCODE" Type="System.String" DbType="VarChar(6)"/>
+    <Return Type="System.Double"/>
   </Function>
   <Function Name="dbo.sp_ReflectTransactionInRuntime" Method="sp_ReflectTransactionInRuntime">
-    <Return Type="System.Int32" />
+    <Return Type="System.Int32"/>
   </Function>
   <Function Name="dbo.SaveRuntimeData" Method="SaveRuntimeData">
-    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
-    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
-    <Return Type="System.Int32" />
+    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int"/>
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)"/>
+    <Return Type="System.Int32"/>
   </Function>
   <Function Name="dbo.sp_LoadToRuntimeFromBookNo" Method="sp_LoadToRuntimeFromBookNo">
-    <Parameter Name="StockStart" Parameter="stockStart" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="StockEnd" Parameter="stockEnd" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
+    <Parameter Name="StockStart" Parameter="stockStart" Type="System.String" DbType="VarChar(50)"/>
+    <Parameter Name="StockEnd" Parameter="stockEnd" Type="System.String" DbType="VarChar(50)"/>
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)"/>
+    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int"/>
+    <Return Type="System.Int32"/>
   </Function>
   <Function Name="dbo.ImportFileData" Method="ImportFileData">
-    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int" />
-    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="EmpName" Parameter="empName" Type="System.String" DbType="VarChar(50)" />
-    <Return Type="System.Int32" />
+    <Parameter Name="SheetNo" Parameter="sheetNo" Type="System.Int32" DbType="Int"/>
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)"/>
+    <Parameter Name="EmpName" Parameter="empName" Type="System.String" DbType="VarChar(50)"/>
+    <Return Type="System.Int32"/>
   </Function>
 </Database>

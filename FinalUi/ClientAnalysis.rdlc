@@ -60,7 +60,7 @@
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
@@ -121,10 +121,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!TotalConnsignments.Value</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
@@ -156,7 +156,7 @@
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
@@ -183,10 +183,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!BilledConnsignments.Value</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox9</rd:DefaultName>
@@ -218,7 +218,7 @@
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
@@ -245,10 +245,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!TotalCostIncurred.Value</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
@@ -280,7 +280,7 @@
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
@@ -307,10 +307,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!TotalExpectedPayment.Value</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
@@ -343,7 +343,7 @@
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox19</rd:DefaultName>
@@ -370,10 +370,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!ClientCode.Value</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
@@ -405,7 +405,7 @@
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
@@ -432,10 +432,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!TotalPayment.Value</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
@@ -467,7 +467,7 @@
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
@@ -494,10 +494,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!TotalPaymentRecieved.Value</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
@@ -524,10 +524,10 @@
             <TextRuns>
               <TextRun>
                 <Value>Code:</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
@@ -554,10 +554,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!ServiceTax.Value</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
@@ -584,10 +584,10 @@
             <TextRuns>
               <TextRun>
                 <Value>Service Tax:</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
@@ -619,7 +619,7 @@
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
@@ -646,10 +646,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!OutstandingBalance.Value</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox9</rd:DefaultName>
@@ -676,10 +676,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!FuelSurcharge.Value</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
@@ -706,10 +706,10 @@
             <TextRuns>
               <TextRun>
                 <Value>Fuel Surcharge:</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
@@ -736,10 +736,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!MiscellaneousCost.Value</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
@@ -766,10 +766,10 @@
             <TextRuns>
               <TextRun>
                 <Value>Miscellaneous Cost:</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
@@ -802,7 +802,7 @@
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox19</rd:DefaultName>
@@ -829,10 +829,10 @@
             <TextRuns>
               <TextRun>
                 <Value>Net Profit :</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
@@ -859,10 +859,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!NetProfit.Value</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
@@ -889,10 +889,10 @@
             <TextRuns>
               <TextRun>
                 <Value>Profit Percentage:</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
@@ -919,10 +919,10 @@
             <TextRuns>
               <TextRun>
                 <Value>Favorite Service :</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
@@ -949,10 +949,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!FavoriteService.Value</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
@@ -979,10 +979,10 @@
             <TextRuns>
               <TextRun>
                 <Value>Favorite Destination:</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
@@ -1009,10 +1009,10 @@
             <TextRuns>
               <TextRun>
                 <Value>*Profit calculation also count payments yet to be recieved</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox47</rd:DefaultName>
@@ -1044,7 +1044,7 @@
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
@@ -1071,10 +1071,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!ProfitibilityRank.Value</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
@@ -1106,7 +1106,7 @@
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
@@ -1133,10 +1133,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!OutstandingBalanceRank.Value</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
@@ -1163,10 +1163,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!ProfitPercentage.Value</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
@@ -1193,10 +1193,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!FavoriteDestination.Value</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
@@ -1223,10 +1223,10 @@
             <TextRuns>
               <TextRun>
                 <Value>No. of invoice generated :</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
@@ -1253,10 +1253,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!NoOfInvoiceGenerated.Value</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
@@ -1283,10 +1283,10 @@
             <TextRuns>
               <TextRun>
                 <Value>No. of payment recieved:</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
@@ -1313,10 +1313,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!NumberOfPaymentRecieved.Value</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
@@ -1343,10 +1343,10 @@
             <TextRuns>
               <TextRun>
                 <Value>Average Invoice Amount :</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
@@ -1373,10 +1373,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!AverageInvoiceAmount.Value</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
@@ -1403,10 +1403,10 @@
             <TextRuns>
               <TextRun>
                 <Value>Average Payment Amount:</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
@@ -1433,10 +1433,10 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!AveragePaymentAmount.Value</Value>
-                <Style />
+                <Style/>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
@@ -1469,7 +1469,7 @@
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style/>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox19</rd:DefaultName>
@@ -1530,10 +1530,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Zone Code</Value>
-                              <Style />
+                              <Style/>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style/>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox160</rd:DefaultName>
@@ -1560,10 +1560,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Service Code</Value>
-                              <Style />
+                              <Style/>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style/>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox162</rd:DefaultName>
@@ -1590,10 +1590,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Rate Code</Value>
-                              <Style />
+                              <Style/>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style/>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox164</rd:DefaultName>
@@ -1620,10 +1620,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Weight</Value>
-                              <Style />
+                              <Style/>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style/>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox166</rd:DefaultName>
@@ -1650,10 +1650,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Non Dox Rate</Value>
-                              <Style />
+                              <Style/>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style/>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox168</rd:DefaultName>
@@ -1680,10 +1680,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Dox Rate</Value>
-                              <Style />
+                              <Style/>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style/>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox172</rd:DefaultName>
@@ -1710,10 +1710,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Type</Value>
-                              <Style />
+                              <Style/>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style/>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox174</rd:DefaultName>
@@ -1740,10 +1740,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Step Weight</Value>
-                              <Style />
+                              <Style/>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style/>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox176</rd:DefaultName>
@@ -1775,10 +1775,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!ZoneCode.Value</Value>
-                              <Style />
+                              <Style/>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style/>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>ZoneCode</rd:DefaultName>
@@ -1805,10 +1805,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!ServiceCode.Value</Value>
-                              <Style />
+                              <Style/>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style/>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>ServiceCode</rd:DefaultName>
@@ -1835,10 +1835,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!RateCode.Value</Value>
-                              <Style />
+                              <Style/>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style/>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>RateCode</rd:DefaultName>
@@ -1865,10 +1865,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!Weight.Value</Value>
-                              <Style />
+                              <Style/>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style/>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Weight</rd:DefaultName>
@@ -1895,10 +1895,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!NonDoxRate.Value</Value>
-                              <Style />
+                              <Style/>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style/>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>NonDoxRate</rd:DefaultName>
@@ -1925,10 +1925,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!DoxRate.Value</Value>
-                              <Style />
+                              <Style/>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style/>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>DoxRate1</rd:DefaultName>
@@ -1955,10 +1955,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!Type.Value</Value>
-                              <Style />
+                              <Style/>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style/>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Type</rd:DefaultName>
@@ -1985,10 +1985,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!StepWeight.Value</Value>
-                              <Style />
+                              <Style/>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style/>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>StepWeight</rd:DefaultName>
@@ -2011,14 +2011,14 @@
         </TablixBody>
         <TablixColumnHierarchy>
           <TablixMembers>
-            <TablixMember />
-            <TablixMember />
-            <TablixMember />
-            <TablixMember />
-            <TablixMember />
-            <TablixMember />
-            <TablixMember />
-            <TablixMember />
+            <TablixMember/>
+            <TablixMember/>
+            <TablixMember/>
+            <TablixMember/>
+            <TablixMember/>
+            <TablixMember/>
+            <TablixMember/>
+            <TablixMember/>
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -2027,7 +2027,7 @@
               <KeepWithGroup>After</KeepWithGroup>
             </TablixMember>
             <TablixMember>
-              <Group Name="Details" />
+              <Group Name="Details"/>
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
@@ -2047,15 +2047,15 @@
         <ChartCategoryHierarchy>
           <ChartMembers>
             <ChartMember>
-              <Group Name="ChartGroup" />
-              <Label />
+              <Group Name="ChartGroup"/>
+              <Label/>
             </ChartMember>
           </ChartMembers>
         </ChartCategoryHierarchy>
         <ChartSeriesHierarchy>
           <ChartMembers>
             <ChartMember>
-              <Label />
+              <Label/>
             </ChartMember>
           </ChartMembers>
         </ChartSeriesHierarchy>
@@ -2064,11 +2064,11 @@
             <ChartSeries Name="EmptySeriesName">
               <ChartDataPoints>
                 <ChartDataPoint>
-                  <ChartDataPointValues />
+                  <ChartDataPointValues/>
                 </ChartDataPoint>
               </ChartDataPoints>
               <Type>Shape</Type>
-              <Style />
+              <Style/>
             </ChartSeries>
           </ChartSeriesCollection>
         </ChartData>
@@ -2108,7 +2108,7 @@
                 <Minimum>NaN</Minimum>
                 <Maximum>NaN</Maximum>
                 <ChartAxisScaleBreak>
-                  <Style />
+                  <Style/>
                 </ChartAxisScaleBreak>
               </ChartAxis>
               <ChartAxis Name="Secondary">
@@ -2145,7 +2145,7 @@
                 <Minimum>NaN</Minimum>
                 <Maximum>NaN</Maximum>
                 <ChartAxisScaleBreak>
-                  <Style />
+                  <Style/>
                 </ChartAxisScaleBreak>
               </ChartAxis>
             </ChartCategoryAxes>
@@ -2182,7 +2182,7 @@
                 <Minimum>NaN</Minimum>
                 <Maximum>NaN</Maximum>
                 <ChartAxisScaleBreak>
-                  <Style />
+                  <Style/>
                 </ChartAxisScaleBreak>
               </ChartAxis>
               <ChartAxis Name="Secondary">
@@ -2218,7 +2218,7 @@
                 <Minimum>NaN</Minimum>
                 <Maximum>NaN</Maximum>
                 <ChartAxisScaleBreak>
-                  <Style />
+                  <Style/>
                 </ChartAxisScaleBreak>
               </ChartAxis>
             </ChartValueAxes>
@@ -2289,15 +2289,15 @@
         <ChartCategoryHierarchy>
           <ChartMembers>
             <ChartMember>
-              <Group Name="ChartGroup1" />
-              <Label />
+              <Group Name="ChartGroup1"/>
+              <Label/>
             </ChartMember>
           </ChartMembers>
         </ChartCategoryHierarchy>
         <ChartSeriesHierarchy>
           <ChartMembers>
             <ChartMember>
-              <Label />
+              <Label/>
             </ChartMember>
           </ChartMembers>
         </ChartSeriesHierarchy>
@@ -2306,11 +2306,11 @@
             <ChartSeries Name="EmptySeriesName">
               <ChartDataPoints>
                 <ChartDataPoint>
-                  <ChartDataPointValues />
+                  <ChartDataPointValues/>
                 </ChartDataPoint>
               </ChartDataPoints>
               <Type>Shape</Type>
-              <Style />
+              <Style/>
             </ChartSeries>
           </ChartSeriesCollection>
         </ChartData>
@@ -2350,7 +2350,7 @@
                 <Minimum>NaN</Minimum>
                 <Maximum>NaN</Maximum>
                 <ChartAxisScaleBreak>
-                  <Style />
+                  <Style/>
                 </ChartAxisScaleBreak>
               </ChartAxis>
               <ChartAxis Name="Secondary">
@@ -2387,7 +2387,7 @@
                 <Minimum>NaN</Minimum>
                 <Maximum>NaN</Maximum>
                 <ChartAxisScaleBreak>
-                  <Style />
+                  <Style/>
                 </ChartAxisScaleBreak>
               </ChartAxis>
             </ChartCategoryAxes>
@@ -2424,7 +2424,7 @@
                 <Minimum>NaN</Minimum>
                 <Maximum>NaN</Maximum>
                 <ChartAxisScaleBreak>
-                  <Style />
+                  <Style/>
                 </ChartAxisScaleBreak>
               </ChartAxis>
               <ChartAxis Name="Secondary">
@@ -2460,7 +2460,7 @@
                 <Minimum>NaN</Minimum>
                 <Maximum>NaN</Maximum>
                 <ChartAxisScaleBreak>
-                  <Style />
+                  <Style/>
                 </ChartAxisScaleBreak>
               </ChartAxis>
             </ChartValueAxes>
@@ -2476,7 +2476,7 @@
               <FontSize>8pt</FontSize>
             </Style>
             <ChartLegendTitle>
-              <Caption />
+              <Caption/>
               <Style>
                 <FontSize>8pt</FontSize>
                 <FontWeight>Bold</FontWeight>
@@ -2530,7 +2530,7 @@
       </Chart>
     </ReportItems>
     <Height>10.99875in</Height>
-    <Style />
+    <Style/>
   </Body>
   <Width>7.80307in</Width>
   <Page>
@@ -2540,7 +2540,7 @@
     <RightMargin>1in</RightMargin>
     <TopMargin>1in</TopMargin>
     <BottomMargin>1in</BottomMargin>
-    <Style />
+    <Style/>
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>

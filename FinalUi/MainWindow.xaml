@@ -18,13 +18,24 @@
         <CollectionViewSource x:Key="DataGridDataContext" CollectionViewType="{x:Type ListCollectionView}"/>
         <CollectionViewSource x:Key="ServiceRuleList" CollectionViewType="{x:Type ListCollectionView}"/>
         <CollectionViewSource x:Key="CostingRuleList" CollectionViewType="{x:Type ListCollectionView}"/>
+        <Style TargetType="{x:Type DataGridCell}">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Height" Value="25"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="RoyalBLue"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Open" Executed="Open_Executed" CanExecute="OpenCommand_CanExecute"/>
         <CommandBinding Command="ApplicationCommands.Close" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
         <CommandBinding Command="ApplicationCommands.Print" Executed="ExecutePrint" CanExecute="CanExecutePrintCommand"/>
     </Window.CommandBindings>
-    <Grid Name="MainGrid" Margin="7" Background="Turquoise">
+    <Grid Name="MainGrid" Margin="7" Background="DarkCyan">
         <Grid.Effect>
             <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
         </Grid.Effect>
@@ -75,7 +86,6 @@
                     </MenuItem>
                     <MenuItem ToolTip="Editing Tools" Header="Tools" Margin="10 0 0 0">
                         <MenuItem Header="Peferences" Name="Peferences" Click="Peferences_Click" Foreground="Black"/>
-                        <MenuItem Header="Hide/Show Image" Click="MenuItem_hideimage" Foreground="Black"/>
                         <MenuItem Header="Invoice Analysis" Click="InvoiceAnalysis_Click" Foreground="Black"/>
                     </MenuItem>
                     <MenuItem ToolTip="Know more" Header="Help" Margin="10 0 0 0">
@@ -103,7 +113,7 @@
             </Grid>
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="190*" MinWidth="160"/>
+                    <ColumnDefinition Width="170*" MinWidth="160"/>
                     <ColumnDefinition Width="800*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Background="#19000000">
@@ -145,7 +155,7 @@
                                 <RowDefinition Height="25"/>
                             </Grid.RowDefinitions>
                             <StackPanel Background="#19000000"/>
-                            <Image Source="Images/apples.jpg" Name="backgroundimage" Height="768" Width="1366" Grid.Row="2" Stretch="Uniform"/>
+                            <Image Source="Images/apples.jpg" Height="768" Width="1366" Grid.Row="2" Stretch="Uniform"/>
                             <StackPanel Grid.Row="3" Background="#A9FFFFF3"/>
                         </Grid>
                         <Grid Visibility="Collapsed" Name="DataDockPanel">
@@ -200,92 +210,84 @@
                                 <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="5" HorizontalAlignment="Right"/>
                                 <Rectangle Name="AfterPrint" VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="6" HorizontalAlignment="Right"/>
                             </Grid>
-                            <DockPanel Grid.Row="2">
-                                <DockPanel.Resources>
-                                    <Style TargetType="{x:Type DataGridCell}">
-                                        <Setter Property="BorderThickness" Value="0"/>
-                                        <Setter Property="Height" Value="25"/>
-                                        <Setter Property="Padding" Value="20"/>
-                                        <Style.Triggers>
-                                            <Trigger Property="IsSelected" Value="True">
-                                                <Setter Property="Background" Value="RoyalBLue" />
-                                                <Setter Property="BorderBrush" Value="Transparent"/>
-                                                <Setter Property="Foreground" Value="White"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </DockPanel.Resources>
-                                <DataGrid IsTextSearchEnabled="True" TextSearch.TextPath="ConsignmentNo" IsTextSearchCaseSensitive="False" DockPanel.Dock="Top" RowHeaderWidth="0" IsReadOnly="True" Name="dataGrid" Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False" ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" >
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn Header="ConnsignmentNo" Binding="{Binding ConsignmentNo}"/>
-                                        <DataGridTextColumn Header="DTDC Weight" Binding="{Binding Weight}"/>
-                                        <DataGridTextColumn Header="Observed Weight" Binding="{Binding FrWeight}"/>
-                                        <DataGridTextColumn Header="BilledWeight" Binding="{Binding BilledWeight}"/>
-                                        <DataGridTextColumn Header="Cost" Binding="{Binding Amount}"/>
-                                        <DataGridTextColumn Header="Billed Amount" Binding="{Binding FrAmount}"/>
-                                        <DataGridTextColumn Header="Client" Binding="{Binding CustCode}"/>
-                                        <DataGridTextColumn Header="BookingDate" Binding="{Binding BookingDate}"/>
-                                        <DataGridTextColumn Header="Destination" Binding="{Binding Destination}"/>
-                                        <DataGridTextColumn Header="PinCode" Binding="{Binding DestinationPin}"/>
-                                        <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
-                                        <DataGridTextColumn Header="Mode" Binding="{Binding Mode}"/>
-                                        <DataGridTextColumn Header="Stock" Binding="{Binding Stock}"/>
-                                    </DataGrid.Columns>
-                                    <DataGrid.RowDetailsTemplate>
-                                        <DataTemplate>
-                                            <Border BorderThickness="0" Background="BlanchedAlmond" Padding="10">
-                                                <StackPanel Orientation="Horizontal">
-                                                    <StackPanel>
-                                                        <WrapPanel>
-                                                            <TextBlock FontSize="12" Text="Booking Date .: " VerticalAlignment="Center" />
-                                                            <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding BookingDate.Date}" VerticalAlignment="Center" />
-                                                        </WrapPanel>
-                                                        <WrapPanel>
-                                                            <TextBlock FontSize="12" Text="TransMfNo .: " VerticalAlignment="Center" />
-                                                            <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding TransMF_No}" VerticalAlignment="Center" />
-                                                        </WrapPanel>
-                                                        <WrapPanel>
-                                                            <TextBlock FontSize="12" Text="Invoice No .: " VerticalAlignment="Center" />
-                                                            <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding InvoiceNo}" VerticalAlignment="Center" />
-                                                        </WrapPanel>
-                                                    </StackPanel>
-                                                    <StackPanel Margin="40 0 0 0">
-                                                        <WrapPanel>
-                                                            <TextBlock FontSize="12" Text="Destination .: " VerticalAlignment="Center" />
-                                                            <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding City_Desc}" VerticalAlignment="Center"/>
-                                                        </WrapPanel>
-                                                        <WrapPanel>
-                                                            <TextBlock FontSize="12" Text="Service .: " VerticalAlignment="Center"/>
-                                                            <TextBlock FontSize="16" Text="{Binding Service_Desc}" VerticalAlignment="Center" Foreground="MidnightBlue"/>
-                                                        </WrapPanel>
-                                                        <WrapPanel>
-                                                            <TextBlock FontSize="12" Text="Client .: " VerticalAlignment="Center" />
-                                                            <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Client_Desc}" VerticalAlignment="Center"/>
-                                                        </WrapPanel>
-                                                    </StackPanel>
-
-                                                    <StackPanel Margin="40 0 0 0">
-                                                        <WrapPanel>
-                                                            <TextBlock FontSize="12" Text="Consignee Name .: " VerticalAlignment="Center" />
-                                                            <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding ConsigneeName}" VerticalAlignment="Center"/>
-                                                        </WrapPanel>
-                                                        <WrapPanel>
-                                                            <TextBlock FontSize="12" Text="Consigner Name .: " VerticalAlignment="Center"/>
-                                                            <TextBlock FontSize="16" Text="{Binding ConsignerName}" VerticalAlignment="Center" Foreground="MidnightBlue"/>
-                                                        </WrapPanel>
-                                                        <WrapPanel>
-                                                            <TextBlock FontSize="12" Text="Sub Client .: " VerticalAlignment="Center"/>
-                                                            <TextBlock FontSize="16" Text="{Binding SubClient}" VerticalAlignment="Center" Foreground="MidnightBlue"/>
-                                                        </WrapPanel>
-                                                    </StackPanel>
+                            <DataGrid Grid.Row="2" IsTextSearchEnabled="True" TextSearch.TextPath="ConsignmentNo" IsTextSearchCaseSensitive="False" RowHeaderWidth="0" IsReadOnly="True" Name="dataGrid" Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False" ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ConnsignmentNo" Binding="{Binding ConsignmentNo}"/>
+                                    <DataGridTextColumn Header="DTDC Weight" Binding="{Binding Weight}"/>
+                                    <DataGridTextColumn Header="Observed Weight" Binding="{Binding FrWeight}"/>
+                                    <DataGridTextColumn Header="BilledWeight" Binding="{Binding BilledWeight}"/>
+                                    <DataGridTextColumn Header="Cost" Binding="{Binding Amount}"/>
+                                    <DataGridTextColumn Header="Billed Amount" Binding="{Binding FrAmount}"/>
+                                    <DataGridTextColumn Header="Client" Binding="{Binding CustCode}"/>
+                                    <DataGridTextColumn Header="BookingDate" Binding="{Binding BookingDate}"/>
+                                    <DataGridTextColumn Header="Destination" Binding="{Binding Destination}"/>
+                                    <DataGridTextColumn Header="PinCode" Binding="{Binding DestinationPin}"/>
+                                    <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
+                                    <DataGridTextColumn Header="Mode" Binding="{Binding Mode}"/>
+                                    <DataGridTextColumn Header="Stock" Binding="{Binding Stock}"/>
+                                </DataGrid.Columns>
+                                <DataGrid.RowDetailsTemplate>
+                                    <DataTemplate>
+                                        <Border BorderThickness="0" Background="BlanchedAlmond" Padding="10">
+                                            <StackPanel Orientation="Horizontal">
+                                                <StackPanel>
+                                                    <WrapPanel>
+                                                        <TextBlock FontSize="12" Text="Booking Date .: " VerticalAlignment="Center"/>
+                                                        <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding BookingDate.Date}" VerticalAlignment="Center"/>
+                                                    </WrapPanel>
+                                                    <WrapPanel>
+                                                        <TextBlock FontSize="12" Text="TransMfNo .: " VerticalAlignment="Center"/>
+                                                        <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding TransMF_No}" VerticalAlignment="Center"/>
+                                                    </WrapPanel>
+                                                    <WrapPanel>
+                                                        <TextBlock FontSize="12" Text="Invoice No .: " VerticalAlignment="Center"/>
+                                                        <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding InvoiceNo}" VerticalAlignment="Center"/>
+                                                    </WrapPanel>
                                                 </StackPanel>
-                                            </Border>
-                                        </DataTemplate>
-                                    </DataGrid.RowDetailsTemplate>
-                                </DataGrid>
-                            </DockPanel>
+                                                <StackPanel Margin="40 0 0 0">
+                                                    <WrapPanel>
+                                                        <TextBlock FontSize="12" Text="Destination .: " VerticalAlignment="Center"/>
+                                                        <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding City_Desc}" VerticalAlignment="Center"/>
+                                                    </WrapPanel>
+                                                    <WrapPanel>
+                                                        <TextBlock FontSize="12" Text="Service .: " VerticalAlignment="Center"/>
+                                                        <TextBlock FontSize="16" Text="{Binding Service_Desc}" VerticalAlignment="Center" Foreground="MidnightBlue"/>
+                                                    </WrapPanel>
+                                                    <WrapPanel>
+                                                        <TextBlock FontSize="12" Text="Client .: " VerticalAlignment="Center"/>
+                                                        <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Client_Desc}" VerticalAlignment="Center"/>
+                                                    </WrapPanel>
+                                                </StackPanel>
+                                                <StackPanel Margin="40 0 0 0">
+                                                    <WrapPanel>
+                                                        <TextBlock FontSize="12" Text="Consignee Name .: " VerticalAlignment="Center"/>
+                                                        <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding ConsigneeName}" VerticalAlignment="Center"/>
+                                                    </WrapPanel>
+                                                    <WrapPanel>
+                                                        <TextBlock FontSize="12" Text="Consigner Name .: " VerticalAlignment="Center"/>
+                                                        <TextBlock FontSize="16" Text="{Binding ConsignerName}" VerticalAlignment="Center" Foreground="MidnightBlue"/>
+                                                    </WrapPanel>
+                                                    <WrapPanel>
+                                                        <TextBlock FontSize="12" Text="Sub Client .: " VerticalAlignment="Center"/>
+                                                        <TextBlock FontSize="16" Text="{Binding SubClient}" VerticalAlignment="Center" Foreground="MidnightBlue"/>
+                                                    </WrapPanel>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGrid.RowDetailsTemplate>
+                            </DataGrid>
                             <Grid Name="SaveDialogue" Visibility="Collapsed" Grid.Row="2" Height="80" Background="White">
-                                <Image gif:ImageBehavior.AnimatedSource="Images/save.gif" Stretch="Uniform"/>
+                                <WrapPanel HorizontalAlignment="Center">
+                                    <TextBlock FontSize="24" Text="Saving..." FontFamily="Arial" FontWeight="Bold" VerticalAlignment="Center" Foreground="Gray"/>
+                                    <Image gif:ImageBehavior.AnimatedSource="Images/load.gif" Stretch="Uniform"/>
+                                </WrapPanel>
+                            </Grid>
+                            <Grid Name="LoadDialogue" Visibility="Collapsed" Grid.Row="2" Height="80" Background="White">
+                                <WrapPanel HorizontalAlignment="Center">
+                                    <TextBlock FontSize="24" Text="Loading..." FontFamily="Arial" FontWeight="Bold" VerticalAlignment="Center" Foreground="Gray"/>
+                                    <Image gif:ImageBehavior.AnimatedSource="Images/load.gif" Stretch="Uniform"/>
+                                </WrapPanel>
                             </Grid>
                             <DockPanel Grid.Row="3" Background="#A9FFFFF3">
                                 <WrapPanel Name="buttontabcanvaswrap" Margin="10,0,0,0"/>
@@ -338,7 +340,7 @@
                                     <Grid Margin="0 3" Background="#A9FFFFF3">
                                         <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Client Due List .:"/>
                                     </Grid>
-                                    <DataGrid Grid.Row="1" IsTextSearchCaseSensitive="False" IsTextSearchEnabled="True" TextSearch.TextPath="PC" IsReadOnly="True" RowHeaderWidth="0" BorderThickness="0" Name="ClientDueGrid" AutoGenerateColumns="False" DataContext="{StaticResource DueGridDataSource}" ItemsSource="{Binding}">
+                                    <DataGrid Grid.Row="1" IsTextSearchCaseSensitive="False" AlternatingRowBackground="#FFF0F6F7" IsTextSearchEnabled="True" TextSearch.TextPath="PC" IsReadOnly="True" RowHeaderWidth="0" BorderThickness="0" Name="ClientDueGrid" AutoGenerateColumns="False" DataContext="{StaticResource DueGridDataSource}" ItemsSource="{Binding}">
                                         <DataGrid.Columns>
                                             <DataGridTextColumn Header="CustomerCode" Binding="{Binding PC}"/>
                                             <DataGridTextColumn Header="BilledAmount" Binding="{Binding AmountBilled}"/>
@@ -355,9 +357,9 @@
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
                                     <Grid Margin="0 3" Background="#A9FFFFF3">
-                                        <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Unpaid Invoices List .:" />
+                                        <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Unpaid Invoices List .:"/>
                                     </Grid>
-                                    <DataGrid IsTextSearchCaseSensitive="False" IsTextSearchEnabled="True" TextSearch.TextPath="CustCode" Grid.Row="1" IsReadOnly="True" RowHeaderWidth="0" BorderThickness="0" Name="ClientProfitabilityGrid" AutoGenerateColumns="False" DataContext="{StaticResource UnpaidInvoiceGridSource}" ItemsSource="{Binding}" >
+                                    <DataGrid IsTextSearchCaseSensitive="False" IsTextSearchEnabled="True" TextSearch.TextPath="CustCode" Grid.Row="1" IsReadOnly="True" RowHeaderWidth="0" BorderThickness="0" Name="ClientProfitabilityGrid" AutoGenerateColumns="False" DataContext="{StaticResource UnpaidInvoiceGridSource}" ItemsSource="{Binding}" AlternatingRowBackground="#FFF0F6F7">
                                         <DataGrid.Columns>
                                             <DataGridTextColumn Header="Bill Id" Binding="{Binding BillId}"/>
                                             <DataGridTextColumn Header="Customer Code" Binding="{Binding ClientCode}"/>
@@ -439,7 +441,7 @@
                                         <ColumnDefinition Width="330*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <DataGrid IsTextSearchCaseSensitive="False" IsTextSearchEnabled="True" TextSearch.TextPath="zoneListReporting" DataContext="{StaticResource CostingRuleList}" ItemsSource="{Binding}" Name="CostingRuleGrid" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#8FF0F6F7" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2">
+                                    <DataGrid IsTextSearchCaseSensitive="False" IsTextSearchEnabled="True" TextSearch.TextPath="zoneListReporting" DataContext="{StaticResource CostingRuleList}" ItemsSource="{Binding}" Name="CostingRuleGrid" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2">
                                         <DataGrid.Columns>
                                             <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                                             <DataGridTextColumn Header="Range(Kg)" Binding="{Binding range}"/>
@@ -455,24 +457,30 @@
                                         </DataGrid.Columns>
                                         <DataGrid.RowDetailsTemplate>
                                             <DataTemplate>
-                                                <WrapPanel Background="#223f3f46">
-                                                    <StackPanel Margin="3" Background="#A9FFFFF3" Width="100">
-                                                        <TextBlock Text="Service List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
-                                                        <ListBox ItemsSource="{Binding ServiceList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
+                                                <Border BorderThickness="0" Background="BlanchedAlmond" Padding="0 5">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel Width="100">
+                                                            <TextBlock FontSize="14" Text=" Service List .:" VerticalAlignment="Center" Background="#A9FFFFF3" FontWeight="SemiBold"/>
+                                                            <ListBox Foreground="MidnightBlue" ItemsSource="{Binding ServiceList}" VerticalAlignment="Center" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
+                                                        </StackPanel>
+                                                        <StackPanel Width="3" Background="#A9FFFFF3" Margin="0 0 0 -5"/>
+                                                        <StackPanel Width="100">
+                                                            <TextBlock FontSize="14" Text=" Zone List .:" VerticalAlignment="Center" Background="#A9FFFFF3" FontWeight="SemiBold"/>
+                                                            <ListBox ItemsSource="{Binding ZoneList}" Foreground="MidnightBlue" VerticalAlignment="Center" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
+                                                        </StackPanel>
+                                                        <StackPanel Width="3" Background="#A9FFFFF3" Margin="0 0 0 -5"/>
+                                                        <StackPanel Width="100">
+                                                            <TextBlock FontSize="14" Text=" City List .:" VerticalAlignment="Center" Background="#A9FFFFF3" FontWeight="SemiBold"/>
+                                                            <ListBox ItemsSource="{Binding ZoneList}" Foreground="MidnightBlue" VerticalAlignment="Center" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
+                                                        </StackPanel>
+                                                        <StackPanel Width="3" Background="#A9FFFFF3" Margin="0 0 0 -5"/>
+                                                        <StackPanel Width="100">
+                                                            <TextBlock Text=" State List .:"  FontSize="14" VerticalAlignment="Center" Background="#A9FFFFF3" FontWeight="SemiBold"/>
+                                                            <ListBox ItemsSource="{Binding StateList}" Foreground="MidnightBlue" VerticalAlignment="Center" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
+                                                        </StackPanel>
+                                                        <StackPanel Width="3" Background="#A9FFFFF3" Margin="0 0 0 -5"/>
                                                     </StackPanel>
-                                                    <StackPanel Margin="0 3" Background="#A9FFFFF3" Width="100">
-                                                        <TextBlock Text="Zone List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
-                                                        <ListBox ItemsSource="{Binding ZoneList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
-                                                    </StackPanel>
-                                                    <StackPanel Margin="3" Background="#A9FFFFF3" Width="100">
-                                                        <TextBlock Text="City List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
-                                                        <ListBox ItemsSource="{Binding CityList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
-                                                    </StackPanel>
-                                                    <StackPanel Margin="0 3" Background="#A9FFFFF3" Width="100">
-                                                        <TextBlock Text="State List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
-                                                        <ListBox ItemsSource="{Binding StateList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
-                                                    </StackPanel>
-                                                </WrapPanel>
+                                                </Border>
                                             </DataTemplate>
                                         </DataGrid.RowDetailsTemplate>
                                     </DataGrid>
@@ -492,24 +500,30 @@
                                         </DataGrid.Columns>
                                         <DataGrid.RowDetailsTemplate>
                                             <DataTemplate>
-                                                <WrapPanel Background="#223f3f46">
-                                                    <StackPanel Margin="3" Background="#A9FFFFF3">
-                                                        <TextBlock Text="Service List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
-                                                        <ListBox ItemsSource="{Binding ServiceList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
+                                                <Border BorderThickness="0" Background="BlanchedAlmond" Padding="0 5">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel Width="100">
+                                                            <TextBlock FontSize="14" Text=" Service List .:" VerticalAlignment="Center" Background="#A9FFFFF3" FontWeight="SemiBold"/>
+                                                            <ListBox Foreground="MidnightBlue" ItemsSource="{Binding ServiceList}" VerticalAlignment="Center" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
+                                                        </StackPanel>
+                                                        <StackPanel Width="3" Background="#A9FFFFF3" Margin="0 0 0 -5"/>
+                                                        <StackPanel Width="100">
+                                                            <TextBlock FontSize="14" Text=" Zone List .:" VerticalAlignment="Center" Background="#A9FFFFF3" FontWeight="SemiBold"/>
+                                                            <ListBox ItemsSource="{Binding ZoneList}" Foreground="MidnightBlue" VerticalAlignment="Center" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
+                                                        </StackPanel>
+                                                        <StackPanel Width="3" Background="#A9FFFFF3" Margin="0 0 0 -5"/>
+                                                        <StackPanel Width="100">
+                                                            <TextBlock FontSize="14" Text=" City List .:" VerticalAlignment="Center" Background="#A9FFFFF3" FontWeight="SemiBold"/>
+                                                            <ListBox ItemsSource="{Binding ZoneList}" Foreground="MidnightBlue" VerticalAlignment="Center" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
+                                                        </StackPanel>
+                                                        <StackPanel Width="3" Background="#A9FFFFF3" Margin="0 0 0 -5"/>
+                                                        <StackPanel Width="100">
+                                                            <TextBlock Text=" State List .:"  FontSize="14" VerticalAlignment="Center" Background="#A9FFFFF3" FontWeight="SemiBold"/>
+                                                            <ListBox ItemsSource="{Binding StateList}" Foreground="MidnightBlue" VerticalAlignment="Center" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
+                                                        </StackPanel>
+                                                        <StackPanel Width="3" Background="#A9FFFFF3" Margin="0 0 0 -5"/>
                                                     </StackPanel>
-                                                    <StackPanel Margin="0 3 0 3" Background="#A9FFFFF3">
-                                                        <TextBlock Text="Zone List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
-                                                        <ListBox ItemsSource="{Binding ZoneList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
-                                                    </StackPanel>
-                                                    <StackPanel Margin="3" Background="#A9FFFFF3">
-                                                        <TextBlock Text="City List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
-                                                        <ListBox ItemsSource="{Binding CityList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
-                                                    </StackPanel>
-                                                    <StackPanel Margin="0 3 0 3" Background="#A9FFFFF3">
-                                                        <TextBlock Text="State List .:" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" Margin="5 0 20 0" TextDecorations="Underline"/>
-                                                        <ListBox ItemsSource="{Binding StateList}" BorderThickness="0" Margin="3 3 0 0" Background="Transparent" Height="65"/>
-                                                    </StackPanel>
-                                                </WrapPanel>
+                                                </Border>
                                             </DataTemplate>
                                         </DataGrid.RowDetailsTemplate>
                                     </DataGrid>
@@ -521,7 +535,7 @@
                                             <RowDefinition Height="50*"/>
                                         </Grid.RowDefinitions>
                                         <StackPanel Background="#A9FFFFF3" Margin="4 4 4 0">
-                                            <TextBlock Text="Calculator" HorizontalAlignment="Center" Height="21" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri" />
+                                            <TextBlock Text="Calculator" HorizontalAlignment="Center" Height="21" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
                                         </StackPanel>
                                         <Grid Grid.Row="1">
                                             <Grid.ColumnDefinitions>
@@ -561,7 +575,7 @@
 
                                         <Rectangle Grid.Row="2" VerticalAlignment="Bottom" Height="1" Fill="Black" Margin="4 0"/>
                                         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="3" Margin="4 0">
-                                            <TextBlock Text="Log..." Background="White" Padding="4,4,0,0" />
+                                            <TextBlock Text="Log..." Background="White" Padding="4,4,0,0"/>
                                         </ScrollViewer>
                                     </Grid>
                                 </Grid>
@@ -608,7 +622,7 @@
                                 <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
                             </Grid>
                             <Grid Grid.Row="2" Margin="0 3 0 0">
-                                <DataGrid RowHeaderWidth="0" IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False" TextSearch.TextPath="CLNAME" BorderThickness="0" Name="mangaclientgrid" ItemsSource="{Binding}" DataContext="{StaticResource ClienTable}" SelectionMode="Single" AutoGenerateColumns="False" >
+                                <DataGrid RowHeaderWidth="0" IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False" TextSearch.TextPath="CLNAME" BorderThickness="0" Name="mangaclientgrid" ItemsSource="{Binding}" DataContext="{StaticResource ClienTable}" SelectionMode="Single" AutoGenerateColumns="False" AlternatingRowBackground="#FFF0F6F7">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Name" Binding="{Binding CLNAME, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                                         <DataGridTextColumn Header="Code" Binding="{Binding CLCODE, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
@@ -660,7 +674,7 @@
                                 <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
                             </Grid>
                             <Grid Grid.Row="2" Margin="0 3 0 0">
-                                <DataGrid IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False" TextSearch.TextPath="Name" RowHeaderWidth="0" IsReadOnly="True" BorderThickness="0" Name="mangaEmployeegrid" ItemsSource="{Binding}" DataContext="{StaticResource EmployeeTable}" AutoGenerateColumns="False" >
+                                <DataGrid IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False" TextSearch.TextPath="Name" RowHeaderWidth="0" IsReadOnly="True" BorderThickness="0" Name="mangaEmployeegrid" ItemsSource="{Binding}" DataContext="{StaticResource EmployeeTable}" AutoGenerateColumns="False" AlternatingRowBackground="#FFF0F6F7">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Name" Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                         <DataGridTextColumn Header="Gender" Binding="{Binding Gender, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -714,7 +728,7 @@
                                 <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
                             </Grid>
                             <Grid Grid.Row="2" Margin="0 3 0 0">
-                                <DataGrid IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False" TextSearch.TextPath="CITY_DESC" AutoGenerateColumns="False" Name="CityDataGrid" RowHeaderWidth="0" BorderThickness="0" DataContext="{StaticResource CityTable}" ItemsSource="{Binding}">
+                                <DataGrid IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False" TextSearch.TextPath="CITY_DESC" AutoGenerateColumns="False" Name="CityDataGrid" RowHeaderWidth="0" BorderThickness="0" DataContext="{StaticResource CityTable}" ItemsSource="{Binding}" AlternatingRowBackground="#FFF0F6F7">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="City Code" IsReadOnly="True" Binding="{Binding CITY_CODE}"/>
                                         <DataGridTextColumn Header="Description" IsReadOnly="True" Binding="{Binding CITY_DESC}"/>
@@ -775,9 +789,9 @@
         </Grid>
         <Rectangle Name="Rec_Top" Fill="Transparent" Grid.Column="1" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown" Margin="0 0 107 0"/>
         <Rectangle Name="Rec_Top_Left" Fill="Transparent" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>
-        <Rectangle Name="Rec_Top_Right" Fill="Transparent" Grid.Column="2" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown" />
+        <Rectangle Name="Rec_Top_Right" Fill="Transparent" Grid.Column="2" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>
         <Rectangle Name="Rec_Left" Fill="Transparent" Grid.Row="1" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>
-        <Rectangle Name="Rec_Right" Fill="Transparent" Grid.Row="1" Grid.Column="2" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown" />
+        <Rectangle Name="Rec_Right" Fill="Transparent" Grid.Row="1" Grid.Column="2" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>
         <Rectangle Name="Rec_Bottom" Fill="Transparent" Grid.Row="2" Grid.Column="1" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>
         <Rectangle Name="Rec_Bottom_Left" Fill="Transparent" Grid.Row="2" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>
         <Rectangle Name="Rec_Bottom_Right" Fill="Transparent" Grid.Row="2" Grid.Column="2" MouseMove="Rec_MouseMove" MouseDown="ResizeRectangle_PreviewMouseDown"/>

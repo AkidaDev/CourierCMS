@@ -31,7 +31,7 @@
                 <Path x:Name="location" Data="F1M8.5,4.833C10.571,4.833 12.25,6.55 12.25,8.667 12.25,10.784 10.571,12.5 8.5,12.5 6.429,12.5 4.75,10.784 4.75,8.667 4.75,6.55 6.429,4.833 8.5,4.833z M8.5,3.3C5.6,3.3 3.25,5.703 3.25,8.667 3.25,11.631 5.6,14.033 8.5,14.033 11.399,14.033 13.75,11.631 13.75,8.667 13.75,5.703 11.399,3.3 8.5,3.3z M8.5,1C12.642,1 16,4.432 16,8.667 16,12.901 8.5,24 8.5,24 8.5,24 1,12.901 1,8.667 1,4.432 4.358,1 8.5,1z" Fill="Black" Height="25" Canvas.Left="351.667" Canvas.Top="77.333" Width="17"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="373.322" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Address .:" Canvas.Top="85.997"/>
                 <Path Data="F1M1.986,3C1.986,3 1.986,1.786 1.986,1.786 1.986,1.786 501.982,1.786 501.982,1.786 501.982,1.786 501.982,3 501.982,3 501.982,3 1.986,3 1.986,3" Fill="Black" Height="1" Canvas.Left="352.339" Canvas.Top="103.129" Width="100" Stretch="Fill"/>
-                <TextBox Name="ClientAddress" Padding="3 2 0 0" AcceptsReturn="True" Height="73" Canvas.Left="350" Canvas.Top="108" Width="170" TextWrapping="Wrap" />
+                <TextBox Name="ClientAddress" Padding="3 2 0 0" AcceptsReturn="True" Height="73" Canvas.Left="350" Canvas.Top="108" Width="170" TextWrapping="Wrap"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="370" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Service Tax .:" Canvas.Top="192"/>
                 <TextBox Name="ServiceTax" Padding="3 1 0 0" Canvas.Left="469" Canvas.Top="188" Width="46" Height="22"/>
                 <TextBlock FontWeight="Bold" FontSize="14" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="518" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="%" Canvas.Top="190"/>
@@ -51,9 +51,9 @@
                 </Button.Content>
             </Button>
 
-            <Rectangle Fill="#FFCBCBCB" Height="26" Width="600" Stretch="Fill" Stroke="Black" />
+            <Rectangle Fill="#FFCBCBCB" Height="26" Width="600" Stretch="Fill" Stroke="Black"/>
             <TextBlock Name="AddUpdateTitle" FontSize="16" Height="25" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Add Client" Canvas.Top="6" Width="600" FontFamily="Arial"/>
-            <Rectangle MouseDown="DragthisWindow" Fill="Transparent" Height="26" Width="600" Stretch="Fill" />
+            <Rectangle MouseDown="DragthisWindow" Fill="Transparent" Height="26" Width="600" Stretch="Fill"/>
             <Button ToolTip="Close" Height="18" Canvas.Right="4" Click="Button_Click_Close" Canvas.Top="4" Width="35" Style="{StaticResource 1}">
                 <Path x:Name="close" Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,
                   12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,

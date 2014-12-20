@@ -8,7 +8,7 @@
     <Window.Resources>
         <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"/>
     </Window.Resources>
-    <Grid  Height="300" Width="550" Background="White">
+    <Grid  Height="300" Width="550" Background="AntiqueWhite">
         <Grid.RowDefinitions>
             <RowDefinition Height="26"/>
             <RowDefinition Height="30"/>
@@ -28,49 +28,49 @@
         <TextBlock Grid.Row="1" Margin="158 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Enter Details .:"/>
         <WrapPanel Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <TextBlock  Text="Starting Index .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
-            <ComboBox Name="startConnNo"  Width="110" IsEditable="True" ItemsSource="{Binding}"/>
+            <ComboBox Name="startConnNo"  Width="110" IsEditable="True" ItemsSource="{Binding}" Padding="2 1 0 0"/>
             <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
             <TextBlock  Text="Ending Index   .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
-            <ComboBox Name="endConnNo"  Width="110" IsEditable="True" ItemsSource="{Binding}"/>
+            <ComboBox Name="endConnNo"  Width="110" IsEditable="True" ItemsSource="{Binding}" Padding="2 1 0 0"/>
         </WrapPanel>
         <WrapPanel Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <Path Data="F1M7.006,17.756C8.089,18.341 9.324,18.675 10.635,18.675 11.947,18.675 13.183,18.341 14.264,17.756 16.602,18.374 18.432,19.843 19.272,23 19.272,23 2,23 2,23 2.839,19.843 4.67,18.375 7.006,17.756z M22.992,14.925C25.33,15.543 27.161,17.011 28,20.168 28,20.168 19.469,20.168 19.469,20.168 18.486,18.463 17.033,17.311 15.075,16.685 15.597,16.276 16.061,15.798 16.456,15.264 17.354,15.635 18.334,15.843 19.363,15.843 20.674,15.843 21.911,15.51 22.992,14.925z M6.639,12.72C7.558,14.518 9.136,15.706 10.928,15.706 12.722,15.706 14.298,14.518 15.217,12.72 15.217,12.72 6.639,12.72 6.639,12.72z M10.635,4.831C13.958,4.831 16.649,7.548 16.649,10.899 16.649,14.252 13.958,16.968 10.635,16.968 7.313,16.968 4.621,14.252 4.621,10.899 4.621,7.548 7.313,4.831 10.635,4.831z M19.363,2C22.685,2 25.377,4.717 25.377,8.068 25.377,11.421 22.685,14.137 19.363,14.137 18.642,14.137 17.954,14.003 17.313,13.768 17.499,13.331 17.641,12.872 17.74,12.396 18.332,12.704 18.979,12.874 19.656,12.874 21.449,12.874 23.026,11.686 23.944,9.888 23.944,9.888 17.819,9.888 17.819,9.888 17.513,7.667 16.22,5.766 14.398,4.645 15.482,3.049 17.3,2 19.363,2z" Fill="Black" Height="19" Width="23" Stretch="Fill"/>
             <TextBlock  Text=" Select Client .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
-            <ComboBox Name="clientCode" DataContext="{StaticResource ClientList}" DisplayMemberPath="NameAndCode" Width="300" IsEditable="True" ItemsSource="{Binding}"/>
+            <ComboBox Name="clientCode" DataContext="{StaticResource ClientList}" DisplayMemberPath="NameAndCode" Width="300" IsEditable="True" ItemsSource="{Binding}" Padding="2 1 0 0"/>
         </WrapPanel>
         <WrapPanel Grid.Row="4" VerticalAlignment="Bottom" Margin="90 0 0 0">
             <cstmcntrl:PandaCheckbox  Name="SubClientCheck" Checked="True"/>
             <TextBlock Text=" Sub Client .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom" Margin="4 0 0 0"/>
-            <TextBox Name="SubClientTextBox" Width="250" Padding="2 2 0 0"/>
+            <TextBox Name="SubClientTextBox" Width="250" Padding="2 1 0 0"/>
         </WrapPanel>
         <WrapPanel Grid.Row="5" VerticalAlignment="Bottom" Margin="90 0 0 0">
             <cstmcntrl:PandaCheckbox  Name="ConsignerCheck" Checked="True"/>
             <TextBlock Text=" Consigner .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom" Margin="5 0 0 0"/>
-            <TextBox Name="ConsignerTextBox" Width="250"  Padding="2 2 0 0"/>
+            <TextBox Name="ConsignerTextBox" Width="250"  Padding="2 1 0 0"/>
         </WrapPanel>
         <WrapPanel Grid.Row="6" VerticalAlignment="Bottom" Margin="90 0 0 0">
             <cstmcntrl:PandaCheckbox  Name="Consignee" Checked="True"/>
             <TextBlock Text=" Consignee .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom" Margin="2 0 0 0"/>
-            <TextBox Name="ConsigneeTextBox" Width="250"  Padding="2 2 0 0"/>
+            <TextBox Name="ConsigneeTextBox" Width="250"  Padding="2 1 0 0"/>
         </WrapPanel>
         <WrapPanel Grid.Row="7" VerticalAlignment="Bottom" Margin="90 0 0 0">
             <cstmcntrl:PandaCheckbox  Name="SetWeightCheck" Checked="True"/>
             <TextBlock Text=" Set Weight .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
-            <TextBox Name="WeightTextBox" Width="88"  Padding="2 2 0 0"/>
+            <TextBox Name="WeightTextBox" Width="88"  Padding="2 1 0 0"/>
             <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
             <cstmcntrl:PandaCheckbox  Name="CalcRateCheck" Checked="True"/>
             <TextBlock Text=" Calculate Rate" FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
         </WrapPanel>
         <ProgressBar Grid.Row="8" Name="progressbar" Minimum="0" Maximum="100" Value="0" Height="24" Width="350" HorizontalAlignment="Left" Margin="50 0 0 0"/>
-        <Button Grid.Row="8" Name="SubmitRecords" Click="SubmitRecords_Click" Style="{StaticResource all}" Height="30" Width="85" HorizontalAlignment="Right" Margin="0 0 25 0">
-            <WrapPanel>
-                <Path x:Name="done" Data="F1M10.909,23C10.909,23 2,14.224 2,14.224 2,14.224 4.227,12.03 4.227,12.03 4.227,12.03 10.909,18.612 10.909,18.612 10.909,18.612 27.773,2 27.773,2 27.773,2 30,4.194 30,4.194 30,4.194 10.909,23 10.909,23z" Fill="Black" Height="24" Width="31"/>
-                <TextBlock x:Name="Save" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Done"/>
+        <Button Grid.Row="8" Name="SubmitRecords" Click="SubmitRecords_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 25 0">
+            <WrapPanel Margin="6 1">
+                <Path Data="F1M10.909,23C10.909,23 2,14.224 2,14.224 2,14.224 4.227,12.03 4.227,12.03 4.227,12.03 10.909,18.612 10.909,18.612 10.909,18.612 27.773,2 27.773,2 27.773,2 30,4.194 30,4.194 30,4.194 10.909,23 10.909,23z" Fill="Black" Height="17" Width="23" Stretch="Fill"/>
+                <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text=" Done"/>
             </WrapPanel>
         </Button>
-        <Rectangle Fill="#FFCBCBCB" Height="26" Width="550" Stretch="Fill" Stroke="Black" />
+        <Rectangle Fill="#FFCBCBCB" Height="26" Width="550" Stretch="Fill" Stroke="Black"/>
         <TextBlock Name="AddUpdateTitle" FontSize="16" TextAlignment="Center" VerticalAlignment="Center" Text="Power Entry" FontFamily="Arial"/>
-        <Rectangle MouseDown="DragthisWindow" Fill="Transparent" Height="26" Width="550" Stretch="Fill" />
+        <Rectangle MouseDown="DragthisWindow" Fill="Transparent" Height="26" Width="550" Stretch="Fill"/>
         <Button ToolTip="Close" Height="18" HorizontalAlignment="Right" Margin="0 0 4 0" Click="Button_Click_Close" Width="35" Style="{StaticResource 1}">
             <Path Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" Width="15" Height="15"/>
         </Button>

@@ -41,9 +41,9 @@
                 </StackPanel>
                 <Grid Name="BackgroundSettingGrid" Grid.Column="2" Margin=" 2 0 0 0" Visibility="Visible">
                     <WrapPanel>
-                        <WrapPanel Margin="10 90 0 20">
+                        <WrapPanel Margin="30 90 0 20">
                             <TextBlock  Text=" BackGround Color .: " Height="21" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                            <xctk:ColorPicker Name="ThemeColorPicker" Width="210"/>
+                            <xctk:ColorPicker Name="ThemeColorPicker" Width="235"/>
                         </WrapPanel>
                         <WrapPanel Margin="10 20 0 20" Visibility="Collapsed">
                             <TextBlock  Text=" Service Tax .: " Height="21" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
@@ -54,15 +54,18 @@
                             <ComboBox Name="ConnectionStringCombo"  Width="302" Height="23"/>
                         </WrapPanel>
                     </WrapPanel>
-                    <WrapPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,28,25" >
-                        <Button Content="Reset" Click="DefaultButton_Click" Visibility="Visible" />
-                        <Button Margin="30 0 0 0" Name="SaveInvoiceButton" Click="SaveButton_Click" Style="{StaticResource all}">
-                            <Button.Content>
-                                <WrapPanel Margin="7 4" >
-                                    <Path  x:Name="save" Data="F1M5.707,16.89C5.707,16.89 16.879,16.89 16.879,16.89 16.879,16.89 16.879,18.13 16.879,18.13 16.879,18.13 5.707,18.13 5.707,18.13 5.707,18.13 5.707,16.89 5.707,16.89z M5.707,13.414C5.707,13.414 16.879,13.414 16.879,13.414 16.879,13.414 16.879,14.653 16.879,14.653 16.879,14.653 5.707,14.653 5.707,14.653 5.707,14.653 5.707,13.414 5.707,13.414z M4.207,10.739C4.207,10.739 4.207,20.566 4.207,20.566 4.207,20.566 18.793,20.566 18.793,20.566 18.793,20.566 18.793,10.739 18.793,10.739 18.793,10.739 4.207,10.739 4.207,10.739z M9.432,1.83C9.432,1.83 13.777,1.83 13.777,1.83 13.777,1.83 13.777,7.358 13.777,7.358 13.777,7.358 9.432,7.358 9.432,7.358 9.432,7.358 9.432,1.83 9.432,1.83z M1.626,1C1.626,1 4.207,1 4.207,1 4.207,1 4.207,8.508 4.207,8.508 4.207,8.508 15.586,8.508 15.586,8.508 15.586,8.508 15.586,1 15.586,1 15.586,1 17.711,1 17.711,1 17.711,1 22,5.246 22,5.246 22,5.246 22,21.381 22,21.381 22,21.723 21.72,22 21.374,22 21.374,22 1.626,22 1.626,22 1.28,22 1,21.723 1,21.381 1,21.381 1,1.62 1,1.62 1,1.277 1.28,1 1.626,1z" Fill="Black" Height="23" Width="23"/>
-                                    <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Save"/>
-                                </WrapPanel>
-                            </Button.Content>
+                    <WrapPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,43,28" >
+                        <Button Click="DefaultButton_Click" Visibility="Visible">
+                            <WrapPanel Margin="6 1">
+                                <Path Data="F1M2,12.942C2,12.942 10.226,15.241 10.226,15.241 10.226,15.241 8.275,17.071 8.275,17.071 9.288,17.922 10.917,18.786 12.32,18.786 15.074,18.786 17.386,16.824 18.039,14.171 18.039,14.171 21.987,15.222 21.987,15.222 20.891,19.693 16.996,23 12.357,23 9.771,23 7.076,21.618 5.308,19.934 5.308,19.934 3.454,21.671 3.454,21.671 3.454,21.671 2,12.942 2,12.942z M11.643,2C14.229,2 16.924,3.382 18.692,5.066 18.692,5.066 20.546,3.329 20.546,3.329 20.546,3.329 22,12.058 22,12.058 22,12.058 13.774,9.759 13.774,9.759 13.774,9.759 15.725,7.929 15.725,7.929 14.712,7.078 13.083,6.214 11.68,6.214 8.926,6.214 6.614,8.176 5.961,10.829 5.961,10.829 2.013,9.778 2.013,9.778 3.109,5.307 7.004,2 11.643,2z" Fill="Black" Height="18" Width="18" Stretch="Fill"/>
+                                <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text=" Reset"/>
+                            </WrapPanel>
+                        </Button>
+                        <Button Margin="30 0 0 0" Name="SaveInvoiceButton" Click="SaveButton_Click">
+                            <WrapPanel Margin="6 1">
+                                <Path Data="F1M5.707,16.89C5.707,16.89 16.879,16.89 16.879,16.89 16.879,16.89 16.879,18.13 16.879,18.13 16.879,18.13 5.707,18.13 5.707,18.13 5.707,18.13 5.707,16.89 5.707,16.89z M5.707,13.414C5.707,13.414 16.879,13.414 16.879,13.414 16.879,13.414 16.879,14.653 16.879,14.653 16.879,14.653 5.707,14.653 5.707,14.653 5.707,14.653 5.707,13.414 5.707,13.414z M4.207,10.739C4.207,10.739 4.207,20.566 4.207,20.566 4.207,20.566 18.793,20.566 18.793,20.566 18.793,20.566 18.793,10.739 18.793,10.739 18.793,10.739 4.207,10.739 4.207,10.739z M9.432,1.83C9.432,1.83 13.777,1.83 13.777,1.83 13.777,1.83 13.777,7.358 13.777,7.358 13.777,7.358 9.432,7.358 9.432,7.358 9.432,7.358 9.432,1.83 9.432,1.83z M1.626,1C1.626,1 4.207,1 4.207,1 4.207,1 4.207,8.508 4.207,8.508 4.207,8.508 15.586,8.508 15.586,8.508 15.586,8.508 15.586,1 15.586,1 15.586,1 17.711,1 17.711,1 17.711,1 22,5.246 22,5.246 22,5.246 22,21.381 22,21.381 22,21.723 21.72,22 21.374,22 21.374,22 1.626,22 1.626,22 1.28,22 1,21.723 1,21.381 1,21.381 1,1.62 1,1.62 1,1.277 1.28,1 1.626,1z" Fill="Black" Height="18" Width="18" Stretch="Fill"/>
+                                <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text=" Save"/>
+                            </WrapPanel>
                         </Button>
                     </WrapPanel>
                 </Grid>
@@ -89,18 +92,15 @@
                     <Canvas Canvas.Top="69">
                         <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="63" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Address .:" Canvas.Top="152"/>
                         <TextBox Name="CompanyAddressBox" Padding="3 3 0 0" BorderThickness="2" Height="27" Canvas.Left="141" Canvas.Top="147" Width="272"/>
-                        <Path x:Name="location" Data="F1M8.5,4.833C10.571,4.833 12.25,6.55 12.25,8.667 12.25,10.784 10.571,12.5 8.5,12.5 6.429,12.5 4.75,10.784 4.75,8.667 4.75,6.55 6.429,4.833 8.5,4.833z M8.5,3.3C5.6,3.3 3.25,5.703 3.25,8.667 3.25,11.631 5.6,14.033 8.5,14.033 11.399,14.033 13.75,11.631 13.75,8.667 13.75,5.703 11.399,3.3 8.5,3.3z M8.5,1C12.642,1 16,4.432 16,8.667 16,12.901 8.5,24 8.5,24 8.5,24 1,12.901 1,8.667 1,4.432 4.358,1 8.5,1z" Fill="Black" Canvas.Left="41.5" Canvas.Top="148" Height="19.5" Stretch="Fill" Width="13" />
+                        <Path x:Name="location" Data="F1M8.5,4.833C10.571,4.833 12.25,6.55 12.25,8.667 12.25,10.784 10.571,12.5 8.5,12.5 6.429,12.5 4.75,10.784 4.75,8.667 4.75,6.55 6.429,4.833 8.5,4.833z M8.5,3.3C5.6,3.3 3.25,5.703 3.25,8.667 3.25,11.631 5.6,14.033 8.5,14.033 11.399,14.033 13.75,11.631 13.75,8.667 13.75,5.703 11.399,3.3 8.5,3.3z M8.5,1C12.642,1 16,4.432 16,8.667 16,12.901 8.5,24 8.5,24 8.5,24 1,12.901 1,8.667 1,4.432 4.358,1 8.5,1z" Fill="Black" Canvas.Left="41.5" Canvas.Top="148" Height="19.5" Stretch="Fill" Width="13"/>
                     </Canvas>
-                    <Button Name="SaveDetailsButton" Click="SaveButton_Click" Style="{StaticResource all}" Canvas.Left="358" Canvas.Top="260">
-                        <Button.Content>
-                            <WrapPanel Margin="6,3,6,3" >
-                                <Path Data="F1M5.707,16.89C5.707,16.89 16.879,16.89 16.879,16.89 16.879,16.89 16.879,18.13 16.879,18.13 16.879,18.13 5.707,18.13 5.707,18.13 5.707,18.13 5.707,16.89 5.707,16.89z M5.707,13.414C5.707,13.414 16.879,13.414 16.879,13.414 16.879,13.414 16.879,14.653 16.879,14.653 16.879,14.653 5.707,14.653 5.707,14.653 5.707,14.653 5.707,13.414 5.707,13.414z M4.207,10.739C4.207,10.739 4.207,20.566 4.207,20.566 4.207,20.566 18.793,20.566 18.793,20.566 18.793,20.566 18.793,10.739 18.793,10.739 18.793,10.739 4.207,10.739 4.207,10.739z M9.432,1.83C9.432,1.83 13.777,1.83 13.777,1.83 13.777,1.83 13.777,7.358 13.777,7.358 13.777,7.358 9.432,7.358 9.432,7.358 9.432,7.358 9.432,1.83 9.432,1.83z M1.626,1C1.626,1 4.207,1 4.207,1 4.207,1 4.207,8.508 4.207,8.508 4.207,8.508 15.586,8.508 15.586,8.508 15.586,8.508 15.586,1 15.586,1 15.586,1 17.711,1 17.711,1 17.711,1 22,5.246 22,5.246 22,5.246 22,21.381 22,21.381 22,21.723 21.72,22 21.374,22 21.374,22 1.626,22 1.626,22 1.28,22 1,21.723 1,21.381 1,21.381 1,1.62 1,1.62 1,1.277 1.28,1 1.626,1z" Fill="Black" Height="23" Width="23" Margin="3 0 3 0"/>
-                                <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"  LineHeight="18" TextAlignment="Center" Text="Save " Padding="3 3 0 0"/>
-                            </WrapPanel>
-                        </Button.Content>
+                    <Button Name="SaveDetailsButton" Click="SaveButton_Click" Canvas.Left="358" Canvas.Top="260">
+                        <WrapPanel Margin="6 1">
+                            <Path Data="F1M5.707,16.89C5.707,16.89 16.879,16.89 16.879,16.89 16.879,16.89 16.879,18.13 16.879,18.13 16.879,18.13 5.707,18.13 5.707,18.13 5.707,18.13 5.707,16.89 5.707,16.89z M5.707,13.414C5.707,13.414 16.879,13.414 16.879,13.414 16.879,13.414 16.879,14.653 16.879,14.653 16.879,14.653 5.707,14.653 5.707,14.653 5.707,14.653 5.707,13.414 5.707,13.414z M4.207,10.739C4.207,10.739 4.207,20.566 4.207,20.566 4.207,20.566 18.793,20.566 18.793,20.566 18.793,20.566 18.793,10.739 18.793,10.739 18.793,10.739 4.207,10.739 4.207,10.739z M9.432,1.83C9.432,1.83 13.777,1.83 13.777,1.83 13.777,1.83 13.777,7.358 13.777,7.358 13.777,7.358 9.432,7.358 9.432,7.358 9.432,7.358 9.432,1.83 9.432,1.83z M1.626,1C1.626,1 4.207,1 4.207,1 4.207,1 4.207,8.508 4.207,8.508 4.207,8.508 15.586,8.508 15.586,8.508 15.586,8.508 15.586,1 15.586,1 15.586,1 17.711,1 17.711,1 17.711,1 22,5.246 22,5.246 22,5.246 22,21.381 22,21.381 22,21.723 21.72,22 21.374,22 21.374,22 1.626,22 1.626,22 1.28,22 1,21.723 1,21.381 1,21.381 1,1.62 1,1.62 1,1.277 1.28,1 1.626,1z" Fill="Black" Height="18" Width="18" Stretch="Fill"/>
+                            <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text=" Save"/>
+                        </WrapPanel>
                     </Button>
                 </Canvas>
-
                 <Canvas Grid.Column="2" Name="InvoicePanel" Visibility="Collapsed">
                     <Canvas Canvas.Top="-20" Canvas.Left="-40">
                         <Path Data="F1M2,3C2,3 2,2 2,2 2,2 331,2 331,2 331,2 331,3 331,3 331,3 2,3 2,3" Fill="Black" Height="1" Canvas.Left="107" Canvas.Top="58" Width="273" Stretch="Fill"/>
@@ -112,19 +112,17 @@
                     <TextBox Name="Pannumber" Padding="2" Canvas.Left="185" Canvas.Top="65" Width="100"/>
                     <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="43" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Terms and Conditions .:" Canvas.Top="98"/>
                     <TextBox  Name="TNCBox" Padding="3 3 0 0" TextWrapping="Wrap"  AcceptsReturn="True" BorderThickness="2" Height="139" Canvas.Left="20" Canvas.Top="116" Width="426"/>
-                    <Button Name="SaveTNCButton" Click="SaveButton_Click" Style="{StaticResource all}" Canvas.Left="358" Canvas.Top="260">
-                        <Button.Content>
-                            <WrapPanel Margin="6,3,6,3" >
-                                <Path Data="F1M5.707,16.89C5.707,16.89 16.879,16.89 16.879,16.89 16.879,16.89 16.879,18.13 16.879,18.13 16.879,18.13 5.707,18.13 5.707,18.13 5.707,18.13 5.707,16.89 5.707,16.89z M5.707,13.414C5.707,13.414 16.879,13.414 16.879,13.414 16.879,13.414 16.879,14.653 16.879,14.653 16.879,14.653 5.707,14.653 5.707,14.653 5.707,14.653 5.707,13.414 5.707,13.414z M4.207,10.739C4.207,10.739 4.207,20.566 4.207,20.566 4.207,20.566 18.793,20.566 18.793,20.566 18.793,20.566 18.793,10.739 18.793,10.739 18.793,10.739 4.207,10.739 4.207,10.739z M9.432,1.83C9.432,1.83 13.777,1.83 13.777,1.83 13.777,1.83 13.777,7.358 13.777,7.358 13.777,7.358 9.432,7.358 9.432,7.358 9.432,7.358 9.432,1.83 9.432,1.83z M1.626,1C1.626,1 4.207,1 4.207,1 4.207,1 4.207,8.508 4.207,8.508 4.207,8.508 15.586,8.508 15.586,8.508 15.586,8.508 15.586,1 15.586,1 15.586,1 17.711,1 17.711,1 17.711,1 22,5.246 22,5.246 22,5.246 22,21.381 22,21.381 22,21.723 21.72,22 21.374,22 21.374,22 1.626,22 1.626,22 1.28,22 1,21.723 1,21.381 1,21.381 1,1.62 1,1.62 1,1.277 1.28,1 1.626,1z" Fill="Black" Height="23" Width="23" Margin="3 0 3 0"/>
-                                <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"  LineHeight="18" TextAlignment="Center" Text="Save " Padding="3 3 0 0"/>
-                            </WrapPanel>
-                        </Button.Content>
+                    <Button Name="SaveTNCButton" Click="SaveButton_Click" Canvas.Left="358" Canvas.Top="260">
+                        <WrapPanel Margin="6 1">
+                            <Path Data="F1M5.707,16.89C5.707,16.89 16.879,16.89 16.879,16.89 16.879,16.89 16.879,18.13 16.879,18.13 16.879,18.13 5.707,18.13 5.707,18.13 5.707,18.13 5.707,16.89 5.707,16.89z M5.707,13.414C5.707,13.414 16.879,13.414 16.879,13.414 16.879,13.414 16.879,14.653 16.879,14.653 16.879,14.653 5.707,14.653 5.707,14.653 5.707,14.653 5.707,13.414 5.707,13.414z M4.207,10.739C4.207,10.739 4.207,20.566 4.207,20.566 4.207,20.566 18.793,20.566 18.793,20.566 18.793,20.566 18.793,10.739 18.793,10.739 18.793,10.739 4.207,10.739 4.207,10.739z M9.432,1.83C9.432,1.83 13.777,1.83 13.777,1.83 13.777,1.83 13.777,7.358 13.777,7.358 13.777,7.358 9.432,7.358 9.432,7.358 9.432,7.358 9.432,1.83 9.432,1.83z M1.626,1C1.626,1 4.207,1 4.207,1 4.207,1 4.207,8.508 4.207,8.508 4.207,8.508 15.586,8.508 15.586,8.508 15.586,8.508 15.586,1 15.586,1 15.586,1 17.711,1 17.711,1 17.711,1 22,5.246 22,5.246 22,5.246 22,21.381 22,21.381 22,21.723 21.72,22 21.374,22 21.374,22 1.626,22 1.626,22 1.28,22 1,21.723 1,21.381 1,21.381 1,1.62 1,1.62 1,1.277 1.28,1 1.626,1z" Fill="Black" Height="18" Width="18" Stretch="Fill"/>
+                            <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text=" Save"/>
+                        </WrapPanel>
                     </Button>
                 </Canvas>
             </Grid>
             <Rectangle Fill="#FFCBCBCB" Height="26" Width="550" Stretch="Fill" Stroke="Black"/>
             <TextBlock FontSize="16" Height="25" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Settings" Canvas.Top="6" Width="548" FontFamily="Arial"/>
-            <Rectangle MouseDown="DragthisWindow" Fill="Transparent" Height="26" Width="550" Stretch="Fill" />
+            <Rectangle MouseDown="DragthisWindow" Fill="Transparent" Height="26" Width="550" Stretch="Fill"/>
             <Button ToolTip="Close" Height="18" Canvas.Left="510" Click="Button_Click_Close" Canvas.Top="4" Width="35" Style="{StaticResource 1}">
                 <Path x:Name="close" Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" Width="15" Height="15"/>
             </Button>
