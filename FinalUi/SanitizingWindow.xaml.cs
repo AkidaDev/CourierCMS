@@ -405,7 +405,7 @@ namespace FinalUi
             ConsgineeName.Text = data.ConsigneeName ?? "";
             ConsignerAddress.Text = data.ConsignerAddress ?? "";
             ConsignerName.Text = data.ConsignerName ?? "";
-            if (data.SubClient != "" || data.SubClient != null)
+            if (data.SubClient != "" && data.SubClient != null)
             {
                 SubClientComboBox.Text = data.SubClient;
             }
