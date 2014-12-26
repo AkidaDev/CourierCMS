@@ -105,7 +105,6 @@ namespace FinalUi
                 DataSources.refreshClientList();
                 ReloadClientGridButton_Click(null, null);
             }
-
         }
 
         private void ReloadClientGridButton_Click(object sender, RoutedEventArgs e)
@@ -114,7 +113,6 @@ namespace FinalUi
             clients = DataSources.ClientCopy;
             viewsource = (CollectionViewSource)FindResource("ClienTable");
             viewsource.Source = clients;
- 
         }
     }
 }

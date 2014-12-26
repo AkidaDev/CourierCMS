@@ -31,7 +31,7 @@ namespace FinalUi
         public Filter()
         {
             BillingDataDataContext db = new BillingDataDataContext();
-            selectedClientList = db.Clients.ToList();
+            selectedClientList = DataSources.ClientCopy;
             toDate = DateTime.Now;
             fromDate = new DateTime(2009,5,1);
             showBilled = null;

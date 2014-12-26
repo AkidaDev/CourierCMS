@@ -129,14 +129,6 @@
                             <TreeViewItem Header=" Client Quotation" FontSize="14" Padding=" 0 0 0 2" Foreground="White" MouseDoubleClick="ClientQuotationTreeView_Selected" FontWeight="Normal"/>
                         </TreeViewItem>
                     </TreeView>
-                    <TreeView BorderThickness="0" Background="Transparent">
-                        <TreeViewItem BorderBrush="Transparent" BorderThickness="0" Margin="6 5 0 0" FontSize="15" FontWeight="Bold" Padding="4 1 0 4" Header="Manager">
-                            <TreeViewItem Name="TreeViewClient" Header=" Client" FontSize="14" Padding=" 0 0 0 2" MouseDoubleClick="clienttreeviewitembutton_Click" FontWeight="Normal"/>
-                            <TreeViewItem Name="TreeViewEmployee" Header=" Employee" FontSize="14" Padding=" 0 0 0 2" MouseDoubleClick="Employeetreeviewitembutton_Click" FontWeight="Normal"/>
-                            <TreeViewItem Name="TreeViewCity" Header=" City" FontSize="14" Padding=" 0 0 0 2" MouseDoubleClick="citytreeviewitembutton_Click" FontWeight="Normal"/>
-                            <TreeViewItem Header=" Hide all Table" FontSize="14" Padding=" 0 0 0 2" MouseDoubleClick="CloseTableTreeView_Selected" FontWeight="Normal"/>
-                        </TreeViewItem>
-                    </TreeView>
                     <Rectangle Fill="Black" Height="1" Margin="15"/>
                 </StackPanel>
                 <Path HorizontalAlignment="Right" Margin="0 0 1 0" Data="F1M4,19C5.65,19 7,20.35 7,22 7,23.65 5.65,25 4,25 2.35,25 1,23.65 1,22 1,20.35 2.35,19 4,19z M4,10C5.65,10 7,11.35 7,13 7,14.65 5.65,16 4,16 2.35,16 1,14.65 1,13 1,11.35 2.35,10 4,10z M4,1C5.65,1 7,2.35 7,4 7,5.65 5.65,7 4,7 2.35,7 1,5.65 1,4 1,2.35 2.35,1 4,1z" Fill="Black" Height="22" Width="5" Stretch="Fill"/>

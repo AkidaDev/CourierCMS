@@ -170,12 +170,12 @@ namespace FinalUi
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "ManageEmployee"))
             {
                 this.ManageEmployeeMenuItem.Visibility = Visibility.Collapsed;
-                TreeViewEmployee.Visibility = Visibility.Collapsed;
+                //TreeViewEmployee.Visibility = Visibility.Collapsed;
             }
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "ManageClient"))
             {
-                this.ManageClient.Visibility = Visibility.Collapsed;
-                TreeViewClient.Visibility = System.Windows.Visibility.Collapsed;
+              //  this.ManageClient.Visibility = Visibility.Collapsed;
+               // TreeViewClient.Visibility = System.Windows.Visibility.Collapsed;
             }
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "CreateInvoice"))
             {

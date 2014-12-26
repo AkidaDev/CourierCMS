@@ -30,7 +30,7 @@ namespace FinalUi
             InitializeComponent();
             BillingDataDataContext db = new BillingDataDataContext();
             ClientListSource = (CollectionViewSource)FindResource("ClientList");
-            List<Client> clientList = db.Clients.ToList();
+            List<Client> clientList = DataSources.ClientCopy;
             ClientListSource.Source = clientList.OrderBy(x => x.NameAndCode).ToList();
             rs = new Microsoft.Reporting.WinForms.ReportDataSource();
             rs.Name = "InvoiceDataSet1";

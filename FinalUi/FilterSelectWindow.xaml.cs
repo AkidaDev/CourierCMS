@@ -44,7 +44,8 @@ namespace FinalUi
             StartConnNoList.Source = ConnNoList;
             EndConnoList = (CollectionViewSource)FindResource("EndConnoList");
             EndConnoList.Source = ConnNoList;
-            List<Client> fClientList = db.Clients.ToList();
+            DataSources.refreshClientList();
+            List<Client> fClientList = DataSources.ClientCopy;
             SelectClientBox.AllListSource = fClientList.Where(x => !filterObj.selectedClientList.Select(y => y.CLCODE).Contains(x.CLCODE)).ToList();
             SelectClientBox.SelectedListSource= filterObj.selectedClientList;
             SelectClientBox.DisplayValuePath = "NameAndCode";
@@ -80,7 +81,6 @@ namespace FinalUi
             StartPriceValue.Text = filterObj.startPrice.ToString();
             EndPriceValue.Text = filterObj.endPrice.ToString();
         }
-
         private void GetFilter_Click(object sender, RoutedEventArgs e)
         {
             string errorMsg = "";

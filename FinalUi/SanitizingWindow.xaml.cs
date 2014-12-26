@@ -233,7 +233,6 @@ namespace FinalUi
         }
         public void SaveData()
         {
-
             BillingDataDataContext db = new BillingDataDataContext();
             RuntimeData data = null;
             data = fillData(data);
@@ -288,7 +287,6 @@ namespace FinalUi
             start = start + connsigmentNo.ToString();
             ConnsignmentNumber.Text = start;
             fillAllElements(ConnsignmentNumber.Text);
-
             ConnsignmentNumber.Focus();
         }
         public void setdata(RuntimeData dbdata, RuntimeData data)
@@ -407,7 +405,10 @@ namespace FinalUi
             ConsgineeName.Text = data.ConsigneeName ?? "";
             ConsignerAddress.Text = data.ConsignerAddress ?? "";
             ConsignerName.Text = data.ConsignerName ?? "";
-            SubClientComboBox.Text = data.SubClient ?? "";
+            if (data.SubClient != "" || data.SubClient != null)
+            {
+                SubClientComboBox.Text = data.SubClient;
+            }
             SlipCost.Text = data.Stock;
         }
         private void Button_Click_Close(object sender, RoutedEventArgs e)

@@ -37,10 +37,16 @@ namespace FinalUi
         }
         private void UpdateEmployee_Click(object sender, RoutedEventArgs e)
         {
-            AddEmployee window = new AddEmployee((Employee)this.mangaEmployeegrid.SelectedItem);
-            window.Closed += reloadgrid;
-            window.Show();
-            window.Owner = this;
+            if ((Employee)this.mangaEmployeegrid.SelectedItem != null)
+            {
+                AddEmployee window = new AddEmployee((Employee)this.mangaEmployeegrid.SelectedItem);
+                window.Closed += reloadgrid;
+                window.Show();
+                window.Owner = this;
+            }
+            else {
+                MessageBox.Show("No Employees selected");
+            }
         }
         private void reloadgrid(object sender, EventArgs e)
         {

@@ -98,6 +98,7 @@ namespace FinalUi
                 else
                 {
                     MessageBox.Show("File loaded successfully");
+                    this.Close();
                 }
 
                 
