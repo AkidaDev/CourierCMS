@@ -47,7 +47,7 @@
             </TextBlock>
             </ScrollViewer>
             <WrapPanel Canvas.Left="323" Canvas.Top="325">
-                <Button Click="update_CheckedUnChecked" Style="{StaticResource 1}">
+                <Button Click="update_CheckedUnChecked" Style="{StaticResource window}">
                     <Canvas Height="19" Width="19">
                         <Path x:Name="checkbox_unselected" Data="F1M2.778,3.778C2.778,3.778 2.778,16.222 2.778,16.222 2.778,16.222 15.222,16.222 15.222,16.222 15.222,16.222 15.222,3.778 15.222,3.778 15.222,3.778 2.778,3.778 2.778,3.778z M2.778,2C2.778,2 15.222,2 15.222,2 16.2,2 17,2.8 17,3.778 17,3.778 17,16.222 17,16.222 17,17.2 16.2,18 15.222,18 15.222,18 2.778,18 2.778,18 1.8,18 1,17.2 1,16.222 1,16.222 1,3.778 1,3.778 1,2.8 1.8,2 2.778,2z"
                               Fill="Gray" Height="19"  Width="19" Margin="1,0,0,0"/>
@@ -112,7 +112,7 @@
         </Canvas>
         <Canvas Name="Step4" Visibility="Collapsed">
             <TextBlock Foreground="#6666cc" FontSize="18" Canvas.Left="374" TextAlignment="Center" Text="Installing" Canvas.Top="135" Width="150"/>
-            <ProgressBar Name="progressbar" Minimum="0" Maximum="100" Value="0" Height="33" Width="634" Canvas.Top="298" Canvas.Left="32"/>
+            <ProgressBar Name="progressbar" Minimum="0" Maximum="100" Value="0" Height="33" Width="634" Canvas.Top="298" Canvas.Left="32" Foreground="#FF8C84BD"/>
         </Canvas>
         <Canvas Name="Step5" Visibility="Collapsed">
             <TextBlock Foreground="#6666cc" FontSize="18" Canvas.Left="374" TextAlignment="Center" Text="Finalize" Canvas.Top="135" Width="150"/>

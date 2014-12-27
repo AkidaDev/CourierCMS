@@ -9,11 +9,11 @@
         <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="InvoiceList" CollectionViewType="ListCollectionView"/>
     </Window.Resources>
-    <Grid   Height="380" UseLayoutRounding="False"  Width="670">
+    <Grid Height="380" Width="670" Background="#FFF5FFFF">
         <Grid.Effect>
             <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
         </Grid.Effect>
-        <Canvas ClipToBounds="True" HorizontalAlignment="Left" Height="380" UseLayoutRounding="False" VerticalAlignment="Top" Width="670" Background="AntiqueWhite">
+        <Canvas ClipToBounds="True" HorizontalAlignment="Left" Height="380" UseLayoutRounding="False" VerticalAlignment="Top" Width="670">
             <Canvas Canvas.Left="20">
                 <TextBox IsReadOnly="True" Padding="2 3 0 0" Name="PaymentRefNoBox" Height="24" Canvas.Left="181" Canvas.Top="88" Width="175"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="39" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Payment Ref No. .:" Canvas.Top="93"/>
@@ -21,8 +21,8 @@
                 <DatePicker Name="PaymentDatePicker" Canvas.Left="451" Canvas.Top="88" Width="120"  BorderBrush="DarkGray" Padding="2 2 0 2" Background="White"/>
                 <WrapPanel Canvas.Top="130" Canvas.Left="22">
                     <TextBlock Margin="0 0 30 0" FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"  LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Select Payment Against .:"/>
-                    <RadioButton Name="ClientSelectRadio" GroupName="SelectRadio"  IsChecked="True" Content="Client" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 30 0" Checked="RadioButton_Checked"/>
-                    <RadioButton Name="InvoiceSelectRadio" GroupName="SelectRadio" Content="Invoice Number" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Checked="RadioButton_Checked"/>
+                    <RadioButton Name="ClientSelectRadio" GroupName="SelectRadio" Content="Client" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 30 0" Checked="RadioButton_Checked"/>
+                    <RadioButton Name="InvoiceSelectRadio" GroupName="SelectRadio" IsChecked="True" Content="Invoice Number" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Checked="RadioButton_Checked"/>
                 </WrapPanel>
                 <ComboBox Visibility="Collapsed" ItemsSource="{Binding}" IsEditable="False" DataContext="{StaticResource InvoiceList}" DisplayMemberPath="CompactInvoiceDetail" Name="InvoiceComboBox" Canvas.Left="255" Canvas.Top="150" Width="346"/>
                 <ComboBox IsEditable="False" DataContext="{StaticResource ClientList}" ItemsSource="{Binding}" DisplayMemberPath="NameAndCode" Name="ClientComboBox" Canvas.Left="255" Canvas.Top="150" Width="347">

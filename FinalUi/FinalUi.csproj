@@ -76,7 +76,8 @@
     <TargetZone>Internet</TargetZone>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Images\logo.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="itextsharp, Version=5.5.3.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
@@ -191,9 +192,6 @@
     </Compile>
     <Compile Include="BillReportWindow.xaml.cs">
       <DependentUpon>BillReportWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ClientReport.xaml.cs">
-      <DependentUpon>ClientReport.xaml</DependentUpon>
     </Compile>
     <Compile Include="ClientReportWindow.xaml.cs">
       <DependentUpon>ClientReportWindow.xaml</DependentUpon>
@@ -320,10 +318,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BillReportWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ClientReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -492,6 +486,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <Resource Include="Images\load.gif" />
+    <Resource Include="Images\logo.ico" />
     <Content Include="Report1.rdlc">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -527,9 +522,6 @@
       <DependentUpon>DataSet2.xsd</DependentUpon>
     </None>
     <None Include="Data\VORTEX_ALPHA_TEST_REPORT.xlsx" />
-    <None Include="Images\logo.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\AccountStatement.datasource" />
@@ -597,9 +589,6 @@
       <Project>{946a5aa0-1410-4c3a-8bde-69b9715126ea}</Project>
       <Name>CustomControls</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\logo.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\apples.jpg" />

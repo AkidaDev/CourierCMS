@@ -7,11 +7,11 @@
 		ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Normal" BorderBrush="Transparent" AllowsTransparency="True" Padding="20"
          xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms" >
     <Window.Resources>
-        <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"></CollectionViewSource>
-        <CollectionViewSource x:Key="DataGridDataSource" CollectionViewType="ListCollectionView"></CollectionViewSource>
+        <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"/>
+        <CollectionViewSource x:Key="DataGridDataSource" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="SubClientList" CollectionViewType="ListCollectionView"/>
     </Window.Resources>
-    <Grid  Height="330" Width="750" Background="AntiqueWhite">
+    <Grid  Height="330" Width="750" Background="#FFF5FFFF">
         <Grid.Effect>
             <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
         </Grid.Effect>

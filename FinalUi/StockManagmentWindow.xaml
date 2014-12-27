@@ -58,7 +58,7 @@
                 </Path>
             </Button>
             <Button Name="ViewStockButton" Click="ViewStockButton_Click" ToolTip="ViewStock"  Style="{StaticResource 1}" Width="45" Height="30" Grid.Column="5">
-                <Path Margin="-2 0 0 0" Data="F1M20.664,6.138C20.664,6.138 4.336,6.138 4.336,6.138 4.336,6.138 2.668,11.569 2.668,11.569 2.668,11.569 2.053,11.043 2.053,11.043 2.053,11.043 3.546,5.349 3.546,5.349 3.546,5.349 20.664,5.349 20.664,5.349 20.664,5.349 20.664,4.036 20.664,4.036 20.664,4.036 9.547,4.036 9.547,4.036 9.547,4.036 7.906,1 7.906,1 7.906,1 1,1 1,1 1,1 1,17 1,17 1,17 20.664,17 20.664,17 20.664,17 24,6.138 24,6.138 24,6.138 20.664,6.138 20.664,6.138z" Fill="white" Height="24" Width="18" >
+                <Path Margin="-2 0 0 0" Data="F1M20.664,6.138C20.664,6.138 4.336,6.138 4.336,6.138 4.336,6.138 2.668,11.569 2.668,11.569 2.668,11.569 2.053,11.043 2.053,11.043 2.053,11.043 3.546,5.349 3.546,5.349 3.546,5.349 20.664,5.349 20.664,5.349 20.664,5.349 20.664,4.036 20.664,4.036 20.664,4.036 9.547,4.036 9.547,4.036 9.547,4.036 7.906,1 7.906,1 7.906,1 1,1 1,1 1,1 1,17 1,17 1,17 20.664,17 20.664,17 20.664,17 24,6.138 24,6.138 24,6.138 20.664,6.138 20.664,6.138z" Fill="white" Height="18" Width="24" >
                     <Path.Effect>
                         <DropShadowEffect Color="#FFB0B0B0"/>
                     </Path.Effect>
@@ -69,6 +69,7 @@
             <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
             <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
             <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
+            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="5" HorizontalAlignment="Right"/>
         </Grid>
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>

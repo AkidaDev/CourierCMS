@@ -5,7 +5,7 @@
 		Icon="Images/logo.ico"
         Title="ServiceGrouping" WindowStartupLocation="CenterScreen" Height="350" Width="650" WindowStyle="None" AllowsTransparency="True" Background="Transparent" ResizeMode="NoResize">
 
-    <Grid  Height="300" Width="600" Background="AntiqueWhite">
+    <Grid  Height="300" Width="600" Background="#FFF5FFFF">
         <Grid.RowDefinitions>
             <RowDefinition Height="26"/>
             <RowDefinition Height="30"/>
