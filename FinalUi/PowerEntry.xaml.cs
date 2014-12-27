@@ -174,8 +174,6 @@ namespace FinalUi
                     worker.ReportProgress((((i - startCOnnNoIndex + 1) * 100) / total));
                 }
             }
-
-
         }
         PowerEntry()
         {

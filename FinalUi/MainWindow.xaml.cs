@@ -181,10 +181,7 @@ namespace FinalUi
             {
                 this.PrintButton.Visibility = this.PrintMenuItem.Visibility = this.AfterPrint.Visibility = Visibility.Collapsed;
             }
-
         }
-
-
         #region DataEntrySection
         #region backGround Worker Functions
         #region LoadWorker
@@ -351,8 +348,13 @@ namespace FinalUi
         private void PowerEntryCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             PowerEntry powerWin = new PowerEntry(dataGridHelper.getCurrentDataStack, dataGrid);
-
+            powerWin.Closed += powerWin_Closed;
             powerWin.Show();
+        }
+
+        void powerWin_Closed(object sender, EventArgs e)
+        {
+            GC.Collect();
         }
         #endregion
         #region SaveCommand

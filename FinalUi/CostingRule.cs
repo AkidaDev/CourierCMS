@@ -22,6 +22,7 @@ namespace FinalUi
         public List<string> StateList { get; set; }
         public double startW { get; set; }
         public double endW { get; set; }
+        public bool fromstart { get; set; }
         #endregion
 
         #region What to apply
