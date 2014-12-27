@@ -94,12 +94,12 @@
                     </MenuItem>
                 </Menu>
                 <TextBlock Grid.Column="1" Foreground="White" TextAlignment="Center" FontSize="18" Margin="0 -3 0 0">
-                    <Bold FontSize="24">V</Bold>ORTEX
+                    <Bold FontSize="21">V</Bold>ORTEX
                 </TextBlock>
                 <Button MouseDoubleClick="NormalMaximize_Click" Style="{StaticResource window}" Grid.Column="1">
                     <Rectangle MouseDown="Grid_MouseDown" Fill="Transparent" Height="26" Width="1920"/>
                 </Button>
-                <WrapPanel Grid.Column="2" Name="minimax" HorizontalAlignment="Right" Margin="0 1 6 0">
+                <WrapPanel Grid.Column="2" Name="minimax" HorizontalAlignment="Right" Margin="0 0 6 0">
                     <Button ToolTip="Minimize" Style="{StaticResource 1}" Name="MinimizeButton" Click="MinimizeButton_Click" Width="25">
                         <Path Name="minimize" Data="F1M2,4C2,4 2,2 2,2 2,2 14,2 14,2 14,2 14,4 14,4 14,4 2,4 2,4z" Fill="Black" Height="5" Width="12" Margin="-1,0,0,-7"/>
                     </Button>
@@ -202,7 +202,7 @@
                                 <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="5" HorizontalAlignment="Right"/>
                                 <Rectangle Name="AfterPrint" VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="6" HorizontalAlignment="Right"/>
                             </Grid>
-                            <DataGrid Grid.Row="2" IsTextSearchEnabled="True" TextSearch.TextPath="ConsignmentNo" IsTextSearchCaseSensitive="False" RowHeaderWidth="0" IsReadOnly="True" Name="dataGrid" Background="#fff" VerticalGridLinesBrush="#e1e1e4" HorizontalGridLinesBrush="#e1e1e4" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False" ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True">
+                            <DataGrid Grid.Row="2" IsTextSearchEnabled="True" TextSearch.TextPath="ConsignmentNo" IsTextSearchCaseSensitive="False" RowHeaderWidth="0" IsReadOnly="True" Name="dataGrid" Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False" ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ConnsignmentNo" Binding="{Binding ConsignmentNo}"/>
                                     <DataGridTextColumn Header="DTDC Weight" Binding="{Binding Weight}"/>
@@ -330,7 +330,7 @@
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
                                     <Grid Margin="0 3" Background="#A9FFFFF3">
-                                        <TextBlock FontWeight="Bold" FontSize="18" Foreground="#FF5B5B5B" FontFamily="Calibri" Text=" Client Due List .:"/>
+                                        <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Client Due List .:"/>
                                     </Grid>
                                     <DataGrid Grid.Row="1" IsTextSearchCaseSensitive="False" AlternatingRowBackground="#FFF0F6F7" IsTextSearchEnabled="True" TextSearch.TextPath="PC" IsReadOnly="True" RowHeaderWidth="0" BorderThickness="0" Name="ClientDueGrid" AutoGenerateColumns="False" DataContext="{StaticResource DueGridDataSource}" ItemsSource="{Binding}">
                                         <DataGrid.Columns>
@@ -349,7 +349,7 @@
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
                                     <Grid Margin="0 3" Background="#A9FFFFF3">
-                                        <TextBlock FontWeight="Bold" Foreground="#FF5B5B5B" FontSize="18" FontFamily="Calibri" Text=" Unpaid Invoices List .:"/>
+                                        <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Unpaid Invoices List .:"/>
                                     </Grid>
                                     <DataGrid IsTextSearchCaseSensitive="False" IsTextSearchEnabled="True" TextSearch.TextPath="CustCode" Grid.Row="1" IsReadOnly="True" RowHeaderWidth="0" BorderThickness="0" Name="ClientProfitabilityGrid" AutoGenerateColumns="False" DataContext="{StaticResource UnpaidInvoiceGridSource}" ItemsSource="{Binding}" AlternatingRowBackground="#FFF0F6F7">
                                         <DataGrid.Columns>

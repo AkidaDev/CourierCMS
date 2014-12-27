@@ -409,6 +409,10 @@ namespace FinalUi
             {
                 SubClientComboBox.Text = data.SubClient;
             }
+            if(data.ConsigneeName != "" && data.ConsigneeName != null)
+            {
+                this.ConsgineeName.Text = data.ConsigneeName;
+            }
             SlipCost.Text = data.Stock;
         }
         private void Button_Click_Close(object sender, RoutedEventArgs e)
