@@ -457,7 +457,6 @@ namespace FinalUi
         }
         private void BilledWeightTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            this.GetRateButton.Visibility = Visibility.Visible;
         }
         private void GetRateButton_Click(object sender, RoutedEventArgs e)
         {
@@ -495,10 +494,7 @@ namespace FinalUi
         }
         private void BilledWeightTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (this.BilledAmount.Text == "" || this.BilledAmount.Text == null)
-            {
-                getrate();
-            }
+            getrate();
         }
         private void CustomerSelected_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

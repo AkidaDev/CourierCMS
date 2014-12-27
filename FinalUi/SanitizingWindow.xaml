@@ -108,7 +108,6 @@
             <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Billed .: " VerticalAlignment="Bottom"/>
             <TextBox LostFocus="BilledWeightTextBox_LostFocus"  BorderThickness="2" TextChanged="BilledWeightTextBox_TextChanged" x:Name="BilledWeightTextBox" Height="26" Width="100" Padding="2"/>
-            <Button Content="GetRate" Name="GetRateButton" Click="GetRateButton_Click" Margin="30 0 0 0" Padding="6 0"/>
         </WrapPanel>
         <WrapPanel Grid.Row="7" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="  Billing Amount .: " VerticalAlignment="Bottom"/>
