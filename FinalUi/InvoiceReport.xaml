@@ -26,14 +26,14 @@
         </StackPanel>
         <DataGrid Visibility="Visible" AutoGenerateColumns="False" Grid.Row="1" ItemsSource="{Binding}" DataContext="{StaticResource ResultData}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="SrlNo" Binding="{Binding SrlNo}"/>
-                <DataGridTextColumn Header="ConnsignmentNo" Binding="{Binding ConnNo}"/>
+                <DataGridTextColumn Header="S.No" Binding="{Binding SrlNo}"/>
+                <DataGridTextColumn Header="Consignment No" Binding="{Binding ConnNo}"/>
                 <DataGridTextColumn Header="Destination" Binding="{Binding Destination}"/>
                 <DataGridTextColumn Header="Service" Binding="{Binding serviceCode}"/>
                 <DataGridTextColumn Header="Amount" Binding="{Binding Amount}"/>
                 <DataGridTextColumn Header="Weight" Binding="{Binding Weight}"/>
-                <DataGridTextColumn Header="hasError" Binding="{Binding hasError}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Error Discription" Binding="{Binding MisMatchDesc}"/>
+                <DataGridTextColumn Header="Has Error" Binding="{Binding hasError}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Error Description" Binding="{Binding MisMatchDesc}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

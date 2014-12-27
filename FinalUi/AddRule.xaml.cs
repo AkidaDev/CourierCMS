@@ -48,7 +48,7 @@ namespace FinalUi
             }
             InitializeComponent();
             isInitialized = true;
-            TitleBox.Text = "Update Rule " + ruleId.ToString();
+            this.Title = "Update Rule " + ruleId.ToString();
             RuleCR = (new JavaScriptSerializer()).Deserialize<CostingRule>(rule.Properties);
             FromWeightBox.Text = RuleCR.startW.ToString();
             ToWeightBox.Text = RuleCR.endW.ToString();

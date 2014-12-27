@@ -2,49 +2,67 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		Icon="Images/logo.ico"
-        Title="Client Report"  Height="455" Width="600" Background="Transparent"
-		ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Normal" BorderBrush="Transparent" AllowsTransparency="True" Padding="20">
+        Title="Client Report" Height="700" Width="1024" WindowStartupLocation="CenterScreen" Background="Turquoise">
     
     <Window.Resources>
         <CollectionViewSource x:Key="DueGridDataSource" CollectionViewType="ListCollectionView"></CollectionViewSource>
         <CollectionViewSource x:Key="UnpaidInvoiceGridSource" CollectionViewType="ListCollectionView"></CollectionViewSource>
     </Window.Resources>
-
-    <Grid  Height="405" UseLayoutRounding="False"  Width="550">
-        <Grid.Effect>
-            <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
-        </Grid.Effect>
-
-        <Canvas Name="Container" ClipToBounds="True" HorizontalAlignment="Left" Height="405" UseLayoutRounding="False" VerticalAlignment="Top" Width="550" Background="White">
-			<TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"  LineHeight="18" TextAlignment="Center" Text="Client Due List .:" Canvas.Top="39" Canvas.Left="55"/>
-            <Path x:Name="line" Data="F1M1,2C1,2 1,1 1,1 1,1 262,1 262,1 262,1 262,2 262,2 262,2 1,2 1,2" Fill="Black" Height="3" Canvas.Left="28" Canvas.Top="54" Width="263"/>
-			<DataGrid IsReadOnly="True" RowHeaderWidth="0" BorderBrush="Gray" BorderThickness="1" Height="150" Canvas.Top="56.96" Canvas.Left="127" Name="ClientDueGrid" Width="364" AutoGenerateColumns="False" DataContext="{StaticResource DueGridDataSource}" ItemsSource="{Binding}">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="CustomerCode" Binding="{Binding PC}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="BilledAmount" Binding="{Binding AmountBilled}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="PaymentRecieved" Binding="{Binding PaymentRecieved}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="NetBalance" Binding="{Binding NetBalance}"></DataGridTextColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-			<TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"  LineHeight="18" TextAlignment="Center" Text="Unpaid Invoices List .:" Canvas.Top="217" Canvas.Left="55"/>
-            <Path x:Name="line1" Data="F1M1,2C1,2 1,1 1,1 1,1 262,1 262,1 262,1 262,2 262,2 262,2 1,2 1,2" Fill="Black" Height="3" Canvas.Left="28" Canvas.Top="232" Width="263"/>
-            <DataGrid IsReadOnly="True" RowHeaderWidth="0" BorderBrush="Gray" BorderThickness="1" Canvas.Bottom="20" Height="150" Canvas.Left="126"  Name="ClientProfitabilityGrid" Width="365" AutoGenerateColumns="False" DataContext="{StaticResource UnpaidInvoiceGridSource}" ItemsSource="{Binding}" >
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Bill Id" Binding="{Binding BillId}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Customer Code" Binding="{Binding ClientCode}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Date" Binding="{Binding CompactDate}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Total Amount" Binding="{Binding TotalAmount}"></DataGridTextColumn>
-
-                </DataGrid.Columns>
-            </DataGrid>    
-		<Rectangle Fill="#FFCBCBCB" Height="26" Width="550" Stretch="Fill" Stroke="Black"/>
-            <TextBlock FontSize="16" Height="25" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Client Report" Canvas.Top="6" Width="548" FontFamily="Arial"/>
-            <Rectangle MouseDown="DragthisWindow" Fill="Transparent" Height="26" Width="550" Stretch="Fill"/>
-            <Button ToolTip="Close" Height="18" Canvas.Left="510" Click="Button_Click_Close" Canvas.Top="4" Width="35" Style="{StaticResource 1}">
-                <Path x:Name="close" Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,
-                  12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,
-                  3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" Width="15" Height="15"/>
-            </Button>
-		</Canvas>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="4"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Grid Background="#19000000">
+            <WrapPanel Margin="7,0,5,0" Background="#A9FFFFF3" VerticalAlignment="Stretch" HorizontalAlignment="Left">
+                <Path Margin="6 3 0 0" Data="F1M8.199,17.196C8.199,17.196 15.002,17.196 15.002,17.196 15.002,17.196 15.002,17.807 15.002,17.807 15.002,17.807 8.199,17.807 8.199,17.807 8.199,17.807 8.199,17.196 8.199,17.196z M8.199,15.36C8.199,15.36 12.2,15.36 12.2,15.36 12.2,15.36 12.2,15.971 12.2,15.971 12.2,15.971 8.199,15.971 8.199,15.971 8.199,15.971 8.199,15.36 8.199,15.36z M8.199,13.527C8.199,13.527 13.4,13.527 13.4,13.527 13.4,13.527 13.4,14.138 13.4,14.138 13.4,14.138 8.199,14.138 8.199,14.138 8.199,14.138 8.199,13.527 8.199,13.527z M8.199,11.695C8.199,11.695 15.401,11.695 15.401,11.695 15.401,11.695 15.401,12.305 15.401,12.305 15.401,12.305 8.199,12.305 8.199,12.305 8.199,12.305 8.199,11.695 8.199,11.695z M8.199,9.862C8.199,9.862 12.2,9.862 12.2,9.862 12.2,9.862 12.2,10.473 12.2,10.473 12.2,10.473 8.199,10.473 8.199,10.473 8.199,10.473 8.199,9.862 8.199,9.862z M6.399,6.501C6.399,6.501 6.399,21.167 6.399,21.167 6.399,21.167 17.2,21.167 17.2,21.167 17.2,21.167 17.2,6.501 17.2,6.501 17.2,6.501 6.399,6.501 6.399,6.501z M4.599,4.666C4.599,4.666 19,4.666 19,4.666 19,4.666 19,23 19,23 19,23 4.599,23 4.599,23 4.599,23 4.599,4.666 4.599,4.666z M1,1C1,1 15.401,1 15.401,1 15.401,1 15.401,2.833 15.401,2.833 15.401,2.833 15.401,3.749 15.401,3.749 15.401,3.749 13.601,3.749 13.601,3.749 13.601,3.749 13.601,2.833 13.601,2.833 13.601,2.833 2.8,2.833 2.8,2.833 2.8,2.833 2.8,17.501 2.8,17.501 2.8,17.501 3.7,17.501 3.7,17.501 3.7,17.501 3.7,19.334 3.7,19.334 3.7,19.334 2.8,19.334 2.8,19.334 2.8,19.334 1,19.334 1,19.334 1,19.334 1,1 1,1z" Fill="Black" Height="24" Canvas.Left="410" Canvas.Top="6" Width="20"/>
+                <TextBlock Text="Client Analytic Report" Margin="8 2 6 0" FontSize="16" Padding="1 3 1 0.5"/>
+            </WrapPanel>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Margin="0 3" Background="#A9FFFFF3">
+                    <TextBlock FontWeight="Bold" FontSize="18" Foreground="#FF5B5B5B" FontFamily="Calibri" Text=" Client Due List .:"/>
+                </Grid>
+                <DataGrid Grid.Row="1" IsTextSearchCaseSensitive="False" AlternatingRowBackground="#FFF0F6F7" IsTextSearchEnabled="True" TextSearch.TextPath="PC" IsReadOnly="True" RowHeaderWidth="0" BorderThickness="0" Name="ClientDueGrid" AutoGenerateColumns="False" DataContext="{StaticResource DueGridDataSource}" ItemsSource="{Binding}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Customer Code" Binding="{Binding PC}"/>
+                        <DataGridTextColumn Header="Billed Amount" Binding="{Binding AmountBilled}"/>
+                        <DataGridTextColumn Header="Payment Recieved" Binding="{Binding PaymentRecieved}"/>
+                        <DataGridTextColumn Header="Net Balance" Binding="{Binding NetBalance}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+            <Path Margin="0 0 0 1" Data="F1M22,1C23.65,1 25,2.35 25,4 25,5.65 23.65,7 22,7 20.35,7 19,5.65 19,4 19,2.35 20.35,1 22,1z M13,1C14.65,1 16,2.35 16,4 16,5.65 14.65,7 13,7 11.35,7 10,5.65 10,4 10,2.35 11.35,1 13,1z M4,1C5.65,1 7,2.35 7,4 7,5.65 5.65,7 4,7 2.35,7 1,5.65 1,4 1,2.35 2.35,1 4,1z" Fill="Black" Height="5" Width="22" Stretch="Fill" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+            <GridSplitter Height="6" Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Margin="0 3" Background="#A9FFFFF3">
+                    <TextBlock FontWeight="Bold" Foreground="#FF5B5B5B" FontSize="18" FontFamily="Calibri" Text=" Unpaid Invoices List .:"/>
+                </Grid>
+                <DataGrid IsTextSearchCaseSensitive="False" IsTextSearchEnabled="True" TextSearch.TextPath="CustCode" Grid.Row="1" IsReadOnly="True" RowHeaderWidth="0" BorderThickness="0" Name="ClientProfitabilityGrid" AutoGenerateColumns="False" DataContext="{StaticResource UnpaidInvoiceGridSource}" ItemsSource="{Binding}" AlternatingRowBackground="#FFF0F6F7">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Bill Id" Binding="{Binding BillId}"/>
+                        <DataGridTextColumn Header="Customer Code" Binding="{Binding ClientCode}"/>
+                        <DataGridTextColumn Header="Date" Binding="{Binding CompactDate}"/>
+                        <DataGridTextColumn Header="Total Amount" Binding="{Binding TotalAmount}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+        <StackPanel Grid.Row="3" Background="#A9FFFFF3"/>
     </Grid>
 </Window>

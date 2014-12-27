@@ -2,18 +2,14 @@
 		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		Icon="Images/logo.ico"
-        Title="PaymentRecieved" Height="430" Width="720" Background="Transparent"
-		ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Normal" BorderBrush="Transparent" AllowsTransparency="True" Padding="20">
+        Title="Payment Entry" Height="380" Width="670" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
 
     <Window.Resources>
         <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="InvoiceList" CollectionViewType="ListCollectionView"/>
     </Window.Resources>
-    <Grid Height="380" Width="670" Background="#FFF5FFFF">
-        <Grid.Effect>
-            <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
-        </Grid.Effect>
-        <Canvas ClipToBounds="True" HorizontalAlignment="Left" Height="380" UseLayoutRounding="False" VerticalAlignment="Top" Width="670">
+    <Grid Background="#FFF5FFFF">
+        <Canvas ClipToBounds="True" HorizontalAlignment="Left" Height="380" UseLayoutRounding="False" VerticalAlignment="Top" Width="670" Margin="0 -26 0 0">
             <Canvas Canvas.Left="20">
                 <TextBox IsReadOnly="True" Padding="2 3 0 0" Name="PaymentRefNoBox" Height="24" Canvas.Left="181" Canvas.Top="88" Width="175"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="39" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Payment Ref No. .:" Canvas.Top="93"/>
@@ -24,8 +20,8 @@
                     <RadioButton Name="ClientSelectRadio" GroupName="SelectRadio" Content="Client" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 30 0" Checked="RadioButton_Checked"/>
                     <RadioButton Name="InvoiceSelectRadio" GroupName="SelectRadio" IsChecked="True" Content="Invoice Number" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" Checked="RadioButton_Checked"/>
                 </WrapPanel>
-                <ComboBox Visibility="Collapsed" ItemsSource="{Binding}" IsEditable="False" DataContext="{StaticResource InvoiceList}" DisplayMemberPath="CompactInvoiceDetail" Name="InvoiceComboBox" Canvas.Left="255" Canvas.Top="150" Width="346"/>
-                <ComboBox IsEditable="False" DataContext="{StaticResource ClientList}" ItemsSource="{Binding}" DisplayMemberPath="NameAndCode" Name="ClientComboBox" Canvas.Left="255" Canvas.Top="150" Width="347">
+                <ComboBox ItemsSource="{Binding}" IsEditable="False" DataContext="{StaticResource InvoiceList}" DisplayMemberPath="CompactInvoiceDetail" Name="InvoiceComboBox" Canvas.Left="255" Canvas.Top="150" Width="346"/>
+                <ComboBox Visibility="Collapsed" IsEditable="False" DataContext="{StaticResource ClientList}" ItemsSource="{Binding}" DisplayMemberPath="NameAndCode" Name="ClientComboBox" Canvas.Left="255" Canvas.Top="150" Width="347">
                 </ComboBox>
                 <Canvas Canvas.Left="75">
                     <Path x:Name="Vertical_line" Data="F1M2,3C2,3 2,2 2,2 2,2 331,2 331,2 331,2 331,3 331,3 331,3 2,3 2,3" Fill="Black" Height="4" Canvas.Left="108" Canvas.Top="56" Width="332"/>
@@ -72,14 +68,6 @@
                     </WrapPanel>
                 </Button>
             </Canvas>
-            <Rectangle Fill="#FFCBCBCB" Height="26" Width="670" Stretch="Fill" Stroke="Black"/>
-            <TextBlock Name="AddUpdateTitle" FontSize="16" Height="25" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="18" TextAlignment="Center" TextWrapping="Wrap" Text="Payment Entry" Canvas.Top="6" Width="668" FontFamily="Arial"/>
-            <Rectangle MouseDown="DragthisWindow" Fill="Transparent" Height="26" Width="670" Stretch="Fill"/>
-            <Button ToolTip="Close" Height="18" Canvas.Right="4" Click="Button_Click_Close" Canvas.Top="4" Width="35" Style="{StaticResource 1}">
-                <Path x:Name="close" Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,
-                  12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,
-                  3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" Width="15" Height="15"/>
-            </Button>
         </Canvas>
     </Grid>
 </Window>

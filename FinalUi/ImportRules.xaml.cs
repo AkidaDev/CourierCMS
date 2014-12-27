@@ -47,14 +47,6 @@ namespace FinalUi
             this.ClientComboBox.SelectionChanged += ComboBox_SelectionChanged;
         LoadClientRules(this.client);
         }
-        private void DragthisWindow(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
-        private void Button_Click_Close(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (CostingRuleGrid.SelectedItems.Count + ServiceRuleGrid.SelectedItems.Count > 0)
