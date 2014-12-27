@@ -18,17 +18,6 @@
         <CollectionViewSource x:Key="DataGridDataContext" CollectionViewType="{x:Type ListCollectionView}"/>
         <CollectionViewSource x:Key="ServiceRuleList" CollectionViewType="{x:Type ListCollectionView}"/>
         <CollectionViewSource x:Key="CostingRuleList" CollectionViewType="{x:Type ListCollectionView}"/>
-        <Style TargetType="{x:Type DataGridCell}">
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Height" Value="25"/>
-            <Style.Triggers>
-                <Trigger Property="IsSelected" Value="True">
-                    <Setter Property="Background" Value="RoyalBLue"/>
-                    <Setter Property="BorderBrush" Value="Transparent"/>
-                    <Setter Property="Foreground" Value="White"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
     </Window.Resources>
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Open" Executed="Open_Executed" CanExecute="OpenCommand_CanExecute"/>
@@ -76,8 +65,8 @@
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="170*" MinWidth="160"/>
-                <ColumnDefinition Width="800*"/>
+                <ColumnDefinition Width="*" MinWidth="180"/>
+                <ColumnDefinition Width="800*" MinWidth="100"/>
             </Grid.ColumnDefinitions>
             <StackPanel Background="#19000000">
                 <Button Background="Transparent" BorderThickness="0" Margin="0 20 0 0" Click="DataDockPanelTreeView_Selected" Style="{DynamicResource 1}">
@@ -99,7 +88,7 @@
             <Grid Grid.Column="1" Margin="6 0 0 0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="220*"/>
-                    <RowDefinition Height="70*" MinHeight="25"/>
+                    <RowDefinition Height="55*" MinHeight="25"/>
                 </Grid.RowDefinitions>
                 <Grid>
                     <Grid Visibility="Visible" Name="HideAllDatagrid">
@@ -165,7 +154,7 @@
                             <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="5" HorizontalAlignment="Right"/>
                             <Rectangle Name="AfterPrint" VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="6" HorizontalAlignment="Right"/>
                         </Grid>
-                        <DataGrid Grid.Row="2" IsTextSearchEnabled="True" TextSearch.TextPath="ConsignmentNo" IsTextSearchCaseSensitive="False" RowHeaderWidth="0" IsReadOnly="True" Name="dataGrid" Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False" ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True">
+                        <DataGrid Grid.Row="2" TextSearch.TextPath="ConsignmentNo" Name="dataGrid" ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" CanUserAddRows="True">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Connsignment No" Binding="{Binding ConsignmentNo}"/>
                                 <DataGridTextColumn Header="DTDC Weight" Binding="{Binding Weight}"/>
@@ -295,7 +284,7 @@
                                 <Grid Margin="0 3" Background="#A9FFFFF3">
                                     <TextBlock FontWeight="Bold" FontSize="18" Foreground="#FF5B5B5B" FontFamily="Calibri" Text=" Client Due List .:"/>
                                 </Grid>
-                                <DataGrid Grid.Row="1" IsTextSearchCaseSensitive="False" AlternatingRowBackground="#FFF0F6F7" IsTextSearchEnabled="True" TextSearch.TextPath="PC" IsReadOnly="True" RowHeaderWidth="0" BorderThickness="0" Name="ClientDueGrid" AutoGenerateColumns="False" DataContext="{StaticResource DueGridDataSource}" ItemsSource="{Binding}">
+                                <DataGrid Grid.Row="1" TextSearch.TextPath="PC" Name="ClientDueGrid" DataContext="{StaticResource DueGridDataSource}" ItemsSource="{Binding}">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Customer Code" Binding="{Binding PC}"/>
                                         <DataGridTextColumn Header="Billed Amount" Binding="{Binding AmountBilled}"/>
@@ -314,7 +303,7 @@
                                 <Grid Margin="0 3" Background="#A9FFFFF3">
                                     <TextBlock FontWeight="Bold" Foreground="#FF5B5B5B" FontSize="18" FontFamily="Calibri" Text=" Unpaid Invoices List .:"/>
                                 </Grid>
-                                <DataGrid IsTextSearchCaseSensitive="False" IsTextSearchEnabled="True" TextSearch.TextPath="CustCode" Grid.Row="1" IsReadOnly="True" RowHeaderWidth="0" BorderThickness="0" Name="ClientProfitabilityGrid" AutoGenerateColumns="False" DataContext="{StaticResource UnpaidInvoiceGridSource}" ItemsSource="{Binding}" AlternatingRowBackground="#FFF0F6F7">
+                                <DataGrid TextSearch.TextPath="CustCode" Grid.Row="1" Name="ClientProfitabilityGrid" DataContext="{StaticResource UnpaidInvoiceGridSource}" ItemsSource="{Binding}">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Bill Id" Binding="{Binding BillId}"/>
                                         <DataGridTextColumn Header="Customer Code" Binding="{Binding ClientCode}"/>
@@ -395,7 +384,7 @@
                                     <ColumnDefinition Width="330*"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <DataGrid IsTextSearchCaseSensitive="False" IsTextSearchEnabled="True" TextSearch.TextPath="zoneListReporting" DataContext="{StaticResource CostingRuleList}" ItemsSource="{Binding}" Name="CostingRuleGrid" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2">
+                                <DataGrid TextSearch.TextPath="zoneListReporting" DataContext="{StaticResource CostingRuleList}" ItemsSource="{Binding}" Name="CostingRuleGrid" SelectionChanged="DataGrid_SelectionChanged_2">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                                         <DataGridTextColumn Header="Range (Kg)" Binding="{Binding range}"/>
@@ -438,7 +427,7 @@
                                         </DataTemplate>
                                     </DataGrid.RowDetailsTemplate>
                                 </DataGrid>
-                                <DataGrid IsTextSearchCaseSensitive="False" IsTextSearchEnabled="True" TextSearch.TextPath="zoneListReporting" Visibility="Collapsed" DataContext="{StaticResource ServiceRuleList}" ItemsSource="{Binding}" Name="ServiceRuleGrid" RowHeaderWidth="0" IsReadOnly="True" Background="#fff" AlternatingRowBackground="#FFF0F6F7" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" BorderThickness="0" CanUserAddRows="True" SelectionChanged="DataGrid_SelectionChanged_2">
+                                <DataGrid TextSearch.TextPath="zoneListReporting" Visibility="Collapsed" DataContext="{StaticResource ServiceRuleList}" ItemsSource="{Binding}" Name="ServiceRuleGrid" SelectionChanged="DataGrid_SelectionChanged_2">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                                         <DataGridTextColumn Header="Range" Binding="{Binding RangeWeight}"/>
@@ -576,7 +565,7 @@
                             <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
                         </Grid>
                         <Grid Grid.Row="2" Margin="0 3 0 0">
-                            <DataGrid RowHeaderWidth="0" IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False" TextSearch.TextPath="CLNAME" BorderThickness="0" Name="mangaclientgrid" ItemsSource="{Binding}" DataContext="{StaticResource ClienTable}" SelectionMode="Single" AutoGenerateColumns="False" AlternatingRowBackground="#FFF0F6F7">
+                            <DataGrid TextSearch.TextPath="CLNAME" Name="mangaclientgrid" ItemsSource="{Binding}" DataContext="{StaticResource ClienTable}" SelectionMode="Single">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Name" Binding="{Binding CLNAME, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                                     <DataGridTextColumn Header="Code" Binding="{Binding CLCODE, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
@@ -628,7 +617,7 @@
                             <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
                         </Grid>
                         <Grid Grid.Row="2" Margin="0 3 0 0">
-                            <DataGrid IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False" TextSearch.TextPath="Name" RowHeaderWidth="0" IsReadOnly="True" BorderThickness="0" Name="mangaEmployeegrid" ItemsSource="{Binding}" DataContext="{StaticResource EmployeeTable}" AutoGenerateColumns="False" AlternatingRowBackground="#FFF0F6F7">
+                            <DataGrid TextSearch.TextPath="Name" Name="mangaEmployeegrid" ItemsSource="{Binding}" DataContext="{StaticResource EmployeeTable}">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Name" Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                     <DataGridTextColumn Header="Gender" Binding="{Binding Gender, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -682,7 +671,7 @@
                             <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
                         </Grid>
                         <Grid Grid.Row="2" Margin="0 3 0 0">
-                            <DataGrid IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False" TextSearch.TextPath="CITY_DESC" AutoGenerateColumns="False" Name="CityDataGrid" RowHeaderWidth="0" BorderThickness="0" DataContext="{StaticResource CityTable}" ItemsSource="{Binding}" AlternatingRowBackground="#FFF0F6F7">
+                            <DataGrid TextSearch.TextPath="CITY_DESC" Name="CityDataGrid" DataContext="{StaticResource CityTable}" ItemsSource="{Binding}">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="City Code" IsReadOnly="True" Binding="{Binding CITY_CODE}"/>
                                     <DataGridTextColumn Header="Description" IsReadOnly="True" Binding="{Binding CITY_DESC}"/>

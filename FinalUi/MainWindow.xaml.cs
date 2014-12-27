@@ -99,12 +99,7 @@ namespace FinalUi
             #region setupCode
             PreviewMouseMove += OnPreviewMouseMove;
             #endregion
-            #region WindowDimensionsCode
-            this.WindowState = WindowState.Normal;
             this.MainGrid.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Configs.Default.Background));
-            this.MaxHeight = System.Windows.SystemParameters.MaximizedPrimaryScreenHeight;
-            this.MaxWidth = System.Windows.SystemParameters.MaximizedPrimaryScreenWidth;
-            #endregion
             db = new BillingDataDataContext();
             ResourceDictionary dict = this.Resources;
             InitializeComponent();

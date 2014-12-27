@@ -47,14 +47,14 @@
         <Grid Grid.Row="2" Background="#A9FFFFF3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" MinHeight="70"/>
-                <RowDefinition Height="*" MinHeight="7rr0"/>
+                <RowDefinition Height="*" MinHeight="70"/>
             </Grid.RowDefinitions>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="35"/>
                 </Grid.RowDefinitions>
-                <DataGrid Name="InvoiceDatagrid" AutoGenerateColumns="False" DataContext="{StaticResource InvoiceDetailsSourceGrid}" ItemsSource="{Binding}" RowHeaderWidth="0" BorderThickness="1" Background="White" BorderBrush="Gray" IsReadOnly="True" SelectionMode="Single">
+                <DataGrid Name="InvoiceDatagrid" DataContext="{StaticResource InvoiceDetailsSourceGrid}" ItemsSource="{Binding}" SelectionMode="Single">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Bill Number" Binding="{Binding BillId}"/>
                         <DataGridTextColumn Header="Date" Binding="{Binding CompactDate}"/>
@@ -77,7 +77,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="35"/>
                 </Grid.RowDefinitions>
-                <DataGrid Name="PaymentGrid" AutoGenerateColumns="False" DataContext="{StaticResource PaymentDetailsSourceGrid}" ItemsSource="{Binding}" RowHeaderWidth="0" BorderThickness="1" BorderBrush="Gray" Background="White" IsReadOnly="True" SelectionMode="Single">
+                <DataGrid Name="PaymentGrid" DataContext="{StaticResource PaymentDetailsSourceGrid}" ItemsSource="{Binding}" SelectionMode="Single">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Refernce No" Binding="{Binding Id}"/>
                         <DataGridTextColumn Header="Date" Binding="{Binding CompactDate}"/>

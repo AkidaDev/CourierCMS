@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Invoice Report" Width="1024" Height="600" WindowStartupLocation="CenterScreen">
     <Window.Resources>
-        <CollectionViewSource x:Key="ResultData" CollectionViewType="ListCollectionView"></CollectionViewSource>
+        <CollectionViewSource x:Key="ResultData" CollectionViewType="ListCollectionView"/>
     </Window.Resources>
-    <Grid>
+    <Grid Background="#FFF5FFFF">
         <Grid.RowDefinitions>
             <RowDefinition Height="90"/>
             <RowDefinition Height="*"/>

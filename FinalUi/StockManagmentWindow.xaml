@@ -64,7 +64,7 @@
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" TextWrapping="Wrap" Text="To .: " VerticalAlignment="Center" Margin="20 0 0 0"/>
                 <DatePicker Name="ToDatePicker" Width="122" BorderThickness="0" VerticalAlignment="Center"/>
             </WrapPanel>
-            <DataGrid Name="StockAssignmentDatagrid" RowHeaderWidth="0" SelectionMode="Single" AutoGenerateColumns="False" Grid.Row="1" DataContext="{StaticResource StockAssignmentList}" ItemsSource="{Binding}" IsReadOnly="True" BorderThickness="0">
+            <DataGrid Name="StockAssignmentDatagrid" SelectionMode="Single" Grid.Row="1" DataContext="{StaticResource StockAssignmentList}" ItemsSource="{Binding}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="S.No" Binding="{Binding SrlNo}"/>
                     <DataGridTextColumn Header="Employee" Binding="{Binding EmployeeName}"/>

@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		Icon="Images/logo.ico"
         Title="Manage Employee" Height="700" Width="1024" WindowStartupLocation="CenterScreen" Background="Turquoise">
-
     <Window.Resources>
         <CollectionViewSource x:Key="EmployeeTable" CollectionViewType="ListCollectionView"></CollectionViewSource>
     </Window.Resources>
@@ -47,7 +46,7 @@
             <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
         </Grid>
         <Grid Grid.Row="2" Margin="0 3 0 0">
-            <DataGrid IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False" TextSearch.TextPath="Name" RowHeaderWidth="0" IsReadOnly="True" BorderThickness="0" Name="mangaEmployeegrid" ItemsSource="{Binding}" DataContext="{StaticResource EmployeeTable}" AutoGenerateColumns="False" AlternatingRowBackground="#FFF0F6F7">
+            <DataGrid TextSearch.TextPath="Name" Name="mangaEmployeegrid" ItemsSource="{Binding}" DataContext="{StaticResource EmployeeTable}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <DataGridTextColumn Header="Gender" Binding="{Binding Gender, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>

@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		Icon="Images/logo.ico"
         Title="Manage Client" Height="700" Width="1024" WindowStartupLocation="CenterScreen" Background="Turquoise">
-    
     <Window.Resources>
         <CollectionViewSource x:Key="ClienTable" CollectionViewType="ListCollectionView"/>
     </Window.Resources>
@@ -47,7 +46,7 @@
             <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
         </Grid>
         <Grid Grid.Row="2" Margin="0 3 0 0">
-            <DataGrid RowHeaderWidth="0" IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False" TextSearch.TextPath="CLNAME" BorderThickness="0" Name="mangaclientgrid" ItemsSource="{Binding}" DataContext="{StaticResource ClienTable}" SelectionMode="Single" AutoGenerateColumns="False" AlternatingRowBackground="#FFF0F6F7">
+            <DataGrid TextSearch.TextPath="CLNAME" Name="mangaclientgrid" ItemsSource="{Binding}" DataContext="{StaticResource ClienTable}" SelectionMode="Single">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Binding="{Binding CLNAME, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="Code" Binding="{Binding CLCODE, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>

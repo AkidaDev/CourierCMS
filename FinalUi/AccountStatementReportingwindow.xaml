@@ -6,7 +6,7 @@
     <Window.Resources>
         <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"/>
     </Window.Resources>
-    <Grid>
+    <Grid Background="#FFF5FFFF">
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>

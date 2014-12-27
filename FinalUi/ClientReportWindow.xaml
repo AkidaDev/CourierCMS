@@ -34,7 +34,7 @@
                 <Grid Margin="0 3" Background="#A9FFFFF3">
                     <TextBlock FontWeight="Bold" FontSize="18" Foreground="#FF5B5B5B" FontFamily="Calibri" Text=" Client Due List .:"/>
                 </Grid>
-                <DataGrid Grid.Row="1" IsTextSearchCaseSensitive="False" AlternatingRowBackground="#FFF0F6F7" IsTextSearchEnabled="True" TextSearch.TextPath="PC" IsReadOnly="True" RowHeaderWidth="0" BorderThickness="0" Name="ClientDueGrid" AutoGenerateColumns="False" DataContext="{StaticResource DueGridDataSource}" ItemsSource="{Binding}">
+                <DataGrid Grid.Row="1" TextSearch.TextPath="PC" Name="ClientDueGrid" DataContext="{StaticResource DueGridDataSource}" ItemsSource="{Binding}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Customer Code" Binding="{Binding PC}"/>
                         <DataGridTextColumn Header="Billed Amount" Binding="{Binding AmountBilled}"/>
@@ -53,7 +53,7 @@
                 <Grid Margin="0 3" Background="#A9FFFFF3">
                     <TextBlock FontWeight="Bold" Foreground="#FF5B5B5B" FontSize="18" FontFamily="Calibri" Text=" Unpaid Invoices List .:"/>
                 </Grid>
-                <DataGrid IsTextSearchCaseSensitive="False" IsTextSearchEnabled="True" TextSearch.TextPath="CustCode" Grid.Row="1" IsReadOnly="True" RowHeaderWidth="0" BorderThickness="0" Name="ClientProfitabilityGrid" AutoGenerateColumns="False" DataContext="{StaticResource UnpaidInvoiceGridSource}" ItemsSource="{Binding}" AlternatingRowBackground="#FFF0F6F7">
+                <DataGrid TextSearch.TextPath="CustCode" Grid.Row="1" Name="ClientProfitabilityGrid" DataContext="{StaticResource UnpaidInvoiceGridSource}" ItemsSource="{Binding}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Bill Id" Binding="{Binding BillId}"/>
                         <DataGridTextColumn Header="Customer Code" Binding="{Binding ClientCode}"/>
