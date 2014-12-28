@@ -4,7 +4,7 @@
 		Icon="Images/logo.ico"
         Title="Add Client" Height="300" Width="600"
 		ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
-    <Grid Background="#FFF5FFFF">
+    <Grid><!--BackColor-->
         <Canvas x:Name="RateWindow1" ClipToBounds="True" HorizontalAlignment="Left" Height="300" UseLayoutRounding="False" VerticalAlignment="Top" Width="600" Margin="0 -26 0 0">
             <Canvas Canvas.Left="25">
                 <Path x:Name="Vertical_line" Data="F1M2,3C2,3 2,2 2,2 2,2 331,2 331,2 331,2 331,3 331,3 331,3 2,3 2,3" Fill="Black" Height="4" Canvas.Left="108" Canvas.Top="56" Width="332"/>

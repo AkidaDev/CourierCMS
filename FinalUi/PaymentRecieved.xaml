@@ -8,7 +8,7 @@
         <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="InvoiceList" CollectionViewType="ListCollectionView"/>
     </Window.Resources>
-    <Grid Background="#FFF5FFFF">
+    <Grid><!--BackColor-->
         <Canvas ClipToBounds="True" HorizontalAlignment="Left" Height="380" UseLayoutRounding="False" VerticalAlignment="Top" Width="670" Margin="0 -26 0 0">
             <Canvas Canvas.Left="20">
                 <TextBox IsReadOnly="True" Padding="2 3 0 0" Name="PaymentRefNoBox" Height="24" Canvas.Left="181" Canvas.Top="88" Width="175"/>

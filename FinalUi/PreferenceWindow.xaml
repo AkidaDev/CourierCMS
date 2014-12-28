@@ -6,7 +6,7 @@
 		Icon="Images/logo.ico"
         Title="Settings" Height="340" Width="550" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
 
-    <Grid Background="#FFF5FFFF">
+    <Grid><!--BackColor-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="80"/>
             <ColumnDefinition Width="1"/>

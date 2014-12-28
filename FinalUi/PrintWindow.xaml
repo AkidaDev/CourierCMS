@@ -10,7 +10,7 @@
         <CollectionViewSource x:Key="DataGridDataSource" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="SubClientList" CollectionViewType="ListCollectionView"/>
     </Window.Resources>
-    <Grid Background="#FFF5FFFF">
+    <Grid><!--BackColor-->
         <Grid.RowDefinitions>
             <RowDefinition Height="36"/>
             <RowDefinition Height="45"/>

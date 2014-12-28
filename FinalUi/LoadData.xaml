@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		Icon="Images/logo.ico"
         Title="Load Data" Height="250" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
-    <Grid Background="#FFF5FFFF">
+    <Grid><!--BackColor-->
         <Grid.RowDefinitions>
             <RowDefinition Height="53"/>
             <RowDefinition Height="32"/>

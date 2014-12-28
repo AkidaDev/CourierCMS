@@ -5,7 +5,7 @@
 		Icon="Images/logo.ico" Height="300" Width="600"
         Title="Service Grouping" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
 
-    <Grid Background="#FFF5FFFF">
+    <Grid><!--BackColor-->
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="40"/>
