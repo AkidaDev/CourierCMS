@@ -298,6 +298,10 @@ namespace FinalUi
                 addingNewPage(key);
             }
             SanitizingWindow window;
+            RuntimeData dataToSend = null;
+            if (dataGrid.SelectedItem != null)
+                dataToSend = (RuntimeData)dataGrid.SelectedItem;
+           
             concatinateAllRecordsInOnePage();
             Dictionary<string, List<string>> SubClientList = new Dictionary<string, List<string>>();
             List<RuntimeData> data = dataGridHelper.getCurrentDataStack;
@@ -308,11 +312,9 @@ namespace FinalUi
             });
             List<string> ConsigneeList = data.Select(x => x.ConsigneeName).Distinct().ToList();
             List<string> ConsignerList = data.Select(x => x.ConsignerName).Distinct().ToList();
-            if (dataGrid.SelectedItem != null)
-                window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber, dataGrid, dataGridHelper,SubClientList,ConsigneeList,ConsignerList, (RuntimeData)dataGrid.SelectedItem);
-            else
-                window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber, dataGrid,dataGridHelper,SubClientList,ConsigneeList,ConsignerList);
-            window.Closed += SanitizingWindow_Closed;
+            window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber, dataGrid, dataGridHelper, SubClientList, ConsigneeList, ConsignerList,dataToSend);
+        
+               window.Closed += SanitizingWindow_Closed;
             window.Show();
         }
         int currentRowsPerPage;
