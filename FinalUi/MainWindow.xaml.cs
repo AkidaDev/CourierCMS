@@ -505,7 +505,7 @@ namespace FinalUi
             dataGridHelper.getFirstPage();
 
             Button canvasButton = new Button();
-            canvasButton.Style = (Style)FindResource("Sheet_button");
+            canvasButton.Style = (Style)FindResource("window");
             canvasButton.Margin = new Thickness(-9, 1, 0, 0);
             canvasButton.Height = 20;
             canvasButton.Width = 92;
@@ -522,7 +522,7 @@ namespace FinalUi
             pathsquare.Stretch = Stretch.Fill;
             Button buttonsquare = new Button();
             buttonsquare.Name = "_pathsquare";
-            buttonsquare.Style = (Style)FindResource("Sheet_button");
+            buttonsquare.Style = (Style)FindResource("window");
             buttonsquare.Content = pathsquare;
 
 

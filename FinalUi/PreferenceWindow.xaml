@@ -10,7 +10,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="80"/>
             <ColumnDefinition Width="1"/>
-            <ColumnDefinition Width="181*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Rectangle Grid.Column="1" Fill="DarkGray"/>
         <StackPanel Margin="6,30,6,0">

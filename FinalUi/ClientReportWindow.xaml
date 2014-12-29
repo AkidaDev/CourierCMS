@@ -23,8 +23,8 @@
         </Grid>
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="*" MinHeight="70"/>
+                <RowDefinition Height="*" MinHeight="70"/>
             </Grid.RowDefinitions>
             <Grid>
                 <Grid.RowDefinitions>

@@ -59,10 +59,10 @@
             <WrapPanel Margin="0 3" Background="#A9FFFFF3">
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Select Date" VerticalAlignment="Center" Margin="50 15 0 15"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="From .: " VerticalAlignment="Center" Margin="50 0 0 0"/>
-                <DatePicker Name="FromDatePicker" Width="122" BorderThickness="0" VerticalAlignment="Center"/>
-                <Path  Data="F1M2,2C2,2 3,2 3,2 3,2 3,35 3,35 3,35 2,35 2,35 2,35 2,2 2,2" Fill="Black" Stretch="Fill" Height="28" Width="1" Margin="5 0 0 0"/>
+                <DatePicker Name="FromDatePicker" Width="120" BorderBrush="DarkGray" Padding="2 2 0 2" Background="White" VerticalAlignment="Center"/>
+                <Path  Data="F1M2,2C2,2 3,2 3,2 3,2 3,35 3,35 3,35 2,35 2,35 2,35 2,2 2,2" Fill="Black" Stretch="Fill" Height="28" Width="1" Margin="10 0 0 0"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" TextWrapping="Wrap" Text="To .: " VerticalAlignment="Center" Margin="20 0 0 0"/>
-                <DatePicker Name="ToDatePicker" Width="122" BorderThickness="0" VerticalAlignment="Center"/>
+                <DatePicker Name="ToDatePicker" Width="120" BorderBrush="DarkGray" Padding="2 2 0 2" Background="White" VerticalAlignment="Center"/>
             </WrapPanel>
             <DataGrid Name="StockAssignmentDatagrid" SelectionMode="Single" Grid.Row="1" DataContext="{StaticResource StockAssignmentList}" ItemsSource="{Binding}">
                 <DataGrid.Columns>

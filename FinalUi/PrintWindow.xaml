@@ -21,7 +21,7 @@
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <Path Data="F1M2,3C2,3 2,2 2,2 2,2 331,2 331,2 331,2 331,3 331,3 331,3 2,3 2,3" Fill="Black" Height="4" Width="332" VerticalAlignment="Bottom"/>
-       <WrapPanel VerticalAlignment="Bottom" Margin="211 0 0 0">
+        <WrapPanel VerticalAlignment="Bottom" Margin="211 0 0 0">
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Enter Details For .:   "/>
             <RadioButton Name="Invoice" IsChecked="True" GroupName="Bill" Content="Invoice      " FontWeight="Bold" FontSize="16" FontFamily="Calibri" Padding="5 -3 0 0" VerticalAlignment="Bottom" Click="Invoice_Click"/>
             <RadioButton Name="Mis" GroupName="Bill" Content="M.I.S" FontWeight="Bold" FontSize="16" FontFamily="Calibri" Padding="5 -3 0 0" VerticalAlignment="Bottom" Click="Invoice_Click"/>
