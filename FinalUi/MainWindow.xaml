@@ -24,13 +24,19 @@
         <CommandBinding Command="ApplicationCommands.Close" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
         <CommandBinding Command="ApplicationCommands.Print" Executed="ExecutePrint" CanExecute="CanExecutePrintCommand"/>
     </Window.CommandBindings>
-    <Grid Name="MainGrid" Background="DarkCyan">
+    <Grid Name="MainGrid" Background="Turquoise">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="6"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Height="28" Background="#19000000">
+        <Grid Height="28">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#15B4B1B1" Offset="0"/>
+                    <GradientStop Color="#19000000" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
             <Menu Background="Transparent" FontSize="14" Margin="6 6 0 0" Foreground="White">
                 <MenuItem ToolTip="Open new document" Header="File" Margin="10 0 0 0">
                     <MenuItem Header="New Sheet" Name="NewSheetMenuItem" Foreground="Black"/>
@@ -77,8 +83,8 @@
                 </Button>
                 <TreeView Background="Transparent" BorderThickness="0">
                     <TreeViewItem Background="Transparent" BorderThickness="0" Header="Client Tree" FontSize="15" FontWeight="SemiBold" Margin="2,5,0,0" Padding="10 1 0 4">
-                        <TreeViewItem Header=" Clients Report" FontSize="14" Padding=" 0 0 0 2" Foreground="White" MouseDoubleClick="ClientsReportTreeView_Selected" FontWeight="Normal"/>
-                        <TreeViewItem Header=" Client Quotation" FontSize="14" Padding=" 0 0 0 2" Foreground="White" MouseDoubleClick="ClientQuotationTreeView_Selected" FontWeight="Normal"/>
+                        <TreeViewItem Header=" Clients Report" FontSize="14" Padding=" 0 0 0 2" MouseDoubleClick="ClientsReportTreeView_Selected" FontWeight="Normal"/>
+                        <TreeViewItem Header=" Client Quotation" FontSize="14" Padding=" 0 0 0 2" MouseDoubleClick="ClientQuotationTreeView_Selected" FontWeight="Normal"/>
                     </TreeViewItem>
                 </TreeView>
                 <TreeView BorderThickness="0" Background="Transparent" Visibility="Collapsed">
@@ -180,48 +186,48 @@
                             </DataGrid.Columns>
                             <DataGrid.RowDetailsTemplate>
                                 <DataTemplate>
-                                    <Border BorderThickness="0" Background="BlanchedAlmond" Padding="10">
+                                    <Border BorderThickness="0" Background="BlanchedAlmond" Padding="12">
                                         <StackPanel Orientation="Horizontal">
                                             <StackPanel>
                                                 <WrapPanel>
-                                                    <TextBlock FontSize="12" Text="Booking Date .: " VerticalAlignment="Center"/>
-                                                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding BookingDate.Date}" VerticalAlignment="Center"/>
+                                                    <TextBlock FontSize="12" Text="Booking Date .: " VerticalAlignment="Bottom"/>
+                                                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding BookingDate.Date}" VerticalAlignment="Bottom"/>
+                                                </WrapPanel>
+                                                <WrapPanel Margin="0 5">
+                                                    <TextBlock FontSize="12" Text="TransMfNo .: " VerticalAlignment="Bottom"/>
+                                                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding TransMF_No}" VerticalAlignment="Bottom"/>
                                                 </WrapPanel>
                                                 <WrapPanel>
-                                                    <TextBlock FontSize="12" Text="TransMfNo .: " VerticalAlignment="Center"/>
-                                                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding TransMF_No}" VerticalAlignment="Center"/>
-                                                </WrapPanel>
-                                                <WrapPanel>
-                                                    <TextBlock FontSize="12" Text="Invoice No .: " VerticalAlignment="Center"/>
-                                                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding InvoiceNo}" VerticalAlignment="Center"/>
-                                                </WrapPanel>
-                                            </StackPanel>
-                                            <StackPanel Margin="40 0 0 0">
-                                                <WrapPanel>
-                                                    <TextBlock FontSize="12" Text="Destination .: " VerticalAlignment="Center"/>
-                                                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding City_Desc}" VerticalAlignment="Center"/>
-                                                </WrapPanel>
-                                                <WrapPanel>
-                                                    <TextBlock FontSize="12" Text="Service .: " VerticalAlignment="Center"/>
-                                                    <TextBlock FontSize="16" Text="{Binding Service_Desc}" VerticalAlignment="Center" Foreground="MidnightBlue"/>
-                                                </WrapPanel>
-                                                <WrapPanel>
-                                                    <TextBlock FontSize="12" Text="Client .: " VerticalAlignment="Center"/>
-                                                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Client_Desc}" VerticalAlignment="Center"/>
+                                                    <TextBlock FontSize="12" Text="Invoice No .: " VerticalAlignment="Bottom"/>
+                                                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding InvoiceNo}" VerticalAlignment="Bottom"/>
                                                 </WrapPanel>
                                             </StackPanel>
-                                            <StackPanel Margin="40 0 0 0">
+                                            <StackPanel Margin="50 0 0 0">
                                                 <WrapPanel>
-                                                    <TextBlock FontSize="12" Text="Consignee Name .: " VerticalAlignment="Center"/>
-                                                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding ConsigneeName}" VerticalAlignment="Center"/>
+                                                    <TextBlock FontSize="12" Text="Destination .: " VerticalAlignment="Bottom"/>
+                                                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding City_Desc}" VerticalAlignment="Bottom"/>
+                                                </WrapPanel>
+                                                <WrapPanel Margin="0 5">
+                                                    <TextBlock FontSize="12" Text="Service .: " VerticalAlignment="Bottom"/>
+                                                    <TextBlock FontSize="16" Text="{Binding Service_Desc}" VerticalAlignment="Bottom" Foreground="MidnightBlue"/>
                                                 </WrapPanel>
                                                 <WrapPanel>
-                                                    <TextBlock FontSize="12" Text="Consigner Name .: " VerticalAlignment="Center"/>
-                                                    <TextBlock FontSize="16" Text="{Binding ConsignerName}" VerticalAlignment="Center" Foreground="MidnightBlue"/>
+                                                    <TextBlock FontSize="12" Text="Client .: " VerticalAlignment="Bottom"/>
+                                                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding Client_Desc}" VerticalAlignment="Bottom"/>
+                                                </WrapPanel>
+                                            </StackPanel>
+                                            <StackPanel Margin="50 0 0 0">
+                                                <WrapPanel>
+                                                    <TextBlock FontSize="12" Text="Consignee Name .: " VerticalAlignment="Bottom"/>
+                                                    <TextBlock FontSize="16" Foreground="MidnightBlue" Text="{Binding ConsigneeName}" VerticalAlignment="Bottom"/>
+                                                </WrapPanel>
+                                                <WrapPanel Margin="0 5">
+                                                    <TextBlock FontSize="12" Text="Consigner Name .: " VerticalAlignment="Bottom"/>
+                                                    <TextBlock FontSize="16" Text="{Binding ConsignerName}" VerticalAlignment="Bottom" Foreground="MidnightBlue"/>
                                                 </WrapPanel>
                                                 <WrapPanel>
-                                                    <TextBlock FontSize="12" Text="Sub Client .: " VerticalAlignment="Center"/>
-                                                    <TextBlock FontSize="16" Text="{Binding SubClient}" VerticalAlignment="Center" Foreground="MidnightBlue"/>
+                                                    <TextBlock FontSize="12" Text="Sub Client .: " VerticalAlignment="Bottom"/>
+                                                    <TextBlock FontSize="16" Text="{Binding SubClient}" VerticalAlignment="Bottom" Foreground="MidnightBlue"/>
                                                 </WrapPanel>
                                             </StackPanel>
                                         </StackPanel>

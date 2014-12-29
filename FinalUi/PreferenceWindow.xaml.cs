@@ -88,14 +88,6 @@ namespace FinalUi
             Pannumber.Text = Configs.Default.Tin;
             this.ServiceTax.Text = Configs.Default.ServiceTax;
         }
-        private void Button_Click_Close(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-        private void DragthisWindow(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
         private void cloakAll()
         {
             this.BackgroundSettingGrid.Visibility = Visibility.Collapsed;

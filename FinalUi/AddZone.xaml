@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		Icon="Images/logo.ico"
         Title="Add Zone" Height="230" Width="360" WindowStartupLocation="CenterScreen">
+    
     <Grid><!--BackColor-->
         <Canvas ClipToBounds="True" HorizontalAlignment="Center" Height="180" VerticalAlignment="Top" Width="310" Margin="0 -24 0 0">
     		<Path x:Name="Vertical_line" Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Black" Height="4" Canvas.Left="46" Canvas.Top="53" Width="237"/>

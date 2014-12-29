@@ -219,15 +219,6 @@ namespace FinalUi
             else
                 MessageBox.Show("Process already running.");
         }
-        private void Button_Click_Close(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-        private void DragthisWindow(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
-
         private void SubClientCheck_MouseUp(object sender, MouseButtonEventArgs e)
         {
             MessageBox.Show(SubClientCheck.Checked.ToString());

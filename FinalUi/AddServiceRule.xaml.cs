@@ -106,23 +106,6 @@ namespace FinalUi
             this.Title = "Update Rule " + ruleId.ToString();
             this.AddRuleButtonBox.Text = " Update Rule";
         }
-        private void DragthisWindow(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
-        private void Button_Click_Close(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-        private void GetFilter_Click(object sender, RoutedEventArgs e)
-        {
-        }
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-        }
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-        }
         private void AddRuleButton_Click(object sender, RoutedEventArgs e)
         {
             Rule r;

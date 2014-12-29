@@ -411,14 +411,6 @@ namespace FinalUi
             }
             SlipCost.Text = data.Stock;
         }
-        private void Button_Click_Close(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-        private void DragthisWindow(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
         private void DoneButton_Click(object sender, RoutedEventArgs e)
         {
             try

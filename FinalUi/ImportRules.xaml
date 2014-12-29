@@ -7,10 +7,8 @@
         <CollectionViewSource x:Key="ClinetViewList" CollectionViewType="{x:Type ListCollectionView}"/>
         <CollectionViewSource x:Key="CostingRuleList" CollectionViewType="{x:Type ListCollectionView}"/>
         <CollectionViewSource x:Key="ServiceRuleList" CollectionViewType="{x:Type ListCollectionView}"/>
-        <!--
-        <CollectionViewSource x:Key="" CollectionViewType="{x:Type ListCollectionView}"/>
-        -->
     </Window.Resources>
+    
     <Grid><!--BackColor-->
         <Canvas x:Name="FilterSelectWindow1" ClipToBounds="True" HorizontalAlignment="Left" Height="480" UseLayoutRounding="False" VerticalAlignment="Top" Width="670" Margin="0 -26 0 0">
             <Canvas Canvas.Left="75">

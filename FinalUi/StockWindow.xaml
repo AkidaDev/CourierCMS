@@ -22,10 +22,10 @@
         <TextBlock Margin="108 0 0 0" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Enter Details .:" VerticalAlignment="Bottom"/>
         <WrapPanel Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <TextBlock Name="FromLabel" Text="From  .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
-            <TextBox Name="FromBox" Width="100"/>
+            <TextBox Name="FromBox" Width="100" Padding="2 2 0 0"/>
             <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="28" Width="3" Margin="8 -6 15 -5"/>
             <TextBlock Name="ToLabel" Text=" To .: "  FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
-            <TextBox Name="ToBox" Width="100"/>
+            <TextBox Name="ToBox" Width="100" Padding="2 2 0 0"/>
         </WrapPanel>
         <WrapPanel Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <TextBlock Name="AssignLabel" Text="Assign .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
@@ -49,15 +49,15 @@
         </WrapPanel>
         <WrapPanel Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <TextBlock Name="DescriptionLabel" Text="Description .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
-            <TextBox Name="DescriptionBox" Width="260" Height="22"/>
+            <TextBox Name="DescriptionBox" Width="260" Padding="2 2 0 0"/>
         </WrapPanel>
         <WrapPanel Grid.Row="4" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <TextBlock Text=" Book No. .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
-            <TextBox Name="BookNumber" Width="250"/>
+            <TextBox Name="BookNumber" Width="250" Padding="2 2 0 0"/>
         </WrapPanel>
         <WrapPanel Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <TextBlock Text="Expected Delivery in .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
-            <TextBox Width="50"/>
+            <TextBox Width="50" Padding="2 2 0 0"/>
             <TextBlock Text=" (days)" FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
         </WrapPanel>
         <WrapPanel Grid.Row="6" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="-20 0 0 0">

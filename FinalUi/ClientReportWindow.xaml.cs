@@ -33,15 +33,6 @@ namespace FinalUi
                                                 .Contains(invoice.BillId)
                                          select invoice).ToList();
             Invoice inv = new Invoice();
-            
-        }
-        private void DragthisWindow(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
-        private void Button_Click_Close(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }

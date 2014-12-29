@@ -3,11 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		Icon="Images/logo.ico"
         Title="Payment Entry" Height="380" Width="670" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
-
     <Window.Resources>
         <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="InvoiceList" CollectionViewType="ListCollectionView"/>
     </Window.Resources>
+    
     <Grid><!--BackColor-->
         <Canvas ClipToBounds="True" HorizontalAlignment="Left" Height="380" UseLayoutRounding="False" VerticalAlignment="Top" Width="670" Margin="0 -26 0 0">
             <Canvas Canvas.Left="20">
