@@ -2,22 +2,19 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Icon="Images/logo.ico"
-        Title="Setup" Height="450" Width="750" Background="Transparent" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Normal" BorderBrush="Transparent" AllowsTransparency="True" Padding="20">
+        Title="Setup" Height="400" Width="700" WindowStyle="None" WindowStartupLocation="CenterScreen" BorderBrush="Gray" AllowsTransparency="True" BorderThickness="1">
     <Window.Resources>
         <CollectionViewSource x:Key="InstanceList" CollectionViewType="{x:Type ListCollectionView}"/>
     </Window.Resources>
-    <Grid  Height="400" UseLayoutRounding="False"  Width="700" Background="White" MouseLeftButtonDown="Grid_MouseLeftButtonDown_1">
-        <Grid.Effect>
-            <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
-        </Grid.Effect>
-        <Canvas Name="Step1" Visibility="Visible">
+    <Grid Background="White" MouseLeftButtonDown="Grid_MouseLeftButtonDown_1">
+        <Canvas Name="Step1">
             <TextBlock Foreground="#6666cc" FontSize="18" Canvas.Left="374" TextAlignment="Center" Text="Welcome!" Canvas.Top="135" Width="150"/>
             <Rectangle Width="396" Height="160" Canvas.Left="280" Canvas.Top="162" Stroke="Gray"/>
             <ScrollViewer Width="392" Height="156" Canvas.Left="283" Canvas.Top="164">
             <TextBlock TextWrapping="Wrap" Padding="5">
                 <Bold>TERMS AND CONDITIONS</Bold><LineBreak/><LineBreak/>
                 END-USER LICENSE AGREEMENT FOR SOFTWARE PRODUCTS OF SLT-INTEGRITY.<LineBreak/><LineBreak/>
-                IMPORTANT-READ CAREFULLY: This End-User License Agreement is a legal Agreement between you and Online Media Technologies Ltd for the applicable Software Products of Online Media Technologies Ltd. Do not copy, install, or use the Software Products provided under this license agreement ("Agreement"), until you have carefully read the following terms and conditions.<LineBreak/><LineBreak/>
+                IMPORTANT-READ CAREFULLY: This End-User License Agreement is a legal Agreement between you and SLT-INTEGRITY for the applicable Software Products of SLT-INTEGRITY. Do not copy, install, or use the Software Products provided under this license agreement ("Agreement"), until you have carefully read the following terms and conditions.<LineBreak/><LineBreak/>
                 Any reproduction or redistribution of Software Products or any of its components not in accordance with the End-User License Agreement is expressly prohibited by law, and may result in severe civil and criminal penalties. <LineBreak/><LineBreak/>
                 Definitions: Software Products shall mean and include Vortex Software. <LineBreak/><LineBreak/>
                 Vortex Software shall mean all of the contents of the files (provided either by electronic download, on physical media or any other method of distribution), disk(s), CD-ROM(s) or other media with which this Agreement is provided) which may be found at www.SLTINTEGRITY.com/Vortex. <LineBreak/><LineBreak/>
@@ -41,8 +38,8 @@
                 VORTEX SOFTWARE AND ANY RELATED DOCUMENTATION is PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OR MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NONINFRINGEMENT. <LineBreak/><LineBreak/>
                 THE ENTIRE RISK ARISING OUT OF USE OR PERFORMANCE OF Vortex SOFTWARE REMAINS WITH YOU. <LineBreak/>
                 NO LIABILITY FOR CONSEQUENTIAL DAMAGES.<LineBreak/><LineBreak/> 
-                IN NO EVENT SHALL ONLINE MEDIA TECHNOLOGIES LTD BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OR OF INABILITY TO USE Vortex SOFTWARE.<LineBreak/><LineBreak/>
-                COPYRIGHT NOTICE. Copyright(C) 2011 Online Media Technologies Ltd, All rights reserved. <LineBreak/><LineBreak/>
+                IN NO EVENT SHALL SLT-INTEGRITY BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OR OF INABILITY TO USE Vortex SOFTWARE.<LineBreak/><LineBreak/>
+                COPYRIGHT NOTICE. Copyright(C) 2011 SLT-INTEGRITY, All rights reserved. <LineBreak/><LineBreak/>
                 Any rights not expressly granted herein are reserved.
             </TextBlock>
             </ScrollViewer>
@@ -62,7 +59,7 @@
             <TextBlock Foreground="#6666cc" FontSize="18" Canvas.Left="374" TextAlignment="Center" Text="Get Started !" Canvas.Top="135" Width="150"/>
             <WrapPanel Canvas.Left="275" Canvas.Top="180">
                 <TextBlock  Text=" Product Key .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                <TextBox Width="310"/>
+                <TextBox Width="310" Padding="2 1 0 0"/>
             </WrapPanel>
             <WrapPanel Canvas.Left="312" Canvas.Top="215">
                 <TextBlock  Text=" Server Name .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
@@ -70,15 +67,15 @@
             </WrapPanel>
             <WrapPanel Canvas.Left="335" Canvas.Top="245">
                 <TextBlock  Text=" Database .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                <TextBox Name="databaseBox" Width="210"/>
+                <TextBox Name="databaseBox" Width="210" Padding="2 1 0 0"/>
             </WrapPanel>
             <WrapPanel Canvas.Left="324" Canvas.Top="275">
                 <TextBlock  Text=" User Name .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                <TextBox Width="210" Name="UserNameBox"/>
+                <TextBox Width="210" Name="UserNameBox" Padding="2 1 0 0"/>
             </WrapPanel>
             <WrapPanel Canvas.Left="334" Canvas.Top="305">
                 <TextBlock  Text=" Password .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                <PasswordBox Width="210" Name="PasswordBox"/>
+                <PasswordBox Width="210" Name="PasswordBox" Padding="2 1 0 0"/>
             </WrapPanel>
         </Canvas>
         <Canvas Name="Step3" Visibility="Collapsed">
@@ -87,7 +84,7 @@
                 <TextBlock  Text=" Directory .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
                 <Canvas>
                     <Rectangle Stroke="DarkGray" Width="210" Height="22"/>
-                    <TextBlock Name="DirectoryPath" Padding="3 2 0 0" Width="210" Height="22"/>
+                    <TextBlock Name="DirectoryPath" Padding="4 2 0 0" Width="210" Height="22"/>
                 </Canvas>
                 <Button Margin="220 0 0 0" ToolTip="Browse Directory" Click="Browse_Directory" Style="{DynamicResource 1}">
                     <Path Data="F1M2.467,18.037C2.467,18.037 2.467,19.519 2.467,19.519 2.467,19.519 6.933,19.519 6.933,19.519 6.933,19.519 6.933,18.037 6.933,18.037 6.933,18.037 2.467,18.037 2.467,18.037z M1,15.815C1,15.815 23,15.815 23,15.815 23,15.815 23,21 23,21 23,21 1,21 1,21 1,21 1,15.815 1,15.815z M2.467,10.63C2.467,10.63 2.456,12.111 2.456,12.111 2.456,12.111 6.922,12.111 6.922,12.111 6.922,12.111 6.933,10.63 6.933,10.63 6.933,10.63 2.467,10.63 2.467,10.63z M1,8.407C1,8.407 23,8.407 23,8.407 23,8.407 23,13.593 23,13.593 23,13.593 1,13.593 1,13.593 1,13.593 1,8.407 1,8.407z M2.467,3.222C2.467,3.222 2.467,4.715 2.467,4.715 2.467,4.715 6.933,4.715 6.933,4.715 6.933,4.715 6.933,3.222 6.933,3.222 6.933,3.222 2.467,3.222 2.467,3.222z M1,1C1,1 23,1 23,1 23,1 23,6.185 23,6.185 23,6.185 1,6.185 1,6.185 1,6.185 1,1 1,1z" Fill="#FF5B5B5B" Height="22" Width="24"/>
@@ -95,19 +92,19 @@
             </WrapPanel>
             <WrapPanel Canvas.Left="324" Canvas.Top="215">
                 <TextBlock  Text=" User Name .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                <TextBox Width="210" Name="EUserNameBox"/>
+                <TextBox Width="210" Name="EUserNameBox" Padding="2 2 0 0"/>
             </WrapPanel>
             <WrapPanel Canvas.Left="334" Canvas.Top="245">
                 <TextBlock Text=" Password .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                <PasswordBox Name="UserPasswordBox" Width="210"/>
+                <PasswordBox Name="UserPasswordBox" Width="210" Padding="2 2 0 0"/>
             </WrapPanel>
             <WrapPanel Canvas.Left="312" Canvas.Top="275">
                 <TextBlock  Text=" Confirm Pass .: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                <PasswordBox Width="210" Name="UserCPasswordBox"/>
+                <PasswordBox Width="210" Name="UserCPasswordBox" Padding="2 2 0 0"/>
             </WrapPanel>
             <WrapPanel Canvas.Left="296" Canvas.Top="305">
                 <TextBlock  Text=" Company Name.: " Height="22" FontSize="16" FontWeight="Bold" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                <TextBox Width="210" Name="CompanyNameBox"/>
+                <TextBox Width="210" Name="CompanyNameBox" Padding="2 1 0 0"/>
             </WrapPanel>
         </Canvas>
         <Canvas Name="Step4" Visibility="Collapsed">

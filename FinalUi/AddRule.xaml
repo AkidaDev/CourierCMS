@@ -3,54 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:cstmcntrl="clr-namespace:CustomControls;assembly=CustomControls"
 		Icon="Images/logo.ico"
-        Title="Add Rule" Height="360" Width="700" Background="Transparent"
-		ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Normal" BorderBrush="Transparent" AllowsTransparency="True" Padding="20">
+        Title="Costing Rule" Height="310" Width="650" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
 
-    <Grid Height="310" Width="650" Background="#FFF5FFFF">
+    <Grid><!--BackColor-->
         <Grid.RowDefinitions>
-            <RowDefinition Height="26"/>
             <RowDefinition Height="38"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
-        <Grid.Effect>
-            <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
-        </Grid.Effect>
-        <Path Grid.Row="1" VerticalAlignment="Bottom" Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Black" Height="4" Width="237" Margin="181.5,0"/>
-        <Path Grid.Row="1" Margin="183 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Black" Height="24" Width="24"/>
-        <TextBlock Grid.Row="1" Margin="209 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Enter Details .:"/>
-        <TextBlock Grid.Row="1" Name="RateCodeNameBox" FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="40,0,0,1"/>
-        <Grid Name="Step1Grid" Grid.Row="2" VerticalAlignment="Center" Margin="0 5 0 0" Visibility="Visible">
-            <StackPanel>
-                <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Add Service Groups .:" Margin="60 0 0 0"/>
-                <cstmcntrl:TwinListBox Width="500" Height="150" Name="ServiceGroup"/>
-            </StackPanel>
-        </Grid>
-        <Grid Name="Step2Grid" Grid.Row="2" VerticalAlignment="Center" Margin="0 5 0 0" Visibility="Collapsed">
-            <StackPanel>
-                <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Add Service .:" Margin="60 0 0 0"/>
-                <cstmcntrl:TwinListBox Width="500" Height="150" Name="ServiceTwinBox"/>
-            </StackPanel>
-        </Grid>
-        <Grid Name="Step3Grid" Grid.Row="2" VerticalAlignment="Center" Margin="0 5 0 0" Visibility="Collapsed">
-            <StackPanel>
-                <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Add City .:" Margin="60 0 0 0"/>
-                <cstmcntrl:TwinListBox Name="CitiesTwinBox" Width="500" Height="150"/>
-            </StackPanel>
-        </Grid>
-        <Grid Name="Step4Grid" Grid.Row="2" VerticalAlignment="Center" Margin="0 5 0 0" Visibility="Collapsed">
-            <StackPanel>
-                <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Add State .:" Margin="60 0 0 0"/>
-                <cstmcntrl:TwinListBox Name="StateTwinBox" Width="500" Height="150"/>
-            </StackPanel>
-        </Grid>
-        <Grid Name="Step5Grid" Grid.Row="2" VerticalAlignment="Center" Margin="0 5 0 0" Visibility="Collapsed">
-            <StackPanel>
-                <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Add Zone .:" Margin="60 0 0 0"/>
-                <cstmcntrl:TwinListBox Name="ZoneTwinBox" Width="500" Height="150"/>
-            </StackPanel>
-        </Grid>
-        <Grid Name="Step6Grid" Grid.Row="2" Visibility="Collapsed">
+        <Path VerticalAlignment="Bottom" Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Black" Height="4" Width="237" Margin="181.5,0"/>
+        <Path Margin="183 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Black" Height="24" Width="24"/>
+        <TextBlock Margin="209 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Enter Details .:"/>
+        <TextBlock Name="RateCodeNameBox" FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="40,0,0,1"/>
+        <Grid Name="Step1Grid" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="40"/>
@@ -91,7 +56,37 @@
                 <TextBox Name="NDoxStartValueBox" Width="81" Padding="2 2 0 0"/>
             </WrapPanel>
         </Grid>
-        <Grid Name="Step7Grid" Grid.Row="2" VerticalAlignment="Center" Margin="0 5 0 0" Visibility="Collapsed">
+        <Grid Name="Step2Grid" Grid.Row="1" VerticalAlignment="Center" Margin="0 5 0 0" Visibility="Collapsed">
+            <StackPanel>
+                <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Add Service Groups .:" Margin="60 0 0 0"/>
+                <cstmcntrl:TwinListBox Width="500" Height="150" Name="ServiceGroup"/>
+            </StackPanel>
+        </Grid>
+        <Grid Name="Step3Grid" Grid.Row="1" VerticalAlignment="Center" Margin="0 5 0 0" Visibility="Collapsed">
+            <StackPanel>
+                <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Add Service .:" Margin="60 0 0 0"/>
+                <cstmcntrl:TwinListBox Width="500" Height="150" Name="ServiceTwinBox"/>
+            </StackPanel>
+        </Grid>
+        <Grid Name="Step4Grid" Grid.Row="1" VerticalAlignment="Center" Margin="0 5 0 0" Visibility="Collapsed">
+            <StackPanel>
+                <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Add City .:" Margin="60 0 0 0"/>
+                <cstmcntrl:TwinListBox Name="CitiesTwinBox" Width="500" Height="150"/>
+            </StackPanel>
+        </Grid>
+        <Grid Name="Step5Grid" Grid.Row="1" VerticalAlignment="Center" Margin="0 5 0 0" Visibility="Collapsed">
+            <StackPanel>
+                <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Add State .:" Margin="60 0 0 0"/>
+                <cstmcntrl:TwinListBox Name="StateTwinBox" Width="500" Height="150"/>
+            </StackPanel>
+        </Grid>
+        <Grid Name="Step6Grid" Grid.Row="1" VerticalAlignment="Center" Margin="0 5 0 0" Visibility="Collapsed">
+            <StackPanel>
+                <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Add Zone .:" Margin="60 0 0 0"/>
+                <cstmcntrl:TwinListBox Name="ZoneTwinBox" Width="500" Height="150"/>
+            </StackPanel>
+        </Grid>
+        <Grid Name="Step7Grid" Grid.Row="1" VerticalAlignment="Center" Margin="0 5 0 0" Visibility="Collapsed">
             <StackPanel>
                 <TextBlock Foreground="Black" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Details of Rules .:" Margin="40 0 0 0"/>
                 <TextBox BorderThickness="2" Height="100" Width="528" Padding="3 3 0 0"/>
@@ -99,7 +94,7 @@
                 <TextBox Name="RemarkBox" BorderThickness="2" Height="26" Width="528" Padding="3 3 0 0"/>
             </StackPanel>
         </Grid>
-        <Grid Grid.Row="3">
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="107*"/>
                 <ColumnDefinition Width="43*"/>
@@ -107,7 +102,7 @@
             <Button Grid.Column="1" Name="AddRuleButton" Click="AddRuleButton_Click" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 0 20 0">
                 <Button.Content>
                     <WrapPanel Margin="6 1">
-                        <Path  Data="F1M13.455,5.818C13.455,5.818 13.455,9.636 13.455,9.636 13.455,9.636 9.636,9.636 9.636,9.636 9.636,9.636 9.636,11.545 9.636,11.545 9.636,11.545 13.455,11.545 13.455,11.545 13.455,11.545 13.455,15.364 13.455,15.364 13.455,15.364 15.364,15.364 15.364,15.364 15.364,15.364 15.364,11.545 15.364,11.545 15.364,11.545 19.182,11.545 19.182,11.545 19.182,11.545 19.182,9.636 19.182,9.636 19.182,9.636 15.364,9.636 15.364,9.636 15.364,9.636 15.364,5.818 15.364,5.818 15.364,5.818 13.455,5.818 13.455,5.818z M2,5.818C2,5.818 3.909,5.818 3.909,5.818 3.909,5.818 3.909,21.091 3.909,21.091 3.909,21.091 19.182,21.091 19.182,21.091 19.182,21.091 19.182,23 19.182,23 19.182,23 3.909,23 3.909,23 2.859,23 2,22.141 2,21.091 2,21.091 2,5.818 2,5.818z M7.727,2C7.727,2 21.091,2 21.091,2 22.141,2 23,2.859 23,3.909 23,3.909 23,17.273 23,17.273 23,18.323 22.141,19.182 21.091,19.182 21.091,19.182 7.727,19.182 7.727,19.182 6.677,19.182 5.818,18.323 5.818,17.273 5.818,17.273 5.818,3.909 5.818,3.909 5.818,2.859 6.677,2 7.727,2z" Fill="Black" Height="18" Width="18" Stretch="Fill"/>
+                        <Path Name="AddFilter" Data="F1M13.455,5.818C13.455,5.818 13.455,9.636 13.455,9.636 13.455,9.636 9.636,9.636 9.636,9.636 9.636,9.636 9.636,11.545 9.636,11.545 9.636,11.545 13.455,11.545 13.455,11.545 13.455,11.545 13.455,15.364 13.455,15.364 13.455,15.364 15.364,15.364 15.364,15.364 15.364,15.364 15.364,11.545 15.364,11.545 15.364,11.545 19.182,11.545 19.182,11.545 19.182,11.545 19.182,9.636 19.182,9.636 19.182,9.636 15.364,9.636 15.364,9.636 15.364,9.636 15.364,5.818 15.364,5.818 15.364,5.818 13.455,5.818 13.455,5.818z M2,5.818C2,5.818 3.909,5.818 3.909,5.818 3.909,5.818 3.909,21.091 3.909,21.091 3.909,21.091 19.182,21.091 19.182,21.091 19.182,21.091 19.182,23 19.182,23 19.182,23 3.909,23 3.909,23 2.859,23 2,22.141 2,21.091 2,21.091 2,5.818 2,5.818z M7.727,2C7.727,2 21.091,2 21.091,2 22.141,2 23,2.859 23,3.909 23,3.909 23,17.273 23,17.273 23,18.323 22.141,19.182 21.091,19.182 21.091,19.182 7.727,19.182 7.727,19.182 6.677,19.182 5.818,18.323 5.818,17.273 5.818,17.273 5.818,3.909 5.818,3.909 5.818,2.859 6.677,2 7.727,2z" Fill="Black" Height="18" Width="18" Stretch="Fill"/>
                         <TextBlock FontWeight="Bold" Name="AddRuleButtonBox" FontSize="16" FontFamily="Calibri" Text=" Add Rule"/>
                     </WrapPanel>
                 </Button.Content>
@@ -128,13 +123,7 @@
                 </WrapPanel>
             </Button>
         </Grid>
-        <Rectangle Fill="#FFCBCBCB" Height="26" Width="650" Stretch="Fill" Stroke="Black"/>
-        <TextBlock Name="TitleBox" FontSize="16" TextAlignment="Center" VerticalAlignment="Center" Text="Add Costing Rule" FontFamily="Arial" Margin="0,4,0,3"/>
-        <Rectangle MouseDown="DragthisWindow" Fill="Transparent" Height="26" Width="650" Stretch="Fill"/>
-        <Button ToolTip="Close" Height="18" HorizontalAlignment="Right" Click="Button_Click_Close" Width="35" Style="{StaticResource 1}" Margin="0 0 4 0">
-            <Path Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" Width="15" Height="15"/>
-        </Button>
-        <Button Grid.Row="1" Click="Help_Click" Style="{StaticResource 1}" HorizontalAlignment="Right" Margin="0,15,15,0" VerticalAlignment="Top" Grid.RowSpan="2">
+        <Button Click="Help_Click" Style="{StaticResource 1}" HorizontalAlignment="Right" Margin="0,15,15,0" VerticalAlignment="Top" Grid.RowSpan="2">
             <Button.Content>
                 <WrapPanel Margin="7 4">
                     <Path x:Name="help" Data="F1M10.9,17.5C10.9,17.5 10.9,19.7 10.9,19.7 10.9,19.7 13.1,19.7 13.1,19.7 13.1,19.7 13.1,17.5 13.1,17.5 13.1,17.5 10.9,17.5 10.9,17.5z M12,4.3C9.58,4.3 7.6,6.28 7.6,8.7 7.6,8.7 9.8,8.7 9.8,8.7 9.8,7.49 10.79,6.5 12,6.5 13.21,6.5 14.2,7.49 14.2,8.7 14.2,9.36 13.98,9.91 13.54,10.24 13.54,10.24 12.22,11.67 12.22,11.67 11.34,12.44 10.9,13.54 10.9,14.75 10.9,14.75 10.9,15.3 10.9,15.3 10.9,15.3 13.1,15.3 13.1,15.3 13.1,13.65 13.54,12.99 14.42,12.22 14.42,12.22 15.41,11.23 15.41,11.23 15.96,10.57 16.4,9.69 16.4,8.7 16.4,6.28 14.42,4.3 12,4.3z M12,1C18.05,1 23,5.95 23,12 23,18.05 18.05,23 12,23 5.95,23 1,18.05 1,12 1,5.95 5.95,1 12,1z" Fill="#FF5061B0" Height="18" Width="18" Stretch="Fill"/>

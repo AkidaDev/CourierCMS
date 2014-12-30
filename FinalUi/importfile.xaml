@@ -2,20 +2,16 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Icon="Images/logo.ico"
-        Title="Import File" Height="300" Width="450" Background="Transparent"
-		ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Normal" BorderBrush="Transparent" AllowsTransparency="True" >
-    <Grid Height="250" Width="400" Background="#FFF5FFFF">
+        Title="Import File" Height="250" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+    
+    <Grid><!--BackColor-->
         <Grid.RowDefinitions>
-            <RowDefinition Height="26"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
-        <Grid.Effect>
-            <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
-        </Grid.Effect>
-        <WrapPanel Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+        <WrapPanel Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <Button Click="Button_Click" Canvas.Left="30" Canvas.Top="51" Style="{DynamicResource window}">
                 <WrapPanel>
                     <Button Name="BrowseButton" Click="BrowseButton_Click">
@@ -29,18 +25,12 @@
             </Button>
 
         </WrapPanel>
-        <ProgressBar Name ="Analyzeprogress" Visibility="Hidden" Grid.Row="3" Height="24" Width="350" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="#FF8C84BD"/>
-        <Button Name="StartLoadingButton" Click="StartLoadingButton_Click" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 30 40 0">
+        <ProgressBar Name ="Analyzeprogress" Visibility="Hidden" Grid.Row="2" Height="24" Width="350" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="#FF8C84BD"/>
+        <Button Name="StartLoadingButton" Click="StartLoadingButton_Click" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 30 40 0">
             <WrapPanel  Margin="6 1">
                     <Path Data="F1M13.222,1C13.222,1 21,1 21,1 21,1 21,8.778 21,8.778 21,8.778 18.778,8.778 18.778,8.778 18.778,8.778 18.778,4.778 18.778,4.778 18.778,4.778 7.889,15.667 7.889,15.667 7.889,15.667 6.333,14.111 6.333,14.111 6.333,14.111 17.222,3.222 17.222,3.222 17.222,3.222 13.222,3.222 13.222,3.222 13.222,3.222 13.222,1 13.222,1z M3.222,1C3.222,1 11,1 11,1 11,1 11,3.222 11,3.222 11,3.222 3.222,3.222 3.222,3.222 3.222,3.222 3.222,18.778 3.222,18.778 3.222,18.778 18.778,18.778 18.778,18.778 18.778,18.778 18.778,11 18.778,11 18.778,11 21,11 21,11 21,11 21,18.778 21,18.778 21,20 20,21 18.778,21 18.778,21 3.222,21 3.222,21 2,21 1,20 1,18.778 1,18.778 1,3.222 1,3.222 1,2 2,1 3.222,1z" Fill="Black" Height="18" Stretch="Fill" Canvas.Left="242" Canvas.Top="185" Width="18"/>
                     <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text=" Start"/>
                 </WrapPanel>
-        </Button>
-        <Rectangle Fill="#FFCBCBCB" Height="26" Width="400" Stretch="Fill" Stroke="Black"/>
-        <TextBlock FontSize="16" TextAlignment="Center" VerticalAlignment="Center" Text="Import File" FontFamily="Arial"/>
-        <Rectangle MouseDown="DragthisWindow" Fill="Transparent" Height="26" Width="400" Stretch="Fill"/>
-        <Button ToolTip="Close" Height="18" HorizontalAlignment="Right" Margin="0 0 4 0" Click="Button_Click_Close" Width="35" Style="{StaticResource 1}">
-            <Path Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" Width="15" Height="15"/>
         </Button>
     </Grid>
 </Window>

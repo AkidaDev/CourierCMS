@@ -12,16 +12,16 @@
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.75*"></ColumnDefinition>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="94"/>
-            <ColumnDefinition Width="0.75*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <ListBox Name="AllListBox" SelectionMode="Multiple" DataContext="{StaticResource NetList}" ItemsSource="{Binding}" Grid.Column="0"/>
-        <StackPanel Grid.Column="1" VerticalAlignment="Center">
-            <Button Name="SelectSelectedButton" Click="SelectSelectedButton_Click" Content="Add >" Margin="2 4 2 4"/>
-            <Button Name="SelectAllButton" Click="SelectAllButton_Click" Content="Add All >>" Margin="2"/>
-            <Button Name="DeSelectAllButton" Click="DeSelectAllButton_Click" Content="&lt;&lt; Remove All" Margin="2"/>
-            <Button Name="DeSelectSelectededButton" Content="&lt; Remove" Margin="2 4 2 4" Click="DeSelectSelectededButton_Click"/>
+        <StackPanel Grid.Column="1" VerticalAlignment="Center" Width="73">
+            <Button Name="SelectSelectedButton" Click="SelectSelectedButton_Click" Content="Add >" Margin="2 6"/>
+            <Button ToolTip="Add All" Name="SelectAllButton" Click="SelectAllButton_Click" Content="Add >>" Margin="2"/>
+            <Button ToolTip="Remove All" Name="DeSelectAllButton" Click="DeSelectAllButton_Click" Content="&lt;&lt; Remove " Margin="2"/>
+            <Button Name="DeSelectSelectededButton" Content="&lt; Remove" Margin="2 6" Click="DeSelectSelectededButton_Click"/>
         </StackPanel>
         <ListBox SelectionMode="Multiple" Grid.Column="2" Name="SelectedList" DataContext="{StaticResource SelectedList}" ItemsSource="{Binding}"/>
     </Grid>

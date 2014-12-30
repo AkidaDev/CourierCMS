@@ -5,5 +5,10 @@
     <Window.Resources>
         <CollectionViewSource x:Key="ListSource" CollectionViewType="ListCollectionView"/>
     </Window.Resources>
-    <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" DataContext="{StaticResource ListSource}" ItemsSource="{Binding}" Name="UnassignedLists" Background="#FFF5FFFF"/>
+    <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" DataContext="{StaticResource ListSource}" ItemsSource="{Binding}" Name="UnassignedLists"/>
+    <!--<DataGrid Name="UnassignedLists" CanUserDeleteRows="False" ItemsSource="{Binding}" DataContext="{StaticResource ListSource}" SelectionMode="Single" HeadersVisibility="Column">
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="Stock list" Binding="{Binding }" Width="*"/>
+        </DataGrid.Columns>
+    </DataGrid>-->
 </Window>

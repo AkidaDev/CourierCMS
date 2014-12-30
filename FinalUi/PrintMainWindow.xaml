@@ -1,9 +1,16 @@
 ﻿<Window x:Class="FinalUi.PrintMainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="PrintMainWindow" WindowState="Maximized"
+        Title="PrintMainWindow" WindowState="Maximized" Background="Turquoise"
          xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms" >
-    <WindowsFormsHost>
-        <rv:ReportViewer x:Name="BillViewer" ShowContextMenu="True" ShowExportButton="True" ></rv:ReportViewer>
-    </WindowsFormsHost>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <WindowsFormsHost>
+            <rv:ReportViewer x:Name="BillViewer" ShowContextMenu="True" ShowExportButton="True"/>
+        </WindowsFormsHost>
+        <StackPanel Grid.Row="1" Background="#A9FFFFF3"/>
+    </Grid>
 </Window>

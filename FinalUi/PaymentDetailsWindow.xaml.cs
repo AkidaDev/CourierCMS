@@ -77,14 +77,6 @@ namespace FinalUi
             }
 
         }
-		private void DragthisWindow(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
-        private void Button_Click_Close(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
 
         private void DeleteInvoiceButton_Click(object sender, RoutedEventArgs e)
         {

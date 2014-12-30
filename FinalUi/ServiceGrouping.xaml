@@ -2,40 +2,30 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:cstmcntrl="clr-namespace:CustomControls;assembly=CustomControls"
-		Icon="Images/logo.ico"
-        Title="ServiceGrouping" WindowStartupLocation="CenterScreen" Height="350" Width="650" WindowStyle="None" AllowsTransparency="True" Background="Transparent" ResizeMode="NoResize">
+		Icon="Images/logo.ico" Height="300" Width="600"
+        Title="Service Grouping" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
 
-    <Grid  Height="300" Width="600" Background="#FFF5FFFF">
+    <Grid><!--BackColor-->
         <Grid.RowDefinitions>
-            <RowDefinition Height="26"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="35"/>
         </Grid.RowDefinitions>
-        <Grid.Effect>
-            <DropShadowEffect BlurRadius="10" Direction="314" RenderingBias="Quality" ShadowDepth="0"/>
-        </Grid.Effect>
-        <Path Grid.Row="1" VerticalAlignment="Bottom" Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Black" Height="4" Width="237"/>
-        <Path Grid.Row="1" Margin="158 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Black" Height="24" Width="24"/>
-        <TextBlock Grid.Row="1" Margin="184 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Enter Details .:"/>
-        <WrapPanel Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+        <Path VerticalAlignment="Bottom" Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Black" Height="4" Width="237"/>
+        <Path Margin="158 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Black" Height="24" Width="24"/>
+        <TextBlock Margin="184 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Enter Details .:"/>
+        <WrapPanel Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <Path Data="F1M2.375,13.893C2.375,13.893 12,18.643 12,18.643 12,18.643 21.625,13.893 21.625,13.893 21.625,13.893 23,14.571 23,14.571 23,14.571 12,20 12,20 12,20 1,14.571 1,14.571 1,14.571 2.375,13.893 2.375,13.893z M2.375,11.179C2.375,11.179 12,15.929 12,15.929 12,15.929 21.625,11.179 21.625,11.179 21.625,11.179 23,11.857 23,11.857 23,11.857 12,17.286 12,17.286 12,17.286 1,11.857 1,11.857 1,11.857 2.375,11.179 2.375,11.179z M2.375,8.464C2.375,8.464 12,13.214 12,13.214 12,13.214 21.625,8.464 21.625,8.464 21.625,8.464 23,9.143 23,9.143 23,9.143 12,14.571 12,14.571 12,14.571 1,9.143 1,9.143 1,9.143 2.375,8.464 2.375,8.464z M12,1C12,1 23,6.429 23,6.429 23,6.429 12,11.857 12,11.857 12,11.857 1,6.429 1,6.429 1,6.429 12,1 12,1z" Fill="Black" Height="21" Width="24"/>
             <TextBlock  Text=" Group Name .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
             <TextBox Width="300" Padding="2 2 0 0"/>
         </WrapPanel>
-        <cstmcntrl:TwinListBox Grid.Row="3" Width="500" Height="150" Name="ServiceTwinBox" VerticalAlignment="Bottom" Margin="0 0 0 6"/>
-        <Button Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Top" Name="SubmitButton" Click="SubmitButton_Click" Margin="0 0 15 0">
+        <cstmcntrl:TwinListBox Grid.Row="2" Width="500" Height="150" Name="ServiceTwinBox" VerticalAlignment="Bottom" Margin="0 0 0 6"/>
+        <Button Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Top" Name="SubmitButton" Click="SubmitButton_Click" Margin="0 0 15 0">
             <WrapPanel Margin="6 1">
                 <Path Data="F1M10.909,23C10.909,23 2,14.224 2,14.224 2,14.224 4.227,12.03 4.227,12.03 4.227,12.03 10.909,18.612 10.909,18.612 10.909,18.612 27.773,2 27.773,2 27.773,2 30,4.194 30,4.194 30,4.194 10.909,23 10.909,23z" Fill="Black" Height="17" Width="23" Stretch="Fill"/>
                 <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text=" Save"/>
             </WrapPanel>
-        </Button>
-        <Rectangle Fill="#FFCBCBCB" Height="26" Width="600" Stretch="Fill" Stroke="Black"/>
-        <TextBlock Name="AddUpdateTitle" FontSize="16" TextAlignment="Center" VerticalAlignment="Center" Text="Service Grouping" FontFamily="Arial"/>
-        <Rectangle MouseDown="DragthisWindow" Fill="Transparent" Height="26" Width="600" Stretch="Fill"/>
-        <Button ToolTip="Close" Height="18" HorizontalAlignment="Right" Margin="0 0 4 0" Click="Button_Click_Close" Width="35" Style="{StaticResource 1}">
-            <Path Data="F1M14,12.8C14,12.8 12.8,14 12.8,14 12.8,14 8,9.2 8,9.2 8,9.2 3.2,14 3.2,14 3.2,14 2,12.8 2,12.8 2,12.8 6.8,8 6.8,8 6.8,8 2,3.2 2,3.2 2,3.2 3.2,2 3.2,2 3.2,2 8,6.8 8,6.8 8,6.8 12.8,2 12.8,2 12.8,2 14,3.2 14,3.2 14,3.2 9.2,8 9.2,8 9.2,8 14,12.8 14,12.8z" Fill="Black" Width="15" Height="15"/>
         </Button>
     </Grid>
 </Window>

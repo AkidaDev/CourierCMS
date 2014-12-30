@@ -3,10 +3,6 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
        StartupUri="Load.xaml" >
     <Application.Resources>
-        <ImageBrush ImageSource="Images/search.png" x:Key="search"/>
-        <ImageBrush ImageSource="Images/button.png" x:Key="button"/>
-        <ImageBrush ImageSource="Images/button1.png" x:Key="button1"/>
-
         <Style TargetType="Button" x:Key="CloseButton">
             <Setter Property="Template">
                 <Setter.Value>
@@ -25,38 +21,6 @@
                                 </Style>
                             </Path.Style>
                         </Path>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style TargetType="Button" x:Key="all">
-            <Setter Property="SnapsToDevicePixels" Value="true"/>
-            <Setter Property="OverridesDefaultStyle" Value="true"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Name="Border" CornerRadius="0" BorderThickness="0" Background="{DynamicResource button}" BorderBrush="Transparent">
-                            <ContentPresenter Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsKeyboardFocused" Value="true">
-                                <Setter TargetName="Border" Property="BorderBrush" Value="#202020"/>
-                            </Trigger>
-                            <Trigger Property="IsDefaulted" Value="true">
-                                <Setter TargetName="Border" Property="BorderBrush" Value="#202020"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="Border" Property="Background" Value="{DynamicResource search}"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter TargetName="Border" Property="Background" Value="{DynamicResource button1}"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter TargetName="Border" Property="Background" Value="#28000000"/>
-                                <Setter TargetName="Border" Property="BorderBrush" Value="#AAAAAA"/>
-                                <Setter Property="Foreground" Value="#FFFFFF"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -131,35 +95,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style TargetType="Button" x:Key="Sheet_button">
-            <Setter Property="SnapsToDevicePixels" Value="true"/>
-            <Setter Property="OverridesDefaultStyle" Value="true"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Name="Border" CornerRadius="0" BorderThickness="0" Background="Transparent" BorderBrush="Transparent">
-                            <ContentPresenter Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsKeyboardFocused" Value="true">
-                                <Setter TargetName="Border" Property="BorderBrush" Value="#202020"/>
-                            </Trigger>
-                            <Trigger Property="IsDefaulted" Value="true">
-                                <Setter TargetName="Border" Property="BorderBrush" Value="#202020"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="Border" Property="Background" Value="Transparent"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter TargetName="Border" Property="Background" Value="#FF4169E1"/>
-                                <Setter TargetName="Border" Property="BorderBrush" Value="#AAAAAA"/>
-                                <Setter Property="Foreground" Value="#FFCF2B2B"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
         <Style TargetType="Button" x:Key="window">
             <Setter Property="SnapsToDevicePixels" Value="true"/>
             <Setter Property="OverridesDefaultStyle" Value="true"/>
@@ -175,27 +110,6 @@
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
                                 <Setter TargetName="Border" Property="Background" Value="Transparent"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style TargetType="Button" x:Key="Close">
-            <Setter Property="SnapsToDevicePixels" Value="true"/>
-            <Setter Property="OverridesDefaultStyle" Value="true"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Name="Border" CornerRadius="0" BorderThickness="0" Background="#FFB44A4A">
-                            <ContentPresenter Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="Border" Property="Background" Value="Red"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter TargetName="Border" Property="Background" Value="#FFB90000"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -221,15 +135,15 @@
                     <ControlTemplate TargetType="{x:Type ToggleButton}">
                         <Border Height="16" Width="16" BorderBrush="White" BorderThickness="2" Background="Transparent">
                             <Canvas Name="ExpandPath">
-                                <Rectangle x:Name="virticalbar" Canvas.Top="2" Canvas.Left="5" Width="2" Height="8" Fill="White"></Rectangle>
-                                <Rectangle Canvas.Left="2" Canvas.Top="5" Width="8" Height="2" Fill="White"></Rectangle>
+                                <Rectangle x:Name="virticalbar" Canvas.Top="2" Canvas.Left="5" Width="2" Height="8" Fill="White"/>
+                                <Rectangle Canvas.Left="2" Canvas.Top="5" Width="8" Height="2" Fill="White"/>
                             </Canvas>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                             </Trigger>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter Property="Visibility" TargetName="virticalbar" Value="Hidden"></Setter>
+                                <Setter Property="Visibility" TargetName="virticalbar" Value="Hidden"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -248,7 +162,7 @@
                     <ControlTemplate TargetType="{x:Type TreeViewItem}">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition MinWidth="19" Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -269,7 +183,14 @@
                                 <Setter Property="Visibility" TargetName="Expander" Value="Hidden"/>
                             </Trigger>
                             <Trigger Property="IsSelected" Value="true">
-                                <Setter Property="Background" TargetName="Bd" Value="#3f3f46"/>
+                                <Setter Property="Background" TargetName="Bd">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF636364" Offset="0"/>
+                                            <GradientStop Color="#FF3F3F46" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
                                 <Setter Property="Foreground" Value="White"/>
                             </Trigger>
                             <MultiTrigger>
@@ -288,6 +209,38 @@
                 </Setter.Value>
             </Setter>
             <Style.Triggers>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type DataGrid}">
+            <Setter Property="RowHeaderWidth" Value="0"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="IsTextSearchEnabled" Value="True"/>
+            <Setter Property="IsTextSearchCaseSensitive" Value="False"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="AlternatingRowBackground" Value="#FFF0F6F7"/>
+            <Setter Property="VerticalGridLinesBrush" Value="LightGray"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="LightGray"/>
+        </Style>
+        <Style TargetType="{x:Type DataGridCell}">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF9696FF" Offset="0"/>
+                                <GradientStop Color="#FF6666cc" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
             </Style.Triggers>
         </Style>
     </Application.Resources>
