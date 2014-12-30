@@ -26,7 +26,7 @@ namespace FinalUi
         {
             InitializeComponent();
             BillingDataDataContext db = new BillingDataDataContext();
-            ClientList = db.Clients.ToList();
+            ClientList = DataSources.ClientCopy.ToList();
             CollectionViewSource clientListSource = (CollectionViewSource)(FindResource("ClientList"));
             clientListSource.Source = ClientList;
         }
