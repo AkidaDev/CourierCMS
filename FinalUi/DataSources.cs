@@ -131,5 +131,14 @@ namespace FinalUi
             refreshEmployeeList();
             refreshStockList();
         }
+        public static void  UnloadAllData()
+        {
+            _Services = null;
+            _Zones = null;
+            _Stocks = null;
+            _States = null;
+            _Client = null;
+            _Employee = null;
+        }
     }
 }

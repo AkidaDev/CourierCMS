@@ -20,7 +20,6 @@ namespace FinalUi
                 _isSuper = value;
             }
         }
-       
         public static bool hasPermission(Guid id, string permission)
         {
             if (isSuper)
@@ -36,8 +35,8 @@ namespace FinalUi
             BillingDataDataContext db = new BillingDataDataContext();
             permisstionList = db.Permissions.ToList();
             userpermissionList = new List<Permission>();
-          
-            if (db.Employees.Where(x => x.UserName == userName && x.Password == Password).AsEnumerable().Where(y=>y.UserName == userName && y.Password == Password).Count() == 1)
+           
+            if (db.Employees.Where(x => x.UserName == userName && x.Password == Password).AsEnumerable().Where(y=>y.UserName == userName && y.Password == Password && y.Status == 'A').Count() == 1)
             {
                 employee = db.Employees.Where(x => x.UserName == userName).FirstOrDefault();
                 _currentUser = employee.UserName;
@@ -61,6 +60,7 @@ namespace FinalUi
                 employee = db.Employees.Where(x => x.Id == employee.Id).FirstOrDefault();
                 _currentUser = employee.UserName;
                 userpermissionList = employee.User_permissions.Select(x => x.Permission).ToList();
+                DataSources.UnloadAllData();
             }
         }
         public static string currentUserName
