@@ -356,7 +356,6 @@ namespace FinalUi
         #region SaveCommand
         private void CanExecuteSaveCommand(object sender, CanExecuteRoutedEventArgs e)
         {
-            Debug.WriteLine("Here In");
             if (dataGridHelper != null)
             {
                 if (dataGridHelper.getCurrentDataStack == null || SaveWorker.IsBusy == true || LoadWorker.IsBusy == true)
@@ -368,7 +367,6 @@ namespace FinalUi
             }
             else
                 e.CanExecute = false;
-            Debug.WriteLine("Here Out");
         }
         private void ExecuteSaveCommand(object sender, ExecutedRoutedEventArgs e)
         {
@@ -1309,6 +1307,18 @@ namespace FinalUi
         {
             importfile importFileWindow = new importfile();
             importFileWindow.Show();
+        }
+
+        private void RecalculateButton_Click(object sender, RoutedEventArgs e)
+        {
+            RecalculatePriceWindow win = new RecalculatePriceWindow();
+            win.Show();
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            RecalculatePriceWindow win = new RecalculatePriceWindow();
+            win.ShowDialog();
         }
     }
 }

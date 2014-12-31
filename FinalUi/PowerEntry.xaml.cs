@@ -116,7 +116,6 @@ namespace FinalUi
         {
             Client client = DataSources.ClientCopy.FirstOrDefault(x => x.CLCODE == clientCodeSelectedValue);
             errorNos = "";
-            Debug.WriteLine("inside do work");
             if (startCOnnNoIndex <= endConnNoIndex && startCOnnNoIndex != -1 && endConnNoIndex != -1)
             {
                 int total = endConnNoIndex - startCOnnNoIndex;
