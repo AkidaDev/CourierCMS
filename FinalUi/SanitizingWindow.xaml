@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		Icon="Images/logo.ico"
-        Title="Data Entry" Height="598" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+        Title="Data Entry" Height="590" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Window.Resources>
         <CollectionViewSource x:Key="CustomerNameList" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="ConsignmentNumbers" CollectionViewType="ListCollectionView"/>
@@ -13,8 +13,7 @@
         <CollectionViewSource x:Key="ConsignerListSource" CollectionViewType="ListCollectionView"/>
     </Window.Resources>
 
-    <Grid>
-        <!--BackColor-->
+    <Grid><!--BackColor-->
         <Grid.RowDefinitions>
             <RowDefinition Height="36"/>
             <RowDefinition Height="60"/>
@@ -90,24 +89,24 @@
                 <ComboBoxItem Content="AC"/>
             </ComboBox>
             <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
-            <TextBlock Text="DOX type .: " Canvas.Left="407" Canvas.Top="317" FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
-            <ComboBox Canvas.Left="496" Width="80" Canvas.Top="310" Name="DoxCombobox">
+            <TextBlock Text="DOX type .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
+            <ComboBox Width="80" Name="DoxCombobox">
                 <ComboBoxItem Content="Non Dox"/>
                 <ComboBoxItem Content="Dox"/>
             </ComboBox>
         </WrapPanel>
-        <WrapPanel Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="  Height(cm) .: " VerticalAlignment="Bottom"/>
-            <TextBox Height="26" Name="HeightPacketBox" Width="40" Padding="2"/>
+        <WrapPanel Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="  Height(cm) .: " VerticalAlignment="Bottom" Margin="45 0 0 0"/>
+            <TextBox Height="26" Name="HeightPacketBox" Width="50" Padding="2"/>
             <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Width(cm) .: " VerticalAlignment="Bottom"/>
-            <TextBox Name="WidthPacketBox" Height="26" Width="40" Padding="2"/>
+            <TextBox Name="WidthPacketBox" Height="26" Width="50" Padding="2"/>
             <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Lenght(cm) .: " VerticalAlignment="Bottom"/>
-            <TextBox Name="LenghtPacketBox" Height="26" Width="40" Padding="2"/>
+            <TextBox Name="LenghtPacketBox" Height="26" Width="50" Padding="2"/>
             <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Divider.: " VerticalAlignment="Bottom"/>
-            <TextBox  Name="DivisorBox" LostFocus="LenghtPacketBox_LostFocus" Height="26" Width="40" Padding="2"/>
+            <TextBox  Name="DivisorBox" LostFocus="LenghtPacketBox_LostFocus" Height="26" Width="50" Padding="2"/>
             <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
             <TextBlock Name="NetWeightBlock" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="0kg" VerticalAlignment="Bottom"/>
           </WrapPanel>

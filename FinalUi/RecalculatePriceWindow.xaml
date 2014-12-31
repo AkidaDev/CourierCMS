@@ -33,10 +33,10 @@
         <WrapPanel Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <cstmcntrl:PandaCheckbox  Name="ConnsignmentNoCheckBox" Checked="False" VerticalAlignment="Center" Margin="0 2 20 0"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="From ConnNo .: " VerticalAlignment="Bottom"/>
-            <TextBox Name="FromConnNoTextBox" Width="110"/>
+            <TextBox Name="FromConnNoTextBox" Width="110" Height="23" Padding="2"/>
             <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="To ConnNo .: " VerticalAlignment="Bottom"/>
-            <TextBox Name="ToConnNoTextBox" Margin=" 5 0 0 0" Width="110"/>
+            <TextBox Name="ToConnNoTextBox" Margin=" 5 0 0 0" Width="110" Height="23" Padding="2"/>
         </WrapPanel>
         <ProgressBar Grid.Row="4" Name="ProgressBarTask" Minimum="0" Maximum="100" Value="0" Height="26" Width="350" HorizontalAlignment="Left" Margin="25 0 0 0" Foreground="#FF8C84BD"/>
         <Button Grid.Row="4" Name="ClickButton" Click="Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 25 0">

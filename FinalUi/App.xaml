@@ -183,14 +183,7 @@
                                 <Setter Property="Visibility" TargetName="Expander" Value="Hidden"/>
                             </Trigger>
                             <Trigger Property="IsSelected" Value="true">
-                                <Setter Property="Background" TargetName="Bd">
-                                    <Setter.Value>
-                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                            <GradientStop Color="#FF909093" Offset="0"/>
-                                            <GradientStop Color="#FF68686C" Offset="1"/>
-                                        </LinearGradientBrush>
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property="Background" TargetName="Bd" Value="#28000000"/>
                                 <Setter Property="Foreground" Value="White"/>
                             </Trigger>
                             <MultiTrigger>
