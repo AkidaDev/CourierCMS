@@ -303,7 +303,7 @@ namespace FinalUi
             fillAllElements(ConnsignmentNumber.Text);
 
             ConnsignmentNumber.Focus();
-        
+
         }
         private void ConnsignmentNumber_KeyUp(object sender, KeyEventArgs e)
         {
@@ -405,11 +405,17 @@ namespace FinalUi
             ConsgineeName.Text = data.ConsigneeName ?? "";
             ConsignerAddress.Text = data.ConsignerAddress ?? "";
             ConsignerName.Text = data.ConsignerName ?? "";
+
+            HeightPacketBox.Text = "0";
+            WidthPacketBox.Text = "0";
+            LenghtPacketBox.Text = "0";
+            NetWeightBlock.Text = "0Kg";
+
             if (data.SubClient != "" && data.SubClient != null)
             {
                 SubClientComboBox.Text = data.SubClient;
             }
-            if(data.ConsigneeName != "" && data.ConsigneeName != null)
+            if (data.ConsigneeName != "" && data.ConsigneeName != null)
             {
                 this.ConsgineeName.Text = data.ConsigneeName;
             }
@@ -514,6 +520,31 @@ namespace FinalUi
         {
             if (e.Key == Key.Tab)
                 SubmitSanitizingDetails_Click(null, null);
+        }
+
+        private void LenghtPacketBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            double lenght, height, width, divisor, netweight;
+            if (!double.TryParse(LenghtPacketBox.Text, out lenght))
+                lenght = 0;
+            if (!double.TryParse(WidthPacketBox.Text, out width))
+                width = 0;
+            if (!double.TryParse(HeightPacketBox.Text, out height))
+                height = 0;
+            if (!double.TryParse(DivisorBox.Text, out divisor))
+                divisor = 0;
+            if (divisor != 0)
+            {
+                netweight = (lenght * width * height / divisor);
+                NetWeightBlock.Text = netweight.ToString() + " Kg";
+            }
+            else
+                netweight = 0;
+            double fileWeight;
+            if (!double.TryParse(WeightAccToDTDC.Text, out fileWeight))
+                fileWeight = 0;
+            netweight = netweight > fileWeight ? netweight : fileWeight;
+            BilledWeightTextBox.Text = netweight.ToString();
         }
     }
 }
