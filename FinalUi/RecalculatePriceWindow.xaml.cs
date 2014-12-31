@@ -130,13 +130,13 @@ namespace FinalUi
             }
             string ClientCode = ((Client)ClientComboBox.SelectedItem).CLCODE;
             Func<Transaction, bool> whereQuery = x => x.CustCode == ClientCode;
-            if (DateCheckBox.IsChecked == true || ConnsignmentNoCheckBox.IsChecked == true)
+            if (DateCheckBox.Checked == true || ConnsignmentNoCheckBox.Checked == true)
             {
-                if (DateCheckBox.IsChecked == true)
+                if (DateCheckBox.Checked== true)
                     isSortingByDate = true;
                 else
                     isSortingByDate = false;
-                if (ConnsignmentNoCheckBox.IsChecked == true)
+                if (ConnsignmentNoCheckBox.Checked == true)
                     isSortingByConnNo = true;
                 else
                     isSortingByConnNo = false;
