@@ -186,8 +186,8 @@
                                 <Setter Property="Background" TargetName="Bd">
                                     <Setter.Value>
                                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                            <GradientStop Color="#FF636364" Offset="0"/>
-                                            <GradientStop Color="#FF3F3F46" Offset="1"/>
+                                            <GradientStop Color="#FF909093" Offset="0"/>
+                                            <GradientStop Color="#FF68686C" Offset="1"/>
                                         </LinearGradientBrush>
                                     </Setter.Value>
                                 </Setter>
@@ -233,8 +233,8 @@
                     <Setter Property="Background">
                         <Setter.Value>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FF9696FF" Offset="0"/>
-                                <GradientStop Color="#FF6666cc" Offset="1"/>
+                                <GradientStop Color="#FF9898FF" Offset="0.172"/>
+                                <GradientStop Color="#FF6969EA" Offset="1"/>
                             </LinearGradientBrush>
                         </Setter.Value>
                     </Setter>
