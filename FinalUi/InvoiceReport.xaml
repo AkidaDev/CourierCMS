@@ -22,7 +22,7 @@
             </WrapPanel>
             <WrapPanel Margin="0 10 0 0" HorizontalAlignment="Center">
                 <ProgressBar Name="Analyzeprogress" Height="23" Width="425" Visibility="Hidden" Foreground="#FF8C84BD"/>
-                <Button Content="Open" Name="OpenButton" Click="OpenButton_Click" Width="70" Margin="10 0 0 0"/>
+                <Button Content="Evaluate" Name="OpenButton" Click="OpenButton_Click" Width="70" Margin="10 0 0 0"/>
             </WrapPanel>
         </StackPanel>
         <DataGrid Visibility="Visible" AutoGenerateColumns="False" Grid.Row="1" ItemsSource="{Binding}" DataContext="{StaticResource ResultData}">
