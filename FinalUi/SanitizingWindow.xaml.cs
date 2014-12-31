@@ -409,7 +409,7 @@ namespace FinalUi
             HeightPacketBox.Text = "0";
             WidthPacketBox.Text = "0";
             LenghtPacketBox.Text = "0";
-            NetWeightBlock.Text = "0Kg";
+            NetWeightBlock.Text = "0";
 
             if (data.SubClient != "" && data.SubClient != null)
             {
@@ -536,7 +536,7 @@ namespace FinalUi
             if (divisor != 0)
             {
                 netweight = (lenght * width * height / divisor);
-                NetWeightBlock.Text = netweight.ToString() + " Kg";
+                NetWeightBlock.Text = netweight.ToString();
             }
             else
                 netweight = 0;

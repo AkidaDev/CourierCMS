@@ -48,7 +48,8 @@ namespace FinalUi
                 MessageBox.Show(e.Result.ToString());
             else
                 MessageBox.Show("Completed with errors...");
-            ClickButton.Content = "Start";
+            this.ButtonClick.Text = " Start";
+            this.Path.Visibility = Visibility.Visible;
         }
 
         void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -124,7 +125,8 @@ namespace FinalUi
                         worker.CancelAsync();
                         MessageBox.Show("Cancelled..");
                     }
-                    ClickButton.Content = "Start";
+                    this.ButtonClick.Text = " Start";
+                    this.Path.Visibility = Visibility.Visible;
                 }
                 return;
             }
@@ -199,7 +201,8 @@ namespace FinalUi
                     Func<Transaction, bool> tempFun = whereQuery;
                     whereQuery = x => tempFun(x) && String.Compare(x.ConnsignmentNo, FromConnNo) >= 0 && String.Compare(x.ConnsignmentNo, ToConnNo) <= 0;
                 }
-                ClickButton.Content = "Cancel";
+                this.ButtonClick.Text = " Cancel";
+                this.Path.Visibility = Visibility.Collapsed;
                 worker.RunWorkerAsync(whereQuery);
             }
             else
