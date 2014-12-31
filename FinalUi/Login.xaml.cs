@@ -130,6 +130,7 @@ namespace FinalUi
                         window = new MainWindow();
                         Properties.Settings.Default.Reload();
                         Configs.Default.Reload();
+                        DataSources.initialize();
                         window.Show();
                         this.Close();
                         loginFlag = true;

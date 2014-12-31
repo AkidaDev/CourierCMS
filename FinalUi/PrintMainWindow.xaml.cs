@@ -82,7 +82,7 @@ where [BillId] = '" + inv.BillId + @"'
                 if (inv.PreviousDue == null)
                     inv.PreviousDue = 0;
 
-                Client clc = db.Clients.SingleOrDefault(x => x.CLCODE == inv.ClientCode);
+                Client clc = DataSources.ClientCopy.SingleOrDefault(x => x.CLCODE == inv.ClientCode);
                 List<ReportParameter> repParams = new List<ReportParameter>();
                 DateTime FromDate = data.Min(x => x.BookingDate);
                 DateTime ToDate = data.Max(x => x.BookingDate);

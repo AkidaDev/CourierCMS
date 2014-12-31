@@ -61,24 +61,35 @@ namespace FinalUi
             window.Closed += reloadgrid;
             window.ShowDialog();
         }
-        private void DeleteEmployee_MouseDown(object sender, MouseButtonEventArgs e)
+        private void DeleteEmployeeGrid_Click(object sender, RoutedEventArgs e)
         {
             BillingDataDataContext db = new BillingDataDataContext();
             if (mangaEmployeegrid.SelectedItem != null)
             {
-                var emp = db.Employees.Where(x => x.Id == ((Employee)mangaEmployeegrid.SelectedItem).Id).FirstOrDefault();
-                emp.Status = 'D';
-                try
+                if (((Employee)mangaEmployeegrid.SelectedItem).UserName != Configs.Default.SuperUser)
                 {
-                    db.SubmitChanges();
-                    reloadgrid(null, null);
+                    var emp = db.Employees.Where(x => x.Id == ((Employee)mangaEmployeegrid.SelectedItem).Id).FirstOrDefault();
+                    emp.Status = 'D';
+                    try
+                    {
+                        db.SubmitChanges();
+                        reloadgrid(null, null);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        return;
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    return;
-                }
+                else { MessageBox.Show("Super User cannot be deleted"); }
             }
+        }
+
+        private void ReloadEmployeeGrid_Click(object sender, RoutedEventArgs e)
+        {
+            DataSources.refreshEmployeeList();
+            this.employees = DataSources.EmployeeCopy;
+            employeeview.Source = this.employees;
         }
     }
 }
