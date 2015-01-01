@@ -69,6 +69,7 @@ namespace FinalUi
         {
             InitializeComponent();
             isInitialized = true;
+            Application.Current.MainWindow.Closed += new EventHandler(MainWindow_Closed);
             // Zone listing data import procedure
             ZoneTableSource = (CollectionViewSource)FindResource("zoneTable");
             ZoneTableSource.Source = DataSources.ZoneCopy;
@@ -159,6 +160,10 @@ namespace FinalUi
             setUiFromPermissions();
         }
 
+        static void MainWindow_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
         private void setUiFromPermissions()
         {
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "ManageEmployee"))
@@ -168,8 +173,8 @@ namespace FinalUi
             }
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "ManageClient"))
             {
-              //  this.ManageClient.Visibility = Visibility.Collapsed;
-               // TreeViewClient.Visibility = System.Windows.Visibility.Collapsed;
+                //  this.ManageClient.Visibility = Visibility.Collapsed;
+                // TreeViewClient.Visibility = System.Windows.Visibility.Collapsed;
             }
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "CreateInvoice"))
             {
@@ -301,20 +306,21 @@ namespace FinalUi
             RuntimeData dataToSend = null;
             if (dataGrid.SelectedItem != null)
                 dataToSend = (RuntimeData)dataGrid.SelectedItem;
-           
+
             concatinateAllRecordsInOnePage();
             Dictionary<string, List<string>> SubClientList = new Dictionary<string, List<string>>();
             List<RuntimeData> data = dataGridHelper.getCurrentDataStack;
             List<string> clients = data.Select(x => x.CustCode).Distinct().ToList();
-            clients.ForEach(x => {
+            clients.ForEach(x =>
+            {
                 List<string> subClients = data.Where(y => y.CustCode == x).Select(z => z.SubClient).Distinct().ToList();
                 SubClientList.Add(x, subClients);
             });
             List<string> ConsigneeList = data.Select(x => x.ConsigneeName).Distinct().ToList();
             List<string> ConsignerList = data.Select(x => x.ConsignerName).Distinct().ToList();
-            window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber, dataGrid, dataGridHelper, SubClientList, ConsigneeList, ConsignerList,dataToSend);
-        
-               window.Closed += SanitizingWindow_Closed;
+            window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber, dataGrid, dataGridHelper, SubClientList, ConsigneeList, ConsignerList, dataToSend);
+
+            window.Closed += SanitizingWindow_Closed;
             window.Show();
         }
         int currentRowsPerPage;
@@ -587,14 +593,14 @@ namespace FinalUi
                 toDate_loadDataWin = dataWind.toDate;
                 fromDate_loadDataWin = dataWind.fromDate;
             }
-            
+
             if (dataWind.isNewSheet || dataGridHelper.CurrentNumberOfSheets <= 0)
             {
                 if (dataWind.isLoadedFromBook == false)
                     dataWind.data = UtilityClass.loadDataFromDatabase(toDate_loadDataWin ?? DateTime.Now, fromDate_loadDataWin ?? DateTime.Now, dataGridHelper.currentMaxSheetNumber + 1);
                 else
                 {
-                    dataWind.data = UtilityClass.loadDataFromBook(dataGridHelper.currentMaxSheetNumber + 1,stockStart,stockEnd);
+                    dataWind.data = UtilityClass.loadDataFromBook(dataGridHelper.currentMaxSheetNumber + 1, stockStart, stockEnd);
                 }
 
                 int key = dataGridHelper.addNewSheet(dataWind.data, name);
@@ -602,7 +608,7 @@ namespace FinalUi
             }
             else
             {
-                if (dataWind.isLoadedFromBook== false)
+                if (dataWind.isLoadedFromBook == false)
                     dataWind.data = UtilityClass.loadDataFromDatabase(toDate_loadDataWin ?? DateTime.Now, fromDate_loadDataWin ?? DateTime.Now, dataGridHelper.currentSheetNumber);
                 else
                     dataWind.data = UtilityClass.loadDataFromBook(dataGridHelper.currentSheetNumber, stockStart, stockEnd);
@@ -858,19 +864,19 @@ namespace FinalUi
         }
         private void AddRuleButton_Click(object sender, RoutedEventArgs e)
         {
-            if (CostingRuleRadio.IsChecked==true)
+            if (CostingRuleRadio.IsChecked == true)
             {
                 AddRule window = new AddRule(new BillingDataDataContext().Quotations.Where(x => x.CLCODE == ((Client)this.ClientCombo.SelectedItem).CLCODE).FirstOrDefault());
                 window.Closed += addRulwWindow_Closed;
                 window.Show();
             }
-            if(ServiceRuleRadio.IsChecked==true)
+            if (ServiceRuleRadio.IsChecked == true)
             {
                 AddServiceRule window = new AddServiceRule(new BillingDataDataContext().Quotations.Where(x => x.CLCODE == ((Client)this.ClientCombo.SelectedItem).CLCODE).FirstOrDefault());
                 window.Closed += ServiceRuleWindowClosed;
                 window.Show();
             }
-            
+
         }
 
         private void addRulwWindow_Closed(object sender, EventArgs e)
@@ -1181,11 +1187,11 @@ namespace FinalUi
             BillingDataDataContext db = new BillingDataDataContext();
             if (CostingRuleGrid.Visibility == Visibility.Visible && CostingRuleGrid.SelectedItems != null)
             {
-                if (MessageBox.Show("Do you want delete " + CostingRuleGrid.SelectedItems.Count.ToString() +" Rule", "Confirm", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                if (MessageBox.Show("Do you want delete " + CostingRuleGrid.SelectedItems.Count.ToString() + " Rule", "Confirm", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
                     List<CostingRule> dcr = CostingRuleGrid.SelectedItems.Cast<CostingRule>().ToList();
                     CostingRuleGrid.SelectedItem = null;
-                    List<int> Ids = dcr.Select(x=>x.Id).ToList();
+                    List<int> Ids = dcr.Select(x => x.Id).ToList();
                     List<Rule> dr = db.Rules.Where(x => Ids.Contains(x.ID)).ToList();
                     db.Rules.DeleteAllOnSubmit(dr);
                 }
@@ -1308,13 +1314,6 @@ namespace FinalUi
             importfile importFileWindow = new importfile();
             importFileWindow.Show();
         }
-
-        private void RecalculateButton_Click(object sender, RoutedEventArgs e)
-        {
-            RecalculatePriceWindow win = new RecalculatePriceWindow();
-            win.Show();
-        }
-
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
             RecalculatePriceWindow win = new RecalculatePriceWindow();
