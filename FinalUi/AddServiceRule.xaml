@@ -17,11 +17,11 @@
         <Grid Grid.Row="1" Name="Step1Grid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="38"/>
-                <RowDefinition Height="38"/>
-                <RowDefinition Height="38"/>
-                <RowDefinition Height="38"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
             <WrapPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
                 <Path VerticalAlignment="Bottom" Data="F1M13.502,2.907C10.599,2.907 10.599,3.75 10.599,4.243 10.599,4.243 16.405,4.243 16.405,4.243 16.405,3.75 16.405,2.907 13.502,2.907z M13.502,1C15.895,1 18.341,1.286 18.341,4.243 18.341,4.243 22.791,4.243 22.791,4.243 22.791,4.243 22.792,4.243 22.792,4.243 24.074,4.243 25,5.721 25,6.985 25,6.985 25,19.194 25,19.194 25,20.458 24.075,21 22.792,21 22.792,21 3.437,21 3.437,21 2.154,21 1,20.458 1,19.194 1,19.194 1,6.985 1,6.985 1,5.72 2.154,4.243 3.437,4.243 3.437,4.243 8.663,4.243 8.663,4.243 8.663,1.286 11.109,1 13.502,1z" Fill="Black" Height="22"  Width="26"/>
@@ -35,8 +35,8 @@
             <WrapPanel Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="190 0 0 0">
                 <TextBlock Text=" Type  .:   " FontWeight="Bold" FontSize="18" FontFamily="Calibri"/>
                 <RadioButton Name="WholeRadio" IsChecked="True" Content="Whole" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 40 0" VerticalAlignment="Bottom"/>
-                <RadioButton IsChecked="True" Name="StepRadio"  Content="Step .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" VerticalAlignment="Bottom"/>
-                <TextBox Name="StepBox"  Visibility="Visible" Width="50" Padding="2 2 0 0"/>
+                <RadioButton Name="StepRadio"  Content="Step" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" VerticalAlignment="Bottom"/>
+                <TextBox Name="StepBox"  Visibility="Collapsed" Width="50" Padding="2 2 0 0"/>
             </WrapPanel>
             <WrapPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Bottom">
                 <TextBlock Text="Change  .:   " FontWeight="Bold" FontSize="18" FontFamily="Calibri"/>

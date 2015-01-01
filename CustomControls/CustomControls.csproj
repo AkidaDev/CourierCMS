@@ -57,14 +57,7 @@
     <Compile Include="PandaCheckbox.xaml.cs">
       <DependentUpon>PandaCheckbox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TitleBar.xaml.cs">
-      <DependentUpon>TitleBar.xaml</DependentUpon>
-    </Compile>
     <Page Include="PandaCheckbox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="TitleBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

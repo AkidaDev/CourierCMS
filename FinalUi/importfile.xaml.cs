@@ -34,10 +34,6 @@ namespace FinalUi
         
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-        }
-
         private void BrowseButton_Click(object sender, RoutedEventArgs e)
         {
             if (bg.IsBusy == true)
