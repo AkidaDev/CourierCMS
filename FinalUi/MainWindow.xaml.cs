@@ -65,6 +65,10 @@ namespace FinalUi
 
         #endregion
         bool isInitialized = false;
+
+        #region winddow datagrid 
+        DataGridTextColumn  s_no;
+        #endregion
         public MainWindow()
         {
             InitializeComponent();
@@ -157,8 +161,10 @@ namespace FinalUi
             DeleteSheetWorker.RunWorkerCompleted += DeleteWorker_RunWorkerCompleted;
             costingRules = new List<CostingRule>();
             setUiFromPermissions();
-        }
-
+            s_no = new  DataGridTextColumn();
+            s_no.Header = "S.no";
+            this.dataGrid.Columns.Add(s_no);
+            }
         private void setUiFromPermissions()
         {
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "ManageEmployee"))
@@ -1319,6 +1325,10 @@ namespace FinalUi
         {
             RecalculatePriceWindow win = new RecalculatePriceWindow();
             win.ShowDialog();
+        }
+
+        private void dataGrid_LoadingRowDetails(object sender, DataGridRowDetailsEventArgs e)
+        {
         }
     }
 }

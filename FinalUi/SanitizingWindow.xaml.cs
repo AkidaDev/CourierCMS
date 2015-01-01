@@ -546,5 +546,10 @@ namespace FinalUi
             netweight = netweight > fileWeight ? netweight : fileWeight;
             BilledWeightTextBox.Text = netweight.ToString();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

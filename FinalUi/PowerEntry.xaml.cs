@@ -222,5 +222,12 @@ namespace FinalUi
         {
             MessageBox.Show(SubClientCheck.Checked.ToString());
         }
+
+        private void clientCode_LostFocus(object sender, RoutedEventArgs e)
+        {
+            BillingDataDataContext db = new BillingDataDataContext();
+            Client cle = (Client)this.clientCode.SelectedItem;
+            this.SubClientTextBox.ItemsSource  = db.Transactions.Where(y => y.CustCode == cle.CLCODE).Select(x => x.SubClient).Distinct().ToList();
+        }
     }
 }

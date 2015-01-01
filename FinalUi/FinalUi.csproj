@@ -197,6 +197,7 @@
     <Compile Include="ClientReportWindow.xaml.cs">
       <DependentUpon>ClientReportWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ClientV.cs" />
     <Compile Include="Configs.cs" />
     <Compile Include="CostingRule.cs" />
     <Compile Include="DataSet2.Designer.cs">
@@ -259,6 +260,7 @@
       <DependentUpon>SanitizingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SecurityModule.cs" />
+    <Compile Include="ServerV.cs" />
     <Compile Include="ServiceFinder.xaml.cs">
       <DependentUpon>ServiceFinder.xaml</DependentUpon>
     </Compile>
@@ -275,6 +277,12 @@
     </Compile>
     <Compile Include="StockWindow.xaml.cs">
       <DependentUpon>StockWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TestClinetWindow.xaml.cs">
+      <DependentUpon>TestClinetWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TestServerWindow.xaml.cs">
+      <DependentUpon>TestServerWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControlGallery.xaml.cs">
       <DependentUpon>UserControlGallery.xaml</DependentUpon>
@@ -444,6 +452,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StockWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestClinetWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestServerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
