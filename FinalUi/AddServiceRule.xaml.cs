@@ -363,10 +363,12 @@ namespace FinalUi
         private void WholeRadio_Checked(object sender, RoutedEventArgs e)
         {
             StepBox.Visibility = Visibility.Collapsed;
+            this.StepRadio.Content = "Step";
         }
         private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
         {
             StepBox.Visibility = Visibility.Visible;
+            this.StepRadio.Content = "Step .: ";
         }
 
         private void PerRadio_Checked(object sender, RoutedEventArgs e)
