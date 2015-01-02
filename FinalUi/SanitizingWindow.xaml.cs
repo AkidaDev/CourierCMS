@@ -272,10 +272,6 @@ namespace FinalUi
                 db.SubmitChanges();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); return; }
-
-
-
-
         }
         public void setNextData()
         {
@@ -456,10 +452,6 @@ namespace FinalUi
         private void BilledWeightTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
         }
-        private void GetRateButton_Click(object sender, RoutedEventArgs e)
-        {
-            getrate();
-        }
         private void getrate()
         {
             if (Destination.Text == "" || Destination.Text == null)
@@ -508,9 +500,6 @@ namespace FinalUi
         private void TypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
         }
-
-
-
         private void ConnsignmentNumber_LostFocus(object sender, RoutedEventArgs e)
         {
             fillAllElements(ConnsignmentNumber.Text);
@@ -545,11 +534,6 @@ namespace FinalUi
                 fileWeight = 0;
             netweight = netweight > fileWeight ? netweight : fileWeight;
             BilledWeightTextBox.Text = netweight.ToString();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }
