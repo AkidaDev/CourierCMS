@@ -1,0 +1,79 @@
+﻿<Window x:Class="FinalUi.QuotationCalc"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Quotation Calculator" Height="350" Width="500">
+    <Window.Resources>
+        <CollectionViewSource x:Key="ServiceTable" CollectionViewType="{x:Type ListCollectionView}"/>
+        <CollectionViewSource x:Key="ClienTable" CollectionViewType="{x:Type ListCollectionView}"/>
+        <CollectionViewSource x:Key="CityTable" CollectionViewType="{x:Type ListCollectionView}"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="36"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Path VerticalAlignment="Bottom" Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Black" Height="4" Width="237"/>
+        <Path Margin="-255 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Black" Height="24" Width="24"/>
+        <TextBlock Margin="-120 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Enter Details .:"/>
+
+        <Grid Grid.Row="1" Margin="10 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text=" Client   .:  " Height="21" FontSize="16" FontWeight="Bold" FontFamily="Calibri" Margin="4 4 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <ComboBox DataContext="{StaticResource ClienTable}" DisplayMemberPath="NameAndCode" ItemsSource="{Binding}" Name="Client_Combo" Grid.Column="1" Margin="0 4 4 0" VerticalAlignment="Bottom">
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel/>
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </ComboBox>
+            <TextBlock  Text=" Weight .:  " Height="21" FontSize="16" FontWeight="Bold" FontFamily="Calibri" Grid.Row="1" Margin="4 4 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <WrapPanel Grid.Row="1" Grid.Column="1" Margin="0 4 4 0" VerticalAlignment="Bottom">
+                <TextBox KeyDown="WeightRuleTextBox_KeyDown" Width="Auto" MinWidth="70" Height="23" Padding="2" Name="WeightRuleTextBox" VerticalAlignment="Bottom"/>
+                <TextBlock Text=" in Kg " Height="21" FontSize="16" FontWeight="Bold" FontFamily="Calibri" VerticalAlignment="Bottom"/>
+            </WrapPanel>
+            <TextBlock Text=" City       .:  " Height="21" FontSize="16" FontWeight="Bold" FontFamily="Calibri" Grid.Row="2" Margin="4 4 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <ComboBox DataContext="{StaticResource CityTable}" DisplayMemberPath="NameAndCode" ItemsSource="{Binding}" Name="City_Combo" Grid.Row="2" Grid.Column="1" Margin="0 4 4 0" VerticalAlignment="Bottom">
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel/>
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </ComboBox>
+            <TextBlock Text=" Service .:  " Height="21" FontSize="16" FontWeight="Bold" FontFamily="Calibri" Grid.Row="3" Margin="4 4 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <ComboBox DataContext="{StaticResource ServiceTable}" DisplayMemberPath="NameAndCode" ItemsSource="{Binding}" Name="Service_Combo" Grid.Row="3" Grid.Column="1" Margin="0 4 4 0" VerticalAlignment="Bottom">
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel/>
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </ComboBox>
+            <TextBlock Text=" Dox       .:  " Height="21" FontSize="16" FontWeight="Bold" FontFamily="Calibri" Grid.Row="4" Margin="4 4 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <ComboBox SelectedIndex="0" Name="Dox_Combo" Grid.Row="4" Grid.Column="1" Margin="0 4 4 0" Width="80" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                <ComboBoxItem Content="Dox"/>
+                <ComboBoxItem Content="Non-Dox"/>
+            </ComboBox>
+        </Grid>
+        <Rectangle Grid.Row="2" VerticalAlignment="Top" Height="1" Fill="Black" Margin="5 3 5 0"/>
+        <WrapPanel Grid.Row="2" Margin="0 15 4 0" HorizontalAlignment="Center">
+            <TextBox Width="100" Name="RateRuleTextBox" Height="23" Padding="2"/>
+            <Button Content="  Get Rate  " Name="GetRateButton" Click="GetRateButton_Click" Margin="15 0 0 0"/>
+        </WrapPanel>
+        <TextBlock Text=" Log Box .: " Height="21" FontSize="16" FontWeight="Bold" FontFamily="Calibri" Grid.Row="2" Margin="4 40 4 0" Background="#A9FFFFF3"/>
+        <Rectangle Grid.Row="2" VerticalAlignment="Bottom" Height="1" Fill="Black" Margin="4 0"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="3" Margin="4 0">
+            <TextBlock Text="Log..." Padding="4,4,0,0"/>
+        </ScrollViewer>
+    </Grid>
+</Window>
