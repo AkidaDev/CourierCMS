@@ -536,7 +536,7 @@ namespace FinalUi
             if (divisor != 0)
             {
                 netweight = (lenght * width * height / divisor);
-                NetWeightBlock.Text = netweight.ToString() + " Kg";
+                NetWeightBlock.Text = string.Format("{0:0.00}",netweight)+ " Kg";
             }
             else
                 netweight = 0;
