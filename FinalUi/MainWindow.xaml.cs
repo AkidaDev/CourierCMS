@@ -26,29 +26,17 @@ namespace FinalUi
 
     public partial class MainWindow : Window
     {
-        // Zone listing data import procedure
-        CollectionViewSource ZoneTableSource;
-        // Zone listing data import procedure
-        // Employee listing data import procedure
-        public List<Employee> employeeToEdit;
-        public List<Employee> employees;
-        private CollectionViewSource employeeview;
         private List<CostingRule> costingRules;
         private CollectionViewSource serviceRulesView;
-        private List<ServiceRule> serviceRules;
         private CollectionViewSource ServiceTable;
         private Quotation qutObj;
         // Employee listing data import procedure
         // Client listing data import procedure
-        CollectionViewSource viewsource;
         List<Client> clientToEdit;
-        Client client;
         CollectionViewSource clientViewSource;
         CollectionViewSource cityViewSource;
-        Button currentaddrulebutton;
         // Client listing data import procedure
         #region initScripts
-
         CollectionViewSource dueDataGridSource;
         CollectionViewSource profitDataGridSource;
         #endregion
@@ -65,26 +53,17 @@ namespace FinalUi
 
         #endregion
         bool isInitialized = false;
+
         public MainWindow()
         {
             InitializeComponent();
             isInitialized = true;
-            // Zone listing data import procedure
-            ZoneTableSource = (CollectionViewSource)FindResource("zoneTable");
-            ZoneTableSource.Source = DataSources.ZoneCopy;
-            // Zone listing data import procedure
             // Client listing data import procedure
             clientToEdit = new List<Client>();
             clientViewSource = (CollectionViewSource)FindResource("ClienTable");
             clientViewSource.Source = DataSources.ClientCopy;
             cityViewSource = (CollectionViewSource)FindResource("CityTable");
             cityViewSource.Source = DataSources.CityCopy;
-            // Employee listing data import procedure
-            employeeToEdit = new List<Employee>();
-            this.employees = DataSources.EmployeeCopy;
-            employeeview = (CollectionViewSource)FindResource("EmployeeTable");
-            employeeview.Source = this.employees;
-            // Employee listing data import procedure
             dueDataGridSource = (CollectionViewSource)FindResource("DueGridDataSource");
             profitDataGridSource = (CollectionViewSource)FindResource("UnpaidInvoiceGridSource");
             BillingDataDataContext db = new BillingDataDataContext();
@@ -102,9 +81,6 @@ namespace FinalUi
             this.MainGrid.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Configs.Default.Background));
             db = new BillingDataDataContext();
             ResourceDictionary dict = this.Resources;
-            InitializeComponent();
-            CollectionViewSource clientCodeList = (CollectionViewSource)FindResource("ClientCodeList");
-            clientCodeList.Source = DataSources.ClientCopy;
             #region DataGrid Code Lines
             dataGridSource = (CollectionViewSource)FindResource("DataGridDataContext");
             dataGridHelper = new DataGridHelper(dataGridSource);
@@ -157,14 +133,12 @@ namespace FinalUi
             DeleteSheetWorker.RunWorkerCompleted += DeleteWorker_RunWorkerCompleted;
             costingRules = new List<CostingRule>();
             setUiFromPermissions();
-        }
-
+            }
         private void setUiFromPermissions()
         {
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "ManageEmployee"))
             {
                 this.ManageEmployeeMenuItem.Visibility = Visibility.Collapsed;
-                //TreeViewEmployee.Visibility = Visibility.Collapsed;
             }
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "ManageClient"))
             {
@@ -488,15 +462,6 @@ namespace FinalUi
         {
             Application.Current.Shutdown();
         }
-
-        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
-
-
-
-
         #endregion
         #region DataGrid Methods
         void addingNewPage(int key)
@@ -613,7 +578,6 @@ namespace FinalUi
             MessageBlock.Text = DateTime.Now.ToShortTimeString() + ": " + "Data loading successfull" + "\n" + MessageBlock.Text;
         }
 
-
         void changeSheetButton(Button current_active, Button button)
         {
             if (!current_active.Equals(button))
@@ -699,10 +663,6 @@ namespace FinalUi
         }
         #endregion DataGrid Navigation ends
 
-
-        #region Datagrid Sheet Methods Start
-
-        #endregion DataGrid Sheet Methods Ends
         #endregion DataGrid Methods Ends
         #region filter functions
         private void FilterButton_Click(object sender, RoutedEventArgs e)
@@ -722,9 +682,6 @@ namespace FinalUi
         #endregion
         #endregion*-
         #region WindowResizingMenuAndUtilities
-        #region Handling Resizing
-
-        #endregion
         #region custom window resize
         protected void OnPreviewMouseMove(object sender, MouseEventArgs e)
         {
@@ -773,11 +730,6 @@ namespace FinalUi
             About window = new About(); window.ShowDialog();
         }
         #endregion
-        private void BillAnalysis_Click(object sender, RoutedEventArgs e)
-        {
-            BillReportWindow win = new BillReportWindow();
-            win.ShowDialog();
-        }
         private void PaymentEntry_Click(object sender, RoutedEventArgs e)
         {
             PaymentDetailsWindow window = new PaymentDetailsWindow(); window.Show();
@@ -786,17 +738,13 @@ namespace FinalUi
         {
             PaymentRecieved window = new PaymentRecieved(); window.ShowDialog();
         }
-        private void StockEntry_Click(object sender, RoutedEventArgs e)
-        {
-            StockWindow window = new StockWindow(); window.Show();
-        }
         private void ClientReport_Click(object sender, RoutedEventArgs e)
         {
             ClientReportWindow window = new ClientReportWindow(); window.ShowDialog();
         }
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            AddCity window = new AddCity();
+            ManageCity window = new ManageCity();
             window.Show();
         }
         private void ManageServices_Click(object sender, RoutedEventArgs e)
@@ -818,30 +766,11 @@ namespace FinalUi
         {
             AccountStatementReportingWindow window = new AccountStatementReportingWindow(); window.WindowState = WindowState.Maximized; window.Show();
         }
-        private void mangaEmployeegrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
-        {
-            employeeToEdit.Add((Employee)e.Row.DataContext);
-        }
-        private void AddClient_Click(object sender, RoutedEventArgs e)
-        {
-            AddClient window = new AddClient();
-            window.Closed += AddClient_close;
-            window.Show();
-        }
-        private void updateClient_Click(object sender, RoutedEventArgs e)
-        {
-            client = (Client)this.mangaclientgrid.SelectedItem;
-            AddClient add = new AddClient(client);
-            add.Closed += AddClient_close;
-            add.ShowDialog();
-        }
         private void AddClient_close(object sender, EventArgs e)
         {
             DataSources.refreshClientList();
             clientViewSource.Source = DataSources.ClientCopy;
-            mangaclientgrid.Items.Refresh();
             ClientCombo.Items.Refresh();
-
         }
         #region sidepanel
         private void cloakAll()
@@ -849,9 +778,6 @@ namespace FinalUi
             this.DataDockPanel.Visibility = Visibility.Collapsed;
             this.ClientReportOptionPanel.Visibility = Visibility.Collapsed;
             this.QuotationoptionPanel.Visibility = Visibility.Collapsed;
-            this.ClientOptionPanel.Visibility = Visibility.Collapsed;
-            this.EmployeeOptionPanel.Visibility = Visibility.Collapsed;
-            this.CityOptionPanel.Visibility = Visibility.Collapsed;
             this.HideAllDatagrid.Visibility = Visibility.Collapsed;
             this.FilterQuotation.Visibility = Visibility.Collapsed;
 
@@ -902,26 +828,6 @@ namespace FinalUi
         {
             cloakAll();
             DataDockPanel.Visibility = Visibility.Visible;
-        }
-        private void clienttreeviewitembutton_Click(object sender, RoutedEventArgs e)
-        {
-            cloakAll();
-            ClientOptionPanel.Visibility = Visibility.Visible;
-        }
-        private void Employeetreeviewitembutton_Click(object sender, RoutedEventArgs e)
-        {
-            cloakAll();
-            EmployeeOptionPanel.Visibility = Visibility.Visible;
-        }
-        private void citytreeviewitembutton_Click(object sender, RoutedEventArgs e)
-        {
-            cloakAll();
-            CityOptionPanel.Visibility = Visibility.Visible;
-        }
-        private void CloseTableTreeView_Selected(object sender, RoutedEventArgs e)
-        {
-            cloakAll();
-            HideAllDatagrid.Visibility = Visibility.Visible;
         }
         #endregion
         #endregion
@@ -1002,168 +908,6 @@ namespace FinalUi
             cloakAllGrid();
             ServiceRuleGrid.Visibility = Visibility.Visible;
         }
-        #endregion
-        #region Employee Grid Buttons
-        private void ReloadEmployeeGrid_Click(object sender, RoutedEventArgs e)
-        {
-            DataSources.refreshEmployeeList();
-            this.employees = DataSources.EmployeeCopy;
-            employeeview.Source = this.employees;
-            mangaEmployeegrid.Items.Refresh();
-        }
-        private void EditEmployeeGrid_Click(object sender, RoutedEventArgs e)
-        {
-            if (mangaEmployeegrid.SelectedItems.Count != 1)
-            {
-                MessageBox.Show("Select one employee to edit");
-                return;
-            }
-            AddEmployee addEmpWin = new AddEmployee((Employee)mangaEmployeegrid.SelectedItem);
-            addEmpWin.Closed += addEmpWin_Closed;
-            addEmpWin.ShowDialog();
-        }
-
-        void addEmpWin_Closed(object sender, EventArgs e)
-        {
-            ReloadEmployeeGrid_Click(null, null);
-        }
-        private void AddEmployeeGrid_Click(object sender, RoutedEventArgs e)
-        {
-            AddEmployee addEmpWin = new AddEmployee();
-            addEmpWin.Closed += addEmpWin_Closed;
-            addEmpWin.ShowDialog();
-        }
-        private void DeleteEmployeeGrid_Click(object sender, RoutedEventArgs e)
-        {
-            if (mangaEmployeegrid.SelectedItems.Count != 1)
-            {
-                MessageBox.Show("Select 1 employee to delete");
-                return;
-            }
-            else
-            {
-                MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this employee?", "Confirm", MessageBoxButton.YesNo);
-                if (result == MessageBoxResult.Yes)
-                {
-                    BillingDataDataContext db = new BillingDataDataContext();
-                    Employee emp = db.Employees.SingleOrDefault(x => x.EMPCode == ((Employee)mangaEmployeegrid.SelectedItem).EMPCode);
-                    db.Employees.DeleteOnSubmit(emp);
-                    db.SubmitChanges();
-                    ReloadEmployeeGrid_Click(null, null);
-                }
-            }
-        }
-        #endregion
-        #region Client Grid Buttons
-        private void ReloadClientGridButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataSources.refreshClientList();
-            clientViewSource.Source = DataSources.ClientCopy;
-            mangaclientgrid.Items.Refresh();
-        }
-        private void UpdateClientGridButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (mangaclientgrid.SelectedItems.Count != 1)
-            {
-                MessageBox.Show("Please select 1 client to edit.");
-                return;
-            }
-            AddClient addClientWin = new AddClient((Client)mangaclientgrid.SelectedItem);
-            addClientWin.Closed += addClientWin_Closed;
-            addClientWin.ShowDialog();
-        }
-        void addClientWin_Closed(object sender, EventArgs e)
-        {
-            ReloadClientGridButton_Click(null, null);
-        }
-        private void AddClientButton_Click(object sender, RoutedEventArgs e)
-        {
-            AddClient addClientWin = new AddClient();
-            addClientWin.Closed += addClientWin_Closed;
-            addClientWin.ShowDialog();
-        }
-        private void DeleteClientGridButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (mangaclientgrid.SelectedItems.Count != 1)
-            {
-                MessageBox.Show("Please select 1 client to delete");
-                return;
-            }
-            MessageBoxResult result = MessageBox.Show("Are you sure want to delete this client?", "Confirm", MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.Yes)
-            {
-                if (db == null)
-                    db = new BillingDataDataContext();
-                Client client = db.Clients.SingleOrDefault(x => x.CLCODE == ((Client)mangaclientgrid.SelectedItem).CLCODE);
-                if (client == null)
-                {
-                    MessageBox.Show("No such client");
-                    return;
-                }
-                if (client.CLCODE == "<NONE>" || client.CLCODE == "<DTDC>")
-                {
-                    MessageBox.Show("This client cannot be deleted");
-                    return;
-                }
-
-                db.Clients.DeleteOnSubmit(client);
-                db.SubmitChanges();
-            }
-            ReloadClientGridButton_Click(null, null);
-        }
-        #endregion
-        private void ReloadCityButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataSources.refreshCityList();
-            cityViewSource.Source = DataSources.CityCopy;
-            CityDataGrid.Items.Refresh();
-        }
-        private void EditCityButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (CityDataGrid.SelectedItems.Count != 1)
-            {
-                MessageBox.Show("Select 1 city to edit");
-                return;
-            }
-            AddCity addCityWin = new AddCity(((City)CityDataGrid.SelectedItem).CITY_CODE);
-            addCityWin.Closed += addCityWin_Closed;
-            addCityWin.ShowDialog();
-        }
-        void addCityWin_Closed(object sender, EventArgs e)
-        {
-            ReloadCityButton_Click(null, null);
-        }
-        private void AddCityButton_Click(object sender, RoutedEventArgs e)
-        {
-            AddCity addCityWin = new AddCity();
-            addCityWin.Closed += addCityWin_Closed;
-            addCityWin.ShowDialog();
-        }
-        private void DeleteCityButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (CityDataGrid.SelectedItems.Count != 1)
-            {
-                MessageBox.Show("Select 1 city to delete");
-                return;
-            }
-            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this city?", "Confirm", MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.Yes)
-            {
-                if (db == null)
-                    db = new BillingDataDataContext();
-                City city = db.Cities.SingleOrDefault(x => x.CITY_CODE == ((City)CityDataGrid.SelectedItem).CITY_CODE);
-                if (city == null)
-                {
-                    MessageBox.Show("No such city exists.");
-                    return;
-                }
-                db.Cities.DeleteOnSubmit(city);
-                db.SubmitChanges();
-            }
-            ReloadCityButton_Click(null, null);
-        }
-        #region City Grid Button
-
         #endregion
         #region Config Load
         void Default_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -1247,14 +991,6 @@ namespace FinalUi
                 return;
             RateRuleTextBox.Text = UtilityClass.getCost(client.CLCODE, weight, city.CITY_CODE, service.SER_CODE, dox).ToString();
         }
-        private void ClientReportReloadButton_Click(object sender, RoutedEventArgs e)
-        {
-            BillingDataDataContext db = new BillingDataDataContext();
-            dueDataGridSource.Source = db.BalanceViews;
-            profitDataGridSource.Source = db.PROFITVIEWs;
-            ClientDueGrid.Items.Refresh();
-            ClientProfitabilityGrid.Items.Refresh();
-        }
         private void EditRule_Click(object sender, RoutedEventArgs e)
         {
             BillingDataDataContext db = new BillingDataDataContext();
@@ -1302,22 +1038,19 @@ namespace FinalUi
                 GetRateButton_Click(null, null);
             }
         }
-
         private void DataImportMenuItem_Click(object sender, RoutedEventArgs e)
         {
             importfile importFileWindow = new importfile();
             importFileWindow.Show();
         }
-
-        private void RecalculateButton_Click(object sender, RoutedEventArgs e)
-        {
-            RecalculatePriceWindow win = new RecalculatePriceWindow();
-            win.Show();
-        }
-
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
             RecalculatePriceWindow win = new RecalculatePriceWindow();
+            win.ShowDialog();
+        }
+        private void Quotation_Calc_click(object sender, RoutedEventArgs e)
+        {
+            QuotationCalc win = new QuotationCalc();
             win.ShowDialog();
         }
     }

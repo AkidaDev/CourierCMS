@@ -29,7 +29,7 @@
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="  Weight (in Kg)       " VerticalAlignment="Bottom"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" From .: "/>
                 <TextBox Name="FromWeightBox" Width="81" Padding="2 2 0 0"/>
-                <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
+                <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" To .: "/>
                 <TextBox Name="ToWeightBox" Width="81" Padding="2 2 0 0"/>
             </WrapPanel>
@@ -44,7 +44,7 @@
             <WrapPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="17 0 0 0">
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" DOX Amount .: "/>
                 <TextBox Name="DOXAmountBox" Width="85" Padding="2 2 0 0"/>
-                <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
+                <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" NonDox Amount .: "/>
                 <TextBox Name="NDoxAmountBox" Width="85" TextChanged="TextBox_TextChanged" Padding="2 2 0 0"/>
             </WrapPanel>
