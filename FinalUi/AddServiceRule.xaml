@@ -21,14 +21,14 @@
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <WrapPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
                 <Path VerticalAlignment="Bottom" Data="F1M13.502,2.907C10.599,2.907 10.599,3.75 10.599,4.243 10.599,4.243 16.405,4.243 16.405,4.243 16.405,3.75 16.405,2.907 13.502,2.907z M13.502,1C15.895,1 18.341,1.286 18.341,4.243 18.341,4.243 22.791,4.243 22.791,4.243 22.791,4.243 22.792,4.243 22.792,4.243 24.074,4.243 25,5.721 25,6.985 25,6.985 25,19.194 25,19.194 25,20.458 24.075,21 22.792,21 22.792,21 3.437,21 3.437,21 2.154,21 1,20.458 1,19.194 1,19.194 1,6.985 1,6.985 1,5.72 2.154,4.243 3.437,4.243 3.437,4.243 8.663,4.243 8.663,4.243 8.663,1.286 11.109,1 13.502,1z" Fill="Black" Height="22"  Width="26"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="  Weight (in Kg)       " VerticalAlignment="Bottom"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" From .: "/>
                 <TextBox Name="FromWeightBox" Width="81" Padding="2 2 0 0" TextChanged="FromWeightBox_TextChanged"/>
-                <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
+                <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" To .: "/>
                 <TextBox Name="ToWeightBox" Width="81" Padding="2 2 0 0"/>
             </WrapPanel>

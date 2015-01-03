@@ -54,7 +54,7 @@
                     </ItemsPanelTemplate>
                 </ComboBox.ItemsPanel>
             </ComboBox>
-            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
+            <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Sub Client .: " VerticalAlignment="Bottom"/>
             <ComboBox Name="SubClientComboBox"  IsEditable="True" DataContext="{StaticResource SubClientListSource}" ItemsSource="{Binding}" Width="120"/>
         </WrapPanel>
@@ -81,14 +81,14 @@
                     </ItemsPanelTemplate>
                 </ComboBox.ItemsPanel>
             </ComboBox>
-            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
+            <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <TextBlock Text="Mode .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
             <ComboBox Name="MODE" Width="54" SelectionChanged="MODE_SelectionChanged">
                 <ComboBoxItem Content="SF"/>
                 <ComboBoxItem Content="AR"/>
                 <ComboBoxItem Content="AC"/>
             </ComboBox>
-            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
+            <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <TextBlock Text="DOX type .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
             <ComboBox Width="80" Name="DoxCombobox">
                 <ComboBoxItem Content="Non Dox"/>
@@ -98,29 +98,29 @@
         <WrapPanel Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Left">
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="  Height(cm) .: " VerticalAlignment="Bottom" Margin="45 0 0 0"/>
             <TextBox Height="24" Name="HeightPacketBox" Width="50" Padding="2"/>
-            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
+            <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Width(cm) .: " VerticalAlignment="Bottom"/>
             <TextBox Name="WidthPacketBox" Height="24" Width="50" Padding="2"/>
-            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
+            <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Lenght(cm) .: " VerticalAlignment="Bottom"/>
             <TextBox Name="LenghtPacketBox" Height="24" Width="50" Padding="2"/>
-            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
+            <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Divider.: " VerticalAlignment="Bottom"/>
             <TextBox  Name="DivisorBox" LostFocus="LenghtPacketBox_LostFocus" Height="24" Width="50" Padding="2"/>
-            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
+            <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <WrapPanel>
-            <TextBlock FontSize="18" FontFamily="Calibri" Name="NetWeightBlock" Text="0" Height="23" VerticalAlignment="Bottom"/>
-            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="kg" VerticalAlignment="Bottom" Margin="2 0 0 0"/>
+                <TextBlock FontSize="18" FontFamily="Calibri" Name="NetWeightBlock" Text="0" Height="23" VerticalAlignment="Bottom"/>
+                <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="kg" VerticalAlignment="Bottom" Margin="2 0 0 0"/>
             </WrapPanel>
-          </WrapPanel>
+        </WrapPanel>
         <TextBlock Grid.Row="6" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Weight" Margin="40 18 0 0"/>
         <WrapPanel Grid.Row="6" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="20 0 0 0">
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="DTDC .: " VerticalAlignment="Bottom"/>
             <TextBox Name="WeightAccToDTDC" Height="24" Width="100" Padding="2"/>
-            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
+            <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Franchise .: " VerticalAlignment="Bottom"/>
             <TextBox Name="WeightAccToFranchize" Height="24" Width="100" Padding="2"/>
-            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
+            <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Billed .: " VerticalAlignment="Bottom"/>
             <TextBox LostFocus="BilledWeightTextBox_LostFocus" TextChanged="BilledWeightTextBox_TextChanged" x:Name="BilledWeightTextBox" Height="24" Width="100" Padding="2"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="in (kg)" VerticalAlignment="Bottom" Margin="10 0 0 0"/>
@@ -128,10 +128,10 @@
         <WrapPanel Grid.Row="7" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="  Billing Amount .: " VerticalAlignment="Bottom"/>
             <TextBox Height="24" Name="BilledAmount" Width="83" Padding="2"/>
-            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
+            <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Cost (DTDC) .: " VerticalAlignment="Bottom"/>
             <TextBox Name="Cost" Height="24" Width="81" Padding="2"/>
-            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
+            <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Slip Cost .: " VerticalAlignment="Bottom"/>
             <TextBlock Text=" ₹ "  FontSize="18" FontWeight="Bold" VerticalAlignment="Bottom"/>
             <TextBlock FontSize="18" FontFamily="Calibri" Name="SlipCost" Text="" Width="66" Height="23" VerticalAlignment="Bottom"/>
@@ -150,10 +150,10 @@
             <TextBlock Visibility="Collapsed" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Address .: " VerticalAlignment="Bottom"/>
             <TextBox Visibility="Collapsed" Name="ConsignerAddress" Width="300"/>
         </WrapPanel>
-        <Button Click="SubmitSanitizingDetails_Click" KeyUp="Button_KeyUp" Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="-100 0 0 0">
+        <Button ToolTip="Next &amp; Save" Click="SubmitSanitizingDetails_Click" KeyUp="Button_KeyUp" Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="-100 0 0 0">
             <WrapPanel Margin="6 1">
                 <Path Data="F1M13.711,7.89C13.711,7.89 18.488,12.713 18.488,12.713 18.488,12.713 13.711,17.535 13.711,17.535 13.711,17.535 13.711,14.521 13.711,14.521 13.711,14.521 6.546,14.521 6.546,14.521 6.546,14.521 6.546,10.904 6.546,10.904 6.546,10.904 13.711,10.904 13.711,10.904 13.711,10.904 13.711,7.89 13.711,7.89z M12.5,3.3C7.44,3.3 3.3,7.44 3.3,12.5 3.3,17.56 7.44,21.7 12.5,21.7 17.56,21.7 21.7,17.56 21.7,12.5 21.7,7.44 17.56,3.3 12.5,3.3z M12.5,1C18.825,1 24,6.175 24,12.5 24,18.825 18.825,24 12.5,24 6.175,24 1,18.825 1,12.5 1,6.175 6.175,1 12.5,1z" Fill="Black" Height="20" Width="20" Stretch="Fill"/>
-                <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text=" Save and Next "/>
+                <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text=" Next "/>
             </WrapPanel>
         </Button>
         <Button Click="Previous_Click" Grid.Row="10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="80 0 0 0">
@@ -162,21 +162,11 @@
                 <TextBlock x:Name="Previous" FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text=" Previous "/>
             </WrapPanel>
         </Button>
-        <Button ToolTip="Save &amp; Exit" Click="DoneButton_Click" Grid.Row="10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,175,0">
-            <Button.Content>
-                <WrapPanel Margin="6 1">
-                    <Path x:Name="done" Data="F1M9.909,22C9.909,22 1,13.224 1,13.224 1,13.224 3.227,11.03 3.227,11.03 3.227,11.03 9.909,17.612 9.909,17.612 9.909,17.612 26.773,1 26.773,1 26.773,1 29,3.194 29,3.194 29,3.194 9.909,22 9.909,22z" Fill="Black" Height="17" Width="23" Stretch="Fill"/>
-                    <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text=" Done and Exit "/>
-                </WrapPanel>
-            </Button.Content>
-        </Button>
-        <Button ToolTip="Save &amp; Exit" Click="Button_Click" Grid.Row="10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,42,0">
-            <Button.Content>
-                <WrapPanel Margin="6 1">
-                    <Path x:Name="Exit" Data="F1M9.909,22C9.909,22 1,13.224 1,13.224 1,13.224 3.227,11.03 3.227,11.03 3.227,11.03 9.909,17.612 9.909,17.612 9.909,17.612 26.773,1 26.773,1 26.773,1 29,3.194 29,3.194 29,3.194 9.909,22 9.909,22z" Fill="Black" Height="17" Width="23" Stretch="Fill"/>
-                    <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text=" Exit "/>
-                </WrapPanel>
-            </Button.Content>
+        <Button Click="DoneButton_Click" Grid.Row="10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,42,0">
+            <WrapPanel Margin="6 1">
+                <Path x:Name="done" Data="F1M9.909,22C9.909,22 1,13.224 1,13.224 1,13.224 3.227,11.03 3.227,11.03 3.227,11.03 9.909,17.612 9.909,17.612 9.909,17.612 26.773,1 26.773,1 26.773,1 29,3.194 29,3.194 29,3.194 9.909,22 9.909,22z" Fill="Black" Height="17" Width="23" Stretch="Fill"/>
+                <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text=" Save &amp; Exit "/>
+            </WrapPanel>
         </Button>
     </Grid>
 </Window>
