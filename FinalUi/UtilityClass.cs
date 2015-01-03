@@ -136,6 +136,7 @@ namespace FinalUi
         static public List<RuntimeData> loadDataFromDatabase(DateTime startDate, DateTime endDate, int sheetNo)
         {
             BillingDataDataContext db = new BillingDataDataContext();
+           
             db.sp_LoadToRuntimeFromDate(SecurityModule.currentUserName, sheetNo, startDate, endDate);
             return db.RuntimeDatas.Where(x => x.SheetNo == sheetNo && x.UserId == SecurityModule.currentUserName).OrderBy(y => y.ConsignmentNo).ToList();
         }

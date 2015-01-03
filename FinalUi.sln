@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinalUi", "FinalUi\FinalUi.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControls", "CustomControls\CustomControls.csproj", "{946A5AA0-1410-4C3A-8BDE-69B9715126EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication2", "ConsoleApplication2\ConsoleApplication2.csproj", "{405A26D6-54BE-4D95-9C94-C47D87E1D4FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -36,6 +38,16 @@ Global
 		{946A5AA0-1410-4C3A-8BDE-69B9715126EA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{946A5AA0-1410-4C3A-8BDE-69B9715126EA}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
 		{946A5AA0-1410-4C3A-8BDE-69B9715126EA}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{405A26D6-54BE-4D95-9C94-C47D87E1D4FE}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{405A26D6-54BE-4D95-9C94-C47D87E1D4FE}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{405A26D6-54BE-4D95-9C94-C47D87E1D4FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{405A26D6-54BE-4D95-9C94-C47D87E1D4FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{405A26D6-54BE-4D95-9C94-C47D87E1D4FE}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{405A26D6-54BE-4D95-9C94-C47D87E1D4FE}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{405A26D6-54BE-4D95-9C94-C47D87E1D4FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{405A26D6-54BE-4D95-9C94-C47D87E1D4FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{405A26D6-54BE-4D95-9C94-C47D87E1D4FE}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{405A26D6-54BE-4D95-9C94-C47D87E1D4FE}.SingleImage|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
