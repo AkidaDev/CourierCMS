@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BillingDatabase" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=SYSTEM;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa" SettingsObjectName="ConsoleApplication2.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=PC\SQLEXPRESS;Initial Catalog=BillingDatabase;User ID=sa" SettingsObjectName="ConsoleApplication2.Properties.Settings" SettingsPropertyName="BillingDatabaseConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.[Rule]" Member="Rules">
     <Type Name="Rule">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />

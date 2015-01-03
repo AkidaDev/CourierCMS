@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace FinalUi
 {
@@ -374,7 +375,7 @@ namespace FinalUi
             if (data.BookingDate != null)
                 InsertionDate.SelectedDate = data.BookingDate;
             Destination.Text = DataSources.CityCopy.Where(x => x.CITY_CODE == data.Destination).Select(y => y.NameAndCode).FirstOrDefault();
-            if (data.CustCode != "" && data.CustCode != null && data.CustCode != "<NONE>")
+            if ((data.FrAmount != 0 && data.FrAmount != null))
                 CustomerSelected.Text = DataSources.ClientCopy.Where(x => x.CLCODE == data.CustCode).Select(y => y.NameAndCode).FirstOrDefault();
             DestinationPin.Text = data.DestinationPin.ToString();
             if (data.FrWeight != null)
@@ -405,7 +406,7 @@ namespace FinalUi
             HeightPacketBox.Text = "0";
             WidthPacketBox.Text = "0";
             LenghtPacketBox.Text = "0";
-            NetWeightBlock.Text = "0Kg";
+            NetWeightBlock.Text = "0";
 
             if (data.SubClient != "" && data.SubClient != null)
             {
@@ -525,7 +526,7 @@ namespace FinalUi
             if (divisor != 0)
             {
                 netweight = (lenght * width * height / divisor);
-                NetWeightBlock.Text = string.Format("{0:0.00}",netweight)+ " Kg";
+                NetWeightBlock.Text = string.Format("{0:0.00}", netweight);
             }
             else
                 netweight = 0;
@@ -534,6 +535,29 @@ namespace FinalUi
                 fileWeight = 0;
             netweight = netweight > fileWeight ? netweight : fileWeight;
             BilledWeightTextBox.Text = netweight.ToString();
+            Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(delegate()
+            {
+                BilledWeightTextBox.Focus();         // Set Logical Focus
+                Keyboard.Focus(BilledWeightTextBox); // Set Keyboard Focus
+            }));
         }
+
+        private void HeightPacketBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Tab)
+            {
+                if (HeightPacketBox.Text == "" || HeightPacketBox.Text == "0")
+                {
+                    Dispatcher.BeginInvoke(DispatcherPriority.Input,new Action(delegate()
+                    {
+                        BilledWeightTextBox.Focus();         // Set Logical Focus
+                        Keyboard.Focus(BilledWeightTextBox); // Set Keyboard Focus
+                    }));
+                }
+            }
+        }
+
+
+
     }
 }

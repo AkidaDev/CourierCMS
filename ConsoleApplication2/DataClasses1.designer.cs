@@ -36,7 +36,7 @@ namespace ConsoleApplication2
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::ConsoleApplication2.Properties.Settings.Default.BillingDatabaseConnectionString, mappingSource)
+				base(global::ConsoleApplication2.Properties.Settings.Default.BillingDatabaseConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}

@@ -21,11 +21,12 @@ namespace ConsoleApplication2
             {
                 i++;
                 CostingRule cRule = jsS.Deserialize<CostingRule>(rule.Properties);
-                if(cRule.type == 'M')
+                if(cRule.type == 'S')
                 {
                     if(cRule.startW > 0.49 && cRule.startW < 0.51)
                     {
-                        cRule.type = 'S';
+                        cRule.ndStartValue = 0;
+                        cRule.dStartValue = 0;
                         
                     }
                     rule.Properties = jsS.Serialize(cRule);
