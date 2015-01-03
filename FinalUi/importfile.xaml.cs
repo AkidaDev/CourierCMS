@@ -31,7 +31,6 @@ namespace FinalUi
             bg.WorkerReportsProgress = true;
             bg.ProgressChanged += bg_ProgressChanged;
             bg.RunWorkerCompleted += bg_RunWorkerCompleted;
-        
         }
 
         private void BrowseButton_Click(object sender, RoutedEventArgs e)
@@ -68,7 +67,6 @@ namespace FinalUi
                 MessageBox.Show("Error: File not found", "Error");
             }
         }
-
         void bg_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if(e.Error != null)
@@ -88,12 +86,9 @@ namespace FinalUi
                     MessageBox.Show("File loaded successfully");
                     this.Close();
                 }
-
-                
             }
-            Analyzeprogress.Visibility = Visibility.Hidden;
+           Analyzeprogress.Visibility = Visibility.Hidden;
         }
-
         void bg_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             Analyzeprogress.Value = e.ProgressPercentage;
@@ -106,7 +101,6 @@ namespace FinalUi
                 Analyzeprogress.Visibility = Visibility.Visible;
             }
         }
-
         void bg_DoWork(object sender, DoWorkEventArgs e)
         {
             string fileName = (string)e.Argument;
