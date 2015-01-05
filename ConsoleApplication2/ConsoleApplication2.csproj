@@ -62,7 +62,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="DataClasses1.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>

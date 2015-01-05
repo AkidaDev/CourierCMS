@@ -5,7 +5,8 @@
 		Icon="Images/logo.ico"
         Title="Costing Rule" Height="310" Width="650" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
 
-    <Grid><!--BackColor-->
+    <Grid>
+        <!--BackColor-->
         <Grid.RowDefinitions>
             <RowDefinition Height="38"/>
             <RowDefinition Height="*"/>
@@ -35,9 +36,9 @@
             </WrapPanel>
             <WrapPanel Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="60 0 0 0">
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Type .:   "/>
-                <RadioButton Checked="StepTypeRadio_Checked" Name="StepTypeRadio" GroupName="TypeRadioGroup" IsChecked="True" Content="Step" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 40 0" VerticalAlignment="Bottom"/>
                 <RadioButton Checked="RangeTypeRadio_Checked" Name="RangeTypeRadio" GroupName="TypeRadioGroup" Content="Range" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 40 0" VerticalAlignment="Bottom"/>
-                <RadioButton Checked="MultiplierTypeRadio_Checked" Name="MultiplierTypeRadio" GroupName="TypeRadioGroup" Content="Multiplier" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 40 0" VerticalAlignment="Bottom"/>
+                <RadioButton Checked="StepTypeRadio_Checked" Name="StepTypeRadio" GroupName="TypeRadioGroup" IsChecked="True" Content="Additional" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 40 0" VerticalAlignment="Bottom"/>
+                <RadioButton Checked="MultiplierTypeRadio_Checked" Name="MultiplierTypeRadio" GroupName="TypeRadioGroup" Content="Bulk" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 40 0" VerticalAlignment="Bottom"/>
                 <TextBlock Name="StepWeightBlock" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Step .: "/>
                 <TextBox Name="StepBlockBox" Width="81" Padding="2 2 0 0"/>
             </WrapPanel>
@@ -47,13 +48,6 @@
                 <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" NonDox Amount .: "/>
                 <TextBox Name="NDoxAmountBox" Width="85" TextChanged="TextBox_TextChanged" Padding="2 2 0 0"/>
-            </WrapPanel>
-            <WrapPanel Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                <TextBlock Name="DoxStartValue" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Start Value DOX .: "/>
-                <TextBox Name="DoxStartValueBox" Width="81" TextChanged="TextBox_TextChanged" Padding="2 2 0 0"/>
-                <Path Name="vertical_line" Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
-                <TextBlock Name="NDoxStartValue" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Start Value NDOX .: "/>
-                <TextBox Name="NDoxStartValueBox" Width="81" Padding="2 2 0 0"/>
             </WrapPanel>
         </Grid>
         <Grid Name="Step2Grid" Grid.Row="1" VerticalAlignment="Center" Margin="0 5 0 0" Visibility="Collapsed">

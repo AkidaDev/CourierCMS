@@ -79,8 +79,6 @@ namespace FinalUi
 
             }
             StepBlockBox.Text = RuleCR.stepWeight.ToString();
-            DoxStartValueBox.Text = RuleCR.dStartValue.ToString();
-            NDoxStartValueBox.Text = RuleCR.ndStartValue.ToString();
         }
         public AddRule(Quotation quoation)
             : this()
@@ -203,10 +201,6 @@ namespace FinalUi
             if (!double.TryParse(NDoxAmountBox.Text, out ndoxAmount))
                 errorMsg += "Enter non dox amount properly \n";
             double doxStartValue = 0, ndoxStartValue = 0;
-            if (!double.TryParse(DoxStartValueBox.Text, out doxStartValue) && StepTypeRadio.IsChecked == true)
-                errorMsg += "Enter Dox start value properly \n";
-            if (!Double.TryParse(NDoxStartValueBox.Text, out ndoxStartValue) && StepTypeRadio.IsChecked == true)
-                errorMsg += "Enter Non Dox start value properly \n";
             double stepweight = 0;
             if (!double.TryParse(StepBlockBox.Text, out stepweight) && StepTypeRadio.IsChecked == true)
                 errorMsg += "Enter Step Weight Properly \n";
@@ -437,11 +431,6 @@ namespace FinalUi
                 {
                     StepWeightBlock.Visibility = Visibility.Visible;
                     StepBlockBox.Visibility = Visibility.Visible;
-                    NDoxStartValueBox.Visibility = Visibility.Visible;
-                    DoxStartValue.Visibility = Visibility.Visible;
-                    DoxStartValueBox.Visibility = Visibility.Visible;
-                    NDoxStartValue.Visibility = Visibility.Visible;
-                    vertical_line.Visibility = Visibility.Visible;
                 }
                 catch (NullReferenceException ex)
                 {
@@ -453,13 +442,8 @@ namespace FinalUi
         {
             if (IsInitialized)
             {
-                vertical_line.Visibility = Visibility.Collapsed;
                 StepWeightBlock.Visibility = Visibility.Collapsed;
                 StepBlockBox.Visibility = Visibility.Collapsed;
-                NDoxStartValueBox.Visibility = Visibility.Collapsed;
-                DoxStartValue.Visibility = Visibility.Collapsed;
-                DoxStartValueBox.Visibility = Visibility.Collapsed;
-                NDoxStartValue.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -470,11 +454,6 @@ namespace FinalUi
 
                 StepWeightBlock.Visibility = Visibility.Visible;
                 StepBlockBox.Visibility = Visibility.Visible;
-                vertical_line.Visibility = Visibility.Collapsed;
-                NDoxStartValueBox.Visibility = Visibility.Collapsed;
-                DoxStartValue.Visibility = Visibility.Collapsed;
-                DoxStartValueBox.Visibility = Visibility.Collapsed;
-                NDoxStartValue.Visibility = Visibility.Collapsed;
             }
         }
 
