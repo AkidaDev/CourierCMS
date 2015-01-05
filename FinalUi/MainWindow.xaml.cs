@@ -535,10 +535,9 @@ namespace FinalUi
             {
                 try
                 {
-                    BillingDataDataContext db = new BillingDataDataContext();
-                    Stock stock = db.Stocks.Single(x => x.BookNo == dataWind.BookNo);
-                    stockStart = stock.StockStart;
-                    stockEnd = stock.StockEnd;
+
+                    stockStart = dataWind.startConnNo;
+                    stockEnd = dataWind.endConnNo;
                 }
                 catch (Exception ex)
                 {

@@ -28,7 +28,8 @@ namespace FinalUi
         public bool dataLoaded { get; set; }
         public string filename1 { get; set; }
         public bool isNewSheet { get; set; }
-        public string BookNo { get; set; }
+        public string startConnNo { get; set; }
+        public string endConnNo { get; set; }          
         public bool isLoadedFromBook { get; set; }
         public DateTime toDate;
         public DateTime fromDate;
@@ -49,28 +50,10 @@ namespace FinalUi
         {
             dataLoaded = true;
             isLoadedFromBook = true;
-            string bookNumber;
-            bookNumber = BookNoTextBox.Text;
-            BillingDataDataContext db = new BillingDataDataContext();
-            try
-            {
-                Stock stock = db.Stocks.SingleOrDefault(x => x.BookNo == bookNumber);
-                if (stock == null)
-                {
-                    MessageBox.Show("No book found", "Error");
-                    return;
-                }
-                else
-                {
-                    BookNo = bookNumber;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message, "Error");
-                return;
-            }
+            startConnNo = StartConnNo.Text;
+            endConnNo = EndConnNo.Text;
             this.Close();
+          
         }
         private void addData_CheckedUnChecked(object sender, RoutedEventArgs e)
         {
@@ -95,7 +78,7 @@ namespace FinalUi
             }
             else
             {
-                if (BookRadio.IsChecked == true)
+                if (ConnRadio.IsChecked == true)
                     Button_Click_1(sender, e);
             }
         }
@@ -119,7 +102,7 @@ namespace FinalUi
             if (bt.Name == "DataBaseRadioButton")
                 DateRadio.IsChecked = true;
             else
-                BookRadio.IsChecked = true;
+                ConnRadio.IsChecked = true;
         }
     }
 }

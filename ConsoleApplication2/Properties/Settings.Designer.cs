@@ -44,5 +44,15 @@ namespace ConsoleApplication2.Properties {
                 return ((string)(this["BillingDatabaseConnectionString1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=pc\\SQLEXPRESS;Initial Catalog=mi;User ID=sa;Password=1234")]
+        public string miConnectionString {
+            get {
+                return ((string)(this["miConnectionString"]));
+            }
+        }
     }
 }
