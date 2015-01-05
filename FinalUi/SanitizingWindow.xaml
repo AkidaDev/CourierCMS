@@ -125,7 +125,7 @@
             <TextBox LostFocus="BilledWeightTextBox_LostFocus" TextChanged="BilledWeightTextBox_TextChanged" x:Name="BilledWeightTextBox" Height="24" Width="100" Padding="2"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="in (kg)" VerticalAlignment="Bottom" Margin="10 0 0 0"/>
         </WrapPanel>
-        <WrapPanel Grid.Row="7" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+        <WrapPanel Grid.Row="7" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="87 0 0 0">
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="  Billing Amount .: " VerticalAlignment="Bottom"/>
             <TextBox Height="24" Name="BilledAmount" Width="83" Padding="2"/>
             <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
@@ -134,7 +134,7 @@
             <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Slip Cost .: " VerticalAlignment="Bottom"/>
             <TextBlock Text=" ₹ "  FontSize="18" FontWeight="Bold" VerticalAlignment="Bottom"/>
-            <TextBlock FontSize="18" FontFamily="Calibri" Name="SlipCost" Text="" Width="66" Height="23" VerticalAlignment="Bottom"/>
+            <TextBlock FontSize="18" FontFamily="Calibri" Name="SlipCost" Text="" Height="23" VerticalAlignment="Bottom"/>
         </WrapPanel>
         <WrapPanel Grid.Row="8" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Consignee .: " VerticalAlignment="Bottom"/>

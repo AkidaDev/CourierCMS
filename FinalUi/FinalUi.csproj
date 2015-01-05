@@ -259,7 +259,6 @@
     <Compile Include="RecalculatePriceWindow.xaml.cs">
       <DependentUpon>RecalculatePriceWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Rule.cs" />
     <Compile Include="SanitizingWindow.xaml.cs">
       <DependentUpon>SanitizingWindow.xaml</DependentUpon>
     </Compile>
@@ -540,9 +539,6 @@
       <LastGenOutput>BillingData.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="ClassDiagram5.cd" />
-    <None Include="ClassDiagram6.cd" />
-    <None Include="ClassDiagram7.cd" />
     <None Include="Configs.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Configs.Designer.cs</LastGenOutput>

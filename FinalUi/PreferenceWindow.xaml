@@ -48,7 +48,7 @@
                     <ComboBox Name="ConnectionStringCombo"  Width="302" Height="23"/>
                 </WrapPanel>
             </WrapPanel>
-            <Button Click="DefaultButton_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,150,28">
+            <Button Click="DefaultButton_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,150,20">
                 <WrapPanel Margin="6 1">
                     <Path Data="F1M2,12.942C2,12.942 10.226,15.241 10.226,15.241 10.226,15.241 8.275,17.071 8.275,17.071 9.288,17.922 10.917,18.786 12.32,18.786 15.074,18.786 17.386,16.824 18.039,14.171 18.039,14.171 21.987,15.222 21.987,15.222 20.891,19.693 16.996,23 12.357,23 9.771,23 7.076,21.618 5.308,19.934 5.308,19.934 3.454,21.671 3.454,21.671 3.454,21.671 2,12.942 2,12.942z M11.643,2C14.229,2 16.924,3.382 18.692,5.066 18.692,5.066 20.546,3.329 20.546,3.329 20.546,3.329 22,12.058 22,12.058 22,12.058 13.774,9.759 13.774,9.759 13.774,9.759 15.725,7.929 15.725,7.929 14.712,7.078 13.083,6.214 11.68,6.214 8.926,6.214 6.614,8.176 5.961,10.829 5.961,10.829 2.013,9.778 2.013,9.778 3.109,5.307 7.004,2 11.643,2z" Fill="Black" Height="18" Width="18" Stretch="Fill"/>
                     <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text=" Reset"/>
@@ -93,7 +93,7 @@
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="43" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Terms and Conditions .:" Canvas.Top="98"/>
             <TextBox  Name="TNCBox" Padding="3 3 0 0" TextWrapping="Wrap"  AcceptsReturn="True" BorderThickness="2" Height="139" Canvas.Left="20" Canvas.Top="116" Width="426"/>
         </Canvas>
-        <Button Grid.Column="2" Click="SaveButton_Click" Margin="0,0,43,28" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+        <Button Grid.Column="2" Click="SaveButton_Click" Margin="0,0,43,20" HorizontalAlignment="Right" VerticalAlignment="Bottom">
             <WrapPanel Margin="6 1">
                 <Path Data="F1M5.707,16.89C5.707,16.89 16.879,16.89 16.879,16.89 16.879,16.89 16.879,18.13 16.879,18.13 16.879,18.13 5.707,18.13 5.707,18.13 5.707,18.13 5.707,16.89 5.707,16.89z M5.707,13.414C5.707,13.414 16.879,13.414 16.879,13.414 16.879,13.414 16.879,14.653 16.879,14.653 16.879,14.653 5.707,14.653 5.707,14.653 5.707,14.653 5.707,13.414 5.707,13.414z M4.207,10.739C4.207,10.739 4.207,20.566 4.207,20.566 4.207,20.566 18.793,20.566 18.793,20.566 18.793,20.566 18.793,10.739 18.793,10.739 18.793,10.739 4.207,10.739 4.207,10.739z M9.432,1.83C9.432,1.83 13.777,1.83 13.777,1.83 13.777,1.83 13.777,7.358 13.777,7.358 13.777,7.358 9.432,7.358 9.432,7.358 9.432,7.358 9.432,1.83 9.432,1.83z M1.626,1C1.626,1 4.207,1 4.207,1 4.207,1 4.207,8.508 4.207,8.508 4.207,8.508 15.586,8.508 15.586,8.508 15.586,8.508 15.586,1 15.586,1 15.586,1 17.711,1 17.711,1 17.711,1 22,5.246 22,5.246 22,5.246 22,21.381 22,21.381 22,21.723 21.72,22 21.374,22 21.374,22 1.626,22 1.626,22 1.28,22 1,21.723 1,21.381 1,21.381 1,1.62 1,1.62 1,1.277 1.28,1 1.626,1z" Fill="Black" Height="18" Width="18" Stretch="Fill"/>
                 <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text=" Save"/>
