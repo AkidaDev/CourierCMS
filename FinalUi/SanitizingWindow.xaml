@@ -12,8 +12,7 @@
         <CollectionViewSource x:Key="ConsigneeListSource" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="ConsignerListSource" CollectionViewType="ListCollectionView"/>
     </Window.Resources>
-
-    <Grid UIElement.PreviewKeyDown="Grid_PreviewKeyDown"><!--BackColor-->
+    <Grid ><!--BackColor-->
         <Grid.RowDefinitions>
             <RowDefinition Height="36"/>
             <RowDefinition Height="60"/>
