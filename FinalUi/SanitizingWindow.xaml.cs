@@ -508,7 +508,7 @@ namespace FinalUi
 
         private void Button_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Tab)
+            if (e.Key == Key.Enter)
                 SubmitSanitizingDetails_Click(null, null);
         }
 
@@ -544,7 +544,7 @@ namespace FinalUi
 
         private void HeightPacketBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Tab)
+            if (e.Key == Key.Enter)
             {
                 if (HeightPacketBox.Text == "" || HeightPacketBox.Text == "0")
                 {
@@ -557,7 +557,18 @@ namespace FinalUi
             }
         }
 
+        private void Grid_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            var uie = e.OriginalSource as UIElement;
 
+            if (e.Key == Key.Enter)
+            {
+                e.Handled = true;
+                uie.MoveFocus(
+                new TraversalRequest(
+                FocusNavigationDirection.Next));
+            }
+        }
 
     }
 }
