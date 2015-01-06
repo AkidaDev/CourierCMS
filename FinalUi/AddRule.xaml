@@ -52,7 +52,7 @@
         <Grid Name="Step2Grid" Grid.Row="1" VerticalAlignment="Center" Margin="0 5 0 0" Visibility="Collapsed">
             <StackPanel>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Add Service Groups .:" Margin="60 0 0 0"/>
-                <cstmcntrl:TwinListBox Width="500" Height="150" Name="ServiceGroup"/>
+                <cstmcntrl:TwinListBox Width="500" Height="150" Name="ServiceGroupTwinBox"/>
             </StackPanel>
         </Grid>
         <Grid Name="Step3Grid" Grid.Row="1" VerticalAlignment="Center" Margin="0 5 0 0" Visibility="Collapsed">

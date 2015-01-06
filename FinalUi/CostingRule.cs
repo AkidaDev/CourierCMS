@@ -16,6 +16,7 @@ namespace FinalUi
         public int Id { get; set; }
 
         #region When to apply
+        public List<string> ServiceGroupList { get; set; }
         public List<string> ServiceList { get; set; }
         public List<string> ZoneList { get; set; }
         public List<string> CityList { get; set; }
@@ -88,27 +89,44 @@ namespace FinalUi
                 string zones;
                 zones = "";
 
-                if(CityList != null)
+                if (CityList != null)
                 {
-                    CityList.ForEach(x => {
+                    CityList.ForEach(x =>
+                    {
                         zones += x + " ";
                     });
                 }
-                if(StateList != null)
+                if (StateList != null)
                 {
-                    StateList.ForEach(x => {
-                        zones += x + " " ;
+                    StateList.ForEach(x =>
+                    {
+                        zones += x + " ";
                     });
                 }
                 if (ZoneList != null)
                 {
                     ZoneList.ForEach(x =>
                     {
-                        zones += x + " " ;
+                        zones += x + " ";
                     });
                 }
-                
+
                 return zones;
+            }
+        }
+        public string serviceGroupReporting
+        {
+            get
+            {
+                string groups = "";
+                if (ServiceGroupList != null)
+                {
+                    ServiceGroupList.ForEach(x =>
+                        {
+                            groups += x + " ";
+                        });
+                }
+                return groups;
             }
         }
         public string serviceListReporting
@@ -117,7 +135,7 @@ namespace FinalUi
             {
                 string services = "";
 
-                if(ServiceList != null)
+                if (ServiceList != null)
                 {
                     ServiceList.ForEach(x =>
                     {

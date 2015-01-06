@@ -97,6 +97,7 @@ where [BillId] = '" + inv.BillId + @"'
                 mainAmountValue = mainAmountValue - discount;
                 repParams.Add(new ReportParameter("FuelString",String.Format("{0:0.00}",inv.Fuel)));
                 double fuelAmount = inv.Fuel * mainAmountValue / 100;
+                mainAmountValue = mainAmountValue + fuelAmount;
                 repParams.Add(new ReportParameter("FuelAmount", String.Format("{0:0.00}",fuelAmount)));
                 repParams.Add(new ReportParameter("ServiceTaxString", String.Format("{0:0.00}",inv.STax)));
                 double tax = inv.STax * mainAmountValue / 100;

@@ -363,5 +363,14 @@ namespace FinalUi
             return db.RuntimeDatas.Where(x => x.SheetNo == sheetNo && x.UserId == SecurityModule.currentUserName).OrderBy(y => y.ConsignmentNo).ToList();
       
         }
+
+        internal static List<string> getGroupFromService(string service)
+        {
+           List<string> groups =  DataSources.ServiceGroupAssignStatic.Where(x => x.ServiceName == service).Select(x => x.GroupName).ToList();
+           if (groups == null)
+               return new List<string>();
+           else
+               return groups;
+        }
     }
 }

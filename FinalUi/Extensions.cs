@@ -12,7 +12,7 @@ namespace FinalUi
         {
             get
             {
-                List<Stock> stock = DataSources.StockStatic.Where(x =>( String.Compare(x.StockStart.Trim().ToUpperInvariant(), this.ConsignmentNo.ToUpperInvariant()) <= 0 )&& (String.Compare(x.StockEnd.Trim().ToUpperInvariant(), this.ConsignmentNo.Trim().ToUpperInvariant()) >= 0)).ToList();
+                List<Stock> stock = DataSources.StockStatic.Where(x => (String.Compare(x.StockStart.Trim().ToUpperInvariant(), this.ConsignmentNo.ToUpperInvariant()) <= 0) && (String.Compare(x.StockEnd.Trim().ToUpperInvariant(), this.ConsignmentNo.Trim().ToUpperInvariant()) >= 0)).ToList();
                 if (stock.Count > 0)
                 {
                     return stock.First().cost.ToString();
@@ -45,30 +45,7 @@ namespace FinalUi
                 initializeRules();
             }
             List<CostingRule> RulesApplied = costingRules.Where(x => x.startW <= billedWeight && x.endW >= billedWeight).ToList();
-            RulesApplied = RulesApplied.Where(x => x.ServiceList.Contains(trans.Type.Trim())).ToList();
-
-            if (RulesApplied.Where(x => x.CityList.Contains(trans.Destination)).Count() > 0)
-            {
-                RulesApplied = RulesApplied.Where(x => x.CityList.Contains(trans.Destination)).ToList();
-            }
-            else
-            {
-                State state = UtilityClass.getStateFromCity(trans.Destination);
-                if (RulesApplied.Where(x => x.StateList.Contains(state.STATE_CODE)).Count() > 0)
-                {
-                    RulesApplied = RulesApplied.Where(x => x.StateList.Contains(state.STATE_CODE)).ToList();
-                }
-                else
-                {
-                    ZONE zone = UtilityClass.getZoneFromCityCode(trans.Destination);
-                    string zoneCode;
-                    if (zone == null)
-                        zoneCode = "DEF";
-                    else
-                        zoneCode = zone.zcode;
-                    RulesApplied = RulesApplied.Where(x => x.ZoneList.Contains(zoneCode)).ToList();
-                }
-            }
+            RulesApplied = rulesSelector(RulesApplied.Cast<IRule>().ToList(), trans).Cast<CostingRule>().ToList() ;
             decimal price = 0;
             RulesApplied.ForEach((x) =>
             {
@@ -87,7 +64,47 @@ namespace FinalUi
             });
             return Convert.ToDouble(price);
         }
-
+        private List<IRule> destSelector(List<IRule> RulesApplied, RuntimeData trans)
+        {
+            if (RulesApplied.Where(x => x.CityList.Contains(trans.Destination)).Count() > 0)
+            {
+                RulesApplied = RulesApplied.Where(x => x.CityList.Contains(trans.Destination)).ToList();
+            }
+            else
+            {
+                State state = UtilityClass.getStateFromCity(trans.Destination);
+                if (RulesApplied.Where(x => x.StateList.Contains(state.STATE_CODE)).Count() > 0)
+                {
+                    RulesApplied = RulesApplied.Where(x => x.StateList.Contains(state.STATE_CODE)).ToList();
+                }
+                else
+                {
+                    ZONE zone = UtilityClass.getZoneFromCityCode(trans.Destination);
+                    string zoneCode;
+                    if (zone == null)
+                        zoneCode = "";
+                    else
+                        zoneCode = zone.zcode;
+                    RulesApplied = RulesApplied.Where(x => x.ZoneList.Contains(zoneCode)).ToList();
+                }
+            }
+            return RulesApplied;
+        }
+        private List<IRule> rulesSelector(List<IRule> RulesApplied, RuntimeData trans)
+        {
+         //   List<string> groups = UtilityClass.getGroupFromService(trans.Type.Trim());
+            List<IRule> RulesAppliedFromService = RulesApplied;
+            RulesAppliedFromService = RulesApplied.Where(x => x.ServiceList.Contains(trans.Type.Trim())).ToList();
+            RulesAppliedFromService = destSelector(RulesAppliedFromService, trans);
+            if (RulesAppliedFromService.Count() <= 0)
+            {
+                List<string> serviceGroupList = UtilityClass.getGroupFromService(trans.Type);
+                RulesAppliedFromService = RulesApplied.Where(x => x.ServiceGroupList != null)
+                    .Where(x => x.ServiceGroupList.Intersect<string>(serviceGroupList).Count() > 0).ToList();
+                RulesAppliedFromService = destSelector(RulesAppliedFromService, trans);
+            }
+            return RulesAppliedFromService;
+        }
         public List<CostingRule> CostingRules
         {
             get
@@ -132,31 +149,7 @@ namespace FinalUi
         {
             double price = (double)trans.FrAmount;
             List<ServiceRule> RulesApplied = serviceRules.Where(x => x.startW <= trans.BilledWeight && x.endW >= trans.BilledWeight).ToList();
-            RulesApplied = RulesApplied.Where(x => x.ServiceList.Contains(trans.Type.Trim())).ToList();
-
-            if (RulesApplied.Where(x => x.CityList.Contains(trans.Destination)).Count() > 0)
-            {
-                RulesApplied = RulesApplied.Where(x => x.CityList.Contains(trans.Destination)).ToList();
-            }
-            else
-            {
-                State state = UtilityClass.getStateFromCity(trans.Destination);
-                if (RulesApplied.Where(x => x.StateList.Contains(state.STATE_CODE)).Count() > 0)
-                {
-                    RulesApplied = RulesApplied.Where(x => x.StateList.Contains(state.STATE_CODE)).ToList();
-                }
-                else
-                {
-                    ZONE zone = UtilityClass.getZoneFromCityCode(trans.Destination);
-                    string zoneCode;
-                    if (zone == null)
-                        zoneCode = "DEF";
-                    else
-                        zoneCode = zone.zcode;
-                    RulesApplied = RulesApplied.Where(x => x.ZoneList.Contains(zoneCode)).ToList();
-                }
-            }
-
+            RulesApplied = rulesSelector(RulesApplied.Cast<IRule>().ToList(), trans).Cast<ServiceRule>().ToList();
             RulesApplied.Where(x => x.applicable == 'O').ToList().ForEach((x) =>
                             {
                                 x.applyRule(trans, price);

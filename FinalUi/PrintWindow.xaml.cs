@@ -166,9 +166,10 @@ namespace FinalUi
             repParams.Add(new ReportParameter("MiscellaneousAmountString", MiscBox.Text));
             double discount = double.Parse(DiscountBox.Text) * mainAmountValue / 100;
             repParams.Add(new ReportParameter("DiscountAmountString", String.Format("{0:0.00}", discount)));
-            mainAmountValue = mainAmountValue - discount;
+            
             double fuelAmount = double.Parse(TaxBox.Text) * mainAmountValue / 100;
             repParams.Add(new ReportParameter("FuelAmount", fuelAmount.ToString()));
+            mainAmountValue = mainAmountValue - discount + fuelAmount;
             tax = double.Parse(ServiceTaxBox.Text) * mainAmountValue / 100;
             repParams.Add(new ReportParameter("ServiceTaxAmount", String.Format("{0:0.00}", tax)));
             taxamount = tax + fuelAmount;

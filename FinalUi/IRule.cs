@@ -13,6 +13,8 @@ namespace FinalUi
         List<string> ZoneList { get; set; }
         List<string> StateList { get; set; }
         List<string> CityList { get; set; }
+        List<string> ServiceGroupList { get; set; }
+       
         bool applyRule(object obj, double billedWeight);
    }
 }

@@ -70,4 +70,33 @@
       <Association Name="Client_Transaction" Member="Transactions" ThisKey="CLCODE" OtherKey="CustCode" Type="Transaction" />
     </Type>
   </Table>
+  <Table Name="dbo.Service" Member="Services">
+    <Type Name="Service">
+      <Column Name="SER_CODE" Type="System.String" DbType="NVarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SER_DESC" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SER_TYPE_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MOD_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MOD_TIME" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NODEID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="USERID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="TRANS_STATUS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SER_DIV" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MODE_TYPE" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SER_BILLING" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PRODUCT_ID" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SER_HIERARCHY_ID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ServiceGroup" Member="ServiceGroups">
+    <Type Name="ServiceGroup">
+      <Column Name="GroupName" Type="System.String" DbType="VarChar(200) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ServiceGroupAssignments" Member="ServiceGroupAssignments">
+    <Type Name="ServiceGroupAssignment">
+      <Column Name="GroupName" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ServiceName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="AssignId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
 </Database>

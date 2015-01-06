@@ -15,6 +15,8 @@ namespace FinalUi
         static List<Employee> _Employee;
         static BillingDataDataContext db;
         static List<Stock> _Stocks;
+        static List<ServiceGroup> _Groups;
+        static List<ServiceGroupAssignment> _ServiceGroupAssignments;
         #endregion
         #region ReadOnlyCopies
         public static List<Stock> StockStatic
@@ -24,6 +26,24 @@ namespace FinalUi
                 if (_Stocks == null)
                     initialize();
                 return _Stocks;
+            }
+        }
+        public static List<ServiceGroup> ServiceGroupStatic
+        {
+            get
+            {
+                if (_Groups == null)
+                    initialize();
+                return _Groups;
+            }
+        }
+        public static List<ServiceGroupAssignment> ServiceGroupAssignStatic
+        {
+            get
+            {
+                if (_ServiceGroupAssignments == null)
+                    initialize();
+                return _ServiceGroupAssignments;
             }
         }
         #endregion
@@ -126,6 +146,8 @@ namespace FinalUi
             _Services = db.Services.Where(x=>x.SER_TYPE_STATUS == "A").ToList();
             _Zones = db.ZONEs.ToList();
             _States = db.States.ToList();
+            _Groups = db.ServiceGroups.ToList();
+            _ServiceGroupAssignments = db.ServiceGroupAssignments.ToList();
             refreshCityList();
             refreshClientList();
             refreshEmployeeList();
@@ -139,6 +161,7 @@ namespace FinalUi
             _States = null;
             _Client = null;
             _Employee = null;
+            _Groups = null;
         }
     }
 }

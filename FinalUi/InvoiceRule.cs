@@ -7,6 +7,8 @@ namespace FinalUi
 {
    public class InvoiceRule :IRule
     {
+       public List<string> ServiceGroupList { get; set; }
+       
         public int Id { get; set; }
         public List<string> ServiceList { get; set; }
         public  List<string> ZoneList { get; set; }

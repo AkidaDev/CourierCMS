@@ -284,7 +284,7 @@ namespace FinalUi
             start = start + connsigmentNo.ToString();
             ConnsignmentNumber.Text = start;
             fillAllElements(ConnsignmentNumber.Text);
-            ConnsignmentNumber.Focus();
+            CustomerSelected.Focus();
         }
         public void setdata(RuntimeData dbdata, RuntimeData data)
         {

@@ -401,6 +401,7 @@
                                         <DataGridTextColumn Header="DStart (Rs)" Binding="{Binding DoxStartS}"/>
                                         <DataGridTextColumn Header="NStart (Rs)" Binding="{Binding nDoxStartS}"/>
                                         <DataGridTextColumn Header="Services" Binding="{Binding serviceCount}"/>
+                                        <DataGridTextColumn Header="ServiceGroups" Binding="{Binding serviceGroupReporting}"/>
                                         <DataGridTextColumn Header="Destination List" Binding="{Binding zoneListReporting}"/>
                                         <DataGridTextColumn Header="Service List" Binding="{Binding serviceListReporting}"/>
                                     </DataGrid.Columns>
@@ -444,6 +445,7 @@
                                         <DataGridTextColumn Header="Service Count" Binding="{Binding servCount}"/>
                                         <DataGridTextColumn Header="Step Weight" Binding="{Binding stepweight}"/>
                                         <DataGridTextColumn Header="Amount" Binding="{Binding per}"/>
+                                        <DataGridTextColumn Header="ServiceGroups" Binding="{Binding serviceGroupReporting}"/>
                                         <DataGridTextColumn Header="Destination List" Binding="{Binding zoneListReporting}"/>
                                         <DataGridTextColumn Header="Service List" Binding="{Binding serviceListReporting}"/>
                                     </DataGrid.Columns>

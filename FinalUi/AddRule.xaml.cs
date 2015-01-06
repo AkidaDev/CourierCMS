@@ -58,7 +58,7 @@ namespace FinalUi
             ToWeightBox.Text = RuleCR.endW.ToString();
             DOXAmountBox.Text = RuleCR.doxAmount.ToString();
             NDoxAmountBox.Text = RuleCR.ndoxAmount.ToString();
-            AddRule.setFormList(RuleCR, ServiceTwinBox, ZoneTwinBox, StateTwinBox, CitiesTwinBox);
+            AddRule.setFormList(RuleCR, ServiceTwinBox, ZoneTwinBox, StateTwinBox, CitiesTwinBox,ServiceGroupTwinBox);
             if (RuleCR.type == 'R')
             {
                 RangeTypeRadio.IsChecked = true;
@@ -99,14 +99,28 @@ namespace FinalUi
             CitiesTwinBox.AllListSource = DataSources.CityCopy;
             CitiesTwinBox.SelectedListSource = new List<City>();
             CitiesTwinBox.DisplayValuePath = "NameAndCode";
+            ServiceGroupTwinBox.AllListSource = DataSources.ServiceGroupStatic;
+            ServiceGroupTwinBox.DisplayValuePath = "GroupName";
+            ServiceGroupTwinBox.SelectedListSource = new List<ServiceGroup>();
         }
-        public static void setFormList(IRule crule, CustomControls.TwinListBox ServiceTwinBox, CustomControls.TwinListBox ZoneTwinBox, CustomControls.TwinListBox StateTwinBox, CustomControls.TwinListBox CitiesTwinBox)
+        public static void setFormList(IRule crule, CustomControls.TwinListBox ServiceTwinBox, CustomControls.TwinListBox ZoneTwinBox, CustomControls.TwinListBox StateTwinBox, CustomControls.TwinListBox CitiesTwinBox, CustomControls.TwinListBox ServiceGroupTwinBox)
         {
             if (crule == null)
             {
                 throw new Exception("Rule is Null");
 
             }
+            if(crule.ServiceGroupList != null)
+            {
+                ServiceGroupTwinBox.AllListSource = DataSources.ServiceGroupStatic.Where(x => !crule.ServiceGroupList.Contains(x.GroupName)).ToList();
+                ServiceGroupTwinBox.SelectedListSource = DataSources.ServiceGroupStatic.Where(x => crule.ServiceGroupList.Contains(x.GroupName)).ToList();
+            }
+            else
+            {
+                ServiceGroupTwinBox.AllListSource = DataSources.ServiceGroupStatic;
+                ServiceGroupTwinBox.SelectedListSource = new List<ServiceGroup>();
+            }
+            ServiceGroupTwinBox.DisplayValuePath = "GroupName";
             if (crule.ServiceList.Count > 0)
             {
                 ServiceTwinBox.AllListSource = DataSources.ServicesCopy.Where(x => !crule.ServiceList.Contains(x.SER_CODE)).ToList();
@@ -213,11 +227,12 @@ namespace FinalUi
             List<string> selectedZoneList = ZoneTwinBox.SelectedListSource.Cast<ZONE>().Select(x => x.zcode).ToList();
             List<String> selectedCityList = CitiesTwinBox.SelectedListSource.Cast<City>().Select(x => x.CITY_CODE).ToList();
             List<string> selectedStateList = StateTwinBox.SelectedListSource.Cast<State>().Select(x => x.STATE_CODE).ToList();
+            List<string> selectedServiceGroupList = ServiceGroupTwinBox.SelectedListSource.Cast<ServiceGroup>().Select(x => x.GroupName).ToList();
             RuleCR.ServiceList = selectedServiceList;
             RuleCR.ZoneList = selectedZoneList;
             RuleCR.CityList = selectedCityList;
             RuleCR.StateList = selectedStateList;
-            
+            RuleCR.ServiceGroupList = selectedServiceGroupList;
             RuleCR.startW = startW;
             int id;
             id = Convert.ToInt32(db.ExecuteQuery<decimal>("SELECT IDENT_CURRENT('Rule') +1;").FirstOrDefault());

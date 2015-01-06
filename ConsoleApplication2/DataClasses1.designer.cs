@@ -39,6 +39,15 @@ namespace ConsoleApplication2
     partial void InsertClient(Client instance);
     partial void UpdateClient(Client instance);
     partial void DeleteClient(Client instance);
+    partial void InsertService(Service instance);
+    partial void UpdateService(Service instance);
+    partial void DeleteService(Service instance);
+    partial void InsertServiceGroup(ServiceGroup instance);
+    partial void UpdateServiceGroup(ServiceGroup instance);
+    partial void DeleteServiceGroup(ServiceGroup instance);
+    partial void InsertServiceGroupAssignment(ServiceGroupAssignment instance);
+    partial void UpdateServiceGroupAssignment(ServiceGroupAssignment instance);
+    partial void DeleteServiceGroupAssignment(ServiceGroupAssignment instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -92,6 +101,30 @@ namespace ConsoleApplication2
 			get
 			{
 				return this.GetTable<Client>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Service> Services
+		{
+			get
+			{
+				return this.GetTable<Service>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ServiceGroup> ServiceGroups
+		{
+			get
+			{
+				return this.GetTable<ServiceGroup>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ServiceGroupAssignment> ServiceGroupAssignments
+		{
+			get
+			{
+				return this.GetTable<ServiceGroupAssignment>();
 			}
 		}
 	}
@@ -1620,6 +1653,528 @@ namespace ConsoleApplication2
 		{
 			this.SendPropertyChanging();
 			entity.Client = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Service")]
+	public partial class Service : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _SER_CODE;
+		
+		private string _SER_DESC;
+		
+		private string _SER_TYPE_STATUS;
+		
+		private System.Nullable<System.DateTime> _MOD_DATE;
+		
+		private System.Nullable<double> _MOD_TIME;
+		
+		private string _NODEID;
+		
+		private string _USERID;
+		
+		private string _TRANS_STATUS;
+		
+		private System.Nullable<double> _SER_DIV;
+		
+		private string _MODE_TYPE;
+		
+		private string _SER_BILLING;
+		
+		private System.Nullable<double> _PRODUCT_ID;
+		
+		private string _SER_HIERARCHY_ID;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSER_CODEChanging(string value);
+    partial void OnSER_CODEChanged();
+    partial void OnSER_DESCChanging(string value);
+    partial void OnSER_DESCChanged();
+    partial void OnSER_TYPE_STATUSChanging(string value);
+    partial void OnSER_TYPE_STATUSChanged();
+    partial void OnMOD_DATEChanging(System.Nullable<System.DateTime> value);
+    partial void OnMOD_DATEChanged();
+    partial void OnMOD_TIMEChanging(System.Nullable<double> value);
+    partial void OnMOD_TIMEChanged();
+    partial void OnNODEIDChanging(string value);
+    partial void OnNODEIDChanged();
+    partial void OnUSERIDChanging(string value);
+    partial void OnUSERIDChanged();
+    partial void OnTRANS_STATUSChanging(string value);
+    partial void OnTRANS_STATUSChanged();
+    partial void OnSER_DIVChanging(System.Nullable<double> value);
+    partial void OnSER_DIVChanged();
+    partial void OnMODE_TYPEChanging(string value);
+    partial void OnMODE_TYPEChanged();
+    partial void OnSER_BILLINGChanging(string value);
+    partial void OnSER_BILLINGChanged();
+    partial void OnPRODUCT_IDChanging(System.Nullable<double> value);
+    partial void OnPRODUCT_IDChanged();
+    partial void OnSER_HIERARCHY_IDChanging(string value);
+    partial void OnSER_HIERARCHY_IDChanged();
+    #endregion
+		
+		public Service()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SER_CODE", DbType="NVarChar(255) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string SER_CODE
+		{
+			get
+			{
+				return this._SER_CODE;
+			}
+			set
+			{
+				if ((this._SER_CODE != value))
+				{
+					this.OnSER_CODEChanging(value);
+					this.SendPropertyChanging();
+					this._SER_CODE = value;
+					this.SendPropertyChanged("SER_CODE");
+					this.OnSER_CODEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SER_DESC", DbType="NVarChar(255)")]
+		public string SER_DESC
+		{
+			get
+			{
+				return this._SER_DESC;
+			}
+			set
+			{
+				if ((this._SER_DESC != value))
+				{
+					this.OnSER_DESCChanging(value);
+					this.SendPropertyChanging();
+					this._SER_DESC = value;
+					this.SendPropertyChanged("SER_DESC");
+					this.OnSER_DESCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SER_TYPE_STATUS", DbType="NVarChar(255)")]
+		public string SER_TYPE_STATUS
+		{
+			get
+			{
+				return this._SER_TYPE_STATUS;
+			}
+			set
+			{
+				if ((this._SER_TYPE_STATUS != value))
+				{
+					this.OnSER_TYPE_STATUSChanging(value);
+					this.SendPropertyChanging();
+					this._SER_TYPE_STATUS = value;
+					this.SendPropertyChanged("SER_TYPE_STATUS");
+					this.OnSER_TYPE_STATUSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MOD_DATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> MOD_DATE
+		{
+			get
+			{
+				return this._MOD_DATE;
+			}
+			set
+			{
+				if ((this._MOD_DATE != value))
+				{
+					this.OnMOD_DATEChanging(value);
+					this.SendPropertyChanging();
+					this._MOD_DATE = value;
+					this.SendPropertyChanged("MOD_DATE");
+					this.OnMOD_DATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MOD_TIME", DbType="Float")]
+		public System.Nullable<double> MOD_TIME
+		{
+			get
+			{
+				return this._MOD_TIME;
+			}
+			set
+			{
+				if ((this._MOD_TIME != value))
+				{
+					this.OnMOD_TIMEChanging(value);
+					this.SendPropertyChanging();
+					this._MOD_TIME = value;
+					this.SendPropertyChanged("MOD_TIME");
+					this.OnMOD_TIMEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NODEID", DbType="NVarChar(255)")]
+		public string NODEID
+		{
+			get
+			{
+				return this._NODEID;
+			}
+			set
+			{
+				if ((this._NODEID != value))
+				{
+					this.OnNODEIDChanging(value);
+					this.SendPropertyChanging();
+					this._NODEID = value;
+					this.SendPropertyChanged("NODEID");
+					this.OnNODEIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USERID", DbType="NVarChar(255)")]
+		public string USERID
+		{
+			get
+			{
+				return this._USERID;
+			}
+			set
+			{
+				if ((this._USERID != value))
+				{
+					this.OnUSERIDChanging(value);
+					this.SendPropertyChanging();
+					this._USERID = value;
+					this.SendPropertyChanged("USERID");
+					this.OnUSERIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TRANS_STATUS", DbType="NVarChar(255)")]
+		public string TRANS_STATUS
+		{
+			get
+			{
+				return this._TRANS_STATUS;
+			}
+			set
+			{
+				if ((this._TRANS_STATUS != value))
+				{
+					this.OnTRANS_STATUSChanging(value);
+					this.SendPropertyChanging();
+					this._TRANS_STATUS = value;
+					this.SendPropertyChanged("TRANS_STATUS");
+					this.OnTRANS_STATUSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SER_DIV", DbType="Float")]
+		public System.Nullable<double> SER_DIV
+		{
+			get
+			{
+				return this._SER_DIV;
+			}
+			set
+			{
+				if ((this._SER_DIV != value))
+				{
+					this.OnSER_DIVChanging(value);
+					this.SendPropertyChanging();
+					this._SER_DIV = value;
+					this.SendPropertyChanged("SER_DIV");
+					this.OnSER_DIVChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MODE_TYPE", DbType="NVarChar(255)")]
+		public string MODE_TYPE
+		{
+			get
+			{
+				return this._MODE_TYPE;
+			}
+			set
+			{
+				if ((this._MODE_TYPE != value))
+				{
+					this.OnMODE_TYPEChanging(value);
+					this.SendPropertyChanging();
+					this._MODE_TYPE = value;
+					this.SendPropertyChanged("MODE_TYPE");
+					this.OnMODE_TYPEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SER_BILLING", DbType="NVarChar(255)")]
+		public string SER_BILLING
+		{
+			get
+			{
+				return this._SER_BILLING;
+			}
+			set
+			{
+				if ((this._SER_BILLING != value))
+				{
+					this.OnSER_BILLINGChanging(value);
+					this.SendPropertyChanging();
+					this._SER_BILLING = value;
+					this.SendPropertyChanged("SER_BILLING");
+					this.OnSER_BILLINGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRODUCT_ID", DbType="Float")]
+		public System.Nullable<double> PRODUCT_ID
+		{
+			get
+			{
+				return this._PRODUCT_ID;
+			}
+			set
+			{
+				if ((this._PRODUCT_ID != value))
+				{
+					this.OnPRODUCT_IDChanging(value);
+					this.SendPropertyChanging();
+					this._PRODUCT_ID = value;
+					this.SendPropertyChanged("PRODUCT_ID");
+					this.OnPRODUCT_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SER_HIERARCHY_ID", DbType="NVarChar(255)")]
+		public string SER_HIERARCHY_ID
+		{
+			get
+			{
+				return this._SER_HIERARCHY_ID;
+			}
+			set
+			{
+				if ((this._SER_HIERARCHY_ID != value))
+				{
+					this.OnSER_HIERARCHY_IDChanging(value);
+					this.SendPropertyChanging();
+					this._SER_HIERARCHY_ID = value;
+					this.SendPropertyChanged("SER_HIERARCHY_ID");
+					this.OnSER_HIERARCHY_IDChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ServiceGroup")]
+	public partial class ServiceGroup : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _GroupName;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnGroupNameChanging(string value);
+    partial void OnGroupNameChanged();
+    #endregion
+		
+		public ServiceGroup()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupName", DbType="VarChar(200) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string GroupName
+		{
+			get
+			{
+				return this._GroupName;
+			}
+			set
+			{
+				if ((this._GroupName != value))
+				{
+					this.OnGroupNameChanging(value);
+					this.SendPropertyChanging();
+					this._GroupName = value;
+					this.SendPropertyChanged("GroupName");
+					this.OnGroupNameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ServiceGroupAssignments")]
+	public partial class ServiceGroupAssignment : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _GroupName;
+		
+		private string _ServiceName;
+		
+		private System.Guid _AssignId;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnGroupNameChanging(string value);
+    partial void OnGroupNameChanged();
+    partial void OnServiceNameChanging(string value);
+    partial void OnServiceNameChanged();
+    partial void OnAssignIdChanging(System.Guid value);
+    partial void OnAssignIdChanged();
+    #endregion
+		
+		public ServiceGroupAssignment()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupName", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string GroupName
+		{
+			get
+			{
+				return this._GroupName;
+			}
+			set
+			{
+				if ((this._GroupName != value))
+				{
+					this.OnGroupNameChanging(value);
+					this.SendPropertyChanging();
+					this._GroupName = value;
+					this.SendPropertyChanged("GroupName");
+					this.OnGroupNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceName", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string ServiceName
+		{
+			get
+			{
+				return this._ServiceName;
+			}
+			set
+			{
+				if ((this._ServiceName != value))
+				{
+					this.OnServiceNameChanging(value);
+					this.SendPropertyChanging();
+					this._ServiceName = value;
+					this.SendPropertyChanged("ServiceName");
+					this.OnServiceNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssignId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid AssignId
+		{
+			get
+			{
+				return this._AssignId;
+			}
+			set
+			{
+				if ((this._AssignId != value))
+				{
+					this.OnAssignIdChanging(value);
+					this.SendPropertyChanging();
+					this._AssignId = value;
+					this.SendPropertyChanged("AssignId");
+					this.OnAssignIdChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }
