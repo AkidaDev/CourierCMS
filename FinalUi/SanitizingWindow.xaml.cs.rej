@@ -1,0 +1,11 @@
+--- FinalUi/SanitizingWindow.xaml.cs	
++++ FinalUi/SanitizingWindow.xaml.cs	
+@@ -544,7 +544,7 @@
+ 
+         private void HeightPacketBox_KeyDown(object sender, KeyEventArgs e)
+         {
+-            if (e.Key == Key.Enter)
++            if (e.Key == Key.Tab)
+             {
+                 if (HeightPacketBox.Text == "" || HeightPacketBox.Text == "0")
+                 {
