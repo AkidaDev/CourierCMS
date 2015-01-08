@@ -457,6 +457,12 @@
       <Column Name="SubClient" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.ServiceGroup" Member="ServiceGroups">
+    <Type Name="ServiceGroup">
+      <Column Name="GroupName" Type="System.String" DbType="VarChar(200) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="ServiceGroup_ServiceGroupAssignment" Member="ServiceGroupAssignments" ThisKey="GroupName" OtherKey="GroupName" Type="ServiceGroupAssignment" />
+    </Type>
+  </Table>
   <Table Name="dbo.ServiceGroupAssignments" Member="ServiceGroupAssignments">
     <Type Name="ServiceGroupAssignment">
       <Column Name="GroupName" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
@@ -464,12 +470,6 @@
       <Column Name="AssignId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Association Name="Service_ServiceGroupAssignment" Member="Service" ThisKey="ServiceName" OtherKey="SER_CODE" Type="Service" IsForeignKey="true" />
       <Association Name="ServiceGroup_ServiceGroupAssignment" Member="ServiceGroup" ThisKey="GroupName" OtherKey="GroupName" Type="ServiceGroup" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ServiceGroup" Member="ServiceGroups">
-    <Type Name="ServiceGroup">
-      <Column Name="GroupName" Type="System.String" DbType="VarChar(200) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="ServiceGroup_ServiceGroupAssignment" Member="ServiceGroupAssignments" ThisKey="GroupName" OtherKey="GroupName" Type="ServiceGroupAssignment" />
     </Type>
   </Table>
   <Function Name="dbo.sp_deleteSheetFromRuntime" Method="sp_deleteSheetFromRuntime">

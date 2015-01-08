@@ -116,6 +116,17 @@ namespace FinalUi
                 return empCopy;
             }
         }
+        public static List<ServiceGroup> ServiceGroupCopy
+        {
+            get
+            {
+                if (_Groups == null)
+                    initialize();
+                List<ServiceGroup> groupCopy = new List<ServiceGroup>();
+                groupCopy.AddRange(_Groups.OrderBy(x => x.GroupName));
+                return groupCopy;
+            }
+        }
         #endregion
         #region Refreshers
         public static void refreshStockList()

@@ -87,16 +87,18 @@
       <Column Name="SER_HIERARCHY_ID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.ServiceGroup" Member="ServiceGroups">
-    <Type Name="ServiceGroup">
-      <Column Name="GroupName" Type="System.String" DbType="VarChar(200) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.ServiceGroupAssignments" Member="ServiceGroupAssignments">
     <Type Name="ServiceGroupAssignment">
       <Column Name="GroupName" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
       <Column Name="ServiceName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="AssignId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="ServiceGroup_ServiceGroupAssignment" Member="ServiceGroup" ThisKey="GroupName" OtherKey="GroupName" Type="ServiceGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ServiceGroup" Member="ServiceGroups">
+    <Type Name="ServiceGroup">
+      <Column Name="GroupName" Type="System.String" DbType="VarChar(200) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="ServiceGroup_ServiceGroupAssignment" Member="ServiceGroupAssignments" ThisKey="GroupName" OtherKey="GroupName" Type="ServiceGroupAssignment" />
     </Type>
   </Table>
 </Database>

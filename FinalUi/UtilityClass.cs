@@ -364,7 +364,7 @@ namespace FinalUi
       
         }
 
-        internal static List<string> getGroupFromService(string service)
+        public static List<string> getGroupFromService(string service)
         {
            List<string> groups =  DataSources.ServiceGroupAssignStatic.Where(x => x.ServiceName == service).Select(x => x.GroupName).ToList();
            if (groups == null)

@@ -12,6 +12,47 @@ namespace ConsoleApplication2
     {
         static void Main(string[] args)
         {
+            funcToHandleAllRecords();
+        }
+        static void funcToAddGroupsToServices()
+        {
+            Console.WriteLine("Trying to load all costing rules...");
+            DataClasses1DataContext db = new DataClasses1DataContext();
+            List<Rule> ruleCollection = db.Rules.Where(x => x.Type == 1).ToList();
+            Console.WriteLine("Attempting to process " + ruleCollection.Count + " rules.");
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            int i = 0;
+            foreach (Rule rule in ruleCollection)
+            {
+                CostingRule cRule = serializer.Deserialize<CostingRule>(rule.Properties);
+                List<string> groups = cRule.ServiceGroupList;
+                if (groups == null)
+                    groups = new List<string>();
+                foreach (string service in cRule.ServiceList)
+                {
+                    List<string> group = UtilityClass.getGroupFromService(service);
+                    foreach (string groupName in group)
+                    {
+                        if (!groups.Contains(groupName))
+                        {
+                            groups.Add(groupName);
+                        }
+                    }
+                }
+                cRule.ServiceGroupList = groups;
+                rule.Properties = serializer.Serialize(cRule);
+                i++;
+                if (i % 250 == 0)
+                    Console.WriteLine(i.ToString() + " records processed...");
+            }
+            Console.WriteLine("Records to be updated : " + db.GetChangeSet().Updates.Count);
+            Console.WriteLine("Attempting to save data...");
+            db.SubmitChanges();
+            Console.WriteLine("Changes submitted...");
+            Console.ReadLine();
+        }
+        static void funcToService()
+        {
             Console.WriteLine("Trying to load all services...");
             DataClasses1DataContext db = new DataClasses1DataContext();
             List<Service> AllServices = db.Services.ToList();
@@ -136,6 +177,7 @@ namespace ConsoleApplication2
             db.SubmitChanges();
             Console.WriteLine("Changes made successfully...");
             Console.ReadLine();
+
         }
         static void funcToHandleAllRecords()
         {

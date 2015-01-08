@@ -99,7 +99,7 @@ namespace FinalUi
             CitiesTwinBox.AllListSource = DataSources.CityCopy;
             CitiesTwinBox.SelectedListSource = new List<City>();
             CitiesTwinBox.DisplayValuePath = "NameAndCode";
-            ServiceGroupTwinBox.AllListSource = DataSources.ServiceGroupStatic;
+            ServiceGroupTwinBox.AllListSource = DataSources.ServiceGroupCopy ;
             ServiceGroupTwinBox.DisplayValuePath = "GroupName";
             ServiceGroupTwinBox.SelectedListSource = new List<ServiceGroup>();
         }
@@ -112,8 +112,8 @@ namespace FinalUi
             }
             if(crule.ServiceGroupList != null)
             {
-                ServiceGroupTwinBox.AllListSource = DataSources.ServiceGroupStatic.Where(x => !crule.ServiceGroupList.Contains(x.GroupName)).ToList();
-                ServiceGroupTwinBox.SelectedListSource = DataSources.ServiceGroupStatic.Where(x => crule.ServiceGroupList.Contains(x.GroupName)).ToList();
+                ServiceGroupTwinBox.AllListSource = DataSources.ServiceGroupCopy.Where(x => !crule.ServiceGroupList.Contains(x.GroupName)).ToList();
+                ServiceGroupTwinBox.SelectedListSource = DataSources.ServiceGroupCopy.Where(x => crule.ServiceGroupList.Contains(x.GroupName)).ToList();
             }
             else
             {

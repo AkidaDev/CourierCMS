@@ -140,7 +140,7 @@ namespace FinalUi
             }
             #endregion
             BillingDataDataContext db = new BillingDataDataContext();
-            source = UtilityClass.convertToRuntimeVIew(dataGridSource).Where(x => x.CustCode == ((Client)ClientList.SelectedItem).CLCODE && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
+            source = UtilityClass.convertToRuntimeVIew(dataGridSource).Where(x => x.CustCode == ((Client)ClientList.SelectedItem).CLCODE && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).OrderBy(y=>y.BookingDate).ThenBy(z=>z.ConsignmentNo).ToList();
             if (SubClientComboBox.Text != null && SubClientComboBox.Text != "")
             {
                 source = source.Where(x => x.SubClient == SubClientComboBox.Text).ToList();
@@ -172,7 +172,7 @@ namespace FinalUi
             mainAmountValue = mainAmountValue - discount + fuelAmount;
             tax = double.Parse(ServiceTaxBox.Text) * mainAmountValue / 100;
             repParams.Add(new ReportParameter("ServiceTaxAmount", String.Format("{0:0.00}", tax)));
-            taxamount = tax + fuelAmount;
+            taxamount = tax ;
             if (PreviousDueCheck.Checked == true)
                 totalAmount = mainAmountValue + taxamount + double.Parse(MiscBox.Text) + double.Parse(PreviousDueTextBox.Text);
             else
