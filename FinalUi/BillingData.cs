@@ -1,6 +1,37 @@
 using System.Text.RegularExpressions;
 namespace FinalUi
 {
+    partial class Invoice
+    {
+        public double totalAmount
+        {
+            get
+            {
+                return Basic + fuelAmount + taxAmount - discountAmount + PreviousDue??0 + Misc??0 ;
+            }
+        }
+        public double fuelAmount
+        {
+            get
+            {
+                return (Basic - discountAmount) * 0.01 * Fuel;
+            }
+        }
+        public double taxAmount
+        {
+            get
+            {
+                return (Basic - discountAmount + fuelAmount) * 0.01 * STax;
+            }
+        }
+        public double discountAmount
+        {
+            get
+            {
+                return Basic * 0.01 * Discount??0;
+            }
+        }
+    }
     partial class RuntimeCityView
     {
         public string SubClient

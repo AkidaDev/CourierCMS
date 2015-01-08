@@ -416,7 +416,7 @@ namespace FinalUi
             {
                 this.ConsgineeName.Text = data.ConsigneeName;
             }
-            SlipCost.Text = data.Stock;
+            SlipCost.Text = String.Format("{0:0.00}",data.Stock);
         }
         private void DoneButton_Click(object sender, RoutedEventArgs e)
         {

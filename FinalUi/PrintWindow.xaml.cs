@@ -27,6 +27,7 @@ namespace FinalUi
         CollectionViewSource SubClientListSource;
         List<RuntimeData> dataGridSource;
         Dictionary<string, List<string>> SubClientList;
+        Invoice invoice;
         Microsoft.Reporting.WinForms.ReportDataSource rs;
 
         public PrintWindow(List<RuntimeData> data, Client client, DateTime toDate, DateTime fromDate, double tax, double previousDue)
@@ -97,16 +98,6 @@ namespace FinalUi
             }
             RefreshDataGridSource();
         }
-        string dateString;
-        Client clc;
-        string descriptionString;
-        double tax;
-        double mainAmountValue;
-        double taxamount;
-        double totalAmount;
-        string totalAmountinWordString;
-        string invoiceNo;
-        double basic;
         List<RuntimeCityView> source;
         private void printObj(Client client = null)
         {
@@ -139,46 +130,43 @@ namespace FinalUi
                 return;
             }
             #endregion
+            invoice = new FinalUi.Invoice();
             BillingDataDataContext db = new BillingDataDataContext();
-            source = UtilityClass.convertToRuntimeVIew(dataGridSource).Where(x => x.CustCode == ((Client)ClientList.SelectedItem).CLCODE && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).OrderBy(y=>y.BookingDate).ThenBy(z=>z.ConsignmentNo).ToList();
+            source = UtilityClass.convertToRuntimeVIew(dataGridSource).Where(x => x.CustCode == ((Client)ClientList.SelectedItem).CLCODE && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).OrderBy(y => y.BookingDate).ThenBy(z => z.ConsignmentNo).ToList();
             if (SubClientComboBox.Text != null && SubClientComboBox.Text != "")
             {
                 source = source.Where(x => x.SubClient == SubClientComboBox.Text).ToList();
             }
             rs.Value = source;
+            Client curClient;
             if (client == null)
-                clc = db.Clients.SingleOrDefault(x => x.CLCODE == ((Client)ClientList.SelectedItem).CLCODE);
+                curClient = ((Client)ClientList.SelectedItem);
             else
-                clc = client;
+                curClient = client;
+            invoice.Basic = (double)(source.Sum(x => x.FrAmount) ?? 0);
+            invoice.ClientCode = curClient.CLCODE;
+            invoice.Discount = double.Parse(DiscountBox.Text);
+            invoice.Fuel = double.Parse(TaxBox.Text);
+            invoice.STax = double.Parse(ServiceTaxBox.Text);
             List<ReportParameter> repParams = new List<ReportParameter>();
             DateTime toDate = ToDate.SelectedDate ?? DateTime.Today;
             DateTime fromDate = FromDate.SelectedDate ?? DateTime.Today;
-            dateString = fromDate.ToString("dd/MM/yyyy") + " to " + toDate.ToString("dd/MM/yyyy");
+            string dateString = fromDate.ToString("dd/MM/yyyy") + " to " + toDate.ToString("dd/MM/yyyy");
             repParams.Add(new ReportParameter("DateString", dateString));
-            descriptionString = "Total Connsignments: " + source.Count;
+            string descriptionString = "Total Connsignments: " + source.Count;
             repParams.Add(new ReportParameter("DescriptionString", descriptionString));
-            mainAmountValue = (double)(source.Sum(x => x.FrAmount) ?? 0);
-            basic = mainAmountValue;
-            repParams.Add(new ReportParameter("MainAmountString", String.Format("{0:0.00}", mainAmountValue)));
+            repParams.Add(new ReportParameter("MainAmountString", String.Format("{0:0.00}", invoice.Basic.ToString())));
             repParams.Add(new ReportParameter("FuelString", TaxBox.Text));
             repParams.Add(new ReportParameter("ServiceTaxString", String.Format("{0:0.00}", double.Parse(ServiceTaxBox.Text))));
             repParams.Add(new ReportParameter("DiscountPString", String.Format("{0:0.00}", double.Parse(DiscountBox.Text))));
             repParams.Add(new ReportParameter("MiscellaneousAmountString", MiscBox.Text));
-            double discount = double.Parse(DiscountBox.Text) * mainAmountValue / 100;
-            repParams.Add(new ReportParameter("DiscountAmountString", String.Format("{0:0.00}", discount)));
-            
-            double fuelAmount = double.Parse(TaxBox.Text) * mainAmountValue / 100;
-            repParams.Add(new ReportParameter("FuelAmount", fuelAmount.ToString()));
-            mainAmountValue = mainAmountValue - discount + fuelAmount;
-            tax = double.Parse(ServiceTaxBox.Text) * mainAmountValue / 100;
-            repParams.Add(new ReportParameter("ServiceTaxAmount", String.Format("{0:0.00}", tax)));
-            taxamount = tax ;
+            repParams.Add(new ReportParameter("DiscountAmountString", String.Format("{0:0.00}", invoice.discountAmount.ToString())));
+            repParams.Add(new ReportParameter("FuelAmount", invoice.fuelAmount.ToString()));
+            repParams.Add(new ReportParameter("ServiceTaxAmount", String.Format("{0:0.00}", invoice.taxAmount.ToString())));
             if (PreviousDueCheck.Checked == true)
-                totalAmount = mainAmountValue + taxamount + double.Parse(MiscBox.Text) + double.Parse(PreviousDueTextBox.Text);
-            else
-                totalAmount = mainAmountValue + taxamount + double.Parse(MiscBox.Text);
-            repParams.Add(new ReportParameter("TotalAmountString", String.Format("{0:0.00}", totalAmount)));
-            totalAmountinWordString = UtilityClass.NumbersToWords((int)totalAmount);
+                invoice.PreviousDue = double.Parse(PreviousDueTextBox.Text);
+            repParams.Add(new ReportParameter("TotalAmountString", String.Format("{0:0.00}", invoice.totalAmount)));
+            string totalAmountinWordString = UtilityClass.NumbersToWords((int)Math.Round(invoice.totalAmount));
             repParams.Add(new ReportParameter("TotalAmountInWordString", totalAmountinWordString));
             if (PreviousDueCheck.Checked == true)
             {
@@ -190,14 +178,14 @@ namespace FinalUi
             repParams.Add(new ReportParameter("CompanyAddress", Configs.Default.CompanyAddress));
             repParams.Add(new ReportParameter("CompanyEmail", Configs.Default.CompanyEmail));
             repParams.Add(new ReportParameter("CompanyFax", Configs.Default.CompanyFax));
-            repParams.Add(new ReportParameter("ClientName", clc.CLNAME + " " + SubClientComboBox.Text ?? " "));
-            repParams.Add(new ReportParameter("ClientAddress", clc.ADDRESS));
-            repParams.Add(new ReportParameter("ClientPhoneNo", clc.CONTACTNO));
+            repParams.Add(new ReportParameter("ClientName", curClient.CLNAME + " " + SubClientComboBox.Text ?? " "));
+            repParams.Add(new ReportParameter("ClientAddress", curClient.ADDRESS));
+            repParams.Add(new ReportParameter("ClientPhoneNo", curClient.CONTACTNO));
             repParams.Add(new ReportParameter("TinNumber", Configs.Default.Tin ?? ""));
             repParams.Add(new ReportParameter("TNC", Configs.Default.TNC));
-            invoiceNo = (InvoiceDate.SelectedDate ?? DateTime.Today).ToString("yyyyMMdd");
-            invoiceNo = invoiceNo + DateTime.Now.ToString("hhmm");
-            repParams.Add(new ReportParameter("InvoiceNumber", invoiceNo));
+            invoice.BillId = (InvoiceDate.SelectedDate ?? DateTime.Today).ToString("yyyyMMdd");
+            invoice.BillId = invoice.BillId + DateTime.Now.ToString("hhmm");
+            repParams.Add(new ReportParameter("InvoiceNumber", invoice.BillId));
             repParams.Add(new ReportParameter("InvoiceDate", (InvoiceDate.SelectedDate ?? DateTime.Today).ToString("dd-MMM-yyyy")));
             PrintMainWindow win = new PrintMainWindow(rs, repParams);
             win.Show();
@@ -236,8 +224,8 @@ namespace FinalUi
             List<ReportParameter> repParams = new List<ReportParameter>();
             repParams.Add(new ReportParameter("ClientName", selectedClient.CLNAME + " " + SubClientComboBox.Text));
             repParams.Add(new ReportParameter("ClientAddress", selectedClient.ADDRESS));
-            repParams.Add(new ReportParameter("ClientPhoneNo",selectedClient.CONTACTNO));
-            repParams.Add(new ReportParameter("FromDate",((DateTime)(FromDate.SelectedDate)).ToString()));
+            repParams.Add(new ReportParameter("ClientPhoneNo", selectedClient.CONTACTNO));
+            repParams.Add(new ReportParameter("FromDate", ((DateTime)(FromDate.SelectedDate)).ToString()));
             repParams.Add(new ReportParameter("ToDate", ((DateTime)(ToDate.SelectedDate)).ToString()));
             PrintMainWindow window = new PrintMainWindow(rs, repParams, true);
             window.Show();
@@ -260,28 +248,7 @@ namespace FinalUi
             if (result == MessageBoxResult.Yes)
             {
                 BillingDataDataContext db = new BillingDataDataContext();
-                Invoice invoice = new Invoice();
-                try
-                {
-                    invoice.Basic = basic;
-                    invoice.BillId = invoiceNo;
-                    invoice.ClientCode = clc.CLCODE;
-                    invoice.Date = DateTime.Today;
-                    invoice.Fuel = double.Parse(TaxBox.Text);
-                    invoice.PreviousDue = double.Parse(PreviousDueTextBox.Text);
-                    invoice.Remarks = RemarkBox.Text;
-                    invoice.STax = double.Parse(ServiceTaxBox.Text);
-                    invoice.TotalAmount = totalAmount - invoice.PreviousDue ?? 0;
-                    invoice.Discount = double.Parse(DiscountBox.Text);
-                    invoice.Misc = double.Parse(MiscBox.Text);
-                    invoice.SubClient = SubClientComboBox.Text;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Enter the fields properly...");
-                    return;
-                }
-                if (db.Invoices.Where(x => x.BillId == invoiceNo).Count() > 0)
+                if (db.Invoices.Where(x => x.BillId == invoice.BillId).Count() > 0)
                 {
                     MessageBox.Show("This invoice is already saved", "Error..");
                     return;
