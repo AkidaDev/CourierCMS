@@ -304,7 +304,7 @@ namespace FinalUi
         }
         private void ConnsignmentNumber_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            if (e.Key == Key.Tab)
                 fillAllElements(ConnsignmentNumber.Text);
         }
         void fillAllElements(string connsignmentNo)
@@ -508,7 +508,7 @@ namespace FinalUi
 
         private void Button_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            if (e.Key == Key.Tab)
                 SubmitSanitizingDetails_Click(null, null);
         }
 
@@ -544,7 +544,7 @@ namespace FinalUi
 
         private void HeightPacketBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            if (e.Key == Key.Tab)
             {
                 if (HeightPacketBox.Text == "" || HeightPacketBox.Text == "0")
                 {
@@ -557,18 +557,16 @@ namespace FinalUi
             }
         }
 
-        private void Grid_PreviewKeyDown(object sender, KeyEventArgs e)
+       /* private void Grid_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             var uie = e.OriginalSource as UIElement;
 
             if (e.Key == Key.Enter)
             {
                 e.Handled = true;
-                uie.MoveFocus(
-                new TraversalRequest(
-                FocusNavigationDirection.Next));
+                uie.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
             }
-        }
+        }*/
 
     }
 }

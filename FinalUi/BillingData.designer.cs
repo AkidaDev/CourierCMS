@@ -81,12 +81,12 @@ namespace FinalUi
     partial void InsertTransaction(Transaction instance);
     partial void UpdateTransaction(Transaction instance);
     partial void DeleteTransaction(Transaction instance);
-    partial void InsertServiceGroupAssignment(ServiceGroupAssignment instance);
-    partial void UpdateServiceGroupAssignment(ServiceGroupAssignment instance);
-    partial void DeleteServiceGroupAssignment(ServiceGroupAssignment instance);
     partial void InsertServiceGroup(ServiceGroup instance);
     partial void UpdateServiceGroup(ServiceGroup instance);
     partial void DeleteServiceGroup(ServiceGroup instance);
+    partial void InsertServiceGroupAssignment(ServiceGroupAssignment instance);
+    partial void UpdateServiceGroupAssignment(ServiceGroupAssignment instance);
+    partial void DeleteServiceGroupAssignment(ServiceGroupAssignment instance);
     #endregion
 		
 		
@@ -330,19 +330,19 @@ namespace FinalUi
 			}
 		}
 		
-		public System.Data.Linq.Table<ServiceGroupAssignment> ServiceGroupAssignments
-		{
-			get
-			{
-				return this.GetTable<ServiceGroupAssignment>();
-			}
-		}
-		
 		public System.Data.Linq.Table<ServiceGroup> ServiceGroups
 		{
 			get
 			{
 				return this.GetTable<ServiceGroup>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ServiceGroupAssignment> ServiceGroupAssignments
+		{
+			get
+			{
+				return this.GetTable<ServiceGroupAssignment>();
 			}
 		}
 		
@@ -2975,8 +2975,6 @@ namespace FinalUi
 		
 		private string _SER_HIERARCHY_ID;
 		
-		private EntitySet<ServiceGroupAssignment> _ServiceGroupAssignments;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -3011,7 +3009,6 @@ namespace FinalUi
 		
 		public Service()
 		{
-			this._ServiceGroupAssignments = new EntitySet<ServiceGroupAssignment>(new Action<ServiceGroupAssignment>(this.attach_ServiceGroupAssignments), new Action<ServiceGroupAssignment>(this.detach_ServiceGroupAssignments));
 			OnCreated();
 		}
 		
@@ -3275,19 +3272,6 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Service_ServiceGroupAssignment", Storage="_ServiceGroupAssignments", ThisKey="SER_CODE", OtherKey="ServiceName")]
-		public EntitySet<ServiceGroupAssignment> ServiceGroupAssignments
-		{
-			get
-			{
-				return this._ServiceGroupAssignments;
-			}
-			set
-			{
-				this._ServiceGroupAssignments.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -3306,18 +3290,6 @@ namespace FinalUi
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_ServiceGroupAssignments(ServiceGroupAssignment entity)
-		{
-			this.SendPropertyChanging();
-			entity.Service = this;
-		}
-		
-		private void detach_ServiceGroupAssignments(ServiceGroupAssignment entity)
-		{
-			this.SendPropertyChanging();
-			entity.Service = null;
 		}
 	}
 	
@@ -9077,7 +9049,69 @@ namespace FinalUi
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ServiceGroupAssignments")]
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ServiceGroup")]
+	public partial class ServiceGroup : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _GroupName;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnGroupNameChanging(string value);
+    partial void OnGroupNameChanged();
+    #endregion
+		
+		public ServiceGroup()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupName", DbType="VarChar(250) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string GroupName
+		{
+			get
+			{
+				return this._GroupName;
+			}
+			set
+			{
+				if ((this._GroupName != value))
+				{
+					this.OnGroupNameChanging(value);
+					this.SendPropertyChanging();
+					this._GroupName = value;
+					this.SendPropertyChanged("GroupName");
+					this.OnGroupNameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ServiceGroupAssignment")]
 	public partial class ServiceGroupAssignment : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -9088,10 +9122,6 @@ namespace FinalUi
 		private string _ServiceName;
 		
 		private System.Guid _AssignId;
-		
-		private EntityRef<Service> _Service;
-		
-		private EntityRef<ServiceGroup> _ServiceGroup;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -9107,12 +9137,10 @@ namespace FinalUi
 		
 		public ServiceGroupAssignment()
 		{
-			this._Service = default(EntityRef<Service>);
-			this._ServiceGroup = default(EntityRef<ServiceGroup>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupName", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupName", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
 		public string GroupName
 		{
 			get
@@ -9123,10 +9151,6 @@ namespace FinalUi
 			{
 				if ((this._GroupName != value))
 				{
-					if (this._ServiceGroup.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnGroupNameChanging(value);
 					this.SendPropertyChanging();
 					this._GroupName = value;
@@ -9147,10 +9171,6 @@ namespace FinalUi
 			{
 				if ((this._ServiceName != value))
 				{
-					if (this._Service.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnServiceNameChanging(value);
 					this.SendPropertyChanging();
 					this._ServiceName = value;
@@ -9180,74 +9200,6 @@ namespace FinalUi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Service_ServiceGroupAssignment", Storage="_Service", ThisKey="ServiceName", OtherKey="SER_CODE", IsForeignKey=true)]
-		public Service Service
-		{
-			get
-			{
-				return this._Service.Entity;
-			}
-			set
-			{
-				Service previousValue = this._Service.Entity;
-				if (((previousValue != value) 
-							|| (this._Service.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Service.Entity = null;
-						previousValue.ServiceGroupAssignments.Remove(this);
-					}
-					this._Service.Entity = value;
-					if ((value != null))
-					{
-						value.ServiceGroupAssignments.Add(this);
-						this._ServiceName = value.SER_CODE;
-					}
-					else
-					{
-						this._ServiceName = default(string);
-					}
-					this.SendPropertyChanged("Service");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ServiceGroup_ServiceGroupAssignment", Storage="_ServiceGroup", ThisKey="GroupName", OtherKey="GroupName", IsForeignKey=true)]
-		public ServiceGroup ServiceGroup
-		{
-			get
-			{
-				return this._ServiceGroup.Entity;
-			}
-			set
-			{
-				ServiceGroup previousValue = this._ServiceGroup.Entity;
-				if (((previousValue != value) 
-							|| (this._ServiceGroup.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ServiceGroup.Entity = null;
-						previousValue.ServiceGroupAssignments.Remove(this);
-					}
-					this._ServiceGroup.Entity = value;
-					if ((value != null))
-					{
-						value.ServiceGroupAssignments.Add(this);
-						this._GroupName = value.GroupName;
-					}
-					else
-					{
-						this._GroupName = default(string);
-					}
-					this.SendPropertyChanged("ServiceGroup");
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -9266,96 +9218,6 @@ namespace FinalUi
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ServiceGroup")]
-	public partial class ServiceGroup : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _GroupName;
-		
-		private EntitySet<ServiceGroupAssignment> _ServiceGroupAssignments;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnGroupNameChanging(string value);
-    partial void OnGroupNameChanged();
-    #endregion
-		
-		public ServiceGroup()
-		{
-			this._ServiceGroupAssignments = new EntitySet<ServiceGroupAssignment>(new Action<ServiceGroupAssignment>(this.attach_ServiceGroupAssignments), new Action<ServiceGroupAssignment>(this.detach_ServiceGroupAssignments));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupName", DbType="VarChar(200) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string GroupName
-		{
-			get
-			{
-				return this._GroupName;
-			}
-			set
-			{
-				if ((this._GroupName != value))
-				{
-					this.OnGroupNameChanging(value);
-					this.SendPropertyChanging();
-					this._GroupName = value;
-					this.SendPropertyChanged("GroupName");
-					this.OnGroupNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ServiceGroup_ServiceGroupAssignment", Storage="_ServiceGroupAssignments", ThisKey="GroupName", OtherKey="GroupName")]
-		public EntitySet<ServiceGroupAssignment> ServiceGroupAssignments
-		{
-			get
-			{
-				return this._ServiceGroupAssignments;
-			}
-			set
-			{
-				this._ServiceGroupAssignments.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_ServiceGroupAssignments(ServiceGroupAssignment entity)
-		{
-			this.SendPropertyChanging();
-			entity.ServiceGroup = this;
-		}
-		
-		private void detach_ServiceGroupAssignments(ServiceGroupAssignment entity)
-		{
-			this.SendPropertyChanging();
-			entity.ServiceGroup = null;
 		}
 	}
 }

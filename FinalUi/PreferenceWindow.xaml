@@ -6,7 +6,8 @@
 		Icon="Images/logo.ico"
         Title="Settings" Height="340" Width="550" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
 
-    <Grid><!--BackColor-->
+    <Grid>
+        <!--BackColor-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="80"/>
             <ColumnDefinition Width="1"/>
@@ -87,9 +88,12 @@
                 <Path  Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Black" Height="24" Canvas.Left="81" Canvas.Top="35" Width="24"/>
                 <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="109" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Enter Details for Invoice .:" Canvas.Top="41.16"/>
             </Canvas>
-            <Path x:Name="Shape_1" Data="F1M5.375,17C5.375,17 5.375,18.667 5.375,18.667 5.375,18.667 15.5,18.667 15.5,18.667 15.5,18.667 15.5,17 15.5,17 15.5,17 5.375,17 5.375,17z M13.812,12C13.812,12 13.812,13.667 13.812,13.667 13.812,13.667 15.5,13.667 15.5,13.667 15.5,13.667 15.5,12 15.5,12 15.5,12 13.812,12 13.812,12z M5.375,12C5.375,12 5.375,13.667 5.375,13.667 5.375,13.667 12.125,13.667 12.125,13.667 12.125,13.667 12.125,12 12.125,12 12.125,12 5.375,12 5.375,12z M2,8.667C2,8.667 29,8.667 29,8.667 29,8.667 29,20.333 29,20.333 29,21.254 28.244,22 27.312,22 27.312,22 3.687,22 3.687,22 2.756,22 2,21.254 2,20.333 2,20.333 2,8.667 2,8.667z M3.687,2C3.687,2 27.312,2 27.312,2 28.244,2 29,2.746 29,3.667 29,3.667 29,5.333 29,5.333 29,5.333 2,5.333 2,5.333 2,5.333 2,3.667 2,3.667 2,2.746 2.756,2 3.687,2z" Fill="Black" Canvas.Left="65"  Canvas.Top="70" Height="14" Stretch="Fill" Width="18.5"/>
-            <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="90" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Tin/Pan No. .:" Canvas.Top="68"/>
-            <TextBox Name="Pannumber" Padding="2" Canvas.Left="185" Canvas.Top="65" Width="100"/>
+            <WrapPanel Canvas.Left="25" Canvas.Top="62">
+                <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text=" Tin/Pan No. .: " VerticalAlignment="Bottom"/>
+                <TextBox Name="Pannumber" Padding="2" Width="100"/>
+                <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text="    S.Tax No. .: " VerticalAlignment="Bottom"/>
+                <TextBox Name="ServiceTaxNo" Padding="2" Width="130"/>
+            </WrapPanel>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="43" LineHeight="18" TextAlignment="Left" TextWrapping="Wrap" Text="Terms and Conditions .:" Canvas.Top="98"/>
             <TextBox  Name="TNCBox" Padding="3 3 0 0" TextWrapping="Wrap"  AcceptsReturn="True" BorderThickness="2" Height="139" Canvas.Left="20" Canvas.Top="116" Width="426"/>
         </Canvas>
