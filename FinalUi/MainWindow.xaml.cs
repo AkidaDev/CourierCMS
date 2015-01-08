@@ -424,9 +424,23 @@ namespace FinalUi
                 if (dataGridHelper.currentConnNos.Count < 1)
                     result = MessageBoxResult.Yes;
                 else
-                    result = MessageBox.Show("If you continue then you will lose all the unsaved data for this sheet. Please make sure that you have saved before closing the sheet. Click Yes to continue or click No to go back and save the sheet data", "Information", MessageBoxButton.YesNo);
-                if (result == MessageBoxResult.Yes)
+                    result = MessageBox.Show("Do you want to save this sheet", "Information", MessageBoxButton.YesNoCancel);
+                if (result == MessageBoxResult.No)
                 {
+                    DeleteSheetWorker.RunWorkerAsync(dataGridHelper.currentSheetNumber);
+                    dataGridHelper.removeSheet(dataGridHelper.currentSheetNumber);
+                    buttontabcanvaswrap.Children.Remove(activeButton);
+                    if (buttonList.Count > 0)
+                        b = buttonList.Single(x => x.Value == buttonList.Values.Min()).Key;
+                    else
+                        b = null;
+                    changeSheetButton(activeButton, b);
+                    buttonList.Remove(activeButton);
+                    activeButton = b;
+                }
+                else if (result == MessageBoxResult.Yes)
+                {
+                    ExecuteSaveCommand(null, null);
                     DeleteSheetWorker.RunWorkerAsync(dataGridHelper.currentSheetNumber);
                     dataGridHelper.removeSheet(dataGridHelper.currentSheetNumber);
                     buttontabcanvaswrap.Children.Remove(activeButton);

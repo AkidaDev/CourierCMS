@@ -132,7 +132,11 @@ namespace FinalUi
                     data = UtilityClass.convertTransObjToRunObj(TData);
                 }
             }
-            data.Weight = Double.Parse(WeightAccToDTDC.Text);
+            if (Double.Parse(WeightAccToDTDC.Text).GetType() == typeof(double))
+                data.Weight = Double.Parse(WeightAccToDTDC.Text);
+            else {
+                MessageBox.Show("Weight is incorrect");
+            }
             data.FrWeight = Double.Parse(WeightAccToFranchize.Text);
             double tmpD;
             if (Cost.Text == "" || !double.TryParse(Cost.Text, out tmpD))
@@ -165,11 +169,10 @@ namespace FinalUi
                 BilledWeightTextBox.Text = "";
             if (data.Destination == null)
             {
-                MessageBoxResult rsltMessageBox = MessageBox.Show("No city with this code is entered. Data will not be entered if city is not present. Do you want to enter it now?", "", MessageBoxButton.YesNo, MessageBoxImage.Asterisk);
+                MessageBoxResult rsltMessageBox = MessageBox.Show("No city with this code is entered. Data will not be entered if city is not present.", "", MessageBoxButton.YesNo, MessageBoxImage.Asterisk);
                 if (MessageBoxResult.Yes == rsltMessageBox)
                 {
-                    AddCity window = new AddCity();
-                    window.Show();
+                    return null;
                 }
                 else
                     return null;
@@ -304,6 +307,7 @@ namespace FinalUi
         }
         private void ConnsignmentNumber_KeyUp(object sender, KeyEventArgs e)
         {
+            ConnsignmentNumber.Text = ConnsignmentNumber.Text.ToUpper();
             if (e.Key == Key.Tab)
                 fillAllElements(ConnsignmentNumber.Text);
         }
