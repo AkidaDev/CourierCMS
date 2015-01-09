@@ -57,7 +57,7 @@
                         <DataGridTextColumn Header="Basic" Binding="{Binding Basic}"/>
                         <DataGridTextColumn Header="Fuel" Binding="{Binding Fuel}"/>
                         <DataGridTextColumn Header="Service Tax" Binding="{Binding STax}"/>
-                        <DataGridTextColumn Header="Total" Binding="{Binding TotalAmount}"/>
+                        <DataGridTextColumn Header="Total" Binding="{Binding totalAmount}"/>
                         <DataGridTextColumn Header="Remarks" Binding="{Binding Remarks}"/>
                     </DataGrid.Columns>
                 </DataGrid>

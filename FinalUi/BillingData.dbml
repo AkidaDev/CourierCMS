@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BillingDatabase" Class="BillingDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="ConnectionString" ConnectionString="Data Source=SYSTEM;Initial Catalog=BillingDatabase;User ID=sa;Password=Alver!22" Provider="System.Data.SqlClient" />
+  <Connection Mode="ConnectionString" ConnectionString="Data Source=PC\SQLEXPRESS;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa;Password=1234" Provider="System.Data.SqlClient" />
   <Table Name="dbo.City" Member="Cities">
     <Type Name="City">
       <Column Name="CITY_CODE" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -137,6 +137,7 @@
       <Column Name="SER_BILLING" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="PRODUCT_ID" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="SER_HIERARCHY_ID" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="Service_ServiceGroupAssignment" Member="ServiceGroupAssignments" ThisKey="SER_CODE" OtherKey="ServiceName" Type="ServiceGroupAssignment" />
     </Type>
   </Table>
   <Table Name="dbo.State" Member="States">
@@ -456,16 +457,19 @@
       <Column Name="SubClient" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.ServiceGroup" Member="ServiceGroups">
-    <Type Name="ServiceGroup">
-      <Column Name="GroupName" Type="System.String" DbType="VarChar(250) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ServiceGroupAssignment" Member="ServiceGroupAssignments">
+  <Table Name="dbo.ServiceGroupAssignments" Member="ServiceGroupAssignments">
     <Type Name="ServiceGroupAssignment">
-      <Column Name="GroupName" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="GroupName" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
       <Column Name="ServiceName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="AssignId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Service_ServiceGroupAssignment" Member="Service" ThisKey="ServiceName" OtherKey="SER_CODE" Type="Service" IsForeignKey="true" />
+      <Association Name="ServiceGroup_ServiceGroupAssignment" Member="ServiceGroup" ThisKey="GroupName" OtherKey="GroupName" Type="ServiceGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ServiceGroup" Member="ServiceGroups">
+    <Type Name="ServiceGroup">
+      <Column Name="GroupName" Type="System.String" DbType="VarChar(200) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="ServiceGroup_ServiceGroupAssignment" Member="ServiceGroupAssignments" ThisKey="GroupName" OtherKey="GroupName" Type="ServiceGroupAssignment" />
     </Type>
   </Table>
   <Function Name="dbo.sp_deleteSheetFromRuntime" Method="sp_deleteSheetFromRuntime">

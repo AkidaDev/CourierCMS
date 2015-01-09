@@ -307,7 +307,6 @@ namespace FinalUi
         }
         private void ConnsignmentNumber_KeyUp(object sender, KeyEventArgs e)
         {
-            ConnsignmentNumber.Text = ConnsignmentNumber.Text.ToUpper();
             if (e.Key == Key.Tab)
                 fillAllElements(ConnsignmentNumber.Text);
         }
@@ -420,7 +419,7 @@ namespace FinalUi
             {
                 this.ConsgineeName.Text = data.ConsigneeName;
             }
-            SlipCost.Text = String.Format("{0:0.00}",data.Stock);
+            SlipCost.Text =data.Stock;
         }
         private void DoneButton_Click(object sender, RoutedEventArgs e)
         {

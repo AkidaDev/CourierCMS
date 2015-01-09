@@ -76,7 +76,7 @@
                         <DataGridTextColumn Header="Bill Id" Binding="{Binding BillId}"/>
                         <DataGridTextColumn Header="Customer Code" Binding="{Binding ClientCode}"/>
                         <DataGridTextColumn Header="Date" Binding="{Binding CompactDate}"/>
-                        <DataGridTextColumn Header="Total Amount" Binding="{Binding TotalAmount}"/>
+                        <DataGridTextColumn Header="Total Amount" Binding="{Binding totalAmount}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>

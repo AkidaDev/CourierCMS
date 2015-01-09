@@ -184,7 +184,10 @@ namespace FinalUi
             repParams.Add(new ReportParameter("TinNumber", Configs.Default.Tin ?? ""));
             repParams.Add(new ReportParameter("TNC", Configs.Default.TNC));
             invoice.BillId = (InvoiceDate.SelectedDate ?? DateTime.Today).ToString("yyyyMMdd");
+            invoice.Date = InvoiceDate.SelectedDate ?? DateTime.Today;
             invoice.BillId = invoice.BillId + DateTime.Now.ToString("hhmm");
+            invoice.Remarks = RemarkBox.Text;
+            invoice.TotalAmount = invoice.totalAmount;
             repParams.Add(new ReportParameter("InvoiceNumber", invoice.BillId));
             repParams.Add(new ReportParameter("InvoiceDate", (InvoiceDate.SelectedDate ?? DateTime.Today).ToString("dd-MMM-yyyy")));
             PrintMainWindow win = new PrintMainWindow(rs, repParams);

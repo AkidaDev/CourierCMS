@@ -7,7 +7,8 @@ namespace FinalUi
         {
             get
             {
-                return Basic + fuelAmount + taxAmount - discountAmount + PreviousDue??0 + Misc??0 ;
+                double total = Basic + fuelAmount + taxAmount - discountAmount + PreviousDue??0 + Misc??0 ;
+                return total;
             }
         }
         public double fuelAmount
