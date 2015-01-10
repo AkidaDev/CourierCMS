@@ -42,6 +42,7 @@
                             <TextRun>
                               <Value>Bill Id</Value>
                               <Style>
+                                <FontFamily>garamond</FontFamily>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -62,9 +63,6 @@
                         <BottomBorder>
                           <Style>Solid</Style>
                         </BottomBorder>
-                        <LeftBorder>
-                          <Style>Solid</Style>
-                        </LeftBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -86,6 +84,7 @@
                             <TextRun>
                               <Value>Date</Value>
                               <Style>
+                                <FontFamily>garamond</FontFamily>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -106,9 +105,6 @@
                         <BottomBorder>
                           <Style>Solid</Style>
                         </BottomBorder>
-                        <LeftBorder>
-                          <Style>Solid</Style>
-                        </LeftBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -130,6 +126,7 @@
                             <TextRun>
                               <Value>Type</Value>
                               <Style>
+                                <FontFamily>garamond</FontFamily>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -150,9 +147,6 @@
                         <BottomBorder>
                           <Style>Solid</Style>
                         </BottomBorder>
-                        <LeftBorder>
-                          <Style>Solid</Style>
-                        </LeftBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -174,6 +168,7 @@
                             <TextRun>
                               <Value>Remark</Value>
                               <Style>
+                                <FontFamily>garamond</FontFamily>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -194,9 +189,6 @@
                         <BottomBorder>
                           <Style>Solid</Style>
                         </BottomBorder>
-                        <LeftBorder>
-                          <Style>Solid</Style>
-                        </LeftBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -218,6 +210,7 @@
                             <TextRun>
                               <Value>Details</Value>
                               <Style>
+                                <FontFamily>garamond</FontFamily>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -238,9 +231,6 @@
                         <BottomBorder>
                           <Style>Solid</Style>
                         </BottomBorder>
-                        <LeftBorder>
-                          <Style>Solid</Style>
-                        </LeftBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -262,6 +252,7 @@
                             <TextRun>
                               <Value>  Billed</Value>
                               <Style>
+                                <FontFamily>garamond</FontFamily>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -282,12 +273,6 @@
                         <BottomBorder>
                           <Style>Solid</Style>
                         </BottomBorder>
-                        <LeftBorder>
-                          <Style>Solid</Style>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Style>Solid</Style>
-                        </RightBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -309,6 +294,7 @@
                             <TextRun>
                               <Value> Received</Value>
                               <Style>
+                                <FontFamily>garamond</FontFamily>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -329,12 +315,6 @@
                         <BottomBorder>
                           <Style>Solid</Style>
                         </BottomBorder>
-                        <LeftBorder>
-                          <Style>Solid</Style>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Style>Solid</Style>
-                        </RightBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -361,7 +341,8 @@
                             <TextRun>
                               <Value>=Fields!Id.Value</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontFamily>garamond</FontFamily>
+                                <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -373,12 +354,9 @@
                       <rd:DefaultName>Id</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                           <Width>0.25pt</Width>
                         </Border>
-                        <LeftBorder>
-                          <Style>Solid</Style>
-                        </LeftBorder>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -399,7 +377,8 @@
                             <TextRun>
                               <Value>=Fields!TransactionDate.Value</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontFamily>garamond</FontFamily>
+                                <FontSize>9pt</FontSize>
                                 <Format>dd-MMM-yyyy</Format>
                               </Style>
                             </TextRun>
@@ -412,12 +391,9 @@
                       <rd:DefaultName>TransactionDate</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                           <Width>0.25pt</Width>
                         </Border>
-                        <LeftBorder>
-                          <Style>Solid</Style>
-                        </LeftBorder>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -438,7 +414,8 @@
                             <TextRun>
                               <Value>=Fields!TypeOfRecord.Value</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontFamily>garamond</FontFamily>
+                                <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -450,12 +427,9 @@
                       <rd:DefaultName>TypeOfRecord</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                           <Width>0.25pt</Width>
                         </Border>
-                        <LeftBorder>
-                          <Style>Solid</Style>
-                        </LeftBorder>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -476,7 +450,8 @@
                             <TextRun>
                               <Value>=Fields!Remark.Value</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontFamily>garamond</FontFamily>
+                                <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -488,12 +463,9 @@
                       <rd:DefaultName>Remark</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                           <Width>0.25pt</Width>
                         </Border>
-                        <LeftBorder>
-                          <Style>Solid</Style>
-                        </LeftBorder>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -514,7 +486,8 @@
                             <TextRun>
                               <Value>=Fields!Details.Value</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontFamily>garamond</FontFamily>
+                                <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -526,12 +499,9 @@
                       <rd:DefaultName>Details</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                           <Width>0.25pt</Width>
                         </Border>
-                        <LeftBorder>
-                          <Style>Solid</Style>
-                        </LeftBorder>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -552,7 +522,8 @@
                             <TextRun>
                               <Value>=Fields!PayAmount.Value</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontFamily>garamond</FontFamily>
+                                <FontSize>9pt</FontSize>
                                 <Format>#0.00</Format>
                               </Style>
                             </TextRun>
@@ -565,12 +536,9 @@
                       <rd:DefaultName>PayAmount1</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                           <Width>0.25pt</Width>
                         </Border>
-                        <LeftBorder>
-                          <Style>Solid</Style>
-                        </LeftBorder>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -591,7 +559,8 @@
                             <TextRun>
                               <Value>=Fields!TotalRecievedAmount.Value</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontFamily>garamond</FontFamily>
+                                <FontSize>9pt</FontSize>
                                 <Format>#0.00</Format>
                               </Style>
                             </TextRun>
@@ -608,16 +577,16 @@
                           <Width>0.25pt</Width>
                         </Border>
                         <TopBorder>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </TopBorder>
                         <BottomBorder>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </BottomBorder>
                         <LeftBorder>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </LeftBorder>
                         <RightBorder>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </RightBorder>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -654,8 +623,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>InvoiceDataSet1</DataSetName>
-        <Top>2.02356in</Top>
-        <Left>0.08376in</Left>
+        <Top>1.65462in</Top>
+        <Left>0.08377in</Left>
         <Height>0.49999in</Height>
         <Width>11.42621in</Width>
         <Style>
@@ -680,24 +649,12 @@
           <Color>White</Color>
         </Style>
       </Tablix>
-      <Line Name="Line28">
-        <Top>1.95412in</Top>
-        <Left>0.08376in</Left>
-        <Height>0in</Height>
-        <Width>11.42622in</Width>
-        <ZIndex>1</ZIndex>
-        <Style>
-          <Border>
-            <Style>Solid</Style>
-          </Border>
-        </Style>
-      </Line>
       <Line Name="Line30">
-        <Top>3.14856in</Top>
+        <Top>2.77356in</Top>
         <Left>0.08374in</Left>
         <Height>0in</Height>
         <Width>11.42622in</Width>
-        <ZIndex>2</ZIndex>
+        <ZIndex>1</ZIndex>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -713,19 +670,22 @@
               <TextRun>
                 <Value>Total Balance .:</Value>
                 <Style>
+                  <FontFamily>garamond</FontFamily>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox136</rd:DefaultName>
-        <Top>2.6814in</Top>
+        <Top>2.3064in</Top>
         <Left>8.80165in</Left>
         <Height>0.25in</Height>
-        <Width>1.14583in</Width>
-        <ZIndex>3</ZIndex>
+        <Width>1.07172in</Width>
+        <ZIndex>2</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -745,21 +705,22 @@
               <TextRun>
                 <Value>=Parameters!TotalSum.Value</Value>
                 <Style>
+                  <FontFamily>garamond</FontFamily>
                   <Format>#0.00</Format>
                 </Style>
               </TextRun>
             </TextRuns>
             <Style>
-              <TextAlign>Center</TextAlign>
+              <TextAlign>Left</TextAlign>
             </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>2.6814in</Top>
-        <Left>9.94748in</Left>
+        <Top>2.3064in</Top>
+        <Left>9.87337in</Left>
         <Height>0.25in</Height>
-        <Width>1.5625in</Width>
-        <ZIndex>4</ZIndex>
+        <Width>1.63661in</Width>
+        <ZIndex>3</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -779,6 +740,7 @@
               <TextRun>
                 <Value>Account Statement</Value>
                 <Style>
+                  <FontFamily>garamond</FontFamily>
                   <FontSize>20pt</FontSize>
                 </Style>
               </TextRun>
@@ -791,7 +753,7 @@
         <Left>4.14584in</Left>
         <Height>0.38809in</Height>
         <Width>3.1112in</Width>
-        <ZIndex>5</ZIndex>
+        <ZIndex>4</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -803,11 +765,11 @@
         </Style>
       </Textbox>
       <Line Name="Line4">
-        <Top>2.61507in</Top>
+        <Top>2.24007in</Top>
         <Left>0.08374in</Left>
         <Height>0in</Height>
         <Width>11.42624in</Width>
-        <ZIndex>6</ZIndex>
+        <ZIndex>5</ZIndex>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -836,7 +798,8 @@
                             <TextRun>
                               <Value>=MonthName(Month(Today())) &amp; " " &amp; Day(Today()) &amp; ", " &amp; Year(Today())</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontFamily>garamond</FontFamily>
+                                <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -886,7 +849,8 @@
                           <TextRun>
                             <Value>Date .:</Value>
                             <Style>
-                              <FontSize>8pt</FontSize>
+                              <FontFamily>garamond</FontFamily>
+                              <FontSize>9pt</FontSize>
                               <FontWeight>Bold</FontWeight>
                             </Style>
                           </TextRun>
@@ -915,7 +879,7 @@
         <Left>0.51338cm</Left>
         <Height>0.60326cm</Height>
         <Width>4.53764cm</Width>
-        <ZIndex>7</ZIndex>
+        <ZIndex>6</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -931,6 +895,8 @@
               <TextRun>
                 <Value>STATEMENT TO .:</Value>
                 <Style>
+                  <FontFamily>garamond</FontFamily>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>SemiBold</FontWeight>
                   <TextDecoration>Underline</TextDecoration>
                   <Color>DimGray</Color>
@@ -941,11 +907,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
-        <Top>1.91003cm</Top>
+        <Top>1.59253cm</Top>
         <Left>9.75472cm</Left>
         <Height>0.6cm</Height>
         <Width>3.58479cm</Width>
-        <ZIndex>8</ZIndex>
+        <ZIndex>7</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -965,6 +931,7 @@
               <TextRun>
                 <Value>=Parameters!CompanyName.Value</Value>
                 <Style>
+                  <FontFamily>garamond</FontFamily>
                   <FontSize>11pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>Underline</TextDecoration>
@@ -975,11 +942,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox10</rd:DefaultName>
-        <Top>1.8822cm</Top>
+        <Top>1.5647cm</Top>
         <Left>0.51338cm</Left>
         <Height>0.62784cm</Height>
         <Width>3.83016cm</Width>
-        <ZIndex>9</ZIndex>
+        <ZIndex>8</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1005,11 +972,14 @@
                           <TextRun>
                             <Value>Address    .:</Value>
                             <Style>
+                              <FontFamily>garamond</FontFamily>
                               <FontWeight>Bold</FontWeight>
                             </Style>
                           </TextRun>
                         </TextRuns>
-                        <Style />
+                        <Style>
+                          <TextAlign>Right</TextAlign>
+                        </Style>
                       </Paragraph>
                     </Paragraphs>
                     <rd:DefaultName>Textbox74</rd:DefaultName>
@@ -1018,6 +988,7 @@
                         <Color>LightGrey</Color>
                         <Style>None</Style>
                       </Border>
+                      <VerticalAlign>Top</VerticalAlign>
                       <PaddingLeft>5pt</PaddingLeft>
                       <PaddingRight>2pt</PaddingRight>
                       <PaddingTop>2pt</PaddingTop>
@@ -1039,11 +1010,14 @@
                           <TextRun>
                             <Value>ContactNo .:</Value>
                             <Style>
+                              <FontFamily>garamond</FontFamily>
                               <FontWeight>Bold</FontWeight>
                             </Style>
                           </TextRun>
                         </TextRuns>
-                        <Style />
+                        <Style>
+                          <TextAlign>Right</TextAlign>
+                        </Style>
                       </Paragraph>
                     </Paragraphs>
                     <rd:DefaultName>Textbox73</rd:DefaultName>
@@ -1052,6 +1026,7 @@
                         <Color>LightGrey</Color>
                         <Style>None</Style>
                       </Border>
+                      <VerticalAlign>Top</VerticalAlign>
                       <PaddingLeft>2pt</PaddingLeft>
                       <PaddingRight>2pt</PaddingRight>
                       <PaddingTop>2pt</PaddingTop>
@@ -1084,7 +1059,7 @@
                             <TextRun>
                               <Value>=Parameters!CompanyEmail.Value</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontFamily>garamond</FontFamily>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1097,7 +1072,7 @@
                           <Color>LightGrey</Color>
                           <Style>None</Style>
                         </Border>
-                        <VerticalAlign>Middle</VerticalAlign>
+                        <VerticalAlign>Top</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1130,7 +1105,7 @@
                           <TextRun>
                             <Value>=Parameters!CompanyAddress.Value</Value>
                             <Style>
-                              <FontSize>8pt</FontSize>
+                              <FontFamily>garamond</FontFamily>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -1143,7 +1118,7 @@
                         <Color>LightGrey</Color>
                         <Style>None</Style>
                       </Border>
-                      <VerticalAlign>Middle</VerticalAlign>
+                      <VerticalAlign>Top</VerticalAlign>
                       <PaddingLeft>2pt</PaddingLeft>
                       <PaddingRight>2pt</PaddingRight>
                       <PaddingTop>2pt</PaddingTop>
@@ -1166,7 +1141,7 @@
                               <TextRun>
                                 <Value>=Parameters!ComapnyPhoneNo.Value</Value>
                                 <Style>
-                                  <FontSize>8pt</FontSize>
+                                  <FontFamily>garamond</FontFamily>
                                 </Style>
                               </TextRun>
                             </TextRuns>
@@ -1179,7 +1154,7 @@
                             <Color>LightGrey</Color>
                             <Style>None</Style>
                           </Border>
-                          <VerticalAlign>Middle</VerticalAlign>
+                          <VerticalAlign>Top</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -1213,11 +1188,14 @@
                           <TextRun>
                             <Value>Email ID   .:</Value>
                             <Style>
+                              <FontFamily>garamond</FontFamily>
                               <FontWeight>Bold</FontWeight>
                             </Style>
                           </TextRun>
                         </TextRuns>
-                        <Style />
+                        <Style>
+                          <TextAlign>Right</TextAlign>
+                        </Style>
                       </Paragraph>
                     </Paragraphs>
                     <rd:DefaultName>Textbox66</rd:DefaultName>
@@ -1226,6 +1204,7 @@
                         <Color>LightGrey</Color>
                         <Style>None</Style>
                       </Border>
+                      <VerticalAlign>Top</VerticalAlign>
                       <PaddingLeft>5pt</PaddingLeft>
                       <PaddingRight>2pt</PaddingRight>
                       <PaddingTop>2pt</PaddingTop>
@@ -1237,11 +1216,11 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <Top>2.84198cm</Top>
+        <Top>2.20698cm</Top>
         <Left>0.54027cm</Left>
         <Height>1.81937cm</Height>
         <Width>7.07874cm</Width>
-        <ZIndex>10</ZIndex>
+        <ZIndex>9</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1263,11 +1242,14 @@
                           <TextRun>
                             <Value>Name     .:</Value>
                             <Style>
+                              <FontFamily>garamond</FontFamily>
                               <FontWeight>Bold</FontWeight>
                             </Style>
                           </TextRun>
                         </TextRuns>
-                        <Style />
+                        <Style>
+                          <TextAlign>Right</TextAlign>
+                        </Style>
                       </Paragraph>
                     </Paragraphs>
                     <rd:DefaultName>Textbox101</rd:DefaultName>
@@ -1276,6 +1258,7 @@
                         <Color>LightGrey</Color>
                         <Style>None</Style>
                       </Border>
+                      <VerticalAlign>Top</VerticalAlign>
                       <PaddingLeft>3pt</PaddingLeft>
                       <PaddingRight>2pt</PaddingRight>
                       <PaddingTop>2pt</PaddingTop>
@@ -1297,11 +1280,14 @@
                           <TextRun>
                             <Value>Address  .:</Value>
                             <Style>
+                              <FontFamily>garamond</FontFamily>
                               <FontWeight>Bold</FontWeight>
                             </Style>
                           </TextRun>
                         </TextRuns>
-                        <Style />
+                        <Style>
+                          <TextAlign>Right</TextAlign>
+                        </Style>
                       </Paragraph>
                     </Paragraphs>
                     <rd:DefaultName>Textbox100</rd:DefaultName>
@@ -1310,6 +1296,7 @@
                         <Color>LightGrey</Color>
                         <Style>None</Style>
                       </Border>
+                      <VerticalAlign>Top</VerticalAlign>
                       <PaddingLeft>2pt</PaddingLeft>
                       <PaddingRight>2pt</PaddingRight>
                       <PaddingTop>2pt</PaddingTop>
@@ -1342,7 +1329,7 @@
                             <TextRun>
                               <Value>=Parameters!ClientPhoneNo.Value</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontFamily>garamond</FontFamily>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1355,7 +1342,7 @@
                           <Color>LightGrey</Color>
                           <Style>None</Style>
                         </Border>
-                        <VerticalAlign>Middle</VerticalAlign>
+                        <VerticalAlign>Top</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1388,7 +1375,7 @@
                           <TextRun>
                             <Value>=Parameters!ClientName.Value</Value>
                             <Style>
-                              <FontSize>8pt</FontSize>
+                              <FontFamily>garamond</FontFamily>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -1401,7 +1388,7 @@
                         <Color>LightGrey</Color>
                         <Style>None</Style>
                       </Border>
-                      <VerticalAlign>Middle</VerticalAlign>
+                      <VerticalAlign>Top</VerticalAlign>
                       <PaddingLeft>2pt</PaddingLeft>
                       <PaddingRight>2pt</PaddingRight>
                       <PaddingTop>2pt</PaddingTop>
@@ -1424,7 +1411,7 @@
                               <TextRun>
                                 <Value>=Parameters!ClientAddress.Value</Value>
                                 <Style>
-                                  <FontSize>8pt</FontSize>
+                                  <FontFamily>garamond</FontFamily>
                                 </Style>
                               </TextRun>
                             </TextRuns>
@@ -1437,7 +1424,7 @@
                             <Color>LightGrey</Color>
                             <Style>None</Style>
                           </Border>
-                          <VerticalAlign>Middle</VerticalAlign>
+                          <VerticalAlign>Top</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -1471,11 +1458,14 @@
                           <TextRun>
                             <Value>Contact No .:</Value>
                             <Style>
+                              <FontFamily>garamond</FontFamily>
                               <FontWeight>Bold</FontWeight>
                             </Style>
                           </TextRun>
                         </TextRuns>
-                        <Style />
+                        <Style>
+                          <TextAlign>Right</TextAlign>
+                        </Style>
                       </Paragraph>
                     </Paragraphs>
                     <rd:DefaultName>Textbox93</rd:DefaultName>
@@ -1484,6 +1474,7 @@
                         <Color>LightGrey</Color>
                         <Style>None</Style>
                       </Border>
+                      <VerticalAlign>Top</VerticalAlign>
                       <PaddingLeft>2pt</PaddingLeft>
                       <PaddingRight>2pt</PaddingRight>
                       <PaddingTop>2pt</PaddingTop>
@@ -1495,11 +1486,11 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <Top>2.84198cm</Top>
+        <Top>2.20698cm</Top>
         <Left>9.67596cm</Left>
         <Height>1.81935cm</Height>
         <Width>7.31338cm</Width>
-        <ZIndex>11</ZIndex>
+        <ZIndex>10</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1521,6 +1512,7 @@
                           <TextRun>
                             <Value>From Date .:</Value>
                             <Style>
+                              <FontFamily>garamond</FontFamily>
                               <FontWeight>Bold</FontWeight>
                             </Style>
                           </TextRun>
@@ -1536,7 +1528,7 @@
                         <Color>LightGrey</Color>
                         <Style>None</Style>
                       </Border>
-                      <VerticalAlign>Middle</VerticalAlign>
+                      <VerticalAlign>Top</VerticalAlign>
                       <PaddingRight>3pt</PaddingRight>
                     </Style>
                   </Textbox>
@@ -1565,7 +1557,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Parameters!ToDate.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontFamily>garamond</FontFamily>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -1579,7 +1573,7 @@
                           <Color>LightGrey</Color>
                           <Style>None</Style>
                         </Border>
-                        <VerticalAlign>Middle</VerticalAlign>
+                        <VerticalAlign>Top</VerticalAlign>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -1607,7 +1601,9 @@
                         <TextRuns>
                           <TextRun>
                             <Value>=Parameters!FromDate.Value</Value>
-                            <Style />
+                            <Style>
+                              <FontFamily>garamond</FontFamily>
+                            </Style>
                           </TextRun>
                         </TextRuns>
                         <Style>
@@ -1621,7 +1617,7 @@
                         <Color>LightGrey</Color>
                         <Style>None</Style>
                       </Border>
-                      <VerticalAlign>Middle</VerticalAlign>
+                      <VerticalAlign>Top</VerticalAlign>
                     </Style>
                   </Textbox>
                 </CellContents>
@@ -1649,6 +1645,7 @@
                           <TextRun>
                             <Value>To Date   .:</Value>
                             <Style>
+                              <FontFamily>garamond</FontFamily>
                               <FontWeight>Bold</FontWeight>
                             </Style>
                           </TextRun>
@@ -1664,7 +1661,7 @@
                         <Color>LightGrey</Color>
                         <Style>None</Style>
                       </Border>
-                      <VerticalAlign>Middle</VerticalAlign>
+                      <VerticalAlign>Top</VerticalAlign>
                       <PaddingRight>3pt</PaddingRight>
                     </Style>
                   </Textbox>
@@ -1677,7 +1674,7 @@
         <Left>8.80165in</Left>
         <Height>0.42478in</Height>
         <Width>2.70833in</Width>
-        <ZIndex>12</ZIndex>
+        <ZIndex>11</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1699,6 +1696,7 @@
                           <TextRun>
                             <Value>T.D.S     .:</Value>
                             <Style>
+                              <FontFamily>garamond</FontFamily>
                               <FontWeight>Bold</FontWeight>
                             </Style>
                           </TextRun>
@@ -1744,7 +1742,7 @@
                             <TextRun>
                               <Value>=Parameters!TotalDiscount.Value</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontFamily>garamond</FontFamily>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1785,7 +1783,7 @@
                           <TextRun>
                             <Value>=Parameters!TotalTDS.Value</Value>
                             <Style>
-                              <FontSize>8pt</FontSize>
+                              <FontFamily>garamond</FontFamily>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -1831,8 +1829,9 @@
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>DebitNote.:</Value>
+                            <Value>Debit Note .:</Value>
                             <Style>
+                              <FontFamily>garamond</FontFamily>
                               <FontWeight>Bold</FontWeight>
                             </Style>
                           </TextRun>
@@ -1860,11 +1859,11 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <Top>2.65715in</Top>
+        <Top>2.28215in</Top>
         <Left>0.08376in</Left>
         <Height>0.47752in</Height>
         <Width>2.88542in</Width>
-        <ZIndex>13</ZIndex>
+        <ZIndex>12</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>

@@ -567,7 +567,7 @@
                     <TabItem Header=" Filter ">
                         <Grid>
                             <Rectangle Height="1" Fill="DarkGray" VerticalAlignment="Top"/>
-                            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Visibility="Collapsed" Name="FilterQuotation">
+                            <!--<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Visibility="Collapsed" Name="FilterQuotation">
                                 <Grid Margin="10 10 0 0">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="100"/>
@@ -592,7 +592,7 @@
                                         <Button Content="Remove Filter" Width="90" Height="20" Background="#FFE8E8E8" Margin="15 0 0 0"/>
                                     </WrapPanel>
                                 </Grid>
-                            </ScrollViewer>
+                            </ScrollViewer>-->
                         </Grid>
                     </TabItem>
                 </TabControl>

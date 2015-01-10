@@ -21,7 +21,7 @@
             <TextBox Name="FileNameTextBox" IsReadOnly="True" Width="250" Padding="0 4 0 0" Margin="10 0 0 0"/>
         </WrapPanel>
         <ProgressBar Name ="Analyzeprogress" Visibility="Hidden" Grid.Row="2" Height="24" Width="350" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="#FF8C84BD"/>
-        <Button Name="StartLoadingButton" Click="StartLoadingButton_Click" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 20 30 0">
+        <Button Name="StartLoadingButton" Click="StartLoadingButton_Click" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 30 20">
             <WrapPanel  Margin="6 1">
                     <Path Data="F1M13.222,1C13.222,1 21,1 21,1 21,1 21,8.778 21,8.778 21,8.778 18.778,8.778 18.778,8.778 18.778,8.778 18.778,4.778 18.778,4.778 18.778,4.778 7.889,15.667 7.889,15.667 7.889,15.667 6.333,14.111 6.333,14.111 6.333,14.111 17.222,3.222 17.222,3.222 17.222,3.222 13.222,3.222 13.222,3.222 13.222,3.222 13.222,1 13.222,1z M3.222,1C3.222,1 11,1 11,1 11,1 11,3.222 11,3.222 11,3.222 3.222,3.222 3.222,3.222 3.222,3.222 3.222,18.778 3.222,18.778 3.222,18.778 18.778,18.778 18.778,18.778 18.778,18.778 18.778,11 18.778,11 18.778,11 21,11 21,11 21,11 21,18.778 21,18.778 21,20 20,21 18.778,21 18.778,21 3.222,21 3.222,21 2,21 1,20 1,18.778 1,18.778 1,3.222 1,3.222 1,2 2,1 3.222,1z" Fill="Black" Height="18" Stretch="Fill" Canvas.Left="242" Canvas.Top="185" Width="18"/>
                     <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text=" Start"/>

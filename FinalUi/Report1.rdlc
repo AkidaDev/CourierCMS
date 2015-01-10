@@ -263,13 +263,15 @@
                       <rd:DefaultName>Textbox86</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                         </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                         </BottomBorder>
                         <LeftBorder>
                           <Color>Black</Color>
@@ -311,13 +313,15 @@
                       <rd:DefaultName>Textbox62</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                         </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                         </BottomBorder>
                         <LeftBorder>
                           <Color>Black</Color>
@@ -359,13 +363,15 @@
                       <rd:DefaultName>Textbox67</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                         </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                         </BottomBorder>
                         <LeftBorder>
                           <Color>Black</Color>
@@ -407,13 +413,15 @@
                       <rd:DefaultName>Textbox27</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                         </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                         </BottomBorder>
                         <LeftBorder>
                           <Color>Black</Color>
@@ -455,13 +463,15 @@
                       <rd:DefaultName>Textbox75</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                         </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                         </BottomBorder>
                         <LeftBorder>
                           <Color>Black</Color>
@@ -503,13 +513,15 @@
                       <rd:DefaultName>Textbox87</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                         </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                         </BottomBorder>
                         <LeftBorder>
                           <Color>Black</Color>
@@ -735,7 +747,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
