@@ -57,7 +57,7 @@
         </WrapPanel>
         <WrapPanel Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <TextBlock Text="Expected Delivery in .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
-            <TextBox Width="50" Padding="2 2 0 0"/>
+            <TextBox Name="ExpectedDayBox" Width="50" Padding="2 2 0 0"/>
             <TextBlock Text=" (days)" FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
         </WrapPanel>
         <WrapPanel Grid.Row="6" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="-20 0 0 0">

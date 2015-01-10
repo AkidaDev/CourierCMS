@@ -49,6 +49,9 @@ namespace FinalUi
             s.BookNo = StockAssignment.BookNo;
             s.cost = StockAssignment.CostPerSlip;
             s.Date = StockAssignment.AddDate;
+            int tempDays;
+            if (int.TryParse(ExpectedDayBox.Text, out tempDays))
+                s.DeliveryTime = tempDays;
             s.desc = StockAssignment.Description;
             isUpdate = true;
             filldetails(s);

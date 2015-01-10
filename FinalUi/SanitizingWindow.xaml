@@ -12,7 +12,8 @@
         <CollectionViewSource x:Key="ConsigneeListSource" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="ConsignerListSource" CollectionViewType="ListCollectionView"/>
     </Window.Resources>
-    <Grid ><!--BackColor-->
+    <Grid >
+        <!--BackColor-->
         <Grid.RowDefinitions>
             <RowDefinition Height="36"/>
             <RowDefinition Height="60"/>
@@ -125,29 +126,28 @@
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="in (kg)" VerticalAlignment="Bottom" Margin="10 0 0 0"/>
         </WrapPanel>
         <WrapPanel Grid.Row="7" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="87 0 0 0">
+            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="  Insurance .: " VerticalAlignment="Bottom"/>
+            <TextBox Height="24" Name="InsuranceBox" Width="83" Padding="2" LostFocus="InsuranceBox_LostFocus"/>
+            <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="  Billing Amount .: " VerticalAlignment="Bottom"/>
             <TextBox Height="24" Name="BilledAmount" Width="83" Padding="2"/>
             <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Cost (DTDC) .: " VerticalAlignment="Bottom"/>
             <TextBox Name="Cost" Height="24" Width="81" Padding="2"/>
-            <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
-            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Slip Cost .: " VerticalAlignment="Bottom"/>
-            <TextBlock Text=" ₹ "  FontSize="18" FontWeight="Bold" VerticalAlignment="Bottom"/>
-            <TextBlock FontSize="18" FontFamily="Calibri" Name="SlipCost" Text="" Height="23" VerticalAlignment="Bottom"/>
-        </WrapPanel>
+                    </WrapPanel>
         <WrapPanel Grid.Row="8" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Consignee .: " VerticalAlignment="Bottom"/>
             <ComboBox IsEditable="True" DataContext="{StaticResource ConsigneeListSource}" ItemsSource="{Binding}" Name="ConsgineeName" Width="150"/>
-            <Path Visibility="Collapsed" Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
-            <TextBlock Visibility="Collapsed" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Address .: " VerticalAlignment="Bottom"/>
-            <TextBox Visibility="Collapsed" Name="ConsigneeAddress" Width="300"/>
-        </WrapPanel>
-        <WrapPanel Grid.Row="9" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="4 0 0 0">
+            <Path Visibility="Visible" Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Consigner .: " VerticalAlignment="Bottom"/>
             <ComboBox IsEditable="True" DataContext="{StaticResource ConsignerListSource}" ItemsSource="{Binding}" Name="ConsignerName" Width="150"/>
-            <Path Visibility="Collapsed" Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
-            <TextBlock Visibility="Collapsed" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Address .: " VerticalAlignment="Bottom"/>
-            <TextBox Visibility="Collapsed" Name="ConsignerAddress" Width="300"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="9" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="4 0 0 0">
+            <CheckBox Name="RecalculateCheckBox" Content="Untick to disable recalculation" HorizontalAlignment="Right"/>
+            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -6 15 -5"/>
+            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Slip Cost .: " VerticalAlignment="Bottom"/>
+            <TextBlock Text=" ₹ "  FontSize="18" FontWeight="Bold" VerticalAlignment="Bottom"/>
+            <TextBlock FontSize="18" FontFamily="Calibri" Name="SlipCost" Text="" Height="23" VerticalAlignment="Bottom"/>
         </WrapPanel>
         <Button ToolTip="Next &amp; Save" Click="SubmitSanitizingDetails_Click" KeyUp="Button_KeyUp" Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="-100 0 0 0">
             <WrapPanel Margin="6 1">

@@ -48,6 +48,9 @@ namespace ConsoleApplication2
     partial void InsertServiceGroup(ServiceGroup instance);
     partial void UpdateServiceGroup(ServiceGroup instance);
     partial void DeleteServiceGroup(ServiceGroup instance);
+    partial void InsertCity(City instance);
+    partial void UpdateCity(City instance);
+    partial void DeleteCity(City instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -125,6 +128,14 @@ namespace ConsoleApplication2
 			get
 			{
 				return this.GetTable<ServiceGroup>();
+			}
+		}
+		
+		public System.Data.Linq.Table<City> Cities
+		{
+			get
+			{
+				return this.GetTable<City>();
 			}
 		}
 	}
@@ -2244,6 +2255,404 @@ namespace ConsoleApplication2
 		{
 			this.SendPropertyChanging();
 			entity.ServiceGroup = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.City")]
+	public partial class City : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _CITY_CODE;
+		
+		private string _CITY_DESC;
+		
+		private string _CITY_STATE;
+		
+		private string _CITY_STATUS;
+		
+		private string _CITY_STATE_DESC;
+		
+		private System.Nullable<System.DateTime> _MOD_DATE;
+		
+		private System.Nullable<double> _MOD_TIME;
+		
+		private string _NODEID;
+		
+		private string _USERID;
+		
+		private string _TRANS_STATUS;
+		
+		private string _CITY_COD;
+		
+		private string _CITY_CATG_PDN;
+		
+		private System.Nullable<double> _city_category;
+		
+		private string _ZONE;
+		
+		private char _Status;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCITY_CODEChanging(string value);
+    partial void OnCITY_CODEChanged();
+    partial void OnCITY_DESCChanging(string value);
+    partial void OnCITY_DESCChanged();
+    partial void OnCITY_STATEChanging(string value);
+    partial void OnCITY_STATEChanged();
+    partial void OnCITY_STATUSChanging(string value);
+    partial void OnCITY_STATUSChanged();
+    partial void OnCITY_STATE_DESCChanging(string value);
+    partial void OnCITY_STATE_DESCChanged();
+    partial void OnMOD_DATEChanging(System.Nullable<System.DateTime> value);
+    partial void OnMOD_DATEChanged();
+    partial void OnMOD_TIMEChanging(System.Nullable<double> value);
+    partial void OnMOD_TIMEChanged();
+    partial void OnNODEIDChanging(string value);
+    partial void OnNODEIDChanged();
+    partial void OnUSERIDChanging(string value);
+    partial void OnUSERIDChanged();
+    partial void OnTRANS_STATUSChanging(string value);
+    partial void OnTRANS_STATUSChanged();
+    partial void OnCITY_CODChanging(string value);
+    partial void OnCITY_CODChanged();
+    partial void OnCITY_CATG_PDNChanging(string value);
+    partial void OnCITY_CATG_PDNChanged();
+    partial void Oncity_categoryChanging(System.Nullable<double> value);
+    partial void Oncity_categoryChanged();
+    partial void OnZONEChanging(string value);
+    partial void OnZONEChanged();
+    partial void OnStatusChanging(char value);
+    partial void OnStatusChanged();
+    #endregion
+		
+		public City()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CITY_CODE", DbType="VarChar(30) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string CITY_CODE
+		{
+			get
+			{
+				return this._CITY_CODE;
+			}
+			set
+			{
+				if ((this._CITY_CODE != value))
+				{
+					this.OnCITY_CODEChanging(value);
+					this.SendPropertyChanging();
+					this._CITY_CODE = value;
+					this.SendPropertyChanged("CITY_CODE");
+					this.OnCITY_CODEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CITY_DESC", DbType="NVarChar(255)")]
+		public string CITY_DESC
+		{
+			get
+			{
+				return this._CITY_DESC;
+			}
+			set
+			{
+				if ((this._CITY_DESC != value))
+				{
+					this.OnCITY_DESCChanging(value);
+					this.SendPropertyChanging();
+					this._CITY_DESC = value;
+					this.SendPropertyChanged("CITY_DESC");
+					this.OnCITY_DESCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CITY_STATE", DbType="NVarChar(255)")]
+		public string CITY_STATE
+		{
+			get
+			{
+				return this._CITY_STATE;
+			}
+			set
+			{
+				if ((this._CITY_STATE != value))
+				{
+					this.OnCITY_STATEChanging(value);
+					this.SendPropertyChanging();
+					this._CITY_STATE = value;
+					this.SendPropertyChanged("CITY_STATE");
+					this.OnCITY_STATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CITY_STATUS", DbType="NVarChar(255)")]
+		public string CITY_STATUS
+		{
+			get
+			{
+				return this._CITY_STATUS;
+			}
+			set
+			{
+				if ((this._CITY_STATUS != value))
+				{
+					this.OnCITY_STATUSChanging(value);
+					this.SendPropertyChanging();
+					this._CITY_STATUS = value;
+					this.SendPropertyChanged("CITY_STATUS");
+					this.OnCITY_STATUSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CITY_STATE_DESC", DbType="NVarChar(255)")]
+		public string CITY_STATE_DESC
+		{
+			get
+			{
+				return this._CITY_STATE_DESC;
+			}
+			set
+			{
+				if ((this._CITY_STATE_DESC != value))
+				{
+					this.OnCITY_STATE_DESCChanging(value);
+					this.SendPropertyChanging();
+					this._CITY_STATE_DESC = value;
+					this.SendPropertyChanged("CITY_STATE_DESC");
+					this.OnCITY_STATE_DESCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MOD_DATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> MOD_DATE
+		{
+			get
+			{
+				return this._MOD_DATE;
+			}
+			set
+			{
+				if ((this._MOD_DATE != value))
+				{
+					this.OnMOD_DATEChanging(value);
+					this.SendPropertyChanging();
+					this._MOD_DATE = value;
+					this.SendPropertyChanged("MOD_DATE");
+					this.OnMOD_DATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MOD_TIME", DbType="Float")]
+		public System.Nullable<double> MOD_TIME
+		{
+			get
+			{
+				return this._MOD_TIME;
+			}
+			set
+			{
+				if ((this._MOD_TIME != value))
+				{
+					this.OnMOD_TIMEChanging(value);
+					this.SendPropertyChanging();
+					this._MOD_TIME = value;
+					this.SendPropertyChanged("MOD_TIME");
+					this.OnMOD_TIMEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NODEID", DbType="NVarChar(255)")]
+		public string NODEID
+		{
+			get
+			{
+				return this._NODEID;
+			}
+			set
+			{
+				if ((this._NODEID != value))
+				{
+					this.OnNODEIDChanging(value);
+					this.SendPropertyChanging();
+					this._NODEID = value;
+					this.SendPropertyChanged("NODEID");
+					this.OnNODEIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USERID", DbType="NVarChar(255)")]
+		public string USERID
+		{
+			get
+			{
+				return this._USERID;
+			}
+			set
+			{
+				if ((this._USERID != value))
+				{
+					this.OnUSERIDChanging(value);
+					this.SendPropertyChanging();
+					this._USERID = value;
+					this.SendPropertyChanged("USERID");
+					this.OnUSERIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TRANS_STATUS", DbType="NVarChar(255)")]
+		public string TRANS_STATUS
+		{
+			get
+			{
+				return this._TRANS_STATUS;
+			}
+			set
+			{
+				if ((this._TRANS_STATUS != value))
+				{
+					this.OnTRANS_STATUSChanging(value);
+					this.SendPropertyChanging();
+					this._TRANS_STATUS = value;
+					this.SendPropertyChanged("TRANS_STATUS");
+					this.OnTRANS_STATUSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CITY_COD", DbType="NVarChar(255)")]
+		public string CITY_COD
+		{
+			get
+			{
+				return this._CITY_COD;
+			}
+			set
+			{
+				if ((this._CITY_COD != value))
+				{
+					this.OnCITY_CODChanging(value);
+					this.SendPropertyChanging();
+					this._CITY_COD = value;
+					this.SendPropertyChanged("CITY_COD");
+					this.OnCITY_CODChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CITY_CATG_PDN", DbType="NVarChar(255)")]
+		public string CITY_CATG_PDN
+		{
+			get
+			{
+				return this._CITY_CATG_PDN;
+			}
+			set
+			{
+				if ((this._CITY_CATG_PDN != value))
+				{
+					this.OnCITY_CATG_PDNChanging(value);
+					this.SendPropertyChanging();
+					this._CITY_CATG_PDN = value;
+					this.SendPropertyChanged("CITY_CATG_PDN");
+					this.OnCITY_CATG_PDNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_city_category", DbType="Float")]
+		public System.Nullable<double> city_category
+		{
+			get
+			{
+				return this._city_category;
+			}
+			set
+			{
+				if ((this._city_category != value))
+				{
+					this.Oncity_categoryChanging(value);
+					this.SendPropertyChanging();
+					this._city_category = value;
+					this.SendPropertyChanged("city_category");
+					this.Oncity_categoryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZONE", DbType="VarChar(30)")]
+		public string ZONE
+		{
+			get
+			{
+				return this._ZONE;
+			}
+			set
+			{
+				if ((this._ZONE != value))
+				{
+					this.OnZONEChanging(value);
+					this.SendPropertyChanging();
+					this._ZONE = value;
+					this.SendPropertyChanged("ZONE");
+					this.OnZONEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Char(1) NOT NULL")]
+		public char Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

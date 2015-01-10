@@ -12,7 +12,146 @@ namespace ConsoleApplication2
     {
         static void Main(string[] args)
         {
-            funcToHandleAllRecords();
+                DataClasses1DataContext d1 = new DataClasses1DataContext();
+            DataClasses2DataContext d2 = new DataClasses2DataContext();
+            Console.WriteLine("Attempting to load data from mi database....");
+            List<DATAENTRY> dataEntries = d2.ExecuteQuery<DATAENTRY>(@"
+                SELECT [AWBNO]
+      ,[BKDATE]
+      ,[DEST]
+      ,[CLCODE]
+      ,[CONSIGNEE]
+      ,[CNEADDRESS]
+      ,d.[TYPE]
+      ,[BMODE]
+      ,[MMODE]
+      ,[PKGS]
+      ,[BWT]
+      ,[MWT]
+      ,[PMODE]
+      ,[AMOUNT]
+      ,[POD_DATE]
+      ,[POD_TIME]
+      ,[STATUS]
+      ,[REMARKS]
+      ,[USERNAME]
+      ,[BILLNO]
+      ,[network]
+      ,d.[destination]
+      ,[clname]
+      ,[tdesc]
+      ,[tamt]
+      ,[ntdesc]
+      ,[ntamt]
+      ,[fname]
+      ,[famt]
+      ,[fcode]
+      ,[adsns]
+      ,[state]
+      ,[NETNO]
+      ,[dlvboy]
+      ,[mainbilno]
+      ,[BRANCH]
+      ,[MFNO]
+      ,[MFDATE]
+      ,[MFWD]
+      ,[Actualdate]
+      ,[upload]
+      ,[Shpchrg]
+      ,[dtdamt]
+      ,[zone]
+  FROM [mi].[dbo].[DATAENTRY] d 
+  join [BillingDatabase].dbo.[Transaction] t 
+  on t.ConnsignmentNo COLLATE DATABASE_DEFAULT = d.AWBNO COLLATE DATABASE_DEFAULT
+
+            ").ToList();
+            dataEntries = dataEntries.Where(x=>x.clname.Contains("GLAXO")).ToList();
+            Console.WriteLine("Total records loaded : {0}", dataEntries.Count);
+            Console.WriteLine("Attempting to load data from BillingDatabase...");
+            List<Transaction> transactions = d1.ExecuteQuery<Transaction>(@"
+    SELECT [ID]
+      ,[AmountPayed]
+      ,[AmountCharged]
+      ,[ConnsignmentNo]
+      ,[Weight]
+      ,[WeightByFranchize]
+      ,t.[Destination]
+      ,[DestinationPin]
+      ,[UserId]
+      ,[BookingDate]
+      ,[AddDate]
+      ,[LastModified]
+      ,t.[Type]
+      ,[Mode]
+      ,[DOX]
+      ,[ServiceTax]
+      ,[SplDisc]
+      ,[InvoiceNo]
+      ,[InvoiceDate]
+      ,[CustCode]
+      ,[TransMF_No]
+      ,[BilledWeight]
+      ,[ConsigneeName]
+      ,[ConsigneeAddress]
+      ,[ConsignerName]
+      ,[ConsignerAddress]
+      ,[SubClient]
+      ,[DeliveryStatus]
+  FROM [BillingDatabase].[dbo].[Transaction] t
+  join mi.dbo.DATAENTRY d
+  on
+  d.AWBNO COLLATE DATABASE_DEFAULT = t.ConnsignmentNo COLLATE DATABASE_DEFAULT
+").ToList();
+            Console.WriteLine("Total records loaded from BillingDatabase: {0} ", transactions.Count);
+            List<String> clients = d1.Clients.Select(x => x.CLCODE).ToList();
+            Console.WriteLine("Attempting to modify data..... ");
+            int i = 0;
+            foreach (Transaction transaction in transactions)
+            {
+                DATAENTRY dataEntry = dataEntries.SingleOrDefault(x => x.AWBNO == transaction.ConnsignmentNo);
+                if (dataEntry != null)
+                {
+                    transaction.AmountCharged = (decimal)(dataEntry.AMOUNT??0);
+                    transaction.CustCode = "KIM";
+                    transaction.SubClient = dataEntry.CLCODE;
+                }
+                i++;
+                if(i%250==0)
+                    Console.WriteLine(i.ToString() + " records processed...");
+            }
+            Console.WriteLine(d1.GetChangeSet().Updates.Count.ToString() + " changes to be done... ");
+            d1.SubmitChanges();
+            Console.WriteLine("Changed successfully....");
+            Console.ReadLine();
+        }
+        static void addNewCities()
+        {
+            DataClasses1DataContext db = new DataClasses1DataContext();
+            Console.WriteLine("Enter city details: ");
+            List<City> CityList = new List<City>();
+            string code = "";
+            while (code != "00")
+            {
+                City city = new City();
+                string input = Console.ReadLine();
+                code = input.Split('	')[0];
+
+                if (code != "00" && db.Cities.Where(x => x.CITY_CODE == code).Count() == 0)
+                {
+                    string desc = input.Split('	')[1];
+                    city.CITY_CODE = code;
+                    city.CITY_DESC = desc;
+                    city.Status = 'A';
+                    CityList.Add(city);
+
+                }
+            }
+
+            db.Cities.InsertAllOnSubmit(CityList);
+            Console.WriteLine("Attempting to save " + db.GetChangeSet().Inserts.Count + " records...");
+            db.SubmitChanges();
+            Console.WriteLine("Saved successfully...");
+            Console.ReadLine();
         }
         static void funcToAddGroupsToServices()
         {

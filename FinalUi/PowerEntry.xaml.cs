@@ -88,6 +88,9 @@ namespace FinalUi
             dData.ConsignerName = sData.ConsignerName;
             dData.ConsigneeAddress = sData.ConsigneeAddress;
             dData.SubClient = sData.SubClient;
+            dData.RecalculateEnabled = sData.RecalculateEnabled;
+            dData.DeliveryStatus = sData.DeliveryStatus;
+            dData.Insurance = dData.Insurance;
         }
         void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {

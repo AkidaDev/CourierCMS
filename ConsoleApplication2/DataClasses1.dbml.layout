@@ -52,5 +52,11 @@
         <classShapeMoniker Id="f1db057a-c161-4ca7-b307-de48c7dd2ce9" />
       </nodes>
     </associationConnector>
+    <classShape Id="fc10e080-9ddf-425c-a2b8-2641923e4d9d" absoluteBounds="4.25, 0.875, 2, 3.6939111328124996">
+      <DataClassMoniker Name="/DataClasses1DataContext/City" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d07c2d9b-908b-4ffe-b6fb-932533c98223" absoluteBounds="4.265, 1.335, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

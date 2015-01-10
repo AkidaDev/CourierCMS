@@ -111,6 +111,8 @@ where [BillId] = '" + inv.BillId + @"'
                 repParams.Add(new ReportParameter("ClientName", clc.CLNAME));
                 repParams.Add(new ReportParameter("ClientAddress", clc.ADDRESS));
                 repParams.Add(new ReportParameter("ClientPhoneNo", clc.CONTACTNO));
+                repParams.Add(new ReportParameter("ServiceTaxNumber", Configs.Default.ServiceTaxno??""));
+           
                // repParams.Add(new ReportParameter("Tinnumber", Configs.Default.Tin));
 
                 repParams.Add(new ReportParameter("InvoiceDate", (DateTime.ParseExact(inv.BillId,"yyyyMMddhhmm",CultureInfo.InvariantCulture)).ToString("dd-MMM-yyyy")));

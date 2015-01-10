@@ -134,7 +134,8 @@ namespace FinalUi
             }
             if (Double.Parse(WeightAccToDTDC.Text).GetType() == typeof(double))
                 data.Weight = Double.Parse(WeightAccToDTDC.Text);
-            else {
+            else
+            {
                 MessageBox.Show("Weight is incorrect");
             }
             data.FrWeight = Double.Parse(WeightAccToFranchize.Text);
@@ -195,10 +196,19 @@ namespace FinalUi
                     data.BilledWeight = double.Parse(BilledWeightTextBox.Text, CultureInfo.InvariantCulture);
             }
             data.ConsigneeName = ConsgineeName.Text;
-            data.ConsigneeAddress = ConsigneeAddress.Text;
             data.ConsignerName = ConsignerName.Text;
-            data.ConsignerAddress = ConsignerAddress.Text;
             data.SubClient = SubClientComboBox.Text;
+            if (RecalculateCheckBox.IsChecked == true)
+                data.RecalculateEnabled = 'T';
+            else
+                data.RecalculateEnabled = 'F';
+            if (decimal.TryParse(InsuranceBox.Text, out tempDecimal))
+                data.Insurance = tempDecimal;
+            else
+            {
+                data.Insurance = 0;
+                InsuranceBox.Text = "0";
+            }
             return data;
         }
         public void dupliData(RuntimeData sData, RuntimeData dData)
@@ -234,6 +244,9 @@ namespace FinalUi
             dData.ConsignerName = sData.ConsignerName;
             dData.ConsigneeAddress = sData.ConsigneeAddress;
             dData.SubClient = sData.SubClient;
+            dData.RecalculateEnabled = sData.RecalculateEnabled;
+            dData.Insurance = sData.Insurance;
+            dData.DeliveryStatus = sData.DeliveryStatus;
         }
         public void SaveData()
         {
@@ -378,7 +391,7 @@ namespace FinalUi
             if (data.BookingDate != null)
                 InsertionDate.SelectedDate = data.BookingDate;
             Destination.Text = DataSources.CityCopy.Where(x => x.CITY_CODE == data.Destination).Select(y => y.NameAndCode).FirstOrDefault();
-            if ((data.FrAmount != 0 && data.FrAmount != null))
+            if ((data.FrAmount != null))
                 CustomerSelected.Text = DataSources.ClientCopy.Where(x => x.CLCODE == data.CustCode).Select(y => y.NameAndCode).FirstOrDefault();
             DestinationPin.Text = data.DestinationPin.ToString();
             if (data.FrWeight != null)
@@ -401,11 +414,12 @@ namespace FinalUi
             SubClientListSource.Source = SubClientList.ContainsKey(SelectedClientCode) ? SubClientList[SelectedClientCode] : new List<string>();
             ConsigneeListSource.Source = ConsigneeList;
             ConsignerListSource.Source = ConsignerList;
-            ConsigneeAddress.Text = data.ConsigneeAddress ?? "";
             ConsgineeName.Text = data.ConsigneeName ?? "";
-            ConsignerAddress.Text = data.ConsignerAddress ?? "";
             ConsignerName.Text = data.ConsignerName ?? "";
-
+            if (data.RecalculateEnabled != 'F')
+                RecalculateCheckBox.IsChecked = true;
+            else
+                RecalculateCheckBox.IsChecked = false;
             HeightPacketBox.Text = "0";
             WidthPacketBox.Text = "0";
             LenghtPacketBox.Text = "0";
@@ -419,7 +433,7 @@ namespace FinalUi
             {
                 this.ConsgineeName.Text = data.ConsigneeName;
             }
-            SlipCost.Text =data.Stock;
+            SlipCost.Text = data.Stock;
         }
         private void DoneButton_Click(object sender, RoutedEventArgs e)
         {
@@ -506,6 +520,7 @@ namespace FinalUi
         }
         private void ConnsignmentNumber_LostFocus(object sender, RoutedEventArgs e)
         {
+            ConnsignmentNumber.Text = ConnsignmentNumber.Text.ToUpper();
             fillAllElements(ConnsignmentNumber.Text);
         }
 
@@ -551,7 +566,7 @@ namespace FinalUi
             {
                 if (HeightPacketBox.Text == "" || HeightPacketBox.Text == "0")
                 {
-                    Dispatcher.BeginInvoke(DispatcherPriority.Input,new Action(delegate()
+                    Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(delegate()
                     {
                         BilledWeightTextBox.Focus();         // Set Logical Focus
                         Keyboard.Focus(BilledWeightTextBox); // Set Keyboard Focus
@@ -560,16 +575,25 @@ namespace FinalUi
             }
         }
 
-       /* private void Grid_PreviewKeyDown(object sender, KeyEventArgs e)
+        private void InsuranceBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            var uie = e.OriginalSource as UIElement;
-
-            if (e.Key == Key.Enter)
+            decimal tempBilledAmount, tempInsuranceAmount;
+            if(decimal.TryParse(BilledAmount.Text,out tempBilledAmount) && decimal.TryParse(InsuranceBox.Text,out tempInsuranceAmount))
             {
-                e.Handled = true;
-                uie.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                BilledAmount.Text = (tempInsuranceAmount + tempBilledAmount).ToString();
             }
-        }*/
+        }
+
+        /* private void Grid_PreviewKeyDown(object sender, KeyEventArgs e)
+         {
+             var uie = e.OriginalSource as UIElement;
+
+             if (e.Key == Key.Enter)
+             {
+                 e.Handled = true;
+                 uie.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+             }
+         }*/
 
     }
 }

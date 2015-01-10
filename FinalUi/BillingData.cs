@@ -1,3 +1,4 @@
+using System;
 using System.Text.RegularExpressions;
 namespace FinalUi
 {
@@ -7,7 +8,8 @@ namespace FinalUi
         {
             get
             {
-                double total = Basic + fuelAmount + taxAmount - discountAmount + PreviousDue??0 + Misc??0 ;
+                
+                double total = Math.Round(Basic + fuelAmount + taxAmount - discountAmount + PreviousDue??0 + Misc??0) ;
                 return total;
             }
         }

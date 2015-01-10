@@ -54,6 +54,7 @@ namespace FinalUi
         {
             Configs.Default.Background = ThemeColorPicker.SelectedColorText;
             Configs.Default.Tin = Pannumber.Text;
+            Configs.Default.ServiceTaxno = ServiceTaxNo.Text;
             Configs.Default.TNC = TNCBox.Text;
             Configs.Default.CompanyAddress = CompanyAddressBox.Text;
             Configs.Default.CompanyEmail = CompanyEmailBox.Text;
@@ -84,10 +85,10 @@ namespace FinalUi
             CompanyEmailBox.Text = Configs.Default.CompanyEmail;
             CompanyNameBox.Text = Configs.Default.CompanyName;
             CompanyOwnerBox.Text = Configs.Default.CompanyOwner;
+            ServiceTaxNo.Text = Configs.Default.ServiceTaxno;
             TNCBox.Text = Configs.Default.TNC;
             Pannumber.Text = Configs.Default.Tin;
-            this.ServiceTax.Text = Configs.Default.ServiceTax;
-        }
+         }
         private void cloakAll()
         {
             this.BackgroundSettingGrid.Visibility = Visibility.Collapsed;

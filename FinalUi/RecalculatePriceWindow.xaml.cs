@@ -70,7 +70,12 @@ namespace FinalUi
             double i = 0;
             foreach (Transaction trans in transactions)
             {
-                trans.AmountCharged = (decimal)UtilityClass.getCost(trans.CustCode, trans.BilledWeight ?? 0, trans.Destination, trans.Type, trans.DOX);
+                if (trans.ConnsignmentNo == "X10477603")
+                {
+                    Debug.WriteLine("ABC");
+                }
+                trans.AmountCharged = (decimal)UtilityClass.getCost(trans.CustCode, trans.BilledWeight ?? 0, trans.Destination, trans.Type.Trim(), trans.DOX);
+                
                 worker.ReportProgress((int)((i / transCount) * 94 + 1));
                 i++;
             }
@@ -131,7 +136,7 @@ namespace FinalUi
                 return;
             }
             string ClientCode = ((Client)ClientComboBox.SelectedItem).CLCODE;
-            Func<Transaction, bool> whereQuery = x => x.CustCode == ClientCode;
+            Func<Transaction, bool> whereQuery = x => x.CustCode == ClientCode && x.RecalculateEnabled != 'T';
             if (DateCheckBox.Checked == true || ConnsignmentNoCheckBox.Checked == true)
             {
                 if (DateCheckBox.Checked== true)

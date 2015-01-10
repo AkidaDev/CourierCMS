@@ -183,6 +183,7 @@ namespace FinalUi
             repParams.Add(new ReportParameter("ClientPhoneNo", curClient.CONTACTNO));
             repParams.Add(new ReportParameter("TinNumber", Configs.Default.Tin ?? ""));
             repParams.Add(new ReportParameter("TNC", Configs.Default.TNC));
+            repParams.Add(new ReportParameter("ServiceTaxNumber", Configs.Default.ServiceTaxno??""));
             invoice.BillId = (InvoiceDate.SelectedDate ?? DateTime.Today).ToString("yyyyMMdd");
             invoice.Date = InvoiceDate.SelectedDate ?? DateTime.Today;
             invoice.BillId = invoice.BillId + DateTime.Now.ToString("hhmm");
