@@ -213,7 +213,6 @@
         </Style>
         <Style TargetType="{x:Type DataGrid}">
             <Setter Property="RowHeaderWidth" Value="0"/>
-            <Setter Property="IsReadOnly" Value="True"/>
             <Setter Property="IsTextSearchEnabled" Value="True"/>
             <Setter Property="IsTextSearchCaseSensitive" Value="False"/>
             <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>

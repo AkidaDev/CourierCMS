@@ -1087,5 +1087,50 @@ namespace FinalUi
             int rowNumOffset = (dataGridHelper.currentPageNo - 1) * (dataGridHelper.rowsPerPage) + 1;
             e.Row.Header = (e.Row.GetIndex() + rowNumOffset).ToString();
         }
+
+        private void dataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            if (e.EditAction == DataGridEditAction.Commit)
+            {
+                RuntimeData rData = ((RuntimeData)e.Row.Item);
+                double weight;
+                if(double.TryParse((e.EditingElement as TextBox).Text,out weight))
+                {
+                    rData.BilledWeight = weight;
+                }
+                else
+                {
+                    MessageBox.Show("Unable to edit record!! Please check if input does not contain any invalid characters.", "Error");
+                    return;
+                }
+                if (rData == null)
+                {
+                    MessageBox.Show("Unable to edit record....");
+                    return;
+                }
+                RuntimeData sData = dataGridHelper.getCurrentDataStack.SingleOrDefault(x => x.ConsignmentNo == rData.ConsignmentNo);
+                if (sData == null)
+                {
+                    MessageBox.Show("Unable to edit transaction. Please reload the data and try again..", "Error");
+                    return;
+                }
+                BillingDataDataContext db = new BillingDataDataContext();
+                RuntimeData dData = db.RuntimeDatas.SingleOrDefault(x => x.ConsignmentNo == rData.ConsignmentNo && x.UserId == SecurityModule.currentUserName && dataGridHelper.currentSheetNumber == x.SheetNo);
+                if(dData == null)
+                {
+                    MessageBox.Show("Unable to edit transaction. Please check if data exists and try again..", "Error");
+                    return;
+                }
+                dData.BilledWeight = rData.BilledWeight;
+                dData.FrAmount = (decimal)UtilityClass.getCost(rData.CustCode, (double)(rData.BilledWeight ?? 0), rData.Destination, rData.Type, rData.DOX ?? 'N');
+                db.SubmitChanges();
+                rData.FrAmount = dData.FrAmount;
+                sData.BilledWeight = dData.BilledWeight;
+                sData.FrAmount = dData.FrAmount;
+
+            }
+        }
+
+        
     }
 }
