@@ -1019,7 +1019,7 @@
         <DataSetName>DataSet1</DataSetName>
         <Top>2.4341cm</Top>
         <Left>0.29104cm</Left>
-        <Height>1.12064cm</Height>
+        <Height>1.12063cm</Height>
         <Width>20.05876cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
@@ -1048,7 +1048,7 @@
         <Top>0.10583cm</Top>
         <Left>14.50615cm</Left>
         <Height>2.13434cm</Height>
-        <Width>5.74135cm</Width>
+        <Width>5.84365cm</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -1057,7 +1057,7 @@
         </Style>
       </Image>
     </ReportItems>
-    <Height>8.44946cm</Height>
+    <Height>4.74529cm</Height>
     <Style>
       <Border>
         <Color>White</Color>
@@ -1101,10 +1101,7 @@
               <Style>None</Style>
             </Border>
             <VerticalAlign>Bottom</VerticalAlign>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
+            <PaddingBottom>1pt</PaddingBottom>
           </Style>
         </Textbox>
       </ReportItems>

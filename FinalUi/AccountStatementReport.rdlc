@@ -630,7 +630,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>InvoiceDataSet1</DataSetName>
-        <Top>1.65462in</Top>
+        <Top>1.52962in</Top>
         <Left>0.08377in</Left>
         <Height>0.49999in</Height>
         <Width>11.42621in</Width>
@@ -657,7 +657,7 @@
         </Style>
       </Tablix>
       <Line Name="Line30">
-        <Top>2.77356in</Top>
+        <Top>2.64856in</Top>
         <Left>0.08374in</Left>
         <Height>0in</Height>
         <Width>11.42622in</Width>
@@ -689,7 +689,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox136</rd:DefaultName>
-        <Top>2.3064in</Top>
+        <Top>2.1814in</Top>
         <Left>8.80165in</Left>
         <Height>0.25in</Height>
         <Width>1.07172in</Width>
@@ -725,7 +725,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>2.3064in</Top>
+        <Top>2.1814in</Top>
         <Left>9.87337in</Left>
         <Height>0.25in</Height>
         <Width>1.63661in</Width>
@@ -740,45 +740,12 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="Textbox106">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Account Statement</Value>
-                <Style>
-                  <FontFamily>arial</FontFamily>
-                  <FontSize>18pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox106</rd:DefaultName>
-        <Top>0.1059in</Top>
-        <Left>4.14584in</Left>
-        <Height>0.38809in</Height>
-        <Width>3.1112in</Width>
-        <ZIndex>4</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
       <Line Name="Line4">
-        <Top>2.24007in</Top>
+        <Top>2.11507in</Top>
         <Left>0.08374in</Left>
         <Height>0in</Height>
         <Width>11.42624in</Width>
-        <ZIndex>5</ZIndex>
+        <ZIndex>4</ZIndex>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -888,7 +855,7 @@
         <Left>0.51338cm</Left>
         <Height>0.60326cm</Height>
         <Width>4.53764cm</Width>
-        <ZIndex>6</ZIndex>
+        <ZIndex>5</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -915,11 +882,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
-        <Top>1.59253cm</Top>
+        <Top>1.27503cm</Top>
         <Left>9.75472cm</Left>
         <Height>0.6cm</Height>
         <Width>3.58479cm</Width>
-        <ZIndex>7</ZIndex>
+        <ZIndex>6</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -949,11 +916,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox10</rd:DefaultName>
-        <Top>1.5647cm</Top>
+        <Top>1.2472cm</Top>
         <Left>0.51338cm</Left>
         <Height>0.62784cm</Height>
         <Width>3.83016cm</Width>
-        <ZIndex>8</ZIndex>
+        <ZIndex>7</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1229,11 +1196,11 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <Top>2.20698cm</Top>
+        <Top>1.88948cm</Top>
         <Left>0.54027cm</Left>
         <Height>1.81937cm</Height>
         <Width>7.07874cm</Width>
-        <ZIndex>9</ZIndex>
+        <ZIndex>8</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1505,11 +1472,11 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <Top>2.20698cm</Top>
+        <Top>1.88948cm</Top>
         <Left>9.67596cm</Left>
         <Height>1.81935cm</Height>
         <Width>7.31338cm</Width>
-        <ZIndex>10</ZIndex>
+        <ZIndex>9</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1693,11 +1660,11 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <Top>0.2816in</Top>
+        <Top>0.125in</Top>
         <Left>8.80165in</Left>
         <Height>0.42478in</Height>
         <Width>2.70833in</Width>
-        <ZIndex>11</ZIndex>
+        <ZIndex>10</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1886,19 +1853,31 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <Top>2.28215in</Top>
+        <Top>2.15715in</Top>
         <Left>0.08376in</Left>
         <Height>0.47752in</Height>
         <Width>2.88542in</Width>
-        <ZIndex>12</ZIndex>
+        <ZIndex>11</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Tablix>
+      <Line Name="Line2">
+        <Top>0.03208in</Top>
+        <Left>0.08374in</Left>
+        <Height>0in</Height>
+        <Width>11.42622in</Width>
+        <ZIndex>12</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
     </ReportItems>
-    <Height>2.86375in</Height>
+    <Height>2.68667in</Height>
     <Style>
       <Border>
         <Style>None</Style>
@@ -1920,9 +1899,41 @@
   <Width>11.60374in</Width>
   <Page>
     <PageHeader>
-      <Height>0.11806in</Height>
+      <Height>0.23751in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="Textbox106">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Account Statement</Value>
+                  <Style>
+                    <FontFamily>arial</FontFamily>
+                    <FontSize>18pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox106</rd:DefaultName>
+          <Left>4.32292in</Left>
+          <Height>0.23751in</Height>
+          <Width>2.22429in</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <VerticalAlign>Middle</VerticalAlign>
+          </Style>
+        </Textbox>
+      </ReportItems>
       <Style>
         <Border>
           <Style>None</Style>
@@ -1930,7 +1941,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>0.28125in</Height>
+      <Height>0.35417in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <Style>
@@ -1943,6 +1954,7 @@
     <PageWidth>11.69in</PageWidth>
     <InteractiveHeight>11.5in</InteractiveHeight>
     <InteractiveWidth>8in</InteractiveWidth>
+    <TopMargin>4pt</TopMargin>
     <Style>
       <Border>
         <Style>None</Style>
