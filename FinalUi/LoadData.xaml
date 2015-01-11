@@ -30,7 +30,7 @@
         <RadioButton Grid.Row="3" Name="ConnRadio" GroupName="SelectedButton" VerticalAlignment="Bottom" Margin="35 0 0 0">
             <WrapPanel Margin="3 -8 0 0">
                 <Path Data="F1M2.467,18.037C2.467,18.037 2.467,19.519 2.467,19.519 2.467,19.519 6.933,19.519 6.933,19.519 6.933,19.519 6.933,18.037 6.933,18.037 6.933,18.037 2.467,18.037 2.467,18.037z M1,15.815C1,15.815 23,15.815 23,15.815 23,15.815 23,21 23,21 23,21 1,21 1,21 1,21 1,15.815 1,15.815z M2.467,10.63C2.467,10.63 2.456,12.111 2.456,12.111 2.456,12.111 6.922,12.111 6.922,12.111 6.922,12.111 6.933,10.63 6.933,10.63 6.933,10.63 2.467,10.63 2.467,10.63z M1,8.407C1,8.407 23,8.407 23,8.407 23,8.407 23,13.593 23,13.593 23,13.593 1,13.593 1,13.593 1,13.593 1,8.407 1,8.407z M2.467,3.222C2.467,3.222 2.467,4.715 2.467,4.715 2.467,4.715 6.933,4.715 6.933,4.715 6.933,4.715 6.933,3.222 6.933,3.222 6.933,3.222 2.467,3.222 2.467,3.222z M1,1C1,1 23,1 23,1 23,1 23,6.185 23,6.185 23,6.185 1,6.185 1,6.185 1,6.185 1,1 1,1z" Fill="Black" Height="24" Width="24" />
-                <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Canvas.Left="62" Text="ConnsignmentNo. " Canvas.Top="128.68" Margin="5,7,0,0"/>
+                <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Canvas.Left="62" Text="Consignment No. " Canvas.Top="128.68" Margin="5,7,0,0"/>
             </WrapPanel>
         </RadioButton>
         <WrapPanel Grid.Row="4" VerticalAlignment="Bottom" HorizontalAlignment="Center">
