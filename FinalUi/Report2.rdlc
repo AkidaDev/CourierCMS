@@ -15,7 +15,7 @@
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>Name        .:</Value>
+                            <Value>Name     .:</Value>
                             <Style>
                               <FontFamily>arial</FontFamily>
                               <FontSize>9pt</FontSize>
@@ -34,7 +34,7 @@
                         <Color>LightGrey</Color>
                         <Style>None</Style>
                       </Border>
-                      <VerticalAlign>Middle</VerticalAlign>
+                      <VerticalAlign>Top</VerticalAlign>
                       <PaddingRight>3pt</PaddingRight>
                     </Style>
                   </Textbox>
@@ -51,7 +51,7 @@
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>Address     .:</Value>
+                            <Value>Address   .:</Value>
                             <Style>
                               <FontFamily>arial</FontFamily>
                               <FontSize>9pt</FontSize>
@@ -70,7 +70,7 @@
                         <Color>LightGrey</Color>
                         <Style>None</Style>
                       </Border>
-                      <VerticalAlign>Middle</VerticalAlign>
+                      <VerticalAlign>Top</VerticalAlign>
                       <PaddingRight>3pt</PaddingRight>
                     </Style>
                   </Textbox>
@@ -101,7 +101,7 @@
                               <Value>=Parameters!ClientPhoneNo.Value</Value>
                               <Style>
                                 <FontFamily>arial</FontFamily>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -114,7 +114,7 @@
                           <Color>LightGrey</Color>
                           <Style>None</Style>
                         </Border>
-                        <VerticalAlign>Middle</VerticalAlign>
+                        <VerticalAlign>Top</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -148,7 +148,7 @@
                             <Value>=Parameters!ClientName.Value</Value>
                             <Style>
                               <FontFamily>arial</FontFamily>
-                              <FontSize>8pt</FontSize>
+                              <FontSize>9pt</FontSize>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -161,7 +161,7 @@
                         <Color>LightGrey</Color>
                         <Style>None</Style>
                       </Border>
-                      <VerticalAlign>Middle</VerticalAlign>
+                      <VerticalAlign>Top</VerticalAlign>
                       <PaddingLeft>2pt</PaddingLeft>
                       <PaddingRight>2pt</PaddingRight>
                       <PaddingTop>2pt</PaddingTop>
@@ -185,7 +185,7 @@
                                 <Value>=Parameters!ClientAddress.Value</Value>
                                 <Style>
                                   <FontFamily>arial</FontFamily>
-                                  <FontSize>8pt</FontSize>
+                                  <FontSize>9pt</FontSize>
                                 </Style>
                               </TextRun>
                             </TextRuns>
@@ -198,7 +198,7 @@
                             <Color>LightGrey</Color>
                             <Style>None</Style>
                           </Border>
-                          <VerticalAlign>Middle</VerticalAlign>
+                          <VerticalAlign>Top</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -249,7 +249,7 @@
                         <Color>LightGrey</Color>
                         <Style>None</Style>
                       </Border>
-                      <VerticalAlign>Middle</VerticalAlign>
+                      <VerticalAlign>Top</VerticalAlign>
                       <PaddingRight>3pt</PaddingRight>
                     </Style>
                   </Textbox>
@@ -284,6 +284,7 @@
                             <Value>Date</Value>
                             <Style>
                               <FontFamily>arial</FontFamily>
+                              <FontSize>9pt</FontSize>
                               <FontWeight>Bold</FontWeight>
                               <TextDecoration>Underline</TextDecoration>
                             </Style>
@@ -308,7 +309,7 @@
                         <Color>LightGrey</Color>
                         <Style>None</Style>
                       </Border>
-                      <VerticalAlign>Middle</VerticalAlign>
+                      <VerticalAlign>Top</VerticalAlign>
                     </Style>
                   </Textbox>
                 </CellContents>
@@ -351,7 +352,7 @@
                           <Color>LightGrey</Color>
                           <Style>None</Style>
                         </Border>
-                        <VerticalAlign>Middle</VerticalAlign>
+                        <VerticalAlign>Top</VerticalAlign>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -386,7 +387,7 @@
                           <Color>LightGrey</Color>
                           <Style>None</Style>
                         </Border>
-                        <VerticalAlign>Middle</VerticalAlign>
+                        <VerticalAlign>Top</VerticalAlign>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -429,7 +430,7 @@
                         <Color>LightGrey</Color>
                         <Style>None</Style>
                       </Border>
-                      <VerticalAlign>Middle</VerticalAlign>
+                      <VerticalAlign>Top</VerticalAlign>
                       <PaddingLeft>2pt</PaddingLeft>
                       <PaddingRight>2pt</PaddingRight>
                       <PaddingTop>2pt</PaddingTop>
@@ -473,7 +474,7 @@
                         <Color>LightGrey</Color>
                         <Style>None</Style>
                       </Border>
-                      <VerticalAlign>Middle</VerticalAlign>
+                      <VerticalAlign>Top</VerticalAlign>
                     </Style>
                   </Textbox>
                 </CellContents>
@@ -515,7 +516,7 @@
                         <Color>LightGrey</Color>
                         <Style>None</Style>
                       </Border>
-                      <VerticalAlign>Middle</VerticalAlign>
+                      <VerticalAlign>Top</VerticalAlign>
                     </Style>
                   </Textbox>
                 </CellContents>
@@ -570,7 +571,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.52063cm</Height>
+              <Height>0.6cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -583,6 +584,7 @@
                             <TextRun>
                               <Value>Consignment No</Value>
                               <Style>
+                                <FontFamily>arial</FontFamily>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -596,13 +598,15 @@
                       <rd:DefaultName>Textbox62</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                         </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                         </BottomBorder>
                         <LeftBorder>
                           <Color>Black</Color>
@@ -611,6 +615,7 @@
                           <Color>Black</Color>
                         </RightBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -630,6 +635,7 @@
                             <TextRun>
                               <Value>Destination</Value>
                               <Style>
+                                <FontFamily>arial</FontFamily>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -643,13 +649,15 @@
                       <rd:DefaultName>Textbox67</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                         </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                         </BottomBorder>
                         <LeftBorder>
                           <Color>Black</Color>
@@ -658,6 +666,7 @@
                           <Color>Black</Color>
                         </RightBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -677,6 +686,7 @@
                             <TextRun>
                               <Value>Date</Value>
                               <Style>
+                                <FontFamily>arial</FontFamily>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -690,13 +700,15 @@
                       <rd:DefaultName>Textbox70</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                         </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                         </BottomBorder>
                         <LeftBorder>
                           <Color>Black</Color>
@@ -705,6 +717,7 @@
                           <Color>Black</Color>
                         </RightBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -724,6 +737,7 @@
                             <TextRun>
                               <Value>Consigner</Value>
                               <Style>
+                                <FontFamily>arial</FontFamily>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -737,13 +751,15 @@
                       <rd:DefaultName>Textbox75</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                         </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                         </BottomBorder>
                         <LeftBorder>
                           <Color>Black</Color>
@@ -752,6 +768,7 @@
                           <Color>Black</Color>
                         </RightBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -771,6 +788,7 @@
                             <TextRun>
                               <Value>Consignee</Value>
                               <Style>
+                                <FontFamily>arial</FontFamily>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -784,13 +802,15 @@
                       <rd:DefaultName>Textbox87</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                         </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                         </BottomBorder>
                         <LeftBorder>
                           <Color>Black</Color>
@@ -799,6 +819,7 @@
                           <Color>Black</Color>
                         </RightBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -823,7 +844,8 @@
                             <TextRun>
                               <Value>=Fields!ConnsignmentNo.Value</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontFamily>arial</FontFamily>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -835,7 +857,7 @@
                       <rd:DefaultName>ConnsignmentNo</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -854,7 +876,8 @@
                             <TextRun>
                               <Value>=Fields!CITY_DESC.Value</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontFamily>arial</FontFamily>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -866,7 +889,7 @@
                       <rd:DefaultName>CITY_DESC</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingRight>2pt</PaddingRight>
@@ -885,7 +908,8 @@
                             <TextRun>
                               <Value>=FormatDateTime(CDate(Fields!BookingDate.Value),DateFormat.ShortDate)</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontFamily>arial</FontFamily>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -897,7 +921,7 @@
                       <rd:DefaultName>BookingDate</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingRight>2pt</PaddingRight>
@@ -916,7 +940,8 @@
                             <TextRun>
                               <Value>=Fields!ConsignerName.Value</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontFamily>arial</FontFamily>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -928,7 +953,7 @@
                       <rd:DefaultName>ConsignerName</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingRight>2pt</PaddingRight>
@@ -947,7 +972,8 @@
                             <TextRun>
                               <Value>=Fields!ConsigneeName.Value</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontFamily>arial</FontFamily>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -959,7 +985,7 @@
                       <rd:DefaultName>ConsigneeName</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingRight>2pt</PaddingRight>
@@ -991,10 +1017,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>2.7516cm</Top>
+        <Top>2.4341cm</Top>
         <Left>0.29104cm</Left>
-        <Height>1.04126cm</Height>
-        <Width>20.05875cm</Width>
+        <Height>1.12064cm</Height>
+        <Width>20.05876cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -1055,6 +1081,7 @@
                 <TextRun>
                   <Value>M.I.S. Report</Value>
                   <Style>
+                    <FontFamily>arial</FontFamily>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>

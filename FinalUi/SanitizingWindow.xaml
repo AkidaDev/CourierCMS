@@ -102,7 +102,7 @@
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Width(cm) .: " VerticalAlignment="Bottom"/>
             <TextBox Name="WidthPacketBox" Height="24" Width="50" Padding="2"/>
             <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
-            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Lenght(cm) .: " VerticalAlignment="Bottom"/>
+            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Length(cm) .: " VerticalAlignment="Bottom"/>
             <TextBox Name="LenghtPacketBox" Height="24" Width="50" Padding="2"/>
             <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Divider.: " VerticalAlignment="Bottom"/>

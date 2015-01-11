@@ -11,8 +11,7 @@
               <TextRun>
                 <Value> Amount Chargeable (in Words) .:</Value>
                 <Style>
-                  <FontFamily>garamond</FontFamily>
-                  <FontSize>11pt</FontSize>
+                  <FontFamily>arial</FontFamily>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -44,15 +43,13 @@
               <TextRun>
                 <Value xml:space="preserve"> </Value>
                 <Style>
-                  <FontFamily>garamond</FontFamily>
-                  <FontSize>11pt</FontSize>
+                  <FontFamily>arial</FontFamily>
                 </Style>
               </TextRun>
               <TextRun>
                 <Value>=Parameters!TotalAmountInWordString.Value</Value>
                 <Style>
-                  <FontFamily>garamond</FontFamily>
-                  <FontSize>11pt</FontSize>
+                  <FontFamily>arial</FontFamily>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -84,8 +81,7 @@
                   <TextRun>
                     <Value>=Parameters!CompanyName.Value</Value>
                     <Style>
-                      <FontFamily>garamond</FontFamily>
-                      <FontSize>11pt</FontSize>
+                      <FontFamily>arial</FontFamily>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -121,8 +117,7 @@
                   <TextRun>
                     <Value>Payment Advice (Please Detach and return it with your payment)</Value>
                     <Style>
-                      <FontFamily>garamond</FontFamily>
-                      <FontSize>11pt</FontSize>
+                      <FontFamily>arial</FontFamily>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -172,22 +167,22 @@
               <TextRun>
                 <Value>Please make crossed Cheque or DD in favour of "</Value>
                 <Style>
-                  <FontFamily>garamond</FontFamily>
-                  <FontSize>11pt</FontSize>
+                  <FontFamily>arial</FontFamily>
+                  <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
               <TextRun>
                 <Value>=Parameters!CompanyName.Value</Value>
                 <Style>
-                  <FontFamily>garamond</FontFamily>
-                  <FontSize>11pt</FontSize>
+                  <FontFamily>arial</FontFamily>
+                  <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
               <TextRun>
                 <Value>"</Value>
                 <Style>
-                  <FontFamily>garamond</FontFamily>
-                  <FontSize>11pt</FontSize>
+                  <FontFamily>arial</FontFamily>
+                  <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -249,7 +244,7 @@
                             <TextRun>
                               <Value>S.No</Value>
                               <Style>
-                                <FontFamily>Garamond</FontFamily>
+                                <FontFamily>arial</FontFamily>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -295,7 +290,7 @@
                             <TextRun>
                               <Value>Consignment No</Value>
                               <Style>
-                                <FontFamily>Garamond</FontFamily>
+                                <FontFamily>arial</FontFamily>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -341,7 +336,7 @@
                             <TextRun>
                               <Value>Destination</Value>
                               <Style>
-                                <FontFamily>Garamond</FontFamily>
+                                <FontFamily>arial</FontFamily>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -387,7 +382,7 @@
                             <TextRun>
                               <Value>Date</Value>
                               <Style>
-                                <FontFamily>Garamond</FontFamily>
+                                <FontFamily>arial</FontFamily>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -433,7 +428,7 @@
                             <TextRun>
                               <Value>Weight</Value>
                               <Style>
-                                <FontFamily>Garamond</FontFamily>
+                                <FontFamily>arial</FontFamily>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -479,7 +474,7 @@
                             <TextRun>
                               <Value>Amount</Value>
                               <Style>
-                                <FontFamily>Garamond</FontFamily>
+                                <FontFamily>arial</FontFamily>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -530,7 +525,7 @@
                             <TextRun>
                               <Value>=RowNumber(nothing)</Value>
                               <Style>
-                                <FontFamily>Garamond</FontFamily>
+                                <FontFamily>arial</FontFamily>
                                 <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
@@ -564,7 +559,7 @@
                             <TextRun>
                               <Value>=Fields!ConsignmentNo.Value</Value>
                               <Style>
-                                <FontFamily>Garamond</FontFamily>
+                                <FontFamily>arial</FontFamily>
                                 <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
@@ -598,7 +593,7 @@
                             <TextRun>
                               <Value>=Fields!CITY_DESC.Value</Value>
                               <Style>
-                                <FontFamily>Garamond</FontFamily>
+                                <FontFamily>arial</FontFamily>
                                 <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
@@ -632,7 +627,7 @@
                             <TextRun>
                               <Value>=Format(Fields!BookingDate.Value,"dd/MM/yyyy")</Value>
                               <Style>
-                                <FontFamily>Garamond</FontFamily>
+                                <FontFamily>arial</FontFamily>
                                 <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
@@ -666,7 +661,7 @@
                             <TextRun>
                               <Value>=Fields!BilledWeight.Value</Value>
                               <Style>
-                                <FontFamily>Garamond</FontFamily>
+                                <FontFamily>arial</FontFamily>
                                 <FontSize>8pt</FontSize>
                                 <Format>0.000;(0.000)</Format>
                               </Style>
@@ -701,7 +696,7 @@
                             <TextRun>
                               <Value>=Fields!FrAmount.Value</Value>
                               <Style>
-                                <FontFamily>Garamond</FontFamily>
+                                <FontFamily>arial</FontFamily>
                                 <FontSize>8pt</FontSize>
                                 <Format>0.00;(0.00)</Format>
                               </Style>
@@ -793,7 +788,7 @@
                           <TextRun>
                             <Value>S.No</Value>
                             <Style>
-                              <FontFamily>garamond</FontFamily>
+                              <FontFamily>arial</FontFamily>
                               <FontSize>9pt</FontSize>
                               <FontWeight>Bold</FontWeight>
                             </Style>
@@ -828,7 +823,7 @@
                           <TextRun>
                             <Value>DATE</Value>
                             <Style>
-                              <FontFamily>garamond</FontFamily>
+                              <FontFamily>arial</FontFamily>
                               <FontSize>9pt</FontSize>
                               <FontWeight>Bold</FontWeight>
                             </Style>
@@ -863,7 +858,7 @@
                           <TextRun>
                             <Value>DESCRIPTION</Value>
                             <Style>
-                              <FontFamily>garamond</FontFamily>
+                              <FontFamily>arial</FontFamily>
                               <FontSize>9pt</FontSize>
                               <FontWeight>Bold</FontWeight>
                             </Style>
@@ -2227,10 +2222,13 @@
                                               <TextRun>
                                                 <Value>=Parameters!ServiceTaxAmount.Value</Value>
                                                 <Style>
-                                                  <FontFamily>arial</FontFamily>
+<<<<<<< local
                                                   <FontFamily>garamond</FontFamily>
                                                   <Format>0.00</Format>
+=======
+                                                  <FontFamily>arial</FontFamily>
                                                   <FontSize>9pt</FontSize>
+>>>>>>> other
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -2270,10 +2268,13 @@
                                                   <TextRun>
                                                     <Value>=Parameters!DiscountAmountString.Value</Value>
                                                     <Style>
-                                                      <FontFamily>arial</FontFamily>
+<<<<<<< local
                                                       <FontFamily>garamond</FontFamily>
                                                       <Format>0.00</Format>
+=======
+                                                      <FontFamily>arial</FontFamily>
                                                       <FontSize>9pt</FontSize>
+>>>>>>> other
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>

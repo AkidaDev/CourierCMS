@@ -286,10 +286,6 @@
     <Compile Include="TestServerWindow.xaml.cs">
       <DependentUpon>TestServerWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControlGallery.xaml.cs">
-      <DependentUpon>UserControlGallery.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="UtilityClass.cs" />
     <Compile Include="AddRule.xaml.cs">
       <DependentUpon>AddRule.xaml</DependentUpon>
@@ -473,10 +469,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControlGallery.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="AddRule.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -528,6 +520,7 @@
     </Content>
     <None Include="BillingData.dbml.layout">
       <DependentUpon>BillingData.dbml</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
