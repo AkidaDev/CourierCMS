@@ -41,7 +41,7 @@
                     <MenuItem Header="Log Out" Click="MenuItem_Click" Foreground="Black"/>
                 </MenuItem>
                 <MenuItem ToolTip="Open advanced options" Header="View" Margin="10 0 0 0">
-                    <MenuItem Header="Managment" Foreground="Black">
+                    <MenuItem Header="Managment" Name="Managment" Foreground="Black">
                         <MenuItem Header="City" Click="MenuItem_Click_1" Foreground="Black"/>
                         <MenuItem Header="Clients" Name="ManageClient" Click="ManageClient_Click" Foreground="Black"/>
                         <MenuItem Header="Employees" Name="ManageEmployeeMenuItem" Click="ManageEmployee_Click" Foreground="Black"/>
@@ -58,7 +58,7 @@
                     <MenuItem Header="Peferences" Name="Peferences" Click="Peferences_Click" Foreground="Black"/>
                     <MenuItem Header="Quotation Calc" Click="Quotation_Calc_click"  Foreground="Black"/>
                     <MenuItem Header="Recalculate Price" Click="MenuItem_Click_2" Foreground="Black"/>
-                    <MenuItem Header="Invoice Analysis" Click="InvoiceAnalysis_Click" Foreground="Black"/>
+                    <MenuItem Header="Invoice Analysis" Name="InvoiceAnalysis" Click="InvoiceAnalysis_Click" Foreground="Black"/>
                     <MenuItem Header="MIS Report" Name="MISReportMenuItem" Click="MISReportMenuItem_Click" Foreground="Black"/>
                 </MenuItem>
                 <MenuItem ToolTip="Know more" Header="Help" Margin="10 0 0 0">
@@ -79,8 +79,8 @@
                 <Path Data="F1M8.667,3.556C8.667,3.556 8.667,8.667 8.667,8.667 8.667,8.667 3.555,8.667 3.555,8.667 3.555,8.667 3.555,11.222 3.555,11.222 3.555,11.222 8.667,11.222 8.667,11.222 8.667,11.222 8.667,21.444 8.667,21.444 8.667,21.444 11.222,21.444 11.222,21.444 11.222,21.444 11.222,11.222 11.222,11.222 11.222,11.222 21.444,11.222 21.444,11.222 21.444,11.222 21.444,8.667 21.444,8.667 21.444,8.667 11.222,8.667 11.222,8.667 11.222,8.667 11.222,3.556 11.222,3.556 11.222,3.556 8.667,3.556 8.667,3.556z M3.555,1C3.555,1 21.444,1 21.444,1 22.85,1 24,2.15 24,3.556 24,3.556 24,21.444 24,21.444 24,22.85 22.85,24 21.444,24 21.444,24 3.555,24 3.555,24 2.15,24 1,22.85 1,21.444 1,21.444 1,3.556 1,3.556 1,2.15 2.15,1 3.555,1z" Fill="White" Height="18" Width="18" Stretch="Fill" HorizontalAlignment="Left" Margin="3 -26 0 0"/>
                 <TreeView Background="Transparent" BorderThickness="0">
                     <TreeViewItem IsExpanded="True" Background="Transparent" BorderThickness="0" Header="Client Tree" FontSize="15" FontWeight="SemiBold" Margin="2,5,0,0" Padding="10 1 0 4">
-                        <TreeViewItem Header=" Clients Report" FontSize="13" Padding="35 0 0 2" MouseDoubleClick="ClientsReportTreeView_Selected" FontWeight="Normal" Margin="-35 3 0 0"/>
-                        <TreeViewItem Header=" Client Quotation" FontSize="13" Padding="35 0 0 2" MouseDoubleClick="ClientQuotationTreeView_Selected" FontWeight="Normal" Margin="-35 0 0 0"/>
+                        <TreeViewItem Header=" Clients Report" FontSize="13" Visibility="Collapsed" Padding="35 0 0 2" MouseDoubleClick="ClientsReportTreeView_Selected" FontWeight="Normal" Margin="-35 3 0 0"/>
+                        <TreeViewItem Header=" Client Quotation" Name="Quotation" FontSize="13" Padding="35 0 0 2" MouseDoubleClick="ClientQuotationTreeView_Selected" FontWeight="Normal" Margin="-35 0 0 0"/>
                     </TreeViewItem>
                 </TreeView>
                 <Rectangle Fill="Black" Height="1" Margin="15"/>

@@ -31,7 +31,7 @@ namespace FinalUi
         {
             InitializeComponent();
             CommandBinding command = new CommandBinding();
-
+            int sedo = 0; sedo++;
 
             DoubleAnimation myDoubleAnimation = new DoubleAnimation();
             myDoubleAnimation.From = 1.0;
