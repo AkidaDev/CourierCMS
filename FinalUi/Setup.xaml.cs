@@ -147,7 +147,7 @@ namespace FinalUi
                     this.emp.Name = "<none>";
                     Configs.Default.CompanyName = CompanyNameBox.Text;
                     Configs.Default.Save();
-                    Employee emp = db.Employees.Single(x => x.UserName == this.emp.UserName);
+                    Employee emp = db.Employees.SingleOrDefault(x => x.UserName == this.emp.UserName);
                     if (emp != null)
                     {
                         if (!(MessageBox.Show("This employee already exists. Do you want to make this employee super on this system?", "Confirm", MessageBoxButton.YesNo) == MessageBoxResult.Yes))

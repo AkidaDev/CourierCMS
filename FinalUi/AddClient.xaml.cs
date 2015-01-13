@@ -71,6 +71,7 @@ namespace FinalUi
             string errorMsg = validate();
             if (errorMsg == "")
             {
+                client = new Client();
                 client.CLNAME = ClientName.Text;
                 client.Status = 'A';
                 client.ADDRESS = ClientAddress.Text;
@@ -124,6 +125,7 @@ namespace FinalUi
         }
         public void FillField()
         {
+            
             this.ClientCode.Text = client.CLCODE;
             this.ClientName.Text = client.CLNAME;
             this.ClientAddress.Text = client.ADDRESS;

@@ -43,6 +43,13 @@ namespace FinalUi
             CollectionViewSource ResultCollection = (CollectionViewSource)FindResource("ResultData");
             ResultCollection.Source = Results.ToList();
             MessageBox.Show("Analysis done", "Info");
+            try
+            {
+                BillingDataDataContext db = new BillingDataDataContext();
+                db.ExecuteCommand("delete from invoiceanalyzeresult");
+            }
+            catch(Exception)
+            { }
         }
 
         void bgWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)

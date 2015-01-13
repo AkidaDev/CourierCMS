@@ -132,11 +132,13 @@ namespace FinalUi
                     data = UtilityClass.convertTransObjToRunObj(TData);
                 }
             }
-            if (Double.Parse(WeightAccToDTDC.Text).GetType() == typeof(double))
-                data.Weight = Double.Parse(WeightAccToDTDC.Text);
+            double weight;
+            if (Double.TryParse(WeightAccToDTDC.Text,out weight))
+                data.Weight = weight;
             else
             {
-                MessageBox.Show("Weight is incorrect");
+                MessageBox.Show("Weight is incorrect","Error");
+                return null;
             }
             data.FrWeight = Double.Parse(WeightAccToFranchize.Text);
             double tmpD;
@@ -153,16 +155,32 @@ namespace FinalUi
             if (decimal.TryParse(DestinationPin.Text, out tempDecimal))
                 data.DestinationPin = tempDecimal;
             data.CustCode = DataSources.ClientCopy.Where(x => x.NameAndCode == CustomerSelected.Text).Select(y => y.CLCODE).FirstOrDefault();
+            if(data.CustCode == "" || data.CustCode == null)
+            {
+                MessageBox.Show("No customer selected...", "Error");
+                return null;
+            }
             if (MODE.Text != "")
                 data.Mode = MODE.Text;
-            Service service = serviceList.Where(x => x.NameAndCode == TypeComboBox.Text).FirstOrDefault();
+            Service service = serviceList.Where(x => x.NameAndCode == TypeComboBox.Text.Trim()).FirstOrDefault();
+            if(service == null)
+            {
+                MessageBox.Show("No service selected...", "Error");
+                return null;
+            }
             data.Type = service.SER_CODE;
             data.Service_Desc = service.SER_DESC;
-            data.BookingDate = (DateTime)InsertionDate.SelectedDate;
-            data.FrAmount = Decimal.Parse(BilledAmount.Text);
-            if (DoxCombobox.Text == "")
+            data.BookingDate = InsertionDate.SelectedDate??DateTime.Today;
+            if (decimal.TryParse(BilledAmount.Text, out tempDecimal))
+                data.FrAmount = tempDecimal;
+            else
+            {
+                MessageBox.Show("Invalid billed amount", "Error");
+                return null;
+            }
+             if (DoxCombobox.Text == "")
                 DoxCombobox.Text = "Dox";
-            data.DOX = DoxCombobox.Text.ElementAt(0);
+            data.DOX = DoxCombobox.Text.Length>1?DoxCombobox.Text.ElementAt(0):'D';
             float tempValue;
             if (float.TryParse(BilledWeightTextBox.Text, out tempValue))
                 data.BilledWeight = double.Parse(BilledWeightTextBox.Text, CultureInfo.InvariantCulture);

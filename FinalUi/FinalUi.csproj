@@ -30,7 +30,7 @@
     <MinimumRequiredVersion>0.0.1.25</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>79</ApplicationRevision>
+    <ApplicationRevision>80</ApplicationRevision>
     <ApplicationVersion>0.1.2.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -258,6 +258,7 @@
     <Compile Include="RecalculatePriceWindow.xaml.cs">
       <DependentUpon>RecalculatePriceWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RowIndexConverter.cs" />
     <Compile Include="SanitizingWindow.xaml.cs">
       <DependentUpon>SanitizingWindow.xaml</DependentUpon>
     </Compile>

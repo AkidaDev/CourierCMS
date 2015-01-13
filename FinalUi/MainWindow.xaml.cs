@@ -48,7 +48,6 @@ namespace FinalUi
         BackgroundWorker LoadWorker;
         BackgroundWorker SaveWorker;
         BackgroundWorker DeleteSheetWorker;
-        BillingDataDataContext db;
         CollectionViewSource CostingRulesSource;
 
         #endregion
@@ -197,6 +196,7 @@ namespace FinalUi
 
         void SaveWorker_DoWork(object sender, DoWorkEventArgs e)
         {
+            BillingDataDataContext db = new BillingDataDataContext();
             string message = UtilityClass.saveRuntimeAsTransaction(dataGridHelper.currentSheetNumber, SecurityModule.currentUserName);
             if (message != "")
             {
@@ -266,6 +266,7 @@ namespace FinalUi
         }
         private void ExecuteSanitizingCommand(object sender, ExecutedRoutedEventArgs e)
         {
+            BillingDataDataContext db = new BillingDataDataContext();
             if (dataGridHelper.currentDataSheet == null)
             {
                 int key = dataGridHelper.addNewSheet(new List<RuntimeData>(), "");
@@ -1084,6 +1085,7 @@ namespace FinalUi
 
         private void dataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
         {
+            
             int rowNumOffset = (dataGridHelper.currentPageNo - 1) * (dataGridHelper.rowsPerPage) + 1;
             e.Row.Header = (e.Row.GetIndex() + rowNumOffset).ToString();
         }
@@ -1129,6 +1131,17 @@ namespace FinalUi
                 sData.FrAmount = dData.FrAmount;
 
             }
+        }
+
+        private void dataGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            dataGrid.IsReadOnly = false;
+        }
+
+        private void MISReportMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            PrintWindow win = new PrintWindow(null, DateTime.Today, DateTime.Today, false);
+            win.Show();
         }
 
         

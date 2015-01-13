@@ -70,6 +70,7 @@ namespace FinalUi
         }
         private void getfield()
         {
+            city = new City();
             this.city.CITY_CODE = this.CityCodeBox.Text;
             var s = stateList.SingleOrDefault(x => x.STATE_DESC == StateCombo.Text);
             if (s != null)
@@ -109,6 +110,11 @@ namespace FinalUi
             }
             if (!isupdate)
             {
+                if(lcity != null)
+                {
+                    MessageBox.Show("A city with this code is already present....", "Error");
+                    return;
+                }
                 city.Status = 'A';
                 db.Cities.InsertOnSubmit(this.city);
             }

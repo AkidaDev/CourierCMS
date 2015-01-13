@@ -29,6 +29,7 @@ namespace FinalUi
         Dictionary<string, List<string>> SubClientList;
         Invoice invoice;
         Microsoft.Reporting.WinForms.ReportDataSource rs;
+        bool option; //true-Invoice false-MIS
 
         public PrintWindow(List<RuntimeData> data, Client client, DateTime toDate, DateTime fromDate, double tax, double previousDue)
             : this(data, toDate, fromDate)
@@ -46,9 +47,24 @@ namespace FinalUi
             InvoiceDate.SelectedDate = DateTime.Today;
             printObj(client);
         }
-        public PrintWindow(List<RuntimeData> data, DateTime toDate, DateTime fromDate)
+        public PrintWindow(List<RuntimeData> data, DateTime toDate, DateTime fromDate, bool option=true)
         {
             InitializeComponent();
+            this.option = option;
+            if (option)
+            {
+                InvoiceGrid1.Visibility = System.Windows.Visibility.Visible;
+                InvoiceGrid2.Visibility = System.Windows.Visibility.Visible;
+                MisGrid1.Visibility = System.Windows.Visibility.Collapsed;
+                MisGrid2.Visibility = System.Windows.Visibility.Collapsed;
+            }
+            else
+            {
+                InvoiceGrid1.Visibility = System.Windows.Visibility.Collapsed;
+                InvoiceGrid2.Visibility = System.Windows.Visibility.Collapsed;
+                MisGrid1.Visibility = System.Windows.Visibility.Visible;
+                MisGrid2.Visibility = System.Windows.Visibility.Visible;
+            }
             ToDate.SelectedDate = toDate.Date;
             FromDate.SelectedDate = fromDate.Date;
             TaxBox.Text = Configs.Default.ServiceTax;
@@ -60,17 +76,20 @@ namespace FinalUi
             rs = new Microsoft.Reporting.WinForms.ReportDataSource();
             rs.Name = "DataSet1";
             SubClientList = new Dictionary<string, List<string>>();
-            List<string> clients = data.Select(x => x.CustCode).Distinct().ToList();
-            clients.ForEach(x =>
+            if (data != null)
             {
-                List<string> subClients = data.Where(y => y.CustCode == x).Select(z => z.SubClient).Distinct().ToList();
-                SubClientList.Add(x, subClients);
-            });
+                List<string> clients = data.Select(x => x.CustCode).Distinct().ToList();
+                clients.ForEach(x =>
+                {
+                    List<string> subClients = data.Where(y => y.CustCode == x).Select(z => z.SubClient).Distinct().ToList();
+                    SubClientList.Add(x, subClients);
+                });
+            }
             rs.Value = dataGridSource;
         }
         public void RefreshDataGridSource()
         {
-            if (ClientList.SelectedValue != null && ToDate.SelectedDate != null && FromDate.SelectedDate != null)
+            if (ClientList.SelectedValue != null && ToDate.SelectedDate != null && FromDate.SelectedDate != null && option == true)
             {
 
                 DataGridSource.Source = dataGridSource.Where(x => x.CustCode == ((Client)ClientList.SelectedValue).CLCODE && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).ToList();
@@ -196,7 +215,7 @@ namespace FinalUi
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (Invoice.IsChecked == true)
+            if (this.option)
                 printObj();
             else
             {
@@ -290,23 +309,7 @@ namespace FinalUi
                 }
             }
         }
-        private void Invoice_Click(object sender, RoutedEventArgs e)
-        {
-            if (Invoice.IsChecked == true)
-            {
-                InvoiceGrid1.Visibility = System.Windows.Visibility.Visible;
-                InvoiceGrid2.Visibility = System.Windows.Visibility.Visible;
-                MisGrid1.Visibility = System.Windows.Visibility.Collapsed;
-                MisGrid2.Visibility = System.Windows.Visibility.Collapsed;
-            }
-            else
-            {
-                InvoiceGrid1.Visibility = System.Windows.Visibility.Collapsed;
-                InvoiceGrid2.Visibility = System.Windows.Visibility.Collapsed;
-                MisGrid1.Visibility = System.Windows.Visibility.Visible;
-                MisGrid2.Visibility = System.Windows.Visibility.Visible;
-            }
-        }
+        
 
     }
 }
