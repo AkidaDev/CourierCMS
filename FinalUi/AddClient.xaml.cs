@@ -20,11 +20,13 @@ namespace FinalUi
     public partial class AddClient : Window
     {
         Client client;
+        BillingDataDataContext db;
         bool isupdate = false;
         public AddClient()
         {
             InitializeComponent();
             client = new Client();
+            db = new BillingDataDataContext();
         }
         public AddClient(Client client)
             : this()
@@ -64,7 +66,6 @@ namespace FinalUi
             if (!float.TryParse(DiscountBox.Text, out temp))
                 errorMsg += "\n Enter discount properly";
             return errorMsg;
-
         }
         public void add()
         {
@@ -82,7 +83,7 @@ namespace FinalUi
                 client.INTRODATE = DateTime.Now;
                 client.STAX = float.Parse(ServiceTax.Text);
                 client.AMTDISC = float.Parse(DiscountBox.Text);
-                BillingDataDataContext db = new BillingDataDataContext();
+                
                 db.Clients.InsertOnSubmit(client);
                 try
                 {
