@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Web.Script.Serialization;
@@ -94,8 +96,16 @@ namespace FinalUi
         }
         void loadQuotation(Quotation qutObj)
         {
-            CostingRulesSource.Source = qutObj.CostingRules;
-            serviceRulesView.Source = qutObj.ServiceRules;
+            ObservableCollection<CostingRule> cRules = new ObservableCollection<CostingRule>(qutObj.CostingRules);
+            ObservableCollection<ServiceRule> sRule = new ObservableCollection<ServiceRule>(qutObj.ServiceRules);
+            ICollectionView cRuleView = CollectionViewSource.GetDefaultView(cRules);
+            ICollectionView sRuleView = CollectionViewSource.GetDefaultView(sRule);
+            cRuleView.GroupDescriptions.Add(new PropertyGroupDescription("serviceGroupReporting"));
+            sRuleView.GroupDescriptions.Add(new PropertyGroupDescription("serviceGroupReporting"));
+            cRuleView.GroupDescriptions.Add(new PropertyGroupDescription("zoneListReporting"));
+            sRuleView.GroupDescriptions.Add(new PropertyGroupDescription("zoneListReporting"));
+            CostingRuleGrid.DataContext = cRuleView;
+            ServiceRuleGrid.DataContext = sRuleView;
         }
 
         private void ServiceRadio_Checked(object sender, RoutedEventArgs e)

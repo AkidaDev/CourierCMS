@@ -52,6 +52,38 @@
                 <DataGridTextColumn Header="States" Binding="{Binding StateCount}"/>
                 <DataGridTextColumn Header="Zones" Binding="{Binding zoneCount}"/>
             </DataGrid.Columns>
+            <DataGrid.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Path=serviceGroupReporting}" FontWeight="Bold" Padding="3"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                    <GroupStyle.ContainerStyle>
+                        <Style TargetType="{x:Type GroupItem}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type GroupItem}">
+                                        <Expander>
+                                            <Expander.Header>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding Path=Name}" />
+                                                    <TextBlock Text="{Binding Path=ItemCount}" Margin="8,0,4,0"/>
+                                                    <TextBlock Text="Element(s)"/>
+                                                </StackPanel>
+                                            </Expander.Header>
+                                            <ItemsPresenter />
+                                        </Expander>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </GroupStyle.ContainerStyle>
+                </GroupStyle>
+            </DataGrid.GroupStyle>
+
         </DataGrid>
         <DataGrid Grid.Row="3" Visibility="Collapsed" x:Name="ServiceRuleGrid" ItemsSource="{Binding}" DataContext="{StaticResource ServiceRuleList}" CanUserAddRows="True" BorderThickness="1" Margin="0 8 0 0">
             <DataGrid.Columns>
