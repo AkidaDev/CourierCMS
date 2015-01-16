@@ -405,7 +405,6 @@
                                         <DataGridTextColumn Header="Services" Binding="{Binding serviceCount}"/>
                                         <DataGridTextColumn Header="ServiceGroups" Binding="{Binding serviceGroupReporting}"/>
                                         <DataGridTextColumn Header="Destination List" Binding="{Binding zoneListReporting}"/>
-                                        <DataGridTextColumn Header="Service List" Binding="{Binding serviceListReporting}"/>
                                     </DataGrid.Columns>
                                     <DataGrid.RowDetailsTemplate>
                                         <DataTemplate>

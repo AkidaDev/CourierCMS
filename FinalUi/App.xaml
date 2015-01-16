@@ -219,7 +219,6 @@
             <Setter Property="IsTextSearchEnabled" Value="True"/>
             <Setter Property="IsReadOnly" Value="True"/>
             <Setter Property="HeadersVisibility" Value="All"/>
-            <Setter Property="RowHeaderWidth" Value="30"/>
             <Setter Property="CanUserAddRows" Value="False"/>
             <Setter Property="CanUserDeleteRows" Value="False"/>
           <!-- <Setter Property="RowStyle">

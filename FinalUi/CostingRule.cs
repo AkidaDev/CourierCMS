@@ -139,6 +139,7 @@ namespace FinalUi
                             groups += x + " ";
                         });
                 }
+                groups = groups + " " + serviceListReporting;
                 return groups;
             }
         }
