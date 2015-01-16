@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:cstmcntrl="clr-namespace:CustomControls;assembly=CustomControls"
 		Icon="Images/logo.ico"
-        Title="Filter &amp; Select" Height="500" Width="700" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+        Title="Filter &amp; Select" Height="520" Width="700" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Window.Resources>
         <CollectionViewSource x:Key="StartConnNoList" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="EndConnoList" CollectionViewType="ListCollectionView"/>
