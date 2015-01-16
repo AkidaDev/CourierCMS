@@ -154,7 +154,7 @@ namespace FinalUi
                     {
                         try
                         {
-                            data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, (double)data.BilledWeight, data.Destination.Trim(), data.Type.Trim(), (char)data.DOX);
+                            data.FrAmount = (decimal)UtilityClass.getCost(data.CustCode, (double)data.BilledWeight, data.Destination.Trim(), data.Type.Trim(), (char)data.DOX) + data.Insurance??0;
                         }
                         catch (Exception ex)
                         {

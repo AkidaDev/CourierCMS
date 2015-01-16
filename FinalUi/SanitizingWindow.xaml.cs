@@ -133,11 +133,11 @@ namespace FinalUi
                 }
             }
             double weight;
-            if (Double.TryParse(WeightAccToDTDC.Text,out weight))
+            if (Double.TryParse(WeightAccToDTDC.Text, out weight))
                 data.Weight = weight;
             else
             {
-                MessageBox.Show("Weight is incorrect","Error");
+                MessageBox.Show("Weight is incorrect", "Error");
                 return null;
             }
             data.FrWeight = Double.Parse(WeightAccToFranchize.Text);
@@ -155,7 +155,7 @@ namespace FinalUi
             if (decimal.TryParse(DestinationPin.Text, out tempDecimal))
                 data.DestinationPin = tempDecimal;
             data.CustCode = DataSources.ClientCopy.Where(x => x.NameAndCode == CustomerSelected.Text).Select(y => y.CLCODE).FirstOrDefault();
-            if(data.CustCode == "" || data.CustCode == null)
+            if (data.CustCode == "" || data.CustCode == null)
             {
                 MessageBox.Show("No customer selected...", "Error");
                 return null;
@@ -163,14 +163,14 @@ namespace FinalUi
             if (MODE.Text != "")
                 data.Mode = MODE.Text;
             Service service = serviceList.Where(x => x.NameAndCode == TypeComboBox.Text.Trim()).FirstOrDefault();
-            if(service == null)
+            if (service == null)
             {
                 MessageBox.Show("No service selected...", "Error");
                 return null;
             }
             data.Type = service.SER_CODE;
             data.Service_Desc = service.SER_DESC;
-            data.BookingDate = InsertionDate.SelectedDate??DateTime.Today;
+            data.BookingDate = InsertionDate.SelectedDate ?? DateTime.Today;
             if (decimal.TryParse(BilledAmount.Text, out tempDecimal))
                 data.FrAmount = tempDecimal;
             else
@@ -178,9 +178,9 @@ namespace FinalUi
                 MessageBox.Show("Invalid billed amount", "Error");
                 return null;
             }
-             if (DoxCombobox.Text == "")
+            if (DoxCombobox.Text == "")
                 DoxCombobox.Text = "Dox";
-            data.DOX = DoxCombobox.Text.Length>1?DoxCombobox.Text.ElementAt(0):'D';
+            data.DOX = DoxCombobox.Text.Length > 1 ? DoxCombobox.Text.ElementAt(0) : 'D';
             float tempValue;
             if (float.TryParse(BilledWeightTextBox.Text, out tempValue))
                 data.BilledWeight = double.Parse(BilledWeightTextBox.Text, CultureInfo.InvariantCulture);
@@ -485,38 +485,36 @@ namespace FinalUi
             }
             setPreviousData();
         }
-        private void BilledWeightTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-        }
         private void getrate()
         {
-            if (Destination.Text == "" || Destination.Text == null)
+
+            try
             {
+                if (Destination.Text == "" || Destination.Text == null)
+                    throw new Exception("Enter destination properly..");
+                if (CustomerSelected.Text == "" || CustomerSelected.Text == null)
+                    throw new Exception("Select client properly...");
+                if (TypeComboBox.Text == "" || TypeComboBox.Text == null)
+                    throw new Exception("Select Service type properly...");
+                if (DoxCombobox.Text == "" || DoxCombobox.Text == null)
+                    throw new Exception("Select DOX/NDOX properly...");
+                double weight;
+                if (!double.TryParse(BilledWeightTextBox.Text, out weight))
+                    throw new Exception("Enter billed weight properly...");
+
+                string custCode = ((Client)CustomerSelected.SelectedItem).CLCODE.Trim();
+                string destination = ((City)Destination.SelectedItem).CITY_CODE.Trim();
+                string type = ((Service)TypeComboBox.SelectedItem).SER_CODE.Trim();
+                char dox = DoxCombobox.Text.ElementAt(0);
+                double cost = UtilityClass.getCost(custCode, weight, destination, type, dox);
+                this.BilledAmount.Text = string.Format("{0:0.00}", cost);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
                 return;
             }
-            if (this.BilledWeightTextBox.Text != null && this.BilledWeightTextBox.Text != "")
-            {
-                RuntimeData data = null;
-                data = fillData(data);
-                if (data.Destination == null)
-                {
-                    return;
-                }
-                var c = db.Cities.Where(x => x.CITY_CODE == data.Destination && x.CITY_STATUS == "A").FirstOrDefault();
-                if (c == null)
-                    c = db.Cities.SingleOrDefault(x => x.CITY_CODE == "DEL");
-                var d = (City)this.Destination.SelectedItem;
-                double cost;
-                if (d != null)
-                {
-                    cost = UtilityClass.getCost(data.CustCode, (double)data.BilledWeight, data.Destination, data.Type, (char)data.DOX);
-                    this.BilledAmount.Text = cost.ToString();
-                }
-            }
-            else
-            {
-                this.BilledAmount.Text = "0";
-            }
+
         }
         private void BilledWeightTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
@@ -570,7 +568,7 @@ namespace FinalUi
             if (!double.TryParse(WeightAccToDTDC.Text, out fileWeight))
                 fileWeight = 0;
             netweight = netweight > fileWeight ? netweight : fileWeight;
-            BilledWeightTextBox.Text = netweight.ToString();
+            BilledWeightTextBox.Text = string.Format("{0:0.00}", netweight);
             Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(delegate()
             {
                 BilledWeightTextBox.Focus();         // Set Logical Focus
@@ -596,9 +594,9 @@ namespace FinalUi
         private void InsuranceBox_LostFocus(object sender, RoutedEventArgs e)
         {
             decimal tempBilledAmount, tempInsuranceAmount;
-            if(decimal.TryParse(BilledAmount.Text,out tempBilledAmount) && decimal.TryParse(InsuranceBox.Text,out tempInsuranceAmount))
+            if (decimal.TryParse(BilledAmount.Text, out tempBilledAmount) && decimal.TryParse(InsuranceBox.Text, out tempInsuranceAmount))
             {
-                BilledAmount.Text = (tempInsuranceAmount + tempBilledAmount).ToString();
+                BilledAmount.Text = string.Format("{0:0.00}", tempInsuranceAmount + tempBilledAmount);
             }
         }
 

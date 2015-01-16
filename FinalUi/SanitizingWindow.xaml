@@ -122,7 +122,8 @@
             <TextBox Name="WeightAccToFranchize" Height="24" Width="100" Padding="2"/>
             <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Billed .: " VerticalAlignment="Bottom"/>
-            <TextBox LostFocus="BilledWeightTextBox_LostFocus" TextChanged="BilledWeightTextBox_TextChanged" x:Name="BilledWeightTextBox" Height="24" Width="100" Padding="2"/>
+            <TextBox Text="{Binding Value, StringFormat=N2}" LostFocus="BilledWeightTextBox_LostFocus" x:Name="BilledWeightTextBox" Height="24" Width="100" Padding="2">
+            </TextBox>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="in (kg)" VerticalAlignment="Bottom" Margin="10 0 0 0"/>
         </WrapPanel>
         <WrapPanel Grid.Row="7" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="87 0 0 0">
