@@ -43,7 +43,7 @@
                 <DataGridTextColumn Header="Range (Kg)" Binding="{Binding range}"/>
                 <DataGridTextColumn Header="Dox (Rs)" Binding="{Binding doxAmount}"/>
                 <DataGridTextColumn Header="Non-Dox (Rs)" Binding="{Binding ndoxAmount}"/>
-                <DataGridTextColumn Header="Type" Binding="{Binding type}"/>
+                <DataGridTextColumn Header="Type" Binding="{Binding rateTypeReporting}"/>
                 <DataGridTextColumn Header="Step (Kg)" Binding="{Binding StepS}"/>
                 <DataGridTextColumn Header="DStart(Rs)" Binding="{Binding DoxStartS}"/>
                 <DataGridTextColumn Header="NStart(Rs)" Binding="{Binding nDoxStartS}"/>
@@ -99,6 +99,37 @@
                 <DataGridTextColumn Header="State Count" Binding="{Binding stateCOunt}"/>
                 <DataGridTextColumn Header="Step Weight" Binding="{Binding stepweight}"/>
             </DataGrid.Columns>
+            <DataGrid.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Path=serviceGroupReporting}" FontWeight="Bold" Padding="3"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                    <GroupStyle.ContainerStyle>
+                        <Style TargetType="{x:Type GroupItem}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type GroupItem}">
+                                        <Expander Margin="20 0 0 0">
+                                            <Expander.Header>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding Path=Name}" />
+                                                    <TextBlock Text="{Binding Path=ItemCount}" Margin="8,0,4,0"/>
+                                                    <TextBlock Text="Rule(s)"/>
+                                                </StackPanel>
+                                            </Expander.Header>
+                                            <ItemsPresenter />
+                                        </Expander>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </GroupStyle.ContainerStyle>
+                </GroupStyle>
+            </DataGrid.GroupStyle>
         </DataGrid>
         <Button Grid.Row="4" Name="ImportRulesButton" Click="ImportRulesButton_Click" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 15 10">
             <Button.Content>

@@ -82,6 +82,19 @@ namespace FinalUi
         }
         #endregion
         #region Reporting properties
+        public string rateTypeReporting
+        {
+            get
+            {
+                if (type == 'S')
+                    return "Additional";
+                if (type == 'M')
+                    return "Bulk";
+                if (type == 'R')
+                    return "Range";
+                return "";
+            }
+        }
         public string zoneListReporting
         {
             get
