@@ -30,7 +30,7 @@
     <MinimumRequiredVersion>0.0.1.25</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>83</ApplicationRevision>
+    <ApplicationRevision>81</ApplicationRevision>
     <ApplicationVersion>0.1.2.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -512,6 +512,7 @@
     <EmbeddedResource Include="Report2.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report3.rdlc" />
     <Resource Include="Images\load.gif" />
     <Resource Include="Images\logo.ico" />
     <Resource Include="logo.ico" />

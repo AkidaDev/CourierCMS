@@ -237,6 +237,7 @@
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Background" Value="White"/>
             <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="CanUserResizeRows" Value="False"/>
             <Setter Property="AlternatingRowBackground" Value="#FFF0F6F7"/>
             <Setter Property="VerticalGridLinesBrush" Value="LightGray"/>
             <Setter Property="HorizontalGridLinesBrush" Value="LightGray"/>
