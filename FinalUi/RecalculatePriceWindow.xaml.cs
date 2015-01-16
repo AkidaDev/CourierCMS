@@ -74,7 +74,7 @@ namespace FinalUi
                 {
                     Debug.WriteLine("ABC");
                 }
-                trans.AmountCharged = (decimal)UtilityClass.getCost(trans.CustCode, trans.BilledWeight ?? 0, trans.Destination, trans.Type.Trim(), trans.DOX);
+                trans.AmountCharged = (decimal)UtilityClass.getCost(trans.CustCode, trans.BilledWeight ?? 0, trans.Destination, trans.Type.Trim(), trans.DOX) + trans.Insurance??0;
                 
                 worker.ReportProgress((int)((i / transCount) * 94 + 1));
                 i++;
