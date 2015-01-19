@@ -21,7 +21,6 @@ namespace FinalUi
         public ServerLogin()
         {
             InitializeComponent();
-            this.MainBrowser.Navigate("http://testapi.sltintegrity.com/cust/login");
         }
     }
 }
