@@ -30,7 +30,7 @@
     <MinimumRequiredVersion>0.0.1.25</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>83</ApplicationRevision>
+    <ApplicationRevision>84</ApplicationRevision>
     <ApplicationVersion>0.1.2.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -263,6 +263,9 @@
       <DependentUpon>SanitizingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SecurityModule.cs" />
+    <Compile Include="ServerLogin.xaml.cs">
+      <DependentUpon>ServerLogin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ServerV.cs" />
     <Compile Include="ServiceFinder.xaml.cs">
       <DependentUpon>ServiceFinder.xaml</DependentUpon>
@@ -439,6 +442,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SanitizingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ServerLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

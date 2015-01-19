@@ -52,6 +52,7 @@ namespace FinalUi
         }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            BillingDataDataContext db = new BillingDataDataContext();
             Configs.Default.Background = ThemeColorPicker.SelectedColorText;
             Configs.Default.Tin = Pannumber.Text;
             Configs.Default.ServiceTaxno = ServiceTaxNo.Text;

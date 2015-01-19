@@ -42,7 +42,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="SuperUser" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">s</Value>
     </Setting>
     <Setting Name="Tin" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -52,6 +52,9 @@
     </Setting>
     <Setting Name="ServiceTaxno" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0.0.0.0</Value>
     </Setting>
   </Settings>
 </SettingsFile>
