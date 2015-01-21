@@ -95,14 +95,60 @@ namespace FinalUi
                 return "";
             }
         }
-       
+        public string cityListReporting
+        {
+            get
+            {
+                string zones;
+                zones = "";
+                if (CityList != null)
+                {
+                    CityList.ForEach(x =>
+                    {
+                        zones += x + " ";
+                    });
+                }
+                return zones;
+            }
+        }
+        public string stateListReporting
+        {
+            get
+            {
+                string zones;
+                zones = "";
+                if (StateList != null)
+                {
+                    StateList.ForEach(x =>
+                    {
+                        zones += x + " ";
+                    });
+                }
+                return zones;
+            }
+        }
         public string zoneListReporting
         {
             get
             {
                 string zones;
                 zones = "";
-
+                if (ZoneList != null)
+                {
+                    ZoneList.ForEach(x =>
+                    {
+                        zones += x + " ";
+                    });
+                }
+                return zones;
+            }
+        }
+        public string destinationListReporting
+        {
+            get
+            {
+                string zones;
+                zones = "";
                 if (CityList != null)
                 {
                     CityList.ForEach(x =>

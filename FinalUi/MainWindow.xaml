@@ -403,8 +403,6 @@
                                         <DataGridTextColumn Header="DStart (Rs)" Binding="{Binding DoxStartS}"/>
                                         <DataGridTextColumn Header="NStart (Rs)" Binding="{Binding nDoxStartS}"/>
                                         <DataGridTextColumn Header="Services" Binding="{Binding serviceCount}"/>
-                                        <DataGridTextColumn Header="ServiceGroups" Binding="{Binding serviceGroupReporting}"/>
-                                        <DataGridTextColumn Header="Destination List" Binding="{Binding zoneListReporting}"/>
                                     </DataGrid.Columns>
                                     <DataGrid.RowDetailsTemplate>
                                         <DataTemplate>

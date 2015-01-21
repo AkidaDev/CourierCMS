@@ -934,7 +934,7 @@ namespace FinalUi
             ICollectionView sRuleView = CollectionViewSource.GetDefaultView(sRule);
             cRuleView.GroupDescriptions.Add(new PropertyGroupDescription("serviceGroupReporting"));
             sRuleView.GroupDescriptions.Add(new PropertyGroupDescription("serviceGroupReporting"));
-            cRuleView.GroupDescriptions.Add(new PropertyGroupDescription("zoneListReporting"));
+            cRuleView.GroupDescriptions.Add(new PropertyGroupDescription("destinationListReporting"));
             sRuleView.GroupDescriptions.Add(new PropertyGroupDescription("zoneListReporting"));
             CostingRuleGrid.DataContext = cRuleView;
             ServiceRuleGrid.DataContext = sRuleView;
