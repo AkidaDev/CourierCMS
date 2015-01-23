@@ -11,7 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 namespace FinalUi
 {
     /// <summary>
@@ -21,7 +20,7 @@ namespace FinalUi
     {
         public Load()
         {
-
+            Update up = new Update();
             #region Adding Events to be followed in all datagrid
             //Code for selecting values in textbox
             EventManager.RegisterClassHandler(typeof(TextBox), TextBox.PreviewMouseLeftButtonDownEvent,
@@ -35,13 +34,18 @@ namespace FinalUi
             if (Configs.Default.IsFirst)
             {
                 Setup win = new Setup();
+                win.ContentRendered += win_Loaded;
                 win.Show();
             }
             else
             {
                 Login win = new Login();
+                win.ContentRendered += win_Loaded;
                 win.Show();
-            }
+            } 
+        }
+        private void win_Loaded(object sender, EventArgs e)
+        {
             this.Close();
         }
         void SelectivelyIgnoreMouseButton(object sender, MouseButtonEventArgs e)
@@ -63,13 +67,11 @@ namespace FinalUi
                 }
             }
         }
-
         void SelectAllText(object sender, RoutedEventArgs e)
         {
             var textBox = e.OriginalSource as TextBox;
             if (textBox != null)
                 textBox.SelectAll();
         }
-
     }
 }

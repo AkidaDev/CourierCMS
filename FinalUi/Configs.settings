@@ -54,7 +54,10 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="ver" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0.0.0.0</Value>
+      <Value Profile="(Default)">0.0.0.72</Value>
+    </Setting>
+    <Setting Name="amcSecrectKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

@@ -1,8 +1,11 @@
 ﻿<Window x:Class="FinalUi.Load"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Load" Height="300" Width="450" ResizeMode="NoResize" WindowStyle="None" Background="Transparent">
+        Title="Load"  Width="450" Height="400" ResizeMode="NoResize" WindowStyle="None"  WindowStartupLocation="CenterScreen" Background="Transparent">
     <Grid>
-        <Image Source="Images\Shape 21.png" Height="250" Width="250"/>
+        <StackPanel>
+            <Image Source="Images\Shape 21.png" Height="250" Width="250"/>
+            <TextBlock Text="Loading" HorizontalAlignment="Center" FontSize="72" Foreground="#FF6666CC"/>
+        </StackPanel>
     </Grid>
 </Window>

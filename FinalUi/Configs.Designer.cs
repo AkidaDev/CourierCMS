@@ -230,13 +230,22 @@ namespace FinalUi {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.0.0.0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.0.0.72")]
         public string ver {
             get {
                 return ((string)(this["ver"]));
             }
             set {
                 this["ver"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string amcSecrectKey {
+            get {
+                return ((string)(this["amcSecrectKey"]));
             }
         }
     }

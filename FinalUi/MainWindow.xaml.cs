@@ -132,6 +132,12 @@ namespace FinalUi
             DeleteSheetWorker.DoWork += DeleteWorker_DoWork;
             DeleteSheetWorker.RunWorkerCompleted += DeleteWorker_RunWorkerCompleted;
             costingRules = new List<CostingRule>();
+            Update up = new Update();
+            if (up.checkVer() < 0)
+            {
+                this.UpdateMenuButton.Visibility = Visibility.Visible;
+            }
+            else { this.UpdateMenuButton.Visibility = Visibility.Collapsed; }
             setUiFromPermissions();
         }
         private void setUiFromPermissions()
@@ -139,6 +145,7 @@ namespace FinalUi
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "Management"))
             {
                 this.Managment.Visibility = Visibility.Collapsed;
+                this.UpdateMenuButton.Visibility = Visibility.Collapsed;
             }
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "AccountStatement"))
             {
@@ -1171,6 +1178,10 @@ namespace FinalUi
         {
             PrintWindow win = new PrintWindow(null, DateTime.Today, DateTime.Today, false);
             win.Show();
+        }
+
+        private void UpdateMenuButton_Click(object sender, RoutedEventArgs e)
+        {
         }
 
         
