@@ -285,7 +285,7 @@ namespace FinalUi
                             ToWeightBox.Text = "";
                             currentGrid = 6;
                             currentGridObj.Visibility = Visibility.Collapsed;
-                            currentGridObj = Step6Grid;
+                            currentGridObj = Step1Grid;
                             currentGridObj.Visibility = Visibility.Visible;
                             StepBlock.Text = "Step " + currentGrid.ToString() + " of 7";
                         }

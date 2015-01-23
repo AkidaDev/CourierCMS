@@ -102,9 +102,9 @@ namespace FinalUi
             {
                 string zones;
                 zones = "";
-
                 if (CityList != null)
                 {
+                    CityList.Sort();
                     CityList.ForEach(x =>
                     {
                         zones += x + " ";
@@ -112,6 +112,7 @@ namespace FinalUi
                 }
                 if (StateList != null)
                 {
+                    StateList.Sort();
                     StateList.ForEach(x =>
                     {
                         zones += x + " ";
@@ -119,6 +120,7 @@ namespace FinalUi
                 }
                 if (ZoneList != null)
                 {
+                    ZoneList.Sort();
                     ZoneList.ForEach(x =>
                     {
                         zones += x + " ";
@@ -135,6 +137,8 @@ namespace FinalUi
                 string groups = "";
                 if (ServiceGroupList != null)
                 {
+
+                    ServiceGroupList.Sort();
                     ServiceGroupList.ForEach(x =>
                         {
                             groups += x + " ";
@@ -152,6 +156,7 @@ namespace FinalUi
 
                 if (ServiceList != null)
                 {
+                    ServiceList.Sort();
                     ServiceList.ForEach(x =>
                     {
                         services += x + " ";
