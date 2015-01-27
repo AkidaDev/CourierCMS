@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
@@ -48,7 +49,6 @@ namespace FinalUi
         BackgroundWorker LoadWorker;
         BackgroundWorker SaveWorker;
         BackgroundWorker DeleteSheetWorker;
-        BillingDataDataContext db;
         CollectionViewSource CostingRulesSource;
 
         #endregion
@@ -132,23 +132,50 @@ namespace FinalUi
             DeleteSheetWorker.DoWork += DeleteWorker_DoWork;
             DeleteSheetWorker.RunWorkerCompleted += DeleteWorker_RunWorkerCompleted;
             costingRules = new List<CostingRule>();
-            setUiFromPermissions();
+            Update up = new Update();
+            if (up.checkVer() < 0)
+            {
+                this.UpdateMenuButton.Visibility = Visibility.Visible;
             }
+            else { this.UpdateMenuButton.Visibility = Visibility.Collapsed; }
+            setUiFromPermissions();
+        }
         private void setUiFromPermissions()
         {
-            if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "ManageEmployee"))
+            if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "Management"))
             {
-                this.ManageEmployeeMenuItem.Visibility = Visibility.Collapsed;
+                this.Managment.Visibility = Visibility.Collapsed;
+<<<<<<< local
+                this.DeleteConnMenuItem.Visibility = System.Windows.Visibility.Collapsed;
+=======
+                this.UpdateMenuButton.Visibility = Visibility.Collapsed;
+>>>>>>> other
             }
-            if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "ManageClient"))
+            if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "AccountStatement"))
             {
-              //  this.ManageClient.Visibility = Visibility.Collapsed;
-               // TreeViewClient.Visibility = System.Windows.Visibility.Collapsed;
+                this.AccountStatementMenuItem.Visibility = Visibility.Collapsed;
+            }
+            if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "ManageQuotation"))
+            {
+                this.Quotation.Visibility = Visibility.Collapsed;
             }
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "CreateInvoice"))
             {
                 this.PrintButton.Visibility = this.PrintMenuItem.Visibility = this.AfterPrint.Visibility = Visibility.Collapsed;
             }
+            if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "Analysis"))
+            {
+                this.InvoiceAnalysis.Visibility = this.MISReportMenuItem.Visibility = this.ClientReport.Visibility =  Visibility.Collapsed;
+            }
+            if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "PaymentEntry"))
+            {
+                this.PaymentEntryMenuItem.Visibility = Visibility.Collapsed;
+            }
+            //if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "ManageInvoice"))
+            //{
+            //    this.PrintButton.Visibility = this.PrintMenuItem.Visibility = this.AfterPrint.Visibility = Visibility.Collapsed;
+            //}
+
         }
         #region DataEntrySection
         #region backGround Worker Functions
@@ -197,6 +224,7 @@ namespace FinalUi
 
         void SaveWorker_DoWork(object sender, DoWorkEventArgs e)
         {
+            BillingDataDataContext db = new BillingDataDataContext();
             string message = UtilityClass.saveRuntimeAsTransaction(dataGridHelper.currentSheetNumber, SecurityModule.currentUserName);
             if (message != "")
             {
@@ -266,6 +294,7 @@ namespace FinalUi
         }
         private void ExecuteSanitizingCommand(object sender, ExecutedRoutedEventArgs e)
         {
+            BillingDataDataContext db = new BillingDataDataContext();
             if (dataGridHelper.currentDataSheet == null)
             {
                 int key = dataGridHelper.addNewSheet(new List<RuntimeData>(), "");
@@ -275,20 +304,21 @@ namespace FinalUi
             RuntimeData dataToSend = null;
             if (dataGrid.SelectedItem != null)
                 dataToSend = (RuntimeData)dataGrid.SelectedItem;
-           
+
             concatinateAllRecordsInOnePage();
             Dictionary<string, List<string>> SubClientList = new Dictionary<string, List<string>>();
             List<RuntimeData> data = dataGridHelper.getCurrentDataStack;
             List<string> clients = data.Select(x => x.CustCode).Distinct().ToList();
-            clients.ForEach(x => {
+            clients.ForEach(x =>
+            {
                 List<string> subClients = data.Where(y => y.CustCode == x).Select(z => z.SubClient).Distinct().ToList();
                 SubClientList.Add(x, subClients);
             });
             List<string> ConsigneeList = data.Select(x => x.ConsigneeName).Distinct().ToList();
             List<string> ConsignerList = data.Select(x => x.ConsignerName).Distinct().ToList();
-            window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber, dataGrid, dataGridHelper, SubClientList, ConsigneeList, ConsignerList,dataToSend);
-        
-               window.Closed += SanitizingWindow_Closed;
+            window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber, dataGrid, dataGridHelper, SubClientList, ConsigneeList, ConsignerList, dataToSend);
+
+            window.Closed += SanitizingWindow_Closed;
             window.Show();
         }
         int currentRowsPerPage;
@@ -440,16 +470,31 @@ namespace FinalUi
                 }
                 else if (result == MessageBoxResult.Yes)
                 {
-                    DeleteSheetWorker.RunWorkerAsync(dataGridHelper.currentSheetNumber);
-                    dataGridHelper.removeSheet(dataGridHelper.currentSheetNumber);
-                    buttontabcanvaswrap.Children.Remove(activeButton);
-                    if (buttonList.Count > 0)
-                        b = buttonList.Single(x => x.Value == buttonList.Values.Min()).Key;
-                    else
-                        b = null;
-                    changeSheetButton(activeButton, b);
-                    buttonList.Remove(activeButton);
-                    activeButton = b;
+                    ExecuteSaveCommand(null, null);
+                    RunWorkerCompletedEventHandler workerCompleted = null;
+                    workerCompleted = (obj, senderP) =>
+                        {
+                            if (senderP.Error == null && senderP.Cancelled == false)
+                            {
+                                DeleteSheetWorker.RunWorkerAsync(dataGridHelper.currentSheetNumber);
+                                SaveWorker.RunWorkerCompleted -= workerCompleted;
+                                dataGridHelper.removeSheet(dataGridHelper.currentSheetNumber);
+                                buttontabcanvaswrap.Children.Remove(activeButton);
+                                if (buttonList.Count > 0)
+                                    b = buttonList.Single(x => x.Value == buttonList.Values.Min()).Key;
+                                else
+                                    b = null;
+                                changeSheetButton(activeButton, b);
+                                buttonList.Remove(activeButton);
+                                activeButton = b;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Save operation unsuccessfull...", "Error");
+                            }
+                            SaveWorker.RunWorkerCompleted -= workerCompleted;
+                        };
+                    SaveWorker.RunWorkerCompleted += workerCompleted;
                 }
             }
         }
@@ -564,14 +609,14 @@ namespace FinalUi
                 toDate_loadDataWin = dataWind.toDate;
                 fromDate_loadDataWin = dataWind.fromDate;
             }
-            
+
             if (dataWind.isNewSheet || dataGridHelper.CurrentNumberOfSheets <= 0)
             {
                 if (dataWind.isLoadedFromBook == false)
                     dataWind.data = UtilityClass.loadDataFromDatabase(toDate_loadDataWin ?? DateTime.Now, fromDate_loadDataWin ?? DateTime.Now, dataGridHelper.currentMaxSheetNumber + 1);
                 else
                 {
-                    dataWind.data = UtilityClass.loadDataFromBook(dataGridHelper.currentMaxSheetNumber + 1,stockStart,stockEnd);
+                    dataWind.data = UtilityClass.loadDataFromBook(dataGridHelper.currentMaxSheetNumber + 1, stockStart, stockEnd);
                 }
 
                 int key = dataGridHelper.addNewSheet(dataWind.data, name);
@@ -579,7 +624,7 @@ namespace FinalUi
             }
             else
             {
-                if (dataWind.isLoadedFromBook== false)
+                if (dataWind.isLoadedFromBook == false)
                     dataWind.data = UtilityClass.loadDataFromDatabase(toDate_loadDataWin ?? DateTime.Now, fromDate_loadDataWin ?? DateTime.Now, dataGridHelper.currentSheetNumber);
                 else
                     dataWind.data = UtilityClass.loadDataFromBook(dataGridHelper.currentSheetNumber, stockStart, stockEnd);
@@ -791,24 +836,24 @@ namespace FinalUi
             this.ClientReportOptionPanel.Visibility = Visibility.Collapsed;
             this.QuotationoptionPanel.Visibility = Visibility.Collapsed;
             this.HideAllDatagrid.Visibility = Visibility.Collapsed;
-            this.FilterQuotation.Visibility = Visibility.Collapsed;
+            //this.FilterQuotation.Visibility = Visibility.Collapsed;
 
         }
         private void AddRuleButton_Click(object sender, RoutedEventArgs e)
         {
-            if (CostingRuleRadio.IsChecked==true)
+            if (CostingRuleRadio.IsChecked == true)
             {
                 AddRule window = new AddRule(new BillingDataDataContext().Quotations.Where(x => x.CLCODE == ((Client)this.ClientCombo.SelectedItem).CLCODE).FirstOrDefault());
                 window.Closed += addRulwWindow_Closed;
                 window.Show();
             }
-            if(ServiceRuleRadio.IsChecked==true)
+            if (ServiceRuleRadio.IsChecked == true)
             {
                 AddServiceRule window = new AddServiceRule(new BillingDataDataContext().Quotations.Where(x => x.CLCODE == ((Client)this.ClientCombo.SelectedItem).CLCODE).FirstOrDefault());
                 window.Closed += ServiceRuleWindowClosed;
                 window.Show();
             }
-            
+
         }
 
         private void addRulwWindow_Closed(object sender, EventArgs e)
@@ -829,7 +874,7 @@ namespace FinalUi
         {
             cloakAll();
             QuotationoptionPanel.Visibility = Visibility.Visible;
-            FilterQuotation.Visibility = Visibility.Visible;
+            //FilterQuotation.Visibility = Visibility.Visible;
         }
         private void ClientsReportTreeView_Selected(object sender, RoutedEventArgs e)
         {
@@ -892,6 +937,16 @@ namespace FinalUi
         {
             CostingRulesSource.Source = qutObj.CostingRules;
             serviceRulesView.Source = qutObj.ServiceRules;
+            ObservableCollection<CostingRule> cRules = new ObservableCollection<CostingRule>(qutObj.CostingRules);
+            ObservableCollection<ServiceRule> sRule = new ObservableCollection<ServiceRule>(qutObj.ServiceRules);
+            ICollectionView cRuleView = CollectionViewSource.GetDefaultView(cRules);
+            ICollectionView sRuleView = CollectionViewSource.GetDefaultView(sRule);
+            cRuleView.GroupDescriptions.Add(new PropertyGroupDescription("serviceGroupReporting"));
+            sRuleView.GroupDescriptions.Add(new PropertyGroupDescription("serviceGroupReporting"));
+            cRuleView.GroupDescriptions.Add(new PropertyGroupDescription("zoneListReporting"));
+            sRuleView.GroupDescriptions.Add(new PropertyGroupDescription("zoneListReporting"));
+            CostingRuleGrid.DataContext = cRuleView;
+            ServiceRuleGrid.DataContext = sRuleView;
         }
         private void cloakAllGrid()
         {
@@ -937,11 +992,11 @@ namespace FinalUi
             BillingDataDataContext db = new BillingDataDataContext();
             if (CostingRuleGrid.Visibility == Visibility.Visible && CostingRuleGrid.SelectedItems != null)
             {
-                if (MessageBox.Show("Do you want delete " + CostingRuleGrid.SelectedItems.Count.ToString() +" Rule", "Confirm", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                if (MessageBox.Show("Do you want delete " + CostingRuleGrid.SelectedItems.Count.ToString() + " Rule", "Confirm", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
                     List<CostingRule> dcr = CostingRuleGrid.SelectedItems.Cast<CostingRule>().ToList();
                     CostingRuleGrid.SelectedItem = null;
-                    List<int> Ids = dcr.Select(x=>x.Id).ToList();
+                    List<int> Ids = dcr.Select(x => x.Id).ToList();
                     List<Rule> dr = db.Rules.Where(x => Ids.Contains(x.ID)).ToList();
                     db.Rules.DeleteAllOnSubmit(dr);
                 }
@@ -1065,5 +1120,81 @@ namespace FinalUi
             QuotationCalc win = new QuotationCalc();
             win.ShowDialog();
         }
+
+        private void dataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            
+            int rowNumOffset = (dataGridHelper.currentPageNo - 1) * (dataGridHelper.rowsPerPage) + 1;
+            e.Row.Header = (e.Row.GetIndex() + rowNumOffset).ToString();
+        }
+
+        private void dataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            if (e.EditAction == DataGridEditAction.Commit)
+            {
+                RuntimeData rData = ((RuntimeData)e.Row.Item);
+                double weight;
+                if(double.TryParse((e.EditingElement as TextBox).Text,out weight))
+                {
+                    rData.BilledWeight = weight;
+                }
+                else
+                {
+                    MessageBox.Show("Unable to edit record!! Please check if input does not contain any invalid characters.", "Error");
+                    return;
+                }
+                if (rData == null)
+                {
+                    MessageBox.Show("Unable to edit record....");
+                    return;
+                }
+                RuntimeData sData = dataGridHelper.getCurrentDataStack.SingleOrDefault(x => x.ConsignmentNo == rData.ConsignmentNo);
+                if (sData == null)
+                {
+                    MessageBox.Show("Unable to edit transaction. Please reload the data and try again..", "Error");
+                    return;
+                }
+                BillingDataDataContext db = new BillingDataDataContext();
+                RuntimeData dData = db.RuntimeDatas.SingleOrDefault(x => x.ConsignmentNo == rData.ConsignmentNo && x.UserId == SecurityModule.currentUserName && dataGridHelper.currentSheetNumber == x.SheetNo);
+                if(dData == null)
+                {
+                    MessageBox.Show("Unable to edit transaction. Please check if data exists and try again..", "Error");
+                    return;
+                }
+                dData.BilledWeight = rData.BilledWeight;
+                dData.FrAmount = (decimal)UtilityClass.getCost(rData.CustCode, weight, rData.Destination, rData.Type.Trim(), rData.DOX ?? 'N');
+                db.SubmitChanges();
+                rData.FrAmount = dData.FrAmount;
+                sData.BilledWeight = dData.BilledWeight;
+                sData.FrAmount = dData.FrAmount;
+
+            }
+        }
+
+        private void dataGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            dataGrid.IsReadOnly = false;
+        }
+
+        private void MISReportMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            PrintWindow win = new PrintWindow(null, DateTime.Today, DateTime.Today, false);
+            win.Show();
+        }
+
+<<<<<<< local
+        private void DeleteConnMenuItem_Click(object sender, RoutedEventArgs e)
+=======
+        private void UpdateMenuButton_Click(object sender, RoutedEventArgs e)
+>>>>>>> other
+        {
+<<<<<<< local
+            DeleteConnsignment win = new DeleteConnsignment();
+            win.ShowDialog();
+=======
+>>>>>>> other
+        }
+
+        
     }
 }

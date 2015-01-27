@@ -1,0 +1,20 @@
+﻿<Window x:Class="FinalUi.ServerLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ServerLogin" Height="400" Width="300">
+    <Grid>
+        <StackPanel >
+            <WrapPanel>
+                <TextBlock Text="Email"/>
+                <TextBox Name="Email" Height="24" Width="200"/>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Password"/>
+                <PasswordBox Name="Password" Height="24" Width="200"/>
+            </WrapPanel>
+            <Button Name="Submit" >
+                <TextBlock Text="Submit"/>
+            </Button>
+        </StackPanel>
+        </Grid>
+</Window>

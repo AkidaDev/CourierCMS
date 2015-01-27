@@ -22,6 +22,7 @@ namespace FinalUi
         public About()
         {
             InitializeComponent();
+            this.VortexVer.Text = Configs.Default.ver;
         }
         private void update_CheckedUnChecked(object sender, RoutedEventArgs e)
         {
