@@ -139,6 +139,7 @@ namespace FinalUi
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "Management"))
             {
                 this.Managment.Visibility = Visibility.Collapsed;
+                this.DeleteConnMenuItem.Visibility = System.Windows.Visibility.Collapsed;
             }
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "AccountStatement"))
             {
@@ -154,9 +155,7 @@ namespace FinalUi
             }
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "Analysis"))
             {
-                this.InvoiceAnalysis.Visibility = Visibility.Collapsed;
-                this.MISReportMenuItem.Visibility = Visibility.Collapsed;
-                this.ClientReport.Visibility = Visibility.Collapsed;
+                this.InvoiceAnalysis.Visibility = this.MISReportMenuItem.Visibility = this.ClientReport.Visibility =  Visibility.Collapsed;
             }
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "PaymentEntry"))
             {
@@ -1153,7 +1152,7 @@ namespace FinalUi
                     return;
                 }
                 dData.BilledWeight = rData.BilledWeight;
-                dData.FrAmount = (decimal)UtilityClass.getCost(rData.CustCode, (double)(rData.BilledWeight ?? 0), rData.Destination, rData.Type, rData.DOX ?? 'N');
+                dData.FrAmount = (decimal)UtilityClass.getCost(rData.CustCode, weight, rData.Destination, rData.Type.Trim(), rData.DOX ?? 'N');
                 db.SubmitChanges();
                 rData.FrAmount = dData.FrAmount;
                 sData.BilledWeight = dData.BilledWeight;
@@ -1171,6 +1170,12 @@ namespace FinalUi
         {
             PrintWindow win = new PrintWindow(null, DateTime.Today, DateTime.Today, false);
             win.Show();
+        }
+
+        private void DeleteConnMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteConnsignment win = new DeleteConnsignment();
+            win.ShowDialog();
         }
 
         

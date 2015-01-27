@@ -60,6 +60,7 @@
                     <MenuItem Header="Recalculate Price" Click="MenuItem_Click_2" Foreground="Black"/>
                     <MenuItem Header="Invoice Analysis" Name="InvoiceAnalysis" Click="InvoiceAnalysis_Click" Foreground="Black"/>
                     <MenuItem Header="MIS Report" Name="MISReportMenuItem" Click="MISReportMenuItem_Click" Foreground="Black"/>
+                    <MenuItem Header="Delete Connsignment" Name="DeleteConnMenuItem" Click="DeleteConnMenuItem_Click" Foreground="Black"/>
                 </MenuItem>
                 <MenuItem ToolTip="Know more" Header="Help" Margin="10 0 0 0">
                     <MenuItem Header="View Help" Name="ViewHelp" Click="ViewHelp_Click" Foreground="Black"/>

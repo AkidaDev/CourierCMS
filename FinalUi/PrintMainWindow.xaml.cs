@@ -74,7 +74,7 @@ namespace FinalUi
   FROM [BillingDatabase].[dbo].[InvoiceView]      
 where [BillId] = '" + inv.BillId + @"'        
             ").ToList());
-                source = UtilityClass.convertToRuntimeVIew(data);
+                source = UtilityClass.convertToRuntimeVIew(data.OrderBy(x=>x.BookingDate).ThenBy(z=>z.ConsignmentNo).ToList());
                 rs = new ReportDataSource();
                 rs.Value = source;
                 if (inv.Misc == null)
