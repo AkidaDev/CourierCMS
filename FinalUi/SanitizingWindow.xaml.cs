@@ -518,6 +518,14 @@ namespace FinalUi
         }
         private void BilledWeightTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
+            double dtdcWeight;
+            double billedweight;
+            if (!double.TryParse(WeightAccToDTDC.Text, out dtdcWeight))
+                dtdcWeight = 0;
+            if (!double.TryParse(BilledWeightTextBox.Text, out billedweight))
+                billedweight = 0;
+            if (dtdcWeight > billedweight)
+                MessageBox.Show("Billed weight entered is less than DTDC weight", "Notification");
             getrate();
         }
         private void CustomerSelected_SelectionChanged(object sender, SelectionChangedEventArgs e)
