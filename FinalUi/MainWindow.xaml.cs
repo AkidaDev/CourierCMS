@@ -133,7 +133,7 @@ namespace FinalUi
             DeleteSheetWorker.RunWorkerCompleted += DeleteWorker_RunWorkerCompleted;
             costingRules = new List<CostingRule>();
             Update up = new Update();
-            if (up.checkVer() < 0)
+            if (up.checkUpdate() < 0)
             {
                 this.UpdateMenuButton.Visibility = Visibility.Visible;
             }
@@ -1172,21 +1172,24 @@ namespace FinalUi
         {
             dataGrid.IsReadOnly = false;
         }
-
         private void MISReportMenuItem_Click(object sender, RoutedEventArgs e)
         {
             PrintWindow win = new PrintWindow(null, DateTime.Today, DateTime.Today, false);
             win.Show();
         }
-
         private void UpdateMenuButton_Click(object sender, RoutedEventArgs e)
-        {}
+        {
+            MessageBoxResult res = MessageBox.Show("Please save your work before Continuing", "Update", MessageBoxButton.OKCancel);
+            if (res == MessageBoxResult.OK)
+            {  
+                Updater up = new Updater();
+                up.ShowDialog();
+            }
+        }
         private void DeleteConnMenuItem_Click(object sender, RoutedEventArgs e)
         {
             DeleteConnsignment win = new DeleteConnsignment();
             win.ShowDialog();
         }
-
-        
     }
 }

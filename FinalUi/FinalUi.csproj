@@ -106,6 +106,7 @@
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Controls.Input.Toolkit">
       <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\System.Windows.Controls.Input.Toolkit.dll</HintPath>
@@ -191,6 +192,7 @@
     <Compile Include="BillReportWindow.xaml.cs">
       <DependentUpon>BillReportWindow.xaml</DependentUpon>
     </Compile>
+    <Content Include="version.txt" />
     <Compile Include="ClientReportWindow.xaml.cs">
       <DependentUpon>ClientReportWindow.xaml</DependentUpon>
     </Compile>
@@ -289,6 +291,10 @@
     </Compile>
     <Compile Include="TestServerWindow.xaml.cs">
       <DependentUpon>TestServerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="update.cs" />
+    <Compile Include="Updater.xaml.cs">
+      <DependentUpon>Updater.xaml</DependentUpon>
     </Compile>
     <Compile Include="UtilityClass.cs" />
     <Compile Include="AddRule.xaml.cs">
@@ -480,6 +486,10 @@
     <Page Include="AddRule.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Updater.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="viewhelp.xaml">
       <Generator>MSBuild:Compile</Generator>

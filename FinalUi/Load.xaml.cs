@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
 namespace FinalUi
 {
     /// <summary>
@@ -30,6 +31,8 @@ namespace FinalUi
             EventManager.RegisterClassHandler(typeof(TextBox), TextBox.MouseDoubleClickEvent,
                 new RoutedEventHandler(SelectAllText));
 
+            Configs.Default.ver = (File.OpenText("version.txt")).ToString();
+            Configs.Default.Save();
             #endregion
             if (Configs.Default.IsFirst)
             {
