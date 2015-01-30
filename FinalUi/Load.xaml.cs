@@ -21,7 +21,6 @@ namespace FinalUi
     {
         public Load()
         {
-            Update up = new Update();
             #region Adding Events to be followed in all datagrid
             //Code for selecting values in textbox
             EventManager.RegisterClassHandler(typeof(TextBox), TextBox.PreviewMouseLeftButtonDownEvent,
@@ -30,9 +29,19 @@ namespace FinalUi
                 new RoutedEventHandler(SelectAllText));
             EventManager.RegisterClassHandler(typeof(TextBox), TextBox.MouseDoubleClickEvent,
                 new RoutedEventHandler(SelectAllText));
-
-            Configs.Default.ver = (File.OpenText("version.txt")).ToString();
-            Configs.Default.Save();
+            try
+            {
+                using (StreamReader sr = new StreamReader("version.txt"))
+                {
+                    Configs.Default.ver = sr.ReadToEnd();
+                    Configs.Default.Save();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Version Error");
+                Application.Current.Shutdown();
+            }
             #endregion
             if (Configs.Default.IsFirst)
             {

@@ -192,7 +192,6 @@
     <Compile Include="BillReportWindow.xaml.cs">
       <DependentUpon>BillReportWindow.xaml</DependentUpon>
     </Compile>
-    <Content Include="version.txt" />
     <Compile Include="ClientReportWindow.xaml.cs">
       <DependentUpon>ClientReportWindow.xaml</DependentUpon>
     </Compile>
@@ -525,6 +524,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="version.txt" />
     <EmbeddedResource Include="ClientAnalysis.rdlc" />
     <Content Include="Report2.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
