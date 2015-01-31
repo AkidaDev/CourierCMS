@@ -452,6 +452,14 @@ namespace FinalUi
                 this.ConsgineeName.Text = data.ConsigneeName;
             }
             SlipCost.Text = data.Stock;
+            if (data.Stock == "N/A")
+            {
+                SlipCost.Background = new SolidColorBrush(Colors.Red);
+            }
+            else
+            {
+                SlipCost.Background = new SolidColorBrush(Colors.White);
+            }
         }
         private void DoneButton_Click(object sender, RoutedEventArgs e)
         {

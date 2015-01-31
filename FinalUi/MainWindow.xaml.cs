@@ -135,7 +135,7 @@ namespace FinalUi
             Update up = new Update();
             if (up.checkUpdate() < 0)
             {
-                this.UpdateMenuButton.Visibility = Visibility.Visible;
+                this.UpdateMenuButton.Visibility = Visibility.Collapsed;
             }
             else { this.UpdateMenuButton.Visibility = Visibility.Collapsed; }
             setUiFromPermissions();
