@@ -32,7 +32,7 @@ namespace FinalUi
             InitializeComponent();
             update = new Update();
             update.getLatestVer();
-            file = System.AppDomain.CurrentDomain.BaseDirectory + @"temp\vortex.exe";
+            file = System.IO.Path.GetTempPath() + @"vortex.exe";
             MessageBox.Show(file);
             webClient = new WebClient();
             string url = "http://api.vortex.sltintegrity.com/download/vortex_" + update.vers.ToString() + ".exe";
