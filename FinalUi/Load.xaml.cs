@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
 namespace FinalUi
 {
     /// <summary>
@@ -20,7 +21,6 @@ namespace FinalUi
     {
         public Load()
         {
-            Update up = new Update();
             #region Adding Events to be followed in all datagrid
             //Code for selecting values in textbox
             EventManager.RegisterClassHandler(typeof(TextBox), TextBox.PreviewMouseLeftButtonDownEvent,
@@ -29,7 +29,19 @@ namespace FinalUi
                 new RoutedEventHandler(SelectAllText));
             EventManager.RegisterClassHandler(typeof(TextBox), TextBox.MouseDoubleClickEvent,
                 new RoutedEventHandler(SelectAllText));
-
+            try
+            {
+                using (StreamReader sr = new StreamReader("version.txt"))
+                {
+                    Configs.Default.ver = sr.ReadToEnd();
+                    Configs.Default.Save();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Version Error");
+                Application.Current.Shutdown();
+            }
             #endregion
             if (Configs.Default.IsFirst)
             {
@@ -42,7 +54,7 @@ namespace FinalUi
                 Login win = new Login();
                 win.ContentRendered += win_Loaded;
                 win.Show();
-            } 
+            }
         }
         private void win_Loaded(object sender, EventArgs e)
         {
@@ -54,7 +66,6 @@ namespace FinalUi
             DependencyObject parent = e.OriginalSource as UIElement;
             while (parent != null && !(parent is TextBox))
                 parent = VisualTreeHelper.GetParent(parent);
-
             if (parent != null)
             {
                 var textBox = (TextBox)parent;

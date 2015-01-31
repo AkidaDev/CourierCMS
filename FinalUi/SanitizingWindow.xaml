@@ -70,11 +70,11 @@
             </ComboBox>
             <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="33" Width="3" Margin="8 -4 15 -3"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="PIN Code .: " VerticalAlignment="Bottom"/>
-            <TextBox Name="DestinationPin" Height="24" Width="125" Padding="2"/>
+            <TextBox KeyboardNavigation.IsTabStop="False" Name="DestinationPin" Height="24" Width="125" Padding="2"/>
         </WrapPanel>
         <WrapPanel Grid.Row="4" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <TextBlock Text="Service .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
-            <ComboBox Height="24" Name="TypeComboBox" DisplayMemberPath="NameAndCode" ItemsSource="{Binding}" Width="240" DataContext="{StaticResource ServiceList}" IsEditable="False" SelectionChanged="TypeComboBox_SelectionChanged">
+            <ComboBox KeyboardNavigation.IsTabStop="False" Height="24" Name="TypeComboBox" DisplayMemberPath="NameAndCode" ItemsSource="{Binding}" Width="240" DataContext="{StaticResource ServiceList}" IsEditable="False" SelectionChanged="TypeComboBox_SelectionChanged">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel />
@@ -83,14 +83,14 @@
             </ComboBox>
             <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <TextBlock Text="Mode .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
-            <ComboBox Name="MODE" Width="54" SelectionChanged="MODE_SelectionChanged">
+            <ComboBox KeyboardNavigation.IsTabStop="False" Name="MODE" Width="54" SelectionChanged="MODE_SelectionChanged">
                 <ComboBoxItem Content="SF"/>
                 <ComboBoxItem Content="AR"/>
                 <ComboBoxItem Content="AC"/>
             </ComboBox>
             <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <TextBlock Text="DOX type .: " FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom"/>
-            <ComboBox Width="80" Name="DoxCombobox">
+            <ComboBox KeyboardNavigation.IsTabStop="False" Width="80" Name="DoxCombobox">
                 <ComboBoxItem Content="Non Dox"/>
                 <ComboBoxItem Content="Dox"/>
             </ComboBox>

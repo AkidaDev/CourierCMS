@@ -14,8 +14,9 @@ namespace ConsoleApplication2
         {
             funcToAddGroupsToServices();
         }
-        static void transferringTransactions()
+        static void transferData()
         {
+
             DataClasses1DataContext d1 = new DataClasses1DataContext();
             DataClasses2DataContext d2 = new DataClasses2DataContext();
             Console.WriteLine("Attempting to load data from mi database....");
@@ -127,7 +128,6 @@ namespace ConsoleApplication2
             d1.SubmitChanges();
             Console.WriteLine("Changed successfully....");
             Console.ReadLine();
-       
         }
         static void addNewCities()
         {
@@ -170,22 +170,20 @@ namespace ConsoleApplication2
             {
                 CostingRule cRule = serializer.Deserialize<CostingRule>(rule.Properties);
                 List<string> groups = cRule.ServiceGroupList;
-                if (groups == null)
-                    continue;
-                if (groups.Contains("PTP 12:00"))
+                if (groups != null)
                 {
-                    List<string> zoneList = cRule.ZoneList;
-                    if (zoneList != null)
+                    if(groups.Contains("PTP 12:00"))
                     {
-                        if (zoneList.Contains("MET"))
+                        List<string> zones = cRule.ZoneList;
+                        if(zones.Contains("MET"))
                         {
-                            zoneList.Add("NEA");
-                            zoneList.Add("ROI");
-                            cRule.ZoneList = zoneList;
+                            zones.Add("NEA");
+                            zones.Add("ROI");
+                            cRule.ZoneList = zones;
+                            rule.Properties = serializer.Serialize(cRule);
                         }
                     }
                 }
-                rule.Properties = serializer.Serialize(cRule);
                 i++;
                 if (i % 250 == 0)
                     Console.WriteLine(i.ToString() + " records processed...");

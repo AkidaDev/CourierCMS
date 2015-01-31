@@ -133,9 +133,9 @@ namespace FinalUi
             DeleteSheetWorker.RunWorkerCompleted += DeleteWorker_RunWorkerCompleted;
             costingRules = new List<CostingRule>();
             Update up = new Update();
-            if (up.checkVer() < 0)
+            if (up.checkUpdate() < 0)
             {
-                this.UpdateMenuButton.Visibility = Visibility.Visible;
+                this.UpdateMenuButton.Visibility = Visibility.Collapsed;
             }
             else { this.UpdateMenuButton.Visibility = Visibility.Collapsed; }
             setUiFromPermissions();
@@ -162,7 +162,7 @@ namespace FinalUi
             }
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "Analysis"))
             {
-                this.InvoiceAnalysis.Visibility = this.MISReportMenuItem.Visibility = this.ClientReport.Visibility = Visibility.Collapsed;
+                this.InvoiceAnalysis.Visibility = this.MISReportMenuItem.Visibility = this.ClientReport.Visibility =  Visibility.Collapsed;
             }
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "PaymentEntry"))
             {
@@ -172,6 +172,7 @@ namespace FinalUi
             //{
             //    this.PrintButton.Visibility = this.PrintMenuItem.Visibility = this.AfterPrint.Visibility = Visibility.Collapsed;
             //}
+
         }
         #region DataEntrySection
         #region backGround Worker Functions
@@ -469,27 +470,27 @@ namespace FinalUi
                     ExecuteSaveCommand(null, null);
                     RunWorkerCompletedEventHandler workerCompleted = null;
                     workerCompleted = (obj, senderP) =>
-                    {
-                        if (senderP.Error == null && senderP.Cancelled == false)
                         {
-                            DeleteSheetWorker.RunWorkerAsync(dataGridHelper.currentSheetNumber);
-                            SaveWorker.RunWorkerCompleted -= workerCompleted;
-                            dataGridHelper.removeSheet(dataGridHelper.currentSheetNumber);
-                            buttontabcanvaswrap.Children.Remove(activeButton);
-                            if (buttonList.Count > 0)
-                                b = buttonList.Single(x => x.Value == buttonList.Values.Min()).Key;
+                            if (senderP.Error == null && senderP.Cancelled == false)
+                            {
+                                DeleteSheetWorker.RunWorkerAsync(dataGridHelper.currentSheetNumber);
+                                SaveWorker.RunWorkerCompleted -= workerCompleted;
+                                dataGridHelper.removeSheet(dataGridHelper.currentSheetNumber);
+                                buttontabcanvaswrap.Children.Remove(activeButton);
+                                if (buttonList.Count > 0)
+                                    b = buttonList.Single(x => x.Value == buttonList.Values.Min()).Key;
+                                else
+                                    b = null;
+                                changeSheetButton(activeButton, b);
+                                buttonList.Remove(activeButton);
+                                activeButton = b;
+                            }
                             else
-                                b = null;
-                            changeSheetButton(activeButton, b);
-                            buttonList.Remove(activeButton);
-                            activeButton = b;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Save operation unsuccessfull...", "Error");
-                        }
-                        SaveWorker.RunWorkerCompleted -= workerCompleted;
-                    };
+                            {
+                                MessageBox.Show("Save operation unsuccessfull...", "Error");
+                            }
+                            SaveWorker.RunWorkerCompleted -= workerCompleted;
+                        };
                     SaveWorker.RunWorkerCompleted += workerCompleted;
                 }
             }
@@ -1119,7 +1120,7 @@ namespace FinalUi
 
         private void dataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
         {
-
+            
             int rowNumOffset = (dataGridHelper.currentPageNo - 1) * (dataGridHelper.rowsPerPage) + 1;
             e.Row.Header = (e.Row.GetIndex() + rowNumOffset).ToString();
         }
@@ -1130,7 +1131,7 @@ namespace FinalUi
             {
                 RuntimeData rData = ((RuntimeData)e.Row.Item);
                 double weight;
-                if (double.TryParse((e.EditingElement as TextBox).Text, out weight))
+                if(double.TryParse((e.EditingElement as TextBox).Text,out weight))
                 {
                     rData.BilledWeight = weight;
                 }
@@ -1152,7 +1153,7 @@ namespace FinalUi
                 }
                 BillingDataDataContext db = new BillingDataDataContext();
                 RuntimeData dData = db.RuntimeDatas.SingleOrDefault(x => x.ConsignmentNo == rData.ConsignmentNo && x.UserId == SecurityModule.currentUserName && dataGridHelper.currentSheetNumber == x.SheetNo);
-                if (dData == null)
+                if(dData == null)
                 {
                     MessageBox.Show("Unable to edit transaction. Please check if data exists and try again..", "Error");
                     return;
@@ -1171,21 +1172,24 @@ namespace FinalUi
         {
             dataGrid.IsReadOnly = false;
         }
-
         private void MISReportMenuItem_Click(object sender, RoutedEventArgs e)
         {
             PrintWindow win = new PrintWindow(null, DateTime.Today, DateTime.Today, false);
             win.Show();
         }
-
         private void UpdateMenuButton_Click(object sender, RoutedEventArgs e)
-        { }
+        {
+            MessageBoxResult res = MessageBox.Show("Please save your work before Continuing", "Update", MessageBoxButton.OKCancel);
+            if (res == MessageBoxResult.OK)
+            {  
+                Updater up = new Updater();
+                up.Show();
+            }
+        }
         private void DeleteConnMenuItem_Click(object sender, RoutedEventArgs e)
         {
             DeleteConnsignment win = new DeleteConnsignment();
             win.ShowDialog();
         }
-
-
     }
 }
