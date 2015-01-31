@@ -41,7 +41,9 @@ namespace FinalUi
                 int i = ver.CompareTo(vers);
                 return i;
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            catch (Exception ex) {
+               // MessageBox.Show(ex.Message); 
+            }
             return 0;
         }
     }

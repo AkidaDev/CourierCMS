@@ -162,7 +162,7 @@ namespace FinalUi
             }
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "Analysis"))
             {
-                this.InvoiceAnalysis.Visibility = this.MISReportMenuItem.Visibility = this.ClientReport.Visibility =  Visibility.Collapsed;
+                this.InvoiceAnalysis.Visibility = this.MISReportMenuItem.Visibility = this.ClientReport.Visibility = Visibility.Collapsed;
             }
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "PaymentEntry"))
             {
@@ -172,7 +172,6 @@ namespace FinalUi
             //{
             //    this.PrintButton.Visibility = this.PrintMenuItem.Visibility = this.AfterPrint.Visibility = Visibility.Collapsed;
             //}
-
         }
         #region DataEntrySection
         #region backGround Worker Functions
@@ -470,27 +469,27 @@ namespace FinalUi
                     ExecuteSaveCommand(null, null);
                     RunWorkerCompletedEventHandler workerCompleted = null;
                     workerCompleted = (obj, senderP) =>
+                    {
+                        if (senderP.Error == null && senderP.Cancelled == false)
                         {
-                            if (senderP.Error == null && senderP.Cancelled == false)
-                            {
-                                DeleteSheetWorker.RunWorkerAsync(dataGridHelper.currentSheetNumber);
-                                SaveWorker.RunWorkerCompleted -= workerCompleted;
-                                dataGridHelper.removeSheet(dataGridHelper.currentSheetNumber);
-                                buttontabcanvaswrap.Children.Remove(activeButton);
-                                if (buttonList.Count > 0)
-                                    b = buttonList.Single(x => x.Value == buttonList.Values.Min()).Key;
-                                else
-                                    b = null;
-                                changeSheetButton(activeButton, b);
-                                buttonList.Remove(activeButton);
-                                activeButton = b;
-                            }
-                            else
-                            {
-                                MessageBox.Show("Save operation unsuccessfull...", "Error");
-                            }
+                            DeleteSheetWorker.RunWorkerAsync(dataGridHelper.currentSheetNumber);
                             SaveWorker.RunWorkerCompleted -= workerCompleted;
-                        };
+                            dataGridHelper.removeSheet(dataGridHelper.currentSheetNumber);
+                            buttontabcanvaswrap.Children.Remove(activeButton);
+                            if (buttonList.Count > 0)
+                                b = buttonList.Single(x => x.Value == buttonList.Values.Min()).Key;
+                            else
+                                b = null;
+                            changeSheetButton(activeButton, b);
+                            buttonList.Remove(activeButton);
+                            activeButton = b;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Save operation unsuccessfull...", "Error");
+                        }
+                        SaveWorker.RunWorkerCompleted -= workerCompleted;
+                    };
                     SaveWorker.RunWorkerCompleted += workerCompleted;
                 }
             }
@@ -940,7 +939,7 @@ namespace FinalUi
             ICollectionView sRuleView = CollectionViewSource.GetDefaultView(sRule);
             cRuleView.GroupDescriptions.Add(new PropertyGroupDescription("serviceGroupReporting"));
             sRuleView.GroupDescriptions.Add(new PropertyGroupDescription("serviceGroupReporting"));
-            cRuleView.GroupDescriptions.Add(new PropertyGroupDescription("destinationListReporting"));
+            cRuleView.GroupDescriptions.Add(new PropertyGroupDescription("zoneListReporting"));
             sRuleView.GroupDescriptions.Add(new PropertyGroupDescription("zoneListReporting"));
             CostingRuleGrid.DataContext = cRuleView;
             ServiceRuleGrid.DataContext = sRuleView;
@@ -1120,7 +1119,7 @@ namespace FinalUi
 
         private void dataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
         {
-            
+
             int rowNumOffset = (dataGridHelper.currentPageNo - 1) * (dataGridHelper.rowsPerPage) + 1;
             e.Row.Header = (e.Row.GetIndex() + rowNumOffset).ToString();
         }
@@ -1131,7 +1130,7 @@ namespace FinalUi
             {
                 RuntimeData rData = ((RuntimeData)e.Row.Item);
                 double weight;
-                if(double.TryParse((e.EditingElement as TextBox).Text,out weight))
+                if (double.TryParse((e.EditingElement as TextBox).Text, out weight))
                 {
                     rData.BilledWeight = weight;
                 }
@@ -1153,7 +1152,7 @@ namespace FinalUi
                 }
                 BillingDataDataContext db = new BillingDataDataContext();
                 RuntimeData dData = db.RuntimeDatas.SingleOrDefault(x => x.ConsignmentNo == rData.ConsignmentNo && x.UserId == SecurityModule.currentUserName && dataGridHelper.currentSheetNumber == x.SheetNo);
-                if(dData == null)
+                if (dData == null)
                 {
                     MessageBox.Show("Unable to edit transaction. Please check if data exists and try again..", "Error");
                     return;
@@ -1180,13 +1179,13 @@ namespace FinalUi
         }
 
         private void UpdateMenuButton_Click(object sender, RoutedEventArgs e)
-        {}
+        { }
         private void DeleteConnMenuItem_Click(object sender, RoutedEventArgs e)
         {
             DeleteConnsignment win = new DeleteConnsignment();
             win.ShowDialog();
         }
 
-        
+
     }
 }

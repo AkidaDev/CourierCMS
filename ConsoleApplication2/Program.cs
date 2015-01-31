@@ -12,7 +12,11 @@ namespace ConsoleApplication2
     {
         static void Main(string[] args)
         {
-                DataClasses1DataContext d1 = new DataClasses1DataContext();
+            funcToAddGroupsToServices();
+        }
+        static void transferringTransactions()
+        {
+            DataClasses1DataContext d1 = new DataClasses1DataContext();
             DataClasses2DataContext d2 = new DataClasses2DataContext();
             Console.WriteLine("Attempting to load data from mi database....");
             List<DATAENTRY> dataEntries = d2.ExecuteQuery<DATAENTRY>(@"
@@ -65,7 +69,7 @@ namespace ConsoleApplication2
   on t.ConnsignmentNo COLLATE DATABASE_DEFAULT = d.AWBNO COLLATE DATABASE_DEFAULT
 
             ").ToList();
-            dataEntries = dataEntries.Where(x=>x.clname.Contains("GLAXO")).ToList();
+            dataEntries = dataEntries.Where(x => x.clname.Contains("GLAXO")).ToList();
             Console.WriteLine("Total records loaded : {0}", dataEntries.Count);
             Console.WriteLine("Attempting to load data from BillingDatabase...");
             List<Transaction> transactions = d1.ExecuteQuery<Transaction>(@"
@@ -111,18 +115,19 @@ namespace ConsoleApplication2
                 DATAENTRY dataEntry = dataEntries.SingleOrDefault(x => x.AWBNO == transaction.ConnsignmentNo);
                 if (dataEntry != null)
                 {
-                    transaction.AmountCharged = (decimal)(dataEntry.AMOUNT??0);
+                    transaction.AmountCharged = (decimal)(dataEntry.AMOUNT ?? 0);
                     transaction.CustCode = "KIM";
                     transaction.SubClient = dataEntry.CLCODE;
                 }
                 i++;
-                if(i%250==0)
+                if (i % 250 == 0)
                     Console.WriteLine(i.ToString() + " records processed...");
             }
             Console.WriteLine(d1.GetChangeSet().Updates.Count.ToString() + " changes to be done... ");
             d1.SubmitChanges();
             Console.WriteLine("Changed successfully....");
             Console.ReadLine();
+       
         }
         static void addNewCities()
         {
@@ -157,7 +162,7 @@ namespace ConsoleApplication2
         {
             Console.WriteLine("Trying to load all costing rules...");
             DataClasses1DataContext db = new DataClasses1DataContext();
-            List<Rule> ruleCollection = db.Rules.Where(x => x.Type == 1).ToList();
+            List<Rule> ruleCollection = db.Rules.ToList();
             Console.WriteLine("Attempting to process " + ruleCollection.Count + " rules.");
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             int i = 0;
@@ -166,19 +171,20 @@ namespace ConsoleApplication2
                 CostingRule cRule = serializer.Deserialize<CostingRule>(rule.Properties);
                 List<string> groups = cRule.ServiceGroupList;
                 if (groups == null)
-                    groups = new List<string>();
-                foreach (string service in cRule.ServiceList)
+                    continue;
+                if (groups.Contains("PTP 12:00"))
                 {
-                    List<string> group = UtilityClass.getGroupFromService(service);
-                    foreach (string groupName in group)
+                    List<string> zoneList = cRule.ZoneList;
+                    if (zoneList != null)
                     {
-                        if (!groups.Contains(groupName))
+                        if (zoneList.Contains("MET"))
                         {
-                            groups.Add(groupName);
+                            zoneList.Add("NEA");
+                            zoneList.Add("ROI");
+                            cRule.ZoneList = zoneList;
                         }
                     }
                 }
-                cRule.ServiceGroupList = groups;
                 rule.Properties = serializer.Serialize(cRule);
                 i++;
                 if (i % 250 == 0)
