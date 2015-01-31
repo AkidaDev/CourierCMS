@@ -54,7 +54,7 @@ namespace FinalUi
                 Login win = new Login();
                 win.ContentRendered += win_Loaded;
                 win.Show();
-            } 
+            }
         }
         private void win_Loaded(object sender, EventArgs e)
         {
@@ -66,7 +66,6 @@ namespace FinalUi
             DependencyObject parent = e.OriginalSource as UIElement;
             while (parent != null && !(parent is TextBox))
                 parent = VisualTreeHelper.GetParent(parent);
-
             if (parent != null)
             {
                 var textBox = (TextBox)parent;

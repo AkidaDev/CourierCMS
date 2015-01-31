@@ -31,7 +31,7 @@ namespace FinalUi
         {
             try
             {
-                request = WebRequest.Create("http://testapi.sltintegrity.com/ver.json");
+                request = WebRequest.Create("http://api.vortex.sltintegrity.com/ver.json");
                 response = request.GetResponse();
                 stream = new StreamReader(response.GetResponseStream());
                 json = stream.ReadToEnd();
@@ -39,7 +39,7 @@ namespace FinalUi
                 MemoryStream ms = new MemoryStream(System.Text.ASCIIEncoding.ASCII.GetBytes(json));
                 vers = new Version(((Vortexversion)ser.ReadObject(ms)).ver);
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            catch (Exception ex) {  }
         }
         public int checkUpdate()
         {

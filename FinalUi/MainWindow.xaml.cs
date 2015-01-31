@@ -1183,7 +1183,7 @@ namespace FinalUi
             if (res == MessageBoxResult.OK)
             {  
                 Updater up = new Updater();
-                up.ShowDialog();
+                up.Show();
             }
         }
         private void DeleteConnMenuItem_Click(object sender, RoutedEventArgs e)
