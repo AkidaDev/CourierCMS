@@ -19,6 +19,8 @@ namespace FinalUi
         public string endConnNo { get; set; }
         public double startPrice { get; set; }
         public double endPrice { get; set; }
+        public double startWeight { get; set; }
+        public double endWeight { get; set; }
         /// <summary>
         /// Creates a Filter Object
         /// </summary>
@@ -39,6 +41,8 @@ namespace FinalUi
             this.endConnNo = "";
             startPrice = -1;
             endPrice = 9999999;
+            startWeight = -1;
+            endWeight = 999999;
         }
         public List<RuntimeData> applyFilter(List<RuntimeData> data, int sheetNo)
         {
@@ -65,6 +69,7 @@ namespace FinalUi
             }
 
             bool areNullAllowed = selectedClientList.Select(x => x.CLCODE).Contains("<NONE>");
+            fData = fData.Where(x => x.BilledWeight >= startWeight && x.BilledWeight <= endWeight);
             fData = fData.Where(x => selectedClientList.Select(y => y.CLCODE).Contains(x.CustCode) || (x.CustCode == null && areNullAllowed));
             fData = fData.Where(x => x.BookingDate <= toDate && x.BookingDate >= fromDate);
             fData = fData.Where(x => (double)(x.FrAmount ?? 99999) > startPrice && (double)(x.FrAmount ?? -1) < endPrice);

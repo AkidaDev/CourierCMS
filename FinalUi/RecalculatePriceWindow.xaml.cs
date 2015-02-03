@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Linq;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Timers;
@@ -64,8 +65,7 @@ namespace FinalUi
             BillingDataDataContext db = new BillingDataDataContext();
 
             List<Transaction> transactions = db.Transactions.Where(whereQuery).ToList();
-
-            double transCount = transactions.Count;
+          double transCount = transactions.Count;
 
             double i = 0;
             foreach (Transaction trans in transactions)
@@ -74,7 +74,9 @@ namespace FinalUi
                 {
                     Debug.WriteLine("ABC");
                 }
-                trans.AmountCharged = (decimal)UtilityClass.getCost(trans.CustCode, trans.BilledWeight ?? 0, trans.Destination, trans.Type.Trim(), trans.DOX) + trans.Insurance??0;
+                trans.AmountCharged = (decimal)UtilityClass.getCost(trans.CustCode, trans.BilledWeight ?? 0, trans.Destination, trans.Type.Trim(), trans.DOX);
+                if (trans.Insurance != null)
+                    trans.AmountCharged = trans.AmountCharged + (decimal)trans.Insurance;
                 
                 worker.ReportProgress((int)((i / transCount) * 94 + 1));
                 i++;
@@ -136,7 +138,7 @@ namespace FinalUi
                 return;
             }
             string ClientCode = ((Client)ClientComboBox.SelectedItem).CLCODE;
-            Func<Transaction, bool> whereQuery = x => x.CustCode == ClientCode && x.RecalculateEnabled != 'T';
+            Func<Transaction, bool> whereQuery = x => x.CustCode == ClientCode && x.RecalculateEnabled == 'T';
             if (DateCheckBox.Checked == true || ConnsignmentNoCheckBox.Checked == true)
             {
                 if (DateCheckBox.Checked== true)
@@ -168,8 +170,8 @@ namespace FinalUi
                     }
                     if (isError)
                         return;
-                    DateTime FromDate = FromDatePicker.SelectedDate ?? DateTime.Now;
-                    DateTime ToDate = ToDatePicker.SelectedDate ?? DateTime.Now;
+                    DateTime FromDate = (DateTime)FromDatePicker.SelectedDate;
+                    DateTime ToDate = (DateTime)ToDatePicker.SelectedDate;
                     Func<Transaction, bool> tempFunc = whereQuery;
                     whereQuery = x => tempFunc(x) && x.BookingDate <= ToDate && x.BookingDate >= FromDate;
                 }

@@ -80,6 +80,8 @@ namespace FinalUi
             FromDate.SelectedDate = filterObj.fromDate;
             StartPriceValue.Text = filterObj.startPrice.ToString();
             EndPriceValue.Text = filterObj.endPrice.ToString();
+            StartWeightValue.Text = filterObj.startWeight.ToString();
+            EndWeightValue.Text = filterObj.endWeight.ToString();
         }
         private void GetFilter_Click(object sender, RoutedEventArgs e)
         {
@@ -93,6 +95,10 @@ namespace FinalUi
                 errorMsg += "Enter the connsignments correctly \n";
             if (ToDate.SelectedDate < FromDate.SelectedDate)
                 errorMsg += "Enter the date correctly \n";
+            if (!double.TryParse(StartWeightValue.Text, out temp))
+                errorMsg += "Enter Starting Weight correctly \n";
+            if (!double.TryParse(EndWeightValue.Text, out temp))
+                errorMsg += "Enter ending weight correctly \n";
             if (errorMsg != "")
                 MessageBox.Show("Please correct the following errors: \n" + errorMsg);
             else
@@ -110,7 +116,8 @@ namespace FinalUi
                 filterObj.toDate = (DateTime)ToDate.SelectedDate;
                 filterObj.startPrice = double.Parse(StartPriceValue.Text);
                 filterObj.endPrice = double.Parse(EndPriceValue.Text);
-
+                filterObj.startWeight = double.Parse(StartWeightValue.Text);
+                filterObj.endWeight = double.Parse(EndWeightValue.Text);
             }
             this.Close();
         }

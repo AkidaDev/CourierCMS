@@ -3,22 +3,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:cstmcntrl="clr-namespace:CustomControls;assembly=CustomControls"
 		Icon="Images/logo.ico"
-        Title="Filter &amp; Select" Height="520" Width="700" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+        Title="Filter &amp; Select" Height="563" Width="700" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Window.Resources>
         <CollectionViewSource x:Key="StartConnNoList" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="EndConnoList" CollectionViewType="ListCollectionView"/>
     </Window.Resources>
 
-    <Grid><!--BackColor-->
+    <Grid>
+        <!--BackColor-->
         <Grid.RowDefinitions>
             <RowDefinition Height="36"/>
             <RowDefinition Height="44"/>
             <RowDefinition Height="58"/>
             <RowDefinition Height="43"/>
             <RowDefinition Height="43"/>
+            <RowDefinition Height="43"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="168"/>
-            <RowDefinition Height="*"/>
+           <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Path Data="F1M2,3C2,3 2,2 2,2 2,2 331,2 331,2 331,2 331,3 331,3 331,3 2,3 2,3" Fill="Black" Height="4" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
         <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="-220 0 0 0" Text="Enter Details.:" Height="22"/>
@@ -68,12 +70,21 @@
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="To .: " VerticalAlignment="Bottom"/>
             <TextBox Name="EndPriceValue" Height="23" Width="100" Padding="2"/>
         </WrapPanel>
-        <WrapPanel Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="60 0 0 0">
+        <WrapPanel Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="-82 0 0 0">
+            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Weight .:" VerticalAlignment="Bottom"/>
+            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="From .: " VerticalAlignment="Bottom" Margin="70 0 0 0"/>
+            <TextBox Name="StartWeightValue" Height="23" Width="100" Padding="2"/>
+            <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
+            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="To .: " VerticalAlignment="Bottom"/>
+            <TextBox Name="EndWeightValue" Height="23" Width="100" Padding="2"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="60 0 0 0">
             <Path Data="F1M7.006,17.756C8.089,18.341 9.324,18.675 10.635,18.675 11.947,18.675 13.183,18.341 14.264,17.756 16.602,18.374 18.432,19.843 19.272,23 19.272,23 2,23 2,23 2.839,19.843 4.67,18.375 7.006,17.756z M22.992,14.925C25.33,15.543 27.161,17.011 28,20.168 28,20.168 19.469,20.168 19.469,20.168 18.486,18.463 17.033,17.311 15.075,16.685 15.597,16.276 16.061,15.798 16.456,15.264 17.354,15.635 18.334,15.843 19.363,15.843 20.674,15.843 21.911,15.51 22.992,14.925z M6.639,12.72C7.558,14.518 9.136,15.706 10.928,15.706 12.722,15.706 14.298,14.518 15.217,12.72 15.217,12.72 6.639,12.72 6.639,12.72z M10.635,4.831C13.958,4.831 16.649,7.548 16.649,10.899 16.649,14.252 13.958,16.968 10.635,16.968 7.313,16.968 4.621,14.252 4.621,10.899 4.621,7.548 7.313,4.831 10.635,4.831z M19.363,2C22.685,2 25.377,4.717 25.377,8.068 25.377,11.421 22.685,14.137 19.363,14.137 18.642,14.137 17.954,14.003 17.313,13.768 17.499,13.331 17.641,12.872 17.74,12.396 18.332,12.704 18.979,12.874 19.656,12.874 21.449,12.874 23.026,11.686 23.944,9.888 23.944,9.888 17.819,9.888 17.819,9.888 17.513,7.667 16.22,5.766 14.398,4.645 15.482,3.049 17.3,2 19.363,2z" Fill="Black" Height="19" Width="23" Stretch="Fill"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Select Client .:"/>
         </WrapPanel>
-        <cstmcntrl:TwinListBox Grid.Row="6" Name="SelectClientBox" Width="630" Height="160" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-        <Button Grid.Row="7" Name="GetFilter" Click="GetFilter_Click" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 20 13">
+        <cstmcntrl:TwinListBox Grid.Row="7" Name="SelectClientBox" Width="630" Height="160" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+       
+        <Button Grid.Row="10" Name="GetFilter" Click="GetFilter_Click" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 20 13">
             <WrapPanel Margin="6 1">
                 <Path x:Name="AddFilter" Data="F1M13.455,5.818C13.455,5.818 13.455,9.636 13.455,9.636 13.455,9.636 9.636,9.636 9.636,9.636 9.636,9.636 9.636,11.545 9.636,11.545 9.636,11.545 13.455,11.545 13.455,11.545 13.455,11.545 13.455,15.364 13.455,15.364 13.455,15.364 15.364,15.364 15.364,15.364 15.364,15.364 15.364,11.545 15.364,11.545 15.364,11.545 19.182,11.545 19.182,11.545 19.182,11.545 19.182,9.636 19.182,9.636 19.182,9.636 15.364,9.636 15.364,9.636 15.364,9.636 15.364,5.818 15.364,5.818 15.364,5.818 13.455,5.818 13.455,5.818z M2,5.818C2,5.818 3.909,5.818 3.909,5.818 3.909,5.818 3.909,21.091 3.909,21.091 3.909,21.091 19.182,21.091 19.182,21.091 19.182,21.091 19.182,23 19.182,23 19.182,23 3.909,23 3.909,23 2.859,23 2,22.141 2,21.091 2,21.091 2,5.818 2,5.818z M7.727,2C7.727,2 21.091,2 21.091,2 22.141,2 23,2.859 23,3.909 23,3.909 23,17.273 23,17.273 23,18.323 22.141,19.182 21.091,19.182 21.091,19.182 7.727,19.182 7.727,19.182 6.677,19.182 5.818,18.323 5.818,17.273 5.818,17.273 5.818,3.909 5.818,3.909 5.818,2.859 6.677,2 7.727,2z" Fill="Black" Height="18" Width="18" Stretch="Fill"/>
                 <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text=" Apply Filter"/>

@@ -261,6 +261,7 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox86</rd:DefaultName>
+                      <RepeatWith>Tablix3</RepeatWith>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -282,6 +283,7 @@
                         <BackgroundColor>LightGrey</BackgroundColor>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -307,6 +309,7 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox62</rd:DefaultName>
+                      <RepeatWith>Tablix3</RepeatWith>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -353,6 +356,7 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox67</rd:DefaultName>
+                      <RepeatWith>Tablix3</RepeatWith>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -399,6 +403,7 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox27</rd:DefaultName>
+                      <RepeatWith>Tablix3</RepeatWith>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -445,6 +450,7 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox75</rd:DefaultName>
+                      <RepeatWith>Tablix3</RepeatWith>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -491,6 +497,7 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox87</rd:DefaultName>
+                      <RepeatWith>Tablix3</RepeatWith>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -743,13 +750,15 @@
           <TablixMembers>
             <TablixMember>
               <KeepWithGroup>After</KeepWithGroup>
+              <RepeatOnNewPage>true</RepeatOnNewPage>
             </TablixMember>
             <TablixMember>
               <Group Name="Details" />
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <RepeatColumnHeaders>true</RepeatColumnHeaders>
+        <RepeatRowHeaders>true</RepeatRowHeaders>
+        <FixedRowHeaders>true</FixedRowHeaders>
         <DataSetName>DataSet1</DataSetName>
         <PageBreak>
           <BreakLocation>Start</BreakLocation>
@@ -1183,7 +1192,7 @@
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>=Parameters!DescriptionString.Value</Value>
+                            <Value>=(Parameters!DescriptionString.Value)&amp;"		   Invoice Amount .:  "</Value>
                             <Style>
                               <FontFamily>arial</FontFamily>
                               <FontSize>9pt</FontSize>
@@ -3751,7 +3760,7 @@
                               </TextRun>
                             </TextRuns>
                             <Style>
-                              <TextAlign>Right</TextAlign>
+                              <TextAlign>Left</TextAlign>
                             </Style>
                           </Paragraph>
                         </Paragraphs>
@@ -3787,7 +3796,7 @@
                               </TextRun>
                             </TextRuns>
                             <Style>
-                              <TextAlign>Right</TextAlign>
+                              <TextAlign>Left</TextAlign>
                             </Style>
                           </Paragraph>
                         </Paragraphs>
@@ -3809,7 +3818,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>4.23262cm</Width>
+                  <Width>4.29716cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -3939,7 +3948,7 @@
                     </GroupExpressions>
                   </Group>
                   <TablixHeader>
-                    <Size>2.11555cm</Size>
+                    <Size>2.18009cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox66">
                         <CanGrow>true</CanGrow>
@@ -3957,7 +3966,7 @@
                               </TextRun>
                             </TextRuns>
                             <Style>
-                              <TextAlign>Right</TextAlign>
+                              <TextAlign>Left</TextAlign>
                             </Style>
                           </Paragraph>
                         </Paragraphs>
@@ -3979,7 +3988,7 @@
             <Top>1.20779cm</Top>
             <Left>0.2992cm</Left>
             <Height>1.81937cm</Height>
-            <Width>6.34817cm</Width>
+            <Width>6.47725cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -4047,7 +4056,7 @@
                               </TextRun>
                             </TextRuns>
                             <Style>
-                              <TextAlign>Right</TextAlign>
+                              <TextAlign>Left</TextAlign>
                             </Style>
                           </Paragraph>
                         </Paragraphs>
@@ -4083,7 +4092,7 @@
                               </TextRun>
                             </TextRuns>
                             <Style>
-                              <TextAlign>Right</TextAlign>
+                              <TextAlign>Left</TextAlign>
                             </Style>
                           </Paragraph>
                         </Paragraphs>
@@ -5877,7 +5886,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>0.84037cm</Height>
+      <Height>6.6612cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
