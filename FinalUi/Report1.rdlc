@@ -283,7 +283,6 @@
                         <BackgroundColor>LightGrey</BackgroundColor>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -5720,7 +5719,7 @@
         </Style>
       </Line>
     </ReportItems>
-    <Height>24.23139cm</Height>
+    <Height>24.36368cm</Height>
     <Style>
       <Border>
         <Style>None</Style>
@@ -5886,7 +5885,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>6.6612cm</Height>
+      <Height>1.9cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>

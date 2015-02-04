@@ -407,7 +407,7 @@
                                         <DataGridTextColumn Header="NStart (Rs)" Binding="{Binding nDoxStartS}"/>
                                         <DataGridTextColumn Header="Services" Binding="{Binding serviceCount}"/>
                                     </DataGrid.Columns>
-                                    <DataGrid.RowDetailsTemplate>
+                                    <!--<DataGrid.RowDetailsTemplate>
                                         <DataTemplate>
                                             <Border BorderThickness="0" Background="BlanchedAlmond" Padding="0 5">
                                                 <StackPanel Orientation="Horizontal">
@@ -434,7 +434,7 @@
                                                 </StackPanel>
                                             </Border>
                                         </DataTemplate>
-                                    </DataGrid.RowDetailsTemplate>
+                                    </DataGrid.RowDetailsTemplate>-->
                                     <DataGrid.GroupStyle>
                                         <GroupStyle>
                                             <GroupStyle.HeaderTemplate>
@@ -513,7 +513,7 @@
                                             </GroupStyle.ContainerStyle>
                                         </GroupStyle>
                                     </DataGrid.GroupStyle>
-                                    <DataGrid.RowDetailsTemplate>
+                                    <!--<DataGrid.RowDetailsTemplate>
                                         <DataTemplate>
                                             <Border BorderThickness="0" Background="BlanchedAlmond" Padding="0 5">
                                                 <StackPanel Orientation="Horizontal">
@@ -540,7 +540,7 @@
                                                 </StackPanel>
                                             </Border>
                                         </DataTemplate>
-                                    </DataGrid.RowDetailsTemplate>
+                                    </DataGrid.RowDetailsTemplate>-->
                                 </DataGrid>
                                 <Grid Name="Calculator" Grid.Column="1" Margin="3 0 0 0" Background="#A9FFFFF3" Width="230" Visibility="Collapsed">
                                     <Grid.RowDefinitions>

@@ -23,6 +23,105 @@ namespace FinalUi
         public double startW { get; set; }
         public double endW { get; set; }
         public double stepweight { get; set; }
+        public string zoneListReporting
+        {
+            get
+            {
+                string zones;
+                zones = "";
+                if (CityList != null)
+                {
+                    CityList.Sort();
+                    CityList.ForEach(x =>
+                    {
+                        zones += x + " ";
+                    });
+                }
+                if (StateList != null)
+                {
+                    StateList.Sort();
+                    StateList.ForEach(x =>
+                    {
+                        zones += x + " ";
+                    });
+                }
+                if (ZoneList != null)
+                {
+                    ZoneList.Sort();
+                    ZoneList.ForEach(x =>
+                    {
+                        zones += x + " ";
+                    });
+                }
+
+                return zones;
+            }
+        }
+        public string serviceGroupReporting
+        {
+            get
+            {
+                string groups = "";
+                if (ServiceGroupList != null)
+                {
+
+                    ServiceGroupList.Sort();
+                    ServiceGroupList.ForEach(x =>
+                    {
+                        groups += x + " ";
+                    });
+                }
+                groups = groups + " " + serviceListReporting;
+                return groups;
+            }
+        }
+        public string serviceListReporting
+        {
+            get
+            {
+                string services = "";
+
+                if (ServiceList != null)
+                {
+                    ServiceList.Sort();
+                    ServiceList.ForEach(x =>
+                    {
+                        services += x + " ";
+                    });
+                }
+                return services;
+            }
+        }
+        public int zoneCount
+        {
+            get
+            {
+                if (ZoneList != null)
+                    return ZoneList.Count;
+                else
+                    return 0;
+            }
+        }
+        public int CityCount
+        {
+            get
+            {
+                if (CityList != null)
+                    return CityList.Count;
+                else
+                    return 0;
+            }
+        }
+        public int StateCount
+        {
+            get
+            {
+                if (StateList != null)
+                    return StateList.Count;
+                else
+                    return 0;
+            }
+        }
         public string RangeWeight
         {
             get
@@ -42,40 +141,8 @@ namespace FinalUi
                     return 0;
             }
         }
-        public int zoneCount
-        {
-            get
-            {
-                if (ZoneList != null)
-                {
-                    return ZoneList.Count;
-                }
-                else
-                    return 0;
-            }
-        }
-        public int cityCount
-        {
-            get
-            {
-                if (CityList != null)
-                {
-                    return CityList.Count;
-                }
-                else
-                    return 0;
-            }
-        }
-        public int stateCount
-        {
-            get
-            {
-                if (StateList != null)
-                    return StateList.Count;
-                else
-                    return 0;
-            }
-        }
+        
+        
         public void applyRule(object obj)
         { 
         }

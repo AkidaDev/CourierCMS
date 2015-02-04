@@ -54,6 +54,9 @@ namespace FinalUi
             CitiesTwinBox.AllListSource = DataSources.CityCopy;
             CitiesTwinBox.SelectedListSource = new List<City>();
             CitiesTwinBox.DisplayValuePath = "NameAndCode";
+            ServiceGroupTwinBox.AllListSource = DataSources.ServiceGroupCopy;
+            ServiceGroupTwinBox.DisplayValuePath = "GroupName";
+            ServiceGroupTwinBox.SelectedListSource = new List<ServiceGroup>();
             PerRadio.IsChecked = true;
             PercentageWrap.Visibility = Visibility.Visible;
         }
