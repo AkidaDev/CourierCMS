@@ -17,14 +17,13 @@
                           <TextRun>
                             <Value>Name     .:</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
+                              <FontFamily>verdana</FontFamily>
                               <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
                             </Style>
                           </TextRun>
                         </TextRuns>
                         <Style>
-                          <TextAlign>Right</TextAlign>
+                          <TextAlign>Left</TextAlign>
                         </Style>
                       </Paragraph>
                     </Paragraphs>
@@ -53,14 +52,13 @@
                           <TextRun>
                             <Value>Address   .:</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
+                              <FontFamily>verdana</FontFamily>
                               <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
                             </Style>
                           </TextRun>
                         </TextRuns>
                         <Style>
-                          <TextAlign>Right</TextAlign>
+                          <TextAlign>Left</TextAlign>
                         </Style>
                       </Paragraph>
                     </Paragraphs>
@@ -100,7 +98,7 @@
                             <TextRun>
                               <Value>=Parameters!ClientPhoneNo.Value</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
@@ -147,7 +145,7 @@
                           <TextRun>
                             <Value>=Parameters!ClientName.Value</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
+                              <FontFamily>verdana</FontFamily>
                               <FontSize>9pt</FontSize>
                             </Style>
                           </TextRun>
@@ -184,7 +182,7 @@
                               <TextRun>
                                 <Value>=Parameters!ClientAddress.Value</Value>
                                 <Style>
-                                  <FontFamily>arial</FontFamily>
+                                  <FontFamily>verdana</FontFamily>
                                   <FontSize>9pt</FontSize>
                                 </Style>
                               </TextRun>
@@ -221,7 +219,7 @@
                 </GroupExpressions>
               </Group>
               <TablixHeader>
-                <Size>2.23538cm</Size>
+                <Size>2.31476cm</Size>
                 <CellContents>
                   <Textbox Name="Textbox93">
                     <CanGrow>true</CanGrow>
@@ -232,14 +230,13 @@
                           <TextRun>
                             <Value>Contact No .:</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
+                              <FontFamily>verdana</FontFamily>
                               <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
                             </Style>
                           </TextRun>
                         </TextRuns>
                         <Style>
-                          <TextAlign>Right</TextAlign>
+                          <TextAlign>Left</TextAlign>
                         </Style>
                       </Paragraph>
                     </Paragraphs>
@@ -250,7 +247,6 @@
                         <Style>None</Style>
                       </Border>
                       <VerticalAlign>Top</VerticalAlign>
-                      <PaddingRight>3pt</PaddingRight>
                     </Style>
                   </Textbox>
                 </CellContents>
@@ -261,7 +257,7 @@
         <Top>0.42082cm</Top>
         <Left>0.29104cm</Left>
         <Height>1.81935cm</Height>
-        <Width>7.58931cm</Width>
+        <Width>7.66869cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -283,18 +279,16 @@
                           <TextRun>
                             <Value>Date</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
+                              <FontFamily>verdana</FontFamily>
                               <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
                               <TextDecoration>Underline</TextDecoration>
                             </Style>
                           </TextRun>
                           <TextRun>
                             <Value xml:space="preserve"> </Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
+                              <FontFamily>verdana</FontFamily>
                               <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -338,7 +332,7 @@
                             <TextRun>
                               <Value>=FormatDateTime(CDate(Parameters!FromDate.Value),DateFormat.ShortDate)</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
@@ -373,7 +367,7 @@
                             <TextRun>
                               <Value>=FormatDateTime(CDate(Parameters!ToDate.Value),DateFormat.ShortDate)</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
@@ -416,7 +410,7 @@
                           <TextRun>
                             <Value />
                             <Style>
-                              <FontFamily>arial</FontFamily>
+                              <FontFamily>verdana</FontFamily>
                               <FontSize>9pt</FontSize>
                             </Style>
                           </TextRun>
@@ -457,9 +451,8 @@
                           <TextRun>
                             <Value>From .: </Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
+                              <FontFamily>verdana</FontFamily>
                               <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -499,9 +492,8 @@
                           <TextRun>
                             <Value>To  .: </Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
+                              <FontFamily>verdana</FontFamily>
                               <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -587,9 +579,8 @@
                             <TextRun>
                               <Value>S.No.</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>9pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -638,9 +629,8 @@
                             <TextRun>
                               <Value>Consignment No</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>9pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -689,9 +679,8 @@
                             <TextRun>
                               <Value>Destination</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>9pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -740,9 +729,8 @@
                             <TextRun>
                               <Value>Date</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>9pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -791,9 +779,8 @@
                             <TextRun>
                               <Value>Consigner</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>9pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -842,9 +829,8 @@
                             <TextRun>
                               <Value>Consignee</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>9pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -898,7 +884,7 @@
                             <TextRun>
                               <Value />
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
@@ -930,7 +916,7 @@
                             <TextRun>
                               <Value>=Fields!ConnsignmentNo.Value</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
@@ -962,7 +948,7 @@
                             <TextRun>
                               <Value>=Fields!CITY_DESC.Value</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
@@ -994,7 +980,7 @@
                             <TextRun>
                               <Value>=FormatDateTime(CDate(Fields!BookingDate.Value),DateFormat.ShortDate)</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
@@ -1026,7 +1012,7 @@
                             <TextRun>
                               <Value>=Fields!ConsignerName.Value</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
@@ -1058,7 +1044,7 @@
                             <TextRun>
                               <Value>=Fields!ConsigneeName.Value</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
@@ -1168,8 +1154,7 @@
                 <TextRun>
                   <Value>M.I.S. Report</Value>
                   <Style>
-                    <FontFamily>arial</FontFamily>
-                    <FontWeight>Bold</FontWeight>
+                    <FontFamily>verdana</FontFamily>
                   </Style>
                 </TextRun>
               </TextRuns>

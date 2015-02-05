@@ -4,7 +4,7 @@
          xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
         xmlns:cstmcntrl="clr-namespace:CustomControls;assembly=CustomControls"
         Icon="Images/logo.ico"
-        Title="Print Report" Height="340" Width="750" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+        Title="Print Report" Height="360" Width="750" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Window.Resources>
         <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="DataGridDataSource" CollectionViewType="ListCollectionView"/>
@@ -22,14 +22,14 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
-        <Path Data="F1M2,3C2,3 2,2 2,2 2,2 331,2 331,2 331,2 331,3 331,3 331,3 2,3 2,3" Fill="Black" Height="4" Width="332" VerticalAlignment="Bottom"/>
+        <Path Data="F1M2,3C2,3 2,2 2,2 2,2 331,2 331,2 331,2 331,3 331,3 331,3 2,3 2,3" Fill="Gray" Height="4" Width="332" VerticalAlignment="Bottom"/>
         <WrapPanel VerticalAlignment="Bottom" Margin="211 0 0 0">
-            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Enter Details For .:   "/>
+            <TextBlock FontSize="16" FontFamily="Calibri" Text="Enter Details For .:   "/>
         </WrapPanel>
-        <Path Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Black" Height="24" Width="24" Margin="160,10,516,2"/>
+        <Path Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Gray" Height="24" Width="24" Margin="172,10,516,0"/>
         <WrapPanel Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-            <Path Data="F1M7.006,17.756C8.089,18.341 9.324,18.675 10.635,18.675 11.947,18.675 13.183,18.341 14.264,17.756 16.602,18.374 18.432,19.843 19.272,23 19.272,23 2,23 2,23 2.839,19.843 4.67,18.375 7.006,17.756z M22.992,14.925C25.33,15.543 27.161,17.011 28,20.168 28,20.168 19.469,20.168 19.469,20.168 18.486,18.463 17.033,17.311 15.075,16.685 15.597,16.276 16.061,15.798 16.456,15.264 17.354,15.635 18.334,15.843 19.363,15.843 20.674,15.843 21.911,15.51 22.992,14.925z M6.639,12.72C7.558,14.518 9.136,15.706 10.928,15.706 12.722,15.706 14.298,14.518 15.217,12.72 15.217,12.72 6.639,12.72 6.639,12.72z M10.635,4.831C13.958,4.831 16.649,7.548 16.649,10.899 16.649,14.252 13.958,16.968 10.635,16.968 7.313,16.968 4.621,14.252 4.621,10.899 4.621,7.548 7.313,4.831 10.635,4.831z M19.363,2C22.685,2 25.377,4.717 25.377,8.068 25.377,11.421 22.685,14.137 19.363,14.137 18.642,14.137 17.954,14.003 17.313,13.768 17.499,13.331 17.641,12.872 17.74,12.396 18.332,12.704 18.979,12.874 19.656,12.874 21.449,12.874 23.026,11.686 23.944,9.888 23.944,9.888 17.819,9.888 17.819,9.888 17.513,7.667 16.22,5.766 14.398,4.645 15.482,3.049 17.3,2 19.363,2z" Fill="Black" Height="19" Width="23" Stretch="Fill"/>
-            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Client Name.: " VerticalAlignment="Bottom"/>
+            <Path Data="F1M7.006,17.756C8.089,18.341 9.324,18.675 10.635,18.675 11.947,18.675 13.183,18.341 14.264,17.756 16.602,18.374 18.432,19.843 19.272,23 19.272,23 2,23 2,23 2.839,19.843 4.67,18.375 7.006,17.756z M22.992,14.925C25.33,15.543 27.161,17.011 28,20.168 28,20.168 19.469,20.168 19.469,20.168 18.486,18.463 17.033,17.311 15.075,16.685 15.597,16.276 16.061,15.798 16.456,15.264 17.354,15.635 18.334,15.843 19.363,15.843 20.674,15.843 21.911,15.51 22.992,14.925z M6.639,12.72C7.558,14.518 9.136,15.706 10.928,15.706 12.722,15.706 14.298,14.518 15.217,12.72 15.217,12.72 6.639,12.72 6.639,12.72z M10.635,4.831C13.958,4.831 16.649,7.548 16.649,10.899 16.649,14.252 13.958,16.968 10.635,16.968 7.313,16.968 4.621,14.252 4.621,10.899 4.621,7.548 7.313,4.831 10.635,4.831z M19.363,2C22.685,2 25.377,4.717 25.377,8.068 25.377,11.421 22.685,14.137 19.363,14.137 18.642,14.137 17.954,14.003 17.313,13.768 17.499,13.331 17.641,12.872 17.74,12.396 18.332,12.704 18.979,12.874 19.656,12.874 21.449,12.874 23.026,11.686 23.944,9.888 23.944,9.888 17.819,9.888 17.819,9.888 17.513,7.667 16.22,5.766 14.398,4.645 15.482,3.049 17.3,2 19.363,2z" Fill="Gray" Height="19" Width="23" Stretch="Fill"/>
+            <TextBlock FontSize="16" FontFamily="Calibri" Text=" Client Name.: " VerticalAlignment="Bottom"/>
             <ComboBox Width="300" ItemsSource="{Binding}" DataContext="{StaticResource ClientList}" x:Name="ClientList" SelectionChanged="ClientList_SelectionChanged" DisplayMemberPath="NameAndCode">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -37,68 +37,68 @@
                     </ItemsPanelTemplate>
                 </ComboBox.ItemsPanel>
             </ComboBox>
-            <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
-            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Sub Client .: " VerticalAlignment="Bottom"/>
+            <Rectangle Fill="Gray" Height="33" Width="1" Margin="8 -6 15 -5"/>
+            <TextBlock FontSize="16" FontFamily="Calibri" Text="Sub Client .: " VerticalAlignment="Bottom"/>
             <ComboBox IsEditable="True" Name="SubClientComboBox" DataContext="{StaticResource SubClientList}" ItemsSource="{Binding}" Width="120"/>
         </WrapPanel>
         <WrapPanel Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="From Date .: " VerticalAlignment="Bottom"/>
+            <TextBlock FontSize="16" FontFamily="Calibri" Text="From Date .: " VerticalAlignment="Bottom"/>
             <DatePicker Name="FromDate" CalendarClosed="ToDate_CalendarClosed"  Width="120" BorderBrush="DarkGray" Padding="2 2 0 2" Background="White"/>
-            <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
-            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" To Date .: " VerticalAlignment="Bottom"/>
+            <Rectangle Fill="Gray" Height="33" Width="1" Margin="8 -6 15 -5"/>
+            <TextBlock FontSize="16" FontFamily="Calibri" Text=" To Date .: " VerticalAlignment="Bottom"/>
             <DatePicker x:Name="ToDate" CalendarClosed="ToDate_CalendarClosed" Width="120" BorderBrush="DarkGray" Padding="2 2 0 2" Background="White"/>
         </WrapPanel>
         <WrapPanel Name="InvoiceGrid1" Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <cstmcntrl:PandaCheckbox  Name="PreviousDueCheck" Checked="True"/>
-            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Previous Due .: " VerticalAlignment="Bottom"/>
+            <TextBlock FontSize="16" FontFamily="Calibri" Text=" Previous Due .: " VerticalAlignment="Bottom"/>
             <TextBox Height="22" x:Name="PreviousDueTextBox" Width="100" Padding="10 2 0 0"/>
-            <TextBlock Text="₹" FontSize="14" FontWeight="Bold" Margin="-98 0 0 0" VerticalAlignment="Center"/>
-            <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
-            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Fuel Surcharge .: " VerticalAlignment="Bottom"/>
+            <TextBlock Text="₹" FontSize="14" Margin="-98 0 0 0" VerticalAlignment="Center"/>
+            <Rectangle Fill="Gray" Height="33" Width="1" Margin="8 -6 15 -5"/>
+            <TextBlock FontSize="16" FontFamily="Calibri" Text=" Fuel Surcharge .: " VerticalAlignment="Bottom"/>
             <TextBox x:Name="TaxBox" Width="50" Height="22" Padding="2 1 0 0"/>
-            <TextBlock Text=" %" FontWeight="Bold" VerticalAlignment="Center"/>
-            <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
-            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Service Tax .: " VerticalAlignment="Bottom"/>
+            <TextBlock Text=" %" VerticalAlignment="Center"/>
+            <Rectangle Fill="Gray" Height="33" Width="1" Margin="8 -6 15 -5"/>
+            <TextBlock FontSize="16" FontFamily="Calibri" Text=" Service Tax .: " VerticalAlignment="Bottom"/>
             <TextBox x:Name="ServiceTaxBox" Width="50" Height="22" Padding="2 1 0 0"/>
-            <TextBlock Text=" %" FontWeight="Bold" VerticalAlignment="Center"/>
+            <TextBlock Text=" %" VerticalAlignment="Center"/>
         </WrapPanel>
         <WrapPanel Name="InvoiceGrid2" Grid.Row="4" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-            <Path Data="F1M3.844,19.156C3.281,19.156 2.825,19.606 2.825,20.159 2.825,20.714 3.281,21.163 3.844,21.163 4.407,21.163 4.863,20.714 4.863,20.159 4.863,19.606 4.407,19.156 3.844,19.156z M15.513,9.991C15.513,9.991 7.26,18.119 7.26,18.119 7.26,18.119 8.433,19.274 8.433,19.274 8.433,19.274 16.686,11.146 16.686,11.146 16.686,11.146 15.513,9.991 15.513,9.991z M12.959,7.376C12.959,7.376 4.654,15.554 4.654,15.554 4.654,15.554 5.826,16.709 5.826,16.709 5.826,16.709 14.131,8.53 14.131,8.53 14.131,8.53 12.959,7.376 12.959,7.376z M13.112,2.419C13.112,2.419 22,11.167 22,11.167 22,11.167 9.906,22.979 9.906,22.979 9.906,22.979 1,23 1,23 1,23 1.02,14.229 1.02,14.229 1.02,14.229 13.112,2.419 13.112,2.419z M8.276,1C8.276,1 11.544,2.53 11.544,2.53 11.544,2.53 2.875,10.797 2.875,10.797 2.875,10.797 8.276,1 8.276,1z" Fill="Black" Height="19" Width="19" Stretch="Fill"/>
-            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Discount .: " VerticalAlignment="Bottom"/>
+            <Path Data="F1M3.844,19.156C3.281,19.156 2.825,19.606 2.825,20.159 2.825,20.714 3.281,21.163 3.844,21.163 4.407,21.163 4.863,20.714 4.863,20.159 4.863,19.606 4.407,19.156 3.844,19.156z M15.513,9.991C15.513,9.991 7.26,18.119 7.26,18.119 7.26,18.119 8.433,19.274 8.433,19.274 8.433,19.274 16.686,11.146 16.686,11.146 16.686,11.146 15.513,9.991 15.513,9.991z M12.959,7.376C12.959,7.376 4.654,15.554 4.654,15.554 4.654,15.554 5.826,16.709 5.826,16.709 5.826,16.709 14.131,8.53 14.131,8.53 14.131,8.53 12.959,7.376 12.959,7.376z M13.112,2.419C13.112,2.419 22,11.167 22,11.167 22,11.167 9.906,22.979 9.906,22.979 9.906,22.979 1,23 1,23 1,23 1.02,14.229 1.02,14.229 1.02,14.229 13.112,2.419 13.112,2.419z M8.276,1C8.276,1 11.544,2.53 11.544,2.53 11.544,2.53 2.875,10.797 2.875,10.797 2.875,10.797 8.276,1 8.276,1z" Fill="Gray" Height="19" Width="19" Stretch="Fill"/>
+            <TextBlock FontSize="16" FontFamily="Calibri" Text=" Discount .: " VerticalAlignment="Bottom"/>
             <TextBox Name="DiscountBox" Canvas.Top="208" Canvas.Left="434" Height="22"  Width="57" Padding="2 1 0 0"/>
-            <TextBlock Text=" %" Canvas.Top="211" Canvas.Left="479" FontWeight="Bold" VerticalAlignment="Center"/>
-            <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
-            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Miscellaneous Charges .: " VerticalAlignment="Bottom"/>
+            <TextBlock Text=" %" Canvas.Top="211" Canvas.Left="479" VerticalAlignment="Center"/>
+            <Rectangle Fill="Gray" Height="33" Width="1" Margin="8 -6 15 -5"/>
+            <TextBlock FontSize="16" FontFamily="Calibri" Text=" Miscellaneous Charges .: " VerticalAlignment="Bottom"/>
             <TextBox Height="22" x:Name="MiscBox" Width="57" Padding="10 2 0 0"/>
-            <TextBlock Text="₹" FontSize="14" FontWeight="Bold" Margin="-55 0 0 0" VerticalAlignment="Center"/>
+            <TextBlock Text="₹" FontSize="14" Margin="-55 0 0 0" VerticalAlignment="Center"/>
         </WrapPanel>
         <WrapPanel Name="MisGrid1" Grid.Row="3" VerticalAlignment="Bottom" Margin="230 0 0 0" Visibility="Collapsed">
             <cstmcntrl:PandaCheckbox Visibility="Collapsed" Name="ShowConsigneeCheck" Checked="True"/>
-            <TextBlock Visibility="Collapsed" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Show Consignee on the report " VerticalAlignment="Bottom"/>
+            <TextBlock Visibility="Collapsed" FontSize="16" FontFamily="Calibri" Text=" Show Consignee on the report " VerticalAlignment="Bottom"/>
         </WrapPanel>
         <WrapPanel Name="MisGrid2" Grid.Row="4" VerticalAlignment="Bottom" Margin="230 0 0 0" Visibility="Collapsed">
             <cstmcntrl:PandaCheckbox Visibility="Collapsed" Name="ShowConsignerCheck" Checked="True"/>
-            <TextBlock Visibility="Collapsed" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Show Consigner on the report " VerticalAlignment="Bottom"/>
+            <TextBlock Visibility="Collapsed" FontSize="16" FontFamily="Calibri" Text=" Show Consigner on the report " VerticalAlignment="Bottom"/>
         </WrapPanel>
         <WrapPanel Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-            <Path Data="F1M18.387,5.167C17.681,5.167 17.109,5.764 17.109,6.5 17.109,7.235 17.681,7.832 18.387,7.832 19.092,7.832 19.664,7.235 19.664,6.5 19.664,5.764 19.092,5.167 18.387,5.167z M2.488,1C2.488,1 17.444,1 17.444,1 17.666,1 17.877,1.051 18.067,1.142 18.25,1.205 18.423,1.312 18.569,1.465 18.569,1.465 22.504,5.567 22.504,5.567 23,6.085 23,6.924 22.504,7.442 22.504,7.442 18.64,11.47 18.64,11.47 18.53,11.585 18.405,11.674 18.271,11.738 18.034,11.904 17.75,12 17.444,12 17.444,12 2.488,12 2.488,12 1.666,12 1,11.305 1,10.448 1,10.448 1,2.552 1,2.552 1,1.695 1.666,1 2.488,1z" Fill="Black" Height="13" Width="24"/>
-            <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Remarks .: "/>
+            <Path Data="F1M18.387,5.167C17.681,5.167 17.109,5.764 17.109,6.5 17.109,7.235 17.681,7.832 18.387,7.832 19.092,7.832 19.664,7.235 19.664,6.5 19.664,5.764 19.092,5.167 18.387,5.167z M2.488,1C2.488,1 17.444,1 17.444,1 17.666,1 17.877,1.051 18.067,1.142 18.25,1.205 18.423,1.312 18.569,1.465 18.569,1.465 22.504,5.567 22.504,5.567 23,6.085 23,6.924 22.504,7.442 22.504,7.442 18.64,11.47 18.64,11.47 18.53,11.585 18.405,11.674 18.271,11.738 18.034,11.904 17.75,12 17.444,12 17.444,12 2.488,12 2.488,12 1.666,12 1,11.305 1,10.448 1,10.448 1,2.552 1,2.552 1,1.695 1.666,1 2.488,1z" Fill="Gray" Height="13" Width="24"/>
+            <TextBlock FontSize="16" FontFamily="Calibri" Text=" Remarks .: " VerticalAlignment="Bottom"/>
             <TextBox Name="RemarkBox" Width="345" Height="22" Padding="2 1 0 0"/>
-            <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
+            <Rectangle Fill="Gray" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <DatePicker ToolTip="Invoice Date" Name="InvoiceDate" Width="120" BorderBrush="DarkGray" Padding="2 2 0 2" Background="White"/>
         </WrapPanel>
         <WrapPanel Grid.Row="6" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <Button Click="Button_Click" Margin="0 0 200 0" VerticalAlignment="Center">
                 <WrapPanel Margin="6 1">
                     <Path Data="F1M8.9,14.833C8.9,14.833 8.9,20.667 8.9,20.667 8.9,20.667 18.1,20.667 18.1,20.667 18.1,20.667 18.1,14.833 18.1,14.833 18.1,14.833 8.9,14.833 8.9,14.833z M21.55,10.167C20.86,10.167 20.4,10.633 20.4,11.333 20.4,12.033 20.86,12.5 21.55,12.5 22.24,12.5 22.7,12.033 22.7,11.333 22.7,10.633 22.24,10.167 21.55,10.167z M5.45,7.833C5.45,7.833 21.55,7.833 21.55,7.833 23.505,7.833 25,9.35 25,11.333 25,11.333 25,18.333 25,18.333 25,18.333 20.4,18.333 20.4,18.333 20.4,18.333 20.4,23 20.4,23 20.4,23 6.6,23 6.6,23 6.6,23 6.6,18.333 6.6,18.333 6.6,18.333 2,18.333 2,18.333 2,18.333 2,11.333 2,11.333 2,9.35 3.495,7.833 5.45,7.833z M6.6,2C6.6,2 20.4,2 20.4,2 20.4,2 20.4,6.667 20.4,6.667 20.4,6.667 6.6,6.667 6.6,6.667 6.6,6.667 6.6,2 6.6,2z" Fill="Black" Height="20" Width="21" Stretch="Fill"/>
-                    <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text=" Print"/>
+                    <TextBlock FontSize="16" FontFamily="Calibri" Text=" Print"/>
                 </WrapPanel>
             </Button>
             <Button Name="SaveInvoiceButton" Click="SaveInvoiceButton_Click" VerticalAlignment="Center">
                 <Button.Content>
                     <WrapPanel Margin="6 1" >
                         <Path Data="F1M5.707,16.89C5.707,16.89 16.879,16.89 16.879,16.89 16.879,16.89 16.879,18.13 16.879,18.13 16.879,18.13 5.707,18.13 5.707,18.13 5.707,18.13 5.707,16.89 5.707,16.89z M5.707,13.414C5.707,13.414 16.879,13.414 16.879,13.414 16.879,13.414 16.879,14.653 16.879,14.653 16.879,14.653 5.707,14.653 5.707,14.653 5.707,14.653 5.707,13.414 5.707,13.414z M4.207,10.739C4.207,10.739 4.207,20.566 4.207,20.566 4.207,20.566 18.793,20.566 18.793,20.566 18.793,20.566 18.793,10.739 18.793,10.739 18.793,10.739 4.207,10.739 4.207,10.739z M9.432,1.83C9.432,1.83 13.777,1.83 13.777,1.83 13.777,1.83 13.777,7.358 13.777,7.358 13.777,7.358 9.432,7.358 9.432,7.358 9.432,7.358 9.432,1.83 9.432,1.83z M1.626,1C1.626,1 4.207,1 4.207,1 4.207,1 4.207,8.508 4.207,8.508 4.207,8.508 15.586,8.508 15.586,8.508 15.586,8.508 15.586,1 15.586,1 15.586,1 17.711,1 17.711,1 17.711,1 22,5.246 22,5.246 22,5.246 22,21.381 22,21.381 22,21.723 21.72,22 21.374,22 21.374,22 1.626,22 1.626,22 1.28,22 1,21.723 1,21.381 1,21.381 1,1.62 1,1.62 1,1.277 1.28,1 1.626,1z" Fill="Black" Height="20" Width="20" Stretch="Fill"/>
-                        <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text=" Save"/>
+                        <TextBlock FontSize="16" FontFamily="Calibri" Text=" Save"/>
                     </WrapPanel>
                 </Button.Content>
             </Button>

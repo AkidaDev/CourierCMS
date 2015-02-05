@@ -192,9 +192,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BillingData.dbml</DependentUpon>
     </Compile>
-    <Compile Include="BillReportWindow.xaml.cs">
-      <DependentUpon>BillReportWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ClientReportWindow.xaml.cs">
       <DependentUpon>ClientReportWindow.xaml</DependentUpon>
     </Compile>
@@ -336,10 +333,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddZone.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="BillReportWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
