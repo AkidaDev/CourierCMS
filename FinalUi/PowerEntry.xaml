@@ -76,7 +76,7 @@
             <cstmcntrl:PandaCheckbox  Name="CalcRateCheck" Checked="True"/>
             <TextBlock Text=" Calculate Rate" FontSize="16" FontFamily="Calibri" VerticalAlignment="Bottom"/>
         </WrapPanel>
-        <ProgressBar Grid.Row="7" Name="progressbar" Minimum="0" Maximum="100" Value="0" Height="24" Width="350" HorizontalAlignment="Left" Margin="50 0 0 0" Foreground="#FF8C84BD"/>
+        <ProgressBar Grid.Row="7" Name="progressbar" Minimum="0" Maximum="100" Value="0" Height="24" Width="350" HorizontalAlignment="Left" Margin="50 0 0 0"/>
         <Button Grid.Row="7" Name="SubmitRecords" Click="SubmitRecords_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 25 0">
             <WrapPanel Margin="6 1">
                 <Path Data="F1M10.909,23C10.909,23 2,14.224 2,14.224 2,14.224 4.227,12.03 4.227,12.03 4.227,12.03 10.909,18.612 10.909,18.612 10.909,18.612 27.773,2 27.773,2 27.773,2 30,4.194 30,4.194 30,4.194 10.909,23 10.909,23z" Fill="Black" Height="17" Width="23" Stretch="Fill"/>

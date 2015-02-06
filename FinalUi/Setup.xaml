@@ -109,7 +109,7 @@
         </Canvas>
         <Canvas Name="Step4" Visibility="Collapsed">
             <TextBlock Foreground="#6666cc" FontSize="18" Canvas.Left="374" TextAlignment="Center" Text="Installing" Canvas.Top="135" Width="150"/>
-            <ProgressBar Name="progressbar" Minimum="0" Maximum="100" Value="0" Height="33" Width="634" Canvas.Top="298" Canvas.Left="32" Foreground="#FF8C84BD"/>
+            <ProgressBar Name="progressbar" Minimum="0" Maximum="100" Value="0" Height="33" Width="634" Canvas.Top="298" Canvas.Left="32"/>
         </Canvas>
         <Canvas Name="Step5" Visibility="Collapsed">
             <TextBlock Foreground="#6666cc" FontSize="18" Canvas.Left="374" TextAlignment="Center" Text="Finalize" Canvas.Top="135" Width="150"/>

@@ -58,20 +58,6 @@ namespace FinalUi
             }
             Debug.Print("\n" + file);
         }
-        private void update_CheckedUnChecked(object sender, RoutedEventArgs e)
-        {
-            if (this.checkbox_unselected.Visibility == Visibility.Hidden)
-            {
-                this.checkbox_selected.Visibility = Visibility.Hidden;
-                this.checkbox_unselected.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                this.checkbox_selected.Visibility = Visibility.Visible;
-                this.checkbox_unselected.Visibility = Visibility.Hidden;
-            }
-        }
-
         private void Close(object sender, RoutedEventArgs e)
         {
             Close();

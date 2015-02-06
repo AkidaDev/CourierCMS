@@ -2,6 +2,7 @@
         xmlns:cstmcntrl="clr-namespace:CustomControls;assembly=CustomControls"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		Icon="Images/logo.ico"
         Title="Recalculate Price" Height="300" Width="550" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <CollectionViewSource x:Key="ClientListSource" CollectionViewType="ListCollectionView"/>
@@ -44,7 +45,7 @@
             <TextBlock FontSize="16" FontFamily="Calibri" Text="To ConnNo .: " VerticalAlignment="Bottom"/>
             <TextBox Name="ToConnNoTextBox" Margin=" 5 0 0 0" Width="110" Height="23" Padding="2"/>
         </WrapPanel>
-        <ProgressBar Grid.Row="4" Name="ProgressBarTask" Minimum="0" Maximum="100" Value="0" Height="26" Width="350" HorizontalAlignment="Left" Margin="25 0 0 0" Foreground="#FF8C84BD"/>
+        <ProgressBar Grid.Row="4" Name="ProgressBarTask" Minimum="0" Maximum="100" Value="0" Height="26" Width="350" HorizontalAlignment="Left" Margin="25 0 0 0"/>
         <Button Grid.Row="4" Click="Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 25 0">
             <WrapPanel Margin="6 1">
                 <Path Name="Path" Data="F1M10.909,23C10.909,23 2,14.224 2,14.224 2,14.224 4.227,12.03 4.227,12.03 4.227,12.03 10.909,18.612 10.909,18.612 10.909,18.612 27.773,2 27.773,2 27.773,2 30,4.194 30,4.194 30,4.194 10.909,23 10.909,23z" Fill="Black" Height="17" Width="23" Stretch="Fill"/>

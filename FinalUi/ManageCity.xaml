@@ -1,6 +1,7 @@
 ﻿<Window x:Class="FinalUi.ManageCity"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		Icon="Images/logo.ico"
         Title="ManageCity" WindowStartupLocation="CenterScreen" Background="Turquoise">
     <Window.Resources>
         <CollectionViewSource x:Key="CityTable" CollectionViewType="{x:Type ListCollectionView}"/>

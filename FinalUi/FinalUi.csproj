@@ -30,7 +30,7 @@
     <MinimumRequiredVersion>0.0.1.25</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>11</ApplicationRevision>
+    <ApplicationRevision>13</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -240,7 +240,7 @@
     <Compile Include="ManageService.xaml.cs">
       <DependentUpon>ManageService.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MoreLinq\MoreEnumerable.ExceptBy.cs" />
+    <Compile Include="test\MoreLinq\MoreEnumerable.ExceptBy.cs" />
     <Compile Include="PaymentDetailsWindow.xaml.cs">
       <DependentUpon>PaymentDetailsWindow.xaml</DependentUpon>
     </Compile>
@@ -569,7 +569,9 @@
       <DependentUpon>DataSet2.xsd</DependentUpon>
     </None>
     <None Include="Data\VORTEX_ALPHA_TEST_REPORT.xlsx" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\AccountStatement.datasource" />
     <None Include="Properties\DataSources\Assignment.datasource" />
@@ -597,9 +599,7 @@
     <Resource Include="Data\NF037_DSR_TABLE.TXT" />
     <Resource Include="Data\NF037_DSR_TABLE_ITL.TXT" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="test\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
