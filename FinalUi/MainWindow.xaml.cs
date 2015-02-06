@@ -18,6 +18,7 @@ using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Web.Script.Serialization;
 namespace FinalUi
 {
     /// <summary>
@@ -162,7 +163,7 @@ namespace FinalUi
             }
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "Analysis"))
             {
-                this.InvoiceAnalysis.Visibility = this.MISReportMenuItem.Visibility = this.ClientReport.Visibility =  Visibility.Collapsed;
+                this.InvoiceAnalysis.Visibility = this.MISReportMenuItem.Visibility = this.ClientReport.Visibility = Visibility.Collapsed;
             }
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "PaymentEntry"))
             {
@@ -1115,25 +1116,29 @@ namespace FinalUi
         private void Quotation_Calc_click(object sender, RoutedEventArgs e)
         {
             QuotationCalc win = new QuotationCalc();
-            win.ShowDialog();
+            win.Show();
         }
 
         private void dataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
         {
-            
+
             int rowNumOffset = (dataGridHelper.currentPageNo - 1) * (dataGridHelper.rowsPerPage) + 1;
             e.Row.Header = (e.Row.GetIndex() + rowNumOffset).ToString();
         }
 
         private void dataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
+
             if (e.EditAction == DataGridEditAction.Commit)
             {
                 RuntimeData rData = ((RuntimeData)e.Row.Item);
                 double weight;
-                if(double.TryParse((e.EditingElement as TextBox).Text,out weight))
+                if (double.TryParse((e.EditingElement as TextBox).Text, out weight))
                 {
-                    rData.BilledWeight = weight;
+                    if (e.Column.Header.ToString() == "Billed Weight")
+                        rData.BilledWeight = weight;
+                    else if (e.Column.Header.ToString() == "Billed Amount")
+                        rData.FrAmount = (decimal)weight;
                 }
                 else
                 {
@@ -1153,17 +1158,26 @@ namespace FinalUi
                 }
                 BillingDataDataContext db = new BillingDataDataContext();
                 RuntimeData dData = db.RuntimeDatas.SingleOrDefault(x => x.ConsignmentNo == rData.ConsignmentNo && x.UserId == SecurityModule.currentUserName && dataGridHelper.currentSheetNumber == x.SheetNo);
-                if(dData == null)
+                if (dData == null)
                 {
                     MessageBox.Show("Unable to edit transaction. Please check if data exists and try again..", "Error");
                     return;
                 }
-                dData.BilledWeight = rData.BilledWeight;
-                dData.FrAmount = (decimal)UtilityClass.getCost(rData.CustCode, weight, rData.Destination, rData.Type.Trim(), rData.DOX ?? 'N');
-                db.SubmitChanges();
-                rData.FrAmount = dData.FrAmount;
-                sData.BilledWeight = dData.BilledWeight;
-                sData.FrAmount = dData.FrAmount;
+                if (e.Column.Header.ToString() == "Billed Weight")
+                {
+                    dData.BilledWeight = rData.BilledWeight;
+                    dData.FrAmount = (decimal)UtilityClass.getCost(rData.CustCode, weight, rData.Destination, rData.Type.Trim(), rData.DOX ?? 'N');
+                    db.SubmitChanges();
+                    rData.FrAmount = dData.FrAmount;
+                    sData.BilledWeight = dData.BilledWeight;
+                    sData.FrAmount = dData.FrAmount;
+                }
+                if(e.Column.Header.ToString() == "Billed Amount")
+                {
+                    dData.FrAmount = rData.FrAmount;
+                    db.SubmitChanges();
+                    sData.FrAmount = rData.FrAmount;
+                }
 
             }
         }
@@ -1181,8 +1195,8 @@ namespace FinalUi
         {
             MessageBoxResult res = MessageBox.Show("Please save your work before Continuing", "Update", MessageBoxButton.OKCancel);
             if (res == MessageBoxResult.OK)
-            {  
-                About up = new About();
+            {
+                Updater up = new Updater();
                 up.Show();
             }
         }
@@ -1190,6 +1204,52 @@ namespace FinalUi
         {
             DeleteConnsignment win = new DeleteConnsignment();
             win.ShowDialog();
+        }
+
+        private void CostingRuleGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            if (e.EditAction == DataGridEditAction.Commit)
+            {
+                double rate;
+                if (double.TryParse((e.EditingElement as TextBox).Text, out rate))
+                {
+                    try
+                    {
+                        BillingDataDataContext db = new BillingDataDataContext();
+                        CostingRule origRule = e.Row.Item as CostingRule;
+                        Rule newRule = db.Rules.SingleOrDefault(x => x.ID == origRule.Id);
+                        if (newRule == null)
+                        {
+                            MessageBox.Show("Unable to find this rule in database....", "Error");
+                            e.Cancel = true;
+                            return;
+                        }
+                        JavaScriptSerializer jss = new JavaScriptSerializer();
+                        CostingRule crr = jss.Deserialize<CostingRule>(newRule.Properties);
+                        if (e.Column.Header.ToString() == "Non-Dox (Rs)")
+                        {
+                            crr.ndoxAmount = rate;
+                        }
+                        if (e.Column.Header.ToString() == "Dox (Rs)")
+                        {
+                            crr.doxAmount = rate;
+                        }
+                        newRule.Properties = jss.Serialize(crr);
+                        db.SubmitChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Unable to save data....", "Error");
+                        e.Cancel = true;
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Input.. ", "Error");
+                    e.Cancel = true;
+                }
+            }
         }
     }
 }

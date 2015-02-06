@@ -72,7 +72,8 @@ namespace FinalUi
             DataGridSource = (CollectionViewSource)FindResource("DataGridDataSource");
             SubClientListSource = (CollectionViewSource)FindResource("SubClientList");
             dataGridSource = data;
-            ClientListSource.Source = DataSources.ClientCopy;
+            List<string> clientCodeList = data.Select(x => x.CustCode.Trim()).ToList();
+            ClientListSource.Source = DataSources.ClientCopy.Where(x => clientCodeList.Contains(x.CLCODE.Trim())).ToList();
             rs = new Microsoft.Reporting.WinForms.ReportDataSource();
             rs.Name = "DataSet1";
             SubClientList = new Dictionary<string, List<string>>();
@@ -205,7 +206,7 @@ namespace FinalUi
             repParams.Add(new ReportParameter("ServiceTaxNumber", Configs.Default.ServiceTaxno??""));
             invoice.BillId = (InvoiceDate.SelectedDate ?? DateTime.Today).ToString("yyyyMMdd");
             invoice.Date = InvoiceDate.SelectedDate ?? DateTime.Today;
-            invoice.BillId = invoice.BillId + DateTime.Now.ToString("hhmm");
+            invoice.BillId = invoice.BillId + DateTime.Now.ToString("hhmmss");
             invoice.Remarks = RemarkBox.Text;
             invoice.TotalAmount = invoice.totalAmount;
             repParams.Add(new ReportParameter("InvoiceNumber", invoice.BillId));
@@ -216,7 +217,10 @@ namespace FinalUi
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (this.option)
+            {
                 printObj();
+                SaveInvoiceButton_Click(null, null);
+            }
             else
             {
                 printMIS();

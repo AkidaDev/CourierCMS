@@ -125,7 +125,7 @@ namespace FinalUi
                         Configs.Default.BillingDatabaseConnectionString = constring.ConnectionString;
                         Configs.Default.Save();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         MessageBox.Show("Unable to connect to server"); isconnected = false; return;
                     }
