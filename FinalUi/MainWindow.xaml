@@ -166,7 +166,7 @@
                                 <DataGridTextColumn IsReadOnly="True" Header="Observed Weight" Binding="{Binding FrWeight}"/>
                                 <DataGridTextColumn IsReadOnly="False" Header="Billed Weight" Binding="{Binding BilledWeight}"/>
                                 <DataGridTextColumn IsReadOnly="True" Header="Cost" Binding="{Binding Amount}"/>
-                                <DataGridTextColumn IsReadOnly="True" Header="Billed Amount" Binding="{Binding FrAmount}"/>
+                                <DataGridTextColumn IsReadOnly="False" Header="Billed Amount" Binding="{Binding FrAmount}"/>
                                 <DataGridTextColumn IsReadOnly="True" Header="Client" Binding="{Binding CustCode}"/>
                                 <DataGridTextColumn IsReadOnly="True" Header="SubClient" Binding="{Binding SubClient}"/>
                                 <DataGridTextColumn IsReadOnly="True" Header="Booking Date" Binding="{Binding BookingDate}"/>
@@ -395,17 +395,17 @@
                                     <ColumnDefinition Width="330*"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <DataGrid TextSearch.TextPath="zoneListReporting" ItemsSource="{Binding}" Name="CostingRuleGrid" SelectionChanged="DataGrid_SelectionChanged_2">
+                                <DataGrid IsReadOnly="False" CellEditEnding="CostingRuleGrid_CellEditEnding" TextSearch.TextPath="zoneListReporting" ItemsSource="{Binding}" Name="CostingRuleGrid" SelectionChanged="DataGrid_SelectionChanged_2">
                                     <DataGrid.Columns>
-                                        <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
-                                        <DataGridTextColumn Header="Range (Kg)" Binding="{Binding range}"/>
-                                        <DataGridTextColumn Header="Dox (Rs)" Binding="{Binding doxAmount}"/>
-                                        <DataGridTextColumn Header="Non-Dox (Rs)" Binding="{Binding ndoxAmount}"/>
-                                        <DataGridTextColumn Header="Type" Binding="{Binding rateTypeReporting}"/>
-                                        <DataGridTextColumn Header="Step (Kg)" Binding="{Binding StepS}"/>
-                                        <DataGridTextColumn Header="DStart (Rs)" Binding="{Binding DoxStartS}"/>
-                                        <DataGridTextColumn Header="NStart (Rs)" Binding="{Binding nDoxStartS}"/>
-                                        <DataGridTextColumn Header="Services" Binding="{Binding serviceCount}"/>
+                                        <DataGridTextColumn IsReadOnly="True" Header="Id" Binding="{Binding Id}"/>
+                                        <DataGridTextColumn IsReadOnly="True" Header="Range (Kg)" Binding="{Binding range}"/>
+                                        <DataGridTextColumn IsReadOnly="False"   Header="Dox (Rs)" Binding="{Binding doxAmount}"/>
+                                        <DataGridTextColumn IsReadOnly="False" Header="Non-Dox (Rs)" Binding="{Binding ndoxAmount}"/>
+                                        <DataGridTextColumn Header="Type" IsReadOnly="True" Binding="{Binding rateTypeReporting}"/>
+                                        <DataGridTextColumn Header="Step (Kg)" IsReadOnly="True" Binding="{Binding StepS}"/>
+                                        <DataGridTextColumn Header="DStart (Rs)" IsReadOnly="True" Binding="{Binding DoxStartS}"/>
+                                        <DataGridTextColumn Header="NStart (Rs)" Binding="{Binding nDoxStartS}" IsReadOnly="True"/>
+                                        <DataGridTextColumn Header="Services" Binding="{Binding serviceCount}" IsReadOnly="True"/>
                                     </DataGrid.Columns>
                                     <!--<DataGrid.RowDetailsTemplate>
                                         <DataTemplate>

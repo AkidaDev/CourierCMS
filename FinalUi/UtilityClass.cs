@@ -327,7 +327,7 @@ namespace FinalUi
                 }
                 if (i != 0) sb.Append(words3[i - 1]);
             }
-            return sb.ToString().TrimEnd();
+            return ((sb.ToString().TrimEnd()) + " Only");
         }
         public static string getZoneCodeFromCityCode()
         {

@@ -51,8 +51,7 @@
         <WrapPanel Name="InvoiceGrid1" Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <cstmcntrl:PandaCheckbox  Name="PreviousDueCheck" Checked="True"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Previous Due .: " VerticalAlignment="Bottom"/>
-            <TextBox Height="22" x:Name="PreviousDueTextBox" Width="100" Padding="10 2 0 0"/>
-            <TextBlock Text="₹" FontSize="14" FontWeight="Bold" Margin="-98 0 0 0" VerticalAlignment="Center"/>
+            <TextBox Height="22" x:Name="PreviousDueTextBox" Width="100" Padding="0 2 0 0"/>
             <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" Fuel Surcharge .: " VerticalAlignment="Bottom"/>
             <TextBox x:Name="TaxBox" Width="50" Height="22" Padding="2 1 0 0"/>

@@ -29,7 +29,6 @@ namespace FinalUi
             BillViewer.LocalReport.DataSources.Add(rs);
             BillViewer.LocalReport.SetParameters(repParams);
             BillViewer.RefreshReport();
-            this.Closed += PrintMainWindow_Closed;
         }
         public PrintMainWindow(ReportDataSource rs, List<ReportParameter> repParams, bool isMis)
         {
@@ -101,7 +100,15 @@ where [BillId] = '" + inv.BillId + @"'
                 repParams.Add(new ReportParameter("TNC", Configs.Default.TNC));
                 repParams.Add(new ReportParameter("TotalAmountString",  String.Format("{0:0.00}",inv.totalAmount.ToString())));
                 repParams.Add(new ReportParameter("TotalAmountInWordString", UtilityClass.NumbersToWords((int)Math.Round(inv.totalAmount))));
-                repParams.Add(new ReportParameter("PreviousDueString",  String.Format("{0:0.00}",inv.PreviousDue)));
+                if (inv.PreviousDue == 0 || inv.PreviousDue == null)
+                {
+                    repParams.Add(new ReportParameter("PreviousDueString", ""));
+                }
+                else
+                {
+                    repParams.Add(new ReportParameter("PreviousDueString", String.Format("{0:0.00}", inv.PreviousDue)));
+                    repParams.Add(new ReportParameter("PreviousDueCheck", "Previous Due .:"));
+                }
                 repParams.Add(new ReportParameter("CompanyName", Configs.Default.CompanyName));
                 repParams.Add(new ReportParameter("ComapnyPhoneNo", Configs.Default.CompanyPhone));
                 repParams.Add(new ReportParameter("CompanyAddress", Configs.Default.CompanyAddress));
@@ -114,8 +121,12 @@ where [BillId] = '" + inv.BillId + @"'
                 repParams.Add(new ReportParameter("ServiceTaxNumber", Configs.Default.ServiceTaxno??""));
            
                // repParams.Add(new ReportParameter("Tinnumber", Configs.Default.Tin));
-
-                repParams.Add(new ReportParameter("InvoiceDate", (DateTime.ParseExact(inv.BillId,"yyyyMMddhhmm",CultureInfo.InvariantCulture)).ToString("dd-MMM-yyyy")));
+                DateTime invDateTime;
+                if (inv.BillId.Length < 14)
+                    invDateTime = DateTime.ParseExact(inv.BillId, "yyyyMMddhhmm", CultureInfo.InvariantCulture);
+                else
+                    invDateTime = DateTime.ParseExact(inv.BillId, "yyyyMMddhhmmss", CultureInfo.InvariantCulture);
+                repParams.Add(new ReportParameter("InvoiceDate", invDateTime.ToString("dd-MMM-yyyy")));
             
                 repParams.Add(new ReportParameter("InvoiceNumber", inv.BillId));
                 BillViewer.LocalReport.ReportPath = "Report1.rdlc";
@@ -123,6 +134,7 @@ where [BillId] = '" + inv.BillId + @"'
                 rs.Name = "DataSet1";
                 BillViewer.LocalReport.DataSources.Add(rs);
                 BillViewer.LocalReport.SetParameters(repParams);
+                BillViewer.LocalReport.DisplayName = inv.ClientCode + "-" + inv.BillId;
                 BillViewer.RefreshReport();
             }
             catch(Exception e)
@@ -131,9 +143,6 @@ where [BillId] = '" + inv.BillId + @"'
                 this.Close();
             }
         }
-        void PrintMainWindow_Closed(object sender, EventArgs e)
-        {
-            MessageBox.Show("Dont forget to save the invoice... (Ignore if done already)");
-        }
+        
     }
 }
