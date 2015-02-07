@@ -72,8 +72,13 @@ namespace FinalUi
             DataGridSource = (CollectionViewSource)FindResource("DataGridDataSource");
             SubClientListSource = (CollectionViewSource)FindResource("SubClientList");
             dataGridSource = data;
-            List<string> clientCodeList = data.Select(x => x.CustCode.Trim()).ToList();
-            ClientListSource.Source = DataSources.ClientCopy.Where(x => clientCodeList.Contains(x.CLCODE.Trim())).ToList();
+            if (option)
+            {
+                List<string> clientCodeList = data.Select(x => x.CustCode.Trim()).ToList();
+                ClientListSource.Source = DataSources.ClientCopy.Where(x => clientCodeList.Contains(x.CLCODE.Trim())).ToList();
+            }
+            else
+                ClientListSource.Source = DataSources.ClientCopy;
             rs = new Microsoft.Reporting.WinForms.ReportDataSource();
             rs.Name = "DataSet1";
             SubClientList = new Dictionary<string, List<string>>();
@@ -176,7 +181,7 @@ namespace FinalUi
             DateTime fromDate = FromDate.SelectedDate ?? DateTime.Today;
             string dateString = fromDate.ToString("dd/MM/yyyy") + " to " + toDate.ToString("dd/MM/yyyy");
             repParams.Add(new ReportParameter("DateString", dateString));
-            string descriptionString = "Total Connsignments: " + source.Count;
+            string descriptionString = "Total Consignments: " + source.Count;
             repParams.Add(new ReportParameter("DescriptionString", descriptionString));
             repParams.Add(new ReportParameter("MainAmountString", String.Format("{0:0.00}", invoice.Basic.ToString())));
             repParams.Add(new ReportParameter("FuelString", TaxBox.Text));

@@ -17,7 +17,7 @@
                     </ListBox>
                 </StackPanel>
             </WrapPanel>
-            <TextBlock Text="465" Name="StatusTextBlock" Visibility="Hidden"   FontSize="72" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline"/>
+            <TextBlock Text="465" Name="StatusTextBlock" Visibility="Hidden"   FontSize="72" FontStyle="Italic" TextDecorations="Underline"/>
             <!--<TextBlock Text="Pincode"  Height="30" Margin="0,70,233,169"/>
         <TextBox Width="100" Name="Pincode" Height="25" Margin="96,40,96,204"></TextBox>
         <TextBlock Text="Area" Height="30" Margin="0,35,233,204"/>

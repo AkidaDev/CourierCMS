@@ -1,6 +1,7 @@
 ﻿<Window x:Class="FinalUi.ViewUnassignedStock"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		Icon="Images/logo.ico"
         Title="Unassigned Stocks" Height="300" Width="300">
     <Window.Resources>
         <CollectionViewSource x:Key="ListSource" CollectionViewType="ListCollectionView"/>

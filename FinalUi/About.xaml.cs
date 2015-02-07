@@ -11,6 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
+using System.Net;
 
 namespace FinalUi
 {
@@ -19,28 +23,86 @@ namespace FinalUi
     /// </summary>
     public partial class About : Window
     {
+        Update update;
+        string file;
+        WebClient webClient;
+        Uri uri;
+        bool startdownload = false;
         public About()
         {
             InitializeComponent();
             this.VortexVer.Text = Configs.Default.ver;
-        }
-        private void update_CheckedUnChecked(object sender, RoutedEventArgs e)
-        {
-            if (this.checkbox_unselected.Visibility == Visibility.Hidden)
+            update = new Update();
+            update.getLatestVer();
+            file = System.IO.Path.GetTempPath() + @"vortex.exe";
+            webClient = new WebClient();
+            string url = "http://api.vortex.sltintegrity.com/download/vortex_" + update.vers.ToString() + ".exe";
+            this.Closed += Updater_Closed;
+            HttpWebResponse response;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            try
             {
-                this.checkbox_selected.Visibility = Visibility.Hidden;
-                this.checkbox_unselected.Visibility = Visibility.Visible;
+                response = request.GetResponse() as HttpWebResponse;
             }
-            else
+            catch (WebException ex)
             {
-                this.checkbox_selected.Visibility = Visibility.Visible;
-                this.checkbox_unselected.Visibility = Visibility.Hidden;
+                response = ex.Response as HttpWebResponse;
             }
+            this.ContentRendered += Updater_ContentRendered;
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                uri = new Uri(url);
+                webClient.DownloadFileCompleted += Completed;
+                webClient.DownloadProgressChanged += ProgressChanged;
+                startdownload = true;
+            }
+            Debug.Print("\n" + file);
         }
-
         private void Close(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+        void Updater_Closed(object sender, EventArgs e)
+        {
+        }
+
+        void Updater_Closing(object sender, CancelEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        void Updater_ContentRendered(object sender, EventArgs e)
+        {
+            if (startdownload)
+            {
+                try
+                {
+                    webClient.DownloadFileAsync(uri, file);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    //MessageBox.Show("Sorry Error Occured. Retry Later" );
+                }
+            }
+            else { MessageBox.Show("Unable to Update vortex"); this.Close(); }
+        }
+        private void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            DownloadProgressbar.Value = e.ProgressPercentage;
+            this.updater.Visibility = Visibility.Visible;
+        }
+        private void Completed(object sender, AsyncCompletedEventArgs e)
+        {
+            if (File.Exists(file))
+            {
+                Process.Start(file);
+                Application.Current.Shutdown();
+            }
+            else
+            {
+                MessageBox.Show("Sorry Error Occured. Retry Later");
+                this.Close();
+            }
         }
     }
 }

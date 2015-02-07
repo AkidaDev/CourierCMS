@@ -17,14 +17,13 @@
                           <TextRun>
                             <Value>Name     .:</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
-                              <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
                             </Style>
                           </TextRun>
                         </TextRuns>
                         <Style>
-                          <TextAlign>Right</TextAlign>
+                          <TextAlign>Left</TextAlign>
                         </Style>
                       </Paragraph>
                     </Paragraphs>
@@ -53,14 +52,13 @@
                           <TextRun>
                             <Value>Address   .:</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
-                              <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
                             </Style>
                           </TextRun>
                         </TextRuns>
                         <Style>
-                          <TextAlign>Right</TextAlign>
+                          <TextAlign>Left</TextAlign>
                         </Style>
                       </Paragraph>
                     </Paragraphs>
@@ -100,8 +98,9 @@
                             <TextRun>
                               <Value>=Parameters!ClientPhoneNo.Value</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
-                                <FontSize>9pt</FontSize>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <Color>DimGray</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -147,8 +146,9 @@
                           <TextRun>
                             <Value>=Parameters!ClientName.Value</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
-                              <FontSize>9pt</FontSize>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
+                              <Color>DimGray</Color>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -184,8 +184,9 @@
                               <TextRun>
                                 <Value>=Parameters!ClientAddress.Value</Value>
                                 <Style>
-                                  <FontFamily>arial</FontFamily>
-                                  <FontSize>9pt</FontSize>
+                                  <FontFamily>verdana</FontFamily>
+                                  <FontSize>8pt</FontSize>
+                                  <Color>DimGray</Color>
                                 </Style>
                               </TextRun>
                             </TextRuns>
@@ -221,7 +222,7 @@
                 </GroupExpressions>
               </Group>
               <TablixHeader>
-                <Size>2.23538cm</Size>
+                <Size>2.31476cm</Size>
                 <CellContents>
                   <Textbox Name="Textbox93">
                     <CanGrow>true</CanGrow>
@@ -232,14 +233,13 @@
                           <TextRun>
                             <Value>Contact No .:</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
-                              <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
                             </Style>
                           </TextRun>
                         </TextRuns>
                         <Style>
-                          <TextAlign>Right</TextAlign>
+                          <TextAlign>Left</TextAlign>
                         </Style>
                       </Paragraph>
                     </Paragraphs>
@@ -250,7 +250,6 @@
                         <Style>None</Style>
                       </Border>
                       <VerticalAlign>Top</VerticalAlign>
-                      <PaddingRight>3pt</PaddingRight>
                     </Style>
                   </Textbox>
                 </CellContents>
@@ -261,7 +260,7 @@
         <Top>0.42082cm</Top>
         <Left>0.29104cm</Left>
         <Height>1.81935cm</Height>
-        <Width>7.58931cm</Width>
+        <Width>7.66869cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -283,18 +282,16 @@
                           <TextRun>
                             <Value>Date</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
-                              <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
                               <TextDecoration>Underline</TextDecoration>
                             </Style>
                           </TextRun>
                           <TextRun>
                             <Value xml:space="preserve"> </Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
-                              <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -338,8 +335,9 @@
                             <TextRun>
                               <Value>=FormatDateTime(CDate(Parameters!FromDate.Value),DateFormat.ShortDate)</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
-                                <FontSize>9pt</FontSize>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <Color>DimGray</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -373,8 +371,9 @@
                             <TextRun>
                               <Value>=FormatDateTime(CDate(Parameters!ToDate.Value),DateFormat.ShortDate)</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
-                                <FontSize>9pt</FontSize>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <Color>DimGray</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -416,8 +415,8 @@
                           <TextRun>
                             <Value />
                             <Style>
-                              <FontFamily>arial</FontFamily>
-                              <FontSize>9pt</FontSize>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -457,9 +456,8 @@
                           <TextRun>
                             <Value>From .: </Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
-                              <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -499,9 +497,8 @@
                           <TextRun>
                             <Value>To  .: </Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
-                              <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -587,9 +584,8 @@
                             <TextRun>
                               <Value>S.No.</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
-                                <FontSize>9pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -601,22 +597,15 @@
                       <rd:DefaultName>Textbox5</rd:DefaultName>
                       <Style>
                         <Border>
+                          <Color>Gray</Color>
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
-                          <Color>Black</Color>
                           <Style>Solid</Style>
                         </TopBorder>
                         <BottomBorder>
-                          <Color>Black</Color>
                           <Style>Solid</Style>
                         </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                        </RightBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -638,9 +627,8 @@
                             <TextRun>
                               <Value>Consignment No</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
-                                <FontSize>9pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -652,25 +640,18 @@
                       <rd:DefaultName>Textbox62</rd:DefaultName>
                       <Style>
                         <Border>
+                          <Color>Gray</Color>
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
-                          <Color>Black</Color>
                           <Style>Solid</Style>
                         </TopBorder>
                         <BottomBorder>
-                          <Color>Black</Color>
                           <Style>Solid</Style>
                         </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                        </RightBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingLeft>20pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
@@ -689,39 +670,31 @@
                             <TextRun>
                               <Value>Destination</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
-                                <FontSize>9pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox67</rd:DefaultName>
                       <Style>
                         <Border>
+                          <Color>Gray</Color>
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
-                          <Color>Black</Color>
                           <Style>Solid</Style>
                         </TopBorder>
                         <BottomBorder>
-                          <Color>Black</Color>
                           <Style>Solid</Style>
                         </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                        </RightBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingLeft>12pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
@@ -740,39 +713,31 @@
                             <TextRun>
                               <Value>Date</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
-                                <FontSize>9pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox70</rd:DefaultName>
                       <Style>
                         <Border>
+                          <Color>Gray</Color>
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
-                          <Color>Black</Color>
                           <Style>Solid</Style>
                         </TopBorder>
                         <BottomBorder>
-                          <Color>Black</Color>
                           <Style>Solid</Style>
                         </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                        </RightBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingLeft>20pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
@@ -791,39 +756,31 @@
                             <TextRun>
                               <Value>Consigner</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
-                                <FontSize>9pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox75</rd:DefaultName>
                       <Style>
                         <Border>
+                          <Color>Gray</Color>
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
-                          <Color>Black</Color>
                           <Style>Solid</Style>
                         </TopBorder>
                         <BottomBorder>
-                          <Color>Black</Color>
                           <Style>Solid</Style>
                         </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                        </RightBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingLeft>20pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
@@ -842,39 +799,31 @@
                             <TextRun>
                               <Value>Consignee</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
-                                <FontSize>9pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox87</rd:DefaultName>
                       <Style>
                         <Border>
+                          <Color>Gray</Color>
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
-                          <Color>Black</Color>
                           <Style>Solid</Style>
                         </TopBorder>
                         <BottomBorder>
-                          <Color>Black</Color>
                           <Style>Solid</Style>
                         </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                        </RightBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingLeft>20pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
@@ -898,8 +847,9 @@
                             <TextRun>
                               <Value />
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <Color>DimGray</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -930,8 +880,9 @@
                             <TextRun>
                               <Value>=Fields!ConnsignmentNo.Value</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <Color>DimGray</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -946,7 +897,7 @@
                           <Style>None</Style>
                         </Border>
                         <VerticalAlign>Middle</VerticalAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingLeft>16pt</PaddingLeft>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -962,13 +913,14 @@
                             <TextRun>
                               <Value>=Fields!CITY_DESC.Value</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <Color>DimGray</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -978,6 +930,7 @@
                           <Style>None</Style>
                         </Border>
                         <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>8pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
@@ -994,13 +947,14 @@
                             <TextRun>
                               <Value>=FormatDateTime(CDate(Fields!BookingDate.Value),DateFormat.ShortDate)</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <Color>DimGray</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -1010,6 +964,7 @@
                           <Style>None</Style>
                         </Border>
                         <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>16pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
@@ -1026,13 +981,14 @@
                             <TextRun>
                               <Value>=Fields!ConsignerName.Value</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <Color>DimGray</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -1042,6 +998,7 @@
                           <Style>None</Style>
                         </Border>
                         <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>16pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
@@ -1058,13 +1015,14 @@
                             <TextRun>
                               <Value>=Fields!ConsigneeName.Value</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <Color>DimGray</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -1074,6 +1032,7 @@
                           <Style>None</Style>
                         </Border>
                         <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>16pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                       </Style>
                     </Textbox>
@@ -1168,8 +1127,7 @@
                 <TextRun>
                   <Value>M.I.S. Report</Value>
                   <Style>
-                    <FontFamily>arial</FontFamily>
-                    <FontWeight>Bold</FontWeight>
+                    <FontFamily>verdana</FontFamily>
                   </Style>
                 </TextRun>
               </TextRuns>

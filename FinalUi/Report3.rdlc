@@ -36,7 +36,7 @@
                 <TextRun>
                   <Value>Delivery Report</Value>
                   <Style>
-                    <FontWeight>Bold</FontWeight>
+                    <FontFamily>verdana</FontFamily>
                   </Style>
                 </TextRun>
               </TextRuns>
@@ -68,7 +68,9 @@
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
+              <Color>DimGray</Color>
               <Style>Solid</Style>
+              <Width>0.5pt</Width>
             </Border>
           </Style>
         </Line>

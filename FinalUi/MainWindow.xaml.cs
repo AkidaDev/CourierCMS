@@ -1196,7 +1196,7 @@ namespace FinalUi
             MessageBoxResult res = MessageBox.Show("Please save your work before Continuing", "Update", MessageBoxButton.OKCancel);
             if (res == MessageBoxResult.OK)
             {
-                Updater up = new Updater();
+                About up = new About();
                 up.Show();
             }
         }
@@ -1250,6 +1250,12 @@ namespace FinalUi
                     e.Cancel = true;
                 }
             }
+        }
+
+        private void ExpenseEntryMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            ExpenseEntry win = new ExpenseEntry();
+            win.Show();
         }
     }
 }

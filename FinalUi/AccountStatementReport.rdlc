@@ -15,10 +15,10 @@
               <Width>0.76041in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.53911in</Width>
+              <Width>1.69161in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.94473in</Width>
+              <Width>4.79223in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.79343in</Width>
@@ -42,9 +42,8 @@
                             <TextRun>
                               <Value>Bill Id</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
-                                <FontSize>9pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -56,6 +55,7 @@
                       <rd:DefaultName>Textbox126</rd:DefaultName>
                       <Style>
                         <Border>
+                          <Color>Gray</Color>
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
@@ -63,6 +63,7 @@
                         </TopBorder>
                         <BottomBorder>
                           <Style>Solid</Style>
+                          <Width>0.5pt</Width>
                         </BottomBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
@@ -85,9 +86,8 @@
                             <TextRun>
                               <Value>Date</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
-                                <FontSize>9pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -99,6 +99,7 @@
                       <rd:DefaultName>Textbox120</rd:DefaultName>
                       <Style>
                         <Border>
+                          <Color>Gray</Color>
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
@@ -106,6 +107,7 @@
                         </TopBorder>
                         <BottomBorder>
                           <Style>Solid</Style>
+                          <Width>0.5pt</Width>
                         </BottomBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
@@ -128,9 +130,8 @@
                             <TextRun>
                               <Value>Type</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
-                                <FontSize>9pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -142,6 +143,7 @@
                       <rd:DefaultName>Textbox1</rd:DefaultName>
                       <Style>
                         <Border>
+                          <Color>Gray</Color>
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
@@ -149,6 +151,7 @@
                         </TopBorder>
                         <BottomBorder>
                           <Style>Solid</Style>
+                          <Width>0.5pt</Width>
                         </BottomBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
@@ -171,9 +174,8 @@
                             <TextRun>
                               <Value>Remark</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
-                                <FontSize>9pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -185,6 +187,7 @@
                       <rd:DefaultName>Textbox50</rd:DefaultName>
                       <Style>
                         <Border>
+                          <Color>Gray</Color>
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
@@ -192,6 +195,7 @@
                         </TopBorder>
                         <BottomBorder>
                           <Style>Solid</Style>
+                          <Width>0.5pt</Width>
                         </BottomBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
@@ -214,9 +218,8 @@
                             <TextRun>
                               <Value>Details</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
-                                <FontSize>9pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -228,6 +231,7 @@
                       <rd:DefaultName>Textbox80</rd:DefaultName>
                       <Style>
                         <Border>
+                          <Color>Gray</Color>
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
@@ -235,6 +239,7 @@
                         </TopBorder>
                         <BottomBorder>
                           <Style>Solid</Style>
+                          <Width>0.5pt</Width>
                         </BottomBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
@@ -257,9 +262,8 @@
                             <TextRun>
                               <Value>  Billed</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
-                                <FontSize>9pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -271,6 +275,7 @@
                       <rd:DefaultName>Textbox128</rd:DefaultName>
                       <Style>
                         <Border>
+                          <Color>Gray</Color>
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
@@ -278,6 +283,7 @@
                         </TopBorder>
                         <BottomBorder>
                           <Style>Solid</Style>
+                          <Width>0.5pt</Width>
                         </BottomBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
@@ -300,9 +306,8 @@
                             <TextRun>
                               <Value> Received</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
-                                <FontSize>9pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -314,6 +319,7 @@
                       <rd:DefaultName>Textbox130</rd:DefaultName>
                       <Style>
                         <Border>
+                          <Color>Gray</Color>
                           <Style>None</Style>
                         </Border>
                         <TopBorder>
@@ -321,7 +327,11 @@
                         </TopBorder>
                         <BottomBorder>
                           <Style>Solid</Style>
+                          <Width>0.5pt</Width>
                         </BottomBorder>
+                        <RightBorder>
+                          <Style>None</Style>
+                        </RightBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -348,8 +358,9 @@
                             <TextRun>
                               <Value>=Fields!Id.Value</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <Color>DimGray</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -384,9 +395,10 @@
                             <TextRun>
                               <Value>=Fields!TransactionDate.Value</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
                                 <Format>dd-MMM-yyyy</Format>
+                                <Color>DimGray</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -421,8 +433,9 @@
                             <TextRun>
                               <Value>=Fields!TypeOfRecord.Value</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <Color>DimGray</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -457,8 +470,9 @@
                             <TextRun>
                               <Value>=Fields!Remark.Value</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <Color>DimGray</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -493,8 +507,9 @@
                             <TextRun>
                               <Value>=Fields!Details.Value</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <Color>DimGray</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -529,9 +544,10 @@
                             <TextRun>
                               <Value>=Fields!PayAmount.Value</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
                                 <Format>#0.00</Format>
+                                <Color>DimGray</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -566,9 +582,10 @@
                             <TextRun>
                               <Value>=Fields!TotalRecievedAmount.Value</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
+                                <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
                                 <Format>#0.00</Format>
+                                <Color>DimGray</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -662,6 +679,7 @@
         <Style>
           <Border>
             <Style>Solid</Style>
+            <Width>0.5pt</Width>
           </Border>
         </Style>
       </Line>
@@ -674,9 +692,8 @@
               <TextRun>
                 <Value>Total Balance .:</Value>
                 <Style>
-                  <FontFamily>arial</FontFamily>
-                  <FontSize>9pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontFamily>verdana</FontFamily>
+                  <FontSize>8pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -710,9 +727,10 @@
               <TextRun>
                 <Value>=Parameters!TotalSum.Value</Value>
                 <Style>
-                  <FontFamily>arial</FontFamily>
-                  <FontSize>9pt</FontSize>
+                  <FontFamily>verdana</FontFamily>
+                  <FontSize>8pt</FontSize>
                   <Format>#0.00</Format>
+                  <Color>DimGray</Color>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -737,18 +755,6 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Line Name="Line4">
-        <Top>1.99007in</Top>
-        <Left>0.08374in</Left>
-        <Height>0in</Height>
-        <Width>11.42624in</Width>
-        <ZIndex>4</ZIndex>
-        <Style>
-          <Border>
-            <Style>Solid</Style>
-          </Border>
-        </Style>
-      </Line>
       <Tablix Name="Tablix7">
         <TablixBody>
           <TablixColumns>
@@ -771,8 +777,9 @@
                             <TextRun>
                               <Value>=MonthName(Month(Today())) &amp; " " &amp; Day(Today()) &amp; ", " &amp; Year(Today())</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
-                                <FontSize>9pt</FontSize>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <Color>DimGray</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -809,7 +816,7 @@
                 </GroupExpressions>
               </Group>
               <TablixHeader>
-                <Size>1.08399cm</Size>
+                <Size>1.61316cm</Size>
                 <CellContents>
                   <Textbox Name="Textbox103">
                     <CanGrow>true</CanGrow>
@@ -820,9 +827,8 @@
                           <TextRun>
                             <Value>Date .:</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
-                              <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -848,8 +854,8 @@
         <Top>0.26899cm</Top>
         <Left>0.51338cm</Left>
         <Height>0.60326cm</Height>
-        <Width>4.53764cm</Width>
-        <ZIndex>5</ZIndex>
+        <Width>5.06681cm</Width>
+        <ZIndex>4</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -866,6 +872,7 @@
                 <Value>STATEMENT TO .:</Value>
                 <Style>
                   <FontFamily>arial</FontFamily>
+                  <FontSize>9pt</FontSize>
                   <FontWeight>SemiBold</FontWeight>
                   <TextDecoration>Underline</TextDecoration>
                   <Color>DimGray</Color>
@@ -880,7 +887,7 @@
         <Left>9.75472cm</Left>
         <Height>0.6cm</Height>
         <Width>3.58479cm</Width>
-        <ZIndex>6</ZIndex>
+        <ZIndex>5</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -900,9 +907,10 @@
               <TextRun>
                 <Value>=Parameters!CompanyName.Value</Value>
                 <Style>
-                  <FontFamily>arial</FontFamily>
-                  <FontWeight>Bold</FontWeight>
+                  <FontFamily>verdana</FontFamily>
+                  <FontSize>9pt</FontSize>
                   <TextDecoration>Underline</TextDecoration>
+                  <Color>DimGray</Color>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -914,7 +922,7 @@
         <Left>0.51338cm</Left>
         <Height>0.62784cm</Height>
         <Width>3.83016cm</Width>
-        <ZIndex>7</ZIndex>
+        <ZIndex>6</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -940,9 +948,8 @@
                           <TextRun>
                             <Value>Address    .:</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
-                              <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -976,9 +983,8 @@
                           <TextRun>
                             <Value>Contact No .:</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
-                              <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -1023,8 +1029,9 @@
                             <TextRun>
                               <Value>=Parameters!CompanyEmail.Value</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
-                                <FontSize>9pt</FontSize>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <Color>DimGray</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1067,8 +1074,9 @@
                           <TextRun>
                             <Value>=Parameters!CompanyAddress.Value</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
-                              <FontSize>9pt</FontSize>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
+                              <Color>DimGray</Color>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -1101,8 +1109,9 @@
                               <TextRun>
                                 <Value>=Parameters!ComapnyPhoneNo.Value</Value>
                                 <Style>
-                                  <FontFamily>arial</FontFamily>
-                                  <FontSize>9pt</FontSize>
+                                  <FontFamily>verdana</FontFamily>
+                                  <FontSize>8pt</FontSize>
+                                  <Color>DimGray</Color>
                                 </Style>
                               </TextRun>
                             </TextRuns>
@@ -1146,9 +1155,8 @@
                           <TextRun>
                             <Value>Email ID   .:</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
-                              <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -1176,7 +1184,7 @@
         <Left>0.54027cm</Left>
         <Height>1.81937cm</Height>
         <Width>7.07874cm</Width>
-        <ZIndex>8</ZIndex>
+        <ZIndex>7</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1198,9 +1206,8 @@
                           <TextRun>
                             <Value>Name     .:</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
-                              <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -1234,9 +1241,8 @@
                           <TextRun>
                             <Value>Address  .:</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
-                              <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -1281,8 +1287,9 @@
                             <TextRun>
                               <Value>=Parameters!ClientPhoneNo.Value</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
-                                <FontSize>9pt</FontSize>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <Color>DimGray</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1325,8 +1332,9 @@
                           <TextRun>
                             <Value>=Parameters!ClientName.Value</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
-                              <FontSize>9pt</FontSize>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
+                              <Color>DimGray</Color>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -1359,8 +1367,9 @@
                               <TextRun>
                                 <Value>=Parameters!ClientAddress.Value</Value>
                                 <Style>
-                                  <FontFamily>arial</FontFamily>
-                                  <FontSize>9pt</FontSize>
+                                  <FontFamily>verdana</FontFamily>
+                                  <FontSize>8pt</FontSize>
+                                  <Color>DimGray</Color>
                                 </Style>
                               </TextRun>
                             </TextRuns>
@@ -1404,9 +1413,8 @@
                           <TextRun>
                             <Value>Contact No .:</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
-                              <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -1434,7 +1442,7 @@
         <Left>9.67596cm</Left>
         <Height>1.81935cm</Height>
         <Width>7.31338cm</Width>
-        <ZIndex>9</ZIndex>
+        <ZIndex>8</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1456,9 +1464,8 @@
                           <TextRun>
                             <Value>From Date .:</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
-                              <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -1503,8 +1510,9 @@
                             <TextRun>
                               <Value>=Parameters!ToDate.Value</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
-                                <FontSize>9pt</FontSize>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <Color>DimGray</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1548,8 +1556,9 @@
                           <TextRun>
                             <Value>=Parameters!FromDate.Value</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
-                              <FontSize>9pt</FontSize>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
+                              <Color>DimGray</Color>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -1592,9 +1601,8 @@
                           <TextRun>
                             <Value>To Date   .:</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
-                              <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -1622,7 +1630,7 @@
         <Left>8.80165in</Left>
         <Height>0.42478in</Height>
         <Width>2.70833in</Width>
-        <ZIndex>10</ZIndex>
+        <ZIndex>9</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1644,9 +1652,8 @@
                           <TextRun>
                             <Value>T.D.S     .:</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
-                              <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -1691,8 +1698,9 @@
                             <TextRun>
                               <Value>=Parameters!TotalDiscount.Value</Value>
                               <Style>
-                                <FontFamily>arial</FontFamily>
-                                <FontSize>9pt</FontSize>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <Color>DimGray</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1733,8 +1741,9 @@
                           <TextRun>
                             <Value>=Parameters!TotalTDS.Value</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
-                              <FontSize>9pt</FontSize>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
+                              <Color>DimGray</Color>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -1782,9 +1791,8 @@
                           <TextRun>
                             <Value>Debit Note .:</Value>
                             <Style>
-                              <FontFamily>arial</FontFamily>
-                              <FontSize>9pt</FontSize>
-                              <FontWeight>Bold</FontWeight>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -1815,7 +1823,7 @@
         <Left>0.08376in</Left>
         <Height>0.47752in</Height>
         <Width>2.88542in</Width>
-        <ZIndex>11</ZIndex>
+        <ZIndex>10</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1827,10 +1835,11 @@
         <Left>0.08374in</Left>
         <Height>0in</Height>
         <Width>11.42622in</Width>
-        <ZIndex>12</ZIndex>
+        <ZIndex>11</ZIndex>
         <Style>
           <Border>
             <Style>Solid</Style>
+            <Width>0.5pt</Width>
           </Border>
         </Style>
       </Line>
@@ -1857,7 +1866,7 @@
   <Width>11.60374in</Width>
   <Page>
     <PageHeader>
-      <Height>0.23751in</Height>
+      <Height>0.2471in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1870,8 +1879,8 @@
                 <TextRun>
                   <Value>Account Statement</Value>
                   <Style>
-                    <FontFamily>arial</FontFamily>
-                    <FontSize>18pt</FontSize>
+                    <FontFamily>verdana</FontFamily>
+                    <FontSize>12pt</FontSize>
                   </Style>
                 </TextRun>
               </TextRuns>
@@ -1915,6 +1924,7 @@
     <TopMargin>4pt</TopMargin>
     <Style>
       <Border>
+        <Color>DimGray</Color>
         <Style>None</Style>
       </Border>
       <TopBorder>

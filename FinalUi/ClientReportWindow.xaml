@@ -44,7 +44,7 @@
                             <GradientStop Color="#A9F5F5F5" Offset="1"/>
                         </LinearGradientBrush>
                     </Grid.Background>
-                    <TextBlock FontWeight="Bold" FontSize="18" Foreground="#FF5B5B5B" FontFamily="Calibri" Text=" Client Due List .:"/>
+                    <TextBlock FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri" Text=" Client Due List .:"/>
                 </Grid>
                 <DataGrid Grid.Row="1" TextSearch.TextPath="PC" Name="ClientDueGrid" DataContext="{StaticResource DueGridDataSource}" ItemsSource="{Binding}">
                     <DataGrid.Columns>
@@ -69,7 +69,7 @@
                             <GradientStop Color="#A9F5F5F5" Offset="1"/>
                         </LinearGradientBrush>
                     </Grid.Background>
-                    <TextBlock FontWeight="Bold" Foreground="#FF5B5B5B" FontSize="18" FontFamily="Calibri" Text=" Unpaid Invoices List .:"/>
+                    <TextBlock Foreground="#FF5B5B5B" FontSize="16" FontFamily="Calibri" Text=" Unpaid Invoices List .:"/>
                 </Grid>
                 <DataGrid TextSearch.TextPath="CustCode" Grid.Row="1" Name="ClientProfitabilityGrid" DataContext="{StaticResource UnpaidInvoiceGridSource}" ItemsSource="{Binding}">
                     <DataGrid.Columns>

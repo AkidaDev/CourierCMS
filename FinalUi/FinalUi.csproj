@@ -30,7 +30,7 @@
     <MinimumRequiredVersion>0.0.1.25</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>12</ApplicationRevision>
+    <ApplicationRevision>17</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -192,9 +192,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BillingData.dbml</DependentUpon>
     </Compile>
-    <Compile Include="BillReportWindow.xaml.cs">
-      <DependentUpon>BillReportWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ClientReportWindow.xaml.cs">
       <DependentUpon>ClientReportWindow.xaml</DependentUpon>
     </Compile>
@@ -209,6 +206,9 @@
     <Compile Include="DataSources.cs" />
     <Compile Include="DeleteConnsignment.xaml.cs">
       <DependentUpon>DeleteConnsignment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExpenseEntry.xaml.cs">
+      <DependentUpon>ExpenseEntry.xaml</DependentUpon>
     </Compile>
     <Compile Include="Extensions.cs" />
     <Compile Include="Filter.cs" />
@@ -243,7 +243,7 @@
     <Compile Include="ManageService.xaml.cs">
       <DependentUpon>ManageService.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MoreLinq\MoreEnumerable.ExceptBy.cs" />
+    <Compile Include="test\MoreLinq\MoreEnumerable.ExceptBy.cs" />
     <Compile Include="PaymentDetailsWindow.xaml.cs">
       <DependentUpon>PaymentDetailsWindow.xaml</DependentUpon>
     </Compile>
@@ -339,15 +339,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="BillReportWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ClientReportWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DeleteConnsignment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExpenseEntry.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -576,7 +576,9 @@
       <DependentUpon>DataSet2.xsd</DependentUpon>
     </None>
     <None Include="Data\VORTEX_ALPHA_TEST_REPORT.xlsx" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\AccountStatement.datasource" />
     <None Include="Properties\DataSources\Assignment.datasource" />
@@ -604,9 +606,7 @@
     <Resource Include="Data\NF037_DSR_TABLE.TXT" />
     <Resource Include="Data\NF037_DSR_TABLE_ITL.TXT" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="test\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>

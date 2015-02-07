@@ -10,9 +10,9 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
-        <Path VerticalAlignment="Bottom" Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Black" Height="4" Width="237"/>
-        <Path Margin="183 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Black" Height="24" Width="24"/>
-        <TextBlock Margin="209 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Enter Details .:"/>
+        <Path VerticalAlignment="Bottom" Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Gray" Height="4" Width="237"/>
+        <Path Margin="183 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Gray" Height="24" Width="24"/>
+        <TextBlock Margin="209 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="16" FontFamily="Calibri" Text="Enter Details .:"/>
         <TextBlock Name="RateCodeNameBox" FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="40,0,0,1"/>
         <Grid Grid.Row="1" Name="Step1Grid">
             <Grid.RowDefinitions>
@@ -24,74 +24,74 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <WrapPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                <Path VerticalAlignment="Bottom" Data="F1M13.502,2.907C10.599,2.907 10.599,3.75 10.599,4.243 10.599,4.243 16.405,4.243 16.405,4.243 16.405,3.75 16.405,2.907 13.502,2.907z M13.502,1C15.895,1 18.341,1.286 18.341,4.243 18.341,4.243 22.791,4.243 22.791,4.243 22.791,4.243 22.792,4.243 22.792,4.243 24.074,4.243 25,5.721 25,6.985 25,6.985 25,19.194 25,19.194 25,20.458 24.075,21 22.792,21 22.792,21 3.437,21 3.437,21 2.154,21 1,20.458 1,19.194 1,19.194 1,6.985 1,6.985 1,5.72 2.154,4.243 3.437,4.243 3.437,4.243 8.663,4.243 8.663,4.243 8.663,1.286 11.109,1 13.502,1z" Fill="Black" Height="22"  Width="26"/>
-                <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="  Weight (in Kg)       " VerticalAlignment="Bottom"/>
-                <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" From .: "/>
+                <Path VerticalAlignment="Bottom" Data="F1M13.502,2.907C10.599,2.907 10.599,3.75 10.599,4.243 10.599,4.243 16.405,4.243 16.405,4.243 16.405,3.75 16.405,2.907 13.502,2.907z M13.502,1C15.895,1 18.341,1.286 18.341,4.243 18.341,4.243 22.791,4.243 22.791,4.243 22.791,4.243 22.792,4.243 22.792,4.243 24.074,4.243 25,5.721 25,6.985 25,6.985 25,19.194 25,19.194 25,20.458 24.075,21 22.792,21 22.792,21 3.437,21 3.437,21 2.154,21 1,20.458 1,19.194 1,19.194 1,6.985 1,6.985 1,5.72 2.154,4.243 3.437,4.243 3.437,4.243 8.663,4.243 8.663,4.243 8.663,1.286 11.109,1 13.502,1z" Fill="Gray" Height="22"  Width="26"/>
+                <TextBlock FontSize="16" FontFamily="Calibri" Text="  Weight (in Kg)       " VerticalAlignment="Bottom"/>
+                <TextBlock FontSize="16" FontFamily="Calibri" Text=" From .: "/>
                 <TextBox Name="FromWeightBox" Width="81" Padding="2 2 0 0" TextChanged="FromWeightBox_TextChanged"/>
-                <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
-                <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text=" To .: "/>
+                <Rectangle Fill="Gray" Height="33" Width="1" Margin="8 -6 15 -5"/>
+                <TextBlock FontSize="16" FontFamily="Calibri" Text=" To .: "/>
                 <TextBox Name="ToWeightBox" Width="81" Padding="2 2 0 0"/>
             </WrapPanel>
             <WrapPanel Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="190 0 0 0">
-                <TextBlock Text=" Type  .:   " FontWeight="Bold" FontSize="18" FontFamily="Calibri"/>
-                <RadioButton Name="WholeRadio" IsChecked="True" Content="Whole" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 40 0" VerticalAlignment="Bottom"/>
-                <RadioButton Name="StepRadio"  Content="Step" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" VerticalAlignment="Bottom"/>
+                <TextBlock Text=" Type  .:   " FontSize="16" FontFamily="Calibri"/>
+                <RadioButton Name="WholeRadio" IsChecked="True" Content="Whole" FontSize="16" FontFamily="Calibri" Padding="5 -3 40 0" VerticalAlignment="Bottom"/>
+                <RadioButton Name="StepRadio"  Content="Step" FontSize="16" FontFamily="Calibri" Padding="5 -3 0 0" VerticalAlignment="Bottom"/>
                 <TextBox Name="StepBox"  Visibility="Collapsed" Width="50" Padding="2 2 0 0"/>
             </WrapPanel>
             <WrapPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                <TextBlock Text="Change  .:   " FontWeight="Bold" FontSize="18" FontFamily="Calibri"/>
-                <RadioButton Name="IncRadio" IsChecked="True" Content="Increasing ↑ " FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 40 0" VerticalAlignment="Bottom"/>
-                <RadioButton Name="DecRadio" Content="Decreasing ↓ " FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 0 0" VerticalAlignment="Bottom"/>
+                <TextBlock Text="Change  .:   " FontSize="16" FontFamily="Calibri"/>
+                <RadioButton Name="IncRadio" IsChecked="True" Content="Increasing ↑ " FontSize="16" FontFamily="Calibri" Padding="5 -3 40 0" VerticalAlignment="Bottom"/>
+                <RadioButton Name="DecRadio" Content="Decreasing ↓ " FontSize="16" FontFamily="Calibri" Padding="5 -3 0 0" VerticalAlignment="Bottom"/>
             </WrapPanel>
             <WrapPanel Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="120 0 0 0">
-                <TextBlock Text="Mode .:   " FontWeight="Bold" FontSize="18" FontFamily="Calibri"/>
-                <RadioButton  Name="PerRadio" IsChecked="True" Content="Percentage % " FontWeight="Bold" FontSize="18" FontFamily="Calibri" Padding="5 -5 40 0" VerticalAlignment="Bottom"/>
-                <RadioButton Content="Amount " FontWeight="Bold" FontSize="18" Name="AmountRadio"  FontFamily="Calibri" Padding="5 -5 0 0" VerticalAlignment="Bottom"/>
+                <TextBlock Text="Mode .:   " FontSize="16" FontFamily="Calibri"/>
+                <RadioButton  Name="PerRadio" IsChecked="True" Content="Percentage % " FontSize="16" FontFamily="Calibri" Padding="5 -3 40 0" VerticalAlignment="Bottom"/>
+                <RadioButton Content="Amount " FontSize="16" Name="AmountRadio"  FontFamily="Calibri" Padding="5 -3 0 0" VerticalAlignment="Bottom"/>
                 <WrapPanel Name="PercentageWrap" Visibility="Visible">
-                    <TextBlock Text=" Value .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="20 0 3 0"/>
+                    <TextBlock Text=" Value .:" FontSize="16" FontFamily="Calibri" Margin="20 0 3 0"/>
                     <TextBox Name="ValueBox"  Visibility="Visible" Width="50" Padding="2 2 0 0"/>
                 </WrapPanel>
                 <WrapPanel Name="AmountWrap" Visibility="Collapsed">
-                    <TextBlock Text=" Amount .:" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Margin="20 0 3 0"/>
+                    <TextBlock Text=" Amount .:" FontSize="16" FontFamily="Calibri" Margin="20 0 3 0"/>
                     <TextBox Name="AmountBox"  Visibility="Visible" Width="50" Padding="2 2 0 0"/>
                 </WrapPanel>
             </WrapPanel>
         </Grid>
         <Grid Name="Step2Grid" Grid.Row="1" VerticalAlignment="Center" Margin="0 5 0 0" Visibility="Collapsed">
             <StackPanel>
-                <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Add Service Groups .:" Margin="60 0 0 0"/>
+                <TextBlock FontSize="16" FontFamily="Calibri" Text="Add Service Groups .:" Margin="60 0 0 0"/>
                 <cstmcntrl:TwinListBox Width="500" Height="150" Name="ServiceGroupTwinBox"/>
             </StackPanel>
         </Grid>
         <Grid Name="Step3Grid" Grid.Row="1" VerticalAlignment="Center" Margin="0 5 0 0" Visibility="Collapsed">
             <StackPanel>
-                <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Add Service .:" Margin="60 0 0 0"/>
+                <TextBlock FontSize="16" FontFamily="Calibri" Text="Add Service .:" Margin="60 0 0 0"/>
                 <cstmcntrl:TwinListBox Width="500" Height="150" Name="ServiceTwinBox"/>
             </StackPanel>
         </Grid>
         <Grid Name="Step4Grid" Grid.Row="1" VerticalAlignment="Center" Margin="0 5 0 0" Visibility="Collapsed">
             <StackPanel>
-                <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Add City .:" Margin="60 0 0 0"/>
+                <TextBlock FontSize="16" FontFamily="Calibri" Text="Add City .:" Margin="60 0 0 0"/>
                 <cstmcntrl:TwinListBox Name="CitiesTwinBox" Width="500" Height="150"/>
             </StackPanel>
         </Grid>
         <Grid Name="Step5Grid" Grid.Row="1" VerticalAlignment="Center" Margin="0 5 0 0" Visibility="Collapsed">
             <StackPanel>
-                <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Add State .:" Margin="60 0 0 0"/>
+                <TextBlock FontSize="16" FontFamily="Calibri" Text="Add State .:" Margin="60 0 0 0"/>
                 <cstmcntrl:TwinListBox Name="StateTwinBox" Width="500" Height="150"/>
             </StackPanel>
         </Grid>
         <Grid Name="Step6Grid" Grid.Row="1" VerticalAlignment="Center" Margin="0 5 0 0" Visibility="Collapsed">
             <StackPanel>
-                <TextBlock FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Add Zone .:" Margin="60 0 0 0"/>
+                <TextBlock FontSize="16" FontFamily="Calibri" Text="Add Zone .:" Margin="60 0 0 0"/>
                 <cstmcntrl:TwinListBox Name="ZoneTwinBox" Width="500" Height="150"/>
             </StackPanel>
         </Grid>
         <Grid Name="Step7Grid" Grid.Row="1" VerticalAlignment="Center" Margin="0 5 0 0" Visibility="Collapsed">
             <StackPanel>
-                <TextBlock Foreground="Black" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Details of Rules .:" Margin="40 0 0 0"/>
+                <TextBlock Foreground="Black" FontSize="16" FontFamily="Calibri" Text="Details of Rules .:" Margin="40 0 0 0"/>
                 <TextBox BorderThickness="2" Height="100" Width="528" Padding="3 3 0 0"/>
-                <TextBlock Foreground="Black" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Remark .:" Margin="40 10 0 0"/>
+                <TextBlock Foreground="Black" FontSize="16" FontFamily="Calibri" Text="Remark .:" Margin="40 10 0 0"/>
                 <TextBox Name="RemarkBox" BorderThickness="2" Height="26" Width="528" Padding="3 3 0 0"/>
             </StackPanel>
         </Grid>
@@ -104,7 +104,7 @@
                 <Button.Content>
                     <WrapPanel Margin="6 1">
                         <Path x:Name="AddFilter" Data="F1M13.455,5.818C13.455,5.818 13.455,9.636 13.455,9.636 13.455,9.636 9.636,9.636 9.636,9.636 9.636,9.636 9.636,11.545 9.636,11.545 9.636,11.545 13.455,11.545 13.455,11.545 13.455,11.545 13.455,15.364 13.455,15.364 13.455,15.364 15.364,15.364 15.364,15.364 15.364,15.364 15.364,11.545 15.364,11.545 15.364,11.545 19.182,11.545 19.182,11.545 19.182,11.545 19.182,9.636 19.182,9.636 19.182,9.636 15.364,9.636 15.364,9.636 15.364,9.636 15.364,5.818 15.364,5.818 15.364,5.818 13.455,5.818 13.455,5.818z M2,5.818C2,5.818 3.909,5.818 3.909,5.818 3.909,5.818 3.909,21.091 3.909,21.091 3.909,21.091 19.182,21.091 19.182,21.091 19.182,21.091 19.182,23 19.182,23 19.182,23 3.909,23 3.909,23 2.859,23 2,22.141 2,21.091 2,21.091 2,5.818 2,5.818z M7.727,2C7.727,2 21.091,2 21.091,2 22.141,2 23,2.859 23,3.909 23,3.909 23,17.273 23,17.273 23,18.323 22.141,19.182 21.091,19.182 21.091,19.182 7.727,19.182 7.727,19.182 6.677,19.182 5.818,18.323 5.818,17.273 5.818,17.273 5.818,3.909 5.818,3.909 5.818,2.859 6.677,2 7.727,2z" Fill="Black" Height="18" Width="18" Stretch="Fill"/>
-                        <TextBlock FontWeight="Bold" Name="AddRuleButtonBox" FontSize="16" FontFamily="Calibri" Text=" Add Rule"/>
+                        <TextBlock Name="AddRuleButtonBox" FontSize="16" FontFamily="Calibri" Text=" Add Rule"/>
                     </WrapPanel>
                 </Button.Content>
             </Button>
@@ -112,15 +112,15 @@
                 <Button.Content>
                     <WrapPanel Margin="6 1">
                         <Path x:Name="next" Data="F1M24.383,14.132C24.383,14.132 32.794,22.624 32.794,22.624 32.794,22.624 24.383,31.117 24.383,31.117 24.383,31.117 24.383,25.809 24.383,25.809 24.383,25.809 11.765,25.809 11.765,25.809 11.765,25.809 11.765,19.44 11.765,19.44 11.765,19.44 24.383,19.44 24.383,19.44 24.383,19.44 24.383,14.132 24.383,14.132z M22.25,6.05C13.34,6.05 6.05,13.34 6.05,22.25 6.05,31.16 13.34,38.45 22.25,38.45 31.16,38.45 38.45,31.16 38.45,22.25 38.45,13.34 31.16,6.05 22.25,6.05z M22.25,2C33.387,2 42.5,11.112 42.5,22.25 42.5,33.387 33.387,42.5 22.25,42.5 11.112,42.5 2,33.387 2,22.25 2,11.112 11.112,2 22.25,2z" Fill="Black" Height="20" Width="20" Stretch="Fill"/>
-                        <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text=" Next"/>
+                        <TextBlock FontSize="16" FontFamily="Calibri" Text=" Next"/>
                     </WrapPanel>
                 </Button.Content>
             </Button>
-            <TextBlock Grid.Row="2" Name="StepBlock" FontWeight="Bold" FontSize="18" FontFamily="Calibri" Text="Step 1 of 7" Margin="30 8 0 0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="2" Name="StepBlock" FontSize="16" FontFamily="Calibri" Text="Step 1 of 7" Margin="30 8 0 0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
             <Button Name="Previous" Click="Previous_Click" VerticalAlignment="Top" HorizontalAlignment="Right">
                 <WrapPanel Margin="6 1">
                     <Path Data="F1M11.289,7.89C11.289,7.89 11.289,10.904 11.289,10.904 11.289,10.904 18.454,10.904 18.454,10.904 18.454,10.904 18.454,14.521 18.454,14.521 18.454,14.521 11.289,14.521 11.289,14.521 11.289,14.521 11.289,17.535 11.289,17.535 11.289,17.535 6.512,12.713 6.512,12.713 6.512,12.713 11.289,7.89 11.289,7.89z M12.5,3.3C7.44,3.3 3.3,7.44 3.3,12.5 3.3,17.56 7.44,21.7 12.5,21.7 17.56,21.7 21.7,17.56 21.7,12.5 21.7,7.44 17.56,3.3 12.5,3.3z M12.5,1C18.825,1 24,6.175 24,12.5 24,18.825 18.825,24 12.5,24 6.175,24 1,18.825 1,12.5 1,6.175 6.175,1 12.5,1z" Fill="Black" Height="20" Width="20" Stretch="Fill"/>
-                    <TextBlock FontWeight="Bold" FontSize="16" FontFamily="Calibri" Text=" Previous"/>
+                    <TextBlock FontSize="16" FontFamily="Calibri" Text=" Previous"/>
                 </WrapPanel>
             </Button>
         </Grid>
@@ -128,7 +128,7 @@
             <Button.Content>
                 <WrapPanel Margin="7 4">
                     <Path x:Name="help" Data="F1M10.9,17.5C10.9,17.5 10.9,19.7 10.9,19.7 10.9,19.7 13.1,19.7 13.1,19.7 13.1,19.7 13.1,17.5 13.1,17.5 13.1,17.5 10.9,17.5 10.9,17.5z M12,4.3C9.58,4.3 7.6,6.28 7.6,8.7 7.6,8.7 9.8,8.7 9.8,8.7 9.8,7.49 10.79,6.5 12,6.5 13.21,6.5 14.2,7.49 14.2,8.7 14.2,9.36 13.98,9.91 13.54,10.24 13.54,10.24 12.22,11.67 12.22,11.67 11.34,12.44 10.9,13.54 10.9,14.75 10.9,14.75 10.9,15.3 10.9,15.3 10.9,15.3 13.1,15.3 13.1,15.3 13.1,13.65 13.54,12.99 14.42,12.22 14.42,12.22 15.41,11.23 15.41,11.23 15.96,10.57 16.4,9.69 16.4,8.7 16.4,6.28 14.42,4.3 12,4.3z M12,1C18.05,1 23,5.95 23,12 23,18.05 18.05,23 12,23 5.95,23 1,18.05 1,12 1,5.95 5.95,1 12,1z" Fill="#FF5061B0" Height="18" Width="18" Stretch="Fill"/>
-                    <TextBlock FontWeight="Bold" FontSize="15" FontFamily="Calibri" Text=" Help"/>
+                    <TextBlock FontSize="15" FontFamily="Calibri" Text=" Help"/>
                 </WrapPanel>
             </Button.Content>
         </Button>
