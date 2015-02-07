@@ -1251,5 +1251,11 @@ namespace FinalUi
                 }
             }
         }
+
+        private void ExpenseEntryMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            ExpenseEntry win = new ExpenseEntry();
+            win.Show();
+        }
     }
 }

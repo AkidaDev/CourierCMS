@@ -47,7 +47,7 @@ namespace FinalUi
             InvoiceDate.SelectedDate = DateTime.Today;
             printObj(client);
         }
-        public PrintWindow(List<RuntimeData> data, DateTime toDate, DateTime fromDate, bool option=true)
+        public PrintWindow(List<RuntimeData> data, DateTime toDate, DateTime fromDate, bool option = true)
         {
             InitializeComponent();
             this.option = option;
@@ -72,8 +72,13 @@ namespace FinalUi
             DataGridSource = (CollectionViewSource)FindResource("DataGridDataSource");
             SubClientListSource = (CollectionViewSource)FindResource("SubClientList");
             dataGridSource = data;
-            List<string> clientCodeList = data.Select(x => x.CustCode.Trim()).ToList();
-            ClientListSource.Source = DataSources.ClientCopy.Where(x => clientCodeList.Contains(x.CLCODE.Trim())).ToList();
+            if (option)
+            {
+                List<string> clientCodeList = data.Select(x => x.CustCode.Trim()).ToList();
+                ClientListSource.Source = DataSources.ClientCopy.Where(x => clientCodeList.Contains(x.CLCODE.Trim())).ToList();
+            }
+            else
+                ClientListSource.Source = DataSources.ClientCopy;
             rs = new Microsoft.Reporting.WinForms.ReportDataSource();
             rs.Name = "DataSet1";
             SubClientList = new Dictionary<string, List<string>>();
@@ -203,7 +208,7 @@ namespace FinalUi
             repParams.Add(new ReportParameter("ClientPhoneNo", curClient.CONTACTNO));
             repParams.Add(new ReportParameter("TinNumber", Configs.Default.Tin ?? ""));
             repParams.Add(new ReportParameter("TNC", Configs.Default.TNC));
-            repParams.Add(new ReportParameter("ServiceTaxNumber", Configs.Default.ServiceTaxno??""));
+            repParams.Add(new ReportParameter("ServiceTaxNumber", Configs.Default.ServiceTaxno ?? ""));
             invoice.BillId = (InvoiceDate.SelectedDate ?? DateTime.Today).ToString("yyyyMMdd");
             invoice.Date = InvoiceDate.SelectedDate ?? DateTime.Today;
             invoice.BillId = invoice.BillId + DateTime.Now.ToString("hhmmss");
@@ -313,7 +318,7 @@ namespace FinalUi
                 }
             }
         }
-        
+
 
     }
 }
