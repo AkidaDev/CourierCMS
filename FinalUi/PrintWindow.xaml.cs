@@ -47,7 +47,7 @@ namespace FinalUi
             InvoiceDate.SelectedDate = DateTime.Today;
             printObj(client);
         }
-        public PrintWindow(List<RuntimeData> data, DateTime toDate, DateTime fromDate, bool option=true)
+        public PrintWindow(List<RuntimeData> data, DateTime toDate, DateTime fromDate, bool option = true)
         {
             InitializeComponent();
             this.option = option;
@@ -86,6 +86,9 @@ namespace FinalUi
                     SubClientList.Add(x, subClients);
                 });
             }
+            Client selectedClient = ClientList.SelectedItem as Client;
+            if (selectedClient != null)
+                SubClientListSource.Source = SubClientList.ContainsKey(selectedClient.CLCODE) ? SubClientList[selectedClient.CLCODE] : new List<string>();
             rs.Value = dataGridSource;
         }
         public void RefreshDataGridSource()
@@ -203,7 +206,7 @@ namespace FinalUi
             repParams.Add(new ReportParameter("ClientPhoneNo", curClient.CONTACTNO));
             repParams.Add(new ReportParameter("TinNumber", Configs.Default.Tin ?? ""));
             repParams.Add(new ReportParameter("TNC", Configs.Default.TNC));
-            repParams.Add(new ReportParameter("ServiceTaxNumber", Configs.Default.ServiceTaxno??""));
+            repParams.Add(new ReportParameter("ServiceTaxNumber", Configs.Default.ServiceTaxno ?? ""));
             invoice.BillId = (InvoiceDate.SelectedDate ?? DateTime.Today).ToString("yyyyMMdd");
             invoice.Date = InvoiceDate.SelectedDate ?? DateTime.Today;
             invoice.BillId = invoice.BillId + DateTime.Now.ToString("hhmmss");
@@ -313,7 +316,7 @@ namespace FinalUi
                 }
             }
         }
-        
+
 
     }
 }

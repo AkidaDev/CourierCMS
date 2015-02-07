@@ -87,6 +87,9 @@ namespace FinalUi
     partial void InsertUser_permission(User_permission instance);
     partial void UpdateUser_permission(User_permission instance);
     partial void DeleteUser_permission(User_permission instance);
+    partial void InsertExpenseData(ExpenseData instance);
+    partial void UpdateExpenseData(ExpenseData instance);
+    partial void DeleteExpenseData(ExpenseData instance);
     #endregion
 		
 	
@@ -336,6 +339,14 @@ namespace FinalUi
 			get
 			{
 				return this.GetTable<StockAssignmentView>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ExpenseData> ExpenseDatas
+		{
+			get
+			{
+				return this.GetTable<ExpenseData>();
 			}
 		}
 		
@@ -9426,6 +9437,140 @@ namespace FinalUi
 				{
 					this._Description = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ExpenseData")]
+	public partial class ExpenseData : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _ExpenseType;
+		
+		private decimal _Amount;
+		
+		private System.DateTime _Date;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnExpenseTypeChanging(string value);
+    partial void OnExpenseTypeChanged();
+    partial void OnAmountChanging(decimal value);
+    partial void OnAmountChanged();
+    partial void OnDateChanging(System.DateTime value);
+    partial void OnDateChanged();
+    #endregion
+		
+		public ExpenseData()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExpenseType", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string ExpenseType
+		{
+			get
+			{
+				return this._ExpenseType;
+			}
+			set
+			{
+				if ((this._ExpenseType != value))
+				{
+					this.OnExpenseTypeChanging(value);
+					this.SendPropertyChanging();
+					this._ExpenseType = value;
+					this.SendPropertyChanged("ExpenseType");
+					this.OnExpenseTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Decimal(18,2) NOT NULL")]
+		public decimal Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this.OnAmountChanging(value);
+					this.SendPropertyChanging();
+					this._Amount = value;
+					this.SendPropertyChanged("Amount");
+					this.OnAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date NOT NULL")]
+		public System.DateTime Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
