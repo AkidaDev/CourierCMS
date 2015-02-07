@@ -178,7 +178,7 @@ namespace FinalUi
             DateTime fromDate = FromDate.SelectedDate ?? DateTime.Today;
             string dateString = fromDate.ToString("dd/MM/yyyy") + " to " + toDate.ToString("dd/MM/yyyy");
             repParams.Add(new ReportParameter("DateString", dateString));
-            string descriptionString = "Total Connsignments: " + source.Count;
+            string descriptionString = "Total Consignments: " + source.Count;
             repParams.Add(new ReportParameter("DescriptionString", descriptionString));
             repParams.Add(new ReportParameter("MainAmountString", String.Format("{0:0.00}", invoice.Basic.ToString())));
             repParams.Add(new ReportParameter("FuelString", TaxBox.Text));

@@ -148,7 +148,7 @@
             <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Gray" Height="33" Width="3" Margin="8 -6 15 -5"/>
             <TextBlock FontSize="16" FontFamily="Calibri" Text="Slip Cost .: " VerticalAlignment="Bottom"/>
             <TextBlock Text=" ₹ "  FontSize="16" VerticalAlignment="Bottom"/>
-            <TextBlock FontSize="16" FontFamily="Calibri" Name="SlipCost" Text="" Height="23" VerticalAlignment="Bottom"/>
+            <TextBlock FontSize="16" FontFamily="Calibri" Name="SlipCost" Text="" VerticalAlignment="Bottom"/>
         </WrapPanel>
         <Button ToolTip="Next &amp; Save" Click="SubmitSanitizingDetails_Click" KeyUp="Button_KeyUp" Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="-100 0 0 0">
             <WrapPanel Margin="6 1">

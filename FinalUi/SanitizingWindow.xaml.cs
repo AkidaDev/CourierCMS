@@ -454,6 +454,7 @@ namespace FinalUi
             SlipCost.Text = data.Stock;
             if (data.Stock == "N/A")
             {
+                SlipCost.Text = "  N/A  ";
                 SlipCost.Background = new SolidColorBrush(Colors.Red);
             }
             else
