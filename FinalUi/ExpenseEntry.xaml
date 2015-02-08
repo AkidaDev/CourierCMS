@@ -54,11 +54,11 @@
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="1" Background="#c9FFFFF3">
                 <TextBlock FontSize="16" FontFamily="Calibri" Text=" Expense Type .: " VerticalAlignment="Bottom" Margin="10 50 0 0"/>
-                <ComboBox IsEditable="True" Name="ExpenseTypeComboBox" ItemsSource="{Binding}" DataContext="{StaticResource ExpenseTypesDataContext}" Width="160" Padding="2" Margin="20 0 0 0"/>
+                <ComboBox IsEditable="True" Name="ExpenseTypeComboBox" ItemsSource="{Binding}" DataContext="{StaticResource ExpenseTypesDataContext}" Width="160" Padding="2" Margin="20 0 0 0" Height="24"/>
                 <TextBlock FontSize="16" FontFamily="Calibri" Text=" Amount .: " VerticalAlignment="Bottom" Margin="10 10 0 0"/>
-                <TextBox Width="160" Padding="2" Name="AmountBox" Margin="20 0 0 0"/>
+                <TextBox Width="160" Padding="2" Name="AmountBox" Margin="20 0 0 0" Height="24"/>
                 <TextBlock FontSize="16" FontFamily="Calibri" Text=" Remark .: " VerticalAlignment="Bottom" Margin="10 10 0 0"/>
-                <TextBox Name="RemarkTextBox" Width="160" Padding="2" Margin="20 0 0 0"/>
+                <TextBox Name="RemarkTextBox" Width="160" Padding="2" Margin="20 0 0 0" Height="24"/>
                 <Button Width="90" Padding="2" Content="Save &amp; Add" VerticalAlignment="Bottom" Name="AddExpenseButton" Click="AddExpenseButton_Click" Margin="50 20"/>
             </StackPanel>
             <DataGrid ItemsSource="{Binding}" CellEditEnding="ExpenseDataGrid_CellEditEnding" Name="ExpenseDataGrid" LoadingRow="DataGrid_LoadingRow" RowHeaderWidth="35">

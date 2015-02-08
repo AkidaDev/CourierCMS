@@ -87,7 +87,7 @@ where [BillId] = '" + inv.BillId + @"'
                 DateTime ToDate = data.Max(x => x.BookingDate);
                 string dateString = FromDate.ToString("dd/MM/yyyy") + " to " + ToDate.ToString("dd/MM/yyyy");
                 repParams.Add(new ReportParameter("DateString", dateString));
-                string descriptionString = "Total Connsignments: " + source.Count;
+                string descriptionString = "Total Consignments: " + source.Count;
                 repParams.Add(new ReportParameter("DescriptionString", descriptionString));
                 repParams.Add(new ReportParameter("MainAmountString", String.Format("{0:0.00}",inv.Basic.ToString())));
                 repParams.Add(new ReportParameter("DiscountPString", String.Format("{0:0.00}",inv.Discount)));

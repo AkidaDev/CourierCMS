@@ -5,7 +5,7 @@
     <Grid>
         <StackPanel>
             <Image Source="Images\Shape 21.png" Height="250" Width="250"/>
-            <TextBlock Text="Loading" HorizontalAlignment="Center" FontSize="72" Foreground="#FF6666CC"/>
+            <TextBlock Text="Loading..." HorizontalAlignment="Center" FontSize="60" Foreground="#FF6666CC"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -4,8 +4,7 @@
         xmlns:cstmcntrl="clr-namespace:CustomControls;assembly=CustomControls"
 		Icon="Images/logo.ico" Height="300" Width="600"
         Title="Service Grouping" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
-
-    <Grid><!--BackColor-->
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="40"/>
@@ -17,8 +16,8 @@
         <TextBlock Margin="184 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="16" FontFamily="Calibri" Text="Enter Details .:"/>
         <WrapPanel Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <Path Data="F1M2.375,13.893C2.375,13.893 12,18.643 12,18.643 12,18.643 21.625,13.893 21.625,13.893 21.625,13.893 23,14.571 23,14.571 23,14.571 12,20 12,20 12,20 1,14.571 1,14.571 1,14.571 2.375,13.893 2.375,13.893z M2.375,11.179C2.375,11.179 12,15.929 12,15.929 12,15.929 21.625,11.179 21.625,11.179 21.625,11.179 23,11.857 23,11.857 23,11.857 12,17.286 12,17.286 12,17.286 1,11.857 1,11.857 1,11.857 2.375,11.179 2.375,11.179z M2.375,8.464C2.375,8.464 12,13.214 12,13.214 12,13.214 21.625,8.464 21.625,8.464 21.625,8.464 23,9.143 23,9.143 23,9.143 12,14.571 12,14.571 12,14.571 1,9.143 1,9.143 1,9.143 2.375,8.464 2.375,8.464z M12,1C12,1 23,6.429 23,6.429 23,6.429 12,11.857 12,11.857 12,11.857 1,6.429 1,6.429 1,6.429 12,1 12,1z" Fill="Gray" Height="21" Width="24"/>
-            <TextBlock  Text=" Group Name .: " FontSize="16" FontFamily="Calibri" VerticalAlignment="Bottom"/>
-            <TextBox Width="300" Padding="2 2 0 0"/>
+            <TextBlock  Text=" Group Name .: " FontSize="16" FontFamily="Calibri" VerticalAlignment="Center"/>
+            <TextBox Width="300" Padding="2" Height="24"/>
         </WrapPanel>
         <cstmcntrl:TwinListBox Grid.Row="2" Width="500" Height="150" Name="ServiceTwinBox" VerticalAlignment="Bottom" Margin="0 0 0 6"/>
         <Button Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Top" Name="SubmitButton" Click="SubmitButton_Click" Margin="0 0 15 0">

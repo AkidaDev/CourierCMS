@@ -92,7 +92,7 @@ namespace FinalUi
             if (!double.TryParse(EndPriceValue.Text, out temp))
                 errorMsg += "Enter ending price value correctly \n";
             if (!((List<string>)EndConnoList.Source).Contains(EndConnNo.Text) && !((List<string>)StartConnNoList.Source).Contains(StartConnNo.Text))
-                errorMsg += "Enter the connsignments correctly \n";
+                errorMsg += "Enter the consignments correctly \n";
             if (ToDate.SelectedDate < FromDate.SelectedDate)
                 errorMsg += "Enter the date correctly \n";
             if (!double.TryParse(StartWeightValue.Text, out temp))

@@ -8,11 +8,10 @@
         <CollectionViewSource x:Key="CostingRuleList" CollectionViewType="{x:Type ListCollectionView}"/>
         <CollectionViewSource x:Key="ServiceRuleList" CollectionViewType="{x:Type ListCollectionView}"/>
     </Window.Resources>
-
-    <Grid><!--BackColor-->
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="33"/>
-            <RowDefinition Height="35"/>
+            <RowDefinition Height="36"/>
             <RowDefinition Height="35"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="45"/>
@@ -22,8 +21,8 @@
         <TextBlock FontSize="16" FontFamily="Calibri" Text="Client .:" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="-270 0 0 0"/>
         <TextBlock Name="ClientBox" Height="18" Width="276" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="70 0 0 0"/>
         <WrapPanel Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-            <TextBlock FontSize="16" FontFamily="Calibri" Text="Copy Rules of Client .: " VerticalAlignment="Bottom"/>
-            <ComboBox Name="ClientComboBox" IsEditable="True" Width="390" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{Binding}" DataContext="{StaticResource ClinetViewList}"  DisplayMemberPath="NameAndCode">
+            <TextBlock FontSize="16" FontFamily="Calibri" Text="Copy Rules of Client .: " VerticalAlignment="Center"/>
+            <ComboBox Name="ClientComboBox" IsEditable="True" Width="390" Height="24" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{Binding}" DataContext="{StaticResource ClinetViewList}"  DisplayMemberPath="NameAndCode">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
