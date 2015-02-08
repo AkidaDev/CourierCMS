@@ -10,13 +10,13 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="33"/>
-            <RowDefinition Height="170"/>
+            <RowDefinition Height="160"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Rectangle VerticalAlignment="Bottom" Fill="Gray" Height="1" Margin="182,0"/>
         <Path Margin="160 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Gray" Height="24" Width="24"/>
         <TextBlock Margin="185 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="16" FontFamily="Calibri" Text="Enter Details .:" Height="20" Width="94"/>
-        <StackPanel Grid.Row="1" Margin="0 30 0 0" Grid.RowSpan="2">
+        <StackPanel Grid.Row="1" Margin="0 20 0 0">
             <WrapPanel HorizontalAlignment="Left" Margin="60 0 0 0">
                 <TextBlock Text=" Payment Ref No. .: " FontSize="16" FontFamily="Calibri" VerticalAlignment="Center"/>
                 <TextBox Name="PaymentRefNoBox" Width="180" Padding="2" Height="24"/>
@@ -45,7 +45,7 @@
             </WrapPanel>
         </StackPanel>
         <StackPanel Grid.Row="2">
-            <Rectangle Fill="Black" Height="1" Width="405" HorizontalAlignment="Left" Margin="50 5 0 0"/>
+            <Rectangle Fill="Gray" Height="1" Width="405" HorizontalAlignment="Left" Margin="50 5 0 0"/>
             <WrapPanel HorizontalAlignment="Left" Margin="60 10 0 0">
                 <Path Data="F1M18.387,5.167C17.681,5.167 17.109,5.764 17.109,6.5 17.109,7.235 17.681,7.832 18.387,7.832 19.092,7.832 19.664,7.235 19.664,6.5 19.664,5.764 19.092,5.167 18.387,5.167z M2.488,1C2.488,1 17.444,1 17.444,1 17.666,1 17.877,1.051 18.067,1.142 18.25,1.205 18.423,1.312 18.569,1.465 18.569,1.465 22.504,5.567 22.504,5.567 23,6.085 23,6.924 22.504,7.442 22.504,7.442 18.64,11.47 18.64,11.47 18.53,11.585 18.405,11.674 18.271,11.738 18.034,11.904 17.75,12 17.444,12 17.444,12 2.488,12 2.488,12 1.666,12 1,11.305 1,10.448 1,10.448 1,2.552 1,2.552 1,1.695 1.666,1 2.488,1z" Fill="Gray" Height="13" Width="24"/>
                 <TextBlock Text=" Remarks .: " FontSize="16" FontFamily="Calibri" VerticalAlignment="Center"/>
@@ -68,7 +68,7 @@
                 </WrapPanel>
             </StackPanel>
         </StackPanel>
-        <Button Grid.Row="2" Name="SubmitButton" Click="SubmitButton_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 40 15" Height="26" Width="72">
+        <Button Grid.Row="2" Name="SubmitButton" Click="SubmitButton_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 40 15">
             <WrapPanel Margin="6 1">
                 <Path x:Name="done" Data="F1M10.909,23C10.909,23 2,14.224 2,14.224 2,14.224 4.227,12.03 4.227,12.03 4.227,12.03 10.909,18.612 10.909,18.612 10.909,18.612 27.773,2 27.773,2 27.773,2 30,4.194 30,4.194 30,4.194 10.909,23 10.909,23z" Fill="Black" Height="17" Width="23" Stretch="Fill"/>
                 <TextBlock x:Name="Save" FontSize="16" FontFamily="Calibri" Text=" Save"/>

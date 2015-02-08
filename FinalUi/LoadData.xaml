@@ -25,7 +25,7 @@
             <TextBlock Text="To .: " Margin="20 0 0 0" VerticalAlignment="Center" FontSize="14" FontFamily="calbri"/>
             <DatePicker Name="EndLoadDate" Width="120" BorderBrush="DarkGray" Padding="2" Background="White" Height="24"/>
         </WrapPanel>
-        <Rectangle Grid.Row="2" Fill="Black" Height="1" Stretch="Fill" Width="300" VerticalAlignment="Bottom"/>
+        <Rectangle Grid.Row="2" Fill="Gray" Height="1" Stretch="Fill" Width="300" VerticalAlignment="Bottom"/>
         <RadioButton Grid.Row="3" Name="ConnRadio" GroupName="SelectedButton" VerticalAlignment="Bottom" Margin="35 0 0 0">
             <WrapPanel Margin="3 -10 0 0">
                 <Path Data="F1M2.467,18.037C2.467,18.037 2.467,19.519 2.467,19.519 2.467,19.519 6.933,19.519 6.933,19.519 6.933,19.519 6.933,18.037 6.933,18.037 6.933,18.037 2.467,18.037 2.467,18.037z M1,15.815C1,15.815 23,15.815 23,15.815 23,15.815 23,21 23,21 23,21 1,21 1,21 1,21 1,15.815 1,15.815z M2.467,10.63C2.467,10.63 2.456,12.111 2.456,12.111 2.456,12.111 6.922,12.111 6.922,12.111 6.922,12.111 6.933,10.63 6.933,10.63 6.933,10.63 2.467,10.63 2.467,10.63z M1,8.407C1,8.407 23,8.407 23,8.407 23,8.407 23,13.593 23,13.593 23,13.593 1,13.593 1,13.593 1,13.593 1,8.407 1,8.407z M2.467,3.222C2.467,3.222 2.467,4.715 2.467,4.715 2.467,4.715 6.933,4.715 6.933,4.715 6.933,4.715 6.933,3.222 6.933,3.222 6.933,3.222 2.467,3.222 2.467,3.222z M1,1C1,1 23,1 23,1 23,1 23,6.185 23,6.185 23,6.185 1,6.185 1,6.185 1,6.185 1,1 1,1z" Fill="Gray" Height="23" Width="24" VerticalAlignment="Bottom"/>
