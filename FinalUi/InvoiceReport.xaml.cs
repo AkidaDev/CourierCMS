@@ -129,37 +129,43 @@ namespace FinalUi
             bgWorker.ReportProgress((int)progress);
             count = Results.Count();
             ctr = 0;
+            db.UpdateBillingAmount();
             foreach (InvoiceAnalyzeResult result in Results)
             {
                 TransactionCityView trans = Transactions.SingleOrDefault(x => x.ConnsignmentNo == result.ConnNo);
                 result.MisMatchDesc = "";
-                if (trans == null)
+                try
                 {
-                    result.hasError = true;
-                    result.MisMatchDesc = "Transaction not found";
-                    continue;
-                }
+                    if (trans == null)
+                    {
+                        result.hasError = true;
+                        result.MisMatchDesc = "Transaction not found";
+                        continue;
+                    }
 
-                if (trans.WeightByFranchize != result.Weight)
-                {
-                    result.hasError = true;
-                    result.MisMatchDesc = "Weight should be " + trans.WeightByFranchize;
+                    if (trans.WeightByFranchize != result.Weight)
+                    {
+                        result.MisMatchDesc = "Weight should be " + trans.WeightByFranchize;
+                    }
+                    if (trans.CITY_DESC.Trim() != result.Destination.Trim())
+                    {
+                        result.MisMatchDesc = result.MisMatchDesc + " Destination should be " + trans.CITY_DESC;
+                    }
+                    if (trans.Type.Trim() != result.serviceCode.Trim())
+                    {
+                        result.MisMatchDesc = result.MisMatchDesc + " Service should be " + trans.Type;
+                    }
+                    trans.AmountCharged = (decimal)UtilityClass.getCost("<DTDC>", (double)trans.WeightByFranchize, trans.Destination, trans.Type, trans.DOX);
+                    if (trans.AmountCharged != (decimal)result.Amount)
+                    {
+                        result.hasError = true;
+                        result.MisMatchDesc = result.MisMatchDesc + " Amount should be " + trans.AmountCharged;
+                    }
                 }
-                if (trans.CITY_DESC.Trim() != result.Destination.Trim())
+                catch(Exception ex)
                 {
                     result.hasError = true;
-                    result.MisMatchDesc = result.MisMatchDesc + " Destination should be " + trans.CITY_DESC;
-                }
-                if (trans.Type.Trim() != result.serviceCode.Trim())
-                {
-                    result.hasError = true;
-                    result.MisMatchDesc = result.MisMatchDesc + " Service should be " + trans.Type;
-                }
-                trans.AmountCharged = (decimal)UtilityClass.getCost("<DTDC>", (double)trans.WeightByFranchize, trans.Destination, trans.Type, trans.DOX);
-                if (trans.AmountCharged != (decimal)result.Amount)
-                {
-                    result.hasError = true;
-                    result.MisMatchDesc = result.MisMatchDesc + " Amount should be " + trans.AmountCharged;
+                    result.MisMatchDesc = result.MisMatchDesc + " Unable to process record:  " + ex.Message;
                 }
                 ctr++;
                 bgWorker.ReportProgress((int)(((ctr / count) * 30) + progress));

@@ -192,6 +192,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BillingData.dbml</DependentUpon>
     </Compile>
+    <Compile Include="ClientExpenseReportWindow.xaml.cs">
+      <DependentUpon>ClientExpenseReportWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ClientReportWindow.xaml.cs">
       <DependentUpon>ClientReportWindow.xaml</DependentUpon>
     </Compile>
@@ -336,6 +339,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddZone.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClientExpenseReportWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -535,6 +542,9 @@
     </Content>
     <EmbeddedResource Include="ClientAnalysis.rdlc" />
     <Content Include="Report2.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ClientAnalysisReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Report3.rdlc" />

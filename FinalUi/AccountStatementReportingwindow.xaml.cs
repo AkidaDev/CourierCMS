@@ -51,7 +51,6 @@ namespace FinalUi
 
         private void CreateObj()
         {
-            
             if(FromDate.SelectedDate == null || ToDate.SelectedDate == null)
             {
                 MessageBox.Show("Please select from date and to date correctly..");

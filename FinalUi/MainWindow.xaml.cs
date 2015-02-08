@@ -1257,5 +1257,11 @@ namespace FinalUi
             ExpenseEntry win = new ExpenseEntry();
             win.Show();
         }
+
+        private void ClientReport_Click_1(object sender, RoutedEventArgs e)
+        {
+            ClientExpenseReportWindow win = new ClientExpenseReportWindow();
+            win.Show();
+        }
     }
 }
