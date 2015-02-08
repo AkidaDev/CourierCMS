@@ -91,6 +91,9 @@ namespace FinalUi
                     SubClientList.Add(x, subClients);
                 });
             }
+            Client selectedClient = ClientList.SelectedItem as Client;
+            if (selectedClient != null)
+                SubClientListSource.Source = SubClientList.ContainsKey(selectedClient.CLCODE) ? SubClientList[selectedClient.CLCODE] : new List<string>();
             rs.Value = dataGridSource;
         }
         public void RefreshDataGridSource()
