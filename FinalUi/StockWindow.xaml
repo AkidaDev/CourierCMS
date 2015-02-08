@@ -6,7 +6,7 @@
     <Window.Resources>
         <CollectionViewSource x:Key="EmpList" CollectionViewType="ListCollectionView"></CollectionViewSource>
     </Window.Resources>
-    <Grid><!--BackColor-->
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="38"/>
@@ -27,7 +27,7 @@
             <TextBlock Name="ToLabel" Text=" To .: "  FontSize="16" FontFamily="Calibri" VerticalAlignment="Center"/>
             <TextBox Name="ToBox" Width="120" Padding="2" Height="24"/>
         </WrapPanel>
-        <WrapPanel Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+        <WrapPanel Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="47 0 0 0">
             <TextBlock Name="AssignLabel" Text="Assign .: " FontSize="16" FontFamily="Calibri" VerticalAlignment="Center"/>
             <ComboBox Name="AssignCombo"  Width="115" ItemsSource="{Binding}" DataContext="{StaticResource EmpList}"  IsEditable="False" Height="24" Padding="2">
                 <ComboBox.ItemTemplate>

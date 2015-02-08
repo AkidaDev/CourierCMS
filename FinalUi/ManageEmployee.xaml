@@ -5,8 +5,7 @@
         Title="Manage Employee" WindowStartupLocation="CenterScreen" Background="Turquoise">
     <Window.Resources>
         <CollectionViewSource x:Key="EmployeeTable" CollectionViewType="ListCollectionView"></CollectionViewSource>
-    </Window.Resources>
-    
+    </Window.Resources>   
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>

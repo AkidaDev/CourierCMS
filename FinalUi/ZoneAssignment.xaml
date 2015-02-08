@@ -6,8 +6,7 @@
     <Window.Resources>
         <CollectionViewSource x:Key="zoneTable" CollectionViewType="{x:Type ListCollectionView}"/>
         <CollectionViewSource x:Key="CityTable" CollectionViewType="{x:Type ListCollectionView}"/>
-    </Window.Resources>
-    
+    </Window.Resources>   
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>

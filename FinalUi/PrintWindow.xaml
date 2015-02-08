@@ -9,9 +9,8 @@
         <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="DataGridDataSource" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="SubClientList" CollectionViewType="ListCollectionView"/>
-    </Window.Resources>
-    
-    <Grid><!--BackColor-->
+    </Window.Resources>  
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="36"/>
             <RowDefinition Height="45"/>
@@ -52,7 +51,7 @@
             <cstmcntrl:PandaCheckbox  Name="PreviousDueCheck" Checked="True"/>
             <TextBlock FontSize="16" FontFamily="Calibri" Text=" Previous Due .: " VerticalAlignment="Center"/>
             <TextBox Height="22" x:Name="PreviousDueTextBox" Width="100" Padding="10 2 0 0"/>
-            <TextBlock Text="₹" FontSize="14" Margin="-98 0 0 0" VerticalAlignment="Center" Height="24"/>
+            <TextBlock Text="₹" FontSize="14" Margin="-96 0 96 0" VerticalAlignment="Center"/>
             <Rectangle Fill="Gray" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <TextBlock FontSize="16" FontFamily="Calibri" Text=" Fuel Surcharge .: " VerticalAlignment="Center"/>
             <TextBox x:Name="TaxBox" Width="50" Padding="2" Height="24"/>
@@ -70,7 +69,7 @@
             <Rectangle Fill="Gray" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <TextBlock FontSize="16" FontFamily="Calibri" Text=" Miscellaneous Charges .: " VerticalAlignment="Center"/>
             <TextBox Height="24" x:Name="MiscBox" Width="60" Padding="10 2 2 2"/>
-            <TextBlock Text="₹" FontSize="14" Margin="-55 0 0 0" VerticalAlignment="Center"/>
+            <TextBlock Text="₹" FontSize="14" Margin="-57 0 57 0" VerticalAlignment="Center"/>
         </WrapPanel>
         <WrapPanel Name="MisGrid1" Grid.Row="3" VerticalAlignment="Bottom" Margin="230 0 0 0" Visibility="Collapsed">
             <cstmcntrl:PandaCheckbox Visibility="Collapsed" Name="ShowConsigneeCheck" Checked="True"/>

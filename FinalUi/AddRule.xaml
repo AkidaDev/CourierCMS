@@ -4,9 +4,7 @@
         xmlns:cstmcntrl="clr-namespace:CustomControls;assembly=CustomControls"
 		Icon="Images/logo.ico"
         Title="Costing Rule" Height="310" Width="650" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
-
     <Grid>
-        <!--BackColor-->
         <Grid.RowDefinitions>
             <RowDefinition Height="38"/>
             <RowDefinition Height="*"/>

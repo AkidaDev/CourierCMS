@@ -4,8 +4,7 @@
         xmlns:cstmcntrl="clr-namespace:CustomControls;assembly=CustomControls"
 		Icon="Images/logo.ico" Height="300" Width="600"
         Title="Service Grouping" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
-
-    <Grid><!--BackColor-->
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="40"/>

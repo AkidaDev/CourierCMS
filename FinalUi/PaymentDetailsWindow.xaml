@@ -7,8 +7,7 @@
         <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="PaymentDetailsSourceGrid" CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="InvoiceDetailsSourceGrid" CollectionViewType="ListCollectionView"/>
-    </Window.Resources>
-    
+    </Window.Resources>   
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>

@@ -5,8 +5,7 @@
         Title="Manage Client" WindowStartupLocation="CenterScreen" Background="Turquoise">
     <Window.Resources>
         <CollectionViewSource x:Key="ClienTable" CollectionViewType="ListCollectionView"/>
-    </Window.Resources>
-    
+    </Window.Resources>   
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>

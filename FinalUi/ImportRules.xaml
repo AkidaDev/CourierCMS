@@ -8,8 +8,7 @@
         <CollectionViewSource x:Key="CostingRuleList" CollectionViewType="{x:Type ListCollectionView}"/>
         <CollectionViewSource x:Key="ServiceRuleList" CollectionViewType="{x:Type ListCollectionView}"/>
     </Window.Resources>
-
-    <Grid><!--BackColor-->
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="33"/>
             <RowDefinition Height="36"/>

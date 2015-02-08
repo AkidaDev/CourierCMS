@@ -13,7 +13,6 @@
         <CollectionViewSource x:Key="ConsignerListSource" CollectionViewType="ListCollectionView"/>
     </Window.Resources>
     <Grid >
-        <!--BackColor-->
         <Grid.RowDefinitions>
             <RowDefinition Height="36"/>
             <RowDefinition Height="60"/>

@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		Icon="Images/logo.ico"
         Title="Manage Service" WindowStartupLocation="CenterScreen" Background="Turquoise">
-    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>

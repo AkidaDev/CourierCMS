@@ -6,9 +6,8 @@
         Title="Power Entry" Height="330" Width="550" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"/>
-    </Window.Resources>
-    
-    <Grid><!--BackColor-->
+    </Window.Resources>  
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="40"/>

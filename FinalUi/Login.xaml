@@ -4,8 +4,7 @@
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
 		Icon="Images/logo.ico"
         Title="Login" Background="Transparent" Height="300" Width="600"
-        WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" BorderThickness="1" BorderBrush="Gray">
-    
+        WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" BorderThickness="1" BorderBrush="Gray">  
     <Grid Name="MainGrid" Height="300" Width="600" MouseLeftButtonDown="Grid_MouseLeftButtonDown_1" KeyDown="MainGrid_KeyUp">
         <Canvas x:Name="vortex_pag" ClipToBounds="True" HorizontalAlignment="Left" Height="300" UseLayoutRounding="False" VerticalAlignment="Top" Width="600" Background="White">
             <Image x:Name="Blue" Height="250" Canvas.Left="43" Source="Images\Shape 21.png" Canvas.Top="27" Width="250"/>

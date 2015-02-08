@@ -2,9 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Icon="Images/logo.ico"
-        Title="Import File" Height="250" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
-    
-    <Grid><!--BackColor-->
+        Title="Import File" Height="250" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">   
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="40"/>
