@@ -26,34 +26,34 @@
             <WrapPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
                 <Path VerticalAlignment="Bottom" Data="F1M13.502,2.907C10.599,2.907 10.599,3.75 10.599,4.243 10.599,4.243 16.405,4.243 16.405,4.243 16.405,3.75 16.405,2.907 13.502,2.907z M13.502,1C15.895,1 18.341,1.286 18.341,4.243 18.341,4.243 22.791,4.243 22.791,4.243 22.791,4.243 22.792,4.243 22.792,4.243 24.074,4.243 25,5.721 25,6.985 25,6.985 25,19.194 25,19.194 25,20.458 24.075,21 22.792,21 22.792,21 3.437,21 3.437,21 2.154,21 1,20.458 1,19.194 1,19.194 1,6.985 1,6.985 1,5.72 2.154,4.243 3.437,4.243 3.437,4.243 8.663,4.243 8.663,4.243 8.663,1.286 11.109,1 13.502,1z" Fill="Gray" Height="22"  Width="26"/>
                 <TextBlock FontSize="16" FontFamily="Calibri" Text="  Weight (in Kg)       " VerticalAlignment="Bottom"/>
-                <TextBlock FontSize="16" FontFamily="Calibri" Text=" From .: "/>
-                <TextBox Name="FromWeightBox" Width="81" Padding="2 2 0 0" TextChanged="FromWeightBox_TextChanged"/>
+                <TextBlock FontSize="16" FontFamily="Calibri" Text=" From .: " VerticalAlignment="Center"/>
+                <TextBox Name="FromWeightBox" Width="81" Height="24" Padding="2" TextChanged="FromWeightBox_TextChanged"/>
                 <Rectangle Fill="Gray" Height="33" Width="1" Margin="8 -6 15 -5"/>
-                <TextBlock FontSize="16" FontFamily="Calibri" Text=" To .: "/>
-                <TextBox Name="ToWeightBox" Width="81" Padding="2 2 0 0"/>
+                <TextBlock FontSize="16" FontFamily="Calibri" Text=" To .: " VerticalAlignment="Center"/>
+                <TextBox Name="ToWeightBox" Width="81" Height="24" Padding="2"/>
             </WrapPanel>
             <WrapPanel Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="190 0 0 0">
-                <TextBlock Text=" Type  .:   " FontSize="16" FontFamily="Calibri"/>
-                <RadioButton Name="WholeRadio" IsChecked="True" Content="Whole" FontSize="16" FontFamily="Calibri" Padding="5 -3 40 0" VerticalAlignment="Bottom"/>
-                <RadioButton Name="StepRadio"  Content="Step" FontSize="16" FontFamily="Calibri" Padding="5 -3 0 0" VerticalAlignment="Bottom"/>
-                <TextBox Name="StepBox"  Visibility="Collapsed" Width="50" Padding="2 2 0 0"/>
+                <TextBlock Text=" Type  .:   " FontSize="16" FontFamily="Calibri" VerticalAlignment="Center" Height="24"/>
+                <RadioButton Name="WholeRadio" IsChecked="True" Content="Whole" FontSize="16" FontFamily="Calibri" Padding="5 -3 40 0" VerticalAlignment="Center"/>
+                <RadioButton Name="StepRadio"  Content="Step  " FontSize="16" FontFamily="Calibri" Padding="5 -3 0 0" VerticalAlignment="Center"/>
+                <TextBox Name="StepBox"  Visibility="Collapsed" Width="50" Padding="2"  Height="24"/>
             </WrapPanel>
             <WrapPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                <TextBlock Text="Change  .:   " FontSize="16" FontFamily="Calibri"/>
-                <RadioButton Name="IncRadio" IsChecked="True" Content="Increasing ↑ " FontSize="16" FontFamily="Calibri" Padding="5 -3 40 0" VerticalAlignment="Bottom"/>
-                <RadioButton Name="DecRadio" Content="Decreasing ↓ " FontSize="16" FontFamily="Calibri" Padding="5 -3 0 0" VerticalAlignment="Bottom"/>
+                <TextBlock Text="Change  .:   " FontSize="16" FontFamily="Calibri" VerticalAlignment="Center" Height="24"/>
+                <RadioButton Name="IncRadio" IsChecked="True" Content="Increasing ↑ " FontSize="16" FontFamily="Calibri" Padding="5 -4 40 0" VerticalAlignment="Center"/>
+                <RadioButton Name="DecRadio" Content="Decreasing ↓ " FontSize="16" FontFamily="Calibri" Padding="5 -4 0 0" VerticalAlignment="Center"/>
             </WrapPanel>
             <WrapPanel Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="120 0 0 0">
-                <TextBlock Text="Mode .:   " FontSize="16" FontFamily="Calibri"/>
-                <RadioButton  Name="PerRadio" IsChecked="True" Content="Percentage % " FontSize="16" FontFamily="Calibri" Padding="5 -3 40 0" VerticalAlignment="Bottom"/>
-                <RadioButton Content="Amount " FontSize="16" Name="AmountRadio"  FontFamily="Calibri" Padding="5 -3 0 0" VerticalAlignment="Bottom"/>
-                <WrapPanel Name="PercentageWrap" Visibility="Visible">
-                    <TextBlock Text=" Value .:" FontSize="16" FontFamily="Calibri" Margin="20 0 3 0"/>
-                    <TextBox Name="ValueBox"  Visibility="Visible" Width="50" Padding="2 2 0 0"/>
+                <TextBlock Text="Mode .:   " FontSize="16" FontFamily="Calibri" VerticalAlignment="Center"/>
+                <RadioButton  Name="PerRadio" IsChecked="True" Content="Percentage % " FontSize="16" FontFamily="Calibri" Padding="5 -4 40 0" VerticalAlignment="Center"/>
+                <RadioButton Content="Amount " FontSize="16" Name="AmountRadio"  FontFamily="Calibri" Padding="5 -4 0 0" VerticalAlignment="Center"/>
+                <WrapPanel Name="PercentageWrap">
+                    <TextBlock Text=" Value .: " FontSize="16" FontFamily="Calibri" Margin="40 0 0 0" VerticalAlignment="Center"/>
+                    <TextBox Name="ValueBox" Visibility="Visible" Width="50" Padding="2" Height="24"/>
                 </WrapPanel>
-                <WrapPanel Name="AmountWrap" Visibility="Collapsed">
-                    <TextBlock Text=" Amount .:" FontSize="16" FontFamily="Calibri" Margin="20 0 3 0"/>
-                    <TextBox Name="AmountBox"  Visibility="Visible" Width="50" Padding="2 2 0 0"/>
+                <WrapPanel Name="AmountWrap" Visibility="Collapsed" VerticalAlignment="Bottom">
+                    <TextBlock Text=" Amount .: " FontSize="16" FontFamily="Calibri" Margin="40 0 0 0" VerticalAlignment="Center"/>
+                    <TextBox Name="AmountBox" Visibility="Visible" Width="50" Padding="2" Height="24"/>
                 </WrapPanel>
             </WrapPanel>
         </Grid>

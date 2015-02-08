@@ -31,7 +31,7 @@
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
-            <TextBlock Text=" Client   .:  " Height="21" FontSize="16" FontFamily="Calibri" Margin="4 4 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <TextBlock Text=" Client   .:  " FontSize="16" FontFamily="Calibri" Margin="4 4 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
             <ComboBox DataContext="{StaticResource ClienTable}" DisplayMemberPath="NameAndCode" ItemsSource="{Binding}" Name="Client_Combo" Grid.Column="1" Margin="0 4 4 0" VerticalAlignment="Bottom">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -41,11 +41,11 @@
             </ComboBox>
             <TextBlock  Text=" Weight .:  " Height="21" FontSize="16" FontFamily="Calibri" Grid.Row="1" Margin="4 4 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
             <WrapPanel Grid.Row="1" Grid.Column="1" Margin="0 4 4 0" VerticalAlignment="Bottom">
-                <TextBox KeyDown="WeightRuleTextBox_KeyDown" Width="Auto" MinWidth="70" Height="23" Padding="2" Name="WeightRuleTextBox" VerticalAlignment="Bottom"/>
+                <TextBox KeyDown="WeightRuleTextBox_KeyDown" Width="Auto" MinWidth="70" Height="24" Padding="2" Name="WeightRuleTextBox" VerticalAlignment="Bottom"/>
                 <TextBlock Text=" in Kg " Height="21" FontSize="16" FontFamily="Calibri" VerticalAlignment="Bottom"/>
             </WrapPanel>
             <TextBlock Text=" City       .:  " Height="21" FontSize="16" FontFamily="Calibri" Grid.Row="2" Margin="4 4 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-            <ComboBox DataContext="{StaticResource CityTable}" DisplayMemberPath="NameAndCode" ItemsSource="{Binding}" Name="City_Combo" Grid.Row="2" Grid.Column="1" Margin="0 4 4 0" VerticalAlignment="Bottom">
+            <ComboBox DataContext="{StaticResource CityTable}" Height="24" DisplayMemberPath="NameAndCode" ItemsSource="{Binding}" Name="City_Combo" Grid.Row="2" Grid.Column="1" Margin="0 4 4 0" VerticalAlignment="Bottom">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
@@ -53,7 +53,7 @@
                 </ComboBox.ItemsPanel>
             </ComboBox>
             <TextBlock Text=" Service .:  " Height="21" FontSize="16" FontFamily="Calibri" Grid.Row="3" Margin="4 4 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-            <ComboBox DataContext="{StaticResource ServiceTable}" DisplayMemberPath="NameAndCode" ItemsSource="{Binding}" Name="Service_Combo" Grid.Row="3" Grid.Column="1" Margin="0 4 4 0" VerticalAlignment="Bottom">
+            <ComboBox DataContext="{StaticResource ServiceTable}" DisplayMemberPath="NameAndCode" Height="24" ItemsSource="{Binding}" Name="Service_Combo" Grid.Row="3" Grid.Column="1" Margin="0 4 4 0" VerticalAlignment="Bottom">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
@@ -61,14 +61,14 @@
                 </ComboBox.ItemsPanel>
             </ComboBox>
             <TextBlock Text=" Dox       .:  " Height="21" FontSize="16" FontFamily="Calibri" Grid.Row="4" Margin="4 4 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-            <ComboBox SelectedIndex="0" Name="Dox_Combo" Grid.Row="4" Grid.Column="1" Margin="0 4 4 0" Width="80" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <ComboBox SelectedIndex="0" Name="Dox_Combo" Grid.Row="4" Grid.Column="1" Margin="0 4 4 0" Height="24" Width="80" HorizontalAlignment="Left" VerticalAlignment="Bottom">
                 <ComboBoxItem Content="Dox"/>
                 <ComboBoxItem Content="Non-Dox"/>
             </ComboBox>
         </Grid>
         <Rectangle Grid.Row="2" VerticalAlignment="Top" Height="1" Fill="Gray" Margin="5 3 5 0"/>
         <WrapPanel Grid.Row="2" Margin="0 15 4 0" HorizontalAlignment="Center">
-            <TextBox Width="100" Name="RateRuleTextBox" Height="23" Padding="2"/>
+            <TextBox Width="100" Name="RateRuleTextBox" Height="24" Padding="2"/>
             <Button Content="  Get Rate  " Name="GetRateButton" Click="GetRateButton_Click" Margin="15 0 0 0"/>
         </WrapPanel>
         <TextBlock Text=" Log Box .: " Height="21" FontSize="16" FontFamily="Calibri" Grid.Row="2" Margin="4 40 4 0" Background="#A9FFFFF3"/>

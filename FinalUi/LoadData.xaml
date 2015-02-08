@@ -17,27 +17,27 @@
         <RadioButton Name="DateRadio" GroupName="SelectedButton" IsChecked="True" VerticalAlignment="Bottom" Margin="35 0 0 0">
             <WrapPanel Margin="3 -10 0 0">
                 <Path x:Name="import_files" Height="24"  Data="F1M11.187,19.719C11.187,19.719 11.187,20.375 11.187,20.375 11.187,20.375 13.812,20.375 13.812,20.375 13.812,20.375 13.812,19.719 13.812,19.719 13.812,19.719 11.187,19.719 11.187,19.719z M9.875,17.094C9.875,17.094 9.875,17.75 9.875,17.75 9.875,17.75 15.125,17.75 15.125,17.75 15.125,17.75 15.125,17.094 15.125,17.094 15.125,17.094 9.875,17.094 9.875,17.094z M20.375,12.5C20.375,12.5 20.375,13.812 20.375,13.812 20.375,13.812 21.687,13.812 21.687,13.812 21.687,13.812 21.687,12.5 21.687,12.5 21.687,12.5 20.375,12.5 20.375,12.5z M11.187,4.625C11.187,4.625 13.812,4.625 13.812,4.625 13.812,4.625 13.812,5.937 13.812,5.937 13.812,5.937 13.812,7.25 13.812,7.25 13.812,7.25 15.781,7.25 15.781,7.25 15.781,7.25 12.5,10.531 12.5,10.531 12.5,10.531 9.219,7.25 9.219,7.25 9.219,7.25 11.187,7.25 11.187,7.25 11.187,7.25 11.187,5.937 11.187,5.937 11.187,5.937 11.187,4.625 11.187,4.625z M7.906,3.312C7.906,3.312 4.01,11.187 4.01,11.187 4.01,11.187 9.875,11.187 9.875,11.187 9.875,11.187 9.875,12.5 9.875,12.5 9.875,13.225 10.463,13.812 11.187,13.812 11.187,13.812 13.812,13.812 13.812,13.812 14.537,13.812 15.125,13.225 15.125,12.5 15.125,12.5 15.125,11.187 15.125,11.187 15.125,11.187 21.031,11.187 21.031,11.187 21.031,11.187 17.094,3.312 17.094,3.312 17.094,3.312 7.906,3.312 7.906,3.312z M7.25,2C7.25,2 17.709,2 17.709,2 17.709,2 23,11.187 23,11.187 23,11.187 23,23 23,23 23,23 2,23 2,23 2,23 2,11.187 2,11.187 2,11.187 7.25,2 7.25,2z" Fill="Gray"  Width="24"/>
-                <TextBlock FontSize="16" FontFamily="Calibri" Canvas.Left="62" Text="Load from DataBase " Canvas.Top="128.68" Margin="5,7,0,0"/>
+                <TextBlock FontSize="16" FontFamily="Calibri" Text="Load from DataBase " Margin="5,7,0,0"/>
             </WrapPanel>
         </RadioButton>
         <WrapPanel Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-            <TextBlock Text="From .: " VerticalAlignment="Bottom" FontSize="14" FontFamily="calbri"/>
-            <DatePicker Name="StartLoadDate" Width="120" BorderBrush="DarkGray" Padding="2 2 0 2" Background="White"/>
-            <TextBlock Text="To .: " Margin="20 0 0 0" VerticalAlignment="Bottom" FontSize="14" FontFamily="calbri"/>
-            <DatePicker Name="EndLoadDate" Width="120" BorderBrush="DarkGray" Padding="2 2 0 2" Background="White"/>
+            <TextBlock Text="From .: " VerticalAlignment="Center" FontSize="14" FontFamily="calbri"/>
+            <DatePicker Name="StartLoadDate" Width="120" BorderBrush="DarkGray" Padding="2" Background="White" Height="24"/>
+            <TextBlock Text="To .: " Margin="20 0 0 0" VerticalAlignment="Center" FontSize="14" FontFamily="calbri"/>
+            <DatePicker Name="EndLoadDate" Width="120" BorderBrush="DarkGray" Padding="2" Background="White" Height="24"/>
         </WrapPanel>
         <Rectangle Grid.Row="2" Fill="Black" Height="1" Stretch="Fill" Width="300" VerticalAlignment="Bottom"/>
         <RadioButton Grid.Row="3" Name="ConnRadio" GroupName="SelectedButton" VerticalAlignment="Bottom" Margin="35 0 0 0">
             <WrapPanel Margin="3 -10 0 0">
                 <Path Data="F1M2.467,18.037C2.467,18.037 2.467,19.519 2.467,19.519 2.467,19.519 6.933,19.519 6.933,19.519 6.933,19.519 6.933,18.037 6.933,18.037 6.933,18.037 2.467,18.037 2.467,18.037z M1,15.815C1,15.815 23,15.815 23,15.815 23,15.815 23,21 23,21 23,21 1,21 1,21 1,21 1,15.815 1,15.815z M2.467,10.63C2.467,10.63 2.456,12.111 2.456,12.111 2.456,12.111 6.922,12.111 6.922,12.111 6.922,12.111 6.933,10.63 6.933,10.63 6.933,10.63 2.467,10.63 2.467,10.63z M1,8.407C1,8.407 23,8.407 23,8.407 23,8.407 23,13.593 23,13.593 23,13.593 1,13.593 1,13.593 1,13.593 1,8.407 1,8.407z M2.467,3.222C2.467,3.222 2.467,4.715 2.467,4.715 2.467,4.715 6.933,4.715 6.933,4.715 6.933,4.715 6.933,3.222 6.933,3.222 6.933,3.222 2.467,3.222 2.467,3.222z M1,1C1,1 23,1 23,1 23,1 23,6.185 23,6.185 23,6.185 1,6.185 1,6.185 1,6.185 1,1 1,1z" Fill="Gray" Height="23" Width="24" VerticalAlignment="Bottom"/>
-                <TextBlock FontSize="16" FontFamily="Calibri" Canvas.Left="62" Text="Consignment No. " Canvas.Top="128.68" Margin="5,7,0,0"/>
+                <TextBlock FontSize="16" FontFamily="Calibri" Text="Consignment No. " Margin="5,7,0,0"/>
             </WrapPanel>
         </RadioButton>
         <WrapPanel Grid.Row="4" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-            <TextBlock Text="Start .: " VerticalAlignment="Bottom" FontSize="14" FontFamily="calbri"/>
-            <TextBox Name="StartConnNo" Height="23" Width="120" BorderBrush="DarkGray" Padding="2 2 0 2" Background="White"/>
-            <TextBlock Text="End .: " Margin="20 0 0 0" VerticalAlignment="Bottom" FontSize="14" FontFamily="calbri"/>
-            <TextBox Name="EndConnNo" Height="23" Width="120" BorderBrush="DarkGray" Padding="2 2 0 2" Background="White"/>
+            <TextBlock Text="Start .: " VerticalAlignment="Center" FontSize="14" FontFamily="calbri"/>
+            <TextBox Name="StartConnNo" Height="24" Width="120" BorderBrush="DarkGray" Padding="2" Background="White"/>
+            <TextBlock Text="End .: " Margin="20 0 0 0" VerticalAlignment="Center" FontSize="14" FontFamily="calbri"/>
+            <TextBox Name="EndConnNo" Height="24" Width="120" BorderBrush="DarkGray" Padding="2" Background="White"/>
         </WrapPanel>
         <Button Grid.Row="5" Click="addData_CheckedUnChecked" Style="{StaticResource window}" VerticalAlignment="Bottom">
             <WrapPanel>
@@ -50,7 +50,7 @@
         </Button>
         <Button Grid.Row="6" Click="loaddata" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 20 15">
             <WrapPanel  Margin="6 1">
-                <Path Data="F1M13.222,1C13.222,1 21,1 21,1 21,1 21,8.778 21,8.778 21,8.778 18.778,8.778 18.778,8.778 18.778,8.778 18.778,4.778 18.778,4.778 18.778,4.778 7.889,15.667 7.889,15.667 7.889,15.667 6.333,14.111 6.333,14.111 6.333,14.111 17.222,3.222 17.222,3.222 17.222,3.222 13.222,3.222 13.222,3.222 13.222,3.222 13.222,1 13.222,1z M3.222,1C3.222,1 11,1 11,1 11,1 11,3.222 11,3.222 11,3.222 3.222,3.222 3.222,3.222 3.222,3.222 3.222,18.778 3.222,18.778 3.222,18.778 18.778,18.778 18.778,18.778 18.778,18.778 18.778,11 18.778,11 18.778,11 21,11 21,11 21,11 21,18.778 21,18.778 21,20 20,21 18.778,21 18.778,21 3.222,21 3.222,21 2,21 1,20 1,18.778 1,18.778 1,3.222 1,3.222 1,2 2,1 3.222,1z" Fill="Black" Height="18" Stretch="Fill" Canvas.Left="242" Canvas.Top="185" Width="18"/>
+                <Path Data="F1M13.222,1C13.222,1 21,1 21,1 21,1 21,8.778 21,8.778 21,8.778 18.778,8.778 18.778,8.778 18.778,8.778 18.778,4.778 18.778,4.778 18.778,4.778 7.889,15.667 7.889,15.667 7.889,15.667 6.333,14.111 6.333,14.111 6.333,14.111 17.222,3.222 17.222,3.222 17.222,3.222 13.222,3.222 13.222,3.222 13.222,3.222 13.222,1 13.222,1z M3.222,1C3.222,1 11,1 11,1 11,1 11,3.222 11,3.222 11,3.222 3.222,3.222 3.222,3.222 3.222,3.222 3.222,18.778 3.222,18.778 3.222,18.778 18.778,18.778 18.778,18.778 18.778,18.778 18.778,11 18.778,11 18.778,11 21,11 21,11 21,11 21,18.778 21,18.778 21,20 20,21 18.778,21 18.778,21 3.222,21 3.222,21 2,21 1,20 1,18.778 1,18.778 1,3.222 1,3.222 1,2 2,1 3.222,1z" Fill="Black" Height="18" Stretch="Fill" Width="18"/>
                 <TextBlock FontSize="16" FontFamily="Calibri" Text=" Start"/>
             </WrapPanel>
         </Button>

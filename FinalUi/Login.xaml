@@ -26,18 +26,15 @@
 			<Button ToolTip="Minimize" Style="{StaticResource 1}"  Click="MinimizeButton_Click" Height="20" Canvas.Left="530" Canvas.Top="5" Width="20">
 			<Path x:Name="minimize" Data="F1M2,4C2,4 2,2 2,2 2,2 14,2 14,2 14,2 14,4 14,4 14,4 2,4 2,4z" Fill="Black" Margin="0,5,2,0"/>
 			</Button>
-		</Canvas>
-				<StackPanel Margin="283,139,0,0">
-                <WrapPanel HorizontalAlignment="Center"  Margin="0,26,0,0">
-                <TextBox Width="150" Padding="5 5 5 5" Name="UserName" FontSize="14"/>
-                </WrapPanel>
-                <Separator Visibility="Hidden"/>
-                <WrapPanel HorizontalAlignment="Center">
-                <PasswordBox Width="150" Name="Password" Padding="5 5 5 5" FontSize="14"/>
-                </WrapPanel>
+        </Canvas>
+        <TextBlock Name="PassPlaceholder" Width="150" Padding="5" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="290 132 0 0" Foreground="LightGray" Text="Password"/>
+        <StackPanel Margin="283,139,0,0">
+            <TextBox Style="{StaticResource placeHolder1}" Tag="UserName" Width="150" Name="UserName" FontSize="14" HorizontalAlignment="Center" Margin="0,26,0,0"/>
+            <Separator Visibility="Hidden"/>
+            <PasswordBox Width="150" Name="Password" Padding="5" FontSize="14" HorizontalAlignment="Center" Background="Transparent"/>
             <WrapPanel HorizontalAlignment="Center" Margin="0,26,0,0">
                 <TextBlock MinWidth="150" FontSize="12" Text="Copyright ©2014, All Rights Reserved" Foreground="#FF416DFF"/>
             </WrapPanel>
-        </StackPanel> 
+        </StackPanel>
     </Grid>
 </Window>

@@ -192,12 +192,12 @@ namespace FinalUi
                         return;
                     if (ToConnNoTextBox.Text.Length != FromConnNoTextBox.Text.Length)
                     {
-                        reportErrorInTooltip((Control)sender, FromConnNoTextBox, "Lenght of the connsignment number are not equal...");
+                        reportErrorInTooltip((Control)sender, FromConnNoTextBox, "Lenght of the consignment number are not equal...");
                         isError = true;
                     }
                     if (String.Compare(ToConnNoTextBox.Text, FromConnNoTextBox.Text) < 0)
                     {
-                        reportErrorInTooltip((Control)sender, FromConnNoTextBox, "To Connsignment Number should be greater than from Connsignment number...");
+                        reportErrorInTooltip((Control)sender, FromConnNoTextBox, "To Consignment Number should be greater than from Consignment number...");
                         isError = true;
                     }
 

@@ -34,9 +34,9 @@
         </WrapPanel>
         <TextBlock Grid.Row="2" FontSize="16" FontFamily="Calibri" Text="Consignment Number .:" Margin="50 9 0 0"/>
         <WrapPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="40 0 0 0">
-            <Path x:Name="consign" Data="F1M9.199,17.196C9.199,17.196 16.002,17.196 16.002,17.196 16.002,17.196 16.002,17.807 16.002,17.807 16.002,17.807 9.199,17.807 9.199,17.807 9.199,17.807 9.199,17.196 9.199,17.196z M9.199,15.36C9.199,15.36 13.2,15.36 13.2,15.36 13.2,15.36 13.2,15.971 13.2,15.971 13.2,15.971 9.199,15.971 9.199,15.971 9.199,15.971 9.199,15.36 9.199,15.36z M9.199,13.527C9.199,13.527 14.4,13.527 14.4,13.527 14.4,13.527 14.4,14.138 14.4,14.138 14.4,14.138 9.199,14.138 9.199,14.138 9.199,14.138 9.199,13.527 9.199,13.527z M9.199,11.695C9.199,11.695 16.401,11.695 16.401,11.695 16.401,11.695 16.401,12.305 16.401,12.305 16.401,12.305 9.199,12.305 9.199,12.305 9.199,12.305 9.199,11.695 9.199,11.695z M9.199,9.862C9.199,9.862 13.2,9.862 13.2,9.862 13.2,9.862 13.2,10.473 13.2,10.473 13.2,10.473 9.199,10.473 9.199,10.473 9.199,10.473 9.199,9.862 9.199,9.862z M7.399,6.501C7.399,6.501 7.399,21.167 7.399,21.167 7.399,21.167 18.2,21.167 18.2,21.167 18.2,21.167 18.2,6.501 18.2,6.501 18.2,6.501 7.399,6.501 7.399,6.501z M5.599,4.666C5.599,4.666 20,4.666 20,4.666 20,4.666 20,23 20,23 20,23 5.599,23 5.599,23 5.599,23 5.599,4.666 5.599,4.666z M2,1C2,1 16.401,1 16.401,1 16.401,1 16.401,2.833 16.401,2.833 16.401,2.833 16.401,3.749 16.401,3.749 16.401,3.749 14.601,3.749 14.601,3.749 14.601,3.749 14.601,2.833 14.601,2.833 14.601,2.833 3.8,2.833 3.8,2.833 3.8,2.833 3.8,17.501 3.8,17.501 3.8,17.501 4.7,17.501 4.7,17.501 4.7,17.501 4.7,19.334 4.7,19.334 4.7,19.334 3.8,19.334 3.8,19.334 3.8,19.334 2,19.334 2,19.334 2,19.334 2,1 2,1z" Fill="Gray" Height="24" Canvas.Left="61.984" Canvas.Top="139.971" Width="21"/>
-            <TextBlock FontSize="16" FontFamily="Calibri" Text="  Start No. .: " VerticalAlignment="Bottom"/>
-            <ComboBox IsEditable="True" ItemsSource="{Binding}" DataContext="{StaticResource StartConnNoList}" Name="StartConnNo" Height="23" Width="120">
+            <Path x:Name="consign" Data="F1M9.199,17.196C9.199,17.196 16.002,17.196 16.002,17.196 16.002,17.196 16.002,17.807 16.002,17.807 16.002,17.807 9.199,17.807 9.199,17.807 9.199,17.807 9.199,17.196 9.199,17.196z M9.199,15.36C9.199,15.36 13.2,15.36 13.2,15.36 13.2,15.36 13.2,15.971 13.2,15.971 13.2,15.971 9.199,15.971 9.199,15.971 9.199,15.971 9.199,15.36 9.199,15.36z M9.199,13.527C9.199,13.527 14.4,13.527 14.4,13.527 14.4,13.527 14.4,14.138 14.4,14.138 14.4,14.138 9.199,14.138 9.199,14.138 9.199,14.138 9.199,13.527 9.199,13.527z M9.199,11.695C9.199,11.695 16.401,11.695 16.401,11.695 16.401,11.695 16.401,12.305 16.401,12.305 16.401,12.305 9.199,12.305 9.199,12.305 9.199,12.305 9.199,11.695 9.199,11.695z M9.199,9.862C9.199,9.862 13.2,9.862 13.2,9.862 13.2,9.862 13.2,10.473 13.2,10.473 13.2,10.473 9.199,10.473 9.199,10.473 9.199,10.473 9.199,9.862 9.199,9.862z M7.399,6.501C7.399,6.501 7.399,21.167 7.399,21.167 7.399,21.167 18.2,21.167 18.2,21.167 18.2,21.167 18.2,6.501 18.2,6.501 18.2,6.501 7.399,6.501 7.399,6.501z M5.599,4.666C5.599,4.666 20,4.666 20,4.666 20,4.666 20,23 20,23 20,23 5.599,23 5.599,23 5.599,23 5.599,4.666 5.599,4.666z M2,1C2,1 16.401,1 16.401,1 16.401,1 16.401,2.833 16.401,2.833 16.401,2.833 16.401,3.749 16.401,3.749 16.401,3.749 14.601,3.749 14.601,3.749 14.601,3.749 14.601,2.833 14.601,2.833 14.601,2.833 3.8,2.833 3.8,2.833 3.8,2.833 3.8,17.501 3.8,17.501 3.8,17.501 4.7,17.501 4.7,17.501 4.7,17.501 4.7,19.334 4.7,19.334 4.7,19.334 3.8,19.334 3.8,19.334 3.8,19.334 2,19.334 2,19.334 2,19.334 2,1 2,1z" Fill="Gray" Height="24" Width="21"/>
+            <TextBlock FontSize="16" FontFamily="Calibri" Text="  Start No. .: " VerticalAlignment="Center"/>
+            <ComboBox IsEditable="True" ItemsSource="{Binding}" DataContext="{StaticResource StartConnNoList}" Name="StartConnNo" Height="24" Width="120">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
@@ -44,8 +44,8 @@
                 </ComboBox.ItemsPanel>
             </ComboBox>
             <Rectangle Fill="Gray" Height="33" Width="1" Margin="8 -6 15 -5"/>
-            <TextBlock FontSize="16" FontFamily="Calibri" Text="End No. .: " VerticalAlignment="Bottom"/>
-            <ComboBox IsEditable="True" ItemsSource="{Binding}" DataContext="{StaticResource EndConnoList}" Name="EndConnNo" Height="23" Width="120">
+            <TextBlock FontSize="16" FontFamily="Calibri" Text="End No. .: " VerticalAlignment="Center"/>
+            <ComboBox IsEditable="True" ItemsSource="{Binding}" DataContext="{StaticResource EndConnoList}" Name="EndConnNo" Height="24" Width="120">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
@@ -56,27 +56,27 @@
         <WrapPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="-63 0 0 0">
             <Path Data="F1M12.5,11.187C12.5,11.187 15.125,11.187 15.125,11.187 15.125,11.187 15.961,11.187 15.961,11.187 15.961,11.187 17.094,11.187 17.094,11.187 17.094,11.187 17.094,11.913 17.094,11.913 17.094,11.913 17.062,12 17.062,12 17.049,12.054 17.033,12.104 17.007,12.151 17.007,12.151 15.119,17.338 15.119,17.338 14.995,17.679 14.619,17.855 14.278,17.731 13.938,17.607 13.762,17.23 13.886,16.889 13.886,16.889 15.484,12.5 15.484,12.5 15.484,12.5 12.5,12.5 12.5,12.5 12.138,12.5 11.844,12.206 11.844,11.844 11.844,11.481 12.138,11.187 12.5,11.187z M8.562,11.187C8.562,11.187 9.875,11.187 9.875,11.187 9.875,11.187 9.875,17.75 9.875,17.75 9.875,17.75 8.562,17.75 8.562,17.75 8.562,17.75 8.562,11.187 8.562,11.187z M4.625,8.562C4.625,8.562 4.625,20.375 4.625,20.375 4.625,20.375 20.375,20.375 20.375,20.375 20.375,20.375 20.375,11.187 20.375,11.187 20.375,11.187 20.375,8.562 20.375,8.562 20.375,8.562 19.719,8.562 19.719,8.562 19.719,8.562 17.094,8.562 17.094,8.562 17.094,8.562 15.125,8.562 15.125,8.562 15.125,8.562 4.625,8.562 4.625,8.562z M3.312,3.312C3.312,3.312 4.625,3.312 4.625,3.312 4.625,3.312 4.625,4.625 4.625,4.625 4.625,5.35 5.213,5.937 5.937,5.937 5.937,5.937 7.25,5.937 7.25,5.937 7.975,5.937 8.562,5.35 8.562,4.625 8.562,4.625 8.562,3.312 8.562,3.312 8.562,3.312 16.437,3.312 16.437,3.312 16.437,3.312 16.437,4.625 16.437,4.625 16.437,5.35 17.025,5.937 17.75,5.937 17.75,5.937 19.062,5.937 19.062,5.937 19.787,5.937 20.375,5.35 20.375,4.625 20.375,4.625 20.375,3.312 20.375,3.312 20.375,3.312 21.687,3.312 21.687,3.312 22.412,3.312 23,3.9 23,4.625 23,4.625 23,21.687 23,21.687 23,22.412 22.412,23 21.687,23 21.687,23 3.312,23 3.312,23 2.588,23 2,22.412 2,21.687 2,21.687 2,4.625 2,4.625 2,3.9 2.588,3.312 3.312,3.312z M18.406,2C18.769,2 19.062,2.294 19.062,2.656 19.062,2.656 19.062,3.969 19.062,3.969 19.062,4.331 18.769,4.625 18.406,4.625 18.044,4.625 17.75,4.331 17.75,3.969 17.75,3.969 17.75,2.656 17.75,2.656 17.75,2.294 18.044,2 18.406,2z M6.594,2C6.956,2 7.25,2.294 7.25,2.656 7.25,2.656 7.25,3.969 7.25,3.969 7.25,4.331 6.956,4.625 6.594,4.625 6.231,4.625 5.937,4.331 5.937,3.969 5.937,3.969 5.937,2.656 5.937,2.656 5.937,2.294 6.231,2 6.594,2z" Fill="Gray" Height="24" Width="24"/>
             <TextBlock FontSize="16" FontFamily="Calibri" Text="  Date .: " VerticalAlignment="Bottom"/>
-            <TextBlock FontSize="16" FontFamily="Calibri" Text="From .: " VerticalAlignment="Bottom" Margin="40 0 0 0"/>
-            <DatePicker Name="FromDate" Width="120"  BorderBrush="DarkGray" Padding="2 2 0 2" Background="White"/>
+            <TextBlock FontSize="16" FontFamily="Calibri" Text="From .: " VerticalAlignment="Center" Margin="40 0 0 0"/>
+            <DatePicker Name="FromDate" Width="120"  BorderBrush="DarkGray" Padding="2" Background="White" Height="24"/>
             <Rectangle Fill="Gray" Height="33" Width="1" Margin="8 -6 15 -5"/>
-            <TextBlock FontSize="16" FontFamily="Calibri" Text="To .: " VerticalAlignment="Bottom"/>
-            <DatePicker Name="ToDate" Width="120"  BorderBrush="DarkGray" Background="White" Padding="2 2 0 2"/>
+            <TextBlock FontSize="16" FontFamily="Calibri" Text="To .: " VerticalAlignment="Center"/>
+            <DatePicker Name="ToDate" Width="120"  BorderBrush="DarkGray" Background="White" Padding="2" Height="24"/>
         </WrapPanel>
         <WrapPanel Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="-75 0 0 0">
-            <TextBlock FontSize="16" FontFamily="Calibri" Text="₹  Price .:" VerticalAlignment="Bottom"/>
-            <TextBlock FontSize="16" FontFamily="Calibri" Text="From .: " VerticalAlignment="Bottom" Margin="70 0 0 0"/>
-            <TextBox Name="StartPriceValue" Height="23" Width="100" Padding="2"/>
+            <TextBlock FontSize="16" FontFamily="Calibri" Text="₹  Price .:" VerticalAlignment="Center"/>
+            <TextBlock FontSize="16" FontFamily="Calibri" Text="From .: " VerticalAlignment="Center" Margin="70 0 0 0"/>
+            <TextBox Name="StartPriceValue" Height="24" Width="100" Padding="2"/>
             <Rectangle Fill="Gray" Height="33" Width="1" Margin="8 -6 15 -5"/>
-            <TextBlock FontSize="16" FontFamily="Calibri" Text="To .: " VerticalAlignment="Bottom"/>
-            <TextBox Name="EndPriceValue" Height="23" Width="100" Padding="2"/>
+            <TextBlock FontSize="16" FontFamily="Calibri" Text="To .: " VerticalAlignment="Center"/>
+            <TextBox Name="EndPriceValue" Height="24" Width="100" Padding="2"/>
         </WrapPanel>
         <WrapPanel Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="-73 0 0 0">
-            <TextBlock FontSize="16" FontFamily="Calibri" Text="Weight .:" VerticalAlignment="Bottom"/>
-            <TextBlock FontSize="16" FontFamily="Calibri" Text="From .: " VerticalAlignment="Bottom" Margin="70 0 0 0"/>
-            <TextBox Name="StartWeightValue" Height="23" Width="100" Padding="2"/>
+            <TextBlock FontSize="16" FontFamily="Calibri" Text="Weight .:" VerticalAlignment="Center"/>
+            <TextBlock FontSize="16" FontFamily="Calibri" Text="From .: " VerticalAlignment="Center" Margin="70 0 0 0"/>
+            <TextBox Name="StartWeightValue" Height="24" Width="100" Padding="2"/>
             <Rectangle Fill="Gray" Height="33" Width="1" Margin="8 -6 15 -5"/>
-            <TextBlock FontSize="16" FontFamily="Calibri" Text="To .: " VerticalAlignment="Bottom"/>
-            <TextBox Name="EndWeightValue" Height="23" Width="100" Padding="2"/>
+            <TextBlock FontSize="16" FontFamily="Calibri" Text="To .: " VerticalAlignment="Center"/>
+            <TextBox Name="EndWeightValue" Height="24" Width="100" Padding="2"/>
         </WrapPanel>
         <WrapPanel Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="60 0 0 0">
             <Path Data="F1M7.006,17.756C8.089,18.341 9.324,18.675 10.635,18.675 11.947,18.675 13.183,18.341 14.264,17.756 16.602,18.374 18.432,19.843 19.272,23 19.272,23 2,23 2,23 2.839,19.843 4.67,18.375 7.006,17.756z M22.992,14.925C25.33,15.543 27.161,17.011 28,20.168 28,20.168 19.469,20.168 19.469,20.168 18.486,18.463 17.033,17.311 15.075,16.685 15.597,16.276 16.061,15.798 16.456,15.264 17.354,15.635 18.334,15.843 19.363,15.843 20.674,15.843 21.911,15.51 22.992,14.925z M6.639,12.72C7.558,14.518 9.136,15.706 10.928,15.706 12.722,15.706 14.298,14.518 15.217,12.72 15.217,12.72 6.639,12.72 6.639,12.72z M10.635,4.831C13.958,4.831 16.649,7.548 16.649,10.899 16.649,14.252 13.958,16.968 10.635,16.968 7.313,16.968 4.621,14.252 4.621,10.899 4.621,7.548 7.313,4.831 10.635,4.831z M19.363,2C22.685,2 25.377,4.717 25.377,8.068 25.377,11.421 22.685,14.137 19.363,14.137 18.642,14.137 17.954,14.003 17.313,13.768 17.499,13.331 17.641,12.872 17.74,12.396 18.332,12.704 18.979,12.874 19.656,12.874 21.449,12.874 23.026,11.686 23.944,9.888 23.944,9.888 17.819,9.888 17.819,9.888 17.513,7.667 16.22,5.766 14.398,4.645 15.482,3.049 17.3,2 19.363,2z" Fill="Gray" Height="19" Width="23" Stretch="Fill"/>
