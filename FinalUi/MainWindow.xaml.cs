@@ -389,7 +389,13 @@ namespace FinalUi
                 MessageBox.Show("This data contains records that are loaded directly from a file. To print out an invoice data must loaded properly from database. ", "Error");
                 return;
             }
-            int count = cData.Count(x => x.FrAmount == null);
+             int count ;
+            if((count = cData.Count(x=>x.FrAmount == 0)) > 0)
+            {
+                if (MessageBoxResult.No == MessageBox.Show("There are " + count.ToString() + " records whose billed amount is 0. Are you sure you want to continue?"))
+                    return;
+            }
+            count= cData.Count(x => x.FrAmount == null);
             if (count > 0)
             {
                 if (MessageBox.Show("There are " + count.ToString() + " records whose billed amount is not set. Are you sure you want to continue? If you continue then amount billed for those those records will be equal to 0.", "Confirm", MessageBoxButton.YesNo) == MessageBoxResult.No)
@@ -1261,6 +1267,12 @@ namespace FinalUi
         private void ClientReport_Click_1(object sender, RoutedEventArgs e)
         {
             ClientExpenseReportWindow win = new ClientExpenseReportWindow();
+            win.Show();
+        }
+
+        private void ExpenseReportWin_Click(object sender, RoutedEventArgs e)
+        {
+            ExpenseReportWindow win = new ExpenseReportWindow();
             win.Show();
         }
     }

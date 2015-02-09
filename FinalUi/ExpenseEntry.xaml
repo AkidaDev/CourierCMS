@@ -59,7 +59,10 @@
                 <TextBox Width="160" Padding="2" Name="AmountBox" Margin="20 0 0 0" Height="24"/>
                 <TextBlock FontSize="16" FontFamily="Calibri" Text=" Remark .: " VerticalAlignment="Bottom" Margin="10 10 0 0"/>
                 <TextBox Name="RemarkTextBox" Width="160" Padding="2" Margin="20 0 0 0" Height="24"/>
-                <Button Width="90" Padding="2" Content="Save &amp; Add" VerticalAlignment="Bottom" Name="AddExpenseButton" Click="AddExpenseButton_Click" Margin="50 20"/>
+                <Button Width="90" Padding="2" Content="Save &amp; Add" VerticalAlignment="Bottom" Name="AddExpenseButton" Click="AddExpenseButton_Click" Margin="50 20 0 0"/>
+                <TextBlock FontSize="16" FontFamily="Calibri" Text=" Total .: " VerticalAlignment="Bottom" Margin="10 10 0 0"/>
+                <TextBlock FontSize="16" FontFamily="Calibri" Name="TotalAmountTextBox" Text=" " VerticalAlignment="Bottom" Margin="10 0 0 0"/>
+
             </StackPanel>
             <DataGrid ItemsSource="{Binding}" CellEditEnding="ExpenseDataGrid_CellEditEnding" Name="ExpenseDataGrid" LoadingRow="DataGrid_LoadingRow" RowHeaderWidth="35">
                 <DataGrid.Columns>

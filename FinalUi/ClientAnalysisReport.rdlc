@@ -283,7 +283,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Sum(Fields!TotalAmountCharged.Value)</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -313,7 +315,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Sum(Fields!TotalAmountPayed.Value)</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -343,7 +347,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Sum(Fields!BalanceAmount.Value)</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -373,7 +379,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Sum(Fields!NumOfConns.Value)</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -408,7 +416,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Sum(Fields!TotalAmountCharged.Value)</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -438,7 +448,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Sum(Fields!TotalAmountPayed.Value)</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -468,7 +480,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Sum(Fields!BalanceAmount.Value)</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -498,7 +512,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Sum(Fields!NumOfConns.Value)</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -533,7 +549,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Sum(Fields!TotalAmountCharged.Value)</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -563,7 +581,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Sum(Fields!TotalAmountPayed.Value)</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -593,7 +613,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Sum(Fields!BalanceAmount.Value)</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -623,7 +645,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Sum(Fields!NumOfConns.Value)</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -658,7 +682,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Sum(Fields!TotalAmountCharged.Value)</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -688,7 +714,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Sum(Fields!TotalAmountPayed.Value)</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -718,7 +746,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Sum(Fields!BalanceAmount.Value)</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -748,7 +778,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Sum(Fields!NumOfConns.Value)</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -920,9 +952,6 @@
                 <GroupExpressions>
                   <GroupExpression>=Fields!CustCode.Value</GroupExpression>
                 </GroupExpressions>
-                <PageBreak>
-                  <BreakLocation>Between</BreakLocation>
-                </PageBreak>
               </Group>
               <TablixHeader>
                 <Size>1in</Size>
@@ -1099,7 +1128,9 @@
                                     <TextRuns>
                                       <TextRun>
                                         <Value>Total</Value>
-                                        <Style />
+                                        <Style>
+                                          <FontWeight>Bold</FontWeight>
+                                        </Style>
                                       </TextRun>
                                     </TextRuns>
                                     <Style />
@@ -1135,7 +1166,9 @@
                                 <TextRuns>
                                   <TextRun>
                                     <Value>Total</Value>
-                                    <Style />
+                                    <Style>
+                                      <FontWeight>Bold</FontWeight>
+                                    </Style>
                                   </TextRun>
                                 </TextRuns>
                                 <Style />
@@ -1206,7 +1239,9 @@
                             <TextRuns>
                               <TextRun>
                                 <Value>Total</Value>
-                                <Style />
+                                <Style>
+                                  <FontWeight>Bold</FontWeight>
+                                </Style>
                               </TextRun>
                             </TextRuns>
                             <Style />
@@ -1312,7 +1347,9 @@
                         <TextRuns>
                           <TextRun>
                             <Value>Total</Value>
-                            <Style />
+                            <Style>
+                              <FontWeight>Bold</FontWeight>
+                            </Style>
                           </TextRun>
                         </TextRuns>
                         <Style />

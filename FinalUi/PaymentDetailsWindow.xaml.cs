@@ -29,6 +29,10 @@ namespace FinalUi
             ClientList = DataSources.ClientCopy.ToList();
             CollectionViewSource clientListSource = (CollectionViewSource)(FindResource("ClientList"));
             clientListSource.Source = ClientList;
+            DateTime FromD = new DateTime((DateTime.Today).Year, (DateTime.Today).Month, 1);
+            DateTime ToD = new DateTime((DateTime.Today).Year, (DateTime.Today).Month, DateTime.DaysInMonth((DateTime.Today).Year, (DateTime.Today).Month));
+            ToDatePicker.SelectedDate = ToD;
+            FromDatepicker.SelectedDate = FromD;
         }
 
         private void FetchButton_Click(object sender, RoutedEventArgs e)

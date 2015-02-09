@@ -48,7 +48,7 @@ namespace FinalUi
             }
             InitializeComponent();
             isInitialized = true;
-            this.Title = "Update Rule " + ruleId.ToString(); 
+            this.Title = "Update Rule " + ruleId.ToString();
             this.AddFilter.Data = Geometry.Parse(@"F1M2,12.942C2,12.942 10.226,15.241 10.226,15.241 10.226,15.241 8.275,17.071 8.275,17.071 9.288,17.922 10.917,18.786 12.32,18.786 15.074,18.786 17.386,16.824 18.039,14.171 18.039,14.171 21.987,15.222 21.987,15.222 20.891,19.693 16.996,23 12.357,23 9.771,23 7.076,21.618 5.308,19.934 5.308,19.934 3.454,21.671 3.454,21.671 3.454,21.671 2,12.942 2,12.942z M11.643,2C14.229,2 16.924,3.382 18.692,5.066 18.692,5.066 20.546,3.329 20.546,3.329 20.546,3.329 22,12.058 22,12.058 22,12.058 13.774,9.759 13.774,9.759 13.774,9.759 15.725,7.929 15.725,7.929 14.712,7.078 13.083,6.214 11.68,6.214 8.926,6.214 6.614,8.176 5.961,10.829 5.961,10.829 2.013,9.778 2.013,9.778 3.109,5.307 7.004,2 11.643,2z");
             this.AddFilter.Height = 18;
             this.AddFilter.Width = 18;
@@ -58,7 +58,7 @@ namespace FinalUi
             ToWeightBox.Text = RuleCR.endW.ToString();
             DOXAmountBox.Text = RuleCR.doxAmount.ToString();
             NDoxAmountBox.Text = RuleCR.ndoxAmount.ToString();
-            AddRule.setFormList(RuleCR, ServiceTwinBox, ZoneTwinBox, StateTwinBox, CitiesTwinBox,ServiceGroupTwinBox);
+            AddRule.setFormList(RuleCR, ServiceTwinBox, ZoneTwinBox, StateTwinBox, CitiesTwinBox, ServiceGroupTwinBox);
             if (RuleCR.type == 'R')
             {
                 RangeTypeRadio.IsChecked = true;
@@ -99,7 +99,7 @@ namespace FinalUi
             CitiesTwinBox.AllListSource = DataSources.CityCopy;
             CitiesTwinBox.SelectedListSource = new List<City>();
             CitiesTwinBox.DisplayValuePath = "NameAndCode";
-            ServiceGroupTwinBox.AllListSource = DataSources.ServiceGroupCopy ;
+            ServiceGroupTwinBox.AllListSource = DataSources.ServiceGroupCopy;
             ServiceGroupTwinBox.DisplayValuePath = "GroupName";
             ServiceGroupTwinBox.SelectedListSource = new List<ServiceGroup>();
         }
@@ -108,9 +108,8 @@ namespace FinalUi
             if (crule == null)
             {
                 throw new Exception("Rule is Null");
-
             }
-            if(crule.ServiceGroupList != null)
+            if (crule.ServiceGroupList != null)
             {
                 ServiceGroupTwinBox.AllListSource = DataSources.ServiceGroupCopy.Where(x => !crule.ServiceGroupList.Contains(x.GroupName)).ToList();
                 ServiceGroupTwinBox.SelectedListSource = DataSources.ServiceGroupCopy.Where(x => crule.ServiceGroupList.Contains(x.GroupName)).ToList();
@@ -223,11 +222,11 @@ namespace FinalUi
                 MessageBox.Show("Please correct following errors: " + errorMsg);
                 return;
             }
-            List<string> selectedServiceList = ServiceTwinBox.SelectedListSource.Cast<Service>().Select(x => x.SER_CODE).ToList();
-            List<string> selectedZoneList = ZoneTwinBox.SelectedListSource.Cast<ZONE>().Select(x => x.zcode).ToList();
-            List<String> selectedCityList = CitiesTwinBox.SelectedListSource.Cast<City>().Select(x => x.CITY_CODE).ToList();
-            List<string> selectedStateList = StateTwinBox.SelectedListSource.Cast<State>().Select(x => x.STATE_CODE).ToList();
-            List<string> selectedServiceGroupList = ServiceGroupTwinBox.SelectedListSource.Cast<ServiceGroup>().Select(x => x.GroupName).ToList();
+            List<string> selectedServiceList = ((ServiceTwinBox.SelectedListSource) ?? new List<Service>()).Cast<Service>().Select(x => x.SER_CODE).ToList();
+            List<string> selectedZoneList = ((ZoneTwinBox.SelectedListSource) ?? new List<ZONE>()).Cast<ZONE>().Select(x => x.zcode).ToList();
+            List<String> selectedCityList = ((CitiesTwinBox.SelectedListSource) ?? new List<City>()).Cast<City>().Select(x => x.CITY_CODE).ToList();
+            List<string> selectedStateList = ((StateTwinBox.SelectedListSource) ?? new List<State>()).Cast<State>().Select(x => x.STATE_CODE).ToList();
+            List<string> selectedServiceGroupList = ((ServiceGroupTwinBox.SelectedListSource) ?? new List<ServiceGroup>()).Cast<ServiceGroup>().Select(x => x.GroupName).ToList();
             RuleCR.ServiceList = selectedServiceList;
             RuleCR.ZoneList = selectedZoneList;
             RuleCR.CityList = selectedCityList;
@@ -295,9 +294,9 @@ namespace FinalUi
                 }
                 else
                 {
-                    if(isdone)
+                    if (isdone)
                     {
-                        MessageBox.Show("Rule updated successfully","Information");
+                        MessageBox.Show("Rule updated successfully", "Information");
                         this.Close();
                     }
                 }

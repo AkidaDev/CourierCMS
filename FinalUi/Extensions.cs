@@ -27,8 +27,6 @@ namespace FinalUi
         List<Rule> rulesList;
         List<CostingRule> costingRules;
         List<ServiceRule> serviceRules;
-        List<InvoiceRule> invoiceRule;
-        Rule lastCostingRuleApplied;
         public double applyCostingRulesOnTransaction(double billedWeight, string destination, string serviceCode, char DOX)
         {
             RuntimeData dt = new RuntimeData();

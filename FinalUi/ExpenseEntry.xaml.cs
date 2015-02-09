@@ -95,6 +95,8 @@ namespace FinalUi
             ExpenseDataGrid.IsReadOnly = false;
             ExpenseDataGrid.CanUserDeleteRows = false;
             ExpenseDataGrid.CanUserAddRows = false;
+            decimal TotalAmount = DataSourceCollection.Sum(x => x.Amount);
+            TotalAmountTextBox.Text = TotalAmount.ToString();
         }
         private void AddExpenseButton_Click(object sender, RoutedEventArgs e)
         {

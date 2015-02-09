@@ -161,10 +161,7 @@ namespace FinalUi
             invoice = new FinalUi.Invoice();
             BillingDataDataContext db = new BillingDataDataContext();
             source = UtilityClass.convertToRuntimeVIew(dataGridSource).Where(x => x.CustCode == ((Client)ClientList.SelectedItem).CLCODE && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).OrderBy(y => y.BookingDate).ThenBy(z => z.ConsignmentNo).ToList();
-            if (SubClientComboBox.Text != null && SubClientComboBox.Text != "")
-            {
-                source = source.Where(x => x.SubClient == SubClientComboBox.Text).ToList();
-            }
+            source = source.Where(x => x.SubClient == SubClientComboBox.Text).ToList();
             rs.Value = source;
             Client curClient;
             if (client == null)

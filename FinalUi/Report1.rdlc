@@ -1403,6 +1403,7 @@
                             <Style>
                               <FontFamily>verdana</FontFamily>
                               <FontSize>8pt</FontSize>
+                              <Format>0.00</Format>
                               <Color>DimGray</Color>
                             </Style>
                           </TextRun>
@@ -1417,14 +1418,7 @@
                       <Border>
                         <Style>None</Style>
                       </Border>
-                      <TopBorder>
-                        <Style>None</Style>
-                      </TopBorder>
-                      <BottomBorder>
-                        <Style>None</Style>
-                      </BottomBorder>
                       <LeftBorder>
-                        <Style>None</Style>
                         <Width>0.5pt</Width>
                       </LeftBorder>
                       <RightBorder>
@@ -1588,6 +1582,7 @@
                             <Style>
                               <FontFamily>verdana</FontFamily>
                               <FontSize>8pt</FontSize>
+                              <Format>0.00</Format>
                               <Color>DimGray</Color>
                             </Style>
                           </TextRun>
@@ -1602,14 +1597,7 @@
                       <Border>
                         <Style>None</Style>
                       </Border>
-                      <TopBorder>
-                        <Style>None</Style>
-                      </TopBorder>
-                      <BottomBorder>
-                        <Style>None</Style>
-                      </BottomBorder>
                       <LeftBorder>
-                        <Style>None</Style>
                         <Width>0.5pt</Width>
                       </LeftBorder>
                       <RightBorder>
@@ -1773,6 +1761,7 @@
                             <Style>
                               <FontFamily>verdana</FontFamily>
                               <FontSize>8pt</FontSize>
+                              <Format>0.00</Format>
                               <Color>DimGray</Color>
                             </Style>
                           </TextRun>
@@ -1787,14 +1776,7 @@
                       <Border>
                         <Style>None</Style>
                       </Border>
-                      <TopBorder>
-                        <Style>None</Style>
-                      </TopBorder>
-                      <BottomBorder>
-                        <Style>None</Style>
-                      </BottomBorder>
                       <LeftBorder>
-                        <Style>None</Style>
                         <Width>0.5pt</Width>
                       </LeftBorder>
                       <RightBorder>
@@ -1833,6 +1815,7 @@
                               <Style>
                                 <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <Format>0.00</Format>
                                 <Color>DimGray</Color>
                               </Style>
                             </TextRun>
@@ -1847,14 +1830,7 @@
                         <Border>
                           <Style>None</Style>
                         </Border>
-                        <TopBorder>
-                          <Style>None</Style>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Style>None</Style>
-                        </BottomBorder>
                         <LeftBorder>
-                          <Style>None</Style>
                           <Width>0.5pt</Width>
                         </LeftBorder>
                         <RightBorder>
@@ -1884,6 +1860,7 @@
                               <Style>
                                 <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <Format>0.00</Format>
                                 <Color>DimGray</Color>
                               </Style>
                             </TextRun>
@@ -1898,14 +1875,7 @@
                         <Border>
                           <Style>None</Style>
                         </Border>
-                        <TopBorder>
-                          <Style>None</Style>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Style>None</Style>
-                        </BottomBorder>
                         <LeftBorder>
-                          <Style>None</Style>
                           <Width>0.5pt</Width>
                         </LeftBorder>
                         <RightBorder>
@@ -1935,6 +1905,7 @@
                               <Style>
                                 <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <Format>0.00</Format>
                                 <Color>DimGray</Color>
                               </Style>
                             </TextRun>
@@ -1949,15 +1920,10 @@
                         <Border>
                           <Style>None</Style>
                         </Border>
-                        <TopBorder>
-                          <Style>None</Style>
-                        </TopBorder>
                         <BottomBorder>
-                          <Style>None</Style>
                           <Width>0.5pt</Width>
                         </BottomBorder>
                         <LeftBorder>
-                          <Style>None</Style>
                           <Width>0.5pt</Width>
                         </LeftBorder>
                         <RightBorder>
@@ -1987,6 +1953,7 @@
                               <Style>
                                 <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <Format>0</Format>
                                 <Color>DimGray</Color>
                               </Style>
                             </TextRun>
@@ -2002,19 +1969,11 @@
                           <Style>Solid</Style>
                         </Border>
                         <TopBorder>
-                          <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </TopBorder>
-                        <BottomBorder>
-                          <Style>Solid</Style>
-                        </BottomBorder>
                         <LeftBorder>
-                          <Style>Solid</Style>
                           <Width>0.5pt</Width>
                         </LeftBorder>
-                        <RightBorder>
-                          <Style>Solid</Style>
-                        </RightBorder>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingRight>3pt</PaddingRight>
                       </Style>
@@ -2140,6 +2099,7 @@
                                     <Style>
                                       <FontFamily>verdana</FontFamily>
                                       <FontSize>8pt</FontSize>
+                                      <Format>0.00</Format>
                                       <Color>DimGray</Color>
                                     </Style>
                                   </TextRun>
@@ -2154,14 +2114,7 @@
                               <Border>
                                 <Style>None</Style>
                               </Border>
-                              <TopBorder>
-                                <Style>None</Style>
-                              </TopBorder>
-                              <BottomBorder>
-                                <Style>None</Style>
-                              </BottomBorder>
                               <LeftBorder>
-                                <Style>None</Style>
                                 <Width>0.5pt</Width>
                               </LeftBorder>
                               <RightBorder>
@@ -2189,6 +2142,7 @@
                                         <Style>
                                           <FontFamily>verdana</FontFamily>
                                           <FontSize>8pt</FontSize>
+                                          <Format>0.00</Format>
                                           <Color>DimGray</Color>
                                         </Style>
                                       </TextRun>
@@ -2203,14 +2157,7 @@
                                   <Border>
                                     <Style>None</Style>
                                   </Border>
-                                  <TopBorder>
-                                    <Style>None</Style>
-                                  </TopBorder>
-                                  <BottomBorder>
-                                    <Style>None</Style>
-                                  </BottomBorder>
                                   <LeftBorder>
-                                    <Style>None</Style>
                                     <Width>0.5pt</Width>
                                   </LeftBorder>
                                   <RightBorder>
@@ -2253,14 +2200,7 @@
                                       <Border>
                                         <Style>None</Style>
                                       </Border>
-                                      <TopBorder>
-                                        <Style>None</Style>
-                                      </TopBorder>
-                                      <BottomBorder>
-                                        <Style>None</Style>
-                                      </BottomBorder>
                                       <LeftBorder>
-                                        <Style>None</Style>
                                         <Width>0.5pt</Width>
                                       </LeftBorder>
                                       <RightBorder>
@@ -2303,14 +2243,7 @@
                                           <Border>
                                             <Style>None</Style>
                                           </Border>
-                                          <TopBorder>
-                                            <Style>None</Style>
-                                          </TopBorder>
-                                          <BottomBorder>
-                                            <Style>None</Style>
-                                          </BottomBorder>
                                           <LeftBorder>
-                                            <Style>None</Style>
                                             <Width>0.5pt</Width>
                                           </LeftBorder>
                                           <RightBorder>
@@ -3963,6 +3896,7 @@
                               <Style>
                                 <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <Format>0;(0)</Format>
                                 <Color>DimGray</Color>
                               </Style>
                             </TextRun>
@@ -3977,9 +3911,6 @@
                         <Border>
                           <Style>None</Style>
                         </Border>
-                        <TopBorder>
-                          <Style>None</Style>
-                        </TopBorder>
                         <BottomBorder>
                           <Style>Solid</Style>
                         </BottomBorder>
@@ -3994,6 +3925,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>

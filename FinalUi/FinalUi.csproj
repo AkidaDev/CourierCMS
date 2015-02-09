@@ -30,7 +30,7 @@
     <MinimumRequiredVersion>0.0.1.25</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>17</ApplicationRevision>
+    <ApplicationRevision>29</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -213,6 +213,9 @@
     <Compile Include="ExpenseEntry.xaml.cs">
       <DependentUpon>ExpenseEntry.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExpenseReportWindow.xaml.cs">
+      <DependentUpon>ExpenseReportWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Extensions.cs" />
     <Compile Include="Filter.cs" />
     <Compile Include="FilterSelectWindow.xaml.cs">
@@ -355,6 +358,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExpenseEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExpenseReportWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -545,6 +552,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ClientAnalysisReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExpenseAnalysisReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Report3.rdlc" />
