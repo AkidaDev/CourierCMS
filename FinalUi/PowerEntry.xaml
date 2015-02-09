@@ -30,7 +30,7 @@
                     </ItemsPanelTemplate>
                 </ComboBox.ItemsPanel>
             </ComboBox>
-            <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
+            <Rectangle Fill="Gray" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <TextBlock  Text="Ending Index   .: " FontSize="16" FontFamily="Calibri" VerticalAlignment="Center"/>
             <ComboBox Name="endConnNo"  Width="110" IsEditable="True" ItemsSource="{Binding}" Padding="2" >
                 <ComboBox.ItemsPanel>
@@ -71,7 +71,7 @@
             <cstmcntrl:PandaCheckbox  Name="SetWeightCheck" Checked="False"/>
             <TextBlock Text=" Set Weight .: " FontSize="16" FontFamily="Calibri" VerticalAlignment="Center"/>
             <TextBox Name="WeightTextBox" Width="88"  Padding="2" Height="24"/>
-            <Rectangle Fill="Black" Height="33" Width="1" Margin="8 -6 15 -5"/>
+            <Rectangle Fill="Gray" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <cstmcntrl:PandaCheckbox  Name="CalcRateCheck" Checked="True"/>
             <TextBlock Text=" Calculate Rate" FontSize="16" FontFamily="Calibri" VerticalAlignment="Center"/>
         </WrapPanel>

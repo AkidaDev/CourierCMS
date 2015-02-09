@@ -20,10 +20,10 @@
         <Path VerticalAlignment="Bottom" Data="F1M2,2.708C2,2.708 2,2 2,2 2,2 235.093,2 235.093,2 235.093,2 235.093,2.708 235.093,2.708 235.093,2.708 2,2.708 2,2.708" Fill="Gray" Height="4" Width="237"/>
         <Path Data="F1M4.038,17.665C4.038,17.665 7.366,20.999 7.366,20.999 7.366,20.999 2,23 2,23 2,23 4.038,17.665 4.038,17.665z M18.528,5.401C18.528,5.401 13.78,10.158 13.78,10.158 13.78,10.158 14.722,11.101 14.722,11.101 14.722,11.101 19.469,6.386 19.469,6.386 19.469,6.386 18.528,5.401 18.528,5.401z M18.715,2.13C19.056,2.13 19.397,2.26 19.657,2.521 19.657,2.521 22.48,5.35 22.48,5.35 23,5.871 23,6.715 22.48,7.236 22.48,7.236 11.186,18.553 11.186,18.553 10.666,19.074 8.882,20.683 8.362,20.163 8.362,20.163 4.873,16.667 4.873,16.667 4.353,16.146 5.96,14.358 6.48,13.837 6.48,13.837 17.774,2.521 17.774,2.521 18.034,2.26 18.375,2.13 18.715,2.13z" Fill="Gray" Height="24" Width="24" Margin="83 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
         <TextBlock Margin="108 0 0 0" FontSize="16" FontFamily="Calibri" Text="Enter Details .:" VerticalAlignment="Bottom"/>
-        <WrapPanel Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+        <WrapPanel Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="46 0 0 0">
             <TextBlock Name="FromLabel" Text="From  .: " FontSize="16" FontFamily="Calibri" VerticalAlignment="Center"/>
             <TextBox Name="FromBox" Width="120" Padding="2" Height="24"/>
-            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="28" Width="3" Margin="8 -6 15 -5"/>
+            <Rectangle Fill="Gray" Height="28" Width="1" Margin="8 -6 15 -5"/>
             <TextBlock Name="ToLabel" Text=" To .: "  FontSize="16" FontFamily="Calibri" VerticalAlignment="Center"/>
             <TextBox Name="ToBox" Width="120" Padding="2" Height="24"/>
         </WrapPanel>
@@ -43,7 +43,7 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Path Data="F1M1,1C1,1 2,1 2,1 2,1 2,32 2,32 2,32 1,32 1,32 1,32 1,1 1,1" Fill="Black" Height="28" Width="3" Margin="8 -6 15 -5"/>
+            <Rectangle Fill="Gray" Height="28" Width="1" Margin="8 -6 15 -5"/>
             <TextBlock  Name="CostLabel" Text=" Cost .: "  FontSize="16" FontFamily="Calibri" VerticalAlignment="Center"/>
             <TextBox Name="CostBox" Width="105" Padding="2" Height="24"/>
         </WrapPanel>
