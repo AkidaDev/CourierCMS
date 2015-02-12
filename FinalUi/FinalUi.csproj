@@ -557,7 +557,6 @@
     <Content Include="ExpenseAnalysisReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="Report3.rdlc" />
     <Resource Include="Images\load.gif" />
     <Resource Include="Images\logo.ico" />
     <Resource Include="logo.ico">
