@@ -312,9 +312,9 @@ namespace FinalUi
         {
 
             int index = ConnsignmentNumber.SelectedIndex;
-            int connsigmentNo = int.Parse(new string(ConnsignmentNumber.Text.ToCharArray().Where(x => char.IsDigit(x)).ToArray()));
+            int connsigmentNo = int.Parse(new string(ConnsignmentNumber.Text.ToCharArray().Where(x => char.IsDigit(x) && x!='0').ToArray()));
             connsigmentNo++;
-            string start = new string(ConnsignmentNumber.Text.ToCharArray().Where(x => char.IsLetter(x)).ToArray());
+            string start = ConnsignmentNumber.Text.Substring(0, ConnsignmentNumber.Text.Length - connsigmentNo.ToString().Length);
             start = start + connsigmentNo.ToString();
             ConnsignmentNumber.Text = start;
             fillAllElements(ConnsignmentNumber.Text);
@@ -326,9 +326,9 @@ namespace FinalUi
         public void setPreviousData()
         {
             int index = ConnsignmentNumber.SelectedIndex;
-            int connsigmentNo = int.Parse(new string(ConnsignmentNumber.Text.ToCharArray().Where(x => char.IsDigit(x)).ToArray()));
+            int connsigmentNo = int.Parse(new string(ConnsignmentNumber.Text.ToCharArray().Where(x => char.IsDigit(x) && x != '0').ToArray()));
             connsigmentNo--;
-            string start = new string(ConnsignmentNumber.Text.ToCharArray().Where(x => char.IsLetter(x)).ToArray());
+            string start = ConnsignmentNumber.Text.Substring(0, ConnsignmentNumber.Text.Length - connsigmentNo.ToString().Length);
             start = start + connsigmentNo.ToString();
             ConnsignmentNumber.Text = start;
             fillAllElements(ConnsignmentNumber.Text);
