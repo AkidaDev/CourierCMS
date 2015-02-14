@@ -71,6 +71,7 @@ namespace FinalUi
             shadow.ShadowDepth = 0;
             this.MainGrid.Effect = shadow;
             myStoryboard.Begin(this);
+
         }
         private void MainGrid_KeyUp(object sender, KeyEventArgs e)
         {
