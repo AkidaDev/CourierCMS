@@ -32,7 +32,12 @@ namespace FinalUi
                                                     select payment.InvoiceNumber)
                                                 .Contains(invoice.BillId)
                                          select invoice).ToList();
-            Invoice inv = new Invoice();
+         
+        }
+
+        private void ClientProfitabilityGrid_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            e.Row.Header = (e.Row.GetIndex() + 1).ToString();
         }
     }
 }

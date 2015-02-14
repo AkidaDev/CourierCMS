@@ -2,8 +2,29 @@ using System;
 using System.Text.RegularExpressions;
 namespace FinalUi
 {
+    partial class ClientReportView
+    {
+    }
+    
+    public partial class BalanceView
+    {
+        public string ClientName
+        {
+            get
+            {
+                return DataSources.ClientNameFromCode(this.PC);
+            }
+        }
+    }
     partial class Invoice
     {
+        public string ClientName
+        {
+            get
+            {
+                return DataSources.ClientNameFromCode(this.ClientCode);
+            }
+        }
         public double totalAmount
         {
             get

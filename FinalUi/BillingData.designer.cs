@@ -92,7 +92,7 @@ namespace FinalUi
     partial void DeleteExpense(Expense instance);
     #endregion
 		
-	
+		
 		
 		public BillingDataDataContext(string connection) : 
 				base(connection, mappingSource)
@@ -9640,6 +9640,10 @@ namespace FinalUi
 		
 		private System.Nullable<int> _NumOfConns;
 		
+		private System.Nullable<double> _FUEL;
+		
+		private System.Nullable<double> _STAX;
+		
 		public ClientReportView()
 		{
 		}
@@ -9768,6 +9772,38 @@ namespace FinalUi
 				if ((this._NumOfConns != value))
 				{
 					this._NumOfConns = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FUEL", DbType="Float")]
+		public System.Nullable<double> FUEL
+		{
+			get
+			{
+				return this._FUEL;
+			}
+			set
+			{
+				if ((this._FUEL != value))
+				{
+					this._FUEL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STAX", DbType="Float")]
+		public System.Nullable<double> STAX
+		{
+			get
+			{
+				return this._STAX;
+			}
+			set
+			{
+				if ((this._STAX != value))
+				{
+					this._STAX = value;
 				}
 			}
 		}

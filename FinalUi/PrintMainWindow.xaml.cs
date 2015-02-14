@@ -28,6 +28,15 @@ namespace FinalUi
             BillViewer.LocalReport.DataSources.Clear();
             BillViewer.LocalReport.DataSources.Add(rs);
             BillViewer.LocalReport.SetParameters(repParams);
+            string InvoiceName = "";
+            string clientName = "";
+            ReportParameter invName= repParams.SingleOrDefault(x => x.Name == "InvoiceNumber");
+            if (invName != null && invName.Values.Count > 0)
+                InvoiceName = invName.Values[0];
+            ReportParameter ClientName = repParams.SingleOrDefault(x => x.Name == "ClientName");
+            if (ClientName != null && ClientName.Values.Count > 0)
+                clientName = ClientName.Values[0];
+            BillViewer.LocalReport.DisplayName = clientName + "-" + InvoiceName;
             BillViewer.RefreshReport();
         }
         public PrintMainWindow(ReportDataSource rs, List<ReportParameter> repParams, bool isMis)
@@ -37,6 +46,7 @@ namespace FinalUi
             BillViewer.LocalReport.DataSources.Clear();
             BillViewer.LocalReport.DataSources.Add(rs);
             BillViewer.LocalReport.SetParameters(repParams);
+
             BillViewer.RefreshReport();
         }
         List<RuntimeCityView> source;
@@ -89,16 +99,16 @@ where [BillId] = '" + inv.BillId + @"'
                 repParams.Add(new ReportParameter("DateString", dateString));
                 string descriptionString = "Total Consignments: " + source.Count;
                 repParams.Add(new ReportParameter("DescriptionString", descriptionString));
-                repParams.Add(new ReportParameter("MainAmountString", String.Format("{0:0.00}",inv.Basic.ToString())));
+                repParams.Add(new ReportParameter("MainAmountString", String.Format("{0:0.00}",inv.Basic)));
                 repParams.Add(new ReportParameter("DiscountPString", String.Format("{0:0.00}",inv.Discount)));
                 repParams.Add(new ReportParameter("FuelString",String.Format("{0:0.00}",inv.Fuel)));
-                repParams.Add(new ReportParameter("FuelAmount", String.Format("{0:0.00}",inv.fuelAmount.ToString())));
+                repParams.Add(new ReportParameter("FuelAmount", String.Format("{0:0.00}",inv.fuelAmount)));
                 repParams.Add(new ReportParameter("ServiceTaxString", String.Format("{0:0.00}",inv.STax)));
-                repParams.Add(new ReportParameter("ServiceTaxAmount",  String.Format("{0:0.00}",inv.taxAmount.ToString())));
-                repParams.Add(new ReportParameter("DiscountAmountString",  String.Format("{0:0.00}",inv.discountAmount.ToString())));
+                repParams.Add(new ReportParameter("ServiceTaxAmount",  String.Format("{0:0.00}",inv.taxAmount)));
+                repParams.Add(new ReportParameter("DiscountAmountString",  String.Format("{0:0.00}",inv.discountAmount)));
                 repParams.Add(new ReportParameter("MiscellaneousAmountString",  String.Format("{0:0.00}",inv.Misc)));
                 repParams.Add(new ReportParameter("TNC", Configs.Default.TNC));
-                repParams.Add(new ReportParameter("TotalAmountString",  String.Format("{0:0.00}",inv.totalAmount.ToString())));
+                repParams.Add(new ReportParameter("TotalAmountString",  String.Format("{0:0.00}",inv.totalAmount)));
                 repParams.Add(new ReportParameter("TotalAmountInWordString", UtilityClass.NumbersToWords((int)Math.Round(inv.totalAmount))));
                 if (inv.PreviousDue == 0 || inv.PreviousDue == null)
                 {
@@ -134,7 +144,7 @@ where [BillId] = '" + inv.BillId + @"'
                 rs.Name = "DataSet1";
                 BillViewer.LocalReport.DataSources.Add(rs);
                 BillViewer.LocalReport.SetParameters(repParams);
-                BillViewer.LocalReport.DisplayName = inv.ClientCode + "-" + inv.BillId;
+                BillViewer.LocalReport.DisplayName = inv.ClientName + "-" + inv.BillId;
                 BillViewer.RefreshReport();
             }
             catch(Exception e)

@@ -46,9 +46,10 @@
                     </Grid.Background>
                     <TextBlock FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri" Text=" Client Due List .:"/>
                 </Grid>
-                <DataGrid Grid.Row="1" TextSearch.TextPath="PC" Name="ClientDueGrid" DataContext="{StaticResource DueGridDataSource}" ItemsSource="{Binding}">
+                <DataGrid Grid.Row="1" HeadersVisibility="All" RowHeaderWidth="35" TextSearch.TextPath="PC" LoadingRow="ClientProfitabilityGrid_LoadingRow" Name="ClientDueGrid" DataContext="{StaticResource DueGridDataSource}" ItemsSource="{Binding}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Customer Code" Binding="{Binding PC}"/>
+                        <DataGridTextColumn Header="Customer Name" Binding="{Binding ClientName}"/>
                         <DataGridTextColumn Header="Billed Amount" Binding="{Binding AmountBilled}"/>
                         <DataGridTextColumn Header="Payment Recieved" Binding="{Binding PaymentRecieved}"/>
                         <DataGridTextColumn Header="Net Balance" Binding="{Binding NetBalance}"/>
@@ -71,9 +72,10 @@
                     </Grid.Background>
                     <TextBlock Foreground="#FF5B5B5B" FontSize="16" FontFamily="Calibri" Text=" Unpaid Invoices List .:"/>
                 </Grid>
-                <DataGrid TextSearch.TextPath="CustCode" Grid.Row="1" Name="ClientProfitabilityGrid" DataContext="{StaticResource UnpaidInvoiceGridSource}" ItemsSource="{Binding}">
+                <DataGrid TextSearch.TextPath="CustCode"  HeadersVisibility="All" RowHeaderWidth="35" Grid.Row="1" LoadingRow="ClientProfitabilityGrid_LoadingRow" Name="ClientProfitabilityGrid" DataContext="{StaticResource UnpaidInvoiceGridSource}" ItemsSource="{Binding}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Bill Id" Binding="{Binding BillId}"/>
+                        <DataGridTextColumn Header="Customer Name" Binding="{Binding ClientName}"/>
                         <DataGridTextColumn Header="Customer Code" Binding="{Binding ClientCode}"/>
                         <DataGridTextColumn Header="Date" Binding="{Binding CompactDate}"/>
                         <DataGridTextColumn Header="Total Amount" Binding="{Binding totalAmount}"/>

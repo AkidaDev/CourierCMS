@@ -161,7 +161,10 @@ namespace FinalUi
             invoice = new FinalUi.Invoice();
             BillingDataDataContext db = new BillingDataDataContext();
             source = UtilityClass.convertToRuntimeVIew(dataGridSource).Where(x => x.CustCode == ((Client)ClientList.SelectedItem).CLCODE && x.BookingDate <= ToDate.SelectedDate && x.BookingDate >= FromDate.SelectedDate).OrderBy(y => y.BookingDate).ThenBy(z => z.ConsignmentNo).ToList();
-            source = source.Where(x => x.SubClient == SubClientComboBox.Text).ToList();
+            if (SubClientComboBox.Text == "")
+                source = source.Where(x => x.SubClient == "" || x.SubClient == null).ToList();
+            else
+                source = source.Where(x => x.SubClient == SubClientComboBox.Text).ToList();
             rs.Value = source;
             Client curClient;
             if (client == null)
@@ -180,14 +183,14 @@ namespace FinalUi
             repParams.Add(new ReportParameter("DateString", dateString));
             string descriptionString = "Total Consignments: " + source.Count;
             repParams.Add(new ReportParameter("DescriptionString", descriptionString));
-            repParams.Add(new ReportParameter("MainAmountString", String.Format("{0:0.00}", invoice.Basic.ToString())));
+            repParams.Add(new ReportParameter("MainAmountString", String.Format("{0:0.00}", invoice.Basic)));
             repParams.Add(new ReportParameter("FuelString", TaxBox.Text));
             repParams.Add(new ReportParameter("ServiceTaxString", String.Format("{0:0.00}", double.Parse(ServiceTaxBox.Text))));
             repParams.Add(new ReportParameter("DiscountPString", String.Format("{0:0.00}", double.Parse(DiscountBox.Text))));
             repParams.Add(new ReportParameter("MiscellaneousAmountString", MiscBox.Text));
-            repParams.Add(new ReportParameter("DiscountAmountString", String.Format("{0:0.00}", invoice.discountAmount.ToString())));
-            repParams.Add(new ReportParameter("FuelAmount", invoice.fuelAmount.ToString()));
-            repParams.Add(new ReportParameter("ServiceTaxAmount", String.Format("{0:0.00}", invoice.taxAmount.ToString())));
+            repParams.Add(new ReportParameter("DiscountAmountString", String.Format("{0:0.00}", invoice.discountAmount)));
+            repParams.Add(new ReportParameter("FuelAmount", String.Format("{0:0.00}",invoice.fuelAmount)));
+            repParams.Add(new ReportParameter("ServiceTaxAmount", String.Format("{0:0.00}", invoice.taxAmount)));
             if (PreviousDueCheck.Checked == true)
                 invoice.PreviousDue = double.Parse(PreviousDueTextBox.Text);
             repParams.Add(new ReportParameter("TotalAmountString", String.Format("{0:0.00}", invoice.totalAmount)));

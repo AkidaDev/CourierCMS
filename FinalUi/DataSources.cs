@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 namespace FinalUi
@@ -45,6 +46,45 @@ namespace FinalUi
                     initialize();
                 return _ServiceGroupAssignments;
             }
+        }
+        public static List<Client> ClientsStatic
+        {
+            get
+            {
+                if (_Client == null)
+                    initialize();
+                return _Client;
+            }
+        }
+        public static string ClientNameFromCode(string clcode)
+        {
+            if (_Client == null)
+                initialize();
+            Client clnt = _Client.SingleOrDefault(x => x.CLCODE == clcode);
+            if (clnt == null)
+                return "";
+            else
+                return clnt.CLNAME;
+        }
+        public static decimal FuelAmountFromCode(string clcode)
+        {
+            if (_Client == null)
+                initialize();
+            Client clnt = _Client.SingleOrDefault(x => x.CLCODE == clcode);
+            if (clnt == null)
+                return 0;
+            else
+                return (decimal)(clnt.FUEL ?? 0);
+        }
+        public static decimal STaxAmountFromCode(string clcode)
+        {
+            if (_Client == null)
+                initialize();
+            Client clnt = _Client.SingleOrDefault(x => x.CLCODE == clcode);
+            if (clnt == null)
+                return 0;
+            else
+                return (decimal)(clnt.STAX ?? 0);
         }
         #endregion
         #region CopyLists

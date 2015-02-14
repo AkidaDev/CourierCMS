@@ -491,6 +491,8 @@
       <Column Name="Month" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
       <Column Name="GroupName" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
       <Column Name="NumOfConns" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FUEL" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="STAX" Type="System.Double" DbType="Float" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.ImportFileData" Method="ImportFileData">
