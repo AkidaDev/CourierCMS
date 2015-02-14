@@ -26,11 +26,17 @@ namespace FinalUi
             PaymentDatePicker.SelectedDate = DateTime.Today;
             ChequeRadio.Checked += CashRadio_Unchecked;
             CashRadio.Checked += CashRadio_Checked;
+            DebitNoteBox.Text = "0";
+            TDSBox.Text = "0";
             CollectionViewSource clientListSource = (CollectionViewSource)(FindResource("ClientList"));
             clientListSource.Source = DataSources.ClientCopy;
             CollectionViewSource invoiceListSource = (CollectionViewSource)FindResource("InvoiceList");
             BillingDataDataContext db = new BillingDataDataContext();
-            invoiceListSource.Source = db.Invoices;
+            invoiceListSource.Source = (from invoice in db.Invoices
+                                        where !(from payment in db.PaymentEntries
+                                                select payment.InvoiceNumber)
+                                                .Contains(invoice.BillId)
+                                        select invoice).ToList();
         }
         private void CashRadio_Checked(object sender, RoutedEventArgs e)
         {
@@ -130,6 +136,22 @@ namespace FinalUi
                 {
                     InvoiceComboBox.Visibility = System.Windows.Visibility.Collapsed;
                     ClientComboBox.Visibility = System.Windows.Visibility.Visible;
+                }
+            }
+        }
+
+        private void AmountTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if(InvoiceSelectRadio.IsChecked == true)
+            {
+                Invoice tempInv = InvoiceComboBox.SelectedItem as Invoice;
+                if(tempInv != null)
+                {
+                    double tempStorage;
+                    if(double.TryParse(AmountTextBox.Text, out tempStorage))
+                    {
+                        DebitNoteBox.Text = (tempInv.totalAmount - tempStorage).ToString();
+                    }
                 }
             }
         }
