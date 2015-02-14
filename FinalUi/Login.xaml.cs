@@ -89,21 +89,27 @@ namespace FinalUi
 
                     }
                     SecurityModule.Reload();
-                   
-                    if (SecurityModule.authenticate(userName, passWord))
+                    try
                     {
-                        BillingDataDataContext db = new BillingDataDataContext();
-                        window = new MainWindow();
-                        Properties.Settings.Default.Reload();
-                        Configs.Default.Reload();
-                        DataSources.initialize();
-                        window.Show();
-                        this.Close();
-                        loginFlag = true;
+                        if (SecurityModule.authenticate(userName, passWord))
+                        {
+                            BillingDataDataContext db = new BillingDataDataContext();
+                            window = new MainWindow();
+                            Properties.Settings.Default.Reload();
+                            Configs.Default.Reload();
+                            DataSources.initialize();
+                            window.Show();
+                            this.Close();
+                            loginFlag = true;
+                        }
+                        else
+                        {
+                            loginfail(null, new RoutedEventArgs());
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        loginfail(null, new RoutedEventArgs());
+                        MessageBox.Show("Unable to connect to server");
                     }
                 }
             }
