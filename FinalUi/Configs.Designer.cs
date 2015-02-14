@@ -37,7 +37,7 @@ namespace FinalUi {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("A. R. Enterprises")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string CompanyName {
             get {
                 return ((string)(this["CompanyName"]));
@@ -49,7 +49,7 @@ namespace FinalUi {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("9999999999")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string CompanyPhone {
             get {
                 return ((string)(this["CompanyPhone"]));
@@ -61,7 +61,7 @@ namespace FinalUi {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("arentprises@gmail.com")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string CompanyEmail {
             get {
                 return ((string)(this["CompanyEmail"]));
@@ -73,7 +73,7 @@ namespace FinalUi {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("999999999")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string CompanyFax {
             get {
                 return ((string)(this["CompanyFax"]));
@@ -85,7 +85,7 @@ namespace FinalUi {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Blue")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string theme {
             get {
                 return ((string)(this["theme"]));
@@ -97,8 +97,7 @@ namespace FinalUi {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("23 Veer Savakar Block, Shop No.-4 opposite metro pillar no.-60 shakarpur, new del" +
-            "hi-110092")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string CompanyAddress {
             get {
                 return ((string)(this["CompanyAddress"]));
@@ -110,7 +109,7 @@ namespace FinalUi {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string ServiceTax {
             get {
                 return ((string)(this["ServiceTax"]));
@@ -122,7 +121,6 @@ namespace FinalUi {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool IsFirst {
             get {
                 return ((bool)(this["IsFirst"]));
@@ -134,7 +132,7 @@ namespace FinalUi {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Transparent")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string Background {
             get {
                 return ((string)(this["Background"]));
@@ -146,7 +144,6 @@ namespace FinalUi {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool IsFreshOrReset {
             get {
                 return ((bool)(this["IsFreshOrReset"]));
@@ -158,7 +155,7 @@ namespace FinalUi {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Dharmendra")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string CompanyOwner {
             get {
                 return ((string)(this["CompanyOwner"]));
@@ -182,7 +179,7 @@ namespace FinalUi {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("s")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string SuperUser {
             get {
                 return ((string)(this["SuperUser"]));
@@ -206,7 +203,6 @@ namespace FinalUi {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public int Ports {
             get {
                 return ((int)(this["Ports"]));
@@ -230,7 +226,7 @@ namespace FinalUi {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.0.0.72")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string ver {
             get {
                 return ((string)(this["ver"]));

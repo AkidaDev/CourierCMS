@@ -6,55 +6,55 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="CompanyName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">A. R. Enterprises</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="CompanyPhone" Type="System.String" Scope="User">
-      <Value Profile="(Default)">9999999999</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="CompanyEmail" Type="System.String" Scope="User">
-      <Value Profile="(Default)">arentprises@gmail.com</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="CompanyFax" Type="System.String" Scope="User">
-      <Value Profile="(Default)">999999999</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="theme" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Blue</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="CompanyAddress" Type="System.String" Scope="User">
-      <Value Profile="(Default)">23 Veer Savakar Block, Shop No.-4 opposite metro pillar no.-60 shakarpur, new delhi-110092</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="ServiceTax" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="IsFirst" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Background" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Transparent</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="IsFreshOrReset" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="CompanyOwner" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Dharmendra</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="TNC" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="SuperUser" Type="System.String" Scope="User">
-      <Value Profile="(Default)">s</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Tin" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Ports" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="ServiceTaxno" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="ver" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0.0.0.72</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="amcSecrectKey" Type="System.String" Scope="Application">
       <Value Profile="(Default)" />
