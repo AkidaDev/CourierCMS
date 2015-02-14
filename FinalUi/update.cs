@@ -31,7 +31,7 @@ namespace FinalUi
         {
             try
             {
-                request = WebRequest.Create("http://api.vortex.sltintegrity.com/ver.json");
+                request = WebRequest.Create("http://api.vortex.sltintegrity.com/beta/ver.json");
                 response = request.GetResponse();
                 stream = new StreamReader(response.GetResponseStream());
                 json = stream.ReadToEnd();

@@ -35,7 +35,7 @@ namespace FinalUi
             file = System.IO.Path.GetTempPath() + @"vortex.exe";
             MessageBox.Show(file);
             webClient = new WebClient();
-            string url = "http://api.vortex.sltintegrity.com/download/vortex_" + update.vers.ToString() + ".exe";
+            string url = "http://api.vortex.sltintegrity.com/download/beta/vortex_" + update.vers.ToString() + ".exe";
             HttpWebResponse response;
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             try
