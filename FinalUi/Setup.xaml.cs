@@ -138,7 +138,7 @@ namespace FinalUi
                 {
                     BillingDataDataContext db = new BillingDataDataContext(constring.ConnectionString);
 
-                    this.emp.UserName = this.EUserNameBox.Text;
+                    this.emp.UserName = this.EUserNameBox.Text.ToLower();
                     this.emp.Password = this.UserPasswordBox.Password;
                     this.emp.EMPCode = "Super";
                     this.emp.Id = Guid.NewGuid();
@@ -161,7 +161,7 @@ namespace FinalUi
                         db.Employees.InsertOnSubmit(emp);
                     }
                     try {
-                        Configs.Default.SuperUser = this.emp.UserName;
+                        Configs.Default.SuperUser = this.emp.UserName.ToLower();
                         Configs.Default.Save();
                         db.SubmitChanges();
                     }

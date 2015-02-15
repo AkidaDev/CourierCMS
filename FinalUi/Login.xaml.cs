@@ -44,8 +44,6 @@ namespace FinalUi
             myStoryboard.Children.Add(myDoubleAnimation);
             Storyboard.SetTargetName(myDoubleAnimation, MainGrid.Name);
             Storyboard.SetTargetProperty(myDoubleAnimation, new PropertyPath(Grid.OpacityProperty));
-
-
             // Use the Loaded event to start the Storyboard.
         }
         private void Grid_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
