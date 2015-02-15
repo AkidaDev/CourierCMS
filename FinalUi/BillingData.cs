@@ -2,8 +2,33 @@ using System;
 using System.Text.RegularExpressions;
 namespace FinalUi
 {
-    partial class ClientReportView
+    public partial class InvoiceAnalyzeResult
     {
+        decimal _AmountDiff;
+        decimal _WeightDiff;
+        public decimal AmountDiff
+        {
+            get
+            {
+                return Math.Round(_AmountDiff, 2, MidpointRounding.AwayFromZero);
+            }
+            set
+            {
+                _AmountDiff = value;
+            }
+        }
+        public decimal WeightDif
+        {
+            get
+            {
+                return Math.Round(_WeightDiff, 3, MidpointRounding.AwayFromZero);
+            }
+            set
+            {
+                _WeightDiff = value;
+            }
+        }
+       
     }
     
     public partial class BalanceView
