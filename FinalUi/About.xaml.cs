@@ -48,7 +48,7 @@ namespace FinalUi
             {
                 response = ex.Response as HttpWebResponse;
             }
-            this.ContentRendered += Updater_ContentRendered;
+           // this.ContentRendered += Updater_ContentRendered;
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 uri = new Uri(url);
