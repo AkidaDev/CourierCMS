@@ -27,13 +27,13 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="IsFirst" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="Background" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="IsFreshOrReset" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="CompanyOwner" Type="System.String" Scope="User">
       <Value Profile="(Default)" />

@@ -79,6 +79,11 @@ namespace FinalUi
             #region setupCode
             PreviewMouseMove += OnPreviewMouseMove;
             #endregion
+            if(Configs.Default.Background == null || Configs.Default.Background == "")
+            {
+                Configs.Default.Background = "LightSeaGreen";
+                Configs.Default.Save();
+            }
             this.MainGrid.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Configs.Default.Background));
             db = new BillingDataDataContext();
             ResourceDictionary dict = this.Resources;

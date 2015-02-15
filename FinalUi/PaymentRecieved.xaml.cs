@@ -161,7 +161,7 @@ namespace FinalUi
             if(InvoiceSelectRadio.IsChecked == true)
             {
                 Invoice tempInv = InvoiceComboBox.SelectedItem as Invoice;
-                if(tempInv == null)
+                if(tempInv != null)
                 {
                     double tempStorage1, tempStorage2;
                     if(double.TryParse(AmountTextBox.Text, out tempStorage1) && double.TryParse(DebitNoteBox.Text,out tempStorage2))
