@@ -1086,8 +1086,10 @@ namespace FinalUi
                         List<int> Ids = dcr.Select(x => x.Id).ToList();
                         List<Rule> dr = db.Rules.Where(x => Ids.Contains(x.ID)).ToList();
                         db.Rules.DeleteAllOnSubmit(dr);
-                    } catch (Exception ex) {}
-                }
+                    } }
+                catch (Exception ex) {}
+                
+
             }
             if (ServiceRuleGrid.Visibility == Visibility.Visible && ServiceRuleGrid.SelectedItems != null)
             {
