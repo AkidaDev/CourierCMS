@@ -36,6 +36,8 @@
                 <DataGridTextColumn Header="Weight" Binding="{Binding Weight}"/>
                 <DataGridTextColumn Header="Has Error" Binding="{Binding hasError}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Error Description" Binding="{Binding MisMatchDesc}"/>
+                <DataGridTextColumn Header="AmountDiff" Binding="{Binding AmountDiff}"/>
+                <DataGridTextColumn Header="WeightDiff" Binding="{Binding WeightDif}" />
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="2" Background="#A9FFFFF3"/>
