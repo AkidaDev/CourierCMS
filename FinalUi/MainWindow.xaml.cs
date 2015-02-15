@@ -1210,6 +1210,7 @@ namespace FinalUi
         {
             DeleteConnsignment win = new DeleteConnsignment();
             win.ShowDialog();
+        
         }
 
         private void CostingRuleGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
