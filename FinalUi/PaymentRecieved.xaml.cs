@@ -155,5 +155,21 @@ namespace FinalUi
                 }
             }
         }
+
+        private void DebitNoteBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if(InvoiceSelectRadio.IsChecked == true)
+            {
+                Invoice tempInv = InvoiceComboBox.SelectedItem as Invoice;
+                if(tempInv == null)
+                {
+                    double tempStorage1, tempStorage2;
+                    if(double.TryParse(AmountTextBox.Text, out tempStorage1) && double.TryParse(DebitNoteBox.Text,out tempStorage2))
+                    {
+                        TDSBox.Text = (tempInv.totalAmount - tempStorage1 - tempStorage2).ToString();
+                    }
+                }
+            }
+        }
     }
 }
