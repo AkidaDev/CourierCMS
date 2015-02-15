@@ -588,8 +588,8 @@ namespace FinalUi
             BilledWeightTextBox.Text = string.Format("{0:0.00}", netweight);
             Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(delegate()
             {
-                BilledWeightTextBox.Focus();         // Set Logical Focus
-                Keyboard.Focus(BilledWeightTextBox); // Set Keyboard Focus
+                WeightAccToFranchize.Focus();         // Set Logical Focus
+                Keyboard.Focus(WeightAccToFranchize); // Set Keyboard Focus
             }));
         }
 
@@ -601,8 +601,8 @@ namespace FinalUi
                 {
                     Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(delegate()
                     {
-                        BilledWeightTextBox.Focus();         // Set Logical Focus
-                        Keyboard.Focus(BilledWeightTextBox); // Set Keyboard Focus
+                        WeightAccToFranchize.Focus();         // Set Logical Focus
+                        Keyboard.Focus(WeightAccToFranchize); // Set Keyboard Focus
                     }));
                 }
             }
