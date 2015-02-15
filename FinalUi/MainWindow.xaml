@@ -71,7 +71,7 @@
                     <MenuItem Header="Expense Report" Name="ExpenseReportWin" Click="ExpenseReportWin_Click" Foreground="Black"/>
                 </MenuItem>
                 <MenuItem ToolTip="Know more" Header="Help" Margin="10 0 0 0">
-                    <MenuItem Header="View Help" Name="ViewHelp" Click="ViewHelp_Click" Foreground="Black"/>
+                    <MenuItem Header="View Help" Name="ViewHelp" Visibility="Collapsed" Click="ViewHelp_Click" Foreground="Black"/>
                     <MenuItem Header="About" Name="AboutMenuItem" Click="AboutMenuItem_Click" Foreground="Black"/>
                 </MenuItem>
                 <MenuItem Header="Update Available" Name="UpdateMenuButton" Click="UpdateMenuButton_Click" Margin="60 0 0 0"/>
