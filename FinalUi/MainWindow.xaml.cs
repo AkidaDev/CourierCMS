@@ -638,7 +638,7 @@ namespace FinalUi
             if (dataWind.isNewSheet || dataGridHelper.CurrentNumberOfSheets <= 0)
             {
                 if (dataWind.isLoadedFromBook == false)
-                    dataWind.data = UtilityClass.loadDataFromDatabase(toDate_loadDataWin ?? DateTime.Now, fromDate_loadDataWin ?? DateTime.Now, dataGridHelper.currentMaxSheetNumber + 1);
+                    dataWind.data = UtilityClass.loadDataFromDatabase(fromDate_loadDataWin ?? DateTime.Now, toDate_loadDataWin ?? DateTime.Now, dataGridHelper.currentMaxSheetNumber + 1);
                 else
                 {
                     dataWind.data = UtilityClass.loadDataFromBook(dataGridHelper.currentMaxSheetNumber + 1, stockStart, stockEnd);

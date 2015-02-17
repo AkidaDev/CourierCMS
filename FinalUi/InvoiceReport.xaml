@@ -28,7 +28,6 @@
         </StackPanel>
         <DataGrid Visibility="Visible" AutoGenerateColumns="False" Grid.Row="1" ItemsSource="{Binding}" DataContext="{StaticResource ResultData}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="S.No" Binding="{Binding SrlNo}"/>
                 <DataGridTextColumn Header="Consignment No" Binding="{Binding ConnNo}"/>
                 <DataGridTextColumn Header="Destination" Binding="{Binding Destination}"/>
                 <DataGridTextColumn Header="Service" Binding="{Binding serviceCode}"/>

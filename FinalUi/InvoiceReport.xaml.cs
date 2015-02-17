@@ -146,7 +146,7 @@ namespace FinalUi
                     if (trans.WeightByFranchize != result.Weight)
                     {
                         result.MisMatchDesc = "Weight should be " + trans.WeightByFranchize;
-                        result.WeightDif = (decimal)(trans.WeightByFranchize ?? 0 - result.Weight ?? 0);
+                        result.WeightDif = (decimal)((result.Weight ?? 0) - (trans.WeightByFranchize ?? 0));
                     }
                     if (trans.CITY_DESC.Trim() != result.Destination.Trim())
                     {
