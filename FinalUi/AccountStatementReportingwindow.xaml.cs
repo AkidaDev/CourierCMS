@@ -42,6 +42,7 @@ namespace FinalUi
             try
             {
                 CreateObj();
+                ReportContainer.Visibility = Visibility.Visible;
             }
             catch(Exception ex)
             {
@@ -58,7 +59,7 @@ namespace FinalUi
             }
             BillingDataDataContext db = new BillingDataDataContext();
             var c  =  (Client) this.ClientListCombo.SelectedItem;
-            invoice = db.AccountStatements.Where(x=> x.ClientCode == c.CLCODE && x.TransactionDate <= ToDate.SelectedDate && x.TransactionDate >= FromDate.SelectedDate).OrderBy(y => y.TransactionDate).ToList();
+            invoice = db.AccountStatements.Where(x=> x.ClientCode == c.CLCODE && x.TransactionDate <= ToDate.SelectedDate && x.TransactionDate >= FromDate.SelectedDate).OrderByDescending(y => y.TransactionDate).ToList();
             rs.Value = invoice;
             AccountStatementViewer.LocalReport.DataSources.Clear();
             AccountStatementViewer.LocalReport.DataSources.Add(rs);

@@ -59,7 +59,7 @@
             <TextBlock Foreground="#6666cc" FontSize="18" Canvas.Left="374" TextAlignment="Center" Text="Get Started !" Canvas.Top="135" Width="150"/>
             <WrapPanel Canvas.Left="275" Canvas.Top="180">
                 <TextBlock  Text=" Product Key .: " Height="22" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri"/>
-                <TextBox Width="310" Padding="2 1 0 0"/>
+                <TextBox Width="310" Padding="2 1 0 0" Name="ProductKey" />
             </WrapPanel>
             <WrapPanel Canvas.Left="312" Canvas.Top="215">
                 <TextBlock  Text=" Server Name .: " Height="22" FontSize="16" Foreground="#FF5B5B5B" FontFamily="Calibri"/>

@@ -175,7 +175,7 @@ namespace FinalUi
             invoice.ClientCode = curClient.CLCODE;
             invoice.Discount = double.Parse(DiscountBox.Text);
             invoice.Fuel = double.Parse(TaxBox.Text);
-            invoice.STax = double.Parse(ServiceTaxBox.Text);
+        http://www.w3schools.com/sql/sql_view.asp.STax = double.Parse(ServiceTaxBox.Text);
             List<ReportParameter> repParams = new List<ReportParameter>();
             DateTime toDate = ToDate.SelectedDate ?? DateTime.Today;
             DateTime fromDate = FromDate.SelectedDate ?? DateTime.Today;

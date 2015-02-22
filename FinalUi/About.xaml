@@ -28,6 +28,7 @@
                 <TextBlock Text="Product ID .: " FontSize="14" Foreground="Gray"/>
                 <TextBlock Text="00549-550-526SE" FontSize="14" Foreground="Gray"/>
             </WrapPanel>
+            <TextBlock Text="Vortex.sltintegrity.com" />
             <TextBlock Margin="0 20 0 0" FontSize="14" Text="Copyright ©2014, All Rights Reserved" Foreground="#FF416DFF"/>
             <Button Click="Close" Content="Ok" FontSize="14" Width="40" HorizontalAlignment="Right" Margin="0 -20 30 0"/>
         </StackPanel>
