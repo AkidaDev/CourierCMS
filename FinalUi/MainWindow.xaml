@@ -120,53 +120,41 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="25"/>
                         </Grid.RowDefinitions>
-                        <Grid Background="#19000000">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
+                        <Grid Background="#19000000"/>
+                        <WrapPanel>
                             <Button HorizontalAlignment="Left" Style="{StaticResource 1}" Name="LoadDataButton" Width="150" Foreground="White" Margin="6,3,5,3" Command="ApplicationCommands.Open" FontSize="16">
                                 <WrapPanel Margin="7,0,5,0">
                                     <Path Style="{DynamicResource folder}"/>
                                     <TextBlock ToolTip="Load new files " Text="Load Data" Margin="8 -3 1 1" FontSize="16" Padding="1 3 1 0.5"/>
                                 </WrapPanel>
                             </Button>
-                            <Button ToolTip="Save" Style="{StaticResource 1}" Name="SaveButton" Width="45" Height="30" Grid.Column="1">
+                            <Button ToolTip="Save" Style="{StaticResource 1}" Name="SaveButton" Width="45" Height="30">
                                 <Path Style="{DynamicResource save}"/>
                             </Button>
-                            <Button ToolTip="Power Entry" Style="{StaticResource 1}" Name="PowerEntryButton" Width="45" Height="30" Grid.Column="2">
+                            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+                            <Button ToolTip="Power Entry" Style="{StaticResource 1}" Name="PowerEntryButton" Width="45" Height="30">
                                 <Path Style="{DynamicResource autofill}"/>
                             </Button>
-                            <Button ToolTip="New Sheet" Name="NewSheetButton" Style="{StaticResource 1}" Width="45" Height="30" Grid.Column="3">
+                            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+                            <Button ToolTip="New Sheet" Name="NewSheetButton" Style="{StaticResource 1}" Width="45" Height="30">
                                 <Path Style="{DynamicResource newsheet}"/>
                             </Button>
-                            <Button ToolTip="Filter &amp; Select" Style="{StaticResource 1}" Click="FilterButton_Click" Width="45" Height="30" Grid.Column="4">
+                            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+                            <Button ToolTip="Filter &amp; Select" Style="{StaticResource 1}" Click="FilterButton_Click" Width="45" Height="30">
                                 <Path Style="{DynamicResource filter}"/>
                             </Button>
-                            <Button ToolTip="Data Entry" Style="{StaticResource 1}" Name="SanitizingButton" Width="45" Height="30" Grid.Column="5">
+                            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+                            <Button ToolTip="Data Entry" Style="{StaticResource 1}" Name="SanitizingButton" Width="45" Height="30">
                                 <Path Style="{DynamicResource dataentry}"/>
                             </Button>
-                            <Button ToolTip="Print" Name="PrintButton" Style="{StaticResource 1}" Width="45" Height="30" Grid.Column="6" Command="ApplicationCommands.Print">
+                            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+                            <Button ToolTip="Print" Name="PrintButton" Style="{StaticResource 1}" Width="45" Height="30" Command="ApplicationCommands.Print">
                                 <Path Style="{DynamicResource print}" Fill="White"/>
                             </Button>
-                            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
-                            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2" HorizontalAlignment="Right"/>
-                            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
-                            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
-                            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="5" HorizontalAlignment="Right"/>
-                            <Rectangle Name="AfterPrint" VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="6" HorizontalAlignment="Right"/>
-                        </Grid>
+                            <Rectangle Name="AfterPrint" VerticalAlignment="Stretch" Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+                        </WrapPanel>
                         <DataGrid HeadersVisibility="All" CellEditEnding="dataGrid_CellEditEnding" Grid.Row="2" TextSearch.TextPath="ConsignmentNo" LoadingRow="dataGrid_LoadingRow" Name="dataGrid" ItemsSource="{Binding}" DataContext="{StaticResource DataGridDataContext}" RowHeaderWidth="35" Loaded="dataGrid_Loaded">
-                            
+
                             <DataGrid.Columns>
                                 <DataGridTextColumn IsReadOnly="True" Header="Consignment No" Binding="{Binding ConsignmentNo}"/>
                                 <DataGridTextColumn IsReadOnly="True" Header="DTDC Weight" Binding="{Binding Weight}"/>
@@ -278,20 +266,8 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="25"/>
                         </Grid.RowDefinitions>
-                        <Grid Background="#19000000">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
+                        <Grid Background="#19000000"/>
+                        <WrapPanel>
                             <WrapPanel Margin="7,0,5,0" Background="#A9FFFFF3" VerticalAlignment="Stretch">
                                 <Path Margin="6 5 0 0" Data="F1M7.006,17.756C8.089,18.341 9.324,18.675 10.635,18.675 11.947,18.675 13.183,18.341 14.264,17.756 16.602,18.374 18.432,19.843 19.272,23 19.272,23 2,23 2,23 2.839,19.843 4.67,18.375 7.006,17.756z M22.992,14.925C25.33,15.543 27.161,17.011 28,20.168 28,20.168 19.469,20.168 19.469,20.168 18.486,18.463 17.033,17.311 15.075,16.685 15.597,16.276 16.061,15.798 16.456,15.264 17.354,15.635 18.334,15.843 19.363,15.843 20.674,15.843 21.911,15.51 22.992,14.925z M6.639,12.72C7.558,14.518 9.136,15.706 10.928,15.706 12.722,15.706 14.298,14.518 15.217,12.72 15.217,12.72 6.639,12.72 6.639,12.72z M10.635,4.831C13.958,4.831 16.649,7.548 16.649,10.899 16.649,14.252 13.958,16.968 10.635,16.968 7.313,16.968 4.621,14.252 4.621,10.899 4.621,7.548 7.313,4.831 10.635,4.831z M19.363,2C22.685,2 25.377,4.717 25.377,8.068 25.377,11.421 22.685,14.137 19.363,14.137 18.642,14.137 17.954,14.003 17.313,13.768 17.499,13.331 17.641,12.872 17.74,12.396 18.332,12.704 18.979,12.874 19.656,12.874 21.449,12.874 23.026,11.686 23.944,9.888 23.944,9.888 17.819,9.888 17.819,9.888 17.513,7.667 16.22,5.766 14.398,4.645 15.482,3.049 17.3,2 19.363,2z" Fill="Black" Height="19" Width="23" Stretch="Fill"/>
                                 <TextBlock Text="Client Quotation" Margin="8 2 6 0" FontSize="16" Padding="1 3 1 0.5"/>
@@ -303,31 +279,31 @@
                                     </ItemsPanelTemplate>
                                 </ComboBox.ItemsPanel>
                             </ComboBox>
-                            <Button ToolTip="Reload" Style="{StaticResource 1}" Width="45" Height="30" Grid.Column="2">
+                            <Button ToolTip="Reload" Style="{StaticResource 1}" Width="45" Height="30">
                                 <Path Style="{DynamicResource refresh}"/>
                             </Button>
-                            <Button ToolTip="Import Rule" Style="{StaticResource 1}" Width="45" Height="30" Grid.Column="3" Click="ImportRule_Click">
+                            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+                            <Button ToolTip="Import Rule" Style="{StaticResource 1}" Width="45" Height="30" Click="ImportRule_Click">
                                 <Path Style="{DynamicResource import}" Fill="White"/>
                             </Button>
-                            <Button ToolTip="Edit" Style="{StaticResource 1}" Name="EditRule" Click="EditRule_Click" Width="45" Height="30" Grid.Column="4">
+                            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+                            <Button ToolTip="Edit" Style="{StaticResource 1}" Name="EditRule" Click="EditRule_Click" Width="45" Height="30">
                                 <Path Style="{DynamicResource edit}"/>
                             </Button>
-                            <Button ToolTip="Add" Click="AddRuleButton_Click" Style="{StaticResource 1}" Width="45" Height="30" Grid.Column="5">
+                            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+                            <Button ToolTip="Add" Click="AddRuleButton_Click" Style="{StaticResource 1}" Width="45" Height="30">
                                 <Path Style="{DynamicResource add}"/>
                             </Button>
-                            <Button ToolTip="Delete" Name="DeleteRule" Click="DeleteRule_Click" Style="{StaticResource 1}" Width="45" Height="30" Grid.Column="6">
+                            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+                            <Button ToolTip="Delete" Name="DeleteRule" Click="DeleteRule_Click" Style="{StaticResource 1}" Width="45" Height="30">
                                 <Path Style="{DynamicResource delete}"/>
                             </Button>
-                            <Button ToolTip="Calculator" Click="Calculator_Click" Style="{StaticResource 1}" Width="45" Height="30" Grid.Column="7">
+                            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+                            <Button ToolTip="Calculator" Click="Calculator_Click" Style="{StaticResource 1}" Width="45" Height="30">
                                 <Path Style="{DynamicResource calc}"/>
                             </Button>
-                            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2" HorizontalAlignment="Right"/>
-                            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
-                            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
-                            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="5" HorizontalAlignment="Right"/>
-                            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="6" HorizontalAlignment="Right"/>
-                            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="7" HorizontalAlignment="Right"/>
-                        </Grid>
+                            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+                        </WrapPanel>
                         <Grid Grid.Row="2">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>

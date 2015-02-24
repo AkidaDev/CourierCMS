@@ -13,18 +13,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
-        <Grid Background="#19000000">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+        <Grid Background="#19000000"/>
+        <WrapPanel>
             <WrapPanel Margin="7,0,5,0" VerticalAlignment="Stretch">
                 <WrapPanel.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -35,28 +25,27 @@
                 <Path Margin="6 5 0 0" Style="{DynamicResource stack}"/>
                 <TextBlock Text="Manage Stock" Margin="8 2 6 0" FontSize="16" Padding="1 3 1 0.5"/>
             </WrapPanel>
-            <Button Name="RefreshDataButton" Click="RefreshDataButton_Click" Margin="10 0 0 0" ToolTip="Reload" Style="{StaticResource 1}"  Width="45" Height="30" Grid.Column="1">
+            <Button Name="RefreshDataButton" Click="RefreshDataButton_Click" Margin="10 0 0 0" ToolTip="Reload" Style="{StaticResource 1}"  Width="45" Height="30">
                 <Path Style="{DynamicResource refresh}"/>
             </Button>
-            <Button  Name="UpdateStockButton" Click="UpdateStockButton_Click" ToolTip="Edit" Style="{StaticResource 1}"  Width="45" Height="30" Grid.Column="2">
+            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+            <Button  Name="UpdateStockButton" Click="UpdateStockButton_Click" ToolTip="Edit" Style="{StaticResource 1}"  Width="45" Height="30">
                 <Path Style="{DynamicResource edit}"/>
             </Button>
-            <Button Name="AddStockButton" ToolTip="Add" Style="{StaticResource 1}"  Width="45" Height="30" Grid.Column="3" Click="AddStockButton_Click">
+            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+            <Button Name="AddStockButton" ToolTip="Add" Style="{StaticResource 1}"  Width="45" Height="30" Click="AddStockButton_Click">
                 <Path Style="{DynamicResource add}"/>
             </Button>
-            <Button Name="DeleteStockButton" Click="DeleteStockButton_Click" ToolTip="Delete"  Style="{StaticResource 1}" Width="45" Height="30" Grid.Column="4">
-                <Path Style="{DynamicResource delete}"/> 
+            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+            <Button Name="DeleteStockButton" Click="DeleteStockButton_Click" ToolTip="Delete"  Style="{StaticResource 1}" Width="45" Height="30">
+                <Path Style="{DynamicResource delete}"/>
             </Button>
-            <Button Name="ViewStockButton" Click="ViewStockButton_Click" ToolTip="ViewStock"  Style="{StaticResource 1}" Width="45" Height="30" Grid.Column="5">
+            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+            <Button Name="ViewStockButton" Click="ViewStockButton_Click" ToolTip="ViewStock"  Style="{StaticResource 1}" Width="45" Height="30">
                 <Path Style="{DynamicResource folder}"/>
             </Button>
-
-            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
-            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
-            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
-            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
-            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="5" HorizontalAlignment="Right"/>
-        </Grid>
+            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+        </WrapPanel>
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>

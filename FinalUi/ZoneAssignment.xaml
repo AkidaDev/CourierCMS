@@ -2,11 +2,11 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		Icon="Images/logo.ico"
-        Title="Manage Zone" WindowStartupLocation="CenterScreen" Background="Turquoise">  
+        Title="Manage Zone" WindowStartupLocation="CenterScreen" Background="Turquoise">
     <Window.Resources>
         <CollectionViewSource x:Key="zoneTable" CollectionViewType="{x:Type ListCollectionView}"/>
         <CollectionViewSource x:Key="CityTable" CollectionViewType="{x:Type ListCollectionView}"/>
-    </Window.Resources>   
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -14,17 +14,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
-        <Grid Background="#19000000">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+        <Grid Background="#19000000"/>
+        <WrapPanel>
             <WrapPanel Margin="7,0,5,0" VerticalAlignment="Stretch">
                 <WrapPanel.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -35,23 +26,23 @@
                 <Path Margin="6 2 0 0" Style="{DynamicResource location}" Fill="Black"/>
                 <TextBlock Text="Manage Zone" Margin="8 2 6 0" FontSize="16" Padding="1 3 1 0.5"/>
             </WrapPanel>
-            <Button Margin="10 0 0 0" ToolTip="Reload" Style="{StaticResource 1}" Width="45" Height="30" Grid.Column="1">
+            <Button Margin="10 0 0 0" ToolTip="Reload" Style="{StaticResource 1}" Width="45" Height="30">
                 <Path Style="{DynamicResource refresh}"/>
             </Button>
-            <Button ToolTip="Edit" Click="UpdateZoneButton_Click" Style="{StaticResource 1}" Width="45" Height="30" Grid.Column="2">
+            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+            <Button ToolTip="Edit" Click="UpdateZoneButton_Click" Style="{StaticResource 1}" Width="45" Height="30">
                 <Path Style="{DynamicResource edit}"/>
             </Button>
-            <Button ToolTip="Add" Click="Button_Click" Style="{StaticResource 1}" Width="45" Height="30" Grid.Column="3">
+            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+            <Button ToolTip="Add" Click="Button_Click" Style="{StaticResource 1}" Width="45" Height="30">
                 <Path Style="{DynamicResource add}"/>
             </Button>
-            <Button ToolTip="Delete" Click="DeleteZoneButton_Click" Style="{StaticResource 1}" Width="45" Height="30" Grid.Column="4">
+            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+            <Button ToolTip="Delete" Click="DeleteZoneButton_Click" Style="{StaticResource 1}" Width="45" Height="30">
                 <Path Style="{DynamicResource delete}"/>
             </Button>
-            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
-            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
-            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
-            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
-        </Grid>
+            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+        </WrapPanel>
         <DataGrid Grid.Row="2" Margin="0 3 0 0" x:Name="ZoneDataGrid" ItemsSource="{Binding}" DataContext="{StaticResource zoneTable}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header=" Zone Code " IsReadOnly="True" Binding="{Binding zcode}"/>
