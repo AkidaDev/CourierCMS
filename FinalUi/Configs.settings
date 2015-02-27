@@ -27,13 +27,13 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="IsFirst" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="Background" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="IsFreshOrReset" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="CompanyOwner" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -60,7 +60,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="updateserver" Type="System.String" Scope="User">
-      <Value Profile="(Default)">localhost</Value>
+      <Value Profile="(Default)">testapi.sltintegrity.com</Value>
     </Setting>
   </Settings>
 </SettingsFile>

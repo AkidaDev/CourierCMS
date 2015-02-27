@@ -9,7 +9,6 @@ namespace FinalUi
     {
         UpdateDatabase()
         {
-
         }
         private void up1294()
         {

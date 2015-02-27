@@ -121,7 +121,7 @@ namespace FinalUi {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool IsFirst {
             get {
                 return ((bool)(this["IsFirst"]));
@@ -145,7 +145,7 @@ namespace FinalUi {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool IsFreshOrReset {
             get {
                 return ((bool)(this["IsFreshOrReset"]));
@@ -249,7 +249,7 @@ namespace FinalUi {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("localhost")]
+        [global::System.Configuration.DefaultSettingValueAttribute("testapi.sltintegrity.com")]
         public string updateserver {
             get {
                 return ((string)(this["updateserver"]));
