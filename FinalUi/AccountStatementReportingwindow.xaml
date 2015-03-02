@@ -35,7 +35,7 @@
                 <Button Content="Print" Click="PrintButton_Click" VerticalAlignment="Center" Margin="50 0 0 0" Width="80"/>
             </WrapPanel>
         </StackPanel>
-        <WindowsFormsHost Grid.Row="1">
+        <WindowsFormsHost Grid.Row="1" Visibility="Hidden" Name="ReportContainer">
             <rv:ReportViewer x:Name="AccountStatementViewer" ShowContextMenu="True" ShowExportButton="True"/>
         </WindowsFormsHost>
         <StackPanel Grid.Row="3" Background="#A9FFFFF3"/>

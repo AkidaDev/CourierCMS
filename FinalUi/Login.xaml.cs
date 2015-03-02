@@ -29,10 +29,10 @@ namespace FinalUi
         MainWindow window;
         public Login()
         {
+
             InitializeComponent();
             CommandBinding command = new CommandBinding();
             int sedo = 0; sedo++;
-
             DoubleAnimation myDoubleAnimation = new DoubleAnimation();
             myDoubleAnimation.From = 1.0;
             myDoubleAnimation.To = 0.0;
