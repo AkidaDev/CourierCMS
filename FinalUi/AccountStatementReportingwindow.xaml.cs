@@ -42,6 +42,7 @@ namespace FinalUi
             try
             {
                 CreateObj();
+                ReportContainer.Visibility = Visibility.Visible;
             }
             catch(Exception ex)
             {

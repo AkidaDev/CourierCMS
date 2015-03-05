@@ -36,6 +36,7 @@ namespace FinalUi
         }
         public void SetDefaultSetting()
         { 
+
         }
         private void Browse_Directory(object sender, RoutedEventArgs e)
         {

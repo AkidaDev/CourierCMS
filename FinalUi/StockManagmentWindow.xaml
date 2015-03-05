@@ -13,18 +13,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
-        <Grid Background="#19000000">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+        <Grid Background="#19000000"/>
+        <WrapPanel>
             <WrapPanel Margin="7,0,5,0" VerticalAlignment="Stretch">
                 <WrapPanel.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -32,31 +22,30 @@
                         <GradientStop Color="#A9F5F5F5" Offset="1"/>
                     </LinearGradientBrush>
                 </WrapPanel.Background>
-                <Path Margin="6 5 0 0" Data="F1M2.375,13.893C2.375,13.893 12,18.643 12,18.643 12,18.643 21.625,13.893 21.625,13.893 21.625,13.893 23,14.571 23,14.571 23,14.571 12,20 12,20 12,20 1,14.571 1,14.571 1,14.571 2.375,13.893 2.375,13.893z M2.375,11.179C2.375,11.179 12,15.929 12,15.929 12,15.929 21.625,11.179 21.625,11.179 21.625,11.179 23,11.857 23,11.857 23,11.857 12,17.286 12,17.286 12,17.286 1,11.857 1,11.857 1,11.857 2.375,11.179 2.375,11.179z M2.375,8.464C2.375,8.464 12,13.214 12,13.214 12,13.214 21.625,8.464 21.625,8.464 21.625,8.464 23,9.143 23,9.143 23,9.143 12,14.571 12,14.571 12,14.571 1,9.143 1,9.143 1,9.143 2.375,8.464 2.375,8.464z M12,1C12,1 23,6.429 23,6.429 23,6.429 12,11.857 12,11.857 12,11.857 1,6.429 1,6.429 1,6.429 12,1 12,1z" Fill="Black" Height="21" Width="24"/>
+                <Path Margin="6 5 0 0" Style="{DynamicResource stack}"/>
                 <TextBlock Text="Manage Stock" Margin="8 2 6 0" FontSize="16" Padding="1 3 1 0.5"/>
             </WrapPanel>
-            <Button Name="RefreshDataButton" Click="RefreshDataButton_Click" Margin="10 0 0 0" ToolTip="Reload" Style="{StaticResource 1}"  Width="45" Height="30" Grid.Column="1">
-                <Path Margin="2 0 0 0" Data="F1M2,12.942C2,12.942 10.226,15.241 10.226,15.241 10.226,15.241 8.275,17.071 8.275,17.071 9.288,17.922 10.917,18.786 12.32,18.786 15.074,18.786 17.386,16.824 18.039,14.171 18.039,14.171 21.987,15.222 21.987,15.222 20.891,19.693 16.996,23 12.357,23 9.771,23 7.076,21.618 5.308,19.934 5.308,19.934 3.454,21.671 3.454,21.671 3.454,21.671 2,12.942 2,12.942z M11.643,2C14.229,2 16.924,3.382 18.692,5.066 18.692,5.066 20.546,3.329 20.546,3.329 20.546,3.329 22,12.058 22,12.058 22,12.058 13.774,9.759 13.774,9.759 13.774,9.759 15.725,7.929 15.725,7.929 14.712,7.078 13.083,6.214 11.68,6.214 8.926,6.214 6.614,8.176 5.961,10.829 5.961,10.829 2.013,9.778 2.013,9.778 3.109,5.307 7.004,2 11.643,2z" Fill="White" Height="24" Width="23"/>
+            <Button Name="RefreshDataButton" Click="RefreshDataButton_Click" Margin="10 0 0 0" ToolTip="Reload" Style="{StaticResource 1}"  Width="45" Height="30">
+                <Path Style="{DynamicResource refresh}"/>
             </Button>
-            <Button  Name="UpdateStockButton" Click="UpdateStockButton_Click" ToolTip="Edit" Style="{StaticResource 1}"  Width="42" Height="30" Grid.Column="2">
-                <Path Data="F1M3.382,12.013C3.382,12.013 3.622,12.244 4.648,12.241 4.981,13.288 6.071,13.952 6.486,14.084 6.474,14.586 6.946,15.523 6.946,15.523 6.946,15.523 1,18 1,18 1,18 3.382,12.013 3.382,12.013z M8.989,6C9.311,6.045 10.279,6.269 11.435,7.418 12.281,8.257 12.814,9.147 12.877,9.862 12.877,9.862 7.696,15.101 7.696,15.101 7.696,15.101 7.17,14.485 7.224,13.389 5.883,12.757 5.651,12.14 5.406,11.616 4.258,11.666 3.811,11.244 3.811,11.244 3.811,11.244 8.989,6 8.989,6z M10.387,4.769C10.387,4.769 11.472,4.734 12.834,6.1 14.221,7.491 14.034,8.468 14.034,8.468 14.034,8.468 13.495,9.009 13.495,9.009 13.417,8.418 12.983,7.573 12.18,6.775 10.903,5.503 9.823,5.327 9.823,5.327 9.823,5.327 10.387,4.769 10.387,4.769z M11.501,3.46C11.501,3.46 12.632,3.424 14.056,4.852 15.505,6.304 15.309,7.325 15.309,7.325 15.309,7.325 14.745,7.889 14.745,7.889 14.664,7.272 14.212,6.389 13.373,5.554 12.038,4.227 10.91,4.043 10.91,4.043 10.91,4.043 11.501,3.46 11.501,3.46z M14.557,1.404C15.077,1.404 15.719,1.625 16.48,2.25 18,3.499 17.572,4.757 16.987,5.355 16.899,5.444 16.332,6.177 15.971,6.645 15.96,6.142 15.757,5.24 14.694,4.185 13.626,3.125 12.653,2.916 12.169,2.885 12.599,2.539 13.187,2.064 13.373,1.884 13.641,1.625 14.038,1.404 14.557,1.404z" Fill="White" Stretch="Fill" Height="22" Width="22"/>
+            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+            <Button  Name="UpdateStockButton" Click="UpdateStockButton_Click" ToolTip="Edit" Style="{StaticResource 1}"  Width="45" Height="30">
+                <Path Style="{DynamicResource edit}"/>
             </Button>
-            <Button Name="AddStockButton" ToolTip="Add" Style="{StaticResource 1}"  Width="45" Height="30" Grid.Column="3" Click="AddStockButton_Click">
-                <Path Data="F1M13.455,5.818C13.455,5.818 13.455,9.636 13.455,9.636 13.455,9.636 9.636,9.636 9.636,9.636 9.636,9.636 9.636,11.545 9.636,11.545 9.636,11.545 13.455,11.545 13.455,11.545 13.455,11.545 13.455,15.364 13.455,15.364 13.455,15.364 15.364,15.364 15.364,15.364 15.364,15.364 15.364,11.545 15.364,11.545 15.364,11.545 19.182,11.545 19.182,11.545 19.182,11.545 19.182,9.636 19.182,9.636 19.182,9.636 15.364,9.636 15.364,9.636 15.364,9.636 15.364,5.818 15.364,5.818 15.364,5.818 13.455,5.818 13.455,5.818z M2,5.818C2,5.818 3.909,5.818 3.909,5.818 3.909,5.818 3.909,21.091 3.909,21.091 3.909,21.091 19.182,21.091 19.182,21.091 19.182,21.091 19.182,23 19.182,23 19.182,23 3.909,23 3.909,23 2.859,23 2,22.141 2,21.091 2,21.091 2,5.818 2,5.818z M7.727,2C7.727,2 21.091,2 21.091,2 22.141,2 23,2.859 23,3.909 23,3.909 23,17.273 23,17.273 23,18.323 22.141,19.182 21.091,19.182 21.091,19.182 7.727,19.182 7.727,19.182 6.677,19.182 5.818,18.323 5.818,17.273 5.818,17.273 5.818,3.909 5.818,3.909 5.818,2.859 6.677,2 7.727,2z" Fill="White" Height="24" Width="24"/>
+            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+            <Button Name="AddStockButton" ToolTip="Add" Style="{StaticResource 1}"  Width="45" Height="30" Click="AddStockButton_Click">
+                <Path Style="{DynamicResource add}"/>
             </Button>
-            <Button Name="DeleteStockButton" Click="DeleteStockButton_Click" ToolTip="Delete"  Style="{StaticResource 1}" Width="45" Height="30" Grid.Column="4">
-                <Path Margin="-2 0 0 0" Data="F1M3.056,10.35C3.714,11.001 6.347,11.109 9.499,11.109 12.65,11.109 15.286,11.001 15.941,10.35 16.022,10.432 16.077,10.516 16.091,10.603 16.091,10.603 16.1,10.603 16.1,10.603 16.1,10.603 16.096,10.65 16.096,10.65 16.096,10.655 16.1,10.661 16.1,10.666 16.1,10.679 16.096,10.69 16.095,10.702 16.095,10.702 15.581,20.977 15.581,20.977 15.581,20.977 15.578,20.977 15.578,20.977 15.533,21.782 14.589,23 9.499,23 4.409,23 3.465,21.782 3.42,20.977 3.42,20.977 3.419,20.977 3.419,20.977 3.419,20.977 2.906,10.702 2.906,10.702 2.904,10.69 2.9,10.679 2.9,10.666 2.9,10.661 2.902,10.655 2.902,10.65 2.902,10.65 2.9,10.603 2.9,10.603 2.9,10.603 2.906,10.603 2.906,10.603 2.925,10.516 2.975,10.432 3.056,10.35z M7.59,3.334C7.516,3.334 7.453,3.694 7.453,4.133 7.453,4.133 7.453,5.138 7.453,5.138 7.453,5.138 7.66,5.125 7.66,5.125 8.247,5.093 8.864,5.075 9.499,5.075 10.111,5.075 10.703,5.093 11.272,5.122 11.272,5.122 11.272,4.133 11.272,4.133 11.272,3.694 11.211,3.334 11.135,3.334 11.06,3.334 10.63,3.334 10.182,3.334 10.182,3.334 8.545,3.334 8.545,3.334 8.095,3.334 7.666,3.334 7.59,3.334z M6.906,2C6.906,2 11.818,2 11.818,2 12.268,2 12.635,2.362 12.635,2.8 12.635,2.8 12.635,5.226 12.635,5.226 15.21,5.483 17,6.046 17,6.699 17,6.699 17,7.899 17,7.899 17,8.145 16.743,8.379 16.288,8.59 15.089,9.14 12.501,9.522 9.499,9.522 6.499,9.522 3.91,9.14 2.712,8.59 2.255,8.379 2,8.145 2,7.899 2,7.899 2,6.699 2,6.699 2,6.068 3.662,5.523 6.09,5.253 6.09,5.253 6.09,2.8 6.09,2.8 6.09,2.362 6.459,2 6.906,2z" Fill="white" Height="24" Width="18"/>
+            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+            <Button Name="DeleteStockButton" Click="DeleteStockButton_Click" ToolTip="Delete"  Style="{StaticResource 1}" Width="45" Height="30">
+                <Path Style="{DynamicResource delete}"/>
             </Button>
-            <Button Name="ViewStockButton" Click="ViewStockButton_Click" ToolTip="ViewStock"  Style="{StaticResource 1}" Width="45" Height="30" Grid.Column="5">
-                <Path Margin="-2 0 0 0" Data="F1M20.664,6.138C20.664,6.138 4.336,6.138 4.336,6.138 4.336,6.138 2.668,11.569 2.668,11.569 2.668,11.569 2.053,11.043 2.053,11.043 2.053,11.043 3.546,5.349 3.546,5.349 3.546,5.349 20.664,5.349 20.664,5.349 20.664,5.349 20.664,4.036 20.664,4.036 20.664,4.036 9.547,4.036 9.547,4.036 9.547,4.036 7.906,1 7.906,1 7.906,1 1,1 1,1 1,1 1,17 1,17 1,17 20.664,17 20.664,17 20.664,17 24,6.138 24,6.138 24,6.138 20.664,6.138 20.664,6.138z" Fill="white" Height="18" Width="24"/>
+            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+            <Button Name="ViewStockButton" Click="ViewStockButton_Click" ToolTip="ViewStock"  Style="{StaticResource 1}" Width="45" Height="30">
+                <Path Style="{DynamicResource folder}"/>
             </Button>
-
-            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="1" HorizontalAlignment="Right"/>
-            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="2"  HorizontalAlignment="Right"/>
-            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="3" HorizontalAlignment="Right"/>
-            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="4" HorizontalAlignment="Right"/>
-            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Margin="0" Stroke="Gray" Grid.Column="5" HorizontalAlignment="Right"/>
-        </Grid>
+            <Rectangle VerticalAlignment="Stretch"  Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
+        </WrapPanel>
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
