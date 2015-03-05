@@ -22,10 +22,15 @@ namespace FinalUi
         public PaymentRecieved()
         {
             InitializeComponent();
-            PaymentRefNoBox.Text = (DateTime.Now.ToString("yyyyMMddhhmmss", System.Globalization.CultureInfo.GetCultureInfo("en-US")));
-            PaymentDatePicker.SelectedDate = DateTime.Today;
             ChequeRadio.Checked += CashRadio_Unchecked;
             CashRadio.Checked += CashRadio_Checked;
+           
+            fillFields();
+        }
+        public void fillFields()
+        {
+            PaymentRefNoBox.Text = (DateTime.Now.ToString("yyyyMMddhhmmss", System.Globalization.CultureInfo.GetCultureInfo("en-US")));
+            PaymentDatePicker.SelectedDate = DateTime.Today;
             DebitNoteBox.Text = "0";
             TDSBox.Text = "0";
             CollectionViewSource clientListSource = (CollectionViewSource)(FindResource("ClientList"));
@@ -37,6 +42,7 @@ namespace FinalUi
                                                 select payment.InvoiceNumber)
                                                 .Contains(invoice.BillId)
                                         select invoice).ToList();
+    
         }
         private void CashRadio_Checked(object sender, RoutedEventArgs e)
         {
@@ -118,8 +124,8 @@ namespace FinalUi
             }
             if (isdone)
             {
-                MessageBox.Show("Payment Recived\nReference no is " + paymentEntry.Id);
-                this.Close();
+                MessageBox.Show("Payment Received\nReference no is " + paymentEntry.Id);
+                fillFields();
             }
         }
 

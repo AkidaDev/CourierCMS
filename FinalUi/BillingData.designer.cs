@@ -92,8 +92,7 @@ namespace FinalUi
     partial void DeleteExpense(Expense instance);
     #endregion
 		
-		
-		
+	
 		public BillingDataDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
@@ -469,6 +468,12 @@ namespace FinalUi
 		public System.Nullable<decimal> getRate([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ConsignmentNo", DbType="VarChar(255)")] string consignmentNo)
 		{
 			return ((System.Nullable<decimal>)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), consignmentNo).ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CarryOverDue", IsComposable=true)]
+		public System.Nullable<double> CarryOverDue([global::System.Data.Linq.Mapping.ParameterAttribute(Name="OnDate", DbType="Date")] System.Nullable<System.DateTime> onDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ClientCode", DbType="VarChar(50)")] string clientCode)
+		{
+			return ((System.Nullable<double>)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), onDate, clientCode).ReturnValue));
 		}
 	}
 	

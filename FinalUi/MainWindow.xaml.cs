@@ -414,7 +414,11 @@ namespace FinalUi
                 if (MessageBox.Show("There are " + count.ToString() + " records whose billed amount is not set. Are you sure you want to continue? If you continue then amount billed for those those records will be equal to 0.", "Confirm", MessageBoxButton.YesNo) == MessageBoxResult.No)
                     return;
             }
-            PrintWindow win = new PrintWindow(cData, cData.Select(x => x.BookingDate).Max(), cData.Select(x => x.BookingDate).Min());
+            DateTime toDate = cData.Max(x => x.BookingDate);
+            DateTime fromDate = cData.Min(x => x.BookingDate);
+            toDate = new DateTime(toDate.Year, toDate.Month, DateTime.DaysInMonth(toDate.Year, toDate.Month));
+            fromDate = new DateTime(fromDate.Year, fromDate.Month, 1);
+            PrintWindow win = new PrintWindow(cData, toDate, fromDate);
             try
             {
                 win.Show();

@@ -71,6 +71,7 @@ namespace FinalUi
             else
             {
                 State state = UtilityClass.getStateFromCity(trans.Destination);
+                
                 if (RulesApplied.Where(x => x.StateList.Contains(state.STATE_CODE)).Count() > 0)
                 {
                     RulesApplied = RulesApplied.Where(x => x.StateList.Contains(state.STATE_CODE)).ToList();
