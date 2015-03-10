@@ -181,7 +181,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -201,6 +201,7 @@
                         </BottomBorder>
                         <BackgroundColor>LightGrey</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>10pt</PaddingLeft>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -588,7 +589,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -600,7 +601,7 @@
                         <TopBorder>
                           <Width>0.5pt</Width>
                         </TopBorder>
-                        <PaddingRight>15pt</PaddingRight>
+                        <PaddingLeft>35pt</PaddingLeft>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
@@ -626,7 +627,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -638,7 +639,7 @@
                         <TopBorder>
                           <Width>0.5pt</Width>
                         </TopBorder>
-                        <PaddingRight>15pt</PaddingRight>
+                        <PaddingLeft>35pt</PaddingLeft>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
@@ -2124,7 +2125,6 @@
                               <PaddingRight>3pt</PaddingRight>
                             </Style>
                           </Textbox>
-                          <rd:Selected>true</rd:Selected>
                         </CellContents>
                       </TablixHeader>
                       <TablixMembers>
@@ -6565,9 +6565,9 @@
           </Paragraphs>
           <rd:DefaultName>Textbox17</rd:DefaultName>
           <Top>0.39739cm</Top>
-          <Left>2.91789in</Left>
+          <Left>2.5384in</Left>
           <Height>0.44298cm</Height>
-          <Width>5.44108cm</Width>
+          <Width>6.40498cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -6667,7 +6667,7 @@
     <LeftMargin>0.25cm</LeftMargin>
     <RightMargin>0.1cm</RightMargin>
     <TopMargin>0.3cm</TopMargin>
-    <BottomMargin>0.4cm</BottomMargin>
+    <BottomMargin>0.5cm</BottomMargin>
     <ColumnSpacing>0.13cm</ColumnSpacing>
     <Style>
       <Border>

@@ -18,7 +18,7 @@
                 <Rectangle Stroke="DarkGray" Fill="White" Width="300" Height="22"/>
                 <TextBlock Name="FilePathBlock" Padding="3 2 0 0" Width="300" Height="22" Margin="-300 0 0 0"/>
                 <Button ToolTip="Browse" Name="BrowseButton" Click="BrowseButton_Click" Style="{DynamicResource 1}" Margin="10 0 0 0">
-                    <Path Data="F1M2.467,18.037C2.467,18.037 2.467,19.519 2.467,19.519 2.467,19.519 6.933,19.519 6.933,19.519 6.933,19.519 6.933,18.037 6.933,18.037 6.933,18.037 2.467,18.037 2.467,18.037z M1,15.815C1,15.815 23,15.815 23,15.815 23,15.815 23,21 23,21 23,21 1,21 1,21 1,21 1,15.815 1,15.815z M2.467,10.63C2.467,10.63 2.456,12.111 2.456,12.111 2.456,12.111 6.922,12.111 6.922,12.111 6.922,12.111 6.933,10.63 6.933,10.63 6.933,10.63 2.467,10.63 2.467,10.63z M1,8.407C1,8.407 23,8.407 23,8.407 23,8.407 23,13.593 23,13.593 23,13.593 1,13.593 1,13.593 1,13.593 1,8.407 1,8.407z M2.467,3.222C2.467,3.222 2.467,4.715 2.467,4.715 2.467,4.715 6.933,4.715 6.933,4.715 6.933,4.715 6.933,3.222 6.933,3.222 6.933,3.222 2.467,3.222 2.467,3.222z M1,1C1,1 23,1 23,1 23,1 23,6.185 23,6.185 23,6.185 1,6.185 1,6.185 1,6.185 1,1 1,1z" Fill="#FF5B5B5B" Height="22" Width="24"/>
+                    <Path Style="{DynamicResource directory}"/>
                 </Button>
             </WrapPanel>
             <WrapPanel Margin="0 10 0 0" HorizontalAlignment="Center">
@@ -28,7 +28,6 @@
         </StackPanel>
         <DataGrid Visibility="Visible" AutoGenerateColumns="False" Grid.Row="1" ItemsSource="{Binding}" DataContext="{StaticResource ResultData}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="S.No" Binding="{Binding SrlNo}"/>
                 <DataGridTextColumn Header="Consignment No" Binding="{Binding ConnNo}"/>
                 <DataGridTextColumn Header="Destination" Binding="{Binding Destination}"/>
                 <DataGridTextColumn Header="Service" Binding="{Binding serviceCode}"/>
@@ -36,6 +35,8 @@
                 <DataGridTextColumn Header="Weight" Binding="{Binding Weight}"/>
                 <DataGridTextColumn Header="Has Error" Binding="{Binding hasError}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Error Description" Binding="{Binding MisMatchDesc}"/>
+                <DataGridTextColumn Header="AmountDiff" Binding="{Binding AmountDiff}"/>
+                <DataGridTextColumn Header="WeightDiff" Binding="{Binding WeightDif}" />
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="2" Background="#A9FFFFF3"/>

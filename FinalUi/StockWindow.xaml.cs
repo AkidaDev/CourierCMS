@@ -119,11 +119,6 @@ namespace FinalUi
                 BillingDataDataContext db = new BillingDataDataContext();
                 if (!isUpdate)
                 {
-                    if (db.Stocks.Where(x => x.BookNo == s.BookNo).Count() > 0)
-                    {
-                        MessageBox.Show("This book is already entered..", "Error");
-                        return;
-                    }
                     db.Stocks.InsertOnSubmit(this.s);
                     try
                     {

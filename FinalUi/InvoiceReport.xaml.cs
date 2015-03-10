@@ -146,6 +146,7 @@ namespace FinalUi
                     if (trans.WeightByFranchize != result.Weight)
                     {
                         result.MisMatchDesc = "Weight should be " + trans.WeightByFranchize;
+                        result.WeightDif = (decimal)((result.Weight ?? 0) - (trans.WeightByFranchize ?? 0));
                     }
                     if (trans.CITY_DESC.Trim() != result.Destination.Trim())
                     {
@@ -153,13 +154,14 @@ namespace FinalUi
                     }
                     if (trans.Type.Trim() != result.serviceCode.Trim())
                     {
-                        result.MisMatchDesc = result.MisMatchDesc + " Service should be " + trans.Type;
+                        result.MisMatchDesc = result.MisMatchDesc + " Service should be " + trans.Type.Trim();
                     }
                     trans.AmountCharged = (decimal)UtilityClass.getCost("<DTDC>", (double)trans.WeightByFranchize, trans.Destination, trans.Type, trans.DOX);
                     if (trans.AmountCharged != (decimal)result.Amount)
                     {
                         result.hasError = true;
-                        result.MisMatchDesc = result.MisMatchDesc + " Amount should be " + trans.AmountCharged;
+                        result.MisMatchDesc = result.MisMatchDesc + " Amount should be " + Math.Round((trans.AmountCharged??0),2);
+                        result.AmountDiff = (decimal)(result.Amount??0) - (decimal)(trans.AmountCharged??0);
                     }
                 }
                 catch(Exception ex)

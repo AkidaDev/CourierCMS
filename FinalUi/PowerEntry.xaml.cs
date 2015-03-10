@@ -111,6 +111,7 @@ namespace FinalUi
             startCOnnNoIndex = -1;
             endConnNoIndex = -1;
             progressbar.Value = 0;
+            MessageBox.Show("Power Entry Done", "Inormation");
             if (datagrid != null)
                 datagrid.Items.Refresh();
         }

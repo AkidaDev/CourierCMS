@@ -577,4 +577,9 @@
     <Parameter Name="ConsignmentNo" Parameter="consignmentNo" Type="System.String" DbType="VarChar(255)" />
     <Return Type="System.Decimal" />
   </Function>
+  <Function Name="dbo.CarryOverDue" Method="CarryOverDue" IsComposable="true">
+    <Parameter Name="OnDate" Parameter="onDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="ClientCode" Parameter="clientCode" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Double" />
+  </Function>
 </Database>

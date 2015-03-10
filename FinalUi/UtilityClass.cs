@@ -136,8 +136,8 @@ namespace FinalUi
         static public List<RuntimeData> loadDataFromDatabase(DateTime startDate, DateTime endDate, int sheetNo)
         {
             BillingDataDataContext db = new BillingDataDataContext();
-           
-            db.sp_LoadToRuntimeFromDate(SecurityModule.currentUserName, sheetNo, startDate, endDate);
+
+            db.sp_LoadToRuntimeFromDate(SecurityModule.currentUserName, sheetNo, endDate, startDate);
             return db.RuntimeDatas.Where(x => x.SheetNo == sheetNo && x.UserId == SecurityModule.currentUserName).OrderBy(y => y.ConsignmentNo).ToList();
         }
 
@@ -363,7 +363,6 @@ namespace FinalUi
             BillingDataDataContext db = new BillingDataDataContext();
             db.sp_LoadToRuntimeFromBookNo(stockStart, stockEnd,SecurityModule.currentUserName,sheetNo);
             return db.RuntimeDatas.Where(x => x.SheetNo == sheetNo && x.UserId == SecurityModule.currentUserName).OrderBy(y => y.ConsignmentNo).ToList();
-      
         }
 
         public static List<string> getGroupFromService(string service)

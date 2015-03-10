@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <configSections>
+        <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+            <section name="FinalUi.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+            <section name="FinalUi.Settings1" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false"/>
+            <section name="FinalUi.Configs" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false"/>
+        </sectionGroup>
+        <sectionGroup name="applicationSettings" type="System.Configuration.ApplicationSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
+            <section name="FinalUi.Configs" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+        </sectionGroup>
+    </configSections>
+    <connectionStrings>
+        <add name="FinalUi.Properties.Settings.BillingDatabaseConnectionString"
+            connectionString="Data Source=SYSTEM;Initial Catalog=BillingDatabase;User ID=sa"
+            providerName="System.Data.SqlClient" />
+    </connectionStrings>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0"/>
+    </startup>
+    <userSettings>
+        <FinalUi.Properties.Settings>
+            <setting name="Port" serializeAs="String">
+                <value>7861</value>
+            </setting>
+        </FinalUi.Properties.Settings>
+        <FinalUi.Settings1>
+            <setting name="theme" serializeAs="String">
+                <value>Default</value>
+            </setting>
+        </FinalUi.Settings1>
+        <FinalUi.Configs>
+            <setting name="BillingDatabaseConnectionString" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="CompanyName" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="CompanyPhone" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="CompanyEmail" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="CompanyFax" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="theme" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="CompanyAddress" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="ServiceTax" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="IsFirst" serializeAs="String">
+                <value>False</value>
+            </setting>
+            <setting name="Background" serializeAs="String">
+<<<<<<< local
+                <value>MediumSeaGreen</value>
+=======
+                <value />
+>>>>>>> other
+            </setting>
+            <setting name="IsFreshOrReset" serializeAs="String">
+                <value>False</value>
+            </setting>
+            <setting name="CompanyOwner" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="TNC" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="SuperUser" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="Tin" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="ServiceTaxno" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="ver" serializeAs="String">
+<<<<<<< local
+                <value />
+=======
+                <value />
+            </setting>
+            <setting name="updateserver" serializeAs="String">
+                <value>localhost</value>
+>>>>>>> other
+            </setting>
+        </FinalUi.Configs>
+    </userSettings>
+    <applicationSettings>
+        <FinalUi.Configs>
+            <setting name="amcSecrectKey" serializeAs="String">
+                <value />
+            </setting>
+        </FinalUi.Configs>
+    </applicationSettings>
+</configuration>

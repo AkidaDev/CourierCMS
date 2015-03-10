@@ -12,7 +12,31 @@ namespace ConsoleApplication2
     {
         static void Main(string[] args)
         {
-            funcToAddGroupsToServices();
+            DataClasses1DataContext db = new DataClasses1DataContext();
+            List<Rule> RuleList = db.Rules.Where(x => x.QID == 188).ToList();
+            Console.WriteLine("Rules found: " + RuleList.Count + ". Continue?");
+            Console.ReadLine();
+             JavaScriptSerializer serializer = new JavaScriptSerializer();
+             foreach(Rule rule in RuleList)
+             {
+                 if(rule.Type == 1)
+                 {
+                     CostingRule crule = serializer.Deserialize<CostingRule>(rule.Properties);
+                     crule.Id = rule.ID;
+                     rule.Properties = serializer.Serialize(crule);
+                 }
+                 if(rule.Type == 2)
+                 {
+
+                     ServiceRule crule = serializer.Deserialize<ServiceRule>(rule.Properties);
+                     crule.Id = rule.ID;
+                     rule.Properties = serializer.Serialize(crule);
+                 }
+             }
+             var changeSet = db.GetChangeSet();
+             Console.WriteLine("Changes: " + changeSet.Updates.ToString());
+             Console.ReadLine();
+             db.SubmitChanges();
         }
         static void transferData()
         {

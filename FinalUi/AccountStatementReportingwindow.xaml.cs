@@ -42,6 +42,7 @@ namespace FinalUi
             try
             {
                 CreateObj();
+                ReportContainer.Visibility = Visibility.Visible;
             }
             catch(Exception ex)
             {
@@ -59,6 +60,14 @@ namespace FinalUi
             BillingDataDataContext db = new BillingDataDataContext();
             var c  =  (Client) this.ClientListCombo.SelectedItem;
             invoice = db.AccountStatements.Where(x=> x.ClientCode == c.CLCODE && x.TransactionDate <= ToDate.SelectedDate && x.TransactionDate >= FromDate.SelectedDate).OrderBy(y => y.TransactionDate).ToList();
+            AccountStatement carryOverDueRecord = new AccountStatement();
+            carryOverDueRecord.Id = "";
+            carryOverDueRecord.TypeOfRecord = "Carry";
+            carryOverDueRecord.Remark = "PreviousDue/CarryOverDue";
+            carryOverDueRecord.TransactionDate = FromDate.SelectedDate??DateTime.Today;
+            carryOverDueRecord.PayAmount = db.CarryOverDue(FromDate.SelectedDate, c.CLCODE);
+            carryOverDueRecord.TotalRecievedAmount = 0;
+            invoice.Add(carryOverDueRecord);
             rs.Value = invoice;
             AccountStatementViewer.LocalReport.DataSources.Clear();
             AccountStatementViewer.LocalReport.DataSources.Add(rs);
