@@ -566,6 +566,7 @@ namespace FinalUi
         private void LenghtPacketBox_LostFocus(object sender, RoutedEventArgs e)
         {
             double lenght, height, width, divisor, netweight;
+            int pieces;
             if (!double.TryParse(LenghtPacketBox.Text, out lenght))
                 lenght = 0;
             if (!double.TryParse(WidthPacketBox.Text, out width))
@@ -574,9 +575,12 @@ namespace FinalUi
                 height = 0;
             if (!double.TryParse(DivisorBox.Text, out divisor))
                 divisor = 0;
+
+            if (!int.TryParse(PiecesBox.Text, out pieces))
+                pieces = 0;
             if (divisor != 0)
             {
-                netweight = (lenght * width * height / divisor);
+                netweight = (lenght * width * height * ((double)pieces) / divisor);
                 NetWeightBlock.Text = string.Format("{0:0.00}", netweight);
             }
             else

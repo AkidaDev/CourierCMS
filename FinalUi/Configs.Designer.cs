@@ -121,6 +121,7 @@ namespace FinalUi {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool IsFirst {
             get {
                 return ((bool)(this["IsFirst"]));
@@ -132,7 +133,7 @@ namespace FinalUi {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("MediumSeaGreen")]
         public string Background {
             get {
                 return ((string)(this["Background"]));
@@ -144,6 +145,7 @@ namespace FinalUi {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool IsFreshOrReset {
             get {
                 return ((bool)(this["IsFreshOrReset"]));

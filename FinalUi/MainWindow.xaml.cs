@@ -1276,5 +1276,11 @@ namespace FinalUi
             ExpenseReportWindow win = new ExpenseReportWindow();
             win.Show();
         }
+
+        private void AccountStatementFull_Click(object sender, RoutedEventArgs e)
+        {
+            AccountStatementFullWindow win = new AccountStatementFullWindow();
+            win.Show();
+        }
     }
 }

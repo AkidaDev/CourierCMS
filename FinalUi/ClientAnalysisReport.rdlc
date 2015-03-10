@@ -205,6 +205,9 @@
               <Width>0.95281in</Width>
             </TablixColumn>
             <TablixColumn>
+              <Width>0.98425in</Width>
+            </TablixColumn>
+            <TablixColumn>
               <Width>0.97859in</Width>
             </TablixColumn>
             <TablixColumn>
@@ -272,6 +275,42 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>TotalAmountPayed</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                          <Width>0.25pt</Width>
+                        </Border>
+                        <RightBorder>
+                          <Style>None</Style>
+                        </RightBorder>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="SlipCost">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!SlipCost.Value</Value>
+                              <Style>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <Color>DimGray</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>SlipCost</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -438,6 +477,42 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Textbox11">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=SUM(Fields!SlipCost.Value)</Value>
+                              <Style>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <Color>DimGray</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox11</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                          <Width>0.25pt</Width>
+                        </Border>
+                        <RightBorder>
+                          <Style>None</Style>
+                        </RightBorder>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="Textbox98">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -570,6 +645,42 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox97</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                          <Width>0.25pt</Width>
+                        </Border>
+                        <RightBorder>
+                          <Style>None</Style>
+                        </RightBorder>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox15">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=SUM(Fields!SlipCost.Value)</Value>
+                              <Style>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <Color>DimGray</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox15</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -734,6 +845,42 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Textbox17">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=SUM(Fields!SlipCost.Value)</Value>
+                              <Style>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <Color>DimGray</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox17</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                          <Width>0.25pt</Width>
+                        </Border>
+                        <RightBorder>
+                          <Style>None</Style>
+                        </RightBorder>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="BalanceAmountTotal">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -810,14 +957,14 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="STaxAmountCharged">
+                    <Textbox Name="FuelTotalAmountCharged">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=SUM(Fields!TotalAmountCharged.Value)*First(Fields!STAX.Value)/100</Value>
+                              <Value>=SUM(Fields!TotalAmountCharged.Value)*First(Fields!FUEL.Value)/100</Value>
                               <Style>
                                 <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -846,14 +993,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="STaxAmountPayed">
+                    <Textbox Name="FuelAmountPayed">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=SUM(Fields!TotalAmountPayed.Value)*0.1236</Value>
+                              <Value>=SUM(Fields!TotalAmountPayed.Value)*0.3</Value>
                               <Style>
                                 <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -864,6 +1011,42 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                          <Width>0.25pt</Width>
+                        </Border>
+                        <RightBorder>
+                          <Style>None</Style>
+                        </RightBorder>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox18">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <Color>DimGray</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox18</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -958,14 +1141,16 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="FuelAmountCharged">
+                    <Textbox Name="STaxTotallAmountCharged">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=SUM(Fields!TotalAmountCharged.Value)*First(Fields!FUEL.Value)/100</Value>
+                              <Value>=((ReportItems!FuelTotalAmountCharged.Value) +
+	SUM(Fields!TotalAmountCharged.Value)) * 
+	First(Fields!STAX.Value)/100</Value>
                               <Style>
                                 <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -994,14 +1179,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="FuelAmountPayed">
+                    <Textbox Name="STaxAmountPayed">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=SUM(Fields!TotalAmountPayed.Value)*0.3</Value>
+                              <Value>=(SUM(Fields!TotalAmountPayed.Value)+(ReportItems!FuelAmountPayed.Value))*0.1236</Value>
                               <Style>
                                 <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1013,6 +1198,43 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                          <Width>0.25pt</Width>
+                        </Border>
+                        <RightBorder>
+                          <Style>None</Style>
+                        </RightBorder>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                    <rd:Selected>true</rd:Selected>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox25">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <Color>DimGray</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox25</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1114,9 +1336,9 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=ReportItems!FuelAmountCharged.Value +
+                              <Value>=ReportItems!FuelTotalAmountCharged.Value +
  ReportItems!AmountChargedTotal.Value +
- ReportItems!STaxAmountCharged.Value</Value>
+ ReportItems!STaxTotallAmountCharged.Value</Value>
                               <Style>
                                 <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1185,6 +1407,42 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="TotalSumSlipCost">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=SUM(Fields!SlipCost.Value)</Value>
+                              <Style>
+                                <FontFamily>verdana</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>DimGray</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                          <Width>0.25pt</Width>
+                        </Border>
+                        <RightBorder>
+                          <Style>None</Style>
+                        </RightBorder>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="NetCustBalance">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -1193,7 +1451,8 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=ReportItems!CustNetAmtCharged.Value - 
- ReportItems!CustNetAmtPayed.Value</Value>
+ ReportItems!CustNetAmtPayed.Value-
+ ReportItems!TotalSumSlipCost.Value</Value>
                               <Style>
                                 <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1344,6 +1603,56 @@
                       </Paragraph>
                     </Paragraphs>
                     <rd:DefaultName>Textbox63</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                        <Style>Solid</Style>
+                      </Border>
+                      <TopBorder>
+                        <Style>None</Style>
+                      </TopBorder>
+                      <BottomBorder>
+                        <Style>None</Style>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Color>DimGray</Color>
+                        <Width>0.5pt</Width>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Style>None</Style>
+                      </RightBorder>
+                      <BackgroundColor>LightGrey</BackgroundColor>
+                      <VerticalAlign>Middle</VerticalAlign>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+            <TablixMember>
+              <TablixHeader>
+                <Size>0.1875in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox5">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Slip Cost</Value>
+                            <Style>
+                              <FontFamily>verdana</FontFamily>
+                              <FontSize>8pt</FontSize>
+                              <TextDecoration>None</TextDecoration>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox5</rd:DefaultName>
                     <Style>
                       <Border>
                         <Color>LightGrey</Color>
@@ -1934,7 +2243,7 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Stax.:</Value>
+                                <Value>Fuel.:</Value>
                                 <Style>
                                   <FontFamily>verdana</FontFamily>
                                   <FontSize>8pt</FontSize>
@@ -1968,14 +2277,14 @@
                       <TablixHeader>
                         <Size>0.89062in</Size>
                         <CellContents>
-                          <Textbox Name="STAX">
+                          <Textbox Name="FUEL1">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>=Fields!STAX.Value</Value>
+                                    <Value>=Fields!FUEL.Value</Value>
                                     <Style>
                                       <FontFamily>verdana</FontFamily>
                                       <FontSize>8pt</FontSize>
@@ -1988,7 +2297,7 @@
                                 </Style>
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>STAX</rd:DefaultName>
+                            <rd:DefaultName>FUEL1</rd:DefaultName>
                             <Style>
                               <Border>
                                 <Color>LightGrey</Color>
@@ -2061,7 +2370,7 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Fuel.: </Value>
+                                <Value>STax.: </Value>
                                 <Style>
                                   <FontFamily>verdana</FontFamily>
                                   <FontSize>8pt</FontSize>
@@ -2095,14 +2404,14 @@
                       <TablixHeader>
                         <Size>0.89062in</Size>
                         <CellContents>
-                          <Textbox Name="FUEL">
+                          <Textbox Name="STAX">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>=Fields!FUEL.Value</Value>
+                                    <Value>=Fields!STAX.Value</Value>
                                     <Style>
                                       <FontFamily>verdana</FontFamily>
                                       <FontSize>8pt</FontSize>
@@ -2116,7 +2425,7 @@
                                 </Style>
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>FUEL</rd:DefaultName>
+                            <rd:DefaultName>STAX</rd:DefaultName>
                             <Style>
                               <Border>
                                 <Color>LightGrey</Color>
@@ -2304,7 +2613,7 @@
         <Top>0.04019in</Top>
         <Left>0.33561in</Left>
         <Height>1.58367in</Height>
-        <Width>7.19991in</Width>
+        <Width>8.18416in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2319,7 +2628,7 @@
       </Border>
     </Style>
   </Body>
-  <Width>19.365cm</Width>
+  <Width>21.64022cm</Width>
   <Page>
     <PageHeader>
       <Height>0.75557cm</Height>
@@ -2474,6 +2783,10 @@
         <Field Name="NumOfConns">
           <DataField>NumOfConns</DataField>
           <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="SlipCost">
+          <DataField>SlipCost</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
         <Field Name="STAX">
           <DataField>STAX</DataField>

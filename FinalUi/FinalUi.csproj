@@ -190,6 +190,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BillingData.dbml</DependentUpon>
     </Compile>
+    <Compile Include="AccountStatementFullWindow.xaml.cs">
+      <DependentUpon>AccountStatementFullWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ClientExpenseReportWindow.xaml.cs">
       <DependentUpon>ClientExpenseReportWindow.xaml</DependentUpon>
     </Compile>
@@ -342,6 +345,10 @@
     <Page Include="AddZone.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountStatementFullWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="ClientExpenseReportWindow.xaml">
       <SubType>Designer</SubType>
@@ -545,6 +552,10 @@
     <Content Include="version.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="AccountStatementFullReport.rdlc">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="ClientAnalysis.rdlc" />
     <Content Include="Report2.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -555,6 +566,7 @@
     <Content Include="ExpenseAnalysisReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="SummaryReport.rdlc" />
     <Resource Include="Images\load.gif" />
     <Resource Include="Images\logo.ico" />
     <Resource Include="logo.ico">

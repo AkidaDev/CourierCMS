@@ -185,7 +185,7 @@
         <classShapeMoniker Id="f9b8fc0c-f038-46a6-b97d-d7a7ce26b42b" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 9.63064697265625); (5.60416916666667 : 9.63064697265625 : JumpStart); (5.77083583333333 : 9.63064697265625 : JumpEnd); (6.5 : 9.63064697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 9.63064697265625); (5.57291666666667 : 9.63064697265625 : JumpStart); (5.73958333333333 : 9.63064697265625 : JumpEnd); (6.5 : 9.63064697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BillingDataDataContext/Employee/Employee_Transaction" />
       <nodes>
         <classShapeMoniker Id="3d25e585-62bb-4507-8b7e-d2b92235d9e3" />
@@ -267,10 +267,16 @@
         <elementListCompartment Id="3ece47d8-1848-4985-bd4c-4aca7fac05d2" absoluteBounds="7.89, 0.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="a0d90e04-e2a7-4f86-9808-9307dea2952b" absoluteBounds="5.375, 0.5, 2, 2.7324039713541666">
+    <classShape Id="4aa37bca-682c-4fa0-86b2-9c9ba177ed5f" absoluteBounds="6.875, 0.875, 2, 2.9247054036458331">
       <DataClassMoniker Name="/BillingDataDataContext/ClientReportView" />
       <nestedChildShapes>
-        <elementListCompartment Id="e5bc7b2d-f003-4ef3-97e8-c4dd27349c18" absoluteBounds="5.39, 0.96, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="716cebd0-da59-444a-8027-79d78e313649" absoluteBounds="6.89, 1.335, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9b9d30ad-8231-4dc6-b50d-67c921da0516" absoluteBounds="3.25, 1.5, 2, 2.5401025390625">
+      <DataClassMoniker Name="/BillingDataDataContext/AccountStatementFull" />
+      <nestedChildShapes>
+        <elementListCompartment Id="915cebae-c2bc-45c2-8666-f16b976f51f9" absoluteBounds="3.265, 1.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
