@@ -44,8 +44,20 @@ namespace FinalUi
                 type = "Invoice";
             else
                 type = "Payment";
-            var source = db.AccountStatementFulls.Where(x => x.TransactionDate >= FromDate.SelectedDate && x.TransactionDate <= ToDate.SelectedDate && x.TypeOfRecord == type);
+            var source = db.AccountStatementFulls.Where(x => x.TransactionDate >= FromDate.SelectedDate && x.TransactionDate <= ToDate.SelectedDate && x.TypeOfRecord == type).OrderBy(y=>y.TransactionDate);
             List<AccountStatementFull> reportSource = source.ToList();
+            if(type == "Invoice")
+            {
+                List<Invoice> invoiceList = db.Invoices.Where(x => x.Date >= FromDate.SelectedDate && x.Date <= ToDate.SelectedDate).ToList();
+                List<AccountStatementFull> AccSTats = source.ToList();
+                AccSTats.ForEach(x =>
+                {
+                    Invoice inv = invoiceList.SingleOrDefault(y => y.BillId == x.Id);
+                    if (inv != null)
+                        x.PayAmount = x.PayAmount + inv.PreviousDue;
+                });
+                reportSource = AccSTats;
+            }
             rs.Value = reportSource;
             List<ReportParameter> repParams = new List<ReportParameter>();
             repParams.Add(new ReportParameter("ToDate", ((DateTime)ToDate.SelectedDate).ToString("dd-MMM-yyyy")));

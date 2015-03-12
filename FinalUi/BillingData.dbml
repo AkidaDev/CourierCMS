@@ -582,4 +582,9 @@
     <Parameter Name="ClientCode" Parameter="clientCode" Type="System.String" DbType="VarChar(50)" />
     <Return Type="System.Double" />
   </Function>
+  <Function Name="dbo.CarryOverDue" Method="CarryOverDue1" IsComposable="true">
+    <Parameter Name="OnDate" Parameter="onDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="ClientCode" Parameter="clientCode" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Double" />
+  </Function>
 </Database>

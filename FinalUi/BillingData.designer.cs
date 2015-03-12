@@ -477,6 +477,18 @@ namespace FinalUi
 		{
 			return ((System.Nullable<decimal>)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), consignmentNo).ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CarryOverDue", IsComposable=true)]
+		public System.Nullable<double> CarryOverDue([global::System.Data.Linq.Mapping.ParameterAttribute(Name="OnDate", DbType="Date")] System.Nullable<System.DateTime> onDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ClientCode", DbType="VarChar(50)")] string clientCode)
+		{
+			return ((System.Nullable<double>)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), onDate, clientCode).ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CarryOverDue", IsComposable=true)]
+		public System.Nullable<double> CarryOverDue1([global::System.Data.Linq.Mapping.ParameterAttribute(Name="OnDate", DbType="Date")] System.Nullable<System.DateTime> onDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ClientCode", DbType="VarChar(50)")] string clientCode)
+		{
+			return ((System.Nullable<double>)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), onDate, clientCode).ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.City")]

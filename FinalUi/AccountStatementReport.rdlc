@@ -26,9 +26,6 @@
             <TablixColumn>
               <Width>0.84318in</Width>
             </TablixColumn>
-            <TablixColumn>
-              <Width>0.98425in</Width>
-            </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
@@ -345,53 +342,6 @@
                     </Textbox>
                   </CellContents>
                 </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox2">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Line Total</Value>
-                              <Style>
-                                <FontFamily>verdana</FontFamily>
-                                <FontSize>8pt</FontSize>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox2</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>Gray</Color>
-                          <Style>None</Style>
-                        </Border>
-                        <TopBorder>
-                          <Style>Solid</Style>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Style>Solid</Style>
-                          <Width>0.5pt</Width>
-                        </BottomBorder>
-                        <RightBorder>
-                          <Style>None</Style>
-                        </RightBorder>
-                        <BackgroundColor>LightGrey</BackgroundColor>
-                        <VerticalAlign>Middle</VerticalAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -668,59 +618,12 @@
                     </Textbox>
                   </CellContents>
                 </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox15">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Round(RunningValue(Fields!TotalRecievedAmount.Value,Sum,"InvoiceDataSet1")+RunningValue(Fields!PayAmount.Value,Sum,"InvoiceDataSet1"),2)</Value>
-                              <Style>
-                                <FontFamily>verdana</FontFamily>
-                                <FontSize>8pt</FontSize>
-                                <Color>DimGray</Color>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox15</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>None</Style>
-                          <Width>0.25pt</Width>
-                        </Border>
-                        <TopBorder>
-                          <Style>None</Style>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Style>Solid</Style>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Style>None</Style>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Style>None</Style>
-                        </RightBorder>
-                        <VerticalAlign>Middle</VerticalAlign>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
               </TablixCells>
             </TablixRow>
           </TablixRows>
         </TablixBody>
         <TablixColumnHierarchy>
           <TablixMembers>
-            <TablixMember />
             <TablixMember />
             <TablixMember />
             <TablixMember />
@@ -744,7 +647,7 @@
         <Top>1.52962in</Top>
         <Left>0.08377in</Left>
         <Height>0.44791in</Height>
-        <Width>11.44635in</Width>
+        <Width>10.4621in</Width>
         <Style>
           <Border>
             <Color>White</Color>

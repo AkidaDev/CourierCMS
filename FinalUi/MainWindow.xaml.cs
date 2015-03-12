@@ -617,7 +617,7 @@ namespace FinalUi
             if (dataWind.isNewSheet || dataGridHelper.CurrentNumberOfSheets <= 0)
             {
                 if (dataWind.isLoadedFromBook == false)
-                    dataWind.data = UtilityClass.loadDataFromDatabase(toDate_loadDataWin ?? DateTime.Now, fromDate_loadDataWin ?? DateTime.Now, dataGridHelper.currentMaxSheetNumber + 1);
+                    dataWind.data = UtilityClass.loadDataFromDatabase(fromDate_loadDataWin ?? DateTime.Now, toDate_loadDataWin?? DateTime.Now, dataGridHelper.currentMaxSheetNumber + 1);
                 else
                 {
                     dataWind.data = UtilityClass.loadDataFromBook(dataGridHelper.currentMaxSheetNumber + 1, stockStart, stockEnd);
@@ -837,7 +837,6 @@ namespace FinalUi
         private void cloakAll()
         {
             this.DataDockPanel.Visibility = Visibility.Collapsed;
-            this.ClientReportOptionPanel.Visibility = Visibility.Collapsed;
             this.QuotationoptionPanel.Visibility = Visibility.Collapsed;
             this.HideAllDatagrid.Visibility = Visibility.Collapsed;
             //this.FilterQuotation.Visibility = Visibility.Collapsed;
@@ -880,11 +879,7 @@ namespace FinalUi
             QuotationoptionPanel.Visibility = Visibility.Visible;
             //FilterQuotation.Visibility = Visibility.Visible;
         }
-        private void ClientsReportTreeView_Selected(object sender, RoutedEventArgs e)
-        {
-            cloakAll();
-            ClientReportOptionPanel.Visibility = Visibility.Visible;
-        }
+    
         private void DataDockPanelTreeView_Selected(object sender, RoutedEventArgs e)
         {
             cloakAll();
