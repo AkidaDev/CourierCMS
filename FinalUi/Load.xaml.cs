@@ -37,7 +37,7 @@ namespace FinalUi
                     Configs.Default.Save();
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 MessageBox.Show("Version Error");
                 Application.Current.Shutdown();

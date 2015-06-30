@@ -217,7 +217,16 @@ namespace FinalUi
         {
             get
             {
-                return BillId + "     |     " + ClientCode + "     |     " + TotalAmount;
+                string ClientName = "";
+                try
+                {
+                    ClientName = DataSources.ClientCopy.Single(x => x.CLCODE == ClientCode).CLNAME;
+                }
+                catch (Exception)
+                {
+                    ClientName = "Deleted Client";
+                }
+                return BillId + "     |     " + ClientName + ":" + ClientCode + "     |     " + TotalAmount;
             }
         }
         public string CompactDate

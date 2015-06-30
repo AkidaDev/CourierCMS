@@ -486,6 +486,7 @@
       <Column Name="TotalAmountPayed" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
       <Column Name="TotalAmountCharged" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
       <Column Name="BalanceAmount" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
+      <Column Name="SlipCost" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
       <Column Name="CustCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
       <Column Name="BookingDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="Month" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
@@ -493,6 +494,19 @@
       <Column Name="NumOfConns" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="FUEL" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="STAX" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccountStatementFull" Member="AccountStatementFulls">
+    <Type Name="AccountStatementFull">
+      <Column Name="Id" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TransactionDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TypeOfRecord" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="CLNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="VarChar(182)" CanBeNull="true" />
+      <Column Name="Details" Type="System.String" DbType="VarChar(360)" CanBeNull="true" />
+      <Column Name="TotalRecievedAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PayAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.ImportFileData" Method="ImportFileData">
@@ -564,6 +578,11 @@
     <Return Type="System.Decimal" />
   </Function>
   <Function Name="dbo.CarryOverDue" Method="CarryOverDue" IsComposable="true">
+    <Parameter Name="OnDate" Parameter="onDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="ClientCode" Parameter="clientCode" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Double" />
+  </Function>
+  <Function Name="dbo.CarryOverDue" Method="CarryOverDue1" IsComposable="true">
     <Parameter Name="OnDate" Parameter="onDate" Type="System.DateTime" DbType="Date" />
     <Parameter Name="ClientCode" Parameter="clientCode" Type="System.String" DbType="VarChar(50)" />
     <Return Type="System.Double" />

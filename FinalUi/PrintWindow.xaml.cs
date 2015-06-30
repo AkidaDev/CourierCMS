@@ -188,6 +188,9 @@ namespace FinalUi
             repParams.Add(new ReportParameter("ServiceTaxString", String.Format("{0:0.00}", double.Parse(ServiceTaxBox.Text))));
             repParams.Add(new ReportParameter("DiscountPString", String.Format("{0:0.00}", double.Parse(DiscountBox.Text))));
             repParams.Add(new ReportParameter("MiscellaneousAmountString", MiscBox.Text));
+            double temp2;
+            if (double.TryParse(MiscBox.Text, out temp2))
+                invoice.Misc = temp2;
             repParams.Add(new ReportParameter("DiscountAmountString", String.Format("{0:0.00}", invoice.discountAmount)));
             repParams.Add(new ReportParameter("FuelAmount", String.Format("{0:0.00}",invoice.fuelAmount)));
             repParams.Add(new ReportParameter("ServiceTaxAmount", String.Format("{0:0.00}", invoice.taxAmount)));
@@ -216,6 +219,7 @@ namespace FinalUi
             invoice.Date = InvoiceDate.SelectedDate ?? DateTime.Today;
             invoice.BillId = invoice.BillId + DateTime.Now.ToString("hhmmss");
             invoice.Remarks = RemarkBox.Text;
+            
             invoice.TotalAmount = invoice.totalAmount;
             repParams.Add(new ReportParameter("InvoiceNumber", invoice.BillId));
             repParams.Add(new ReportParameter("InvoiceDate", (InvoiceDate.SelectedDate ?? DateTime.Today).ToString("dd-MMM-yyyy")));

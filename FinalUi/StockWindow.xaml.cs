@@ -45,7 +45,7 @@ namespace FinalUi
             s.ID = StockAssignment.SrlNo;
             s.StockEnd = StockAssignment.EndNumber;
             s.StockStart = StockAssignment.StartNumber;
-            Employee selectedEmp = emp.SingleOrDefault(x => x.UserName == StockAssignment.EmployeeName);
+            Employee selectedEmp = emp.SingleOrDefault(x => x.Name == StockAssignment.EmployeeName);
             s.UserId = selectedEmp.Id;
             s.Employee = selectedEmp;
             s.BookNo = StockAssignment.BookNo;

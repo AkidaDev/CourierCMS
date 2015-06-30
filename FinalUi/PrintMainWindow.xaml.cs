@@ -147,7 +147,7 @@ where [BillId] = '" + inv.BillId + @"'
                 BillViewer.LocalReport.DisplayName = inv.ClientName + "-" + inv.BillId;
                 BillViewer.RefreshReport();
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 MessageBox.Show("Error opening file.");
                 this.Close();

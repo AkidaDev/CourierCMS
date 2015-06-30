@@ -1,0 +1,38 @@
+﻿<Window x:Class="FinalUi.AccountStatementFullWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Office Account Statement Window" Background="Turquoise"
+		Icon="Images/logo.ico"
+        xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms">
+    <Window.Resources>
+        <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="0 5" Background="#A9FFFFF3">
+            <WrapPanel HorizontalAlignment="Center" Margin="68 13 0 0">
+                <TextBlock FontSize="16" FontFamily="Calibri" Text="Select Date" VerticalAlignment="Bottom"/>
+                <TextBlock FontSize="16" FontFamily="Calibri" Text="From .: " VerticalAlignment="Bottom" Margin="50 0 0 0"/>
+                <DatePicker Name="FromDate" Width="120" BorderBrush="DarkGray" Padding="2 2 0 2" Background="White"/>
+                <Path  Data="F1M2,2C2,2 3,2 3,2 3,2 3,35 3,35 3,35 2,35 2,35 2,35 2,2 2,2" Fill="Black" Stretch="Fill" Height="28" Width="1" Margin="10 -3 0 -4"/>
+                <TextBlock FontSize="16" FontFamily="Calibri" TextWrapping="Wrap" Text="To .: " VerticalAlignment="Bottom" Margin="25 0 0 0"/>
+                <DatePicker Name="ToDate" Width="120" BorderBrush="DarkGray" Padding="2 2 0 2" Background="White"/>
+                <Button Content="Print" Click="Button_Click" VerticalAlignment="Center" Margin="50 0 0 0" Width="80"/>
+            </WrapPanel>
+            <WrapPanel HorizontalAlignment="Center" Margin="0 10 0 0">
+                <TextBlock FontSize="16" FontFamily="Calibri" Text="Show .: " VerticalAlignment="Bottom"/>
+                <RadioButton GroupName="SelectedItem" Name="InvoiceRadio" Content="Invoices" IsChecked="True"/>
+                <RadioButton GroupName="SelectedItem" Name="PaymentRadio" Content="Payments"/>
+            </WrapPanel>
+
+        </StackPanel>
+        <WindowsFormsHost Grid.Row="1">
+            <rv:ReportViewer x:Name="AccountStatementViewer" ShowContextMenu="True" ShowExportButton="True"/>
+        </WindowsFormsHost>
+        <StackPanel Grid.Row="3" Background="#A9FFFFF3"/>
+    </Grid>
+</Window>

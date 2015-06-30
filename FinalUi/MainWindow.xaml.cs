@@ -38,17 +38,13 @@ namespace FinalUi
         CollectionViewSource clientViewSource;
         CollectionViewSource cityViewSource;
         // Client listing data import procedure
-        #region initScripts
-        CollectionViewSource dueDataGridSource;
-        CollectionViewSource profitDataGridSource;
-        #endregion
+
         #region Global Objects
         DataGridHelper dataGridHelper;
         CollectionViewSource dataGridSource;
         Dictionary<Button, int> buttonList;
         Button activeButton;
         BackgroundWorker LoadWorker;
-        BackgroundWorker SaveWorker;
         BackgroundWorker DeleteSheetWorker;
         CollectionViewSource CostingRulesSource;
 
@@ -65,27 +61,18 @@ namespace FinalUi
             clientViewSource.Source = DataSources.ClientCopy;
             cityViewSource = (CollectionViewSource)FindResource("CityTable");
             cityViewSource.Source = DataSources.CityCopy;
-            dueDataGridSource = (CollectionViewSource)FindResource("DueGridDataSource");
-            profitDataGridSource = (CollectionViewSource)FindResource("UnpaidInvoiceGridSource");
             BillingDataDataContext db = new BillingDataDataContext();
-            dueDataGridSource.Source = db.BalanceViews;
-            profitDataGridSource.Source = (from invoice in db.Invoices
-                                           where !(from payment in db.PaymentEntries
-                                                   select payment.InvoiceNumber)
-                                                   .Contains(invoice.BillId)
-                                           select invoice).ToList();
             ServiceTable = (CollectionViewSource)FindResource("ServiceTable");
             ServiceTable.Source = DataSources.ServicesCopy;
             #region setupCode
             PreviewMouseMove += OnPreviewMouseMove;
             #endregion
-            if(Configs.Default.Background == null || Configs.Default.Background == "")
+            if (Configs.Default.Background == null)
             {
-                Configs.Default.Background = "LightSeaGreen";
+                Configs.Default.Background = "Aqua";
                 Configs.Default.Save();
             }
             this.MainGrid.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(Configs.Default.Background));
-            db = new BillingDataDataContext();
             ResourceDictionary dict = this.Resources;
             #region DataGrid Code Lines
             dataGridSource = (CollectionViewSource)FindResource("DataGridDataContext");
@@ -102,11 +89,6 @@ namespace FinalUi
             CommandBinding PowerEntryCommandBinding = new CommandBinding(PowerEntryCommand, PowerEntryCommandExecuted, CanExecuteIsDataGridNotNull);
             this.CommandBindings.Add(PowerEntryCommandBinding);
             PowerEntryButton.Command = PowerEntryCommand;
-
-            CommandBinding SaveCommandBinding = new CommandBinding(ApplicationCommands.Save, ExecuteSaveCommand, CanExecuteSaveCommand);
-            this.CommandBindings.Add(SaveCommandBinding);
-            SaveButton.Command = ApplicationCommands.Save;
-
             CommandBinding DeleteCommandBinding = new CommandBinding(DeleteCommand, DeleteCommandExecuted, DeleteCommand_CanExecute);
             this.CommandBindings.Add(DeleteCommandBinding);
             CommandBinding NewSheetCommandBinding = new CommandBinding(NewSheetCommand, NewSheetCommandExecuted, NewSheetCommand_CanExecute);
@@ -126,10 +108,6 @@ namespace FinalUi
             #region LoadConfigs
             Configs.Default.PropertyChanged += Default_PropertyChanged;
             #endregion
-            SaveWorker = new BackgroundWorker();
-            SaveWorker.DoWork += SaveWorker_DoWork;
-            SaveWorker.ProgressChanged += SaveWorker_ProgressChanged;
-            SaveWorker.RunWorkerCompleted += SaveWorker_RunWorkerCompleted;
             LoadWorker = new BackgroundWorker();
             LoadWorker.DoWork += LoadWorker_DoWork;
             LoadWorker.ProgressChanged += LoadWorker_ProgressChanged;
@@ -174,6 +152,11 @@ namespace FinalUi
             {
                 this.PaymentEntryMenuItem.Visibility = Visibility.Collapsed;
             }
+            if(!SecurityModule.hasPermission(SecurityModule.employee.Id, "ExpenseEntry"))
+            {
+                ExpenseEntryMenuItem.Visibility = System.Windows.Visibility.Collapsed;
+                ExpenseReportWin.Visibility = System.Windows.Visibility.Collapsed;
+            }
             //if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "ManageInvoice"))
             //{
             //    this.PrintButton.Visibility = this.PrintMenuItem.Visibility = this.AfterPrint.Visibility = Visibility.Collapsed;
@@ -209,45 +192,10 @@ namespace FinalUi
             e.Result = response;
         }
         #endregion
-        #region Save Worker
-        void SaveWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            SaveDialogue.Visibility = System.Windows.Visibility.Collapsed;
-            if (e.Error != null)
-                MessageBlock.Text = DateTime.Now.ToShortTimeString() + ": " + "Error in saving: " + e.Error.Message + "\n" + MessageBlock.Text;
-            else
-                MessageBlock.Text = DateTime.Now.ToShortTimeString() + ": " + "Save Completed" + e.Result + "\n" + MessageBlock.Text;
-        }
-
-        void SaveWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        void SaveWorker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            BillingDataDataContext db = new BillingDataDataContext();
-            string message = UtilityClass.saveRuntimeAsTransaction(dataGridHelper.currentSheetNumber, SecurityModule.currentUserName);
-            if (message != "")
-            {
-                throw new Exception(message);
-            }
-            try
-            {
-                dataGridHelper.currentDataSheet.dataStack = db.RuntimeDatas.Where(x => x.SheetNo == dataGridHelper.currentSheetNumber && x.UserId == SecurityModule.currentUserName).ToList();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-            }
-        }
-
-        #endregion
         #region Delete Sheet Worker
         void DeleteWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBlock.Text = DateTime.Now.ToShortTimeString() + ": " + "Delete Operation Completed. " + e.Error + "\n" + MessageBlock.Text;
+            MessageBlock.Text = DateTime.Now.ToShortTimeString() + ": " + "Sheet Closed. " + e.Error + "\n" + MessageBlock.Text;
         }
         void DeleteWorker_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -322,11 +270,7 @@ namespace FinalUi
             window = new SanitizingWindow(dataGridHelper.getCurrentDataStack, db, dataGridHelper.currentSheetNumber, dataGrid, dataGridHelper, SubClientList, ConsigneeList, ConsignerList, dataToSend);
 
             window.Closed += SanitizingWindow_Closed;
-            try
-            {
-                window.Show();
-            }
-            catch (Exception ex) { }
+            window.Show();
         }
         int currentRowsPerPage;
         private void concatinateAllRecordsInOnePage()
@@ -356,39 +300,12 @@ namespace FinalUi
         {
             PowerEntry powerWin = new PowerEntry(dataGridHelper.getCurrentDataStack, dataGrid);
             powerWin.Closed += powerWin_Closed;
-            try
-            {
-                powerWin.Show();
-            }
-            catch (Exception ex) { }
+            powerWin.Show();
         }
 
         void powerWin_Closed(object sender, EventArgs e)
         {
             GC.Collect();
-        }
-        #endregion
-        #region SaveCommand
-        private void CanExecuteSaveCommand(object sender, CanExecuteRoutedEventArgs e)
-        {
-            if (dataGridHelper != null)
-            {
-                if (dataGridHelper.getCurrentDataStack == null || SaveWorker.IsBusy == true || LoadWorker.IsBusy == true)
-                {
-                    e.CanExecute = false;
-                }
-                else
-                    e.CanExecute = true;
-            }
-            else
-                e.CanExecute = false;
-        }
-        private void ExecuteSaveCommand(object sender, ExecutedRoutedEventArgs e)
-        {
-            MessageBlock.Text = DateTime.Now.ToShortTimeString() + ": " + "Saving operation started..." + "\n" + MessageBlock.Text;
-            SaveDialogue.Visibility = Visibility.Visible;
-            SaveWorker.RunWorkerAsync();
-            //SaveWorker_DoWork(null, null);
         }
         #endregion
         #region printCommand
@@ -402,28 +319,20 @@ namespace FinalUi
                 MessageBox.Show("This data contains records that are loaded directly from a file. To print out an invoice data must loaded properly from database. ", "Error");
                 return;
             }
-             int count ;
-            if((count = cData.Count(x=>x.FrAmount == 0)) > 0)
+            int count;
+            if ((count = cData.Count(x => x.FrAmount == 0)) > 0)
             {
                 if (MessageBoxResult.No == MessageBox.Show("There are " + count.ToString() + " records whose billed amount is 0. Are you sure you want to continue?"))
                     return;
             }
-            count= cData.Count(x => x.FrAmount == null);
+            count = cData.Count(x => x.FrAmount == null);
             if (count > 0)
             {
                 if (MessageBox.Show("There are " + count.ToString() + " records whose billed amount is not set. Are you sure you want to continue? If you continue then amount billed for those those records will be equal to 0.", "Confirm", MessageBoxButton.YesNo) == MessageBoxResult.No)
                     return;
             }
-            DateTime toDate = cData.Max(x => x.BookingDate);
-            DateTime fromDate = cData.Min(x => x.BookingDate);
-            toDate = new DateTime(toDate.Year, toDate.Month, DateTime.DaysInMonth(toDate.Year, toDate.Month));
-            fromDate = new DateTime(fromDate.Year, fromDate.Month, 1);
-            PrintWindow win = new PrintWindow(cData, toDate, fromDate);
-            try
-            {
-                win.Show();
-            }
-            catch (Exception ex) { }
+            PrintWindow win = new PrintWindow(cData, cData.Select(x => x.BookingDate).Max(), cData.Select(x => x.BookingDate).Min());
+            win.Show();
         }
         private void CanExecutePrintCommand(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -460,7 +369,7 @@ namespace FinalUi
         {
             if (DeleteSheetWorker != null && dataGridHelper != null)
             {
-                if (DeleteSheetWorker.IsBusy == true || buttonList.Count == 0 || SaveWorker.IsBusy == true || LoadWorker.IsBusy == true)
+                if (DeleteSheetWorker.IsBusy == true || buttonList.Count == 0 || LoadWorker.IsBusy == true)
                 {
                     e.CanExecute = false;
                 }
@@ -475,56 +384,16 @@ namespace FinalUi
             if (buttonList.Count > 0)
             {
                 Button b;
-                MessageBoxResult result = MessageBoxResult.No;
-                if (dataGridHelper.currentConnNos.Count < 1)
-                    result = MessageBoxResult.Yes;
+                DeleteSheetWorker.RunWorkerAsync(dataGridHelper.currentSheetNumber);
+                dataGridHelper.removeSheet(dataGridHelper.currentSheetNumber);
+                buttontabcanvaswrap.Children.Remove(activeButton);
+                if (buttonList.Count > 0)
+                    b = buttonList.Single(x => x.Value == buttonList.Values.Min()).Key;
                 else
-                    try
-                    {
-                        result = MessageBox.Show("Do you want to save this sheet", "Information", MessageBoxButton.YesNoCancel);
-                    }
-                    catch (Exception ex) { }
-                if (result == MessageBoxResult.No)
-                {
-                    DeleteSheetWorker.RunWorkerAsync(dataGridHelper.currentSheetNumber);
-                    dataGridHelper.removeSheet(dataGridHelper.currentSheetNumber);
-                    buttontabcanvaswrap.Children.Remove(activeButton);
-                    if (buttonList.Count > 0)
-                        b = buttonList.Single(x => x.Value == buttonList.Values.Min()).Key;
-                    else
-                        b = null;
-                    changeSheetButton(activeButton, b);
-                    buttonList.Remove(activeButton);
-                    activeButton = b;
-                }
-                else if (result == MessageBoxResult.Yes)
-                {
-                    ExecuteSaveCommand(null, null);
-                    RunWorkerCompletedEventHandler workerCompleted = null;
-                    workerCompleted = (obj, senderP) =>
-                        {
-                            if (senderP.Error == null && senderP.Cancelled == false)
-                            {
-                                DeleteSheetWorker.RunWorkerAsync(dataGridHelper.currentSheetNumber);
-                                SaveWorker.RunWorkerCompleted -= workerCompleted;
-                                dataGridHelper.removeSheet(dataGridHelper.currentSheetNumber);
-                                buttontabcanvaswrap.Children.Remove(activeButton);
-                                if (buttonList.Count > 0)
-                                    b = buttonList.Single(x => x.Value == buttonList.Values.Min()).Key;
-                                else
-                                    b = null;
-                                changeSheetButton(activeButton, b);
-                                buttonList.Remove(activeButton);
-                                activeButton = b;
-                            }
-                            else
-                            {
-                                MessageBox.Show("Save operation unsuccessfull...", "Error");
-                            }
-                            SaveWorker.RunWorkerCompleted -= workerCompleted;
-                        };
-                    SaveWorker.RunWorkerCompleted += workerCompleted;
-                }
+                    b = null;
+                changeSheetButton(activeButton, b);
+                buttonList.Remove(activeButton);
+                activeButton = b;
             }
         }
         #endregion
@@ -757,11 +626,7 @@ namespace FinalUi
             {
                 FilterSelectWindow window = new FilterSelectWindow(dataGridHelper.currentDataSheet.filterObj, dataGridHelper.currentConnNosNoFilter);
                 window.Closed += window_Closed;
-                try
-                {
-                    window.Show();
-                }
-                catch (Exception ex) { }
+                window.Show();
             }
         }
         void window_Closed(object sender, EventArgs e)
@@ -802,112 +667,59 @@ namespace FinalUi
         {
             ManageClient window = new ManageClient();
             window.Closed += AddClient_close;
-            try
-            {
-                window.Show();
-            }
-            catch (Exception ex) { }
+            window.Show();
         }
         private void ManageEmployee_Click(object sender, RoutedEventArgs e)
         {
-            ManageEmployee window = new ManageEmployee();
-            try
-            {
-                window.Show();
-            }
-            catch (Exception ex) { }
+            ManageEmployee window = new ManageEmployee(); window.Show();
         }
         private void RateWindowMenu_Click(object sender, RoutedEventArgs e)
         {
         }
         private void ViewHelp_Click(object sender, RoutedEventArgs e)
         {
-            viewhelp window = new viewhelp();
-            try
-            {
-                window.ShowDialog();
-            }
-            catch (Exception ex) { }
+            viewhelp window = new viewhelp(); window.ShowDialog();
         }
         private void AboutMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            About window = new About(); try
-            {
-                window.ShowDialog();
-            }
-            catch (Exception ex) { }
+            About window = new About(); window.ShowDialog();
         }
         #endregion
         private void PaymentEntry_Click(object sender, RoutedEventArgs e)
         {
-            PaymentDetailsWindow window = new PaymentDetailsWindow(); try
-            {
-                window.Show();
-            }
-            catch (Exception ex) { }
+            PaymentDetailsWindow window = new PaymentDetailsWindow(); window.Show();
         }
         private void PaymentRecieved_Click(object sender, RoutedEventArgs e)
         {
-            PaymentRecieved window = new PaymentRecieved();
-            try
-            {
-                window.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-            }
+            PaymentRecieved window = new PaymentRecieved(); window.ShowDialog();
         }
         private void ClientReport_Click(object sender, RoutedEventArgs e)
         {
-            ClientReportWindow window = new ClientReportWindow(); try
-            {
-                window.ShowDialog();
-            }
-            catch (Exception ex) { }
+            ClientReportWindow window = new ClientReportWindow(); window.ShowDialog();
         }
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
             ManageCity window = new ManageCity();
-            try
-            {
-                window.Show();
-            }
-            catch (Exception ex) { }
-            }
-
+            window.Show();
+        }
         private void ManageServices_Click(object sender, RoutedEventArgs e)
         {
             ManageService window = new ManageService();
-            try
-            {
-                window.Show();
-            }
-            catch (Exception ex) { }
+            window.Show();
         }
         private void ManageZone_Click(object sender, RoutedEventArgs e)
         {
             ZoneAssignment zone = new ZoneAssignment();
-            try
-            {
-                zone.ShowDialog();
-            }
-            catch (Exception ex) { }
+            zone.ShowDialog();
         }
         private void ManageStock_Click(object sender, RoutedEventArgs e)
         {
             StockManagmentWindow window = new StockManagmentWindow();
-            try
-            {
-                window.Show();
-            } catch (Exception ex) { }
+            window.Show();
         }
         private void AccountStatementMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            AccountStatementReportingWindow window = new AccountStatementReportingWindow(); window.WindowState = WindowState.Maximized; try
-            {
-                window.Show();
-            }
-            catch (Exception ex) { }
+            AccountStatementReportingWindow window = new AccountStatementReportingWindow(); window.WindowState = WindowState.Maximized; window.Show();
         }
         private void AddClient_close(object sender, EventArgs e)
         {
@@ -961,6 +773,7 @@ namespace FinalUi
             QuotationoptionPanel.Visibility = Visibility.Visible;
             //FilterQuotation.Visibility = Visibility.Visible;
         }
+
         private void DataDockPanelTreeView_Selected(object sender, RoutedEventArgs e)
         {
             cloakAll();
@@ -975,7 +788,7 @@ namespace FinalUi
             {
                 e.AddedItems.Cast<Client>().Count();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return;
             }
@@ -1045,7 +858,7 @@ namespace FinalUi
                     cloakAllGrid();
                     CostingRuleGrid.Visibility = Visibility.Visible;
                 }
-                catch (NullReferenceException ex)
+                catch (NullReferenceException)
                 { }
             }
         }
@@ -1065,29 +878,21 @@ namespace FinalUi
         private void Peferences_Click(object sender, RoutedEventArgs e)
         {
             PreferenceWindow window = new PreferenceWindow();
-            try
-            {
-                window.Show();
-            }
-            catch (Exception ex) { }
+            window.Show();
         }
         private void DeleteRule_Click(object sender, RoutedEventArgs e)
         {
             BillingDataDataContext db = new BillingDataDataContext();
             if (CostingRuleGrid.Visibility == Visibility.Visible && CostingRuleGrid.SelectedItems != null)
             {
-                try {
-                    if (MessageBox.Show("Do you want delete " + CostingRuleGrid.SelectedItems.Count.ToString() + " Rule", "Confirm", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
-                    {
-                        List<CostingRule> dcr = CostingRuleGrid.SelectedItems.Cast<CostingRule>().ToList();
-                        CostingRuleGrid.SelectedItem = null;
-                        List<int> Ids = dcr.Select(x => x.Id).ToList();
-                        List<Rule> dr = db.Rules.Where(x => Ids.Contains(x.ID)).ToList();
-                        db.Rules.DeleteAllOnSubmit(dr);
-                    } }
-                catch (Exception ex) {}
-                
-
+                if (MessageBox.Show("Do you want delete " + CostingRuleGrid.SelectedItems.Count.ToString() + " Rule", "Confirm", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                {
+                    List<CostingRule> dcr = CostingRuleGrid.SelectedItems.Cast<CostingRule>().ToList();
+                    CostingRuleGrid.SelectedItem = null;
+                    List<int> Ids = dcr.Select(x => x.Id).ToList();
+                    List<Rule> dr = db.Rules.Where(x => Ids.Contains(x.ID)).ToList();
+                    db.Rules.DeleteAllOnSubmit(dr);
+                }
             }
             if (ServiceRuleGrid.Visibility == Visibility.Visible && ServiceRuleGrid.SelectedItems != null)
             {
@@ -1153,31 +958,22 @@ namespace FinalUi
             {
                 if (MessageBox.Show("Do you Want edit this Rule", "", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
-                    try
-                    {
-                        CostingRule dcr = (CostingRule)CostingRuleGrid.SelectedItem;
-                        AddRule win = new AddRule(dcr.Id);
-                        win.Closed += win_Closed;
-                        win.Show();
-                        CostingRuleGrid.SelectedItem = null;
-                    }
-                    catch (Exception ex) { }
+                    CostingRule dcr = (CostingRule)CostingRuleGrid.SelectedItem;
+                    AddRule win = new AddRule(dcr.Id);
+                    win.Closed += win_Closed;
+                    win.Show();
+                    CostingRuleGrid.SelectedItem = null;
                 }
             }
             if (ServiceRuleGrid.Visibility == Visibility.Visible && ServiceRuleGrid.SelectedItem != null)
             {
                 if (MessageBox.Show("Do you Want edit this Rule", "", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
-                    try
-                    {
-                        ServiceRule dcr = (ServiceRule)ServiceRuleGrid.SelectedItem;
-                        AddServiceRule win = new AddServiceRule(dcr.Id);
-                        win.Closed += win_Closed;
-
-                        win.Show();
-                        ServiceRuleGrid.SelectedItem = null;
-                    }
-                    catch (Exception ex) { }
+                    ServiceRule dcr = (ServiceRule)ServiceRuleGrid.SelectedItem;
+                    AddServiceRule win = new AddServiceRule(dcr.Id);
+                    win.Closed += win_Closed;
+                    win.Show();
+                    ServiceRuleGrid.SelectedItem = null;
                 }
             }
             db.SubmitChanges();
@@ -1210,20 +1006,12 @@ namespace FinalUi
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
             RecalculatePriceWindow win = new RecalculatePriceWindow();
-            try
-            {
-                win.ShowDialog();
-            }
-            catch (Exception ex) { }
+            win.ShowDialog();
         }
         private void Quotation_Calc_click(object sender, RoutedEventArgs e)
         {
             QuotationCalc win = new QuotationCalc();
-            try
-            {
-                win.Show();
-            }
-            catch (Exception ex) { }
+            win.Show();
         }
 
         private void dataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
@@ -1279,7 +1067,7 @@ namespace FinalUi
                     sData.BilledWeight = dData.BilledWeight;
                     sData.FrAmount = dData.FrAmount;
                 }
-                if(e.Column.Header.ToString() == "Billed Amount")
+                if (e.Column.Header.ToString() == "Billed Amount")
                 {
                     dData.FrAmount = rData.FrAmount;
                     db.SubmitChanges();
@@ -1296,11 +1084,7 @@ namespace FinalUi
         private void MISReportMenuItem_Click(object sender, RoutedEventArgs e)
         {
             PrintWindow win = new PrintWindow(null, DateTime.Today, DateTime.Today, false);
-            try
-            {
-                win.Show();
-            }
-            catch (Exception ex) { }
+            win.Show();
         }
         private void UpdateMenuButton_Click(object sender, RoutedEventArgs e)
         {
@@ -1308,22 +1092,14 @@ namespace FinalUi
             if (res == MessageBoxResult.OK)
             {
                 About up = new About();
-                try
-                {
-                    up.Show();
-                }catch(Exception ex){ }
+                up.Show();
             }
         }
         private void DeleteConnMenuItem_Click(object sender, RoutedEventArgs e)
         {
             DeleteConnsignment win = new DeleteConnsignment();
-            try
-            {
+            win.ShowDialog();
 
-
-                win.ShowDialog();
-            }
-            catch (Exception ex) { }
         }
 
         private void CostingRuleGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
@@ -1357,7 +1133,7 @@ namespace FinalUi
                         newRule.Properties = jss.Serialize(crr);
                         db.SubmitChanges();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         MessageBox.Show("Unable to save data....", "Error");
                         e.Cancel = true;
@@ -1375,31 +1151,25 @@ namespace FinalUi
         private void ExpenseEntryMenuItem_Click(object sender, RoutedEventArgs e)
         {
             ExpenseEntry win = new ExpenseEntry();
-            try
-            {
-                win.Show();
-            }
-            catch (Exception ex) { }
+            win.Show();
         }
 
         private void ClientReport_Click_1(object sender, RoutedEventArgs e)
         {
             ClientExpenseReportWindow win = new ClientExpenseReportWindow();
-            try {
             win.Show();
-            }
-            catch (Exception ex) { }
         }
 
         private void ExpenseReportWin_Click(object sender, RoutedEventArgs e)
         {
             ExpenseReportWindow win = new ExpenseReportWindow();
-            try
-            {
-                win.Show();
-            }
-            catch (Exception ex) { }
-            
+            win.Show();
+        }
+
+        private void AccountStatementFull_Click(object sender, RoutedEventArgs e)
+        {
+            AccountStatementFullWindow win = new AccountStatementFullWindow();
+            win.Show();
         }
     }
 }

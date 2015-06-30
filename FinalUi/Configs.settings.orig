@@ -30,7 +30,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="Background" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Blue</Value>
+      <Value Profile="(Default)">MediumSeaGreen</Value>
     </Setting>
     <Setting Name="IsFreshOrReset" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -61,9 +61,6 @@
     </Setting>
     <Setting Name="updateserver" Type="System.String" Scope="User">
       <Value Profile="(Default)">localhost</Value>
-    </Setting>
-    <Setting Name="isgood" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

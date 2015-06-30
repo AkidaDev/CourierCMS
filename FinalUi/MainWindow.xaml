@@ -65,6 +65,7 @@
                     <MenuItem Header="M.I.S Report" Name="MISReportMenuItem" Click="MISReportMenuItem_Click" Foreground="Black"/>
                     <MenuItem Header="Client Analysis" Name="ClientExpenseReportWin" Click="ClientReport_Click_1" Foreground="Black"/>
                     <MenuItem Header="Invoice Analysis" Name="InvoiceAnalysis" Click="InvoiceAnalysis_Click" Foreground="Black"/>
+                    <MenuItem Header="Office Statement" Name="AccountStatementFull" Click="AccountStatementFull_Click" Foreground="Black"/>
                     <Separator BorderThickness="0.5" BorderBrush="LightGray"/>
                     <MenuItem Header="Expense Entry" Name="ExpenseEntryMenuItem" Click="ExpenseEntryMenuItem_Click" Foreground="Black"/>
                     <MenuItem Header="Expense Report" Name="ExpenseReportWin" Click="ExpenseReportWin_Click" Foreground="Black"/>
@@ -128,10 +129,6 @@
                                     <TextBlock ToolTip="Load new files " Text="Load Data" Margin="8 -3 1 1" FontSize="16" Padding="1 3 1 0.5"/>
                                 </WrapPanel>
                             </Button>
-                            <Button ToolTip="Save" Style="{StaticResource 1}" Name="SaveButton" Width="45" Height="30">
-                                <Path Style="{DynamicResource save}"/>
-                            </Button>
-                            <Rectangle VerticalAlignment="Stretch" Width="1" Height="22" Stroke="Gray" HorizontalAlignment="Right"/>
                             <Button ToolTip="Power Entry" Style="{StaticResource 1}" Name="PowerEntryButton" Width="45" Height="30">
                                 <Path Style="{DynamicResource autofill}"/>
                             </Button>

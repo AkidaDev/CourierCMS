@@ -39,7 +39,7 @@ namespace FinalUi
                     db.SubmitChanges();
                     MessageBox.Show("Deleted successfully.", "Information");
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
                     MessageBox.Show("Unable to delete transactions.", "Error");
                 }

@@ -55,7 +55,12 @@ namespace FinalUi
             get
             {
                 
-                double total = Math.Round(Basic + fuelAmount + taxAmount - discountAmount + PreviousDue??0 + Misc??0) ;
+                double total = (Basic + fuelAmount + taxAmount - discountAmount) ;
+                if (PreviousDue != null)
+                    total = total + (double)PreviousDue;
+                if (Misc != null)
+                    total = total + (double)Misc;
+                total = Math.Round(total);
                 return total;
             }
         }
@@ -70,7 +75,10 @@ namespace FinalUi
         {
             get
             {
-                return (Basic - discountAmount + fuelAmount) * 0.01 * STax;
+                double msc = 0;
+                if(Misc != null)
+                    msc = (double)Misc;
+                return (Basic - discountAmount + fuelAmount + msc) * 0.01 * STax;
             }
         }
         public double discountAmount
@@ -123,20 +131,6 @@ namespace FinalUi
         string verifyClient(Client instance)
         {
             string msg = "";
-            if (instance.CLCODE == "" || instance.CLCODE == null || instance.CLCODE.Length < 3 || instance.CLCODE.Length > 5)
-                msg += "Client Code must be between 3 - 5 charaters \n";
-            if (instance.CONTACTNO == "" || instance.CONTACTNO == null || instance.CONTACTNO.Length < 8 || instance.CONTACTNO.Length > 50)
-                msg += "Contact number must be between 8 to 50 characters \n";
-            if (instance.CLNAME == "" || instance.CLNAME == null)
-                msg += "Client name cannot be empty \n";
-            if ((instance.CLNAME ?? "").Length > 50)
-                msg += "Client name must be less than 50 characters \n";
-            if ((instance.EMAILID ?? "").Length > 50)
-                msg += "Email address must be less than 50 characters \n";
-            if (instance.ADDRESS == "" || instance.ADDRESS == null)
-                msg += "Client address cannot be empty \n";
-            if ((instance.ADDRESS ?? "").Length > 100)
-                msg += "Address must be less than 100 characters \n";
             
             return msg;
         }

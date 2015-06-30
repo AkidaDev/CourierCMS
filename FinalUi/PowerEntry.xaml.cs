@@ -193,6 +193,12 @@ namespace FinalUi
                 startCOnnNoIndex = startConnNo.SelectedIndex;
                 endConnNoIndex = endConnNo.SelectedIndex;
                 Client client = DataSources.ClientCopy.SingleOrDefault(x => x.NameAndCode == ((Client)clientCode.SelectedItem).NameAndCode);
+                if(client.CLCODE == "<NONE>")
+                {
+                    MessageBox.Show("Cannot assign <NONE> client.", "Error");
+                    SubmitRecords.IsEnabled = true;
+                    return;
+                }
                 consigneeCheck = Consignee.Checked;
                 consignerCheck = ConsignerCheck.Checked;
                 calcRateCheck = CalcRateCheck.Checked;

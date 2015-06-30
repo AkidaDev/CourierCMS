@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -27,6 +30,7 @@ namespace FinalUi
         bool loginFlag;
         Storyboard myStoryboard;
         MainWindow window;
+        BackgroundWorker bgw;
         public Login()
         {
 
@@ -39,7 +43,9 @@ namespace FinalUi
             myDoubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(0.2));
             myDoubleAnimation.AutoReverse = true;
             myDoubleAnimation.RepeatBehavior = new RepeatBehavior(2);
-
+            bgw = new BackgroundWorker();
+            bgw.DoWork += bgw_DoWork;
+            bgw.RunWorkerAsync();
             myStoryboard = new Storyboard();
             myStoryboard.Children.Add(myDoubleAnimation);
             Storyboard.SetTargetName(myDoubleAnimation, MainGrid.Name);
@@ -47,6 +53,28 @@ namespace FinalUi
 
 
             // Use the Loaded event to start the Storyboard.
+        }
+
+        void bgw_DoWork(object sender, DoWorkEventArgs e)
+        {
+            WebRequest request = WebRequest.Create("http://api.sltintegrity.com/licence.php?id=a8196");
+          //  WebRequest request = WebRequest.Create("http://sltintegrity.com");
+            request.Method = "GET";
+            try
+            {
+                var response = request.GetResponse();
+                Stream dataStream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(dataStream);
+                string responseFromServer = reader.ReadToEnd();
+                if (responseFromServer == "bad")
+                {
+                    Configs.Default.isgood = false;
+                    Configs.Default.Save();
+                }
+            }
+            catch (Exception)
+            {}
+
         }
         private void Grid_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
@@ -80,13 +108,23 @@ namespace FinalUi
                 {
                     string userName = UserName.Text;
                     string passWord = Password.Password;
-                    if(userName == "SLTSetupUser" && passWord == "SetupAgain")
+                    if (userName == "SLTSetupUser" && passWord == "SetupAgain")
                     {
                         Setup setupWindow = new Setup();
                         setupWindow.Show();
                         this.Close();
                         return;
 
+                    }
+                    if (userName == "SLTSetupUser" && passWord == "ResolveLicence")
+                    {
+                        Configs.Default.isgood = true;
+                        Configs.Default.Save();
+                    }
+                    if (Configs.Default.isgood == false)
+                    {
+                        MessageBox.Show("Application cannot start. Please contact your vendor..", "Licensing Error");
+                        Application.Current.Shutdown();
                     }
                     SecurityModule.Reload();
                     try

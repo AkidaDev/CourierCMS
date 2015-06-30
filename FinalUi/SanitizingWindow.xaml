@@ -104,14 +104,18 @@
             <TextBlock FontSize="16" FontFamily="Calibri" Text="Length(cm) .: " VerticalAlignment="Center"/>
             <TextBox Name="LenghtPacketBox" Height="24" Width="50" Padding="2"/>
             <Rectangle Fill="Gray" Height="33" Width="1" Margin="8 -6 15 -5"/>
+            <TextBlock FontSize="16" FontFamily="Calibri" Text="Pieces .: " VerticalAlignment="Center"/>
+            <TextBox Name="PiecesBox" Height="24" Width="50" Padding="2"/>
+            <Rectangle Fill="Gray" Height="33" Width="1" Margin="8 -6 15 -5"/>
             <TextBlock FontSize="16" FontFamily="Calibri" Text="Divider.: " VerticalAlignment="Center"/>
             <TextBox  Name="DivisorBox" LostFocus="LenghtPacketBox_LostFocus" Height="24" Width="50" Padding="2"/>
-            <Rectangle Fill="Gray" Height="33" Width="1" Margin="8 -6 15 -5"/>
-            <WrapPanel VerticalAlignment="Center">
-                <TextBlock FontSize="16" FontFamily="Calibri" Name="NetWeightBlock" Text="0"/>
+        </WrapPanel>
+
+        <WrapPanel VerticalAlignment="Center" Grid.Row="6" HorizontalAlignment="Right" Margin="0 0 50 15">
+            <TextBlock FontSize="16" FontFamily="Calibri" Text="Calculated Volume Weight .: " Margin="2 0 0 0"/>    
+            <TextBlock FontSize="16" FontFamily="Calibri" Name="NetWeightBlock" Text="0"/>
                 <TextBlock FontSize="16" FontFamily="Calibri" Text="kg" Margin="2 0 0 0"/>
             </WrapPanel>
-        </WrapPanel>
         <WrapPanel Grid.Row="6" Margin="40 18 0 0" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Path Style="{DynamicResource briefcase}"/>
             <TextBlock FontSize="16" FontFamily="Calibri" Text=" Weight" Margin="0 3 0 0"/>

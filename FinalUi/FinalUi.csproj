@@ -98,9 +98,7 @@
       <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Windows.Shell, Version=3.5.41019.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="ReachFramework" />
-    <Reference Include="RibbonControlsLibrary, Version=4.0.0.11019, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
@@ -189,6 +187,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BillingData.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountStatementFullWindow.xaml.cs">
+      <DependentUpon>AccountStatementFullWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ClientExpenseReportWindow.xaml.cs">
       <DependentUpon>ClientExpenseReportWindow.xaml</DependentUpon>
@@ -342,6 +343,10 @@
     <Page Include="AddZone.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountStatementFullWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="ClientExpenseReportWindow.xaml">
       <SubType>Designer</SubType>
@@ -545,6 +550,10 @@
     <Content Include="version.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="AccountStatementFullReport.rdlc">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="ClientAnalysis.rdlc" />
     <Content Include="Report2.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -555,6 +564,7 @@
     <Content Include="ExpenseAnalysisReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="SummaryReport.rdlc" />
     <Resource Include="Images\load.gif" />
     <Resource Include="Images\logo.ico" />
     <Resource Include="logo.ico">

@@ -58,7 +58,11 @@
                 <value>False</value>
             </setting>
             <setting name="Background" serializeAs="String">
-                <value>Blue</value>
+<<<<<<< local
+                <value>MediumSeaGreen</value>
+=======
+                <value />
+>>>>>>> other
             </setting>
             <setting name="IsFreshOrReset" serializeAs="String">
                 <value>False</value>
@@ -79,13 +83,14 @@
                 <value />
             </setting>
             <setting name="ver" serializeAs="String">
+<<<<<<< local
+                <value />
+=======
                 <value />
             </setting>
             <setting name="updateserver" serializeAs="String">
                 <value>localhost</value>
-            </setting>
-            <setting name="isgood" serializeAs="String">
-                <value>True</value>
+>>>>>>> other
             </setting>
         </FinalUi.Configs>
     </userSettings>
