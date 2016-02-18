@@ -82,7 +82,8 @@ namespace FinalUi
             double? billedamountsum =  this.invoice.Select(y => y.PayAmount).Sum();
             double? amountRecivedsum = this.invoice.Select(y => y.TotalRecievedAmount).Sum();
             double? TotalSum = billedamountsum - amountRecivedsum;
-            List<PaymentEntry> entries = db.PaymentEntries.Where(x => x.ClientCode == c.CLCODE && x.DebitNote != null && x.Date <= (ToDate.SelectedDate ?? DateTime.Today) && x.Date >= (FromDate.SelectedDate ?? DateTime.Today)).ToList();
+            List<PaymentEntry> entries = db.PaymentEntries.Where(x => x.ClientCode == c.CLCODE && x.Date <= (ToDate.SelectedDate ?? DateTime.Today) && x.Date >= (FromDate.SelectedDate ?? DateTime.Today)).ToList();
+            // List<PaymentEntry> entries = db.PaymentEntries.Where(x => x.ClientCode == c.CLCODE && x.DebitNote != null && x.Date <= (ToDate.SelectedDate ?? DateTime.Today) && x.Date >= (FromDate.SelectedDate ?? DateTime.Today)).ToList();
             double totalTDS = 0;
             double totalDNote = 0;
             if(entries.Count > 0)
@@ -101,7 +102,6 @@ namespace FinalUi
             AccountStatementViewer.ShowExportButton = true;
             AccountStatementViewer.RefreshReport();
         }
-
         private void ClientListCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             AccountStatementViewer.LocalReport.DataSources.Clear();
