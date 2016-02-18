@@ -32,7 +32,7 @@
             <Separator Visibility="Hidden"/>
             <PasswordBox Width="150" Name="Password" Padding="5" FontSize="14" HorizontalAlignment="Center" Background="Transparent"/>
             <WrapPanel HorizontalAlignment="Center" Margin="0,26,0,0">
-                <TextBlock MinWidth="150" FontSize="12" Text="Copyright ©2014, All Rights Reserved" Foreground="#FF416DFF"/>
+                <TextBlock MinWidth="150" FontSize="12" Text="Copyright ©2016, All Rights Reserved" Foreground="#FF416DFF"/>
             </WrapPanel>
         </StackPanel>
     </Grid>

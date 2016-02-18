@@ -133,21 +133,14 @@ namespace FinalUi
             DeleteSheetWorker.DoWork += DeleteWorker_DoWork;
             DeleteSheetWorker.RunWorkerCompleted += DeleteWorker_RunWorkerCompleted;
             costingRules = new List<CostingRule>();
-            Update up = new Update();
-            if (up.checkUpdate() < 0)
-            {
-                this.UpdateMenuButton.Visibility = Visibility.Visible;
-            }
-            else { this.UpdateMenuButton.Visibility = Visibility.Collapsed; }
             setUiFromPermissions();
         }
         private void setUiFromPermissions()
         {
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "Management"))
             {
-                this.Managment.Visibility = Visibility.Collapsed;
+                Managment.Visibility = Visibility.Collapsed;
                 this.DeleteConnMenuItem.Visibility = System.Windows.Visibility.Collapsed;
-                this.UpdateMenuButton.Visibility = Visibility.Collapsed;
             }
             if (!SecurityModule.hasPermission(SecurityModule.employee.Id, "AccountStatement"))
             {
@@ -786,10 +779,7 @@ namespace FinalUi
         {
             viewhelp window = new viewhelp(); window.ShowDialog();
         }
-        private void AboutMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            About window = new About(); window.ShowDialog();
-        }
+
         #endregion
         private void PaymentEntry_Click(object sender, RoutedEventArgs e)
         {
@@ -1191,15 +1181,6 @@ namespace FinalUi
         {
             PrintWindow win = new PrintWindow(null, DateTime.Today, DateTime.Today, false);
             win.Show();
-        }
-        private void UpdateMenuButton_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult res = MessageBox.Show("Please save your work before Continuing", "Update", MessageBoxButton.OKCancel);
-            if (res == MessageBoxResult.OK)
-            {
-                About up = new About();
-                up.Show();
-            }
         }
         private void DeleteConnMenuItem_Click(object sender, RoutedEventArgs e)
         {

@@ -26,7 +26,6 @@ namespace FinalUi
         public SanitizingWindow()
         {
             InitializeComponent();
-            db = new BillingDataDataContext();
             viewSource = (CollectionViewSource)FindResource("CustomerNameList");
             viewSource.Source = DataSources.ClientCopy.ToList();
             cityList = (CollectionViewSource)FindResource("CityList");
@@ -40,7 +39,6 @@ namespace FinalUi
         CollectionViewSource cityList;
         ListCollectionView dataListContext;
         CollectionViewSource ServiceListSource;
-        BillingDataDataContext db;
         CollectionViewSource ConsigneeListSource;
         CollectionViewSource ConsignerListSource;
         CollectionViewSource SubClientListSource;
@@ -112,13 +110,15 @@ namespace FinalUi
             {
                 BilledAmount.Text = "0";
             }
-            if (Destination.Text == "" && Destination.Text == null)
+            if (Destination.Text == "" || Destination.Text == null)
             {
                 MessageBox.Show("City cannot be empty");
+                return null;
             }
             data = dataContext.SingleOrDefault(x => x.ConsignmentNo == ConnsignmentNumber.Text);
             if (data == null)
             {
+                BillingDataDataContext db = new BillingDataDataContext();
                 var TData = db.Transactions.SingleOrDefault(x => x.ConnsignmentNo == ConnsignmentNumber.Text);
                 if (TData == null)
                 {
@@ -188,13 +188,15 @@ namespace FinalUi
                 BilledWeightTextBox.Text = "";
             if (data.Destination == null)
             {
-                MessageBoxResult rsltMessageBox = MessageBox.Show("No city with this code is entered. Data will not be entered if city is not present.", "", MessageBoxButton.YesNo, MessageBoxImage.Asterisk);
+                MessageBoxResult rsltMessageBox = MessageBox.Show("City not found \n Would you like to enter city", "", MessageBoxButton.YesNo, MessageBoxImage.Asterisk);
                 if (MessageBoxResult.Yes == rsltMessageBox)
                 {
                     return null;
                 }
                 else
-                    return null;
+                {
+                    this.Close();
+                }
             }
             data.CustCode = clientList.Where(x => x.NameAndCode == CustomerSelected.Text).Select(y => y.CLCODE).FirstOrDefault();
             if (data.CustCode != null)
@@ -266,13 +268,13 @@ namespace FinalUi
             dData.Insurance = sData.Insurance;
             dData.DeliveryStatus = sData.DeliveryStatus;
         }
-        public void SaveData()
+        public bool SaveData()
         {
             BillingDataDataContext db = new BillingDataDataContext();
             RuntimeData data = null;
             data = fillData(data);
             if (data == null)
-                throw new Exception("Details not present");
+                return false;
             data.SheetNo = sheetNo;
             data.UserId = SecurityModule.currentUserName;
             if (!SubClientList.ContainsKey(data.CustCode))
@@ -306,7 +308,8 @@ namespace FinalUi
             {
                 db.SubmitChanges();
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); return; }
+            catch (Exception ex) { MessageBox.Show(ex.Message); return false; }
+            return true;
         }
         public void setNextData()
         {
@@ -343,48 +346,58 @@ namespace FinalUi
         }
         void fillAllElements(string connsignmentNo)
         {
-            RuntimeData data;
-            data = dataContext.SingleOrDefault(x => x.ConsignmentNo == connsignmentNo);
-            if (data != null)
+            try
             {
-                if (backDataGrid != null)
+                RuntimeData data;
+                data = dataContext.SingleOrDefault(x => x.ConsignmentNo == connsignmentNo);
+                if (data != null)
                 {
-                    if (backDataGrid.Items.Contains(data))
+                    if (backDataGrid != null)
                     {
-                        backDataGrid.SelectedItem = data;
-                        DataGridRow row;
-                        try
+                        if (backDataGrid.Items.Contains(data))
                         {
-                            row = (DataGridRow)backDataGrid.ItemContainerGenerator.ContainerFromItem(data);
-                            row.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine("Error....");
-                        }
+                            backDataGrid.SelectedItem = data;
+                            DataGridRow row;
+                            try
+                            {
+                                row = (DataGridRow)backDataGrid.ItemContainerGenerator.ContainerFromItem(data);
+                                row.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("Error....");
+                            }
 
+                        }
+                        else
+                        {
+                            backDataGrid.SelectedItems.Clear();
+                        }
                     }
-                    else
-                    {
-                        backDataGrid.SelectedItems.Clear();
-                    }
-                }
-                this.Focus();
-                fillDetails(data);
-            }
-            else
-            {
-                if (backDataGrid != null)
-                    backDataGrid.SelectedItems.Clear();
-                var TData = db.Transactions.SingleOrDefault(x => x.ConnsignmentNo == connsignmentNo);
-                if (TData != null)
-                {
-                    fillDetails(UtilityClass.convertTransObjToRunObj(TData));
+                    this.Focus();
+                    fillDetails(data);
                 }
                 else
                 {
-                    clearDetails();
+                    if (backDataGrid != null)
+                        backDataGrid.SelectedItems.Clear();
+
+                    BillingDataDataContext db = new BillingDataDataContext();
+                    var TData = db.Transactions.SingleOrDefault(x => x.ConnsignmentNo == connsignmentNo);
+                    if (TData != null)
+                    {
+                        fillDetails(UtilityClass.convertTransObjToRunObj(TData));
+                    }
+                    else
+                    {
+                        clearDetails();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unable to load connsignment:" + ex.Message);
+                this.Close();
             }
         }
         void clearDetails()
@@ -466,33 +479,29 @@ namespace FinalUi
         {
             try
             {
-                SaveData();
+                if (SaveData())
+                {
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {
-                MessageBoxResult result = MessageBox.Show("Data will not be saved. Error: " + ex.Message + ". Continue?", "Error", MessageBoxButton.YesNo);
-                if (result == MessageBoxResult.No)
-                {
-                    return;
-                }
+                MessageBoxResult result = MessageBox.Show(ex.Message);
             }
-            this.Close();
         }
         private void Previous_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                SaveData();
+                if (SaveData())
+                {
+                    setPreviousData();
+                }
             }
             catch (Exception ex)
             {
-                MessageBoxResult result = MessageBox.Show("Data will not be saved. Error: " + ex.Message + ". Continue?", "Error", MessageBoxButton.YesNo);
-                if (result == MessageBoxResult.No)
-                {
-                    return;
-                }
+                MessageBoxResult result = MessageBox.Show(ex.Message);
             }
-            setPreviousData();
         }
         private void getrate()
         {

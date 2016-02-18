@@ -106,6 +106,7 @@ where [BillId] = '" + inv.BillId + @"'
                 repParams.Add(new ReportParameter("ServiceTaxString", String.Format("{0:0.00}",inv.STax)));
                 repParams.Add(new ReportParameter("ServiceTaxAmount",  String.Format("{0:0.00}",inv.taxAmount)));
                 repParams.Add(new ReportParameter("DiscountAmountString",  String.Format("{0:0.00}",inv.discountAmount)));
+                repParams.Add(new ReportParameter("SWC", String.Format("{0:0.00}", inv.SWC)));
                 repParams.Add(new ReportParameter("MiscellaneousAmountString",  String.Format("{0:0.00}",inv.Misc)));
                 repParams.Add(new ReportParameter("TNC", Configs.Default.TNC));
                 repParams.Add(new ReportParameter("TotalAmountString",  String.Format("{0:0.00}",inv.totalAmount)));

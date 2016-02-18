@@ -20,7 +20,6 @@ namespace FinalUi
     public partial class AccountStatementFullWindow : Window
     {
         Microsoft.Reporting.WinForms.ReportDataSource rs;
-        List<AccountStatementFull> accStats;
         public AccountStatementFullWindow()
         {
             InitializeComponent();

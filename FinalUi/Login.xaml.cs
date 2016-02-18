@@ -80,7 +80,7 @@ namespace FinalUi
                 {
                     string userName = UserName.Text;
                     string passWord = Password.Password;
-                    if(userName == "SLTSetupUser" && passWord == "SetupAgain")
+                    if(userName == "BotSetupUser" && passWord == "SetupAgain")
                     {
                         Setup setupWindow = new Setup();
                         setupWindow.Show();

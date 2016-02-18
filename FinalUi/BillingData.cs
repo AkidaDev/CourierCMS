@@ -55,7 +55,7 @@ namespace FinalUi
             get
             {
                 
-                double total = Math.Round(Basic + fuelAmount + taxAmount - discountAmount + PreviousDue??0 + Misc??0) ;
+                double total = Math.Round(Basic + fuelAmount + taxAmount + SWC - discountAmount + PreviousDue??0 + Misc??0) ;
                 return total;
             }
         }
@@ -71,6 +71,11 @@ namespace FinalUi
             get
             {
                 return (Basic - discountAmount + fuelAmount) * 0.01 * STax;
+            }
+        }
+        public double SWC {
+            get {
+                return (Basic - discountAmount + fuelAmount) * 0.01 * 0.5;
             }
         }
         public double discountAmount

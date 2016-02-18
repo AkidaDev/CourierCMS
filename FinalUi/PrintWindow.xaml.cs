@@ -191,6 +191,7 @@ namespace FinalUi
             repParams.Add(new ReportParameter("DiscountAmountString", String.Format("{0:0.00}", invoice.discountAmount)));
             repParams.Add(new ReportParameter("FuelAmount", String.Format("{0:0.00}",invoice.fuelAmount)));
             repParams.Add(new ReportParameter("ServiceTaxAmount", String.Format("{0:0.00}", invoice.taxAmount)));
+            repParams.Add(new ReportParameter("SWC", String.Format("{0:0.00}", invoice.SWC)));
             if (PreviousDueCheck.Checked == true)
                 invoice.PreviousDue = double.Parse(PreviousDueTextBox.Text);
             repParams.Add(new ReportParameter("TotalAmountString", String.Format("{0:0.00}", invoice.totalAmount)));
