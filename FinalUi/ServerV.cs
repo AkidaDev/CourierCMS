@@ -9,7 +9,6 @@ namespace FinalUi
     class ServerV
     {
         TcpListener serversocket;
-        TcpListener clientsocket;
         int requestCount;
         public ServerV()
         {

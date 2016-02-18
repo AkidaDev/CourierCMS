@@ -55,12 +55,16 @@ namespace FinalUi
             get
             {
                 
+<<<<<<< local
                 double total = Math.Round(Basic + fuelAmount + taxAmount + SWC - discountAmount + PreviousDue??0 + Misc??0) ;
+=======
+                double total = (Basic + fuelAmount + taxAmount - discountAmount) ;
                 if (PreviousDue != null)
                     total = total + (double)PreviousDue;
                 if (Misc != null)
                     total = total + (double)Misc;
                 total = Math.Round(total);
+>>>>>>> other
                 return total;
             }
         }

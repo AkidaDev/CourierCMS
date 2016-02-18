@@ -156,8 +156,8 @@ namespace FinalUi
                     {
                         result.MisMatchDesc = result.MisMatchDesc + " Service should be " + trans.Type.Trim();
                     }
-                    trans.AmountCharged = (decimal)UtilityClass.getCost("<DTDC>", (double)trans.WeightByFranchize, trans.Destination, trans.Type, trans.DOX);
-                    if (trans.AmountCharged != (decimal)result.Amount)
+                    trans.AmountCharged = (decimal)UtilityClass.getCost("<DTDC>", (double)trans.WeightByFranchize, trans.Destination.Trim(), trans.Type.Trim(), trans.DOX);
+                    if (Math.Abs((trans.AmountCharged - (decimal)result.Amount)??0) > 2)
                     {
                         result.hasError = true;
                         result.MisMatchDesc = result.MisMatchDesc + " Amount should be " + Math.Round((trans.AmountCharged??0),2);

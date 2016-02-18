@@ -18,7 +18,6 @@ namespace FinalUi
     /// </summary>
     public partial class PaymentRecieved : Window
     {
-        List<Client> ClientList;
         public PaymentRecieved()
         {
             InitializeComponent();
@@ -41,7 +40,7 @@ namespace FinalUi
                                         where !(from payment in db.PaymentEntries
                                                 select payment.InvoiceNumber)
                                                 .Contains(invoice.BillId)
-                                        select invoice).ToList();
+                                        select invoice).ToList().OrderBy(x => x.ClientName).ToList();
     
         }
         private void CashRadio_Checked(object sender, RoutedEventArgs e)

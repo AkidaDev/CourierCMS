@@ -20,7 +20,6 @@ namespace FinalUi
     {
         Microsoft.Reporting.WinForms.ReportDataSource rs;
         CollectionViewSource ClientListSource;
-        List<ClientReportView> invoice;
         public ClientExpenseReportWindow()
         {
             InitializeComponent();

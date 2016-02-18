@@ -24,6 +24,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox69</rd:DefaultName>
+            <Top>0cm</Top>
+            <Left>0cm</Left>
             <Height>0.70583cm</Height>
             <Width>19.85105cm</Width>
             <Style>
@@ -59,6 +61,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox72</rd:DefaultName>
             <Top>0.68745cm</Top>
+            <Left>0cm</Left>
             <Height>0.61838cm</Height>
             <Width>19.85076cm</Width>
             <ZIndex>1</ZIndex>
@@ -75,7 +78,7 @@
           </Textbox>
         </ReportItems>
         <KeepTogether>true</KeepTogether>
-        <Top>12.08139cm</Top>
+        <Top>11.50269cm</Top>
         <Left>0.31721cm</Left>
         <Height>1.30583cm</Height>
         <Width>19.85105cm</Width>
@@ -120,7 +123,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox94</rd:DefaultName>
-        <Top>16.31883cm</Top>
+        <Top>15.74013cm</Top>
         <Left>0.31721cm</Left>
         <Height>0.60001cm</Height>
         <Width>19.83932cm</Width>
@@ -675,7 +678,7 @@
         <PageBreak>
           <BreakLocation>Start</BreakLocation>
         </PageBreak>
-        <Top>21.23764cm</Top>
+        <Top>20.65894cm</Top>
         <Left>1.17292cm</Left>
         <Height>1.04126cm</Height>
         <Width>17.4923cm</Width>
@@ -1889,53 +1892,6 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.6cm</Height>
-              <TablixCells>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox124">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Parameters!SWC.Value</Value>
-                              <Style>
-                                <FontFamily>verdana</FontFamily>
-                                <FontSize>8pt</FontSize>
-                                <Color>DimGray</Color>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Right</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox124</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <BottomBorder>
-                          <Width>0.5pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Width>0.5pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Style>Solid</Style>
-                        </RightBorder>
-                        <VerticalAlign>Middle</VerticalAlign>
-                        <PaddingRight>3pt</PaddingRight>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-              </TablixCells>
-            </TablixRow>
-            <TablixRow>
               <Height>0.46771cm</Height>
               <TablixCells>
                 <TablixCell>
@@ -2727,214 +2683,6 @@
               <TablixHeader>
                 <Size>0.95086cm</Size>
                 <CellContents>
-                  <Textbox Name="Textbox120">
-                    <CanGrow>true</CanGrow>
-                    <KeepTogether>true</KeepTogether>
-                    <Paragraphs>
-                      <Paragraph>
-                        <TextRuns>
-                          <TextRun>
-                            <Value />
-                            <Style>
-                              <FontFamily>verdana</FontFamily>
-                              <FontSize>8pt</FontSize>
-                              <Color>DimGray</Color>
-                            </Style>
-                          </TextRun>
-                        </TextRuns>
-                        <Style />
-                      </Paragraph>
-                    </Paragraphs>
-                    <rd:DefaultName>Textbox120</rd:DefaultName>
-                    <Style>
-                      <Border>
-                        <Style>None</Style>
-                      </Border>
-                      <BottomBorder>
-                        <Width>0.5pt</Width>
-                      </BottomBorder>
-                      <LeftBorder>
-                        <Style>Solid</Style>
-                      </LeftBorder>
-                      <RightBorder>
-                        <Style>Solid</Style>
-                        <Width>0.5pt</Width>
-                      </RightBorder>
-                      <VerticalAlign>Middle</VerticalAlign>
-                      <PaddingLeft>2pt</PaddingLeft>
-                      <PaddingRight>2pt</PaddingRight>
-                      <PaddingTop>2pt</PaddingTop>
-                      <PaddingBottom>2pt</PaddingBottom>
-                    </Style>
-                  </Textbox>
-                </CellContents>
-              </TablixHeader>
-              <TablixMembers>
-                <TablixMember>
-                  <TablixHeader>
-                    <Size>3.5765cm</Size>
-                    <CellContents>
-                      <Textbox Name="Textbox121">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value />
-                                <Style>
-                                  <FontFamily>verdana</FontFamily>
-                                  <FontSize>8pt</FontSize>
-                                  <Color>DimGray</Color>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style />
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox121</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Style>None</Style>
-                          </Border>
-                          <TopBorder>
-                            <Style>None</Style>
-                          </TopBorder>
-                          <BottomBorder>
-                            <Style>None</Style>
-                            <Width>0.5pt</Width>
-                          </BottomBorder>
-                          <LeftBorder>
-                            <Style>None</Style>
-                            <Width>0.5pt</Width>
-                          </LeftBorder>
-                          <RightBorder>
-                            <Style>Solid</Style>
-                            <Width>0.5pt</Width>
-                          </RightBorder>
-                          <VerticalAlign>Middle</VerticalAlign>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixHeader>
-                  <TablixMembers>
-                    <TablixMember>
-                      <TablixHeader>
-                        <Size>8.44516cm</Size>
-                        <CellContents>
-                          <Textbox Name="Textbox122">
-                            <CanGrow>true</CanGrow>
-                            <KeepTogether>true</KeepTogether>
-                            <Paragraphs>
-                              <Paragraph>
-                                <TextRuns>
-                                  <TextRun>
-                                    <Value>Swachh Bharat cess .:</Value>
-                                    <Style>
-                                      <FontFamily>verdana</FontFamily>
-                                      <FontSize>8pt</FontSize>
-                                      <Color>DimGray</Color>
-                                    </Style>
-                                  </TextRun>
-                                </TextRuns>
-                                <Style>
-                                  <TextAlign>Right</TextAlign>
-                                </Style>
-                              </Paragraph>
-                            </Paragraphs>
-                            <rd:DefaultName>Textbox122</rd:DefaultName>
-                            <Style>
-                              <Border>
-                                <Style>None</Style>
-                              </Border>
-                              <TopBorder>
-                                <Style>None</Style>
-                              </TopBorder>
-                              <BottomBorder>
-                                <Style>None</Style>
-                                <Width>0.5pt</Width>
-                              </BottomBorder>
-                              <LeftBorder>
-                                <Style>None</Style>
-                                <Width>0.5pt</Width>
-                              </LeftBorder>
-                              <RightBorder>
-                                <Style>Solid</Style>
-                                <Width>0.5pt</Width>
-                              </RightBorder>
-                              <VerticalAlign>Middle</VerticalAlign>
-                              <PaddingRight>2pt</PaddingRight>
-                            </Style>
-                          </Textbox>
-                        </CellContents>
-                      </TablixHeader>
-                      <TablixMembers>
-                        <TablixMember>
-                          <TablixHeader>
-                            <Size>3.83923cm</Size>
-                            <CellContents>
-                              <Textbox Name="Textbox123">
-                                <CanGrow>true</CanGrow>
-                                <KeepTogether>true</KeepTogether>
-                                <Paragraphs>
-                                  <Paragraph>
-                                    <TextRuns>
-                                      <TextRun>
-                                        <Value>0.5</Value>
-                                        <Style>
-                                          <FontFamily>verdana</FontFamily>
-                                          <FontSize>8pt</FontSize>
-                                          <Color>DimGray</Color>
-                                        </Style>
-                                      </TextRun>
-                                    </TextRuns>
-                                    <Style>
-                                      <TextAlign>Right</TextAlign>
-                                    </Style>
-                                  </Paragraph>
-                                </Paragraphs>
-                                <rd:DefaultName>Textbox123</rd:DefaultName>
-                                <Style>
-                                  <Border>
-                                    <Style>None</Style>
-                                  </Border>
-                                  <TopBorder>
-                                    <Style>None</Style>
-                                  </TopBorder>
-                                  <BottomBorder>
-                                    <Style>None</Style>
-                                    <Width>0.5pt</Width>
-                                  </BottomBorder>
-                                  <LeftBorder>
-                                    <Style>None</Style>
-                                    <Width>0.5pt</Width>
-                                  </LeftBorder>
-                                  <RightBorder>
-                                    <Style>Solid</Style>
-                                    <Width>0.5pt</Width>
-                                  </RightBorder>
-                                  <VerticalAlign>Middle</VerticalAlign>
-                                  <PaddingRight>2pt</PaddingRight>
-                                </Style>
-                              </Textbox>
-                            </CellContents>
-                          </TablixHeader>
-                        </TablixMember>
-                      </TablixMembers>
-                    </TablixMember>
-                  </TablixMembers>
-                </TablixMember>
-              </TablixMembers>
-              <KeepWithGroup>Before</KeepWithGroup>
-            </TablixMember>
-            <TablixMember>
-              <TablixHeader>
-                <Size>0.95086cm</Size>
-                <CellContents>
                   <Textbox Name="Textbox48">
                     <CanGrow>true</CanGrow>
                     <KeepTogether>true</KeepTogether>
@@ -3346,7 +3094,7 @@
         </TablixRowHierarchy>
         <Top>4.45436cm</Top>
         <Left>0.3175cm</Left>
-        <Height>5.49888cm</Height>
+        <Height>4.89888cm</Height>
         <Width>19.86703cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
@@ -3871,7 +3619,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <Top>13.37919cm</Top>
+        <Top>12.80049cm</Top>
         <Left>0.31721cm</Left>
         <Height>1.1577cm</Height>
         <Width>19.86703cm</Width>
@@ -4404,7 +4152,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <Top>14.53689cm</Top>
+        <Top>13.95819cm</Top>
         <Left>0.31721cm</Left>
         <Height>1.1114cm</Height>
         <Width>19.86703cm</Width>
@@ -4418,6 +4166,7 @@
       <Rectangle Name="Rectangle3">
         <ReportItems>
           <Line Name="Line2">
+            <Top>0cm</Top>
             <Left>6.91084cm</Left>
             <Height>3.92224cm</Height>
             <Width>0cm</Width>
@@ -5017,6 +4766,7 @@
             <Source>Embedded</Source>
             <Value>DTDClogo_zps841b09561</Value>
             <Sizing>FitProportional</Sizing>
+            <Top>0cm</Top>
             <Left>13.51031cm</Left>
             <Height>2.49311cm</Height>
             <Width>6.35cm</Width>
@@ -5213,6 +4963,7 @@
             </Style>
           </Tablix>
           <Line Name="Line1">
+            <Top>0cm</Top>
             <Left>13.51031cm</Left>
             <Height>3.92224cm</Height>
             <Width>0cm</Width>
@@ -5448,7 +5199,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <Top>10.06342cm</Top>
+        <Top>9.48472cm</Top>
         <Left>0.31721cm</Left>
         <Height>1.06519cm</Height>
         <Width>19.86703cm</Width>
@@ -5525,7 +5276,7 @@
             <TablixMember />
           </TablixMembers>
         </TablixRowHierarchy>
-        <Top>11.12861cm</Top>
+        <Top>10.54991cm</Top>
         <Left>0.31721cm</Left>
         <Height>0.70584cm</Height>
         <Width>19.86703cm</Width>
@@ -5537,7 +5288,7 @@
         </Style>
       </Tablix>
       <Line Name="Line4">
-        <Top>11.97556cm</Top>
+        <Top>11.39686cm</Top>
         <Left>0.31721cm</Left>
         <Height>0cm</Height>
         <Width>19.86703cm</Width>
@@ -5550,7 +5301,7 @@
         </Style>
       </Line>
       <Line Name="Line5">
-        <Top>17.9331cm</Top>
+        <Top>17.3544cm</Top>
         <Left>0.31721cm</Left>
         <Height>0cm</Height>
         <Width>19.85105cm</Width>
@@ -6013,7 +5764,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <Top>19.27729cm</Top>
+        <Top>18.69859cm</Top>
         <Left>0.31721cm</Left>
         <Height>0.70115cm</Height>
         <Width>19.86703cm</Width>
@@ -6234,7 +5985,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <Top>19.97844cm</Top>
+        <Top>19.39974cm</Top>
         <Left>0.3175cm</Left>
         <Height>1.18955cm</Height>
         <Width>19.86732cm</Width>
@@ -6392,7 +6143,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <Top>16.95412cm</Top>
+        <Top>16.37542cm</Top>
         <Left>0.31721cm</Left>
         <Height>0.86458cm</Height>
         <Width>19.86703cm</Width>
@@ -6462,6 +6213,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox72</rd:DefaultName>
             <Top>0.63527cm</Top>
+            <Left>0cm</Left>
             <Height>0.59179cm</Height>
             <Width>19.84375cm</Width>
             <ZIndex>1</ZIndex>
@@ -6478,7 +6230,7 @@
           </Textbox>
         </ReportItems>
         <KeepTogether>true</KeepTogether>
-        <Top>18.02284cm</Top>
+        <Top>17.44414cm</Top>
         <Left>0.31721cm</Left>
         <Height>1.22706cm</Height>
         <Width>19.85076cm</Width>
@@ -6609,7 +6361,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <Top>15.75412cm</Top>
+        <Top>15.17542cm</Top>
         <Left>0.31721cm</Left>
         <Height>0.55368cm</Height>
         <Width>19.86761cm</Width>
@@ -6621,7 +6373,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>22.31444cm</Height>
+    <Height>21.7002cm</Height>
     <Style>
       <Border>
         <Style>None</Style>
@@ -6668,6 +6420,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox21</rd:DefaultName>
+          <Top>0cm</Top>
           <Left>9.46162cm</Left>
           <Height>0.58631cm</Height>
           <Width>1.48895cm</Width>
@@ -6698,6 +6451,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox37</rd:DefaultName>
+          <Top>0cm</Top>
           <Left>0.3175cm</Left>
           <Height>0.58631cm</Height>
           <Width>9.14412cm</Width>
@@ -6732,6 +6486,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox39</rd:DefaultName>
+          <Top>0cm</Top>
           <Left>10.95057cm</Left>
           <Height>0.58631cm</Height>
           <Width>5.53169cm</Width>
@@ -6765,6 +6520,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox46</rd:DefaultName>
+          <Top>0cm</Top>
           <Left>16.48226cm</Left>
           <Height>0.58631cm</Height>
           <Width>3.70227cm</Width>
@@ -7186,11 +6942,6 @@
     <ReportParameter Name="ServiceTaxNumber">
       <DataType>String</DataType>
       <Nullable>true</Nullable>
-      <AllowBlank>true</AllowBlank>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="SWC">
-      <DataType>String</DataType>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>

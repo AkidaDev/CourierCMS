@@ -108,7 +108,11 @@ namespace FinalUi
                 {
                     string userName = UserName.Text;
                     string passWord = Password.Password;
+<<<<<<< local
+                    if(userName == "BotSetupUser" && passWord == "SetupAgain")
+=======
                     if (userName == "SLTSetupUser" && passWord == "SetupAgain")
+>>>>>>> other
                     {
                         Setup setupWindow = new Setup();
                         setupWindow.Show();

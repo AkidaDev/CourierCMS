@@ -39,7 +39,7 @@ namespace FinalUi
             {
                 MessageBox.Show("File loading already in progress..", "Information");
                 return;
-            } 
+            }
             OpenFileDialog fd = new OpenFileDialog();
             fd.DefaultExt = ".txt";
             fd.Filter = "(.txt)|*.txt";
@@ -51,9 +51,9 @@ namespace FinalUi
         }
         private void StartLoadingButton_Click(object sender, RoutedEventArgs e)
         {
-            if(bg.IsBusy == true)
+            if (bg.IsBusy == true)
             {
-                MessageBox.Show("File loading already in progress..","Information");
+                MessageBox.Show("File loading already in progress..", "Information");
                 return;
             }
             Analyzeprogress.Visibility = System.Windows.Visibility.Visible;
@@ -69,14 +69,14 @@ namespace FinalUi
         }
         void bg_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if(e.Error != null)
+            if (e.Error != null)
             {
                 MessageBox.Show("Error occured during loading file: " + e.Error.Message, "Error");
                 return;
             }
             else
             {
-                if((string)e.Result != "")
+                if ((string)e.Result != "")
                 {
                     MessageBox.Show("Following records cannot be processed:\n" + e.Result, "Error");
                     return;
@@ -87,7 +87,7 @@ namespace FinalUi
                     this.Close();
                 }
             }
-           Analyzeprogress.Visibility = Visibility.Hidden;
+            Analyzeprogress.Visibility = Visibility.Hidden;
         }
         void bg_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {

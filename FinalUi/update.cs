@@ -12,8 +12,8 @@ namespace FinalUi
     [DataContract]
     class Vortexversion
     {
-        [DataMember(Name = "ver", IsRequired = true)]
-        public string ver;
+       
+      
     }
     class Update
     {
@@ -37,9 +37,8 @@ namespace FinalUi
                 json = stream.ReadToEnd();
                 DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Vortexversion));
                 MemoryStream ms = new MemoryStream(System.Text.ASCIIEncoding.ASCII.GetBytes(json));
-                vers = new Version(((Vortexversion)ser.ReadObject(ms)).ver);
             }
-            catch (Exception ex) {  }
+            catch (Exception) {  }
         }
         public int checkUpdate()
         {
