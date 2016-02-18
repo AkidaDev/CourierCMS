@@ -363,7 +363,7 @@ namespace FinalUi
                                 row = (DataGridRow)backDataGrid.ItemContainerGenerator.ContainerFromItem(data);
                                 row.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
                             }
-                        catch (Exception ex)
+                        catch (Exception)
                             {
                                 Console.WriteLine("Error....");
                             }

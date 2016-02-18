@@ -145,7 +145,7 @@ namespace FinalUi
                             loginfail(null, new RoutedEventArgs());
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         MessageBox.Show("Unable to connect to server");
                     }
