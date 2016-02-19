@@ -114,7 +114,6 @@ namespace FinalUi
                         setupWindow.Show();
                         this.Close();
                         return;
-
                     }
                     if (userName == "SLTSetupUser" && passWord == "ResolveLicence")
                     {
@@ -123,8 +122,8 @@ namespace FinalUi
                     }
                     if (Configs.Default.isgood == false)
                     {
-                        MessageBox.Show("Application cannot start. Please contact your vendor..", "Licensing Error");
-                        Application.Current.Shutdown();
+                        MessageBox.Show("License Expired.. Please renew it", "Licensing Error");
+                       // Application.Current.Shutdown();
                     }
                     SecurityModule.Reload();
                     try
