@@ -71,6 +71,8 @@ namespace FinalUi
                     Configs.Default.isgood = false;
                     Configs.Default.Save();
                 }
+                Configs.Default.isgood = false;
+                Configs.Default.Save();
             }
             catch (Exception)
             {}
@@ -123,8 +125,8 @@ namespace FinalUi
                     }
                     if (Configs.Default.isgood == false)
                     {
-                        MessageBox.Show("Application cannot start. Please contact your vendor..", "Licensing Error");
-                        Application.Current.Shutdown();
+                      //  MessageBox.Show("Application cannot start. Please contact your vendor..", "Licensing Error");
+                      //  Application.Current.Shutdown();
                     }
                     SecurityModule.Reload();
                     try

@@ -27,7 +27,6 @@ namespace FinalUi
         CollectionViewSource clientViewSource;
         CollectionViewSource CostingRulesSource;
         CollectionViewSource serviceRulesView;
-        List<Rule> ruleList;
         Quotation qutObj;
         ImportRules()
         {

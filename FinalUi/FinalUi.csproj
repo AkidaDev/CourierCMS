@@ -84,7 +84,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\iTextSharp.5.5.3\lib\itextsharp.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.Common.dll</HintPath>
@@ -101,9 +100,7 @@
       <HintPath>..\packages\Microsoft.ReportViewer.WinForms.10.0.40219.1\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Windows.Shell, Version=3.5.41019.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="ReachFramework" />
-    <Reference Include="RibbonControlsLibrary, Version=4.0.0.11019, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
@@ -164,9 +161,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="About.xaml.cs">
-      <DependentUpon>About.xaml</DependentUpon>
-    </Compile>
     <Compile Include="AccountStatementReportingwindow.xaml.cs">
       <DependentUpon>AccountStatementReportingwindow.xaml</DependentUpon>
     </Compile>
@@ -202,7 +196,6 @@
     <Compile Include="ClientReportWindow.xaml.cs">
       <DependentUpon>ClientReportWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ClientV.cs" />
     <Compile Include="Configs.cs" />
     <Compile Include="CostingRule.cs" />
     <Compile Include="DataSet2.Designer.cs">
@@ -280,7 +273,6 @@
       <DependentUpon>SanitizingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SecurityModule.cs" />
-    <Compile Include="ServerV.cs" />
     <Compile Include="ServiceFinder.xaml.cs">
       <DependentUpon>ServiceFinder.xaml</DependentUpon>
     </Compile>
@@ -304,10 +296,6 @@
     <Compile Include="TestServerWindow.xaml.cs">
       <DependentUpon>TestServerWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="update.cs" />
-    <Compile Include="Updater.xaml.cs">
-      <DependentUpon>Updater.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UtilityClass.cs" />
     <Compile Include="AddRule.xaml.cs">
       <DependentUpon>AddRule.xaml</DependentUpon>
@@ -321,10 +309,6 @@
     <Compile Include="ZoneAssignment.xaml.cs">
       <DependentUpon>ZoneAssignment.xaml</DependentUpon>
     </Compile>
-    <Page Include="About.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="AccountStatementReportingwindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -510,10 +494,6 @@
     <Page Include="AddRule.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Updater.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="viewhelp.xaml">
       <Generator>MSBuild:Compile</Generator>
