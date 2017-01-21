@@ -4,11 +4,53 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace FinalUi
 {
     class CSVDataLoader
     {
+        public List<RuntimeData> getRuntimeDataFromPodCSV( string filePath,char seperator, char quotes)
+        {
+            List<RuntimeData> data = new List<RuntimeData>();
+            string[] lines = File.ReadAllLines(filePath);
+            foreach (string line in lines)
+            {
+                if (line.ElementAt(0) != '\'')
+                {
+                    continue;
+                }
+                
+                string[] lineData = line.Split(seperator);
+
+                RuntimeData rowData = new RuntimeData();
+                rowData.ConsignmentNo = lineData[0].Trim('\'');
+                rowData.DeliveryDate = lineData[1].Trim('\'');
+                string time;
+                lineData[2] = lineData[2].Trim('\'').Trim(' ');
+                try
+                {
+
+                    if (lineData[2] != null && lineData[2]!= "" && lineData[2] != "NULL" && lineData[2].Length >= 4)
+                    {
+                        rowData.DeliveryTime = DateTime.ParseExact(lineData[2], "HHmm",null).ToString("HH:mm");
+                    }else
+                    {
+                        rowData.DeliveryTime = null;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    rowData.DeliveryTime = null;
+                }
+                rowData.DeliveryTime = lineData[2].Trim('\'');
+                rowData.ReceivedBy = lineData[3].Trim('\'');
+                rowData.Remarks = lineData[4].Trim('\'');
+                data.Add(rowData);
+            }
+            return data;
+        }
         public List<RuntimeData> getRuntimeDataFromCSV(string filePath, char seperator, char quotes)
         {
             List<City> cityList = DataSources.CityCopy;

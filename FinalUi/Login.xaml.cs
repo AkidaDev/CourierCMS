@@ -78,25 +78,9 @@ namespace FinalUi
             {}
 
         }
-        private void Grid_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
         private void loginfail(object sender, RoutedEventArgs e)
         {
             DropShadowEffect shadow = new DropShadowEffect();
-            this.Blue.Visibility = Visibility.Hidden;
-            this.Red.Visibility = Visibility.Visible;
-            this.IncorectBox.Visibility = Visibility.Visible;
-            this.Exclamatory.Visibility = Visibility.Visible;
             shadow.Color = Colors.Red;
             shadow.ShadowDepth = 0;
             this.MainGrid.Effect = shadow;

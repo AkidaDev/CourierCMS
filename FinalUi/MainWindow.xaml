@@ -36,6 +36,7 @@
                     <MenuItem Header="New Sheet" Name="NewSheetMenuItem" Foreground="Black"/>
                     <MenuItem Header="Load Data" Name="ImportDataMenuItem" Command="ApplicationCommands.Open" Foreground="Black"/>
                     <MenuItem Header="Import Data" Name="DataImportMenuItem" Foreground="Black" Click="DataImportMenuItem_Click"/>
+                    <MenuItem Header="Import POD Data" Name="ImportPodMenuItem" Foreground="Black" Click="ImportPodMenuItem_Click"/>
                     <Separator BorderThickness="0.5" BorderBrush="LightGray"/>
                     <MenuItem Header="Print" Name="PrintMenuItem" Command="ApplicationCommands.Print" Foreground="Black"/>
                     <MenuItem Header="Log Out" Click="MenuItem_Click" Foreground="Black"/>

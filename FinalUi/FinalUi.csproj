@@ -221,6 +221,9 @@
     <Compile Include="importfile.xaml.cs">
       <DependentUpon>importfile.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ImportPod.xaml.cs">
+      <DependentUpon>ImportPod.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ImportRules.xaml.cs">
       <DependentUpon>ImportRules.xaml</DependentUpon>
     </Compile>
@@ -362,6 +365,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="importfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ImportPod.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

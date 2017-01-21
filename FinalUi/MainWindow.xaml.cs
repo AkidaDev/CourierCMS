@@ -1150,5 +1150,11 @@ namespace FinalUi
             AccountStatementFullWindow win = new AccountStatementFullWindow();
             win.Show();
         }
+
+        private void ImportPodMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            ImportPod win = new ImportPod();
+            win.Show();
+        }
     }
 }

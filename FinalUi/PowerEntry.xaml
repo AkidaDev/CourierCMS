@@ -6,7 +6,7 @@
         Title="Power Entry" Height="330" Width="550" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <CollectionViewSource x:Key="ClientList" CollectionViewType="ListCollectionView"/>
-    </Window.Resources>  
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -55,7 +55,7 @@
             <cstmcntrl:PandaCheckbox  Name="SubClientCheck" Checked="False"/>
             <TextBlock Text=" Sub Client .: " FontSize="16" FontFamily="Calibri" VerticalAlignment="Center" Margin="4 0 0 0"/>
             <ComboBox Name="SubClientTextBox" Width="250" Padding="2" ItemsSource="{Binding}" IsEditable="True" Height="24"/>
-            
+
         </WrapPanel>
         <WrapPanel Grid.Row="4" VerticalAlignment="Bottom" Margin="90 0 0 0">
             <cstmcntrl:PandaCheckbox  Name="ConsignerCheck" Checked="False"/>
@@ -75,7 +75,7 @@
             <cstmcntrl:PandaCheckbox  Name="CalcRateCheck" Checked="True"/>
             <TextBlock Text=" Calculate Rate" FontSize="16" FontFamily="Calibri" VerticalAlignment="Center"/>
         </WrapPanel>
-        <ProgressBar Grid.Row="7" Name="progressbar" Minimum="0" Maximum="100" Value="0" Height="24" Width="350" HorizontalAlignment="Left" Margin="50 0 0 0"/>
+        <ProgressBar Grid.Row="7" Name="progressbar" Minimum="0" Maximum="100" Value="0" Width="350" HorizontalAlignment="Left" Margin="61,24,0,22"/>
         <Button Grid.Row="7" Name="SubmitRecords" Click="SubmitRecords_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 25 0">
             <WrapPanel Margin="6 1">
                 <Path Style="{DynamicResource tick}"/>

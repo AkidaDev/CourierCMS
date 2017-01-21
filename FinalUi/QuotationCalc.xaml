@@ -72,8 +72,8 @@
         </WrapPanel>
         <TextBlock Text=" Log Box .: " Height="21" FontSize="16" FontFamily="Calibri" Grid.Row="2" Margin="4 40 4 0" Background="#A9FFFFF3"/>
         <Rectangle Grid.Row="2" VerticalAlignment="Bottom" Height="1" Fill="Gray" Margin="4 0"/>
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="3" Margin="4 0">
-            <TextBlock Text="Log..." Padding="4,4,0,0"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="3">
+            <TextBlock Text="Log..."/>
         </ScrollViewer>
     </Grid>
 </Window>

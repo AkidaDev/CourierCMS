@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BillingDatabase" Class="BillingDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="ConnectionString" ConnectionString="Data Source=SYSTEM;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa;Password=Alver!22" Provider="System.Data.SqlClient" />
+  <Connection Mode="ConnectionString" ConnectionString="Data Source=DESKTOP-9SMJEFI;Initial Catalog=BillingDatabase;Persist Security Info=True;User ID=sa;Password=0000" Provider="System.Data.SqlClient" />
   <Table Name="dbo.City" Member="Cities">
     <Type Name="City">
       <Column Name="CITY_CODE" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -81,6 +81,15 @@
       <Association Name="Employee_Stock" Member="Stocks" ThisKey="Id" OtherKey="UserId" Type="Stock" />
       <Association Name="Employee_Transaction" Member="Transactions" ThisKey="Id" OtherKey="UserId" Type="Transaction" />
       <Association Name="Employee_User_permission" Member="User_permissions" ThisKey="Id" OtherKey="emp_id" Type="User_permission" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Expense" Member="Expenses">
+    <Type Name="Expense">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ExpenseType" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Remarks" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Invoice" Member="Invoices">
@@ -206,6 +215,10 @@
       <Column Name="RecalculateEnabled" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
       <Column Name="Insurance" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
       <Column Name="DeliveryStatus" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="DeliveryDate" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DeliveryTime" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ReceivedBy" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Service" Member="Services">
@@ -309,6 +322,10 @@
       <Column Name="DeliveryStatus" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
       <Column Name="RecalculateEnabled" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
       <Column Name="Insurance" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="DeliveryDate" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DeliveryTime" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ReceivedBy" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Association Name="Transaction_InvoiceAssignment" Member="InvoiceAssignments" ThisKey="ID" OtherKey="TransactionId" Type="InvoiceAssignment" />
       <Association Name="Employee_Transaction" Member="Employee" ThisKey="UserId" OtherKey="Id" Type="Employee" IsForeignKey="true" />
       <Association Name="Client_Transaction" Member="Client" ThisKey="CustCode" OtherKey="CLCODE" Type="Client" IsForeignKey="true" />
@@ -325,9 +342,9 @@
   </Table>
   <Table Name="dbo.AccountStatement" Member="AccountStatements">
     <Type Name="AccountStatement">
-      <Column Name="Id" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="TransactionDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="TypeOfRecord" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="Id" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TransactionDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TypeOfRecord" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
       <Column Name="ClientCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
       <Column Name="Remark" Type="System.String" DbType="VarChar(182)" CanBeNull="true" />
       <Column Name="Details" Type="System.String" DbType="VarChar(360)" CanBeNull="true" />
@@ -372,12 +389,41 @@
       <Column Name="Insurance" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.AccountStatementFull" Member="AccountStatementFulls">
+    <Type Name="AccountStatementFull">
+      <Column Name="Id" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TransactionDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TypeOfRecord" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="CLNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="VarChar(182)" CanBeNull="true" />
+      <Column Name="Details" Type="System.String" DbType="VarChar(360)" CanBeNull="true" />
+      <Column Name="TotalRecievedAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PayAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.BalanceView" Member="BalanceViews">
     <Type Name="BalanceView">
       <Column Name="PC" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
-      <Column Name="PaymentRecieved" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="AmountBilled" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CLNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PaymentRecieved" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="AmountBilled" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="NetBalance" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ClientReportView" Member="ClientReportViews">
+    <Type Name="ClientReportView">
+      <Column Name="TotalAmountPayed" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
+      <Column Name="TotalAmountCharged" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
+      <Column Name="BalanceAmount" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
+      <Column Name="SlipCost" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
+      <Column Name="CustCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="BookingDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Month" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="GroupName" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="NumOfConns" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FUEL" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="STAX" Type="System.Double" DbType="Float" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.InvoiceView" Member="InvoiceViews">
@@ -470,43 +516,6 @@
       <Column Name="SlipsUsed" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="AddDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="Description" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Expense" Member="Expenses">
-    <Type Name="Expense">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ExpenseType" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
-      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
-      <Column Name="Remarks" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ClientReportView" Member="ClientReportViews">
-    <Type Name="ClientReportView">
-      <Column Name="TotalAmountPayed" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
-      <Column Name="TotalAmountCharged" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
-      <Column Name="BalanceAmount" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
-      <Column Name="SlipCost" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
-      <Column Name="CustCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
-      <Column Name="BookingDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="Month" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
-      <Column Name="GroupName" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
-      <Column Name="NumOfConns" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="FUEL" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="STAX" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.AccountStatementFull" Member="AccountStatementFulls">
-    <Type Name="AccountStatementFull">
-      <Column Name="Id" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="TransactionDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="TypeOfRecord" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
-      <Column Name="ClientCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
-      <Column Name="CLNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Remark" Type="System.String" DbType="VarChar(182)" CanBeNull="true" />
-      <Column Name="Details" Type="System.String" DbType="VarChar(360)" CanBeNull="true" />
-      <Column Name="TotalRecievedAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="PayAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.ImportFileData" Method="ImportFileData">

@@ -253,7 +253,7 @@ namespace FinalUi
         {
             get
             {
-                return this.TransactionDate.ToString("dd-MMM-yyyy");
+                return TransactionDate.Value.ToString("dd-MMM-yyyy");
             }
         }
         public string CompactPayAmount
