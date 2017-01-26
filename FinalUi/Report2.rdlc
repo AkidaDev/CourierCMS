@@ -548,10 +548,10 @@
               <Width>3.25023cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.63878cm</Width>
+              <Width>2.98274cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.24272cm</Width>
+              <Width>3.89876cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>4.54314cm</Width>
@@ -702,7 +702,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Date</Value>
+                              <Value>Booking Date</Value>
                               <Style>
                                 <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -746,7 +746,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Consigner</Value>
+                              <Value>Delivered On</Value>
                               <Style>
                                 <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -790,7 +790,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Consignee</Value>
+                              <Value>Recieved By</Value>
                               <Style>
                                 <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -966,14 +966,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="ConsignerName">
+                    <Textbox Name="Textbox8">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!ConsignerName.Value</Value>
+                              <Value />
                               <Style>
                                 <FontFamily>verdana</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -986,7 +986,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>ConsignerName</rd:DefaultName>
+                      <rd:DefaultName>Textbox8</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>

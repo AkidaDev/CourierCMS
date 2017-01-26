@@ -8,7 +8,7 @@
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Image Source="Images/Shape 21.png" Width="120" Height="120" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40 15 0 0"/>
+        <Image Source="Images/vortex.png" Width="120" Height="120" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40 15 0 0"/>
         <TextBlock Foreground="#6666cc" FontSize="40" Text="Help and Support" Margin="200 40 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <Rectangle Height="1" Fill="LightGray" VerticalAlignment="Bottom"/>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">

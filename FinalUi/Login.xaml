@@ -5,19 +5,18 @@
 		Icon="Images/logo.ico"
         Title="Login" Height="300" Width="600" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid Name="MainGrid" KeyDown="MainGrid_KeyUp">
-        <Canvas x:Name="vortex_pag" Width="594">
-            <Image x:Name="Blue" Height="250" Canvas.Left="36" Source="Images\Shape 21.png" Canvas.Top="10" Width="250"/>
-            <WrapPanel Height="80" Canvas.Left="355" Orientation="Horizontal" Canvas.Top="38">
+        <Canvas x:Name="vortex_pag" Width="594" Background="White">
+            <Image x:Name="Blue" Height="250" Canvas.Left="54" Source="Images\vortex.png" Canvas.Top="11" Width="211"/>
+        </Canvas>
+        <StackPanel Margin="283,0,0,0">
+            <WrapPanel Height="80" Orientation="Horizontal">
                 <TextBlock FontSize="60" Text="S" FontWeight="SemiBold"/>
                 <TextBlock FontSize="40" Text="WIFT" Margin="0 21 0 0"/>
             </WrapPanel>
-            <TextBlock FontSize="18" Canvas.Left="449" TextAlignment="Center" Text="Welcome!" Canvas.Top="111" Width="99"/>
-
-        </Canvas>
-        <StackPanel Margin="283,128,0,0">
-            <TextBox Style="{StaticResource placeHolder1}" Tag="UserName" Width="150" Name="UserName" FontSize="14" HorizontalAlignment="Center" Margin="80,26,81,0"/>
+            <TextBlock FontSize="18" TextAlignment="Center" Text="Welcome!" Width="99"/>
+            <TextBox Style="{StaticResource placeHolder1}" Tag="UserName" Width="170" Name="UserName" FontSize="14" HorizontalAlignment="Center" Margin="70,26,71,0"/>
             <Separator Visibility="Hidden"/>
-            <PasswordBox Width="150" Name="Password" Padding="5" FontSize="14" HorizontalAlignment="Center" Background="Transparent" Tag="Password"/>
+            <PasswordBox Width="170" Name="Password" Padding="5" FontSize="14" HorizontalAlignment="Center" Background="Transparent" Tag="Password" Margin="70,0,71,0"/>
             <WrapPanel HorizontalAlignment="Center" Margin="0,26,0,0">
                 <TextBlock MinWidth="150" FontSize="12" Text="Copyright ©2016, All Rights Reserved" Foreground="#FF416DFF"/>
             </WrapPanel>

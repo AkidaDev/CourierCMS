@@ -8,10 +8,10 @@
     </Window.Resources>
     <Grid Background="White" MouseLeftButtonDown="Grid_MouseLeftButtonDown_1">
         <Canvas Name="Step1">
-            <TextBlock Foreground="#6666cc" FontSize="18" Canvas.Left="374" TextAlignment="Center" Text="Welcome!" Canvas.Top="135" Width="150"/>
+            <TextBlock Foreground="#6666cc" FontSize="18" Canvas.Left="394" TextAlignment="Center" Text="Welcome!" Canvas.Top="135" Width="150"/>
             <Rectangle Width="396" Height="160" Canvas.Left="280" Canvas.Top="162" Stroke="Gray"/>
             <ScrollViewer Width="392" Height="156" Canvas.Left="283" Canvas.Top="164">
-            <TextBlock TextWrapping="Wrap" Padding="5">
+                <TextBlock TextWrapping="Wrap" Padding="5">
                 <Bold>TERMS AND CONDITIONS</Bold><LineBreak/><LineBreak/>
                 END-USER LICENSE AGREEMENT FOR SOFTWARE PRODUCTS OF SLT-INTEGRITY.<LineBreak/><LineBreak/>
                 IMPORTANT-READ CAREFULLY: This End-User License Agreement is a legal Agreement between you and SLT-INTEGRITY for the applicable Software Products of SLT-INTEGRITY. Do not copy, install, or use the Software Products provided under this license agreement ("Agreement"), until you have carefully read the following terms and conditions.<LineBreak/><LineBreak/>
@@ -41,7 +41,7 @@
                 IN NO EVENT SHALL SLT-INTEGRITY BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OR OF INABILITY TO USE Vortex SOFTWARE.<LineBreak/><LineBreak/>
                 COPYRIGHT NOTICE. Copyright(C) 2011 SLT-INTEGRITY, All rights reserved. <LineBreak/><LineBreak/>
                 Any rights not expressly granted herein are reserved.
-            </TextBlock>
+                </TextBlock>
             </ScrollViewer>
             <WrapPanel Canvas.Left="323" Canvas.Top="325">
                 <Button Click="update_CheckedUnChecked" Style="{StaticResource window}">
@@ -137,9 +137,9 @@
             </WrapPanel>
         </Canvas>
         <Canvas>
-            <Image Height="230" Width="230" HorizontalAlignment="Left" Margin="40,40,0,101" Source="Images\Shape 21.png"/>
-            <TextBlock Foreground="#6666cc" FontSize="60" Text="V" FontWeight="SemiBold" Canvas.Left="366" Canvas.Top="62"/>
-            <TextBlock Foreground="#6666cc" FontSize="40" Text="ORTEX" Canvas.Left="398" Canvas.Top="84"/>
+            <Image Height="230" Width="230" HorizontalAlignment="Left" Source="Images\vortex.png" Canvas.Left="34" Canvas.Top="40"/>
+            <TextBlock Foreground="#6666cc" FontSize="60" Text="S" FontWeight="SemiBold" Canvas.Left="344" Canvas.Top="62"/>
+            <TextBlock Foreground="#6666cc" FontSize="40" Text="WIFT" Canvas.Left="376" Canvas.Top="84"/>
             <TextBlock Text="Powered by SLT-INTEGRITY " FontSize="14" Foreground="LightGray" FontFamily="Calibri" Canvas.Left="513" Canvas.Top="46"/>
             <Button Click="Finish_Click" Name="Finish" Content="  Finish  " Canvas.Left="628" Canvas.Top="352" Height="24" Visibility="Collapsed"/>
             <Button Click="Next_Click" Name="Next" Content="  Next  " Canvas.Left="628" Canvas.Top="352" Height="24"/>
